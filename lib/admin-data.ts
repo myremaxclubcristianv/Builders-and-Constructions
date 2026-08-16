@@ -7,8 +7,10 @@ import {
   AcquisitionEntityInput
 } from '@/lib/acquisition';
 import {getRecommendedServiceSuite} from '@/lib/services';
+import {assertProductionAuthority} from '@/lib/production-truth';
 
 export async function adminMetrics(includeSales=true){
+  assertProductionAuthority();
   const c=getServiceClient();
   if(!c)return null;
   const count=async(table:string,filter?:[string,string,unknown])=>{
