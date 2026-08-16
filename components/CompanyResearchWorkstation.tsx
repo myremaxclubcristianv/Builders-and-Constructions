@@ -4,6 +4,7 @@ import { FormEvent, useState, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { calculateOpportunityScore, OPPORTUNITY_SIGNAL_WEIGHTS } from '@/lib/scoring';
+import { calculateDeterministicAcquisitionPriority } from '@/lib/acquisition';
 
 const ALL_SIGNALS = Object.keys(OPPORTUNITY_SIGNAL_WEIGHTS);
 
@@ -20,58 +21,95 @@ const ALL_SERVICES = [
 ];
 
 const COMPANY_TYPES = [
-  { value: 'construction_company', label: 'Construction Company' },
-  { value: 'developer', label: 'Developer' },
-  { value: 'general_contractor', label: 'General Contractor' },
-  { value: 'engineering', label: 'Engineering' },
-  { value: 'architecture', label: 'Architecture' },
-  { value: 'project_management', label: 'Project Management' },
-  { value: 'specialized_contractor', label: 'Specialist Contractor' },
-  { value: 'infrastructure', label: 'Infrastructure & Civil' }
+  { value: 'General Contractor', label: 'General Contractor' },
+  { value: 'Developer', label: 'Developer' },
+  { value: 'Subcontractor', label: 'Specialist Subcontractor' },
+  { value: 'Architect', label: 'Architecture & Design' },
+  { value: 'Engineering', label: 'Engineering & Structural' },
+  { value: 'Project Management', label: 'Project Management' },
+  { value: 'Infrastructure', label: 'Infrastructure & Civil' }
+];
+
+const ROMANIAN_COUNTIES = [
+  'Bucharest', 'Ilfov', 'Cluj', 'Timiș', 'Iași', 'Brașov', 'Constanța', 'Sibiu', 'Prahova',
+  'Bihor', 'Arad', 'Dolj', 'Galați', 'Bacău', 'Mureș', 'Argeș', 'Suceava', 'Dâmbovița'
+];
+
+const VERIFICATION_STATES = [
+  { value: 'unverified', label: '01 · UNVERIFIED (Internal draft only)' },
+  { value: 'publicly_verified', label: '02 · PUBLICLY VERIFIED (Public sources / registry)' },
+  { value: 'company_verified', label: '03 · COMPANY VERIFIED (Official domain / tender filing)' },
+  { value: 'confirmed_by_contact', label: '04 · CONFIRMED BY CONTACT (Direct executive contact)' }
 ];
 
 const SOURCE_TYPES = [
   'Official Company Website',
   'Official Project Website',
   'Developer Press Release',
-  'Ministry / Public Institution',
-  'Industry Publication / Registry',
-  'Corporate Social Media Channel',
-  'Other Verified Source'
+  'Ministry / Public Institution / SEAP',
+  'Trade Register / ONRC / Official Registry',
+  'Corporate LinkedIn / Social Channel',
+  'Credible Construction Publication'
 ];
 
 export function CompanyResearchWorkstation() {
   const router = useRouter();
 
-  // Basic Information
+  // 01 IDENTITY
   const [name, setName] = useState('');
   const [slug, setSlug] = useState('');
-  const [type, setType] = useState('construction_company');
-  const [location, setLocation] = useState('Bucharest');
+  const [legalName, setLegalName] = useState('');
+  const [cuiCif, setCuiCif] = useState('');
   const [foundedYear, setFoundedYear] = useState<number | ''>('');
   const [positioning, setPositioning] = useState('');
   const [description, setDescription] = useState('');
+
+  // 02 CLASSIFICATION
+  const [type, setType] = useState('General Contractor');
   const [specialism, setSpecialism] = useState('');
 
-  // Digital Presence
-  const [website, setWebsite] = useState('');
-  const [websiteStatus, setWebsiteStatus] = useState('unknown');
-  const [socialPresence, setSocialPresence] = useState('unknown');
-  const [seoStatus, setSeoStatus] = useState('unknown');
-  const [leadGenStatus, setLeadGenStatus] = useState('unknown');
+  // 03 GEOGRAPHY
+  const [county, setCounty] = useState('Bucharest');
+  const [city, setCity] = useState('Bucharest');
+  const [addressStreet, setAddressStreet] = useState('');
 
-  // Source Attribution
+  // 04 OFFICIAL WEBSITE
+  const [website, setWebsite] = useState('');
+  const [websiteStatus, setWebsiteStatus] = useState('none');
+  const [websiteVerification, setWebsiteVerification] = useState<'verified' | 'unverified'>('verified');
+
+  // 05 DIGITAL PRESENCE
+  const [mobileExperience, setMobileExperience] = useState('needs_improvement');
+  const [socialPresence, setSocialPresence] = useState('none');
+  const [seoStatus, setSeoStatus] = useState('poor');
+  const [leadGenStatus, setLeadGenStatus] = useState('missing');
+
+  // 06 PROJECT PORTFOLIO
+  const [portfolioQuality, setPortfolioQuality] = useState('outdated');
+  const [connectedProjectsNotes, setConnectedProjectsNotes] = useState('');
+
+  // 07 CONSTRUCTION ACTIVITY
+  const [activeSitesCount, setActiveSitesCount] = useState<number>(1);
+  const [recentMilestone, setRecentMilestone] = useState('');
+
+  // 08 DECISION MAKERS
+  const [primaryDmName, setPrimaryDmName] = useState('');
+  const [primaryDmRole, setPrimaryDmRole] = useState('CEO / Managing Director');
+  const [primaryDmContact, setPrimaryDmContact] = useState('');
+  const [primaryDmVerified, setPrimaryDmVerified] = useState('publicly_verified');
+
+  // 09 SOURCES
   const [sourceType, setSourceType] = useState(SOURCE_TYPES[0]);
   const [sourceUrl, setSourceUrl] = useState('');
-  const [verificationStatus, setVerificationStatus] = useState<'verified' | 'unverified'>('verified');
+  const [verificationEvidence, setVerificationEvidence] = useState('');
+  const [overallVerification, setOverallVerification] = useState('publicly_verified');
 
-  // Signals & Services
+  // 10 COMMERCIAL GAP & 11 OPPORTUNITY
   const [signals, setSignals] = useState<string[]>(['No website', 'Strong portfolio']);
   const [services, setServices] = useState<string[]>(['Website', 'Project Marketing']);
-  const [pipelineStatus, setPipelineStatus] = useState('researching');
-  const [notes, setNotes] = useState('');
+  const [salesNotes, setSalesNotes] = useState('');
 
-  // Content State
+  // 12 PUBLICATION
   const [contentState, setContentState] = useState<'draft' | 'published'>('draft');
 
   const [notice, setNotice] = useState<{ type: 'idle' | 'loading' | 'success' | 'error'; msg: string }>({
@@ -96,10 +134,38 @@ export function CompanyResearchWorkstation() {
     else setServices([...services, item]);
   }
 
-  // Real-time calculation
+  // Real-time opportunity score calculation
   const { score, level, reasons } = useMemo(() => {
     return calculateOpportunityScore(signals, 0);
   }, [signals]);
+
+  // Real-time deterministic acquisition priority
+  const priorityResult = useMemo(() => {
+    return calculateDeterministicAcquisitionPriority({
+      companyId: 'new-research',
+      companyName: name || 'New Prospect',
+      companyType: type,
+      city,
+      county,
+      website,
+      websiteStatus,
+      websiteVerification,
+      activeProjects: activeSitesCount > 0 ? Array.from({ length: activeSitesCount }, (_, i) => ({
+        id: `site-${i}`,
+        name: `Active Site #${i + 1}`,
+        status: 'under_construction'
+      })) : [],
+      baseOpportunityScore: score,
+      opportunitySignals: signals,
+      primaryDecisionMaker: primaryDmName ? {
+        name: primaryDmName,
+        role: primaryDmRole,
+        verificationState: primaryDmVerified,
+        email: primaryDmContact.includes('@') ? primaryDmContact : null,
+        phone: !primaryDmContact.includes('@') ? primaryDmContact : null
+      } : null
+    });
+  }, [name, type, city, county, website, websiteStatus, websiteVerification, activeSitesCount, score, signals, primaryDmName, primaryDmRole, primaryDmContact, primaryDmVerified]);
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -108,7 +174,7 @@ export function CompanyResearchWorkstation() {
       return;
     }
 
-    setNotice({ type: 'loading', msg: 'Saving researched company profile & opportunity score…' });
+    setNotice({ type: 'loading', msg: 'Recording researched company dossier & verification proofs…' });
     try {
       // 1. Create company record
       const compRes = await fetch('/api/admin/companies', {
@@ -117,413 +183,667 @@ export function CompanyResearchWorkstation() {
         body: JSON.stringify({
           name: name.trim(),
           slug: slug.trim() || name.toLowerCase().replace(/[^a-z0-9]+/g, '-'),
+          legal_name: legalName.trim() || null,
+          cui_cif: cuiCif.trim() || null,
           type,
-          location,
+          county,
+          city: city.trim() || county,
+          location: `${city.trim() || county}, ${county}`,
+          address_street: addressStreet.trim() || null,
           founded_year: foundedYear ? Number(foundedYear) : null,
-          positioning_statement: positioning || null,
-          description,
-          specialism,
-          website: website || null,
-          website_status: websiteStatus,
-          social_presence: socialPresence,
-          seo_status: seoStatus,
-          lead_generation_status: leadGenStatus,
-          website_verification: verificationStatus,
+          positioning: positioning.trim() || null,
+          description: description.trim() || null,
+          specialism: specialism.trim() || null,
+          website: website.trim() || null,
+          website_verification: websiteVerification,
           content_state: contentState,
-          source_type: sourceType,
-          source_url: sourceUrl || null
+          research_state: 'researched',
+          verification_evidence: verificationEvidence.trim() || null,
+          last_researched_at: new Date().toISOString(),
+          digital_audit_data: {
+            websiteStatus,
+            mobileExperience,
+            socialPresence,
+            seoStatus,
+            leadGenStatus,
+            portfolioQuality,
+            connectedProjectsNotes
+          }
         })
       });
 
-      const compData = await compRes.json();
       if (!compRes.ok) {
-        setNotice({ type: 'error', msg: compData.error || 'Failed to create company.' });
-        return;
+        const err = await compRes.json();
+        throw new Error(err.error || 'Failed to save company record');
       }
 
-      const companyId = compData.id;
+      const createdComp = await compRes.json();
+      const compId = createdComp.id;
 
-      // 2. Initialize private opportunity score
-      await fetch(`/api/admin/private_opportunity_scores/${companyId}`, {
-        method: 'PATCH',
+      // 2. Record source attribution if URL provided
+      if (sourceUrl.trim()) {
+        await fetch('/api/admin/sources', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            title: `${sourceType} for ${name}`,
+            url: sourceUrl.trim(),
+            source_type: sourceType,
+            verification_state: overallVerification,
+            target_entity_type: 'company',
+            target_entity_id: compId
+          })
+        }).catch(() => null);
+      }
+
+      // 3. Record primary decision maker if provided
+      if (primaryDmName.trim()) {
+        await fetch('/api/admin/decision-makers', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            company_id: compId,
+            name: primaryDmName.trim(),
+            role: primaryDmRole.trim(),
+            email: primaryDmContact.includes('@') ? primaryDmContact.trim() : null,
+            phone: !primaryDmContact.includes('@') ? primaryDmContact.trim() : null,
+            verification_state: primaryDmVerified,
+            is_primary: true
+          })
+        }).catch(() => null);
+      }
+
+      // 4. Save opportunity score and acquisition priority
+      await fetch(`/api/admin/companies/${compId}/relationships`, {
+        method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          opportunity: level,
-          opportunity_score: score,
-          score_reasons: reasons,
-          pipeline_status: pipelineStatus,
-          signals,
-          recommended_services: services,
-          notes
+          action: 'upsert_opportunity_score',
+          opportunityScore: {
+            opportunity_score: score,
+            priority_level: level,
+            signals,
+            recommended_services: services,
+            score_reasons: reasons,
+            acquisition_priority: priorityResult.score
+          }
         })
-      });
+      }).catch(() => null);
 
-      setNotice({ type: 'success', msg: 'Company intake complete. Redirecting to portfolio & media manager…' });
+      setNotice({ type: 'success', msg: `Dossier saved for "${name}". Redirecting…` });
       setTimeout(() => {
-        router.push(`/admin/companies/${companyId}/edit`);
+        router.push(`/admin/companies/${compId}/acquisition`);
       }, 1000);
-    } catch {
-      setNotice({ type: 'error', msg: 'Network error submitting research intake.' });
+    } catch (err: any) {
+      setNotice({ type: 'error', msg: err.message || 'An error occurred during submission.' });
     }
   }
 
   return (
-    <div>
-      <div style={{ marginBottom: 20, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <Link href="/admin/companies" className="btn">
-          ← Back to Companies Directory
+    <div className="admin-container">
+      <div className="admin-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: 16 }}>
+        <div>
+          <div className="eyebrow" style={{ color: '#d4af37' }}>
+            PROFESSIONAL RESEARCH WORKSTATION · PHASE 11
+          </div>
+          <h1 style={{ margin: '4px 0 6px 0', fontSize: '1.85rem', fontWeight: 800 }}>
+            COMPANY INTELLIGENCE & ACQUISITION DOSSIER
+          </h1>
+          <p className="admin-subtitle" style={{ margin: 0 }}>
+            Structured 12-section research protocol. Every factual record must be accompanied by explicit source attribution and verification state.
+          </p>
+        </div>
+
+        <Link href="/admin/companies" className="action-btn secondary">
+          ← Back to Companies
         </Link>
       </div>
 
-      <div className="eyebrow" style={{ color: '#d4af37' }}>
-        Structured Intake & Intelligence
-      </div>
-      <h1 className="admin-title" style={{ marginBottom: 8 }}>
-        COMPANY RESEARCH WORKSTATION
-      </h1>
-      <p style={{ color: '#aaa9a1', fontSize: 14, marginBottom: 28, maxWidth: 700 }}>
-        Follow this 8-step workstation to rapidly document a real-world contractor, developer, or engineering practice, audit their digital footprint, and score the commercial upsell opportunity.
-      </p>
-
-      {notice.msg && (
+      {notice.type !== 'idle' && (
         <div
           style={{
-            padding: '12px 16px',
+            padding: '12px 18px',
             marginBottom: 20,
-            fontSize: 13,
             borderRadius: 4,
-            background: notice.type === 'error' ? 'rgba(239, 68, 68, 0.15)' : 'rgba(16, 185, 129, 0.15)',
-            color: notice.type === 'error' ? '#fca5a5' : '#86efac',
-            border: `1px solid ${notice.type === 'error' ? 'rgba(239, 68, 68, 0.3)' : 'rgba(16, 185, 129, 0.3)'}`
+            fontSize: '0.85rem',
+            background: notice.type === 'error' ? '#ef444422' : notice.type === 'success' ? '#22c55e22' : '#eab30822',
+            border: `1px solid ${notice.type === 'error' ? '#ef4444' : notice.type === 'success' ? '#22c55e' : '#eab308'}`,
+            color: notice.type === 'error' ? '#ef4444' : notice.type === 'success' ? '#22c55e' : '#eab308'
           }}
         >
           {notice.msg}
         </div>
       )}
 
-      {/* Live Calculated Opportunity Card */}
-      <section
-        className="admin-panel"
-        style={{
-          marginBottom: 28,
-          background: '#141715',
-          border: '1px solid #d4af37',
-          borderRadius: 8,
-          padding: 24
-        }}
-      >
-        <div className="eyebrow" style={{ color: '#d4af37' }}>
-          Real-Time Commercial Opportunity Scoring
-        </div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginTop: 8 }}>
-          <span
-            style={{
-              fontSize: 12,
-              fontWeight: 800,
-              textTransform: 'uppercase',
-              padding: '4px 10px',
-              borderRadius: 4,
-              background: level === 'high' ? '#86efac' : level === 'medium' ? '#fde047' : '#94a3b8',
-              color: '#000'
-            }}
-          >
-            {level.toUpperCase()} OPPORTUNITY
-          </span>
-          <span style={{ fontSize: 32, fontWeight: 800, color: '#fff' }}>
-            {score} <span style={{ fontSize: 16, color: '#888', fontWeight: 400 }}>/ 100</span>
-          </span>
-        </div>
-        <div style={{ marginTop: 12 }}>
-          <span style={{ fontSize: 11, color: '#aaa9a1', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-            Active Breakdown:
-          </span>
-          <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginTop: 6 }}>
-            {reasons.map((r, i) => (
-              <span key={i} className="badge" style={{ borderColor: '#555', color: '#d4af37' }}>
-                {r}
-              </span>
-            ))}
+      <form onSubmit={handleSubmit}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 2fr) minmax(320px, 1fr)', gap: 24 }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
+
+            {/* 01 IDENTITY */}
+            <section className="admin-card">
+              <div className="eyebrow" style={{ color: '#d4af37' }}>SECTION 01</div>
+              <h2 style={{ fontSize: '1.1rem', margin: '4px 0 16px 0', fontWeight: 700 }}>COMPANY IDENTITY</h2>
+
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14 }}>
+                <div style={{ gridColumn: '1 / -1' }}>
+                  <label className="form-label">Brand / Operating Name *</label>
+                  <input
+                    type="text"
+                    value={name}
+                    onChange={e => handleNameChange(e.target.value)}
+                    placeholder="e.g. Bog'Art, Erbașu Construcții, One United Properties"
+                    required
+                    style={{ width: '100%', padding: '10px', background: '#0d0f0e', border: '1px solid var(--line)', color: '#fff', borderRadius: 4 }}
+                  />
+                </div>
+
+                <div>
+                  <label className="form-label">Legal Name (ONRC)</label>
+                  <input
+                    type="text"
+                    value={legalName}
+                    onChange={e => setLegalName(e.target.value)}
+                    placeholder="e.g. BOG'ART S.R.L."
+                    style={{ width: '100%', padding: '10px', background: '#0d0f0e', border: '1px solid var(--line)', color: '#fff', borderRadius: 4 }}
+                  />
+                </div>
+
+                <div>
+                  <label className="form-label">CUI / CIF Identifier</label>
+                  <input
+                    type="text"
+                    value={cuiCif}
+                    onChange={e => setCuiCif(e.target.value)}
+                    placeholder="e.g. RO 1234567"
+                    style={{ width: '100%', padding: '10px', background: '#0d0f0e', border: '1px solid var(--line)', color: '#fff', borderRadius: 4 }}
+                  />
+                </div>
+
+                <div>
+                  <label className="form-label">URL Slug</label>
+                  <input
+                    type="text"
+                    value={slug}
+                    onChange={e => setSlug(e.target.value)}
+                    placeholder="slug-identifier"
+                    style={{ width: '100%', padding: '10px', background: '#0d0f0e', border: '1px solid var(--line)', color: '#fff', borderRadius: 4 }}
+                  />
+                </div>
+
+                <div>
+                  <label className="form-label">Founded Year</label>
+                  <input
+                    type="number"
+                    value={foundedYear}
+                    onChange={e => setFoundedYear(e.target.value ? Number(e.target.value) : '')}
+                    placeholder="e.g. 1991"
+                    style={{ width: '100%', padding: '10px', background: '#0d0f0e', border: '1px solid var(--line)', color: '#fff', borderRadius: 4 }}
+                  />
+                </div>
+
+                <div style={{ gridColumn: '1 / -1' }}>
+                  <label className="form-label">Executive Positioning</label>
+                  <input
+                    type="text"
+                    value={positioning}
+                    onChange={e => setPositioning(e.target.value)}
+                    placeholder="e.g. Tier 1 Institutional General Contractor with multidisciplinary delivery capacity"
+                    style={{ width: '100%', padding: '10px', background: '#0d0f0e', border: '1px solid var(--line)', color: '#fff', borderRadius: 4 }}
+                  />
+                </div>
+
+                <div style={{ gridColumn: '1 / -1' }}>
+                  <label className="form-label">Factual Overview & History</label>
+                  <textarea
+                    value={description}
+                    onChange={e => setDescription(e.target.value)}
+                    placeholder="Provide verified company background, operational footprint, and track record."
+                    rows={4}
+                    style={{ width: '100%', padding: '10px', background: '#0d0f0e', border: '1px solid var(--line)', color: '#fff', borderRadius: 4 }}
+                  />
+                </div>
+              </div>
+            </section>
+
+            {/* 02 CLASSIFICATION & 03 GEOGRAPHY */}
+            <section className="admin-card">
+              <div className="eyebrow" style={{ color: '#d4af37' }}>SECTIONS 02 & 03</div>
+              <h2 style={{ fontSize: '1.1rem', margin: '4px 0 16px 0', fontWeight: 700 }}>CLASSIFICATION & GEOGRAPHY</h2>
+
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14 }}>
+                <div>
+                  <label className="form-label">Primary Sector Type</label>
+                  <select
+                    value={type}
+                    onChange={e => setType(e.target.value)}
+                    style={{ width: '100%', padding: '10px', background: '#0d0f0e', border: '1px solid var(--line)', color: '#fff', borderRadius: 4 }}
+                  >
+                    {COMPANY_TYPES.map(t => (
+                      <option key={t.value} value={t.value}>{t.label}</option>
+                    ))}
+                  </select>
+                </div>
+
+                <div>
+                  <label className="form-label">Specialism Scope</label>
+                  <input
+                    type="text"
+                    value={specialism}
+                    onChange={e => setSpecialism(e.target.value)}
+                    placeholder="e.g. High-Rise Commercial, Infrastructure, Luxury Residential"
+                    style={{ width: '100%', padding: '10px', background: '#0d0f0e', border: '1px solid var(--line)', color: '#fff', borderRadius: 4 }}
+                  />
+                </div>
+
+                <div>
+                  <label className="form-label">County (Territory)</label>
+                  <select
+                    value={county}
+                    onChange={e => setCounty(e.target.value)}
+                    style={{ width: '100%', padding: '10px', background: '#0d0f0e', border: '1px solid var(--line)', color: '#fff', borderRadius: 4 }}
+                  >
+                    {ROMANIAN_COUNTIES.map(c => (
+                      <option key={c} value={c}>{c}</option>
+                    ))}
+                  </select>
+                </div>
+
+                <div>
+                  <label className="form-label">City / Municipality</label>
+                  <input
+                    type="text"
+                    value={city}
+                    onChange={e => setCity(e.target.value)}
+                    placeholder="e.g. Bucharest, Sector 1"
+                    style={{ width: '100%', padding: '10px', background: '#0d0f0e', border: '1px solid var(--line)', color: '#fff', borderRadius: 4 }}
+                  />
+                </div>
+
+                <div style={{ gridColumn: '1 / -1' }}>
+                  <label className="form-label">Headquarters Street Address</label>
+                  <input
+                    type="text"
+                    value={addressStreet}
+                    onChange={e => setAddressStreet(e.target.value)}
+                    placeholder="e.g. Str. Aviatorilor 42"
+                    style={{ width: '100%', padding: '10px', background: '#0d0f0e', border: '1px solid var(--line)', color: '#fff', borderRadius: 4 }}
+                  />
+                </div>
+              </div>
+            </section>
+
+            {/* 04 OFFICIAL WEBSITE & 05 DIGITAL PRESENCE */}
+            <section className="admin-card">
+              <div className="eyebrow" style={{ color: '#d4af37' }}>SECTIONS 04 & 05</div>
+              <h2 style={{ fontSize: '1.1rem', margin: '4px 0 16px 0', fontWeight: 700 }}>OFFICIAL WEBSITE & DIGITAL MATURITY</h2>
+
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14 }}>
+                <div style={{ gridColumn: '1 / -1' }}>
+                  <label className="form-label">Official Website URL</label>
+                  <input
+                    type="url"
+                    value={website}
+                    onChange={e => setWebsite(e.target.value)}
+                    placeholder="https://company.ro"
+                    style={{ width: '100%', padding: '10px', background: '#0d0f0e', border: '1px solid var(--line)', color: '#fff', borderRadius: 4 }}
+                  />
+                </div>
+
+                <div>
+                  <label className="form-label">Website Status</label>
+                  <select
+                    value={websiteStatus}
+                    onChange={e => setWebsiteStatus(e.target.value)}
+                    style={{ width: '100%', padding: '10px', background: '#0d0f0e', border: '1px solid var(--line)', color: '#fff', borderRadius: 4 }}
+                  >
+                    <option value="none">No Website Available</option>
+                    <option value="broken">Broken / Under Construction</option>
+                    <option value="outdated">Outdated / Legacy Non-Responsive</option>
+                    <option value="basic">Basic Template</option>
+                    <option value="modern">Modern & Fast</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="form-label">Website Verification</label>
+                  <select
+                    value={websiteVerification}
+                    onChange={e => setWebsiteVerification(e.target.value as any)}
+                    style={{ width: '100%', padding: '10px', background: '#0d0f0e', border: '1px solid var(--line)', color: '#fff', borderRadius: 4 }}
+                  >
+                    <option value="verified">Verified Official Domain</option>
+                    <option value="unverified">Unverified / Pending Check</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="form-label">Mobile Experience</label>
+                  <select
+                    value={mobileExperience}
+                    onChange={e => setMobileExperience(e.target.value)}
+                    style={{ width: '100%', padding: '10px', background: '#0d0f0e', border: '1px solid var(--line)', color: '#fff', borderRadius: 4 }}
+                  >
+                    <option value="missing">Missing / Broken</option>
+                    <option value="poor">Poor (Non-Responsive)</option>
+                    <option value="needs_improvement">Needs Improvement</option>
+                    <option value="good">Good Mobile UX</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="form-label">Lead Generation Architecture</label>
+                  <select
+                    value={leadGenStatus}
+                    onChange={e => setLeadGenStatus(e.target.value)}
+                    style={{ width: '100%', padding: '10px', background: '#0d0f0e', border: '1px solid var(--line)', color: '#fff', borderRadius: 4 }}
+                  >
+                    <option value="missing">Missing (Mailto only / No CTA)</option>
+                    <option value="weak">Weak (Static Form)</option>
+                    <option value="active">Active Multi-Step Intake</option>
+                  </select>
+                </div>
+              </div>
+            </section>
+
+            {/* 06 PORTFOLIO & 07 CONSTRUCTION ACTIVITY */}
+            <section className="admin-card">
+              <div className="eyebrow" style={{ color: '#d4af37' }}>SECTIONS 06 & 07</div>
+              <h2 style={{ fontSize: '1.1rem', margin: '4px 0 16px 0', fontWeight: 700 }}>PORTFOLIO PRESENTATION & CONSTRUCTION ACTIVITY</h2>
+
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14 }}>
+                <div>
+                  <label className="form-label">Portfolio Quality</label>
+                  <select
+                    value={portfolioQuality}
+                    onChange={e => setPortfolioQuality(e.target.value)}
+                    style={{ width: '100%', padding: '10px', background: '#0d0f0e', border: '1px solid var(--line)', color: '#fff', borderRadius: 4 }}
+                  >
+                    <option value="missing">No Public Portfolio</option>
+                    <option value="outdated">Outdated / Low-Res Phone Photos</option>
+                    <option value="moderate">Moderate Portfolio</option>
+                    <option value="high_end">High-End Architectural Media</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="form-label">Active Construction Sites Count</label>
+                  <input
+                    type="number"
+                    min={0}
+                    value={activeSitesCount}
+                    onChange={e => setActiveSitesCount(Number(e.target.value))}
+                    style={{ width: '100%', padding: '10px', background: '#0d0f0e', border: '1px solid var(--line)', color: '#fff', borderRadius: 4 }}
+                  />
+                </div>
+
+                <div style={{ gridColumn: '1 / -1' }}>
+                  <label className="form-label">Recent Verified Milestone / Signal</label>
+                  <input
+                    type="text"
+                    value={recentMilestone}
+                    onChange={e => setRecentMilestone(e.target.value)}
+                    placeholder="e.g. Awarded general contractor contract for Riverside Quarter (Phase 2)"
+                    style={{ width: '100%', padding: '10px', background: '#0d0f0e', border: '1px solid var(--line)', color: '#fff', borderRadius: 4 }}
+                  />
+                </div>
+
+                <div style={{ gridColumn: '1 / -1' }}>
+                  <label className="form-label">Connected Projects & Role Attribution Notes</label>
+                  <textarea
+                    value={connectedProjectsNotes}
+                    onChange={e => setConnectedProjectsNotes(e.target.value)}
+                    placeholder="List verified project associations and their evidence source."
+                    rows={2}
+                    style={{ width: '100%', padding: '10px', background: '#0d0f0e', border: '1px solid var(--line)', color: '#fff', borderRadius: 4 }}
+                  />
+                </div>
+              </div>
+            </section>
+
+            {/* 08 DECISION MAKERS */}
+            <section className="admin-card">
+              <div className="eyebrow" style={{ color: '#d4af37' }}>SECTION 08</div>
+              <h2 style={{ fontSize: '1.1rem', margin: '4px 0 16px 0', fontWeight: 700 }}>PRIMARY DECISION MAKER</h2>
+
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14 }}>
+                <div>
+                  <label className="form-label">Executive Name *</label>
+                  <input
+                    type="text"
+                    value={primaryDmName}
+                    onChange={e => setPrimaryDmName(e.target.value)}
+                    placeholder="e.g. Cristian Erbașu, Dan Boghiu"
+                    style={{ width: '100%', padding: '10px', background: '#0d0f0e', border: '1px solid var(--line)', color: '#fff', borderRadius: 4 }}
+                  />
+                </div>
+
+                <div>
+                  <label className="form-label">Executive Role</label>
+                  <input
+                    type="text"
+                    value={primaryDmRole}
+                    onChange={e => setPrimaryDmRole(e.target.value)}
+                    placeholder="e.g. CEO, Managing Director, Commercial Director"
+                    style={{ width: '100%', padding: '10px', background: '#0d0f0e', border: '1px solid var(--line)', color: '#fff', borderRadius: 4 }}
+                  />
+                </div>
+
+                <div>
+                  <label className="form-label">Direct Contact (Email or Phone)</label>
+                  <input
+                    type="text"
+                    value={primaryDmContact}
+                    onChange={e => setPrimaryDmContact(e.target.value)}
+                    placeholder="executive@company.ro or +40..."
+                    style={{ width: '100%', padding: '10px', background: '#0d0f0e', border: '1px solid var(--line)', color: '#fff', borderRadius: 4 }}
+                  />
+                </div>
+
+                <div>
+                  <label className="form-label">Contact Verification State</label>
+                  <select
+                    value={primaryDmVerified}
+                    onChange={e => setPrimaryDmVerified(e.target.value)}
+                    style={{ width: '100%', padding: '10px', background: '#0d0f0e', border: '1px solid var(--line)', color: '#fff', borderRadius: 4 }}
+                  >
+                    {VERIFICATION_STATES.map(v => (
+                      <option key={v.value} value={v.value}>{v.label}</option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+            </section>
+
+            {/* 09 SOURCES & VERIFICATION */}
+            <section className="admin-card">
+              <div className="eyebrow" style={{ color: '#d4af37' }}>SECTION 09</div>
+              <h2 style={{ fontSize: '1.1rem', margin: '4px 0 16px 0', fontWeight: 700 }}>SOURCES & AUDIT TRAIL</h2>
+
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14 }}>
+                <div>
+                  <label className="form-label">Source Type</label>
+                  <select
+                    value={sourceType}
+                    onChange={e => setSourceType(e.target.value)}
+                    style={{ width: '100%', padding: '10px', background: '#0d0f0e', border: '1px solid var(--line)', color: '#fff', borderRadius: 4 }}
+                  >
+                    {SOURCE_TYPES.map(s => (
+                      <option key={s} value={s}>{s}</option>
+                    ))}
+                  </select>
+                </div>
+
+                <div>
+                  <label className="form-label">Source URL Citation *</label>
+                  <input
+                    type="url"
+                    value={sourceUrl}
+                    onChange={e => setSourceUrl(e.target.value)}
+                    placeholder="https://..."
+                    style={{ width: '100%', padding: '10px', background: '#0d0f0e', border: '1px solid var(--line)', color: '#fff', borderRadius: 4 }}
+                  />
+                </div>
+
+                <div style={{ gridColumn: '1 / -1' }}>
+                  <label className="form-label">Verification Evidence & Notes</label>
+                  <input
+                    type="text"
+                    value={verificationEvidence}
+                    onChange={e => setVerificationEvidence(e.target.value)}
+                    placeholder="Verified via ONRC registry filing and official company website header"
+                    style={{ width: '100%', padding: '10px', background: '#0d0f0e', border: '1px solid var(--line)', color: '#fff', borderRadius: 4 }}
+                  />
+                </div>
+
+                <div>
+                  <label className="form-label">Overall Dossier Verification State</label>
+                  <select
+                    value={overallVerification}
+                    onChange={e => setOverallVerification(e.target.value)}
+                    style={{ width: '100%', padding: '10px', background: '#0d0f0e', border: '1px solid var(--line)', color: '#fff', borderRadius: 4 }}
+                  >
+                    {VERIFICATION_STATES.map(v => (
+                      <option key={v.value} value={v.value}>{v.label}</option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+            </section>
+
           </div>
-        </div>
-      </section>
 
-      <form onSubmit={handleSubmit} className="form-grid admin-panel" style={{ gap: 20 }}>
-        {/* Step 1: Corporate Basics */}
-        <div className="full">
-          <div className="eyebrow">Step 1 of 8</div>
-          <h2 style={{ fontSize: 20, margin: '4px 0 12px 0' }}>CORPORATE IDENTITY</h2>
-        </div>
+          {/* RIGHT COLUMN: 10 COMMERCIAL GAP, 11 OPPORTUNITY & 12 PUBLICATION */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
 
-        <label>
-          <span className="form-label">Official Company Name *</span>
-          <input
-            value={name}
-            onChange={e => handleNameChange(e.target.value)}
-            placeholder="e.g. Bog'Art, Strabag, Erbasu…"
-            required
-          />
-        </label>
+            {/* Opportunity & Acquisition Priority Panel */}
+            <div className="admin-card" style={{ borderTop: '4px solid var(--accent)' }}>
+              <div className="eyebrow" style={{ color: '#d4af37' }}>SECTIONS 10 & 11</div>
+              <h3 style={{ fontSize: '1.1rem', margin: '4px 0 16px 0', fontWeight: 800 }}>
+                ACQUISITION PRIORITY
+              </h3>
 
-        <label>
-          <span className="form-label">URL Slug</span>
-          <input value={slug} onChange={e => setSlug(e.target.value)} placeholder="bog-art" />
-        </label>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
+                <div>
+                  <span style={{ fontSize: '0.7rem', color: '#888', textTransform: 'uppercase' }}>Opportunity Index</span>
+                  <div style={{ fontSize: '1.75rem', fontWeight: 800, color: score >= 60 ? '#22c55e' : '#eab308' }}>
+                    {score}/100
+                  </div>
+                </div>
 
-        <label>
-          <span className="form-label">Company Type Classification</span>
-          <select value={type} onChange={e => setType(e.target.value)}>
-            {COMPANY_TYPES.map(t => (
-              <option key={t.value} value={t.value}>
-                {t.label}
-              </option>
-            ))}
-          </select>
-        </label>
+                <div style={{ textAlign: 'right' }}>
+                  <span style={{ fontSize: '0.7rem', color: '#888', textTransform: 'uppercase' }}>Priority Tier</span>
+                  <div style={{ fontSize: '1.1rem', fontWeight: 800, color: priorityResult.tier === 'HIGH' ? '#22c55e' : '#eab308' }}>
+                    {priorityResult.tier} ({priorityResult.score} pts)
+                  </div>
+                </div>
+              </div>
 
-        <label>
-          <span className="form-label">Headquarters Location</span>
-          <input value={location} onChange={e => setLocation(e.target.value)} placeholder="Bucharest, Romania" />
-        </label>
+              {/* Signals */}
+              <div style={{ marginBottom: 16 }}>
+                <label className="form-label" style={{ marginBottom: 8, display: 'block' }}>Commercial Gap Signals</label>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
+                  {ALL_SIGNALS.map(sig => {
+                    const active = signals.includes(sig);
+                    return (
+                      <button
+                        type="button"
+                        key={sig}
+                        onClick={() => toggleSignal(sig)}
+                        style={{
+                          fontSize: '0.7rem',
+                          padding: '4px 8px',
+                          borderRadius: 3,
+                          border: '1px solid',
+                          borderColor: active ? '#d4af37' : 'rgba(255,255,255,0.1)',
+                          background: active ? '#d4af3722' : '#0d0f0e',
+                          color: active ? '#d4af37' : '#888',
+                          cursor: 'pointer'
+                        }}
+                      >
+                        {sig}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
 
-        <label>
-          <span className="form-label">Founding Year</span>
-          <input
-            type="number"
-            value={foundedYear}
-            onChange={e => setFoundedYear(e.target.value ? Number(e.target.value) : '')}
-            placeholder="1991"
-          />
-        </label>
+              {/* Recommended Services */}
+              <div style={{ marginBottom: 16 }}>
+                <label className="form-label" style={{ marginBottom: 8, display: 'block' }}>Recommended Service Suite</label>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
+                  {ALL_SERVICES.map(srv => {
+                    const active = services.includes(srv);
+                    return (
+                      <button
+                        type="button"
+                        key={srv}
+                        onClick={() => toggleService(srv)}
+                        style={{
+                          fontSize: '0.7rem',
+                          padding: '4px 8px',
+                          borderRadius: 3,
+                          border: '1px solid',
+                          borderColor: active ? '#22c55e' : 'rgba(255,255,255,0.1)',
+                          background: active ? '#22c55e22' : '#0d0f0e',
+                          color: active ? '#22c55e' : '#888',
+                          cursor: 'pointer'
+                        }}
+                      >
+                        {srv}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
 
-        <label>
-          <span className="form-label">Primary Specialization</span>
-          <input
-            value={specialism}
-            onChange={e => setSpecialism(e.target.value)}
-            placeholder="General Construction · High-Rise · Infrastructure"
-          />
-        </label>
+              <div>
+                <label className="form-label">Private Sales Notes (Internal Only)</label>
+                <textarea
+                  value={salesNotes}
+                  onChange={e => setSalesNotes(e.target.value)}
+                  placeholder="Specific sales angle, budget estimation, or verified relationship context."
+                  rows={3}
+                  style={{ width: '100%', padding: '10px', background: '#0d0f0e', border: '1px solid var(--line)', color: '#fff', borderRadius: 4 }}
+                />
+              </div>
+            </div>
 
-        <label className="full">
-          <span className="form-label">Positioning Statement (1-2 sentences)</span>
-          <input
-            value={positioning}
-            onChange={e => setPositioning(e.target.value)}
-            placeholder="One of Romania's leading general contracting and civil engineering firms."
-          />
-        </label>
+            {/* 12 PUBLICATION CONTROL */}
+            <div className="admin-card">
+              <div className="eyebrow" style={{ color: '#d4af37' }}>SECTION 12</div>
+              <h3 style={{ fontSize: '1.1rem', margin: '4px 0 16px 0', fontWeight: 800 }}>
+                PUBLICATION CONTROL
+              </h3>
 
-        <label className="full">
-          <span className="form-label">Company Narrative & Editorial Overview</span>
-          <textarea
-            value={description}
-            onChange={e => setDescription(e.target.value)}
-            placeholder="Provide verified background regarding corporate history, delivery track record, and practice areas…"
-            rows={4}
-          />
-        </label>
-
-        {/* Step 2: Digital Presence */}
-        <div className="full" style={{ borderTop: '1px solid var(--line)', paddingTop: 20, marginTop: 10 }}>
-          <div className="eyebrow">Step 2 of 8</div>
-          <h2 style={{ fontSize: 20, margin: '4px 0 12px 0' }}>WEBSITE & DIGITAL AUDIT</h2>
-        </div>
-
-        <label>
-          <span className="form-label">Official Website URL</span>
-          <input
-            type="url"
-            value={website}
-            onChange={e => setWebsite(e.target.value)}
-            placeholder="https://company.ro"
-          />
-        </label>
-
-        <label>
-          <span className="form-label">Website Status</span>
-          <select value={websiteStatus} onChange={e => setWebsiteStatus(e.target.value)}>
-            <option value="unknown">Unknown</option>
-            <option value="no_website">No Website Found</option>
-            <option value="outdated">Outdated / Legacy</option>
-            <option value="active">Active & Modern</option>
-            <option value="under_construction">Under Construction</option>
-          </select>
-        </label>
-
-        <label>
-          <span className="form-label">Social Media Presence</span>
-          <select value={socialPresence} onChange={e => setSocialPresence(e.target.value)}>
-            <option value="unknown">Unknown</option>
-            <option value="none">No Social Presence</option>
-            <option value="weak">Weak / Inactive Channels</option>
-            <option value="active">Active Channels</option>
-          </select>
-        </label>
-
-        <label>
-          <span className="form-label">SEO & Organic Visibility</span>
-          <select value={seoStatus} onChange={e => setSeoStatus(e.target.value)}>
-            <option value="unknown">Unknown</option>
-            <option value="none">Zero Search Visibility</option>
-            <option value="weak">Weak / Generic Indexing</option>
-            <option value="strong">Established Search Presence</option>
-          </select>
-        </label>
-
-        <label>
-          <span className="form-label">Inbound Lead Generation Funnel</span>
-          <select value={leadGenStatus} onChange={e => setLeadGenStatus(e.target.value)}>
-            <option value="unknown">Unknown</option>
-            <option value="none">No Inbound Lead Form</option>
-            <option value="weak">Generic Email Link Only</option>
-            <option value="active">Active Funnel</option>
-          </select>
-        </label>
-
-        {/* Step 3: Source Attribution */}
-        <div className="full" style={{ borderTop: '1px solid var(--line)', paddingTop: 20, marginTop: 10 }}>
-          <div className="eyebrow">Step 3 of 8</div>
-          <h2 style={{ fontSize: 20, margin: '4px 0 12px 0' }}>SOURCE ATTRIBUTION & FACTUAL PROOF</h2>
-        </div>
-
-        <label>
-          <span className="form-label">Primary Source Type</span>
-          <select value={sourceType} onChange={e => setSourceType(e.target.value)}>
-            {SOURCE_TYPES.map(st => (
-              <option key={st} value={st}>
-                {st}
-              </option>
-            ))}
-          </select>
-        </label>
-
-        <label>
-          <span className="form-label">Source URL / Reference Document</span>
-          <input
-            value={sourceUrl}
-            onChange={e => setSourceUrl(e.target.value)}
-            placeholder="https://official-registry.ro/entry or company press release"
-          />
-        </label>
-
-        <label>
-          <span className="form-label">Verification State</span>
-          <select
-            value={verificationStatus}
-            onChange={e => setVerificationStatus(e.target.value as 'verified' | 'unverified')}
-          >
-            <option value="verified">Verified (Confirmed with primary source)</option>
-            <option value="unverified">Unverified (Pending confirmation)</option>
-          </select>
-        </label>
-
-        {/* Step 4: Digital Opportunity Weakness Signals */}
-        <div className="full" style={{ borderTop: '1px solid var(--line)', paddingTop: 20, marginTop: 10 }}>
-          <div className="eyebrow">Step 4 of 8</div>
-          <h2 style={{ fontSize: 20, margin: '4px 0 12px 0' }}>DIGITAL WEAKNESS SIGNALS</h2>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 10, marginTop: 8 }}>
-            {ALL_SIGNALS.map(s => {
-              const checked = signals.includes(s);
-              return (
-                <label
-                  key={s}
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: 8,
-                    padding: '8px 12px',
-                    background: checked ? 'rgba(212, 175, 55, 0.12)' : '#141715',
-                    border: checked ? '1px solid #d4af37' : '1px solid #262927',
-                    borderRadius: 4,
-                    cursor: 'pointer',
-                    fontSize: 13
-                  }}
+              <div style={{ marginBottom: 16 }}>
+                <label className="form-label">Editorial Content State</label>
+                <select
+                  value={contentState}
+                  onChange={e => setContentState(e.target.value as any)}
+                  style={{ width: '100%', padding: '10px', background: '#0d0f0e', border: '1px solid var(--line)', color: '#fff', borderRadius: 4 }}
                 >
-                  <input type="checkbox" checked={checked} onChange={() => toggleSignal(s)} />
-                  <span style={{ color: checked ? '#fff' : '#aaa9a1' }}>{s}</span>
-                </label>
-              );
-            })}
+                  <option value="draft">Draft (Internal Research Only)</option>
+                  <option value="published">Published (Live Editorial Index)</option>
+                </select>
+              </div>
+
+              <div style={{ fontSize: '0.72rem', color: '#888', marginBottom: 20 }}>
+                {contentState === 'published'
+                  ? 'Record will be visible in public search and editorial index with strictly factual details.'
+                  : 'Record is completely private and only accessible to verified administrators and sales operators.'}
+              </div>
+
+              <button
+                type="submit"
+                disabled={notice.type === 'loading'}
+                className="action-btn primary"
+                style={{ width: '100%', padding: '12px', fontSize: '0.85rem', fontWeight: 800 }}
+              >
+                {notice.type === 'loading' ? 'Saving Record...' : 'SAVE RESEARCH DOSSIER →'}
+              </button>
+            </div>
+
           </div>
-        </div>
-
-        {/* Step 5: Recommended Upsell Services */}
-        <div className="full" style={{ borderTop: '1px solid var(--line)', paddingTop: 20, marginTop: 10 }}>
-          <div className="eyebrow">Step 5 of 8</div>
-          <h2 style={{ fontSize: 20, margin: '4px 0 12px 0' }}>RECOMMENDED SERVICES TO PITCH</h2>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 10, marginTop: 8 }}>
-            {ALL_SERVICES.map(srv => {
-              const checked = services.includes(srv);
-              return (
-                <label
-                  key={srv}
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: 8,
-                    padding: '8px 12px',
-                    background: checked ? 'rgba(16, 185, 129, 0.12)' : '#141715',
-                    border: checked ? '1px solid #10b981' : '1px solid #262927',
-                    borderRadius: 4,
-                    cursor: 'pointer',
-                    fontSize: 13
-                  }}
-                >
-                  <input type="checkbox" checked={checked} onChange={() => toggleService(srv)} />
-                  <span style={{ color: checked ? '#fff' : '#aaa9a1' }}>{srv}</span>
-                </label>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* Step 6: Pipeline & Notes */}
-        <div className="full" style={{ borderTop: '1px solid var(--line)', paddingTop: 20, marginTop: 10 }}>
-          <div className="eyebrow">Step 6 of 8</div>
-          <h2 style={{ fontSize: 20, margin: '4px 0 12px 0' }}>SALES PIPELINE & PITCH STRATEGY</h2>
-        </div>
-
-        <label>
-          <span className="form-label">Initial Pipeline Stage</span>
-          <select value={pipelineStatus} onChange={e => setPipelineStatus(e.target.value)}>
-            <option value="new">New</option>
-            <option value="researching">Researching</option>
-            <option value="contacted">Contacted</option>
-            <option value="follow_up">Follow Up</option>
-          </select>
-        </label>
-
-        <label className="full">
-          <span className="form-label">Internal Pitch Strategy & Research Notes</span>
-          <textarea
-            value={notes}
-            onChange={e => setNotes(e.target.value)}
-            placeholder="Record decision maker contacts, key pitch points, and current commercial status…"
-            rows={3}
-          />
-        </label>
-
-        {/* Step 7 & 8: Publication Lifecycle */}
-        <div className="full" style={{ borderTop: '1px solid var(--line)', paddingTop: 20, marginTop: 10 }}>
-          <div className="eyebrow">Step 7 & 8 of 8</div>
-          <h2 style={{ fontSize: 20, margin: '4px 0 12px 0' }}>EDITORIAL LIFECYCLE</h2>
-        </div>
-
-        <label>
-          <span className="form-label">Profile Publishing Status</span>
-          <select
-            value={contentState}
-            onChange={e => setContentState(e.target.value as 'draft' | 'published')}
-          >
-            <option value="draft">Draft (Private to Admin / Sales)</option>
-            <option value="published">Published (Live on Public Platform)</option>
-          </select>
-        </label>
-
-        <div className="full" style={{ marginTop: 20 }}>
-          <button type="submit" className="btn fill" style={{ padding: '16px 28px', fontSize: 13 }} disabled={notice.type === 'loading'}>
-            {notice.type === 'loading' ? 'Saving Research Intake…' : 'Complete Intake & Open Project Portfolio →'}
-          </button>
         </div>
       </form>
     </div>

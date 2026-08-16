@@ -13,12 +13,17 @@ export type PriorityTier = 'HIGH' | 'MEDIUM' | 'LOW';
 export type DeterministicPriorityResult = {
   score: number; // 0 - 100
   tier: PriorityTier;
+  whyNow: string;
+  whyThisCompany: string;
+  commercialGap: string;
+  nextAction: string;
   factors: {
     opportunity: number;
     constructionActivity: number;
     digitalGap: number;
     contactReadiness: number;
     timing: number;
+    recentSignal?: number;
     penalties: number;
   };
   reasons: string[];
@@ -296,9 +301,27 @@ export function calculateDeterministicAcquisitionPriority(
     digitalAudit: input.digitalAudit
   });
 
+  // 7. Synthetic Insights
+  const whyNow = reasons.find(r => r.includes('active') || r.includes('scheduled') || r.includes('Fresh') || r.includes('Overdue')) ||
+    (activeCount > 0 ? `${activeCount} active construction project(s) underway.` : 'High commercial transformation fit.');
+
+  const whyThisCompany = `${input.companyName} (${input.companyType || 'Construction Practice'}) in ${input.city || 'Romania'} with ${activeCount + completedCount} verified project(s).`;
+
+  const commercialGap = hasNoWebsite
+    ? 'No official architectural website. Operations and portfolio unindexed online.'
+    : (reasons.find(r => r.includes('presentation') || r.includes('website') || r.includes('lead')) || 'Digital presentation does not reflect real-world construction volume.');
+
+  const nextAction = input.nextAction || (dm?.name
+    ? `Initiate Executive Outreach to ${dm.name} (${dm.role}) via ${dm.email ? 'Email' : 'Direct Call'}`
+    : 'Identify Primary Decision Maker via Registry / LinkedIn');
+
   return {
     score,
     tier,
+    whyNow,
+    whyThisCompany,
+    commercialGap,
+    nextAction,
     factors: {
       opportunity: opportunityPts,
       constructionActivity: constructionPts,
