@@ -3287,3 +3287,214 @@ export async function adminProductionSystemAuditData() {
     timestamp: new Date().toISOString()
   };
 }
+
+/**
+ * PHASE 18: Market Changes Data Query
+ */
+export async function adminMarketChangesData() {
+  const c = getServiceClient();
+  if (!c) {
+    return [
+      {
+        id: 'ev-1',
+        companyName: 'Erbașu Construcții',
+        projectName: 'Bucharest Municipal Clinical Hospital Facility',
+        changeCategory: 'BUILDING_PERMIT',
+        title: 'Building Permit AC 84/2025 Approved',
+        location: 'Bucharest Sector 1',
+        sourceUrl: 'https://sector1urbanism.ro/permits/2025-08',
+        sourceTier: 'PRIMARY',
+        previousPriority: 76,
+        newPriority: 94,
+        scoreDelta: 18,
+        commercialRelevance: 'CRITICAL',
+        recommendedAction: 'CALL NOW',
+        eventTimestamp: new Date().toISOString()
+      },
+      {
+        id: 'ev-2',
+        companyName: 'Bog\'Art',
+        projectName: 'Riverside Quarter Masterplan',
+        changeCategory: 'STRUCTURAL_PROGRESS',
+        title: 'Level 14 Core Concrete Pour Milestone Verified',
+        location: 'Bucharest Sector 1',
+        sourceUrl: 'https://sector1urbanism.ro/inspections/2026-08',
+        sourceTier: 'PRIMARY',
+        previousPriority: 77,
+        newPriority: 89,
+        scoreDelta: 12,
+        commercialRelevance: 'HIGH',
+        recommendedAction: 'EMAIL NOW',
+        eventTimestamp: new Date(Date.now() - 7200000).toISOString()
+      }
+    ];
+  }
+
+  const { data } = await c
+    .from('market_change_events')
+    .select('*, companies(name), projects(name)')
+    .order('event_timestamp', { ascending: false })
+    .limit(30);
+
+  if (!data || data.length === 0) {
+    return [];
+  }
+
+  return data.map((d: any) => ({
+    id: d.id,
+    companyName: d.companies?.name || 'Romanian Contractor',
+    projectName: d.projects?.name || 'Active Development Site',
+    changeCategory: d.change_category,
+    title: d.title,
+    location: d.location,
+    sourceUrl: d.source_url,
+    sourceTier: d.source_tier,
+    previousPriority: d.previous_priority,
+    newPriority: d.new_priority,
+    scoreDelta: d.score_delta,
+    commercialRelevance: d.commercial_relevance,
+    recommendedAction: d.recommended_action,
+    eventTimestamp: d.event_timestamp
+  }));
+}
+
+/**
+ * PHASE 18: Score Evolution History Query
+ */
+export async function adminScoreHistoryData(companyId?: string) {
+  const c = getServiceClient();
+  if (!c) {
+    return [
+      {
+        id: 'sc-1',
+        companyName: 'Erbașu Construcții',
+        eventDate: '2026-08-14',
+        trigger: 'Initial Identification & CUI Normalization',
+        previousScore: 50,
+        newScore: 65,
+        scoreDelta: 15,
+        explanation: 'Trade Register active status & valid corporate domain (+15)'
+      },
+      {
+        id: 'sc-2',
+        companyName: 'Erbașu Construcții',
+        eventDate: '2026-08-15',
+        trigger: 'SEAP Award Notice #100234 Verified',
+        previousScore: 65,
+        newScore: 82,
+        scoreDelta: 17,
+        explanation: 'Primary source public tender contract award (+17)'
+      },
+      {
+        id: 'sc-3',
+        companyName: 'Erbașu Construcții',
+        eventDate: '2026-08-16',
+        trigger: 'Building Permit AC 84/2025 Confirmed',
+        previousScore: 82,
+        newScore: 94,
+        scoreDelta: 12,
+        explanation: 'Active site construction phase initiated (+12)'
+      }
+    ];
+  }
+
+  let q = c.from('priority_recalculation_events').select('*, companies(name)').order('created_at', { ascending: false }).limit(20);
+  if (companyId) {
+    q = q.eq('company_id', companyId);
+  }
+  const { data } = await q;
+
+  return (data || []).map((r: any) => ({
+    id: r.id,
+    companyName: r.companies?.name || 'Company Entity',
+    eventDate: r.created_at.slice(0, 10),
+    trigger: r.reasons_added?.[0] || 'Market Signal Recalculation',
+    previousScore: r.previous_score,
+    newScore: r.new_score,
+    scoreDelta: r.score_delta,
+    explanation: (r.reasons_added || []).join('; ') || 'Deterministic acquisition score update.'
+  }));
+}
+
+/**
+ * PHASE 18: Executive Daily Briefing Hub Query
+ */
+export async function adminExecutiveDailyBriefingData() {
+  const [activation, revData, proposals, changes] = await Promise.all([
+    adminLiveMarketActivationSummary(),
+    adminCommercialRevenueData(),
+    adminProposalsList(),
+    adminMarketChangesData()
+  ]);
+
+  return {
+    contactNow: activation.topProspects.filter(p => p.priorityScore >= 80),
+    followUp: activation.topProspects.filter(p => p.priorityScore < 80 && p.contactReadiness.isReady),
+    newSignals: changes.slice(0, 5),
+    proposalsRequiringAction: proposals.filter((p: any) => p.status === 'negotiation' || p.status === 'draft'),
+    revenueMetrics: revData
+  };
+}
+
+/**
+ * PHASE 18: Revenue Attribution Executive Chain Query
+ */
+export async function adminRevenueAttributionChainData() {
+  const c = getServiceClient();
+  if (!c) {
+    return [
+      {
+        id: 'rev-c1',
+        companyName: 'Erbașu Construcții',
+        service: 'Corporate Web Architecture & Media',
+        dealAmount: 18500,
+        territory: 'Bucharest',
+        originSignal: 'SEAP Tender Award #100234',
+        signalDate: '2026-08-01',
+        firstContactDate: '2026-08-03',
+        meetingDate: '2026-08-08',
+        proposalDate: '2026-08-10',
+        wonDate: '2026-08-15',
+        daysToClose: 14
+      },
+      {
+        id: 'rev-c2',
+        companyName: 'Bog\'Art',
+        service: 'Portfolio Web Architecture & SEO',
+        dealAmount: 22000,
+        territory: 'Bucharest',
+        originSignal: 'Riverside Quarter Permit AC 19/2024',
+        signalDate: '2026-07-28',
+        firstContactDate: '2026-08-02',
+        meetingDate: '2026-08-06',
+        proposalDate: '2026-08-08',
+        wonDate: '2026-08-14',
+        daysToClose: 17
+      }
+    ];
+  }
+
+  const { data } = await c
+    .from('revenue_attribution_chains')
+    .select('*, companies(name)')
+    .order('won_date', { ascending: false });
+
+  if (!data || data.length === 0) {
+    return [];
+  }
+
+  return data.map((d: any) => ({
+    id: d.id,
+    companyName: d.companies?.name || 'Company Client',
+    service: d.service_key,
+    dealAmount: Number(d.deal_amount || 0),
+    territory: d.territory,
+    originSignal: 'Verified Market Event',
+    signalDate: d.signal_date,
+    firstContactDate: d.first_contact_date,
+    meetingDate: d.meeting_date,
+    proposalDate: d.proposal_date,
+    wonDate: d.won_date,
+    daysToClose: d.days_to_close
+  }));
+}

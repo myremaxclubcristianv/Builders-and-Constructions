@@ -22,9 +22,11 @@ export function AdminNav({ identity }: { identity: AdminIdentity }) {
             <div style={{ fontSize: '0.65rem', textTransform: 'uppercase', letterSpacing: '0.08em', color: '#666', padding: '0.35rem 0.5rem', fontWeight: 700 }}>
               Command Center
             </div>
+            <Link href="/admin/executive">Executive Briefing</Link>
             <Link href="/admin/acquisition">Acquisition Hub</Link>
             <Link href="/admin/acquisition/today">Daily Queue</Link>
             <Link href="/admin/acquisition/radar">Opportunity Radar</Link>
+            <Link href="/admin/acquisition/score-history">Score History</Link>
             <Link href="/admin/acquisition/reality-test">Reality Test</Link>
           </div>
         )}
@@ -34,6 +36,8 @@ export function AdminNav({ identity }: { identity: AdminIdentity }) {
           <div style={{ fontSize: '0.65rem', textTransform: 'uppercase', letterSpacing: '0.08em', color: '#666', padding: '0.35rem 0.5rem', fontWeight: 700 }}>
             Market Intelligence
           </div>
+          {sales && <Link href="/admin/market/changes">Market Changes</Link>}
+          {sales && <Link href="/admin/intelligence/timeline">Intelligence Timeline</Link>}
           {editorial && <Link href="/admin/research">Research Queue</Link>}
           {editorial && <Link href="/admin/discovery">Discovery Ingestion</Link>}
           {sales && <Link href="/admin/market/activity">Activity Signals</Link>}
@@ -93,6 +97,7 @@ export function AdminNav({ identity }: { identity: AdminIdentity }) {
             </div>
             <Link href="/admin/analytics">Commercial Analytics</Link>
             <Link href="/admin/analytics/revenue">Revenue Attribution</Link>
+            <Link href="/admin/analytics/attribution">Attribution Chains</Link>
             <Link href="/admin/market">Market Telemetry</Link>
           </div>
         )}
