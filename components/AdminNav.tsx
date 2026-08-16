@@ -38,6 +38,7 @@ export function AdminNav({ identity }: { identity: AdminIdentity }) {
           {editorial && <Link href="/admin/discovery">Discovery Ingestion</Link>}
           {sales && <Link href="/admin/market/activity">Activity Signals</Link>}
           {sales && <Link href="/admin/market/coverage">Market Coverage</Link>}
+          {sales && <Link href="/admin/market/activation">Market Activation</Link>}
           {editorial && <Link href="/admin/sources">Source Registry</Link>}
         </div>
 
@@ -98,6 +99,7 @@ export function AdminNav({ identity }: { identity: AdminIdentity }) {
             <Link href="/admin/system">System Health</Link>
             <Link href="/admin/system/data">Data Subsystems</Link>
             <Link href="/admin/system/audit">Audit Logs</Link>
+            <Link href="/admin/system/activation">Activation Logs</Link>
           </div>
         )}
       </nav>
