@@ -17,27 +17,29 @@ export function AdminNav({ identity }: { identity: AdminIdentity }) {
 
   return (
     <>
-      {/* 1. Mobile Executive Header (visible only on <= 800px) */}
+      {/* 1. Mobile Executive Header (Terminal Style, <= 800px) */}
       <header className="mobile-admin-header">
         <Link className="mobile-brand" href="/admin/executive" onClick={() => setMobileMenuOpen(false)}>
           CONSTRUCTIONS
           <span className="mobile-brand-sub">Executive Command</span>
         </Link>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-          <span className="mobile-role-pill">{identity.role}</span>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+          <span className="status-pill verified" style={{ fontSize: '0.62rem', padding: '2px 6px' }}>
+            PRODUCTION TRUTH
+          </span>
           <button
             type="button"
             className="mobile-menu-toggle-btn"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle Command Navigation Menu"
           >
-            {mobileMenuOpen ? '✕' : '☰'}
+            {mobileMenuOpen ? 'CLOSE' : 'MENU'}
           </button>
         </div>
       </header>
 
-      {/* 2. Desktop Sidebar & Mobile Drawer Overlay */}
+      {/* 2. Desktop Sidebar & Mobile Slide-Out Drawer */}
       <aside className={`admin-nav ${mobileMenuOpen ? 'mobile-open' : ''}`}>
         <div className="admin-nav-header">
           <Link className="brand" href="/admin">
@@ -56,9 +58,9 @@ export function AdminNav({ identity }: { identity: AdminIdentity }) {
               <div className="admin-nav-section-title">
                 Command Center
               </div>
-              <Link className={isActive('/admin/executive') ? 'active' : ''} href="/admin/executive">⚡ Executive Briefing</Link>
+              <Link className={isActive('/admin/executive') ? 'active' : ''} href="/admin/executive">Executive Briefing</Link>
               <Link className={isActive('/admin/acquisition') ? 'active' : ''} href="/admin/acquisition">Acquisition Hub</Link>
-              <Link className={isActive('/admin/acquisition/today') ? 'active' : ''} href="/admin/acquisition/today">🎯 Daily Action Queue</Link>
+              <Link className={isActive('/admin/acquisition/today') ? 'active' : ''} href="/admin/acquisition/today">Daily Action Queue</Link>
               <Link className={isActive('/admin/acquisition/contact-intelligence') ? 'active' : ''} href="/admin/acquisition/contact-intelligence">Contact Intelligence</Link>
               <Link className={isActive('/admin/acquisition/radar') ? 'active' : ''} href="/admin/acquisition/radar">Opportunity Radar</Link>
               <Link className={isActive('/admin/acquisition/score-history') ? 'active' : ''} href="/admin/acquisition/score-history">Score Evolution</Link>
@@ -72,7 +74,7 @@ export function AdminNav({ identity }: { identity: AdminIdentity }) {
               Market Intelligence
             </div>
             {sales && <Link className={isActive('/admin/intelligence/ingestion') ? 'active' : ''} href="/admin/intelligence/ingestion">Market Ingestion</Link>}
-            {sales && <Link className={isActive('/admin/market/changes') ? 'active' : ''} href="/admin/market/changes">📡 Market Changes</Link>}
+            {sales && <Link className={isActive('/admin/market/changes') ? 'active' : ''} href="/admin/market/changes">Market Changes</Link>}
             {sales && <Link className={isActive('/admin/intelligence/timeline') ? 'active' : ''} href="/admin/intelligence/timeline">Intelligence Timeline</Link>}
             {sales && <Link className={isActive('/admin/market/entity-resolution') ? 'active' : ''} href="/admin/market/entity-resolution">Entity Resolution</Link>}
             {editorial && <Link className={isActive('/admin/research') ? 'active' : ''} href="/admin/research">Research Queue</Link>}
@@ -167,43 +169,38 @@ export function AdminNav({ identity }: { identity: AdminIdentity }) {
         />
       )}
 
-      {/* 4. Mobile Executive Bottom Tab Bar (fixed at thumb reach on <= 800px) */}
+      {/* 4. Mobile Executive Bottom Tab Bar (Fixed thumb reach, <= 800px) */}
       <nav className="mobile-bottom-bar" aria-label="Quick mobile navigation">
         <Link
           href="/admin/executive"
           className={`mobile-tab-item ${isActive('/admin/executive') ? 'active' : ''}`}
         >
-          <span className="mobile-tab-icon">⚡</span>
-          <span className="mobile-tab-label">Briefing</span>
+          <span className="mobile-tab-label">BRIEF</span>
         </Link>
         <Link
           href="/admin/acquisition/today"
           className={`mobile-tab-item ${isActive('/admin/acquisition/today') ? 'active' : ''}`}
         >
-          <span className="mobile-tab-icon">🎯</span>
-          <span className="mobile-tab-label">Today</span>
+          <span className="mobile-tab-label">TODAY</span>
         </Link>
         <Link
           href="/admin/market/changes"
           className={`mobile-tab-item ${isActive('/admin/market/changes') ? 'active' : ''}`}
         >
-          <span className="mobile-tab-icon">📡</span>
-          <span className="mobile-tab-label">Changes</span>
+          <span className="mobile-tab-label">FEED</span>
         </Link>
         <Link
           href="/admin/acquisition"
           className={`mobile-tab-item ${isActive('/admin/acquisition') ? 'active' : ''}`}
         >
-          <span className="mobile-tab-icon">💼</span>
-          <span className="mobile-tab-label">Pipeline</span>
+          <span className="mobile-tab-label">PIPELINE</span>
         </Link>
         <button
           type="button"
           className={`mobile-tab-item ${mobileMenuOpen ? 'active' : ''}`}
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
-          <span className="mobile-tab-icon">☰</span>
-          <span className="mobile-tab-label">Menu</span>
+          <span className="mobile-tab-label">{mobileMenuOpen ? 'CLOSE' : 'MENU'}</span>
         </button>
       </nav>
     </>

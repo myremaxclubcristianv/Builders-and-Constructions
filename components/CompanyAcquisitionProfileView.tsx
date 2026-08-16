@@ -148,13 +148,13 @@ export function CompanyAcquisitionProfileView({ profile }: { profile: Acquisitio
           </div>
 
           <div style={{ display: 'flex', gap: '0.6rem', flexWrap: 'wrap' }}>
-            <Link href={`/admin/companies/${profile.company.id}/decision-makers`} className="action-btn secondary" style={{ padding: '0.55rem 1rem', fontSize: '0.85rem' }}>
-              👥 Decision Makers ({profile.allDecisionMakers.length})
+            <Link href={`/admin/companies/${profile.company.id}/decision-makers`} className="action-btn secondary" style={{ padding: '0.55rem 1rem', fontSize: '0.85rem', minHeight: 44 }}>
+              Decision Makers ({profile.allDecisionMakers.length})
             </Link>
-            <Link href={`/admin/acquisition/outreach/${profile.company.id}`} className="action-btn primary" style={{ padding: '0.55rem 1rem', fontSize: '0.85rem' }}>
-              ✉️ Draft Outreach
+            <Link href={`/admin/acquisition/outreach/${profile.company.id}`} className="action-btn primary" style={{ padding: '0.55rem 1rem', fontSize: '0.85rem', minHeight: 44 }}>
+              Draft Outreach
             </Link>
-            <Link href={`/companies/${profile.company.slug}`} target="_blank" className="action-btn secondary" style={{ padding: '0.55rem 1rem', fontSize: '0.85rem' }}>
+            <Link href={`/companies/${profile.company.slug}`} target="_blank" className="action-btn secondary" style={{ padding: '0.55rem 1rem', fontSize: '0.85rem', minHeight: 44 }}>
               Public Profile ↗
             </Link>
           </div>

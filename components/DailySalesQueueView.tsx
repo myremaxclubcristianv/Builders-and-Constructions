@@ -205,7 +205,7 @@ export function DailySalesQueueView(props: Props) {
                     </div>
                     {item.primary_contact.phone && (
                       <a href={`tel:${item.primary_contact.phone}`} style={{ fontSize: 12, color: '#d4af37', display: 'block', marginTop: 2 }}>
-                        ☎ {item.primary_contact.phone}
+                        TEL: {item.primary_contact.phone}
                       </a>
                     )}
                   </div>
@@ -222,32 +222,32 @@ export function DailySalesQueueView(props: Props) {
               {/* Action Buttons */}
               <div style={{ marginTop: 16, display: 'flex', flexDirection: 'column', gap: 8 }}>
                 <div style={{ display: 'flex', gap: 6 }}>
-                  <Link href={`/admin/opportunities/${item.id}`} className="btn fill" style={{ flex: 1, textAlign: 'center', fontSize: 11, padding: '7px 10px' }}>
+                  <Link href={`/admin/opportunities/${item.id}`} className="btn fill" style={{ flex: 1, textAlign: 'center', fontSize: 11, minHeight: 44, padding: '10px 14px' }}>
                     Open Workstation →
                   </Link>
                   <button
                     type="button"
                     className="btn"
-                    style={{ fontSize: 11, padding: '7px 10px', background: '#86efac', color: '#000', fontWeight: 700 }}
+                    style={{ fontSize: 11, minHeight: 44, padding: '10px 14px', background: '#86efac', color: '#000', fontWeight: 700 }}
                     onClick={() => handleMarkDone(item.id, item.next_action)}
                   >
-                    ✓ Done
+                    Done
                   </button>
                 </div>
 
                 {/* Reschedule Presets */}
-                <div style={{ display: 'flex', gap: 4, alignItems: 'center' }}>
+                <div style={{ display: 'flex', gap: 4, alignItems: 'center', flexWrap: 'wrap' }}>
                   <span style={{ fontSize: 10, color: '#888', textTransform: 'uppercase' }}>Reschedule:</span>
-                  <button type="button" className="btn" style={{ padding: '2px 5px', fontSize: 10 }} onClick={() => handleReschedule(item.id, 1)}>
+                  <button type="button" className="btn" style={{ padding: '6px 8px', fontSize: 10, minHeight: 32 }} onClick={() => handleReschedule(item.id, 1)}>
                     +1d
                   </button>
-                  <button type="button" className="btn" style={{ padding: '2px 5px', fontSize: 10 }} onClick={() => handleReschedule(item.id, 3)}>
+                  <button type="button" className="btn" style={{ padding: '6px 8px', fontSize: 10, minHeight: 32 }} onClick={() => handleReschedule(item.id, 3)}>
                     +3d
                   </button>
-                  <button type="button" className="btn" style={{ padding: '2px 5px', fontSize: 10 }} onClick={() => handleReschedule(item.id, 7)}>
+                  <button type="button" className="btn" style={{ padding: '6px 8px', fontSize: 10, minHeight: 32 }} onClick={() => handleReschedule(item.id, 7)}>
                     +7d
                   </button>
-                  <button type="button" className="btn" style={{ padding: '2px 5px', fontSize: 10 }} onClick={() => handleReschedule(item.id, 14)}>
+                  <button type="button" className="btn" style={{ padding: '6px 8px', fontSize: 10, minHeight: 32 }} onClick={() => handleReschedule(item.id, 14)}>
                     +14d
                   </button>
                 </div>

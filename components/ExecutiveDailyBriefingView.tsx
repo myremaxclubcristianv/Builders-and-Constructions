@@ -57,7 +57,7 @@ export function ExecutiveDailyBriefingView({ data }: Props) {
       <div className="admin-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: 16, marginBottom: 20 }}>
         <div>
           <div className="eyebrow" style={{ color: '#d4af37' }}>
-            OPERATIONAL COMMAND · PHASE 20
+            OPERATIONAL COMMAND · PHASE 22
           </div>
           <h1 style={{ margin: '4px 0 6px 0', fontSize: 'clamp(1.75rem, 4vw, 2.25rem)', fontWeight: 900, letterSpacing: '-0.06em' }}>
             WHAT SHOULD I DO TODAY?
@@ -69,10 +69,10 @@ export function ExecutiveDailyBriefingView({ data }: Props) {
 
         <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap', width: '100%', maxWidth: 'max-content' }}>
           <Link href="/admin/acquisition/today" className="action-btn secondary" style={{ flex: '1 1 auto', minHeight: 44 }}>
-            🎯 Daily Queue →
+            Daily Action Queue →
           </Link>
           <Link href="/admin/market/changes" className="action-btn primary" style={{ flex: '1 1 auto', minHeight: 44 }}>
-            📡 Market Changes
+            Market Changes
           </Link>
         </div>
       </div>

@@ -46,7 +46,7 @@ export function CompanyRelationshipGraphView({ companyName, companyId, nodes, ov
       <div className="admin-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: 16, marginBottom: 20 }}>
         <div>
           <div className="eyebrow" style={{ color: '#22c55e' }}>
-            PRODUCTION PROVENANCE GRAPH · PHASE 20
+            PRODUCTION PROVENANCE GRAPH · PHASE 22
           </div>
           <h1 style={{ margin: '4px 0 6px 0', fontSize: 'clamp(1.6rem, 3.5vw, 2rem)', fontWeight: 800 }}>
             {companyName}

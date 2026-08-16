@@ -178,6 +178,10 @@ button, input, select, textarea { font: inherit; }
 .admin-toolbar { display: flex; justify-content: space-between; gap: 12px; align-items: center; margin-bottom: 20px; flex-wrap: wrap; }
 .admin-toolbar input { background: transparent; border: 1px solid var(--line); color: var(--paper); padding: 11px 14px; min-height: 44px; border-radius: 4px; }
 
+/* Responsive Visibility Helpers */
+.market-changes-mobile-stack { display: none; }
+.market-changes-desktop-table { display: block; }
+
 /* Buttons & Pills */
 .action-btn {
   display: inline-flex;
@@ -234,6 +238,10 @@ button, input, select, textarea { font: inherit; }
   .ticker { font-size: 8px; gap: 12px; }
   .ticker span:last-child { display: none; }
 
+  /* Mobile Feed vs Desktop Table */
+  .market-changes-mobile-stack { display: flex !important; }
+  .market-changes-desktop-table { display: none !important; }
+
   /* Mobile Top Sticky Bar */
   .mobile-admin-header {
     display: flex;
@@ -265,16 +273,6 @@ button, input, select, textarea { font: inherit; }
     color: var(--accent);
     text-transform: uppercase;
   }
-  .mobile-role-pill {
-    font: 600 9px 'DM Mono', monospace;
-    letter-spacing: .08em;
-    text-transform: uppercase;
-    padding: 3px 6px;
-    border-radius: 3px;
-    background: rgba(255,255,255,0.06);
-    color: #cbd5e1;
-    border: 1px solid var(--line);
-  }
   .mobile-menu-toggle-btn {
     min-width: 44px;
     min-height: 44px;
@@ -283,9 +281,11 @@ button, input, select, textarea { font: inherit; }
     justify-content: center;
     background: transparent;
     border: none;
-    color: var(--paper);
-    font-size: 20px;
+    color: var(--accent);
+    font: 700 11px 'DM Mono', monospace;
+    letter-spacing: 0.08em;
     cursor: pointer;
+    text-transform: uppercase;
   }
 
   /* Admin Main Padding */
@@ -339,7 +339,7 @@ button, input, select, textarea { font: inherit; }
     bottom: 0;
     left: 0;
     right: 0;
-    height: 64px;
+    height: 60px;
     padding-bottom: max(6px, env(safe-area-inset-bottom));
     background: rgba(12, 14, 12, 0.96);
     backdrop-filter: blur(16px);
@@ -354,30 +354,34 @@ button, input, select, textarea { font: inherit; }
     justify-content: center;
     min-width: 44px;
     min-height: 44px;
-    padding: 4px 10px;
+    padding: 6px 12px;
     color: #94a3b8;
     text-decoration: none;
-    font-size: 10px;
-    letter-spacing: 0.04em;
     background: transparent;
     border: none;
     cursor: pointer;
     transition: color 0.15s, transform 0.15s;
   }
   .mobile-tab-item:active {
-    transform: scale(0.92);
+    transform: scale(0.94);
   }
   .mobile-tab-item.active {
     color: var(--accent-light);
     font-weight: 700;
   }
-  .mobile-tab-icon {
-    font-size: 16px;
-    margin-bottom: 2px;
-  }
   .mobile-tab-label {
-    font-size: 9.5px;
+    font-size: 10px;
     font-family: 'DM Mono', monospace;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
