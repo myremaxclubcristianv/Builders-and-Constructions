@@ -39,6 +39,8 @@ export function AdminNav({ identity }: { identity: AdminIdentity }) {
           {sales && <Link href="/admin/market/activity">Activity Signals</Link>}
           {sales && <Link href="/admin/market/coverage">Market Coverage</Link>}
           {sales && <Link href="/admin/market/activation">Market Activation</Link>}
+          {sales && <Link href="/admin/market/live-activation">Live Activation</Link>}
+          {sales && <Link href="/admin/market/live-discovery">Live Discovery</Link>}
           {sales && <Link href="/admin/market/golden-dataset">Golden Dataset</Link>}
           {sales && <Link href="/admin/market/golden-dataset/execution">Golden Execution</Link>}
           {editorial && <Link href="/admin/sources">Source Registry</Link>}
@@ -65,6 +67,7 @@ export function AdminNav({ identity }: { identity: AdminIdentity }) {
             </div>
             <Link href="/admin/leads">Leads</Link>
             <Link href="/admin/opportunities">Opportunities</Link>
+            <Link href="/admin/proposals">Proposals</Link>
             <Link href="/admin/prospects">Prospects</Link>
             <Link href="/admin/prospects/activation">Activation</Link>
             <Link href="/admin/commercial">Commercial Overview</Link>
@@ -101,6 +104,7 @@ export function AdminNav({ identity }: { identity: AdminIdentity }) {
               System
             </div>
             <Link href="/admin/system">System Health</Link>
+            <Link href="/admin/system/production-audit">Production Audit</Link>
             <Link href="/admin/system/data">Data Subsystems</Link>
             <Link href="/admin/system/audit">Audit Logs</Link>
             <Link href="/admin/system/activation">Activation Logs</Link>
