@@ -337,6 +337,70 @@ export function calculateDeterministicAcquisitionPriority(
   };
 }
 
+export type ProductionPriorityResult = DeterministicPriorityResult & {
+  confidence: 'HIGH' | 'MEDIUM' | 'LOW' | 'DISQUALIFIED';
+  evidence: Array<{ fact: string; confidence: 'VERIFIED' | 'PARTIAL' | 'UNKNOWN' }>;
+  estimatedDealSize: number;
+};
+
+/**
+ * PHASE 14: Deterministic Acquisition Engine v2 with Evidence Confidence Gating
+ */
+export function calculateProductionAcquisitionPriority(input: AcquisitionEntityInput): ProductionPriorityResult {
+  const base = calculateDeterministicAcquisitionPriority(input);
+  
+  if (input.isNotAFit || input.pipelineStatus === 'not_a_fit') {
+    return {
+      ...base,
+      score: 0,
+      tier: 'LOW',
+      confidence: 'DISQUALIFIED',
+      estimatedDealSize: 0,
+      evidence: [{ fact: 'Prospect disqualified (Not a fit)', confidence: 'VERIFIED' }]
+    };
+  }
+
+  const evidenceItems: Array<{ fact: string; confidence: 'VERIFIED' | 'PARTIAL' | 'UNKNOWN' }> = [];
+
+  // Evaluate evidence chain
+  const isCompVerified = input.websiteVerification === 'verified' || input.websiteVerification === 'company_verified';
+  evidenceItems.push({
+    fact: `Company identity: ${input.companyName} (${input.city || 'Romania'})`,
+    confidence: isCompVerified ? 'VERIFIED' : 'PARTIAL'
+  });
+
+  const activeCount = input.activeProjects?.length ?? 0;
+  if (activeCount > 0) {
+    evidenceItems.push({
+      fact: `${activeCount} active construction project(s) underway`,
+      confidence: 'VERIFIED'
+    });
+  }
+
+  const dm = input.primaryDecisionMaker;
+  if (dm) {
+    const isDmVerified = dm.verificationState === 'company_verified' || dm.verificationState === 'confirmed_by_contact';
+    evidenceItems.push({
+      fact: `Decision Maker: ${dm.name} (${dm.role})`,
+      confidence: isDmVerified ? 'VERIFIED' : 'PARTIAL'
+    });
+  }
+
+  let confidence: 'HIGH' | 'MEDIUM' | 'LOW' = 'LOW';
+  if (isCompVerified && activeCount > 0 && dm && (dm.verificationState === 'company_verified' || dm.verificationState === 'confirmed_by_contact')) {
+    confidence = 'HIGH';
+  } else if (isCompVerified && (activeCount > 0 || Boolean(dm))) {
+    confidence = 'MEDIUM';
+  }
+
+  return {
+    ...base,
+    confidence,
+    evidence: evidenceItems,
+    estimatedDealSize: base.estimatedCommercialValue
+  };
+}
+
 /**
  * Generates the "WHAT I CAN SELL THEM" commercial intelligence briefing.
  */

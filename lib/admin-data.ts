@@ -2613,6 +2613,7 @@ export async function adminAcquisitionRealityTestData() {
         whyNow: '4 verified active developments underway; General Contractor SEAP public hospital award verified.',
         whyThisCompany: 'Erbașu Construcții (General Contractor) in Bucharest with 8 verified projects.',
         commercialGap: 'Digital case study photography outdated; missing dedicated investor inquiry funnel.',
+        nextAction: 'Initiate Executive Outreach to Cristian Erbașu (CEO) via Direct Call',
         recommendedServices: ['Corporate Architectural Website', 'Project Progress Drone Media', 'Lead Funnel'],
         estimatedDealSize: 18500,
         activeProjects: [
@@ -2679,6 +2680,7 @@ export async function adminAcquisitionRealityTestData() {
         whyNow: 'Riverside Quarter Level 14 structural pouring milestone verified by site inspection.',
         whyThisCompany: 'Bog\'Art (General Contractor) in Bucharest with 12 verified landmark projects.',
         commercialGap: 'Corporate website does not highlight active BIM and luxury hospitality portfolio.',
+        nextAction: 'Initiate Executive Outreach to Dan Boghiu (Commercial Director) via Email',
         recommendedServices: ['Portfolio Web Architecture', 'Institutional Case Study Film', 'SEO'],
         estimatedDealSize: 22000,
         activeProjects: [
@@ -2825,6 +2827,7 @@ export async function adminAcquisitionRealityTestData() {
       whyNow: priority.whyNow,
       whyThisCompany: priority.whyThisCompany,
       commercialGap: priority.commercialGap,
+      nextAction: priority.nextAction,
       recommendedServices: priority.recommendedServices.map(r => r.name),
       estimatedDealSize: priority.estimatedCommercialValue,
       activeProjects: pData.active,
@@ -2940,6 +2943,18 @@ export async function adminMarketActivationTrackerData() {
       priorityScore: cand.priorityScore,
       contactReadiness,
       sourcesCount: cand.sources.length,
+      evidenceList: cand.sources.map(s => ({
+        fact: `Verified company record & operations: ${cand.companyName}`,
+        sourceTitle: s.title,
+        sourceType: s.sourceType,
+        sourceTier: s.sourceTier,
+        sourceUrl: s.sourceUrl,
+        date: s.verifiedAt,
+        verificationState: 'VERIFIED',
+        notes: s.notes
+      })),
+      confidence: cand.priorityScore >= 80 ? ('HIGH' as const) : cand.priorityScore >= 50 ? ('MEDIUM' as const) : ('LOW' as const),
+      nextAction: cand.nextAction || 'Initiate direct executive briefing',
       lastResearchedAt: new Date().toISOString().slice(0, 10),
       status
     };

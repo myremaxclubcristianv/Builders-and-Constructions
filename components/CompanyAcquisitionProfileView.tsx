@@ -124,14 +124,17 @@ export function CompanyAcquisitionProfileView({ profile }: { profile: Acquisitio
     return <span className="status-pill secondary">LOW PRIORITY ({profile.priorityResult.score}/100)</span>;
   };
 
+  const shouldContact = profile.priorityResult.score >= 70 && Boolean(profile.primaryDecisionMaker) ? 'YES' : profile.priorityResult.score >= 45 ? 'WAIT' : 'NO';
+  const confidence = profile.priorityResult.score >= 75 ? 'HIGH' : profile.priorityResult.score >= 45 ? 'MEDIUM' : 'LOW';
+
   return (
     <div className="admin-container">
       {/* Executive Sales Briefing Header */}
-      <div className="admin-header" style={{ marginBottom: '2rem' }}>
+      <div className="admin-header" style={{ marginBottom: '1.5rem' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '1rem' }}>
           <div>
-            <div style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.1em', color: '#94a3b8', marginBottom: '0.25rem' }}>
-              EXECUTIVE SALES BRIEFING · 12 SECTIONS
+            <div style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.1em', color: '#d4af37', marginBottom: '0.25rem', fontWeight: 700 }}>
+              EXECUTIVE SALES BRIEFING · 12 EVIDENCE-BACKED SECTIONS
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
               <h1 style={{ margin: 0, fontSize: '2.2rem', fontWeight: 700 }}>
@@ -148,12 +151,53 @@ export function CompanyAcquisitionProfileView({ profile }: { profile: Acquisitio
             <Link href={`/admin/companies/${profile.company.id}/decision-makers`} className="action-btn secondary" style={{ padding: '0.55rem 1rem', fontSize: '0.85rem' }}>
               👥 Decision Makers ({profile.allDecisionMakers.length})
             </Link>
-            <Link href={`/admin/acquisition/outreach/${profile.company.id}`} className="action-btn secondary" style={{ padding: '0.55rem 1rem', fontSize: '0.85rem' }}>
+            <Link href={`/admin/acquisition/outreach/${profile.company.id}`} className="action-btn primary" style={{ padding: '0.55rem 1rem', fontSize: '0.85rem' }}>
               ✉️ Draft Outreach
             </Link>
             <Link href={`/companies/${profile.company.slug}`} target="_blank" className="action-btn secondary" style={{ padding: '0.55rem 1rem', fontSize: '0.85rem' }}>
               Public Profile ↗
             </Link>
+          </div>
+        </div>
+      </div>
+
+      {/* TOP-LEVEL EXECUTIVE BRIEF: SHOULD I CONTACT THEM? */}
+      <div className="admin-card" style={{ marginBottom: '1.5rem', borderLeft: `4px solid ${shouldContact === 'YES' ? '#22c55e' : shouldContact === 'WAIT' ? '#eab308' : '#ef4444'}`, background: '#111412' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '1rem', borderBottom: '1px solid rgba(255,255,255,0.08)', paddingBottom: '1rem', marginBottom: '1rem' }}>
+          <div>
+            <div style={{ fontSize: '0.72rem', textTransform: 'uppercase', color: '#888', fontWeight: 700 }}>EXECUTIVE ACQUISITION VERDICT</div>
+            <div style={{ fontSize: '1.8rem', fontWeight: 900, color: shouldContact === 'YES' ? '#22c55e' : shouldContact === 'WAIT' ? '#eab308' : '#ef4444' }}>
+              SHOULD I CONTACT THEM? {shouldContact}
+            </div>
+            <div style={{ fontSize: '0.82rem', color: '#cbd5e1' }}>
+              Confidence Level: <strong style={{ color: '#fff' }}>{confidence}</strong> · Priority Score: <strong style={{ color: '#d4af37' }}>{profile.priorityResult.score}/100</strong>
+            </div>
+          </div>
+
+          <div style={{ textAlign: 'right' }}>
+            <div style={{ fontSize: '0.72rem', textTransform: 'uppercase', color: '#888' }}>ESTIMATED DEAL SIZE</div>
+            <div style={{ fontSize: '1.6rem', fontWeight: 900, color: '#22c55e' }}>
+              €{profile.commercialSummary.estimatedDealSize.toLocaleString()}
+            </div>
+          </div>
+        </div>
+
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1rem', fontSize: '0.82rem' }}>
+          <div>
+            <span style={{ color: '#888', display: 'block', fontSize: '0.68rem', textTransform: 'uppercase' }}>WHY NOW:</span>
+            <strong style={{ color: '#fff' }}>{profile.priorityResult.whyNow || `${profile.buildingProjects.length} active construction sites`}</strong>
+          </div>
+          <div>
+            <span style={{ color: '#888', display: 'block', fontSize: '0.68rem', textTransform: 'uppercase' }}>WHAT THEY ARE BUILDING:</span>
+            <span style={{ color: '#cbd5e1' }}>{profile.buildingProjects.length > 0 ? `${profile.buildingProjects[0].name} (+${profile.buildingProjects.length - 1} more)` : 'Portfolio under review'}</span>
+          </div>
+          <div>
+            <span style={{ color: '#888', display: 'block', fontSize: '0.68rem', textTransform: 'uppercase' }}>PRIMARY CONTACT:</span>
+            <span style={{ color: '#38bdf8' }}>{profile.primaryDecisionMaker ? `${profile.primaryDecisionMaker.name} (${profile.primaryDecisionMaker.role})` : 'Pending Identification'}</span>
+          </div>
+          <div>
+            <span style={{ color: '#888', display: 'block', fontSize: '0.68rem', textTransform: 'uppercase' }}>NEXT COMMERCIAL ACTION:</span>
+            <span style={{ color: '#22c55e' }}>{profile.nextAction}</span>
           </div>
         </div>
       </div>

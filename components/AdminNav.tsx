@@ -39,6 +39,7 @@ export function AdminNav({ identity }: { identity: AdminIdentity }) {
           {sales && <Link href="/admin/market/activity">Activity Signals</Link>}
           {sales && <Link href="/admin/market/coverage">Market Coverage</Link>}
           {sales && <Link href="/admin/market/activation">Market Activation</Link>}
+          {sales && <Link href="/admin/market/golden-dataset">Golden Dataset</Link>}
           {editorial && <Link href="/admin/sources">Source Registry</Link>}
         </div>
 
@@ -76,6 +77,7 @@ export function AdminNav({ identity }: { identity: AdminIdentity }) {
             Quality
           </div>
           {editorial && <Link href="/admin/quality">Data Quality & Duplicates</Link>}
+          {editorial && <Link href="/admin/market/golden-dataset/quality">Golden Dataset Quality</Link>}
           {sales && <Link href="/admin/claims">Profile Claims</Link>}
         </div>
 
