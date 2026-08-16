@@ -123,13 +123,13 @@ export function DailyAcquisitionQueueView({ initialData }: { initialData: DailyQ
     }
   };
 
-  const renderQueueSection = (title: string, items: QueueCardItem[], color: string, icon: string) => {
+  const renderQueueSection = (title: string, items: QueueCardItem[], color: string, badgePrefix: string) => {
     if (items.length === 0) return null;
 
     return (
       <div style={{ marginBottom: '2rem' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1rem' }}>
-          <span style={{ fontSize: '1.2rem' }}>{icon}</span>
+          <span style={{ fontSize: '0.75rem', fontWeight: 800, color, fontFamily: 'monospace' }}>[{badgePrefix}]</span>
           <h2 style={{ fontSize: '1.15rem', margin: 0, letterSpacing: '0.05em', color }}>
             {title} ({items.length})
           </h2>
@@ -172,12 +172,12 @@ export function DailyAcquisitionQueueView({ initialData }: { initialData: DailyQ
 
                 {item.primary_contact ? (
                   <div style={{ fontSize: '0.8rem', color: '#38bdf8', marginBottom: '0.75rem' }}>
-                    👤 {item.primary_contact.name} ({item.primary_contact.role})
-                    {item.primary_contact.phone && <div style={{ color: '#aaa', fontSize: '0.75rem' }}>📞 {item.primary_contact.phone}</div>}
+                    Contact: <strong>{item.primary_contact.name}</strong> ({item.primary_contact.role})
+                    {item.primary_contact.phone && <div style={{ color: '#aaa', fontSize: '0.75rem' }}>Phone: {item.primary_contact.phone}</div>}
                   </div>
                 ) : (
                   <div style={{ fontSize: '0.75rem', color: '#eab308', marginBottom: '0.75rem' }}>
-                    ⚠️ Executive contact pending
+                    Executive contact pending
                   </div>
                 )}
               </div>
@@ -236,7 +236,7 @@ export function DailyAcquisitionQueueView({ initialData }: { initialData: DailyQ
                         className="action-btn secondary"
                         style={{ padding: '0.35rem 0.65rem', fontSize: '0.75rem', textDecoration: 'none' }}
                       >
-                        📞 Call
+                        Call
                       </a>
                     )}
                     <Link
@@ -244,7 +244,7 @@ export function DailyAcquisitionQueueView({ initialData }: { initialData: DailyQ
                       className="action-btn secondary"
                       style={{ padding: '0.35rem 0.65rem', fontSize: '0.75rem', textDecoration: 'none' }}
                     >
-                      ✉️ Email
+                      Email
                     </Link>
                     <button
                       onClick={() => setActiveActionCompanyId(item.id)}
@@ -302,10 +302,10 @@ export function DailyAcquisitionQueueView({ initialData }: { initialData: DailyQ
       <div className="admin-header">
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '1rem' }}>
           <div>
-            <div style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.1em', color: '#94a3b8', marginBottom: '0.25rem' }}>
-              DAILY SALES EXECUTION · PHASE 10
+            <div className="eyebrow" style={{ color: '#d4af37' }}>
+              DAILY SALES EXECUTION · PHASE 12
             </div>
-            <h1 style={{ margin: '0 0 0.5rem 0', fontSize: '2rem', fontWeight: 700 }}>
+            <h1 style={{ margin: '4px 0 6px 0', fontSize: '1.85rem', fontWeight: 800 }}>
               DAILY ACQUISITION QUEUE
             </h1>
             <p className="admin-subtitle" style={{ margin: 0 }}>
@@ -329,8 +329,7 @@ export function DailyAcquisitionQueueView({ initialData }: { initialData: DailyQ
 
       {totalActions === 0 ? (
         <div className="admin-card" style={{ textAlign: 'center', padding: '4rem 1rem' }}>
-          <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>🎉</div>
-          <h2 style={{ fontSize: '1.25rem', margin: '0 0 0.5rem 0' }}>Daily Queue Completed</h2>
+          <h2 style={{ fontSize: '1.25rem', margin: '0 0 0.5rem 0', color: '#22c55e' }}>✓ Daily Queue Completed</h2>
           <p style={{ color: '#888', margin: '0 0 1.5rem 0', fontSize: '0.9rem' }}>
             No pending calls or emails overdue for today. Check the Acquisition Command Center for high-value targets to approach next.
           </p>
@@ -340,12 +339,12 @@ export function DailyAcquisitionQueueView({ initialData }: { initialData: DailyQ
         </div>
       ) : (
         <>
-          {renderQueueSection('Overdue Follow-ups', queue.overdue, '#ef4444', '🚨')}
-          {renderQueueSection('Calls Scheduled Today', queue.callToday, '#22c55e', '📞')}
-          {renderQueueSection('Emails / Messages Today', queue.emailToday, '#38bdf8', '✉️')}
-          {renderQueueSection('Meetings Today', queue.meetingToday, '#a855f7', '🤝')}
-          {renderQueueSection('Proposals in Negotiation', queue.proposalToday, '#eab308', '📄')}
-          {renderQueueSection('General Follow-ups', queue.followUpToday, '#94a3b8', '🔁')}
+          {renderQueueSection('Overdue Follow-ups', queue.overdue, '#ef4444', 'OVERDUE')}
+          {renderQueueSection('Calls Scheduled Today', queue.callToday, '#22c55e', 'CALL')}
+          {renderQueueSection('Emails / Messages Today', queue.emailToday, '#38bdf8', 'EMAIL')}
+          {renderQueueSection('Meetings Today', queue.meetingToday, '#a855f7', 'MEETING')}
+          {renderQueueSection('Proposals in Negotiation', queue.proposalToday, '#eab308', 'PROPOSAL')}
+          {renderQueueSection('General Follow-ups', queue.followUpToday, '#94a3b8', 'FOLLOW-UP')}
         </>
       )}
     </div>

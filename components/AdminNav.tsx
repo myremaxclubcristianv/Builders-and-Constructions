@@ -25,6 +25,7 @@ export function AdminNav({ identity }: { identity: AdminIdentity }) {
             <Link href="/admin/acquisition">Acquisition Hub</Link>
             <Link href="/admin/acquisition/today">Daily Queue</Link>
             <Link href="/admin/acquisition/radar">Opportunity Radar</Link>
+            <Link href="/admin/acquisition/reality-test">Reality Test</Link>
           </div>
         )}
 

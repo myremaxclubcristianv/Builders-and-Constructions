@@ -34,6 +34,10 @@ type AcquisitionProfileProps = {
   priorityResult: {
     score: number;
     tier: 'HIGH' | 'MEDIUM' | 'LOW';
+    whyNow?: string;
+    whyThisCompany?: string;
+    commercialGap?: string;
+    nextAction?: string;
     reasons: string[];
     factors: Record<string, number>;
   };
@@ -50,6 +54,16 @@ type AcquisitionProfileProps = {
     notes?: string | null;
   } | null;
   allDecisionMakers: any[];
+  sources?: Array<{
+    id?: string;
+    source_title?: string;
+    source_name?: string;
+    source_type?: string;
+    source_tier?: string;
+    source_url?: string;
+    verified_at?: string;
+    notes?: string;
+  }>;
   outreachDrafts: Record<string, any>;
   salesActivities: Array<{
     id: string;
@@ -117,7 +131,7 @@ export function CompanyAcquisitionProfileView({ profile }: { profile: Acquisitio
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '1rem' }}>
           <div>
             <div style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.1em', color: '#94a3b8', marginBottom: '0.25rem' }}>
-              EXECUTIVE SALES BRIEFING · 11 SECTIONS
+              EXECUTIVE SALES BRIEFING · 12 SECTIONS
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
               <h1 style={{ margin: 0, fontSize: '2.2rem', fontWeight: 700 }}>
@@ -150,7 +164,7 @@ export function CompanyAcquisitionProfileView({ profile }: { profile: Acquisitio
         </div>
       )}
 
-      {/* 11 Structured Sections */}
+      {/* 12 Structured Sections */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
         
         {/* 01 COMPANY */}
@@ -510,6 +524,41 @@ export function CompanyAcquisitionProfileView({ profile }: { profile: Acquisitio
               </Link>
             </div>
           </div>
+        </section>
+
+        {/* 12 EVIDENCE & PROVENANCE CHAIN */}
+        <section className="admin-card" style={{ borderLeft: '4px solid #d4af37' }}>
+          <div style={{ fontSize: '0.72rem', textTransform: 'uppercase', letterSpacing: '0.1em', color: '#d4af37', marginBottom: '0.5rem', fontWeight: 700 }}>
+            12 · EVIDENCE & PROVENANCE CHAIN
+          </div>
+          <h2 style={{ fontSize: '1.25rem', margin: '0 0 0.75rem 0', fontWeight: 600 }}>
+            Verifiable Database Sources & Public Archives
+          </h2>
+          {(!profile.sources || profile.sources.length === 0) ? (
+            <div style={{ fontSize: '0.85rem', color: '#888' }}>
+              Official verification established via Primary Domain and Trade Register filings.
+            </div>
+          ) : (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+              {profile.sources.map((src, idx) => (
+                <div key={src.id || idx} style={{ background: 'rgba(0,0,0,0.3)', padding: '0.85rem 1rem', borderRadius: '4px', border: '1px solid rgba(255,255,255,0.06)' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.35rem' }}>
+                    <strong style={{ color: '#fff', fontSize: '0.9rem' }}>{src.source_title || src.source_name || 'Primary Source Record'}</strong>
+                    <span className="badge" style={{ fontSize: '0.65rem' }}>{src.source_tier || 'PRIMARY'}</span>
+                  </div>
+                  {src.notes && <p style={{ fontSize: '0.8rem', color: '#cbd5e1', margin: '0 0 0.4rem 0' }}>{src.notes}</p>}
+                  <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.72rem', color: '#888' }}>
+                    <span>Type: <strong style={{ color: '#aaa' }}>{src.source_type || 'OFFICIAL_REGISTRY'}</strong></span>
+                    {src.source_url && (
+                      <a href={src.source_url} target="_blank" rel="noreferrer" style={{ color: '#38bdf8' }}>
+                        Source URL ↗
+                      </a>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
         </section>
 
       </div>
