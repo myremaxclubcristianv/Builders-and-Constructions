@@ -1,0 +1,2 @@
+import {adminRows} from '@/lib/admin-data'; import {AdminList} from '@/components/AdminList'; import {requireAdmin} from '@/lib/admin-auth';
+export default async function ProjectsAdmin(){await requireAdmin('admin','editor');return <AdminList title="PROJECTS" rows={await adminRows('projects')} newHref="/admin/projects/new" itemHref="/admin/projects" columns={[{key:'name',label:'Project'},{key:'status',label:'Status'},{key:'content_state',label:'Workflow'},{key:'completion_verification',label:'Completion'},{key:'is_featured',label:'Featured'}]}/>}

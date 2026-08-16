@@ -1,0 +1,5 @@
+import { NextResponse } from 'next/server';
+import { getServiceClient } from '@/lib/supabase';
+
+export async function POST(request:Request){const {accessToken}=await request.json().catch(()=>({}));const client=getServiceClient();if(!accessToken||!client)return NextResponse.json({error:'Authentication is not configured.'},{status:503});const {data:{user}}=await client.auth.getUser(accessToken);if(!user)return NextResponse.json({error:'Invalid session.'},{status:401});const {data:profile}=await client.from('admin_profiles').select('role').eq('id',user.id).maybeSingle();if(!profile)return NextResponse.json({error:'This account has no administrator role.'},{status:403});const response=NextResponse.json({role:profile.role});response.cookies.set('aix_admin_session',accessToken,{httpOnly:true,secure:process.env.NODE_ENV==='production',sameSite:'lax',path:'/',maxAge:60*60*8});return response;}
+export async function DELETE(){const response=NextResponse.json({ok:true});response.cookies.set('aix_admin_session','',{httpOnly:true,path:'/',maxAge:0});return response;}

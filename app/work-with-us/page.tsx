@@ -1,0 +1,2 @@
+import {SiteHeader} from '@/components/SiteHeader'; import {SiteFooter} from '@/components/SiteFooter'; import {LeadForm} from '@/components/LeadForm';
+export default function Work(){return <><SiteHeader/><main className="shell"><section className="page-hero"><div className="eyebrow">Direct company inquiry</div><h1>WORK WITH<br/>A COMPANY</h1><p>Tell us what you need. We&apos;ll connect your request to the selected company profile and retain a clear record for follow-up.</p></section><section className="section"><LeadForm kind="work"/></section></main><SiteFooter/></>}
