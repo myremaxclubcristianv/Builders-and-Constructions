@@ -30,21 +30,21 @@ export function IntelligenceIngestionView({ jobs }: Props) {
       <div className="admin-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: 16, marginBottom: 24 }}>
         <div>
           <div className="eyebrow" style={{ color: '#38bdf8' }}>
-            CONTROLLED MARKET INGESTION · PHASE 19
+            CONTROLLED MARKET INGESTION · PHASE 24
           </div>
-          <h1 style={{ margin: '4px 0 6px 0', fontSize: '1.85rem', fontWeight: 800 }}>
+          <h1 style={{ margin: '4px 0 6px 0', fontSize: 'clamp(1.6rem, 3.5vw, 2rem)', fontWeight: 800 }}>
             PRODUCTION MARKET INGESTION & SOURCE PIPELINE
           </h1>
-          <p className="admin-subtitle" style={{ margin: 0 }}>
+          <p className="admin-subtitle" style={{ margin: 0, fontSize: '0.85rem' }}>
             Automated verification of official Romanian urbanism permits, SEAP tenders, and corporate announcements.
           </p>
         </div>
 
-        <div style={{ display: 'flex', gap: 10 }}>
-          <Link href="/admin/sources" className="action-btn secondary">
+        <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
+          <Link href="/admin/sources" className="action-btn secondary" style={{ minHeight: 44 }}>
             Source Registry →
           </Link>
-          <Link href="/admin/market/changes" className="action-btn primary">
+          <Link href="/admin/market/changes" className="action-btn primary" style={{ minHeight: 44 }}>
             Market Changes
           </Link>
         </div>
