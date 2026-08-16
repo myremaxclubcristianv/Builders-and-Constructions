@@ -114,6 +114,32 @@ export function normalizeCuiCif(raw: string): {
   };
 }
 
+/**
+ * Normalizes Romanian company names by stripping legal forms (SRL, SA, etc.) and diacritics.
+ */
+export function normalizeCompanyName(name: string): string {
+  if (!name) return '';
+  let clean = name.trim().toLowerCase();
+
+  // Normalize Romanian diacritics
+  clean = clean
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/ș/g, 's')
+    .replace(/ț/g, 't')
+    .replace(/ă/g, 'a')
+    .replace(/î/g, 'i')
+    .replace(/â/g, 'a');
+
+  // Strip legal suffixes
+  clean = clean.replace(/\b(srl|sa|s\.r\.l\.|s\.a\.|s\.c\.|sc|grup|group)\b/gi, '');
+
+  // Strip punctuation and multi-spaces
+  clean = clean.replace(/[\.,\-_'"`]/g, ' ').replace(/\s+/g, ' ').trim();
+
+  return clean;
+}
+
 export type ContactReadinessInput = {
   isCompanyVerified: boolean;
   projectsCount: number;

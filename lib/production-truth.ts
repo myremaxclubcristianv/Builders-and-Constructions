@@ -212,3 +212,38 @@ export function assertPublishability(entity: {
   if (!entity || !entity.id || !entity.name) return false;
   return Boolean(entity.published_at || entity.content_state === 'published');
 }
+
+/**
+ * PHASE 19: Global Production Commercial Truth Guard
+ * Rejects synthetic companies, mock proposals, unverified claims, and fabricated facts.
+ */
+export function assertProductionCommercialTruth(payload: {
+  companyName: string;
+  isMockData?: boolean;
+  hasVerifiedSource?: boolean;
+  claimedRevenue?: number;
+  hasClosedContractEvidence?: boolean;
+}): { isValid: boolean; violationReason?: string } {
+  if (payload.isMockData) {
+    return {
+      isValid: false,
+      violationReason: 'Rejected: Mock data contamination detected in production commercial pipeline.'
+    };
+  }
+
+  if (!payload.hasVerifiedSource && payload.claimedRevenue && !payload.hasClosedContractEvidence) {
+    return {
+      isValid: false,
+      violationReason: 'Rejected: Revenue claimed without verified closed contract proposal evidence.'
+    };
+  }
+
+  if (!payload.companyName || payload.companyName.toLowerCase().includes('sample') || payload.companyName.toLowerCase().includes('demo company')) {
+    return {
+      isValid: false,
+      violationReason: 'Rejected: Placeholder or demo company entity rejected.'
+    };
+  }
+
+  return { isValid: true };
+}
