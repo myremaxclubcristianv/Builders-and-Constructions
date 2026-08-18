@@ -72,8 +72,8 @@ export function IntelligenceIngestionView({ jobs }: Props) {
       </div>
 
       {/* Ingestion Jobs Table */}
-      <section className="admin-card" style={{ padding: 0, overflow: 'hidden' }}>
-        <table className="admin-table" style={{ margin: 0 }}>
+      <section className="admin-card" style={{ padding: 0, overflowX: 'auto', WebkitOverflowScrolling: 'touch' }}>
+        <table className="admin-table" style={{ margin: 0, minWidth: 600 }}>
           <thead>
             <tr>
               <th>Source / Registry Feed</th>

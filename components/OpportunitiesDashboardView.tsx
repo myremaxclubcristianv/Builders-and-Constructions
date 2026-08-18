@@ -52,7 +52,7 @@ export function OpportunitiesDashboardView({
 }) {
   const [levelFilter, setLevelFilter] = useState<string>('all');
   const [statusFilter, setStatusFilter] = useState<string>('all');
-  const [typeFilter, setTypeFilter] = useState<string>('all');
+  const [typeFilter] = useState<string>('all');
   const [actionFilter, setActionFilter] = useState<'all' | 'today' | 'overdue'>('all');
   const [search, setSearch] = useState<string>('');
   const [viewMode, setViewMode] = useState<'cards' | 'table'>('cards');
@@ -72,104 +72,90 @@ export function OpportunitiesDashboardView({
   }, [opportunities, levelFilter, statusFilter, typeFilter, actionFilter, search, todayStr]);
 
   return (
-    <div>
-      <div className="eyebrow">Commercial Engine & Lead Generation</div>
-      <h1 className="admin-title">SALES OPPORTUNITIES & PROSPECTING</h1>
+    <div className="admin-container">
+      <div className="admin-header" style={{ marginBottom: 20 }}>
+        <div className="eyebrow" style={{ color: '#c7a675', letterSpacing: '0.12em' }}>
+          COMMERCIAL ENGINE · OPPORTUNITY RADAR
+        </div>
+        <h1 style={{ margin: '4px 0 6px 0', fontSize: 'clamp(1.7rem, 4vw, 2.3rem)', fontWeight: 800, color: '#f3f1eb' }}>
+          OPPORTUNITIES & PROSPECTING
+        </h1>
+        <p className="admin-subtitle" style={{ margin: 0, fontSize: '0.85rem', color: 'rgba(243,241,235,0.7)' }}>
+          Verified Romanian market prospects sorted strictly by algorithmic opportunity score and verified triggers.
+        </p>
+      </div>
 
       {/* TODAY & ACTION METRICS BAR */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 16, marginBottom: 24 }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: 10, marginBottom: 20 }}>
         <div
           onClick={() => setActionFilter(actionFilter === 'today' ? 'all' : 'today')}
+          className="admin-card"
           style={{
-            padding: 16,
-            borderRadius: 6,
-            background: actionFilter === 'today' ? 'rgba(212, 175, 55, 0.2)' : '#141715',
-            border: '1px solid #d4af37',
+            padding: 14,
+            background: actionFilter === 'today' ? 'rgba(199, 166, 117, 0.15)' : 'rgba(13,16,15,0.9)',
+            borderLeft: '3px solid #c7a675',
             cursor: 'pointer'
           }}
         >
-          <span className="eyebrow" style={{ color: '#d4af37' }}>TODAY&apos;S FOLLOW-UPS</span>
-          <strong style={{ fontSize: 24, display: 'block', marginTop: 4, color: '#fff' }}>
+          <span style={{ fontSize: '0.6rem', color: '#c7a675', textTransform: 'uppercase', letterSpacing: '0.08em', display: 'block', fontWeight: 700 }}>
+            TODAY&apos;S FOLLOW-UPS
+          </span>
+          <strong style={{ fontSize: '1.4rem', display: 'block', marginTop: 2, color: '#f3f1eb', fontWeight: 800 }}>
             {metrics.todayFollowUps || 0}
           </strong>
         </div>
 
         <div
           onClick={() => setActionFilter(actionFilter === 'overdue' ? 'all' : 'overdue')}
+          className="admin-card"
           style={{
-            padding: 16,
-            borderRadius: 6,
-            background: actionFilter === 'overdue' ? 'rgba(239, 68, 68, 0.2)' : '#141715',
-            border: (metrics.overdueFollowUps || 0) > 0 ? '1px solid #ef4444' : '1px solid #333',
+            padding: 14,
+            background: actionFilter === 'overdue' ? 'rgba(239, 68, 68, 0.15)' : 'rgba(13,16,15,0.9)',
+            borderLeft: (metrics.overdueFollowUps || 0) > 0 ? '3px solid #ef4444' : '3px solid rgba(244,242,235,0.1)',
             cursor: 'pointer'
           }}
         >
-          <span className="eyebrow" style={{ color: (metrics.overdueFollowUps || 0) > 0 ? '#fca5a5' : '#888' }}>
-            OVERDUE FOLLOW-UPS
+          <span style={{ fontSize: '0.6rem', color: (metrics.overdueFollowUps || 0) > 0 ? '#ef4444' : 'rgba(243,241,235,0.5)', textTransform: 'uppercase', letterSpacing: '0.08em', display: 'block', fontWeight: 700 }}>
+            OVERDUE ACTIONS
           </span>
-          <strong style={{ fontSize: 24, display: 'block', marginTop: 4, color: (metrics.overdueFollowUps || 0) > 0 ? '#fca5a5' : '#fff' }}>
+          <strong style={{ fontSize: '1.4rem', display: 'block', marginTop: 2, color: (metrics.overdueFollowUps || 0) > 0 ? '#ef4444' : '#f3f1eb', fontWeight: 800 }}>
             {metrics.overdueFollowUps || 0}
           </strong>
         </div>
 
-        <div style={{ padding: 16, borderRadius: 6, background: '#141715', border: '1px solid #262927' }}>
-          <span className="eyebrow" style={{ color: '#86efac' }}>HIGH OPPORTUNITIES</span>
-          <strong style={{ fontSize: 24, display: 'block', marginTop: 4, color: '#86efac' }}>
+        <div className="admin-card" style={{ padding: 14, borderLeft: '3px solid #22c55e' }}>
+          <span style={{ fontSize: '0.6rem', color: '#22c55e', textTransform: 'uppercase', letterSpacing: '0.08em', display: 'block', fontWeight: 700 }}>
+            HIGH PRIORITY
+          </span>
+          <strong style={{ fontSize: '1.4rem', display: 'block', marginTop: 2, color: '#22c55e', fontWeight: 800 }}>
             {metrics.high}
           </strong>
         </div>
 
-        <div style={{ padding: 16, borderRadius: 6, background: '#141715', border: '1px solid #262927' }}>
-          <span className="eyebrow">ACTIVE IN PIPELINE</span>
-          <strong style={{ fontSize: 24, display: 'block', marginTop: 4, color: '#fff' }}>
+        <div className="admin-card" style={{ padding: 14, borderLeft: '3px solid #38bdf8' }}>
+          <span style={{ fontSize: '0.6rem', color: '#38bdf8', textTransform: 'uppercase', letterSpacing: '0.08em', display: 'block', fontWeight: 700 }}>
+            ACTIVE PIPELINE
+          </span>
+          <strong style={{ fontSize: '1.4rem', display: 'block', marginTop: 2, color: '#38bdf8', fontWeight: 800 }}>
             {metrics.new + metrics.contacted + metrics.followUp + metrics.proposals}
           </strong>
         </div>
       </div>
 
-      {/* Pipeline Stage Bar */}
-      <div className="admin-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(110px, 1fr))', marginBottom: 28 }}>
-        <div className="metric" onClick={() => setStatusFilter('all')} style={{ cursor: 'pointer', background: statusFilter === 'all' ? '#222' : undefined }}>
-          <span className="eyebrow">ALL</span>
-          <strong>{metrics.total}</strong>
-        </div>
-        <div className="metric" onClick={() => setStatusFilter('new')} style={{ cursor: 'pointer', background: statusFilter === 'new' ? '#222' : undefined }}>
-          <span className="eyebrow">NEW</span>
-          <strong>{metrics.new}</strong>
-        </div>
-        <div className="metric" onClick={() => setStatusFilter('contacted')} style={{ cursor: 'pointer', background: statusFilter === 'contacted' ? '#222' : undefined }}>
-          <span className="eyebrow">CONTACTED</span>
-          <strong>{metrics.contacted}</strong>
-        </div>
-        <div className="metric" onClick={() => setStatusFilter('follow_up')} style={{ cursor: 'pointer', background: statusFilter === 'follow_up' ? '#222' : undefined }}>
-          <span className="eyebrow">FOLLOW-UP</span>
-          <strong>{metrics.followUp}</strong>
-        </div>
-        <div className="metric" onClick={() => setStatusFilter('proposal')} style={{ cursor: 'pointer', background: statusFilter === 'proposal' ? '#222' : undefined }}>
-          <span className="eyebrow">PROPOSAL</span>
-          <strong>{metrics.proposals}</strong>
-        </div>
-        <div className="metric" onClick={() => setStatusFilter('won')} style={{ cursor: 'pointer', borderColor: '#d4af37', background: statusFilter === 'won' ? '#222' : undefined }}>
-          <span className="eyebrow" style={{ color: '#d4af37' }}>WON</span>
-          <strong style={{ color: '#d4af37' }}>{metrics.won}</strong>
-        </div>
-      </div>
-
       {/* Filters & Search Toolbar */}
-      <div className="admin-panel" style={{ marginBottom: 24 }}>
-        <div className="admin-toolbar" style={{ flexWrap: 'wrap', gap: 12 }}>
-          <div style={{ display: 'flex', gap: 10, flex: 1, minWidth: 280, flexWrap: 'wrap' }}>
+      <div className="admin-card" style={{ marginBottom: 20, padding: 16 }}>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10, alignItems: 'center', justifyContent: 'space-between' }}>
+          <div style={{ display: 'flex', gap: 10, flex: '1 1 280px', flexWrap: 'wrap' }}>
             <input
-              placeholder="Search company or location..."
+              placeholder="Search company, type or city..."
               value={search}
               onChange={e => setSearch(e.target.value)}
-              style={{ flex: 1, minWidth: 180 }}
+              style={{ flex: '1 1 180px', background: '#070908', border: '1px solid rgba(244,242,235,0.12)', color: '#f3f1eb', padding: '10px 12px', fontSize: '0.8rem', borderRadius: 4, minHeight: 44 }}
             />
             <select
               value={levelFilter}
               onChange={e => setLevelFilter(e.target.value)}
-              className="field"
-              style={{ padding: '10px 14px' }}
+              style={{ background: '#070908', border: '1px solid rgba(244,242,235,0.12)', color: '#f3f1eb', padding: '10px 12px', fontSize: '0.8rem', borderRadius: 4, minHeight: 44 }}
             >
               <option value="all">All Opportunity Tiers</option>
               <option value="high">High Priority</option>
@@ -179,8 +165,7 @@ export function OpportunitiesDashboardView({
             <select
               value={statusFilter}
               onChange={e => setStatusFilter(e.target.value)}
-              className="field"
-              style={{ padding: '10px 14px' }}
+              style={{ background: '#070908', border: '1px solid rgba(244,242,235,0.12)', color: '#f3f1eb', padding: '10px 12px', fontSize: '0.8rem', borderRadius: 4, minHeight: 44 }}
             >
               <option value="all">All Pipeline Stages</option>
               <option value="new">New</option>
@@ -189,19 +174,19 @@ export function OpportunitiesDashboardView({
               <option value="follow_up">Follow Up</option>
               <option value="proposal">Proposal</option>
               <option value="won">Won</option>
-              <option value="lost">Lost</option>
             </select>
           </div>
 
           <div style={{ display: 'flex', gap: 6 }}>
             <button
               type="button"
-              className="btn"
+              className="action-btn"
               style={{
-                background: viewMode === 'cards' ? '#d4af37' : '#141715',
-                color: viewMode === 'cards' ? '#000' : '#fff',
-                fontWeight: viewMode === 'cards' ? 700 : 500,
-                padding: '8px 14px'
+                background: viewMode === 'cards' ? '#c7a675' : 'rgba(255,255,255,0.05)',
+                color: viewMode === 'cards' ? '#070908' : '#f3f1eb',
+                fontWeight: 700,
+                fontSize: '0.72rem',
+                minHeight: 40
               }}
               onClick={() => setViewMode('cards')}
             >
@@ -209,12 +194,13 @@ export function OpportunitiesDashboardView({
             </button>
             <button
               type="button"
-              className="btn"
+              className="action-btn"
               style={{
-                background: viewMode === 'table' ? '#d4af37' : '#141715',
-                color: viewMode === 'table' ? '#000' : '#fff',
-                fontWeight: viewMode === 'table' ? 700 : 500,
-                padding: '8px 14px'
+                background: viewMode === 'table' ? '#c7a675' : 'rgba(255,255,255,0.05)',
+                color: viewMode === 'table' ? '#070908' : '#f3f1eb',
+                fontWeight: 700,
+                fontSize: '0.72rem',
+                minHeight: 40
               }}
               onClick={() => setViewMode('table')}
             >
@@ -224,85 +210,76 @@ export function OpportunitiesDashboardView({
         </div>
       </div>
 
-      {/* Section Header: Top Opportunities ("Who should we contact?") */}
-      <div className="section-head" style={{ marginBottom: 18 }}>
-        <div>
-          <div className="eyebrow" style={{ color: '#d4af37' }}>
-            Who Should We Contact? (Sorted by Opportunity Score)
-          </div>
-          <h2>TOP PROSPECT OPPORTUNITIES ({filtered.length})</h2>
-        </div>
-      </div>
-
       {filtered.length === 0 ? (
-        <div className="empty">No sales opportunities match the selected filters.</div>
+        <div className="admin-card" style={{ textAlign: 'center', padding: '40px 20px', color: 'rgba(243,241,235,0.5)' }}>
+          No production opportunities match the active criteria.
+        </div>
       ) : viewMode === 'cards' ? (
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))', gap: 20 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: 16 }}>
           {filtered.map(opp => {
             const badgeBg =
               opp.opportunity_level === 'high'
-                ? '#86efac'
+                ? '#22c55e'
                 : opp.opportunity_level === 'medium'
-                ? '#fde047'
-                : '#94a3b8';
+                ? '#eab308'
+                : '#88857c';
 
             return (
               <div
                 key={opp.company.id}
+                className="admin-card"
                 style={{
-                  background: '#141715',
-                  border: opp.opportunity_level === 'high' ? '1px solid rgba(212, 175, 55, 0.6)' : '1px solid #262927',
-                  borderRadius: 8,
-                  padding: 24,
+                  background: 'rgba(13,16,15,0.95)',
+                  border: opp.opportunity_level === 'high' ? '1px solid rgba(199, 166, 117, 0.25)' : '1px solid rgba(244,242,235,0.08)',
+                  borderRadius: 6,
+                  padding: 18,
                   display: 'flex',
                   flexDirection: 'column',
                   justifyContent: 'space-between'
                 }}
               >
                 <div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 12 }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 12, marginBottom: 8 }}>
                     <div>
-                      <span className="badge" style={{ textTransform: 'capitalize' }}>
+                      <span className="badge" style={{ textTransform: 'uppercase', fontSize: '0.6rem' }}>
                         {opp.company.type.replaceAll('_', ' ')}
                       </span>
-                      <h3 style={{ fontSize: 22, margin: '8px 0 4px 0', letterSpacing: '-0.02em', color: '#fff' }}>
+                      <h3 style={{ fontSize: '1.15rem', margin: '4px 0 2px 0', letterSpacing: '-0.02em', color: '#f3f1eb', fontWeight: 800 }}>
                         {opp.company.name}
                       </h3>
-                      <p style={{ fontSize: 12, color: '#aaa9a1', margin: 0 }}>
-                        {opp.company.location || 'Romania'} · Pipeline:{' '}
-                        <strong style={{ color: '#fff', textTransform: 'uppercase' }}>
+                      <div style={{ fontSize: '0.75rem', color: 'rgba(243,241,235,0.6)' }}>
+                        {opp.company.location || 'Romania'} · Stage:{' '}
+                        <strong style={{ color: '#f3f1eb', textTransform: 'uppercase' }}>
                           {opp.pipeline_status.replaceAll('_', ' ')}
                         </strong>
-                      </p>
+                      </div>
                     </div>
 
                     <div style={{ textAlign: 'right' }}>
                       <span
+                        className="badge"
                         style={{
-                          display: 'inline-block',
-                          fontSize: 11,
+                          fontSize: '0.6rem',
                           fontWeight: 800,
                           textTransform: 'uppercase',
-                          padding: '3px 8px',
-                          borderRadius: 4,
-                          background: badgeBg,
-                          color: '#000'
+                          color: badgeBg,
+                          borderColor: badgeBg
                         }}
                       >
                         {opp.opportunity_level}
                       </span>
-                      <div style={{ fontSize: 24, fontWeight: 800, color: '#fff', marginTop: 4 }}>
-                        {opp.opportunity_score} <span style={{ fontSize: 13, color: '#888' }}>/100</span>
+                      <div style={{ fontSize: '1.3rem', fontWeight: 900, color: '#22c55e', marginTop: 2, lineHeight: 1 }}>
+                        {opp.opportunity_score} <span style={{ fontSize: '0.65rem', color: 'rgba(243,241,235,0.4)', fontWeight: 400 }}>/100</span>
                       </div>
                     </div>
                   </div>
 
                   {/* Why this is an opportunity */}
-                  <div style={{ marginTop: 16, background: '#0a0c0b', padding: '12px 14px', borderRadius: 6, border: '1px solid #1f2120' }}>
-                    <span style={{ fontSize: 11, textTransform: 'uppercase', color: '#d4af37', fontWeight: 700, letterSpacing: '0.05em' }}>
-                      Why Outreach This Company:
-                    </span>
-                    <ul style={{ margin: '6px 0 0 0', paddingLeft: 16, fontSize: 12, color: '#d1cfc7', lineHeight: 1.5 }}>
+                  <div style={{ marginTop: 12, background: 'rgba(0,0,0,0.3)', padding: '10px 12px', borderRadius: 4, border: '1px solid rgba(244,242,235,0.06)' }}>
+                    <div style={{ fontSize: '0.62rem', textTransform: 'uppercase', color: '#c7a675', fontWeight: 800, letterSpacing: '0.08em' }}>
+                      VERIFIED OUTREACH TRIGGER:
+                    </div>
+                    <ul style={{ margin: '4px 0 0 0', paddingLeft: 14, fontSize: '0.75rem', color: 'rgba(243,241,235,0.75)', lineHeight: 1.45 }}>
                       {opp.score_reasons.length > 0 ? (
                         opp.score_reasons.slice(0, 3).map((r, idx) => <li key={idx}>{r}</li>)
                       ) : (
@@ -314,40 +291,19 @@ export function OpportunitiesDashboardView({
                   </div>
 
                   {/* Operational Facts */}
-                  <div style={{ marginTop: 14, display: 'flex', gap: 16, fontSize: 12, color: '#aaa9a1' }}>
-                    <span>Active Projects: <strong style={{ color: '#fff' }}>{opp.active_projects_count}</strong></span>
-                    <span>Website: <strong style={{ color: '#fff' }}>{opp.company.website_status || 'Unknown'}</strong></span>
+                  <div style={{ marginTop: 10, display: 'flex', gap: 12, fontSize: '0.72rem', color: 'rgba(243,241,235,0.5)' }}>
+                    <span>Sites: <strong style={{ color: '#f3f1eb' }}>{opp.active_projects_count}</strong></span>
+                    <span>Website: <strong style={{ color: '#f3f1eb' }}>{opp.company.website_status || 'Unknown'}</strong></span>
                   </div>
-
-                  {/* Recommended Services */}
-                  {opp.recommended_services.length > 0 && (
-                    <div style={{ marginTop: 14, display: 'flex', gap: 6, flexWrap: 'wrap' }}>
-                      {opp.recommended_services.map(srv => (
-                        <span
-                          key={srv}
-                          style={{
-                            fontSize: 10,
-                            padding: '3px 7px',
-                            background: 'rgba(16, 185, 129, 0.1)',
-                            border: '1px solid rgba(16, 185, 129, 0.3)',
-                            color: '#86efac',
-                            borderRadius: 3
-                          }}
-                        >
-                          {srv}
-                        </span>
-                      ))}
-                    </div>
-                  )}
                 </div>
 
-                <div style={{ marginTop: 22, borderTop: '1px solid #222', paddingTop: 14 }}>
+                <div style={{ marginTop: 16, borderTop: '1px solid rgba(244,242,235,0.06)', paddingTop: 12 }}>
                   <Link
-                    href={`/admin/opportunities/${opp.company.id}`}
-                    className="btn fill"
-                    style={{ width: '100%', textAlign: 'center', justifyContent: 'center' }}
+                    href={`/admin/companies/${opp.company.id}/acquisition`}
+                    className="action-btn primary"
+                    style={{ width: '100%', minHeight: 44, fontSize: '0.75rem', letterSpacing: '0.08em' }}
                   >
-                    OPEN OPPORTUNITY →
+                    OPEN DOSSIER →
                   </Link>
                 </div>
               </div>
@@ -372,12 +328,12 @@ export function OpportunitiesDashboardView({
               {filtered.map(opp => (
                 <tr key={opp.company.id}>
                   <td>
-                    <strong style={{ color: '#fff' }}>{opp.company.name}</strong>
-                    <div style={{ fontSize: 11, color: '#777' }}>{opp.company.location || 'Romania'}</div>
+                    <strong style={{ color: '#f3f1eb' }}>{opp.company.name}</strong>
+                    <div style={{ fontSize: '0.7rem', color: 'rgba(243,241,235,0.5)' }}>{opp.company.location || 'Romania'}</div>
                   </td>
                   <td style={{ textTransform: 'capitalize' }}>{opp.company.type.replaceAll('_', ' ')}</td>
                   <td>
-                    <span style={{ fontWeight: 700, color: opp.opportunity_level === 'high' ? '#86efac' : '#fff' }}>
+                    <span style={{ fontWeight: 700, color: opp.opportunity_level === 'high' ? '#22c55e' : '#f3f1eb' }}>
                       {opp.opportunity_score}/100 ({opp.opportunity_level.toUpperCase()})
                     </span>
                   </td>
@@ -385,8 +341,8 @@ export function OpportunitiesDashboardView({
                   <td>{opp.active_projects_count}</td>
                   <td>{opp.company.website_status || 'Unknown'}</td>
                   <td>
-                    <Link href={`/admin/opportunities/${opp.company.id}`} className="link-arrow">
-                      Manage →
+                    <Link href={`/admin/companies/${opp.company.id}/acquisition`} className="link-arrow">
+                      Dossier →
                     </Link>
                   </td>
                 </tr>
@@ -398,3 +354,4 @@ export function OpportunitiesDashboardView({
     </div>
   );
 }
+

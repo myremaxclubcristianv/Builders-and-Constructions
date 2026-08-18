@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { AdminIdentity } from '@/lib/admin-auth';
@@ -13,151 +13,136 @@ export function AdminNav({ identity }: { identity: AdminIdentity }) {
   const sales = isAdmin || identity.role === 'sales';
   const editorial = isAdmin || identity.role === 'editor';
 
-  const isActive = (href: string) => pathname === href;
+  const isActive = (href: string) => {
+    if (href === '/admin') return pathname === '/admin';
+    return pathname === href || pathname.startsWith(href + '/');
+  };
+
+  // Close mobile drawer on route change
+  useEffect(() => {
+    setMobileMenuOpen(false);
+  }, [pathname]);
+
+  // Lock body scroll when mobile drawer is open
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [mobileMenuOpen]);
 
   return (
     <>
-      {/* 1. Mobile Executive Header (Terminal Style, <= 800px) */}
+      {/* 1. Mobile Executive Header (Sticky Command Hardware, <= 800px) */}
       <header className="mobile-admin-header">
         <Link className="mobile-brand" href="/admin/executive" onClick={() => setMobileMenuOpen(false)}>
           CONSTRUCTIONS
-          <span className="mobile-brand-sub">Executive Command</span>
+          <span className="mobile-brand-sub">EXECUTIVE COMMAND</span>
         </Link>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-          <span className="status-pill verified" style={{ fontSize: '0.62rem', padding: '2px 6px' }}>
+          <span className="status-pill verified" style={{ fontSize: '0.58rem', padding: '3px 7px', letterSpacing: '0.08em' }}>
             PRODUCTION TRUTH
           </span>
           <button
             type="button"
             className="mobile-menu-toggle-btn"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label="Toggle Command Navigation Menu"
+            aria-label="Toggle Executive Command Navigation Drawer"
+            aria-expanded={mobileMenuOpen}
           >
             {mobileMenuOpen ? 'CLOSE' : 'MENU'}
           </button>
         </div>
       </header>
 
-      {/* 2. Desktop Sidebar & Mobile Slide-Out Drawer */}
-      <aside className={`admin-nav ${mobileMenuOpen ? 'mobile-open' : ''}`}>
+      {/* 2. Desktop Sidebar & Mobile Slide-Out Command Drawer */}
+      <aside className={`admin-nav ${mobileMenuOpen ? 'mobile-open' : ''}`} aria-label="Executive Navigation">
         <div className="admin-nav-header">
           <Link className="brand" href="/admin">
             CONSTRUCTIONS
-            <small>Admin · AiXLuxury</small>
+            <small style={{ color: '#c7a675', display: 'block', fontSize: '0.65rem', marginTop: 2 }}>
+              EXECUTIVE INTELLIGENCE · AiXLuxury
+            </small>
           </Link>
-          <div className="admin-role">{identity.role} · {identity.email}</div>
+          <div className="admin-role" style={{ marginTop: 10, fontSize: '0.62rem' }}>
+            {identity.role.toUpperCase()} · {identity.email}
+          </div>
         </div>
 
-        <nav aria-label="Admin navigation" onClick={() => setMobileMenuOpen(false)}>
-          <Link className={isActive('/admin') ? 'active' : ''} href="/admin">Overview</Link>
-
-          {/* 1. COMMAND CENTER */}
+        <nav aria-label="Command Navigation Drawer" onClick={() => setMobileMenuOpen(false)}>
+          {/* GROUP 1: COMMAND */}
           {sales && (
             <div className="admin-nav-section">
-              <div className="admin-nav-section-title">
-                Command Center
+              <div className="admin-nav-section-title" style={{ color: '#c7a675', letterSpacing: '0.12em' }}>
+                COMMAND
               </div>
               <Link className={isActive('/admin/executive') ? 'active' : ''} href="/admin/executive">Executive Briefing</Link>
-              <Link className={isActive('/admin/acquisition') ? 'active' : ''} href="/admin/acquisition">Acquisition Hub</Link>
               <Link className={isActive('/admin/acquisition/today') ? 'active' : ''} href="/admin/acquisition/today">Daily Action Queue</Link>
-              <Link className={isActive('/admin/acquisition/contact-intelligence') ? 'active' : ''} href="/admin/acquisition/contact-intelligence">Contact Intelligence</Link>
+              <Link className={isActive('/admin/opportunities') ? 'active' : ''} href="/admin/opportunities">Opportunities</Link>
               <Link className={isActive('/admin/acquisition/radar') ? 'active' : ''} href="/admin/acquisition/radar">Opportunity Radar</Link>
-              <Link className={isActive('/admin/acquisition/score-history') ? 'active' : ''} href="/admin/acquisition/score-history">Score Evolution</Link>
               <Link className={isActive('/admin/acquisition/reality-test') ? 'active' : ''} href="/admin/acquisition/reality-test">Reality Test</Link>
             </div>
           )}
 
-          {/* 2. MARKET INTELLIGENCE */}
+          {/* GROUP 2: MARKET */}
           <div className="admin-nav-section">
-            <div className="admin-nav-section-title">
-              Market Intelligence
+            <div className="admin-nav-section-title" style={{ color: '#38bdf8', letterSpacing: '0.12em' }}>
+              MARKET
             </div>
-            {sales && <Link className={isActive('/admin/intelligence/ingestion') ? 'active' : ''} href="/admin/intelligence/ingestion">Market Ingestion</Link>}
             {sales && <Link className={isActive('/admin/market/changes') ? 'active' : ''} href="/admin/market/changes">Market Changes</Link>}
-            {sales && <Link className={isActive('/admin/intelligence/timeline') ? 'active' : ''} href="/admin/intelligence/timeline">Intelligence Timeline</Link>}
-            {sales && <Link className={isActive('/admin/market/entity-resolution') ? 'active' : ''} href="/admin/market/entity-resolution">Entity Resolution</Link>}
-            {editorial && <Link className={isActive('/admin/research') ? 'active' : ''} href="/admin/research">Research Queue</Link>}
-            {editorial && <Link className={isActive('/admin/discovery') ? 'active' : ''} href="/admin/discovery">Discovery Ingestion</Link>}
-            {sales && <Link className={isActive('/admin/market/activity') ? 'active' : ''} href="/admin/market/activity">Activity Signals</Link>}
+            {sales && <Link className={isActive('/admin/market/activity') ? 'active' : ''} href="/admin/market/activity">Signals & Activity</Link>}
+            {sales && <Link className={isActive('/admin/intelligence/ingestion') ? 'active' : ''} href="/admin/intelligence/ingestion">Ingestion Subsystem</Link>}
             {sales && <Link className={isActive('/admin/intelligence/coverage') ? 'active' : ''} href="/admin/intelligence/coverage">Market Coverage</Link>}
             {sales && <Link className={isActive('/admin/market/activation') ? 'active' : ''} href="/admin/market/activation">Market Activation</Link>}
-            {sales && <Link className={isActive('/admin/market/live-activation') ? 'active' : ''} href="/admin/market/live-activation">Live Activation</Link>}
-            {sales && <Link className={isActive('/admin/market/live-discovery') ? 'active' : ''} href="/admin/market/live-discovery">Live Discovery</Link>}
             {sales && <Link className={isActive('/admin/market/golden-dataset') ? 'active' : ''} href="/admin/market/golden-dataset">Golden Dataset</Link>}
-            {sales && <Link className={isActive('/admin/market/golden-dataset/execution') ? 'active' : ''} href="/admin/market/golden-dataset/execution">Golden Execution</Link>}
             {editorial && <Link className={isActive('/admin/sources') ? 'active' : ''} href="/admin/sources">Source Registry</Link>}
           </div>
 
-          {/* 3. CONTENT */}
-          {editorial && (
-            <div className="admin-nav-section">
-              <div className="admin-nav-section-title">
-                Content
-              </div>
-              <Link className={isActive('/admin/companies') ? 'active' : ''} href="/admin/companies">Companies</Link>
-              <Link className={isActive('/admin/projects') ? 'active' : ''} href="/admin/projects">Projects</Link>
-              <Link className={isActive('/admin/editorial') ? 'active' : ''} href="/admin/editorial">Editorial</Link>
-              <Link className={isActive('/admin/import') ? 'active' : ''} href="/admin/import">CSV Import</Link>
-            </div>
-          )}
-
-          {/* 4. SALES */}
+          {/* GROUP 3: COMMERCIAL */}
           {sales && (
             <div className="admin-nav-section">
-              <div className="admin-nav-section-title">
-                Sales
+              <div className="admin-nav-section-title" style={{ color: '#22c55e', letterSpacing: '0.12em' }}>
+                COMMERCIAL
               </div>
-              <Link className={isActive('/admin/leads') ? 'active' : ''} href="/admin/leads">Leads</Link>
-              <Link className={isActive('/admin/opportunities') ? 'active' : ''} href="/admin/opportunities">Opportunities</Link>
-              <Link className={isActive('/admin/proposals') ? 'active' : ''} href="/admin/proposals">Proposals</Link>
-              <Link className={isActive('/admin/prospects') ? 'active' : ''} href="/admin/prospects">Prospects</Link>
-              <Link className={isActive('/admin/prospects/activation') ? 'active' : ''} href="/admin/prospects/activation">Activation</Link>
-              <Link className={isActive('/admin/commercial') ? 'active' : ''} href="/admin/commercial">Commercial Overview</Link>
-              <Link className={isActive('/admin/campaigns') ? 'active' : ''} href="/admin/campaigns">Campaigns</Link>
+              <Link className={isActive('/admin/revenue') ? 'active' : ''} href="/admin/revenue">Revenue Command</Link>
+              <Link className={isActive('/admin/acquisition') ? 'active' : ''} href="/admin/acquisition">Pipeline Overview</Link>
+              <Link className={isActive('/admin/prospects/activation') ? 'active' : ''} href="/admin/prospects/activation">Outreach Activation</Link>
+              <Link className={isActive('/admin/proposals') ? 'active' : ''} href="/admin/proposals">Proposals Execution</Link>
+              <Link className={isActive('/admin/analytics/revenue') ? 'active' : ''} href="/admin/analytics/revenue">Revenue Attribution</Link>
+              <Link className={isActive('/admin/commercial') ? 'active' : ''} href="/admin/commercial">Commercial Command</Link>
             </div>
           )}
 
-          {/* 5. QUALITY */}
+          {/* GROUP 4: INTELLIGENCE */}
           <div className="admin-nav-section">
-            <div className="admin-nav-section-title">
-              Quality
+            <div className="admin-nav-section-title" style={{ color: '#a855f7', letterSpacing: '0.12em' }}>
+              INTELLIGENCE
             </div>
-            {editorial && <Link className={isActive('/admin/quality') ? 'active' : ''} href="/admin/quality">Data Quality & Duplicates</Link>}
-            {editorial && <Link className={isActive('/admin/market/golden-dataset/quality') ? 'active' : ''} href="/admin/market/golden-dataset/quality">Golden Dataset Quality</Link>}
-            {sales && <Link className={isActive('/admin/claims') ? 'active' : ''} href="/admin/claims">Profile Claims</Link>}
+            {editorial && <Link className={isActive('/admin/companies') ? 'active' : ''} href="/admin/companies">Companies Dossier</Link>}
+            {editorial && <Link className={isActive('/admin/projects') ? 'active' : ''} href="/admin/projects">Projects Dossier</Link>}
+            {sales && <Link className={isActive('/admin/acquisition/contact-intelligence') ? 'active' : ''} href="/admin/acquisition/contact-intelligence">Decision Makers</Link>}
+            {sales && <Link className={isActive('/admin/intelligence/timeline') ? 'active' : ''} href="/admin/intelligence/timeline">Relationship Timeline</Link>}
+            {editorial && <Link className={isActive('/admin/research') ? 'active' : ''} href="/admin/research">Research Queue</Link>}
           </div>
 
-          {/* 6. ANALYTICS */}
-          {sales && (
-            <div className="admin-nav-section">
-              <div className="admin-nav-section-title">
-                Analytics
-              </div>
-              <Link className={isActive('/admin/analytics/commercial') ? 'active' : ''} href="/admin/analytics/commercial">Commercial Funnel</Link>
-              <Link className={isActive('/admin/analytics') ? 'active' : ''} href="/admin/analytics">Commercial Analytics</Link>
-              <Link className={isActive('/admin/analytics/revenue') ? 'active' : ''} href="/admin/analytics/revenue">Revenue Attribution</Link>
-              <Link className={isActive('/admin/analytics/attribution') ? 'active' : ''} href="/admin/analytics/attribution">Attribution Chains</Link>
-              <Link className={isActive('/admin/market') ? 'active' : ''} href="/admin/market">Market Telemetry</Link>
+          {/* GROUP 5: SYSTEM */}
+          <div className="admin-nav-section">
+            <div className="admin-nav-section-title" style={{ color: '#88857c', letterSpacing: '0.12em' }}>
+              SYSTEM
             </div>
-          )}
-
-          {/* 7. SYSTEM */}
-          {isAdmin && (
-            <div className="admin-nav-section">
-              <div className="admin-nav-section-title">
-                System
-              </div>
-              <Link className={isActive('/admin/system') ? 'active' : ''} href="/admin/system">System Health</Link>
-              <Link className={isActive('/admin/system/production-audit') ? 'active' : ''} href="/admin/system/production-audit">Production Audit</Link>
-              <Link className={isActive('/admin/system/data') ? 'active' : ''} href="/admin/system/data">Data Subsystems</Link>
-              <Link className={isActive('/admin/system/audit') ? 'active' : ''} href="/admin/system/audit">Audit Logs</Link>
-              <Link className={isActive('/admin/system/activation') ? 'active' : ''} href="/admin/system/activation">Activation Logs</Link>
-              <Link className={isActive('/admin/export') ? 'active' : ''} href="/admin/export">Data Export</Link>
-            </div>
-          )}
+            {editorial && <Link className={isActive('/admin/quality') ? 'active' : ''} href="/admin/quality">Data Quality & Audit</Link>}
+            {sales && <Link className={isActive('/admin/claims') ? 'active' : ''} href="/admin/claims">Claim Firewall</Link>}
+            {isAdmin && <Link className={isActive('/admin/system/production-audit') ? 'active' : ''} href="/admin/system/production-audit">Production Audit</Link>}
+            {isAdmin && <Link className={isActive('/admin/system') ? 'active' : ''} href="/admin/system">System Health</Link>}
+          </div>
         </nav>
-        <Link href="/" className="admin-back">← Public platform</Link>
+
+        <Link href="/" className="admin-back">← Public Platform</Link>
       </aside>
 
       {/* 3. Mobile Backdrop overlay when drawer is open */}
@@ -169,8 +154,8 @@ export function AdminNav({ identity }: { identity: AdminIdentity }) {
         />
       )}
 
-      {/* 4. Mobile Executive Bottom Tab Bar (Fixed thumb reach, <= 800px) */}
-      <nav className="mobile-bottom-bar" aria-label="Quick mobile navigation">
+      {/* 4. Mobile Executive Bottom Navigation Hardware Bar (<= 800px) */}
+      <nav className="mobile-bottom-bar" aria-label="Executive Mobile Navigation">
         <Link
           href="/admin/executive"
           className={`mobile-tab-item ${isActive('/admin/executive') ? 'active' : ''}`}
@@ -199,6 +184,7 @@ export function AdminNav({ identity }: { identity: AdminIdentity }) {
           type="button"
           className={`mobile-tab-item ${mobileMenuOpen ? 'active' : ''}`}
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          aria-expanded={mobileMenuOpen}
         >
           <span className="mobile-tab-label">{mobileMenuOpen ? 'CLOSE' : 'MENU'}</span>
         </button>
@@ -206,3 +192,4 @@ export function AdminNav({ identity }: { identity: AdminIdentity }) {
     </>
   );
 }
+

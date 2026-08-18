@@ -136,8 +136,8 @@ export function CompanyAcquisitionProfileView({ profile }: { profile: Acquisitio
             <div style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.1em', color: '#d4af37', marginBottom: '0.25rem', fontWeight: 700 }}>
               EXECUTIVE SALES BRIEFING · 12 EVIDENCE-BACKED SECTIONS
             </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-              <h1 style={{ margin: 0, fontSize: '2.2rem', fontWeight: 700 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexWrap: 'wrap' }}>
+              <h1 style={{ margin: 0, fontSize: 'clamp(1.5rem, 4.5vw, 2.2rem)', fontWeight: 800, color: '#f3f1eb' }}>
                 {profile.company.name}
               </h1>
               {getTierBadge(profile.priorityResult.tier)}
