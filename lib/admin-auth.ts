@@ -1,4 +1,5 @@
 import { cookies, headers } from 'next/headers';
+import { redirect } from 'next/navigation';
 import { getServiceClient } from '@/lib/supabase';
 
 export type AdminRole = 'admin' | 'editor' | 'sales';
@@ -12,5 +13,11 @@ export async function getAdminIdentity():Promise<AdminIdentity | null>{
   if(!profile||!['admin','editor','sales'].includes(profile.role))return null;
   return {id:user.id,email:user.email || '',role:profile.role as AdminRole};
 }
-export async function requireAdmin(...roles:ReadonlyArray<AdminRole>){const identity=await getAdminIdentity();if(!identity||roles.length&&!roles.includes(identity.role))throw new Error('UNAUTHORIZED');return identity;}
+export async function requireAdmin(...roles:ReadonlyArray<AdminRole>){
+  const identity=await getAdminIdentity();
+  if(!identity||(roles.length&&!roles.includes(identity.role))) {
+    redirect('/admin/login');
+  }
+  return identity;
+}
 export async function requireAdminOrRole(roles: ReadonlyArray<AdminRole>){return requireAdmin(...roles);}
