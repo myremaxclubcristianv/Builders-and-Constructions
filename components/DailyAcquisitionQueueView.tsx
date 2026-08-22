@@ -138,7 +138,7 @@ export function DailyAcquisitionQueueView({ initialData }: { initialData: DailyQ
             0 items in this operational bucket.
           </div>
         ) : (
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: 12 }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: 12 }}>
             {items.map(item => (
             <div
               key={item.id}
