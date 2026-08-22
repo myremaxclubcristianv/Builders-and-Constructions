@@ -60,7 +60,7 @@ type RevenueCommandProps = {
 };
 
 export function RevenueCommandCenterView({ metrics, todayActions, verificationQueue, funnel }: RevenueCommandProps) {
-  const [activeTab, setActiveTab] = useState<'actions' | 'verification' | 'funnel' | 'responses'>('actions');
+  const [activeTab, setActiveTab] = useState<'actions' | 'verification' | 'funnel' | 'responses'>('funnel');
   const [responseNotice, setResponseNotice] = useState<string | null>(null);
 
   const handleRecordResponse = (outcome: string, companyName: string) => {

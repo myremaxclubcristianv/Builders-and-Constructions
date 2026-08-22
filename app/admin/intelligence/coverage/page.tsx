@@ -1,10 +1,10 @@
 import { requireAdmin } from '@/lib/admin-auth';
-import { adminMarketCoverageExecutiveData } from '@/lib/admin-data';
-import { MarketCoverageExecutiveView } from '@/components/MarketCoverageExecutiveView';
+import { adminContactIntelligenceMatrixData } from '@/lib/admin-data';
+import { ContactIntelligenceView } from '@/components/ContactIntelligenceView';
 
 export default async function AdminMarketCoveragePage() {
   await requireAdmin('admin', 'sales', 'editor');
-  const data = await adminMarketCoverageExecutiveData();
+  const contacts = await adminContactIntelligenceMatrixData();
 
-  return <MarketCoverageExecutiveView data={data as any} />;
+  return <ContactIntelligenceView contacts={contacts as any} />;
 }

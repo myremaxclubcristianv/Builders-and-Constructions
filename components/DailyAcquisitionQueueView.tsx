@@ -124,8 +124,6 @@ export function DailyAcquisitionQueueView({ initialData }: { initialData: DailyQ
   };
 
   const renderQueueSection = (title: string, items: QueueCardItem[], color: string, badgePrefix: string) => {
-    if (items.length === 0) return null;
-
     return (
       <div style={{ marginBottom: '1.75rem' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12 }}>
@@ -135,8 +133,13 @@ export function DailyAcquisitionQueueView({ initialData }: { initialData: DailyQ
           </h2>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: 12 }}>
-          {items.map(item => (
+        {items.length === 0 ? (
+          <div style={{ padding: '12px 16px', background: 'rgba(13,16,15,0.6)', border: `1px dashed ${color}40`, borderRadius: 4, color: 'rgba(243,241,235,0.5)', fontSize: '0.75rem' }}>
+            0 items in this operational bucket.
+          </div>
+        ) : (
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: 12 }}>
+            {items.map(item => (
             <div
               key={item.id}
               className="admin-card"
@@ -315,6 +318,7 @@ export function DailyAcquisitionQueueView({ initialData }: { initialData: DailyQ
             </div>
           ))}
         </div>
+      )}
       </div>
     );
   };
@@ -357,26 +361,14 @@ export function DailyAcquisitionQueueView({ initialData }: { initialData: DailyQ
         </div>
       )}
 
-      {totalActions === 0 ? (
-        <div className="admin-card" style={{ textAlign: 'center', padding: '3.5rem 1rem' }}>
-          <h2 style={{ fontSize: '1.2rem', margin: '0 0 8px 0', color: '#22c55e', fontWeight: 800 }}>✓ Daily Queue Completed</h2>
-          <p style={{ color: 'rgba(243,241,235,0.6)', margin: '0 0 20px 0', fontSize: '0.85rem', maxWidth: 480, marginLeft: 'auto', marginRight: 'auto' }}>
-            No pending calls or emails overdue for today. Check the Acquisition Pipeline for high-value targets to approach next.
-          </p>
-          <Link href="/admin/intelligence/coverage" className="action-btn primary" style={{ minHeight: 44, fontSize: '0.78rem' }}>
-            Level 04 Contact Acquisition Queue →
-          </Link>
-        </div>
-      ) : (
-        <>
-          {renderQueueSection('A. VERIFY FIRST (Level 04 Contact Gaps)', queue.overdue.filter(i => !i.primary_contact?.phone), '#eab308', 'VERIFY FIRST')}
-          {renderQueueSection('B. CALL NOW (Firewall Authorized Direct Outreach)', queue.callToday, '#22c55e', 'CALL NOW')}
-          {renderQueueSection('C. APPROVAL REQUIRED (Outreach Prepared - Human Review Gate)', queue.proposalToday, '#a855f7', 'APPROVAL REQUIRED')}
-          {renderQueueSection('D. FOLLOW UP (Scheduled Commercial Touches)', queue.followUpToday.concat(queue.emailToday), '#38bdf8', 'FOLLOW UP')}
-          {renderQueueSection('E. COOLING (Active Cooldown Period)', queue.meetingToday, '#64748b', 'COOLING')}
-          {renderQueueSection('F. DO NOT CONTACT (Explicit Exclusions)', [], '#ef4444', 'DO NOT CONTACT')}
-        </>
-      )}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+        {renderQueueSection('A. VERIFY FIRST (Level 04 Contact Gaps)', queue.overdue.filter(i => !i.primary_contact?.phone), '#eab308', 'VERIFY FIRST')}
+        {renderQueueSection('B. CALL NOW (Firewall Authorized Direct Outreach)', queue.callToday, '#22c55e', 'CALL NOW')}
+        {renderQueueSection('C. APPROVAL REQUIRED (Outreach Prepared - Human Review Gate)', queue.proposalToday, '#a855f7', 'APPROVAL REQUIRED')}
+        {renderQueueSection('D. FOLLOW UP (Scheduled Commercial Touches)', queue.followUpToday.concat(queue.emailToday), '#38bdf8', 'FOLLOW UP')}
+        {renderQueueSection('E. COOLING (Active Cooldown Period)', queue.meetingToday, '#64748b', 'COOLING')}
+        {renderQueueSection('F. DO NOT CONTACT (Explicit Exclusions)', [], '#ef4444', 'DO NOT CONTACT')}
+      </div>
     </div>
   );
 }
