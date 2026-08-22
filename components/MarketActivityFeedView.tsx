@@ -2,6 +2,8 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { CompanyIntelligencePreview } from '@/components/CompanyIntelligencePreview';
+import { calculateSignalFreshness } from '@/lib/data';
 
 type Signal = {
   id: string;
@@ -9,8 +11,10 @@ type Signal = {
   entity_name: string;
   company_id?: string;
   company_name?: string;
+  company_slug?: string;
   project_id?: string;
   project_name?: string;
+  project_slug?: string;
   signal_type: string;
   event_name?: string;
   event_date?: string;
@@ -60,7 +64,7 @@ export function MarketActivityFeedView({ signals: initialSignals }: { signals: S
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: 12 }}>
           <div>
             <div className="eyebrow" style={{ color: '#c7a675', letterSpacing: '0.12em' }}>
-              REAL-TIME MARKET FEED · PRODUCTION SIGNALS
+              REAL-TIME MARKET FEED · PRODUCTION INTELLIGENCE
             </div>
             <h1 style={{ margin: '4px 0 6px 0', fontSize: 'clamp(1.6rem, 4vw, 2.2rem)', fontWeight: 800, color: '#f3f1eb' }}>
               MARKET ACTIVITY FEED
@@ -116,18 +120,22 @@ export function MarketActivityFeedView({ signals: initialSignals }: { signals: S
         {filtered.length > 0 ? (
           filtered.map(sig => {
             const relColor = getRelevanceColor(sig.commercial_relevance);
+            const freshness = calculateSignalFreshness(sig.event_date || sig.created_at);
+            const freshnessColor = freshness === 'FRESH' ? '#38bdf8' : freshness === 'RECENT' ? '#c7a675' : '#888';
+
             return (
               <div
                 key={sig.id}
                 className="admin-card"
                 style={{
-                  padding: '16px 18px',
+                  padding: '18px 20px',
                   display: 'flex',
                   justifyContent: 'space-between',
                   alignItems: 'flex-start',
                   gap: 16,
                   flexWrap: 'wrap',
-                  background: 'rgba(13,16,15,0.95)'
+                  background: 'rgba(13,16,15,0.95)',
+                  borderLeft: `3px solid ${relColor}`
                 }}
               >
                 <div style={{ flex: 1, minWidth: 260 }}>
@@ -146,6 +154,21 @@ export function MarketActivityFeedView({ signals: initialSignals }: { signals: S
                       {sig.signal_type.replace(/_/g, ' ')}
                     </span>
 
+                    {freshness && (
+                      <span
+                        style={{
+                          fontSize: '0.58rem',
+                          fontWeight: 800,
+                          padding: '2px 6px',
+                          borderRadius: 2,
+                          border: `1px solid ${freshnessColor}`,
+                          color: freshnessColor
+                        }}
+                      >
+                        {freshness}
+                      </span>
+                    )}
+
                     <span style={{ fontSize: '0.7rem', color: 'rgba(243,241,235,0.5)' }}>
                       Date: <strong style={{ color: '#f3f1eb' }}>{sig.event_date || new Date(sig.created_at).toLocaleDateString()}</strong>
                     </span>
@@ -159,27 +182,50 @@ export function MarketActivityFeedView({ signals: initialSignals }: { signals: S
                     {sig.event_name || sig.entity_name}
                   </h3>
 
-                  <p style={{ fontSize: '0.8rem', color: 'rgba(243,241,235,0.75)', margin: '0 0 10px 0', lineHeight: 1.45 }}>
+                  <p style={{ fontSize: '0.82rem', color: 'rgba(243,241,235,0.8)', margin: '0 0 10px 0', lineHeight: 1.5 }}>
                     {sig.summary}
                   </p>
 
-                  <div style={{ display: 'flex', gap: 14, fontSize: '0.72rem', color: 'rgba(243,241,235,0.5)', flexWrap: 'wrap' }}>
+                  <div style={{ display: 'flex', gap: 14, fontSize: '0.75rem', color: 'rgba(243,241,235,0.6)', flexWrap: 'wrap' }}>
                     {sig.company_name && (
                       <div>
-                        Company: <strong style={{ color: '#f3f1eb' }}>{sig.company_name}</strong>
+                        Company:{' '}
+                        {sig.company_slug ? (
+                          <CompanyIntelligencePreview
+                            company={{
+                              name: sig.company_name,
+                              slug: sig.company_slug
+                            }}
+                          >
+                            <Link href={`/companies/${sig.company_slug}`} style={{ color: '#f3f1eb', fontWeight: 700 }}>
+                              {sig.company_name}
+                            </Link>
+                          </CompanyIntelligencePreview>
+                        ) : (
+                          <strong style={{ color: '#f3f1eb' }}>{sig.company_name}</strong>
+                        )}
                       </div>
                     )}
+
                     {sig.project_name && (
                       <div>
-                        Project: <strong style={{ color: '#38bdf8' }}>{sig.project_name}</strong>
+                        Project:{' '}
+                        {sig.project_slug ? (
+                          <Link href={`/projects/${sig.project_slug}`} style={{ color: '#38bdf8', fontWeight: 700 }}>
+                            {sig.project_name}
+                          </Link>
+                        ) : (
+                          <strong style={{ color: '#38bdf8' }}>{sig.project_name}</strong>
+                        )}
                       </div>
                     )}
+
                     {sig.source && (
                       <div>
                         Source: <span style={{ color: 'rgba(243,241,235,0.7)' }}>{sig.source}</span>
                         {sig.source_url && (
                           <a href={sig.source_url} target="_blank" rel="noreferrer" style={{ marginLeft: 4, color: '#c7a675' }}>
-                            ↗
+                            ↗ Citation
                           </a>
                         )}
                       </div>
@@ -219,4 +265,3 @@ export function MarketActivityFeedView({ signals: initialSignals }: { signals: S
     </div>
   );
 }
-

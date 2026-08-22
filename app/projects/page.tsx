@@ -1,10 +1,11 @@
 import Link from 'next/link';
-import {SiteHeader} from '@/components/SiteHeader';
-import {SiteFooter} from '@/components/SiteFooter';
-import {getPublishedProjects} from '@/lib/data';
+import { SiteHeader } from '@/components/SiteHeader';
+import { SiteFooter } from '@/components/SiteFooter';
+import { getPublishedProjects } from '@/lib/data';
+import { CompanyIntelligencePreview } from '@/components/CompanyIntelligencePreview';
 
 export const metadata = {
-  title: 'Projects',
+  title: 'Project Database & Construction Intelligence',
   description: 'Track completed projects, active construction and planned developments across Romania.'
 };
 
@@ -31,7 +32,7 @@ export default async function Projects({
   searchParams
 }: {
   searchParams: Promise<{ status?: string; type?: string; q?: string }>;
-}){
+}) {
   const { status = '', type = '', q = '' } = await searchParams;
   const allProjects = await getPublishedProjects();
 
@@ -47,11 +48,11 @@ export default async function Projects({
       <SiteHeader />
       <main className="shell">
         <section className="page-hero">
-          <div className="eyebrow">Project Database & Construction Intelligence</div>
+          <div className="eyebrow" style={{ color: '#c7a675' }}>Project Intelligence & Development Database</div>
           <h1>PROJECTS</h1>
           <p>
-            Track verified development milestones, active construction sites and planned masterplans across Romania.
-            Access accurate consortium details, engineering specs, and timeline progress.
+            Track verified development milestones, active construction sites, structural surface areas, and masterplans across Romania.
+            Access accurate developer consortium details, engineering specs, and timeline progress.
           </p>
         </section>
 
@@ -89,20 +90,64 @@ export default async function Projects({
         <div className="project-grid" style={{ marginBottom: 90 }}>
           {filtered.length > 0 ? (
             filtered.map(p => (
-              <Link
-                href={`/projects/${p.slug}`}
+              <div
                 className="project-card"
                 key={p.slug}
-                style={{ '--bg': `url('${p.image}')` } as React.CSSProperties}
+                style={{
+                  '--bg': `url('${p.image}')`,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justify: 'space-between',
+                  padding: 24,
+                  minHeight: 280,
+                  position: 'relative'
+                } as React.CSSProperties}
               >
-                <span className="tag">{p.status}</span>
-                <h3>{p.name}</h3>
-                <p>{p.location}</p>
-                <div className="card-meta">
-                  <span>{p.type}</span>
-                  {p.completion && <span>{p.completion}</span>}
+                <div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
+                    <span className="tag">{p.status}</span>
+                    <span style={{ fontSize: 11, color: '#c7a675', fontWeight: 700 }}>{p.type}</span>
+                  </div>
+
+                  <h3 style={{ fontSize: 22, fontWeight: 800, color: '#fff', margin: '0 0 6px 0' }}>
+                    <Link href={`/projects/${p.slug}`} style={{ color: '#fff', textDecoration: 'none' }}>
+                      {p.name}
+                    </Link>
+                  </h3>
+
+                  <p style={{ fontSize: 13, color: '#ccc', margin: '0 0 12px 0' }}>{p.location}</p>
+
+                  {p.developer_slug ? (
+                    <div style={{ fontSize: 12, color: '#aaa', marginBottom: 16 }}>
+                      DEVELOPER:{' '}
+                      <CompanyIntelligencePreview
+                        company={{
+                          name: p.developer || 'Developer',
+                          slug: p.developer_slug,
+                          type: p.developer_type
+                        }}
+                      >
+                        <Link href={`/companies/${p.developer_slug}`} style={{ color: '#c7a675', fontWeight: 700, textDecoration: 'none' }}>
+                          {p.developer}
+                        </Link>
+                      </CompanyIntelligencePreview>
+                    </div>
+                  ) : (
+                    <div style={{ fontSize: 12, color: '#aaa', marginBottom: 16 }}>
+                      DEVELOPER: <strong style={{ color: '#fff' }}>{p.developer}</strong>
+                    </div>
+                  )}
                 </div>
-              </Link>
+
+                <div className="card-meta" style={{ borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: 12, display: 'flex', justifyContent: 'space-between', fontSize: 12 }}>
+                  <span>
+                    SURFACE: {p.surface_area ? `${p.surface_area.toLocaleString()} m²` : 'NOT AVAILABLE'}
+                  </span>
+                  <Link href={`/projects/${p.slug}`} style={{ color: '#fff', fontWeight: 700, textDecoration: 'none' }}>
+                    OPEN DOSSIER →
+                  </Link>
+                </div>
+              </div>
             ))
           ) : (
             <div className="empty full" style={{ gridColumn: '1 / -1', padding: '40px 20px', textAlign: 'center' }}>

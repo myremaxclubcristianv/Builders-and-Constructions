@@ -1,13 +1,14 @@
-import {notFound} from 'next/navigation';
+import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import type {Metadata} from 'next';
-import {getProjectBySlug, demoProjects} from '@/lib/data';
-import {getAdminIdentity} from '@/lib/admin-auth';
-import {getPublicStorageUrl} from '@/components/MediaManager';
-import {ROLE_LABELS} from '@/components/RelationshipEditor';
-import {STAGES} from '@/components/ProjectProgressEditor';
-import {SiteHeader} from '@/components/SiteHeader';
-import {SiteFooter} from '@/components/SiteFooter';
+import type { Metadata } from 'next';
+import { getProjectBySlug, demoProjects, MarketSignalItem } from '@/lib/data';
+import { getAdminIdentity } from '@/lib/admin-auth';
+import { getPublicStorageUrl } from '@/components/MediaManager';
+import { ROLE_LABELS } from '@/components/RelationshipEditor';
+import { STAGES } from '@/components/ProjectProgressEditor';
+import { SiteHeader } from '@/components/SiteHeader';
+import { SiteFooter } from '@/components/SiteFooter';
+import { CompanyIntelligencePreview } from '@/components/CompanyIntelligencePreview';
 
 export async function generateMetadata({
   params,
@@ -29,8 +30,8 @@ export async function generateMetadata({
   const isIndexable = p.published_at && !isPreview;
 
   return {
-    title: p.name,
-    description: p.description || `Verified developments, project team and progress for ${p.name}.`,
+    title: `${p.name} — Romanian Development Project Dossier`,
+    description: p.description || `Verified developments, project team, structural specifications and progress for ${p.name} in ${p.location || 'Romania'}.`,
     alternates: {
       canonical: `https://constructions.aixluxury.com/projects/${p.slug}`
     },
@@ -66,7 +67,7 @@ export default async function ProjectProfile({
   const data = await getProjectBySlug(slug, isPreviewAllowed);
   if (!data?.project) notFound();
 
-  const { project: p, team, media, heroMedia, progress, latestProgress, articles } = data;
+  const { project: p, team, media, heroMedia, progress, latestProgress, signals, articles } = data;
   const heroUrl = heroMedia ? getPublicStorageUrl(heroMedia.storage_key) : p.image;
 
   return (
@@ -74,197 +75,222 @@ export default async function ProjectProfile({
       <SiteHeader />
       <main>
         {isPreviewAllowed && (
-          <div style={{ background: '#d4af37', color: '#000', padding: '10px 24px', textAlign: 'center', fontWeight: 700, fontSize: 13, letterSpacing: '0.05em' }}>
+          <div style={{ background: '#c7a675', color: '#000', padding: '10px 24px', textAlign: 'center', fontWeight: 800, fontSize: 12, letterSpacing: '0.08em' }}>
             ADMIN PREVIEW MODE — DRAFT RECORD (NOT VISIBLE ANONYMOUSLY)
           </div>
         )}
 
         {/* Hero Section */}
-        <section className="hero" style={{ minHeight: 680 }}>
+        <section className="hero" style={{ minHeight: 640, position: 'relative' }}>
           <div
             style={{
               position: 'absolute',
               inset: 0,
-              background: `linear-gradient(0deg,rgba(12,14,12,.92),rgba(12,14,12,.25)),url('${heroUrl}') center/cover`
+              background: `linear-gradient(0deg,rgba(12,14,12,.94),rgba(12,14,12,.3)),url('${heroUrl}') center/cover`
             }}
           />
-          <div className="shell hero-content">
-            <div className="eyebrow">Verified project intelligence</div>
+          <div className="shell hero-content" style={{ position: 'relative', zIndex: 2 }}>
+            <div className="eyebrow" style={{ color: '#c7a675' }}>Verified Project Dossier & Construction Intelligence</div>
             <span className="tag">{p.status}</span>
-            <h1 style={{ fontSize: 'clamp(52px,8vw,110px)', marginTop: 18 }}>{p.name.toUpperCase()}</h1>
-            <p>
+            <h1 style={{ fontSize: 'clamp(42px,7vw,96px)', marginTop: 16, textTransform: 'uppercase' }}>{p.name}</h1>
+            <p style={{ fontSize: '1.2rem', color: '#d8d6ce' }}>
               {p.location}
               <br />
-              {p.type} {p.developer ? `· ${p.developer}` : ''}
+              {p.type}{' '}
+              {p.developer_slug ? (
+                <span>
+                  · Developer:{' '}
+                  <CompanyIntelligencePreview
+                    company={{
+                      name: p.developer || 'Developer',
+                      slug: p.developer_slug,
+                      type: p.developer_type
+                    }}
+                  >
+                    <Link href={`/companies/${p.developer_slug}`} style={{ color: '#c7a675', fontWeight: 800, textDecoration: 'none' }}>
+                      {p.developer}
+                    </Link>
+                  </CompanyIntelligencePreview>
+                </span>
+              ) : (
+                p.developer ? `· ${p.developer}` : ''
+              )}
             </p>
           </div>
         </section>
 
-        {/* Project Facts & Verification */}
+        {/* Project Specifications & Verification */}
         <section className="section shell">
           <div className="section-head">
             <div>
-              <div className="eyebrow">Project Intelligence</div>
+              <div className="eyebrow" style={{ color: '#c7a675' }}>Project Intelligence</div>
               <h2>SPECIFICATIONS & METRICS</h2>
             </div>
           </div>
           <div className="company-grid">
-            {p.status && (
-              <div className="company">
-                <span className="company-num">Current Status</span>
-                <h3>{p.status}</h3>
-                <p>Tracked and verified</p>
-              </div>
-            )}
-            {p.completion && (
-              <div className="company">
-                <span className="company-num">Estimated Completion</span>
-                <h3>{p.completion}</h3>
-                <p>Verified timeline target</p>
-              </div>
-            )}
-            {p.surface_area && (
-              <div className="company">
-                <span className="company-num">Surface Area</span>
-                <h3>{p.surface_area.toLocaleString()} m²</h3>
-                <p>Gross built area</p>
-              </div>
-            )}
-            {p.unit_count && (
-              <div className="company">
-                <span className="company-num">Units / Volume</span>
-                <h3>{p.unit_count.toLocaleString()}</h3>
-                <p>Confirmed capacity</p>
-              </div>
-            )}
+            <div className="company">
+              <span className="company-num">Current Status</span>
+              <h3>{p.status}</h3>
+              <p>Tracked and verified</p>
+            </div>
+
+            <div className="company">
+              <span className="company-num">Estimated Completion</span>
+              <h3>{p.completion || 'INSUFFICIENT DATA'}</h3>
+              <p>Verified timeline target</p>
+            </div>
+
+            <div className="company">
+              <span className="company-num">Surface Area</span>
+              <h3>{p.surface_area ? `${p.surface_area.toLocaleString()} m²` : 'NOT AVAILABLE'}</h3>
+              <p>Gross built area</p>
+            </div>
+
+            <div className="company">
+              <span className="company-num">Units / Capacity</span>
+              <h3>{p.unit_count ? `${p.unit_count.toLocaleString()}` : 'NOT AVAILABLE'}</h3>
+              <p>Confirmed volume</p>
+            </div>
           </div>
 
           {p.description && (
-            <p style={{ color: '#b9b6ae', maxWidth: 700, lineHeight: 1.8, marginTop: 36, fontSize: 16 }}>
+            <p style={{ color: '#b9b6ae', maxWidth: 740, lineHeight: 1.8, marginTop: 36, fontSize: 16 }}>
               {p.description}
             </p>
           )}
         </section>
 
-        {/* Project Team (Only rendered if relationships exist - Premium Empty State) */}
+        {/* Project Team & Consortium */}
         {team.length > 0 && (
           <section className="section shell">
             <div className="section-head">
               <div>
-                <div className="eyebrow">Project Consortium</div>
-                <h2>PROJECT TEAM</h2>
+                <div className="eyebrow" style={{ color: '#c7a675' }}>Project Consortium</div>
+                <h2>PROJECT TEAM & STAKEHOLDERS</h2>
               </div>
             </div>
             <div className="company-grid">
               {team.map(member => (
-                <Link href={`/companies/${member.slug}`} className="company" key={`${member.id}-${member.role}`}>
-                  <span className="company-num" style={{ textTransform: 'uppercase' }}>
-                    {ROLE_LABELS[member.role] || member.role.replaceAll('_', ' ')}
-                  </span>
+                <div className="company" key={`${member.id}-${member.role}`} style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
                   <div>
-                    <h3>{member.name}</h3>
-                    <p>{member.type || 'Practice'}</p>
+                    <span className="company-num" style={{ textTransform: 'uppercase', color: '#c7a675' }}>
+                      {ROLE_LABELS[member.role] || member.role.replaceAll('_', ' ')}
+                    </span>
+                    <h3 style={{ marginTop: 4 }}>
+                      <CompanyIntelligencePreview
+                        company={{
+                          name: member.name,
+                          slug: member.slug,
+                          type: member.type,
+                          location: member.location
+                        }}
+                      >
+                        <Link href={`/companies/${member.slug}`} style={{ color: '#fff', textDecoration: 'none' }}>
+                          {member.name}
+                        </Link>
+                      </CompanyIntelligencePreview>
+                    </h3>
+                    <p style={{ marginTop: 6 }}>{member.type || 'Practice'}</p>
                   </div>
-                  <footer>
-                    <span>View company profile →</span>
-                    {member.verified_at && <span style={{ color: '#86efac', marginLeft: 8 }}>· Verified</span>}
+                  <footer style={{ marginTop: 16, paddingTop: 12, borderTop: '1px solid #1a1e1c', display: 'flex', justifyContent: 'space-between', fontSize: 12 }}>
+                    <span>{member.location || 'Romania'}</span>
+                    <Link href={`/companies/${member.slug}`} style={{ color: '#c7a675', fontWeight: 700, textDecoration: 'none' }}>
+                      COMPANY DOSSIER →
+                    </Link>
                   </footer>
-                </Link>
+                </div>
               ))}
             </div>
           </section>
         )}
 
-        {/* Verified Construction Progress & Timeline */}
-        {latestProgress && (
+        {/* Verified Signals & Milestone Progress */}
+        {(latestProgress || signals.length > 0) && (
           <section className="section shell">
             <div className="section-head">
               <div>
-                <div className="eyebrow">Verified Construction Progress</div>
-                <h2>CURRENT MILESTONE & TIMELINE</h2>
+                <div className="eyebrow" style={{ color: '#c7a675' }}>Verified Activity Stream</div>
+                <h2>MILESTONES & MARKET SIGNALS</h2>
               </div>
             </div>
 
-            {/* Latest Progress Highlight */}
-            <div
-              style={{
-                background: '#141715',
-                border: '1px solid rgba(212, 175, 55, 0.4)',
-                borderRadius: 8,
-                padding: '24px 28px',
-                marginBottom: 32,
-                display: 'flex',
-                justifyContent: 'space-between',
-                alignItems: 'center',
-                flexWrap: 'wrap',
-                gap: 20
-              }}
-            >
-              <div>
-                <span style={{ fontSize: 12, textTransform: 'uppercase', color: '#d4af37', fontWeight: 700, letterSpacing: '0.05em' }}>
-                  Latest Verified Milestone
-                </span>
-                <h3 style={{ fontSize: 28, color: '#fff', margin: '6px 0 8px 0', textTransform: 'uppercase', letterSpacing: '-0.02em' }}>
-                  {STAGES.find(s => s.value === latestProgress.stage)?.label || latestProgress.stage}
-                </h3>
-                {latestProgress.note && <p style={{ fontSize: 14, color: '#b9b6ae', margin: 0 }}>{latestProgress.note}</p>}
-                {latestProgress.progress_date && (
-                  <div style={{ fontSize: 12, color: '#888', marginTop: 8 }}>
-                    Verified on {latestProgress.progress_date} {latestProgress.source ? `· Source: ${latestProgress.source}` : ''}
+            {latestProgress && (
+              <div
+                style={{
+                  background: '#141715',
+                  border: '1px solid rgba(199, 166, 117, 0.4)',
+                  borderRadius: 8,
+                  padding: '24px 28px',
+                  marginBottom: 32,
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  flexWrap: 'wrap',
+                  gap: 20
+                }}
+              >
+                <div>
+                  <span style={{ fontSize: 12, textTransform: 'uppercase', color: '#c7a675', fontWeight: 800, letterSpacing: '0.08em' }}>
+                    Latest Construction Progress Update
+                  </span>
+                  <h3 style={{ fontSize: 28, color: '#fff', margin: '6px 0 8px 0', textTransform: 'uppercase', letterSpacing: '-0.02em' }}>
+                    {STAGES.find(s => s.value === latestProgress.stage)?.label || latestProgress.stage}
+                  </h3>
+                  {latestProgress.note && <p style={{ fontSize: 14, color: '#b9b6ae', margin: 0 }}>{latestProgress.note}</p>}
+                  {latestProgress.progress_date && (
+                    <div style={{ fontSize: 12, color: '#888', marginTop: 8 }}>
+                      Verified on {latestProgress.progress_date} {latestProgress.source ? `· Source: ${latestProgress.source}` : ''}
+                    </div>
+                  )}
+                </div>
+
+                {latestProgress.percentage !== null && latestProgress.percentage !== undefined && (
+                  <div style={{ textAlign: 'right' }}>
+                    <div style={{ fontSize: 48, fontWeight: 800, color: '#c7a675', lineHeight: 1 }}>
+                      {latestProgress.percentage}%
+                    </div>
+                    <span style={{ fontSize: 12, color: '#aaa9a1', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                      Completion
+                    </span>
                   </div>
                 )}
               </div>
+            )}
 
-              {latestProgress.percentage !== null && latestProgress.percentage !== undefined && (
-                <div style={{ textAlign: 'right' }}>
-                  <div style={{ fontSize: 48, fontWeight: 800, color: '#d4af37', lineHeight: 1 }}>
-                    {latestProgress.percentage}%
-                  </div>
-                  <span style={{ fontSize: 12, color: '#aaa9a1', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                    Completion
-                  </span>
-                </div>
-              )}
-            </div>
-
-            {/* Visual Timeline of Verified Updates */}
-            {progress.length > 1 && (
-              <div style={{ marginTop: 24 }}>
-                <div className="eyebrow" style={{ marginBottom: 14 }}>
-                  Verified Historical Milestones
-                </div>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: 14, maxWidth: 640 }}>
-                  {progress.map(item => (
-                    <div
-                      key={item.id}
-                      style={{
-                        padding: '14px 18px',
-                        background: '#0d0f0e',
-                        border: '1px solid #222',
-                        borderRadius: 6,
-                        display: 'flex',
-                        justifyContent: 'space-between',
-                        alignItems: 'center',
-                        gap: 12
-                      }}
-                    >
-                      <div>
-                        <span style={{ fontSize: 11, color: '#d4af37', fontWeight: 600 }}>
-                          {item.progress_date || 'Milestone date confirmed'}
-                        </span>
-                        <h4 style={{ margin: '3px 0 0 0', fontSize: 15, color: '#fff', textTransform: 'capitalize' }}>
-                          {STAGES.find(s => s.value === item.stage)?.label || item.stage}
-                        </h4>
-                        {item.note && <p style={{ fontSize: 12, color: '#aaa9a1', margin: '4px 0 0 0' }}>{item.note}</p>}
+            {/* Signals List */}
+            {signals.length > 0 && (
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 12, maxWidth: 800 }}>
+                {signals.map(s => (
+                  <div
+                    key={s.id}
+                    style={{
+                      padding: '14px 18px',
+                      background: '#141715',
+                      border: '1px solid #262927',
+                      borderRadius: 6,
+                      display: 'flex',
+                      justifyContent: 'space-between',
+                      alignItems: 'center',
+                      flexWrap: 'wrap',
+                      gap: 12
+                    }}
+                  >
+                    <div>
+                      <div style={{ display: 'flex', gap: 8, alignItems: 'center', marginBottom: 4 }}>
+                        <span style={{ fontSize: 10, fontWeight: 800, color: '#38bdf8' }}>{s.signal_type.replaceAll('_', ' ')}</span>
+                        <span style={{ fontSize: 11, color: '#888' }}>{s.event_date ? new Date(s.event_date).toLocaleDateString('en-GB') : 'RECENT'}</span>
                       </div>
-                      {item.percentage !== null && item.percentage !== undefined && (
-                        <span style={{ fontSize: 16, fontWeight: 700, color: '#d4af37', whiteSpace: 'nowrap' }}>
-                          {item.percentage}%
-                        </span>
-                      )}
+                      <h4 style={{ margin: 0, fontSize: 15, color: '#fff', fontWeight: 700 }}>{s.title}</h4>
+                      {s.summary && <p style={{ fontSize: 13, color: '#b5b3aa', margin: '4px 0 0 0' }}>{s.summary}</p>}
                     </div>
-                  ))}
-                </div>
+
+                    {s.source_url && (
+                      <a href={s.source_url} target="_blank" rel="noreferrer" style={{ fontSize: 12, color: '#c7a675', textDecoration: 'none', fontWeight: 700 }}>
+                        Citation ↗
+                      </a>
+                    )}
+                  </div>
+                ))}
               </div>
             )}
           </section>
@@ -275,7 +301,7 @@ export default async function ProjectProfile({
           <section className="section shell">
             <div className="section-head">
               <div>
-                <div className="eyebrow">Project Imagery</div>
+                <div className="eyebrow" style={{ color: '#c7a675' }}>Project Imagery</div>
                 <h2>GALLERY & ASSETS</h2>
               </div>
             </div>
@@ -321,12 +347,12 @@ export default async function ProjectProfile({
           </section>
         )}
 
-        {/* Related Editorial Stories */}
+        {/* Related Stories */}
         {articles.length > 0 && (
           <section className="section shell">
             <div className="section-head">
               <div>
-                <div className="eyebrow">Editorial Intelligence</div>
+                <div className="eyebrow" style={{ color: '#c7a675' }}>Editorial Intelligence</div>
                 <h2>RELATED STORIES</h2>
               </div>
             </div>
@@ -342,11 +368,11 @@ export default async function ProjectProfile({
           </section>
         )}
 
-        {/* Project Presentation & Involvement Actions */}
+        {/* Presentation & Involvement Actions */}
         <section className="section shell" style={{ borderTop: '1px solid var(--line)', paddingTop: 60, paddingBottom: 60 }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 24 }}>
             <div style={{ padding: 24, background: '#141715', border: '1px solid #262927', borderRadius: 6 }}>
-              <div className="eyebrow" style={{ color: '#d4af37' }}>Project Presentation</div>
+              <div className="eyebrow" style={{ color: '#c7a675' }}>Project Presentation</div>
               <h3 style={{ fontSize: 20, margin: '8px 0 10px 0', textTransform: 'uppercase' }}>
                 WANT THIS PROJECT PRESENTED AT ITS FULL POTENTIAL?
               </h3>
@@ -359,7 +385,7 @@ export default async function ProjectProfile({
             </div>
 
             <div style={{ padding: 24, background: '#141715', border: '1px solid #262927', borderRadius: 6 }}>
-              <div className="eyebrow" style={{ color: '#d4af37' }}>Stakeholder Attribution</div>
+              <div className="eyebrow" style={{ color: '#c7a675' }}>Stakeholder Attribution</div>
               <h3 style={{ fontSize: 20, margin: '8px 0 10px 0', textTransform: 'uppercase' }}>
                 HAVE INFORMATION OR REPRESENT THIS PROJECT?
               </h3>

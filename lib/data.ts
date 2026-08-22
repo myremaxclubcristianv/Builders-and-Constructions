@@ -12,14 +12,18 @@ export type Project = {
   completion?: string;
   estimated_completion?: string;
   estimated_investment?: number;
-  surface_area?: number;
-  unit_count?: number;
+  surface_area?: number | null;
+  unit_count?: number | null;
   developer?: string;
+  developer_slug?: string;
+  developer_type?: string;
   image?: string;
   description?: string;
   is_featured?: boolean;
   content_state?: string;
   published_at?: string | null;
+  latest_signal?: string | null;
+  evidence_url?: string | null;
 };
 
 export type Company = {
@@ -35,7 +39,14 @@ export type Company = {
   services?: string[];
   markets?: string[];
   certifications?: string[];
-  projects?: number;
+  projects?: number | null;
+  active_projects_count?: number | null;
+  market_signals_count?: number | null;
+  last_activity_date?: string | null;
+  signal_freshness?: 'FRESH' | 'RECENT' | 'AGING' | 'STALE' | null;
+  cui_cif?: string | null;
+  verification_level?: string | null;
+  latest_signal?: string | null;
   status?: string;
   specialism?: string;
   is_featured?: boolean;
@@ -63,8 +74,12 @@ export type ConnectedProject = {
   role: string;
   status: string;
   project_type?: string;
+  surface_area?: number | null;
+  unit_count?: number | null;
   image?: string;
   verified_at?: string | null;
+  latest_signal?: string | null;
+  evidence_url?: string | null;
 };
 
 export type ConnectedCompany = {
@@ -73,6 +88,7 @@ export type ConnectedCompany = {
   slug: string;
   role: string;
   type: string;
+  location?: string;
   verified_at?: string | null;
 };
 
@@ -104,7 +120,44 @@ export type EditorialArticle = {
   content_state?: string;
 };
 
-// Local development demonstration fallbacks (ONLY used when Supabase is completely unconfigured in DEVELOPMENT)
+export type MarketSignalItem = {
+  id: string;
+  signal_type: string;
+  title: string;
+  event_date?: string | null;
+  summary?: string | null;
+  source_url?: string | null;
+  source_tier?: string | null;
+  verification_state?: string | null;
+  commercial_relevance?: string | null;
+  company_id?: string | null;
+  company_name?: string | null;
+  company_slug?: string | null;
+  project_id?: string | null;
+  project_name?: string | null;
+  project_slug?: string | null;
+  location?: string | null;
+  why_it_matters?: string | null;
+  created_at: string;
+};
+
+export type GeographicRegionIntelligence = {
+  region: string;
+  companies_count: number | null;
+  projects_count: number | null;
+  signals_count: number | null;
+  last_activity?: string | null;
+};
+
+export type SectorIntelligence = {
+  sector: string;
+  label: string;
+  companies_count: number | null;
+  projects_count: number | null;
+  signals_count: number | null;
+  last_activity?: string | null;
+};
+
 export const demoProjects: Project[] = [
   {
     name: 'Riverside Quarter',
@@ -146,7 +199,7 @@ export const demoCompanies: Company[] = [
     type: 'Construction Company',
     location: 'Bucharest',
     description: 'A premium profile can turn an established body of work into a clearer commercial story.',
-    projects: 0,
+    projects: null,
     status: 'Profile opportunity',
     specialism: 'General construction'
   },
@@ -156,7 +209,7 @@ export const demoCompanies: Company[] = [
     type: 'Developer',
     location: 'Romania',
     description: 'Demonstration profile for a developer and its connected project portfolio.',
-    projects: 0,
+    projects: null,
     status: 'Profile opportunity',
     specialism: 'Residential & mixed-use'
   },
@@ -166,7 +219,7 @@ export const demoCompanies: Company[] = [
     type: 'Engineering',
     location: 'Cluj-Napoca',
     description: 'Demonstration profile for an engineering practice with work worth discovering.',
-    projects: 0,
+    projects: null,
     status: 'Profile opportunity',
     specialism: 'Structures & MEP'
   }
@@ -175,14 +228,21 @@ export const demoCompanies: Company[] = [
 export const projects = demoProjects;
 export const companies = demoCompanies;
 
-/**
- * Check if demo fallback is permitted.
- * Demo fallback is strictly prohibited in PRODUCTION or when Supabase is configured.
- */
 function canUseDemoFallback(): boolean {
   if (isProductionEnvironment()) return false;
   if (isSupabaseConfigured()) return false;
   return getAppEnvironment() === 'DEVELOPMENT';
+}
+
+export function calculateSignalFreshness(lastDate?: string | null): 'FRESH' | 'RECENT' | 'AGING' | 'STALE' | null {
+  if (!lastDate) return null;
+  const date = new Date(lastDate);
+  if (isNaN(date.getTime())) return null;
+  const diffDays = Math.floor((Date.now() - date.getTime()) / (1000 * 60 * 60 * 24));
+  if (diffDays <= 14) return 'FRESH';
+  if (diffDays <= 45) return 'RECENT';
+  if (diffDays <= 90) return 'AGING';
+  return 'STALE';
 }
 
 export async function getPublishedCompanies(): Promise<Company[]> {
@@ -205,26 +265,63 @@ export async function getPublishedCompanies(): Promise<Company[]> {
 
   if (!data || !data.length) return [];
 
-  return data.map((c: any) => ({
-    id: c.id,
-    name: c.name,
-    slug: c.slug,
-    type: c.type?.replaceAll('_', ' '),
-    location: c.locations?.name ? `${c.locations.name}${c.locations.county ? ` · ${c.locations.county}` : ''}` : 'Romania',
-    description: c.description || '',
-    website: c.website,
-    founded_year: c.founded_year,
-    specializations: c.specializations,
-    services: c.services,
-    markets: c.markets,
-    certifications: c.certifications,
-    status: c.website_verification === 'verified' ? 'Verified Partner' : 'Registered Profile',
-    specialism: c.specializations?.[0] || c.services?.[0] || c.type?.replaceAll('_', ' ') || 'General Construction',
-    is_featured: c.is_featured,
-    website_verification: c.website_verification,
-    content_state: c.content_state,
-    published_at: c.published_at
-  }));
+  // Fetch connected projects count and latest signals per company
+  const companyIds = data.map((c: any) => c.id);
+  const [{ data: rels }, { data: signals }] = await Promise.all([
+    client.from('project_companies').select('company_id, project_id').in('company_id', companyIds),
+    client.from('market_activity_signals').select('company_id, event_date, created_at, title').in('company_id', companyIds).order('created_at', { ascending: false })
+  ]);
+
+  const projCountMap = new Map<string, number>();
+  (rels || []).forEach((r: any) => {
+    projCountMap.set(r.company_id, (projCountMap.get(r.company_id) || 0) + 1);
+  });
+
+  const latestSignalMap = new Map<string, { date: string; title: string }>();
+  (signals || []).forEach((s: any) => {
+    if (!latestSignalMap.has(s.company_id)) {
+      latestSignalMap.set(s.company_id, {
+        date: s.event_date || s.created_at,
+        title: s.title
+      });
+    }
+  });
+
+  return data.map((c: any) => {
+    const sigInfo = latestSignalMap.get(c.id);
+    const hasProjects = projCountMap.has(c.id);
+    const projectCount = hasProjects ? projCountMap.get(c.id)! : (c.projects_count !== undefined && c.projects_count !== null ? c.projects_count : null);
+    const freshness = calculateSignalFreshness(sigInfo?.date);
+
+    return {
+      id: c.id,
+      name: c.name,
+      slug: c.slug,
+      type: c.type?.replaceAll('_', ' '),
+      location: c.locations?.name ? `${c.locations.name}${c.locations.county ? ` · ${c.locations.county}` : ''}` : c.location || 'Romania',
+      description: c.description || '',
+      website: c.website,
+      founded_year: c.founded_year,
+      cui_cif: c.cui_cif || null,
+      verification_level: c.verification_level || (c.website_verification === 'verified' ? 'PUBLICLY_VERIFIED' : 'IDENTIFIED'),
+      specializations: c.specializations || [],
+      services: c.services || [],
+      markets: c.markets || [],
+      certifications: c.certifications || [],
+      projects: projectCount,
+      active_projects_count: projectCount,
+      market_signals_count: (signals || []).filter((s: any) => s.company_id === c.id).length || null,
+      last_activity_date: sigInfo?.date || c.updated_at || c.created_at || null,
+      signal_freshness: freshness,
+      latest_signal: sigInfo?.title || null,
+      status: c.website_verification === 'verified' ? 'Verified Partner' : 'Registered Profile',
+      specialism: c.specializations?.[0] || c.services?.[0] || c.type?.replaceAll('_', ' ') || 'General Construction',
+      is_featured: c.is_featured,
+      website_verification: c.website_verification,
+      content_state: c.content_state,
+      published_at: c.published_at
+    };
+  });
 }
 
 export async function getCompanyBySlug(slug: string, preview = false) {
@@ -239,6 +336,7 @@ export async function getCompanyBySlug(slug: string, preview = false) {
       buildingProjects: [] as ConnectedProject[],
       upcomingProjects: [] as ConnectedProject[],
       timeline: [],
+      signals: [] as MarketSignalItem[],
       media: [] as MediaAsset[],
       articles: [] as EditorialArticle[]
     };
@@ -256,10 +354,10 @@ export async function getCompanyBySlug(slug: string, preview = false) {
   }
   if (!company) return null;
 
-  // Fetch connected projects
+  // Fetch connected projects with extended attributes
   const { data: relData, error: relError } = await client
     .from('project_companies')
-    .select('role, verified_at, projects(id, name, slug, status, project_type, published_at)')
+    .select('role, verified_at, projects(id, name, slug, status, project_type, surface_area, unit_count, published_at)')
     .eq('company_id', company.id);
 
   if (relError) {
@@ -275,6 +373,8 @@ export async function getCompanyBySlug(slug: string, preview = false) {
       role: r.role,
       status: r.projects.status,
       project_type: r.projects.project_type,
+      surface_area: r.projects.surface_area || null,
+      unit_count: r.projects.unit_count || null,
       verified_at: r.verified_at
     }));
 
@@ -288,6 +388,35 @@ export async function getCompanyBySlug(slug: string, preview = false) {
     timelineQuery = timelineQuery.not('verified_at', 'is', null);
   }
   const { data: timeline } = await timelineQuery.order('event_year', { ascending: false });
+
+  // Fetch market signals
+  const { data: signalRecords } = await client
+    .from('market_activity_signals')
+    .select('*, projects(name, slug)')
+    .eq('company_id', company.id)
+    .order('created_at', { ascending: false })
+    .limit(10);
+
+  const signals: MarketSignalItem[] = (signalRecords || []).map((s: any) => ({
+    id: s.id,
+    signal_type: s.signal_type || 'MARKET_ACTIVITY',
+    title: s.title,
+    event_date: s.event_date || s.created_at,
+    summary: s.summary || s.notes || null,
+    source_url: s.source_url || null,
+    source_tier: s.source_tier || 'PRIMARY',
+    verification_state: s.verification_state || 'VERIFIED',
+    commercial_relevance: s.commercial_relevance || 'MEDIUM',
+    company_id: company.id,
+    company_name: company.name,
+    company_slug: company.slug,
+    project_id: s.project_id || null,
+    project_name: s.projects?.name || null,
+    project_slug: s.projects?.slug || null,
+    location: company.locations?.name || company.location || 'Romania',
+    why_it_matters: s.commercial_relevance === 'CRITICAL' ? 'Critical commercial trigger detected' : 'Verified construction milestone',
+    created_at: s.created_at
+  }));
 
   // Fetch media
   const { data: media } = await client
@@ -304,16 +433,21 @@ export async function getCompanyBySlug(slug: string, preview = false) {
   }
   const { data: articles } = await articleQuery.order('published_at', { ascending: false }).limit(6);
 
+  const lastActDate = signals[0]?.event_date || company.updated_at || company.created_at || null;
+  const freshness = calculateSignalFreshness(lastActDate);
+
   return {
     company: {
       id: company.id,
       name: company.name,
       slug: company.slug,
       type: company.type?.replaceAll('_', ' '),
-      location: company.locations?.name ? `${company.locations.name}${company.locations.county ? ` · ${company.locations.county}` : ''}` : 'Romania',
+      location: company.locations?.name ? `${company.locations.name}${company.locations.county ? ` · ${company.locations.county}` : ''}` : company.location || 'Romania',
       description: company.description || '',
       website: company.website,
       founded_year: company.founded_year,
+      cui_cif: company.cui_cif || null,
+      verification_level: company.verification_level || (company.website_verification === 'verified' ? 'PUBLICLY_VERIFIED' : 'IDENTIFIED'),
       specializations: company.specializations || [],
       services: company.services || [],
       markets: company.markets || [],
@@ -323,12 +457,18 @@ export async function getCompanyBySlug(slug: string, preview = false) {
       is_featured: company.is_featured,
       website_verification: company.website_verification,
       content_state: company.content_state,
-      published_at: company.published_at
+      published_at: company.published_at,
+      active_projects_count: connectedProjects.length || null,
+      market_signals_count: signals.length || null,
+      last_activity_date: lastActDate,
+      signal_freshness: freshness,
+      latest_signal: signals[0]?.title || null
     },
     builtProjects,
     buildingProjects,
     upcomingProjects,
     timeline: timeline || [],
+    signals,
     media: media || [],
     articles: articles || []
   };
@@ -342,7 +482,7 @@ export async function getPublishedProjects(): Promise<Project[]> {
 
   const { data, error } = await client
     .from('projects')
-    .select('*, locations(name,county)')
+    .select('*, locations(name,county), project_companies(role, companies(name, slug, type))')
     .not('published_at', 'is', null)
     .order('is_featured', { ascending: false })
     .order('created_at', { ascending: false });
@@ -354,21 +494,31 @@ export async function getPublishedProjects(): Promise<Project[]> {
 
   if (!data || !data.length) return [];
 
-  return data.map((p: any) => ({
-    id: p.id,
-    name: p.name,
-    slug: p.slug,
-    location: p.locations?.name ? `${p.locations.name}${p.locations.county ? ` · ${p.locations.county}` : ''}` : 'Romania',
-    type: p.project_type || 'Development',
-    status: p.status === 'under_construction' ? 'Under construction' : p.status === 'completed' ? 'Completed' : 'Upcoming',
-    completion: p.estimated_completion ? `Est. ${p.estimated_completion}` : undefined,
-    developer: 'Verified Developer',
-    image: 'https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=1200&q=85',
-    description: p.description || '',
-    is_featured: p.is_featured,
-    content_state: p.content_state,
-    published_at: p.published_at
-  }));
+  return data.map((p: any) => {
+    const devRel = (p.project_companies || []).find((pc: any) => pc.role === 'developer' || pc.role === 'general_contractor');
+    const devCompany = devRel?.companies;
+
+    return {
+      id: p.id,
+      name: p.name,
+      slug: p.slug,
+      location: p.locations?.name ? `${p.locations.name}${p.locations.county ? ` · ${p.locations.county}` : ''}` : p.address || 'Romania',
+      type: p.project_type || 'Development',
+      project_type: p.project_type,
+      status: p.status === 'under_construction' ? 'Under construction' : p.status === 'completed' ? 'Completed' : 'Upcoming',
+      completion: p.estimated_completion ? `Est. ${p.estimated_completion}` : undefined,
+      surface_area: p.surface_area || null,
+      unit_count: p.unit_count || null,
+      developer: devCompany?.name || 'Verified Developer',
+      developer_slug: devCompany?.slug || undefined,
+      developer_type: devCompany?.type?.replaceAll('_', ' ') || undefined,
+      image: 'https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=1200&q=85',
+      description: p.description || '',
+      is_featured: p.is_featured,
+      content_state: p.content_state,
+      published_at: p.published_at
+    };
+  });
 }
 
 export async function getProjectBySlug(slug: string, preview = false) {
@@ -384,6 +534,7 @@ export async function getProjectBySlug(slug: string, preview = false) {
       heroMedia: null as MediaAsset | null,
       progress: [] as ProgressMilestone[],
       latestProgress: null as ProgressMilestone | null,
+      signals: [] as MarketSignalItem[],
       articles: [] as EditorialArticle[]
     };
   }
@@ -403,7 +554,7 @@ export async function getProjectBySlug(slug: string, preview = false) {
   // Fetch project team (connected companies)
   const { data: teamRel, error: teamError } = await client
     .from('project_companies')
-    .select('role, verified_at, companies(id, name, slug, type, published_at)')
+    .select('role, verified_at, companies(id, name, slug, type, locations(name), published_at)')
     .eq('project_id', project.id);
 
   if (teamError) {
@@ -418,6 +569,7 @@ export async function getProjectBySlug(slug: string, preview = false) {
       slug: r.companies.slug,
       role: r.role,
       type: r.companies.type?.replaceAll('_', ' '),
+      location: r.companies.locations?.name || undefined,
       verified_at: r.verified_at
     }));
 
@@ -454,12 +606,42 @@ export async function getProjectBySlug(slug: string, preview = false) {
 
   const latestProgress = progress[0] || null;
 
+  // Fetch project market signals
+  const { data: pSignals } = await client
+    .from('market_activity_signals')
+    .select('*, companies(name, slug)')
+    .eq('project_id', project.id)
+    .order('created_at', { ascending: false });
+
+  const signals: MarketSignalItem[] = (pSignals || []).map((s: any) => ({
+    id: s.id,
+    signal_type: s.signal_type || 'PROJECT_MILESTONE',
+    title: s.title,
+    event_date: s.event_date || s.created_at,
+    summary: s.summary || s.notes || null,
+    source_url: s.source_url || null,
+    source_tier: s.source_tier || 'PRIMARY',
+    verification_state: s.verification_state || 'VERIFIED',
+    commercial_relevance: s.commercial_relevance || 'MEDIUM',
+    company_id: s.company_id || null,
+    company_name: s.companies?.name || null,
+    company_slug: s.companies?.slug || null,
+    project_id: project.id,
+    project_name: project.name,
+    project_slug: project.slug,
+    location: project.locations?.name || project.address || 'Romania',
+    why_it_matters: 'Verified project activity event',
+    created_at: s.created_at
+  }));
+
   // Fetch related articles
   let articleQuery = client.from('editorial_content').select('*').contains('related_projects', [project.id]);
   if (!preview) {
     articleQuery = articleQuery.not('published_at', 'is', null);
   }
   const { data: articles } = await articleQuery.order('published_at', { ascending: false }).limit(6);
+
+  const developerEntity = team.find(t => t.role === 'developer' || t.role === 'general_contractor');
 
   return {
     project: {
@@ -473,20 +655,25 @@ export async function getProjectBySlug(slug: string, preview = false) {
       status: project.status === 'under_construction' ? 'Under construction' : project.status === 'completed' ? 'Completed' : 'Upcoming',
       completion: project.estimated_completion ? `Est. ${project.estimated_completion}` : undefined,
       estimated_investment: project.estimated_investment,
-      surface_area: project.surface_area,
-      unit_count: project.unit_count,
-      developer: team.find(t => t.role === 'developer')?.name || 'Featured Developer',
+      surface_area: project.surface_area || null,
+      unit_count: project.unit_count || null,
+      developer: developerEntity?.name || 'Verified Developer',
+      developer_slug: developerEntity?.slug || undefined,
+      developer_type: developerEntity?.type || undefined,
       image: heroMedia ? heroMedia.storage_key : 'https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=1200&q=85',
       description: project.description || '',
       is_featured: project.is_featured,
       content_state: project.content_state,
-      published_at: project.published_at
+      published_at: project.published_at,
+      latest_signal: signals[0]?.title || latestProgress?.note || null,
+      evidence_url: signals[0]?.source_url || latestProgress?.source || null
     },
     team,
     media: media || [],
     heroMedia,
     progress,
     latestProgress,
+    signals,
     articles: articles || []
   };
 }
@@ -522,31 +709,177 @@ export async function getArticleBySlug(slug: string, preview = false) {
   };
 }
 
-export async function searchGlobal(term: string) {
+export async function getIndustryHubData() {
   const client = getServiceClient();
   if (!client) {
-    if (!canUseDemoFallback()) return { matchingCompanies: [], matchingProjects: [], matchingArticles: [] };
+    return {
+      metrics: {
+        verified_companies: isProductionEnvironment() ? null : demoCompanies.length,
+        verified_projects: isProductionEnvironment() ? null : demoProjects.length,
+        active_signals: isProductionEnvironment() ? null : 0,
+        covered_locations: isProductionEnvironment() ? null : 3,
+        last_verified_at: new Date().toISOString()
+      },
+      marketActivity: [] as MarketSignalItem[],
+      sectors: [] as SectorIntelligence[],
+      geography: [] as GeographicRegionIntelligence[],
+      topActiveCompanies: [] as Company[]
+    };
+  }
+
+  const [
+    { count: compCount },
+    { count: projCount },
+    { count: sigCount },
+    { count: locCount },
+    { data: recentSignals },
+    { data: companies },
+    { data: projectsData }
+  ] = await Promise.all([
+    client.from('companies').select('*', { count: 'exact', head: true }).not('published_at', 'is', null),
+    client.from('projects').select('*', { count: 'exact', head: true }).not('published_at', 'is', null),
+    client.from('market_activity_signals').select('*', { count: 'exact', head: true }),
+    client.from('locations').select('*', { count: 'exact', head: true }),
+    client.from('market_activity_signals').select('*, companies(name, slug, type), projects(name, slug)').order('created_at', { ascending: false }).limit(12),
+    client.from('companies').select('id, name, slug, type, specializations, locations(name, county), published_at').not('published_at', 'is', null),
+    client.from('projects').select('id, name, slug, project_type, status, locations(name, county), published_at').not('published_at', 'is', null)
+  ]);
+
+  const marketActivity: MarketSignalItem[] = (recentSignals || []).map((s: any) => ({
+    id: s.id,
+    signal_type: s.signal_type || 'MARKET_SIGNAL',
+    title: s.title,
+    event_date: s.event_date || s.created_at,
+    summary: s.notes || s.summary || 'Verified Romanian construction activity signal.',
+    source_url: s.source_url || null,
+    source_tier: s.source_tier || 'PRIMARY',
+    verification_state: 'VERIFIED',
+    commercial_relevance: s.commercial_relevance || 'MEDIUM',
+    company_id: s.company_id || null,
+    company_name: s.companies?.name || null,
+    company_slug: s.companies?.slug || null,
+    project_id: s.project_id || null,
+    project_name: s.projects?.name || null,
+    project_slug: s.projects?.slug || null,
+    location: s.companies?.locations?.name || 'Romania',
+    why_it_matters: s.commercial_relevance === 'CRITICAL' ? 'High-impact commercial milestone' : 'Verified market progress',
+    created_at: s.created_at
+  }));
+
+  // Sector breakdown based on production projects and companies
+  const sectorList = [
+    { sector: 'residential', label: 'Residential Development' },
+    { sector: 'office', label: 'Office & Workspace' },
+    { sector: 'commercial', label: 'Retail & Commercial' },
+    { sector: 'industrial', label: 'Industrial & Manufacturing' },
+    { sector: 'logistics', label: 'Logistics & Warehousing' },
+    { sector: 'hospitality', label: 'Hospitality & Hotels' },
+    { sector: 'mixed_use', label: 'Mixed-Use Developments' },
+    { sector: 'infrastructure', label: 'Infrastructure & Public Works' }
+  ];
+
+  const sectors: SectorIntelligence[] = sectorList.map(sec => {
+    const matchingComp = (companies || []).filter((c: any) =>
+      c.type?.toLowerCase().includes(sec.sector) ||
+      (c.specializations || []).some((sp: string) => sp.toLowerCase().includes(sec.sector))
+    ).length;
+
+    const matchingProj = (projectsData || []).filter((p: any) =>
+      p.project_type?.toLowerCase().includes(sec.sector)
+    ).length;
+
+    const matchingSig = (recentSignals || []).filter((s: any) =>
+      s.signal_type?.toLowerCase().includes(sec.sector) ||
+      s.title?.toLowerCase().includes(sec.sector)
+    ).length;
+
+    return {
+      sector: sec.sector,
+      label: sec.label,
+      companies_count: matchingComp > 0 ? matchingComp : null,
+      projects_count: matchingProj > 0 ? matchingProj : null,
+      signals_count: matchingSig > 0 ? matchingSig : null,
+      last_activity: matchingSig > 0 ? new Date().toISOString() : null
+    };
+  });
+
+  // Geographic intelligence breakdown
+  const knownRegions = ['Bucharest', 'Ilfov', 'Cluj', 'Timiș', 'Iași', 'Brașov', 'Constanța'];
+  const geography: GeographicRegionIntelligence[] = knownRegions.map(reg => {
+    const matchingComp = (companies || []).filter((c: any) =>
+      c.locations?.name?.toLowerCase().includes(reg.toLowerCase()) ||
+      c.locations?.county?.toLowerCase().includes(reg.toLowerCase())
+    ).length;
+
+    const matchingProj = (projectsData || []).filter((p: any) =>
+      p.locations?.name?.toLowerCase().includes(reg.toLowerCase()) ||
+      p.locations?.county?.toLowerCase().includes(reg.toLowerCase())
+    ).length;
+
+    const matchingSig = (recentSignals || []).filter((s: any) =>
+      s.companies?.locations?.name?.toLowerCase().includes(reg.toLowerCase())
+    ).length;
+
+    return {
+      region: reg,
+      companies_count: matchingComp > 0 ? matchingComp : null,
+      projects_count: matchingProj > 0 ? matchingProj : null,
+      signals_count: matchingSig > 0 ? matchingSig : null,
+      last_activity: (matchingComp > 0 || matchingProj > 0 || matchingSig > 0) ? new Date().toISOString() : null
+    };
+  });
+
+  const topActiveCompanies = await getPublishedCompanies();
+
+  return {
+    metrics: {
+      verified_companies: compCount ?? null,
+      verified_projects: projCount ?? null,
+      active_signals: sigCount ?? null,
+      covered_locations: locCount ?? null,
+      last_verified_at: recentSignals?.[0]?.created_at || new Date().toISOString()
+    },
+    marketActivity,
+    sectors,
+    geography,
+    topActiveCompanies: topActiveCompanies.slice(0, 8)
+  };
+}
+
+export async function searchGlobal(term: string) {
+  return searchIntelligenceGlobal(term);
+}
+
+export async function searchIntelligenceGlobal(term: string) {
+  const client = getServiceClient();
+  if (!client) {
+    if (!canUseDemoFallback()) return { matchingCompanies: [], matchingProjects: [], matchingSignals: [], matchingArticles: [] };
     const matchingCompanies = term ? demoCompanies.filter(c => `${c.name} ${c.type} ${c.location} ${c.specialism}`.toLowerCase().includes(term.toLowerCase())) : [];
     const matchingProjects = term ? demoProjects.filter(p => `${p.name} ${p.type} ${p.location} ${p.developer}`.toLowerCase().includes(term.toLowerCase())) : [];
-    return { matchingCompanies, matchingProjects, matchingArticles: [] };
+    return { matchingCompanies, matchingProjects, matchingSignals: [], matchingArticles: [] };
   }
 
   const cleanTerm = term.trim();
-  if (!cleanTerm) return { matchingCompanies: [], matchingProjects: [], matchingArticles: [] };
+  if (!cleanTerm) return { matchingCompanies: [], matchingProjects: [], matchingSignals: [], matchingArticles: [] };
 
-  const [{ data: cData }, { data: pData }, { data: aData }] = await Promise.all([
+  const [{ data: cData }, { data: pData }, { data: sData }, { data: aData }] = await Promise.all([
     client
       .from('companies')
-      .select('id, name, slug, type, locations(name, county), description')
+      .select('id, name, slug, type, locations(name, county), description, published_at')
       .not('published_at', 'is', null)
       .ilike('name', `%${cleanTerm}%`)
       .limit(15),
     client
       .from('projects')
-      .select('id, name, slug, status, project_type, locations(name, county)')
+      .select('id, name, slug, status, project_type, locations(name, county), published_at')
       .not('published_at', 'is', null)
       .ilike('name', `%${cleanTerm}%`)
       .limit(15),
+    client
+      .from('market_activity_signals')
+      .select('id, title, signal_type, event_date, source_url, notes, companies(name, slug), projects(name, slug)')
+      .ilike('title', `%${cleanTerm}%`)
+      .limit(10),
     client
       .from('editorial_content')
       .select('id, title, slug, excerpt, category, published_at')
@@ -571,6 +904,20 @@ export async function searchGlobal(term: string) {
     location: p.locations?.name || 'Romania'
   }));
 
+  const matchingSignals: MarketSignalItem[] = (sData || []).map((s: any) => ({
+    id: s.id,
+    signal_type: s.signal_type || 'MARKET_SIGNAL',
+    title: s.title,
+    event_date: s.event_date,
+    summary: s.notes || null,
+    source_url: s.source_url || null,
+    company_name: s.companies?.name || null,
+    company_slug: s.companies?.slug || null,
+    project_name: s.projects?.name || null,
+    project_slug: s.projects?.slug || null,
+    created_at: s.event_date || new Date().toISOString()
+  }));
+
   const matchingArticles = (aData || []).map((a: any) => ({
     title: a.title,
     slug: a.slug,
@@ -578,5 +925,5 @@ export async function searchGlobal(term: string) {
     excerpt: a.excerpt || ''
   }));
 
-  return { matchingCompanies, matchingProjects, matchingArticles };
+  return { matchingCompanies, matchingProjects, matchingSignals, matchingArticles };
 }
