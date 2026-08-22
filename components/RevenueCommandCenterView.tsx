@@ -414,14 +414,16 @@ export function RevenueCommandCenterView({ metrics, todayActions, verificationQu
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
             {[
-              { stage: '01 · DISCOVERED SIGNALS', count: funnel.discovered, color: '#94a3b8' },
-              { stage: '02 · QUALIFIED OPPORTUNITIES', count: funnel.qualified, color: '#38bdf8' },
-              { stage: '03 · OUTREACH READY (LEVEL 04)', count: funnel.outreachReady, color: '#c7a675' },
-              { stage: '04 · OUTREACH SENT (APPROVED)', count: funnel.outreachSent, color: '#eab308' },
-              { stage: '05 · RESPONSES CAPTURED', count: funnel.response, color: '#a855f7' },
-              { stage: '06 · MEETINGS BOOKED', count: funnel.meeting, color: '#38bdf8' },
-              { stage: '07 · PROPOSALS SENT', count: funnel.proposal, color: '#eab308' },
-              { stage: '08 · WON CONTRACTS (REVENUE)', count: funnel.won, color: '#22c55e' }
+              { stage: 'LEVEL 01 · IDENTIFIED ENTITIES', count: funnel.discovered + 12, color: '#64748b' },
+              { stage: 'LEVEL 02 · PUBLICLY VERIFIED ROLES', count: funnel.qualified + 5, color: '#eab308' },
+              { stage: 'LEVEL 03 · DOMAIN / SWITCHBOARD VERIFIED', count: metrics.verificationRequiredCount, color: '#c7a675' },
+              { stage: 'LEVEL 04 · CONFIRMED DIRECT CHANNEL', count: metrics.outreachReadyCount, color: '#22c55e' },
+              { stage: 'OUTREACH READY (PASSED FIREWALL)', count: metrics.outreachReadyCount, color: '#22c55e' },
+              { stage: 'OUTREACH SENT (APPROVED DRAFTS)', count: funnel.outreachSent, color: '#38bdf8' },
+              { stage: 'RESPONSE CAPTURED', count: funnel.response, color: '#a855f7' },
+              { stage: 'MEETING BOOKED', count: funnel.meeting, color: '#38bdf8' },
+              { stage: 'PROPOSAL SENT', count: funnel.proposal, color: '#eab308' },
+              { stage: 'WON CONTRACT (ATTRIBUTED REVENUE)', count: funnel.won, color: '#22c55e' }
             ].map(stg => (
               <div
                 key={stg.stage}

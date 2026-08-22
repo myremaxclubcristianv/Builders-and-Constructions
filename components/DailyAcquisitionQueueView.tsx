@@ -363,18 +363,18 @@ export function DailyAcquisitionQueueView({ initialData }: { initialData: DailyQ
           <p style={{ color: 'rgba(243,241,235,0.6)', margin: '0 0 20px 0', fontSize: '0.85rem', maxWidth: 480, marginLeft: 'auto', marginRight: 'auto' }}>
             No pending calls or emails overdue for today. Check the Acquisition Pipeline for high-value targets to approach next.
           </p>
-          <Link href="/admin/acquisition" className="action-btn primary" style={{ minHeight: 44, fontSize: '0.78rem' }}>
-            Browse Pipeline Prospects →
+          <Link href="/admin/intelligence/coverage" className="action-btn primary" style={{ minHeight: 44, fontSize: '0.78rem' }}>
+            Level 04 Contact Acquisition Queue →
           </Link>
         </div>
       ) : (
         <>
-          {renderQueueSection('Overdue Touchpoints', queue.overdue, '#ef4444', 'OVERDUE')}
-          {renderQueueSection('Calls Scheduled Today', queue.callToday, '#22c55e', 'CALL')}
-          {renderQueueSection('Emails / Direct Outreach', queue.emailToday, '#38bdf8', 'EMAIL')}
-          {renderQueueSection('Meetings Today', queue.meetingToday, '#a855f7', 'MEETING')}
-          {renderQueueSection('Proposals Negotiation', queue.proposalToday, '#eab308', 'PROPOSAL')}
-          {renderQueueSection('Follow-up Actions', queue.followUpToday, '#94a3b8', 'FOLLOW-UP')}
+          {renderQueueSection('A. VERIFY FIRST (Level 04 Contact Gaps)', queue.overdue.filter(i => !i.primary_contact?.phone), '#eab308', 'VERIFY FIRST')}
+          {renderQueueSection('B. CALL NOW (Firewall Authorized Direct Outreach)', queue.callToday, '#22c55e', 'CALL NOW')}
+          {renderQueueSection('C. APPROVAL REQUIRED (Outreach Prepared - Human Review Gate)', queue.proposalToday, '#a855f7', 'APPROVAL REQUIRED')}
+          {renderQueueSection('D. FOLLOW UP (Scheduled Commercial Touches)', queue.followUpToday.concat(queue.emailToday), '#38bdf8', 'FOLLOW UP')}
+          {renderQueueSection('E. COOLING (Active Cooldown Period)', queue.meetingToday, '#64748b', 'COOLING')}
+          {renderQueueSection('F. DO NOT CONTACT (Explicit Exclusions)', [], '#ef4444', 'DO NOT CONTACT')}
         </>
       )}
     </div>
