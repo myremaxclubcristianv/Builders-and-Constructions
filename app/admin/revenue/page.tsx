@@ -2,6 +2,9 @@ import { requireAdmin } from '@/lib/admin-auth';
 import { adminExecutiveDailyBriefingData, adminCommercialRevenueData, adminContactIntelligenceMatrixData } from '@/lib/admin-data';
 import { RevenueCommandCenterView } from '@/components/RevenueCommandCenterView';
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 export default async function AdminRevenuePage() {
   await requireAdmin('admin', 'sales');
 

@@ -2,6 +2,9 @@ import { requireAdminOrRole } from '@/lib/admin-auth';
 import { adminDailySalesQueue } from '@/lib/admin-data';
 import { DailyAcquisitionQueueView } from '@/components/DailyAcquisitionQueueView';
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 export default async function AdminAcquisitionTodayPage() {
   await requireAdminOrRole(['admin', 'sales']);
   const queueData = await adminDailySalesQueue();
