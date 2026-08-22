@@ -1,4 +1,5 @@
 import {redirect} from 'next/navigation';
+import {headers} from 'next/headers';
 import {getAdminIdentity} from '@/lib/admin-auth';
 import {AdminNav} from '@/components/AdminNav';
 import {Executive3DGrid} from '@/components/Executive3DGrid';
@@ -9,12 +10,17 @@ export const revalidate = 0;
 export const metadata={title:'Executive Intelligence Terminal | CONSTRUCTIONS',robots:{index:false,follow:false}};
 
 export default async function AdminLayout({children}:{children:React.ReactNode}){
+  const headerList = await headers();
+  const matchedPath = headerList.get('x-matched-path') || headerList.get('next-url') || '';
+  const isLoginPage = matchedPath.includes('/admin/login');
+
   const identity = await getAdminIdentity();
-  if (!identity) redirect('/admin/login');
+  if (!identity && !isLoginPage) redirect('/admin/login');
+
   return (
     <>
       <Executive3DGrid />
-      <AdminNav identity={identity} />
+      {identity && <AdminNav identity={identity} />}
       <main className="admin-main" style={{ position: 'relative', zIndex: 10 }}>
         {children}
       </main>
