@@ -8,46 +8,61 @@
  * - DO NOT CONTACT
  */
 
-export type ExecutiveVerdict = 'CONTACT NOW' | 'RESEARCH REQUIRED' | 'DO NOT CONTACT';
+export type ExecutiveVerdict = 'YES' | 'WAIT' | 'NO' | 'COOLING';
 
 export type ExecutiveVerdictInput = {
-  companyVerified: boolean;
-  hasVerifiedRelationship: boolean;
-  hasVerifiedDecisionMaker: boolean;
-  priorityScore: number;
+  companyVerified?: boolean;
+  hasVerifiedRelationship?: boolean;
+  hasVerifiedDecisionMaker?: boolean;
+  contactLevel?: 'LEVEL_01' | 'LEVEL_02' | 'LEVEL_03' | 'LEVEL_04' | string;
+  priorityScore?: number;
   isNotAFit?: boolean;
   activeCooldown?: boolean;
   isArchived?: boolean;
-  confidence: 'HIGH' | 'MEDIUM' | 'LOW' | 'DISQUALIFIED';
+  confidence?: 'HIGH' | 'MEDIUM' | 'LOW' | 'DISQUALIFIED' | string;
 };
 
 export function evaluateExecutiveVerdict(input: ExecutiveVerdictInput): {
   verdict: ExecutiveVerdict;
   reason: string;
 } {
-  if (input.isNotAFit || input.activeCooldown || input.isArchived || input.confidence === 'DISQUALIFIED') {
+  if (input.activeCooldown) {
     return {
-      verdict: 'DO NOT CONTACT',
-      reason: 'Company is disqualified, archived, or in an active contact cooling period.'
+      verdict: 'COOLING',
+      reason: 'Active contact cooling period prevents immediate outreach.'
     };
   }
 
-  if (!input.companyVerified || !input.hasVerifiedRelationship || !input.hasVerifiedDecisionMaker) {
+  if (input.isNotAFit || input.isArchived || input.confidence === 'DISQUALIFIED') {
     return {
-      verdict: 'RESEARCH REQUIRED',
-      reason: 'Critical evidence missing: company identity, project relationship, or executive contact.'
+      verdict: 'NO',
+      reason: 'Company is disqualified, archived, or not a commercial fit.'
     };
   }
 
-  if (input.priorityScore >= 70 && (input.confidence === 'HIGH' || input.confidence === 'MEDIUM')) {
+  const isContactReady = Boolean(
+    input.hasVerifiedDecisionMaker ||
+    input.contactLevel === 'LEVEL_03' ||
+    input.contactLevel === 'LEVEL_04'
+  );
+
+  if (!input.companyVerified || !input.hasVerifiedRelationship || !isContactReady) {
     return {
-      verdict: 'CONTACT NOW',
-      reason: `High priority opportunity (${input.priorityScore}/100) with verified decision maker and active projects.`
+      verdict: 'WAIT',
+      reason: 'Critical evidence missing: contact verification (Level 03+) or verified project relationship required.'
+    };
+  }
+
+  if ((input.priorityScore ?? 0) >= 50) {
+    return {
+      verdict: 'YES',
+      reason: `Verified opportunity (${input.priorityScore}/100) with verified decision maker and active project activity.`
     };
   }
 
   return {
-    verdict: 'RESEARCH REQUIRED',
-    reason: 'Opportunity score below active threshold; pending further commercial intelligence.'
+    verdict: 'WAIT',
+    reason: 'Opportunity score pending further market activity signals.'
   };
 }
+

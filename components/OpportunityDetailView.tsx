@@ -3,6 +3,7 @@
 import { FormEvent, useState, useMemo } from 'react';
 import Link from 'next/link';
 import { calculateOpportunityScore, OPPORTUNITY_SIGNAL_WEIGHTS } from '@/lib/scoring';
+import { evaluateExecutiveVerdict } from '@/lib/executive-verdict';
 import { SALES_SERVICE_CATALOG, ALL_SERVICES_LIST } from '@/lib/services';
 
 type Company = {
@@ -10,6 +11,8 @@ type Company = {
   name: string;
   slug: string;
   type: string;
+  cui_cif?: string | null;
+  verification_status?: string | null;
   location?: string | null;
   website?: string | null;
   website_status?: string | null;
@@ -520,52 +523,133 @@ Would you be open to reviewing the audit this week?`,
 
       {activeTab === 'workstation' && (
         <>
-          {/* Transparent Opportunity Score Highlight */}
-          <section className="admin-panel" style={{ marginBottom: 24, border: '1px solid #d4af37', background: '#141715' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: 20 }}>
-              <div>
-                <div className="eyebrow" style={{ color: '#d4af37' }}>
-                  Transparent Commercial Opportunity Score
-                </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginTop: 6 }}>
-                  <span
-                    style={{
-                      fontSize: 12,
-                      fontWeight: 800,
-                      textTransform: 'uppercase',
-                      padding: '4px 10px',
-                      borderRadius: 4,
-                      background: liveLevel === 'high' ? '#86efac' : liveLevel === 'medium' ? '#fde047' : '#94a3b8',
-                      color: '#000'
-                    }}
-                  >
-                    {liveLevel.toUpperCase()} OPPORTUNITY
-                  </span>
-                  <span style={{ fontSize: 36, fontWeight: 800, color: '#fff' }}>
-                    {liveScore} <span style={{ fontSize: 18, color: '#888' }}>/ 100</span>
-                  </span>
-                </div>
-                <div style={{ marginTop: 12 }}>
-                  <span style={{ fontSize: 12, color: '#aaa9a1', textTransform: 'uppercase', fontWeight: 600 }}>
-                    Why Outreach This Company:
-                  </span>
-                  <ul style={{ margin: '6px 0 0 0', paddingLeft: 18, fontSize: 13, color: '#d1cfc7', lineHeight: 1.6 }}>
-                    {liveReasons.map((r, i) => (
-                      <li key={i}>{r}</li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
+          {/* 1. EVIDENCE-FIRST COMMERCIAL DOSSIER (FIRST VIEWPORT) */}
+          <section className="admin-panel" style={{ marginBottom: 24, border: '1px solid rgba(199,166,117,0.4)', background: 'rgba(13,16,15,0.95)', padding: 24 }}>
+            {(() => {
+              const executiveVerdictResult = evaluateExecutiveVerdict({
+                companyVerified: Boolean(company.verification_status && company.verification_status !== 'UNVERIFIED'),
+                hasVerifiedRelationship: projects.length > 0,
+                hasVerifiedDecisionMaker: Boolean(opp.owner_id || leads.length > 0),
+                contactLevel: opp.owner_id ? 'LEVEL_03' : 'LEVEL_01',
+                priorityScore: liveScore,
+                isNotAFit: status === 'not_a_fit' || status === 'lost',
+                activeCooldown: status === 'follow_up' && opp.next_follow_up_at ? new Date(opp.next_follow_up_at) > new Date() : false
+              });
 
-              {/* Next Action Box */}
-              <div style={{ background: '#0a0c0b', padding: 18, borderRadius: 6, border: '1px solid #262927', minWidth: 260 }}>
-                <span className="eyebrow" style={{ color: '#d4af37' }}>Next Follow-up Action</span>
-                <h4 style={{ fontSize: 15, color: '#fff', margin: '6px 0 4px 0' }}>{nextAction || 'Schedule Call'}</h4>
-                <div style={{ fontSize: 12, color: '#aaa9a1' }}>
-                  Due: <strong style={{ color: '#fff' }}>{nextActionDate || 'Today'}</strong>
+              const verdictBadgeBg =
+                executiveVerdictResult.verdict === 'YES'
+                  ? '#22c55e'
+                  : executiveVerdictResult.verdict === 'COOLING'
+                  ? '#38bdf8'
+                  : executiveVerdictResult.verdict === 'WAIT'
+                  ? '#eab308'
+                  : '#ef4444';
+
+              const whyNowTrigger =
+                signals.length > 0
+                  ? `Verified market activity signal "${signals[0]}" recorded for active project execution.`
+                  : projects.length > 0
+                  ? `Verified construction activity linked to ${projects[0]?.project?.name || 'active developments'}.`
+                  : 'Company identity registered in market intelligence platform.';
+
+              const contactLevelLabel = opp.owner_id ? 'LEVEL 03 (DIRECT CONTACT)' : 'LEVEL 01 (UNVERIFIED DOMAIN)';
+
+              return (
+                <div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: 16, marginBottom: 16 }}>
+                    <div>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 8 }}>
+                        <span
+                          style={{
+                            fontSize: '0.75rem',
+                            fontWeight: 900,
+                            textTransform: 'uppercase',
+                            padding: '4px 12px',
+                            borderRadius: 4,
+                            background: verdictBadgeBg,
+                            color: '#070908',
+                            letterSpacing: '0.08em'
+                          }}
+                        >
+                          VERDICT: {executiveVerdictResult.verdict}
+                        </span>
+                        <span style={{ fontSize: '0.72rem', color: '#c7a675', fontFamily: 'DM Mono', fontWeight: 700 }}>
+                          [CONFIDENCE: {liveLevel.toUpperCase()}]
+                        </span>
+                      </div>
+
+                      <h2 style={{ fontSize: '1.25rem', margin: 0, color: '#f3f1eb', fontWeight: 800 }}>
+                        {company.name}
+                      </h2>
+                      <div style={{ fontSize: '0.78rem', color: 'rgba(243,241,235,0.6)', marginTop: 4 }}>
+                        CUI/CIF: {company.cui_cif || 'CUI / REGISTRATION EVIDENCE NOT AVAILABLE'} · {company.type} · {company.location || 'Romania'}
+                      </div>
+                    </div>
+
+                    <div style={{ textAlign: 'right' }}>
+                      <span className="eyebrow" style={{ color: '#c7a675', display: 'block', marginBottom: 4 }}>DOMINANT NEXT ACTION</span>
+                      {executiveVerdictResult.verdict === 'YES' ? (
+                        <a
+                          href={`tel:${company.website || ''}`}
+                          className="action-btn primary"
+                          style={{ padding: '8px 18px', fontSize: '0.8rem', fontWeight: 800, background: '#22c55e', color: '#000', textDecoration: 'none', display: 'inline-block' }}
+                        >
+                          📞 CALL NOW
+                        </a>
+                      ) : (
+                        <Link
+                          href={`/admin/companies/${company.id}/decision-makers`}
+                          className="action-btn secondary"
+                          style={{ padding: '8px 18px', fontSize: '0.78rem', fontWeight: 700, color: '#eab308', borderColor: '#eab308', textDecoration: 'none', display: 'inline-block' }}
+                        >
+                          CONTACT VERIFICATION REQUIRED
+                        </Link>
+                      )}
+                    </div>
+                  </div>
+
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 12, background: 'rgba(0,0,0,0.3)', padding: 14, borderRadius: 6, border: '1px solid rgba(244,242,235,0.08)' }}>
+                    <div>
+                      <span style={{ fontSize: '0.6rem', color: '#c7a675', textTransform: 'uppercase', fontWeight: 800, letterSpacing: '0.08em', display: 'block' }}>
+                        WHY NOW?
+                      </span>
+                      <div style={{ fontSize: '0.78rem', color: '#f3f1eb', marginTop: 2, lineHeight: 1.4 }}>
+                        {whyNowTrigger}
+                      </div>
+                    </div>
+
+                    <div>
+                      <span style={{ fontSize: '0.6rem', color: '#38bdf8', textTransform: 'uppercase', fontWeight: 800, letterSpacing: '0.08em', display: 'block' }}>
+                        VERIFIED PROJECT RELATIONSHIP
+                      </span>
+                      <div style={{ fontSize: '0.78rem', color: '#f3f1eb', marginTop: 2, lineHeight: 1.4 }}>
+                        {projects.length > 0
+                          ? `${projects[0]?.project?.name || 'Landmark Project'} (${projects[0]?.role || 'General Contractor'})`
+                          : 'INSUFFICIENT DATA (0 Connected Projects)'}
+                      </div>
+                    </div>
+
+                    <div>
+                      <span style={{ fontSize: '0.6rem', color: '#a855f7', textTransform: 'uppercase', fontWeight: 800, letterSpacing: '0.08em', display: 'block' }}>
+                        CONTACT VERIFICATION STATUS
+                      </span>
+                      <div style={{ fontSize: '0.78rem', color: '#f3f1eb', marginTop: 2, lineHeight: 1.4 }}>
+                        <span className="status-pill" style={{ fontSize: '0.65rem' }}>{contactLevelLabel}</span>
+                      </div>
+                    </div>
+
+                    <div>
+                      <span style={{ fontSize: '0.6rem', color: '#22c55e', textTransform: 'uppercase', fontWeight: 800, letterSpacing: '0.08em', display: 'block' }}>
+                        SCORE & RATIONALE
+                      </span>
+                      <div style={{ fontSize: '0.78rem', color: '#22c55e', marginTop: 2, fontWeight: 700 }}>
+                        {liveScore}/100 — {executiveVerdictResult.reason}
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
+              );
+            })()}
           </section>
 
           {/* Digital Presence Audit Grid */}

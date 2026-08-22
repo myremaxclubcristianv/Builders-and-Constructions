@@ -101,7 +101,7 @@ test('4. Executive Verdict Engine: Unambiguous Decision', () => {
     priorityScore: 88,
     confidence: 'HIGH'
   });
-  assert.strictEqual(readyVerdict.verdict, 'CONTACT NOW');
+  assert.strictEqual(readyVerdict.verdict, 'YES');
 
   const researchVerdict = evaluateExecutiveVerdict({
     companyVerified: true,
@@ -110,7 +110,7 @@ test('4. Executive Verdict Engine: Unambiguous Decision', () => {
     priorityScore: 88,
     confidence: 'MEDIUM'
   });
-  assert.strictEqual(researchVerdict.verdict, 'RESEARCH REQUIRED');
+  assert.strictEqual(researchVerdict.verdict, 'WAIT');
 
   const blockedVerdict = evaluateExecutiveVerdict({
     companyVerified: true,
@@ -120,7 +120,7 @@ test('4. Executive Verdict Engine: Unambiguous Decision', () => {
     isNotAFit: true,
     confidence: 'DISQUALIFIED'
   });
-  assert.strictEqual(blockedVerdict.verdict, 'DO NOT CONTACT');
+  assert.strictEqual(blockedVerdict.verdict, 'NO');
 });
 
 test('5. Next Best Action Engine', () => {

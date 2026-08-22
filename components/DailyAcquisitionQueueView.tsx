@@ -232,27 +232,50 @@ export function DailyAcquisitionQueueView({ initialData }: { initialData: DailyQ
                   </div>
                 ) : (
                   <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', marginTop: 10, borderTop: '1px solid rgba(244,242,235,0.06)', paddingTop: 10 }}>
-                    {item.primary_contact?.phone && (
-                      <a
-                        href={`tel:${item.primary_contact.phone}`}
-                        className="action-btn secondary"
-                        style={{ padding: '6px 10px', fontSize: '0.72rem', minHeight: 38 }}
-                      >
-                        Call
-                      </a>
-                    )}
+                    {(() => {
+                      const hasPhone = Boolean(item.primary_contact?.phone);
+                      const isLevel03Or04 = item.primary_contact?.role && (
+                        item.primary_contact.role.toLowerCase().includes('director') ||
+                        item.primary_contact.role.toLowerCase().includes('ceo') ||
+                        item.primary_contact.role.toLowerCase().includes('head') ||
+                        item.primary_contact.role.toLowerCase().includes('manager')
+                      );
+                      const canCallNow = hasPhone && isLevel03Or04 && item.pipeline_status !== 'not_a_fit';
+
+                      if (canCallNow && item.primary_contact?.phone) {
+                        return (
+                          <a
+                            href={`tel:${item.primary_contact.phone}`}
+                            className="action-btn primary"
+                            style={{ padding: '6px 12px', fontSize: '0.72rem', minHeight: 44, fontWeight: 800, background: '#22c55e', color: '#000' }}
+                          >
+                            📞 CALL NOW
+                          </a>
+                        );
+                      }
+
+                      return (
+                        <Link
+                          href={`/admin/companies/${item.id}/decision-makers`}
+                          className="action-btn secondary"
+                          style={{ padding: '6px 10px', fontSize: '0.72rem', minHeight: 44, color: '#eab308', borderColor: '#eab308' }}
+                        >
+                          CONTACT VERIFICATION REQUIRED
+                        </Link>
+                      );
+                    })()}
                     <Link
                       href={`/admin/acquisition/outreach/${item.id}`}
                       className="action-btn secondary"
-                      style={{ padding: '6px 10px', fontSize: '0.72rem', minHeight: 38 }}
+                      style={{ padding: '6px 10px', fontSize: '0.72rem', minHeight: 44 }}
                     >
                       Email
                     </Link>
                     <button
                       type="button"
                       onClick={() => setActiveActionCompanyId(item.id)}
-                      className="action-btn primary"
-                      style={{ padding: '6px 12px', fontSize: '0.72rem', minHeight: 38 }}
+                      className="action-btn secondary"
+                      style={{ padding: '6px 12px', fontSize: '0.72rem', minHeight: 44 }}
                     >
                       ✓ Mark Done
                     </button>
@@ -262,7 +285,7 @@ export function DailyAcquisitionQueueView({ initialData }: { initialData: DailyQ
                         onClick={() => handleQuickReschedule(item, 1)}
                         title="Reschedule +1 day"
                         className="action-btn secondary"
-                        style={{ padding: '4px 8px', fontSize: '0.68rem', minHeight: 38 }}
+                        style={{ padding: '4px 8px', fontSize: '0.68rem', minHeight: 44 }}
                       >
                         +1d
                       </button>
@@ -271,7 +294,7 @@ export function DailyAcquisitionQueueView({ initialData }: { initialData: DailyQ
                         onClick={() => handleQuickReschedule(item, 3)}
                         title="Reschedule +3 days"
                         className="action-btn secondary"
-                        style={{ padding: '4px 8px', fontSize: '0.68rem', minHeight: 38 }}
+                        style={{ padding: '4px 8px', fontSize: '0.68rem', minHeight: 44 }}
                       >
                         +3d
                       </button>
@@ -280,7 +303,7 @@ export function DailyAcquisitionQueueView({ initialData }: { initialData: DailyQ
                         onClick={() => handleQuickReschedule(item, 7)}
                         title="Reschedule +7 days"
                         className="action-btn secondary"
-                        style={{ padding: '4px 8px', fontSize: '0.68rem', minHeight: 38 }}
+                        style={{ padding: '4px 8px', fontSize: '0.68rem', minHeight: 44 }}
                       >
                         +7d
                       </button>
@@ -312,10 +335,10 @@ export function DailyAcquisitionQueueView({ initialData }: { initialData: DailyQ
               DAILY SALES QUEUE · ACTION PRIORITIES
             </div>
             <h1 style={{ margin: '4px 0 6px 0', fontSize: 'clamp(1.6rem, 4vw, 2.2rem)', fontWeight: 800, color: '#f3f1eb' }}>
-              DAILY ACTION QUEUE
+              WHO SHOULD I CONTACT TODAY?
             </h1>
             <p className="admin-subtitle" style={{ margin: 0, fontSize: '0.85rem', color: 'rgba(243,241,235,0.7)' }}>
-              Active pipeline touchpoints, direct executive calls, emails, and follow-ups scheduled for today.
+              Prioritized verified companies and projects derived from verified market signals. Direct calls reserved for Level 03+ verified contacts.
             </p>
           </div>
 

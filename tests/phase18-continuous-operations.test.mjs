@@ -172,7 +172,7 @@ test('9. Executive Verdict Engine Full Coverage', () => {
     priorityScore: 92,
     confidence: 'HIGH'
   });
-  assert.strictEqual(v1.verdict, 'CONTACT NOW');
+  assert.strictEqual(v1.verdict, 'YES');
 
   const v2 = evaluateExecutiveVerdict({
     companyVerified: true,
@@ -181,7 +181,7 @@ test('9. Executive Verdict Engine Full Coverage', () => {
     priorityScore: 92,
     confidence: 'MEDIUM'
   });
-  assert.strictEqual(v2.verdict, 'RESEARCH REQUIRED');
+  assert.strictEqual(v2.verdict, 'WAIT');
 });
 
 test('10. Level 04 Directly Confirmed Decision Maker Verification', () => {
