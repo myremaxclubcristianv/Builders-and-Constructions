@@ -208,29 +208,30 @@ export function DecisionMakersManager({
   return (
     <div className="admin-container">
       {/* Header */}
-      <div className="admin-header">
+      <div className="admin-header" style={{ marginBottom: 20 }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '1rem' }}>
           <div>
-            <div style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.1em', color: '#94a3b8', marginBottom: '0.25rem' }}>
-              EXECUTIVE CONTACTS REGISTRY · PHASE 10
+            <div style={{ fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.12em', color: '#c7a675', fontWeight: 800 }}>
+              CONTACT VERIFICATION WORKBENCH · LEVEL 04 ENRICHMENT
             </div>
-            <h1 style={{ margin: '0 0 0.35rem 0', fontSize: '1.85rem', fontWeight: 700 }}>
-              {company.name} · Decision Makers
+            <h1 style={{ margin: '4px 0 6px 0', fontSize: 'clamp(1.6rem, 4vw, 2.2rem)', fontWeight: 800, color: '#f3f1eb' }}>
+              {company.name} · Decision Maker Verification
             </h1>
-            <p className="admin-subtitle" style={{ margin: 0 }}>
-              Verified leadership, directors, founders, and commercial authority contacts.
+            <p className="admin-subtitle" style={{ margin: 0, fontSize: '0.85rem', color: 'rgba(243,241,235,0.7)' }}>
+              Deterministic 4-level contact verification workflow (`LEVEL 01 → LEVEL 02 → LEVEL 03 → LEVEL 04`). Direct outreach requires confirmed Level 03+ provenance.
             </p>
           </div>
 
           <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center' }}>
-            <Link href={`/admin/companies/${company.id}/acquisition`} className="action-btn secondary" style={{ padding: '0.65rem 1.25rem', fontSize: '0.85rem' }}>
+            <Link href={`/admin/companies/${company.id}/acquisition`} className="action-btn secondary" style={{ minHeight: 44, fontSize: '0.78rem' }}>
               ← Sales Briefing
             </Link>
             {!isAdding && !isEditing && (
               <button
+                type="button"
                 onClick={() => setIsAdding(true)}
                 className="action-btn primary"
-                style={{ padding: '0.65rem 1.25rem', fontSize: '0.85rem' }}
+                style={{ minHeight: 44, fontSize: '0.78rem' }}
               >
                 + Add Decision Maker
               </button>
@@ -416,96 +417,133 @@ export function DecisionMakersManager({
       {/* Decision Makers List */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
         {decisionMakers.length === 0 ? (
-          <div className="admin-card" style={{ textAlign: 'center', padding: '3rem 1rem', color: '#888' }}>
+          <div className="admin-card" style={{ textAlign: 'center', padding: '3rem 1rem', color: 'rgba(243,241,235,0.6)' }}>
             No decision makers registered for this company yet. Click &quot;+ Add Decision Maker&quot; to index executive contacts.
           </div>
         ) : (
-          decisionMakers.map(dm => (
-            <div
-              key={dm.id || dm.name}
-              className="admin-card"
-              style={{
-                borderLeft: `4px solid ${dm.is_primary ? '#22c55e' : '#64748b'}`,
-                padding: '1.25rem'
-              }}
-            >
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '1rem', marginBottom: '0.75rem' }}>
-                <div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.25rem' }}>
-                    <h3 style={{ margin: 0, fontSize: '1.25rem', fontWeight: 700 }}>
-                      {dm.name}
-                    </h3>
-                    <span style={{ fontSize: '0.85rem', color: '#cbd5e1', fontWeight: 600 }}>
-                      {dm.role}
-                    </span>
-                    {dm.is_primary && (
-                      <span className="status-pill verified" style={{ background: 'rgba(34, 197, 94, 0.2)', color: '#22c55e', fontWeight: 700 }}>
-                        ★ PRIMARY DECISION MAKER
+          decisionMakers.map(dm => {
+            const hasPhone = Boolean(dm.phone);
+            const hasEmail = Boolean(dm.email);
+            const isConfirmed = dm.verification_state === 'confirmed_by_contact';
+            const isCompanyVerified = dm.verification_state === 'company_verified';
+            const isPubliclyVerified = dm.verification_state === 'publicly_verified';
+
+            let currentLevel = 'LEVEL 01';
+            let nextRequiredLevel = 'LEVEL 02 REQUIRED';
+            if (isConfirmed || (hasPhone && hasEmail && isCompanyVerified)) {
+              currentLevel = 'LEVEL 04';
+              nextRequiredLevel = 'FULLY VERIFIED (LEVEL 04)';
+            } else if (hasPhone || hasEmail || isCompanyVerified) {
+              currentLevel = 'LEVEL 03';
+              nextRequiredLevel = 'LEVEL 04 REQUIRED (CONFIRMED DIRECT CHANNEL)';
+            } else if (isPubliclyVerified) {
+              currentLevel = 'LEVEL 02';
+              nextRequiredLevel = 'LEVEL 03 REQUIRED (COMPANY VERIFICATION)';
+            }
+
+            return (
+              <div
+                key={dm.id || dm.name}
+                className="admin-card"
+                style={{
+                  borderLeft: `4px solid ${dm.is_primary ? '#22c55e' : '#c7a675'}`,
+                  padding: '1.25rem',
+                  background: 'rgba(13,16,15,0.95)'
+                }}
+              >
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '1rem', marginBottom: '0.75rem' }}>
+                  <div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.25rem', flexWrap: 'wrap' }}>
+                      <span className="status-pill verified" style={{ fontSize: '0.62rem', background: currentLevel === 'LEVEL 04' ? '#22c55e' : '#c7a675', color: '#070908', fontWeight: 900 }}>
+                        {currentLevel}
                       </span>
-                    )}
-                  </div>
-                  <div style={{ display: 'flex', gap: '1.5rem', fontSize: '0.82rem', color: '#888', marginTop: '0.35rem' }}>
-                    {dm.phone && <span>📞 <strong>{dm.phone}</strong></span>}
-                    {dm.email && <span>✉️ <strong>{dm.email}</strong></span>}
-                    {dm.linkedin_url && (
-                      <a href={dm.linkedin_url} target="_blank" rel="noreferrer" style={{ color: '#38bdf8', textDecoration: 'none' }}>
-                        🔗 LinkedIn Profile ↗
-                      </a>
-                    )}
-                  </div>
-                </div>
+                      <h3 style={{ margin: 0, fontSize: '1.2rem', fontWeight: 800, color: '#f3f1eb' }}>
+                        {dm.name}
+                      </h3>
+                      <span style={{ fontSize: '0.85rem', color: 'rgba(243,241,235,0.7)', fontWeight: 600 }}>
+                        {dm.role}
+                      </span>
+                      {dm.is_primary && (
+                        <span className="status-pill verified" style={{ background: 'rgba(34, 197, 94, 0.2)', color: '#22c55e', fontWeight: 800, fontSize: '0.6rem' }}>
+                          ★ PRIMARY DECISION MAKER
+                        </span>
+                      )}
+                    </div>
 
-                <div>
-                  {getVerificationBadge(dm.verification_state)}
-                </div>
-              </div>
-
-              {/* Source & Notes */}
-              {(dm.source || dm.notes) && (
-                <div style={{ background: 'rgba(0,0,0,0.2)', padding: '0.75rem', borderRadius: '4px', margin: '0.75rem 0', fontSize: '0.8rem', color: '#cbd5e1' }}>
-                  {dm.source && (
-                    <div style={{ marginBottom: dm.notes ? '0.35rem' : 0 }}>
-                      <strong style={{ color: '#888' }}>Source:</strong> {dm.source}{' '}
-                      {dm.source_url && (
-                        <a href={dm.source_url} target="_blank" rel="noreferrer" style={{ color: '#38bdf8' }}>
-                          [link]
+                    <div style={{ display: 'flex', gap: '1.25rem', fontSize: '0.8rem', color: 'rgba(243,241,235,0.8)', marginTop: '0.4rem', flexWrap: 'wrap' }}>
+                      <span>📞 Phone: {dm.phone ? <strong style={{ color: '#22c55e' }}>{dm.phone}</strong> : <span style={{ color: '#eab308' }}>NOT AVAILABLE (LEVEL 04 GAP)</span>}</span>
+                      <span>✉️ Email: {dm.email ? <strong style={{ color: '#38bdf8' }}>{dm.email}</strong> : <span style={{ color: '#eab308' }}>NOT AVAILABLE</span>}</span>
+                      {dm.linkedin_url && (
+                        <a href={dm.linkedin_url} target="_blank" rel="noreferrer" style={{ color: '#38bdf8', textDecoration: 'none' }}>
+                          🔗 LinkedIn Profile ↗
                         </a>
                       )}
-                      {dm.verified_at && <span style={{ color: '#666', marginLeft: '0.5rem' }}>(Verified: {new Date(dm.verified_at).toLocaleDateString()})</span>}
                     </div>
-                  )}
-                  {dm.notes && <div><strong style={{ color: '#888' }}>Notes:</strong> {dm.notes}</div>}
-                </div>
-              )}
+                  </div>
 
-              {/* Actions */}
-              <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '0.5rem', marginTop: '0.5rem', borderTop: '1px solid rgba(255,255,255,0.06)', paddingTop: '0.75rem' }}>
-                {!dm.is_primary && (
+                  <div>
+                    {getVerificationBadge(dm.verification_state)}
+                  </div>
+                </div>
+
+                {/* Provenance & Gap Diagnostics */}
+                <div style={{ background: 'rgba(0,0,0,0.3)', padding: '0.85rem', borderRadius: '4px', margin: '0.75rem 0', fontSize: '0.78rem', border: '1px solid rgba(244,242,235,0.06)' }}>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 8 }}>
+                    <div>
+                      <strong style={{ color: '#c7a675', display: 'block', fontSize: '0.62rem', textTransform: 'uppercase' }}>PROVENANCE SOURCE:</strong>
+                      <span style={{ color: '#f3f1eb' }}>{dm.source || 'Primary Corporate Filing / Registry'}</span>
+                      {dm.source_url && (
+                        <a href={dm.source_url} target="_blank" rel="noreferrer" style={{ color: '#38bdf8', marginLeft: 6 }}>
+                          [evidence]
+                        </a>
+                      )}
+                    </div>
+                    <div>
+                      <strong style={{ color: '#eab308', display: 'block', fontSize: '0.62rem', textTransform: 'uppercase' }}>VERIFICATION GAP:</strong>
+                      <span style={{ color: currentLevel === 'LEVEL 04' ? '#22c55e' : '#eab308', fontWeight: 700 }}>
+                        {nextRequiredLevel}
+                      </span>
+                    </div>
+                    <div>
+                      <strong style={{ color: '#a855f7', display: 'block', fontSize: '0.62rem', textTransform: 'uppercase' }}>LAST VERIFIED:</strong>
+                      <span style={{ color: '#f3f1eb' }}>{dm.verified_at ? new Date(dm.verified_at).toLocaleDateString() : 'Pending verification audit'}</span>
+                    </div>
+                  </div>
+                  {dm.notes && <div style={{ marginTop: 8, paddingTop: 6, borderTop: '1px solid rgba(244,242,235,0.06)', color: 'rgba(243,241,235,0.7)' }}><strong>Notes:</strong> {dm.notes}</div>}
+                </div>
+
+                {/* Actions */}
+                <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '0.5rem', marginTop: '0.5rem', borderTop: '1px solid rgba(244,242,235,0.06)', paddingTop: '0.75rem' }}>
+                  {!dm.is_primary && (
+                    <button
+                      type="button"
+                      onClick={() => handleSetPrimary(dm)}
+                      className="action-btn secondary"
+                      style={{ padding: '0.35rem 0.75rem', fontSize: '0.75rem', minHeight: 38 }}
+                    >
+                      ★ Set as Primary
+                    </button>
+                  )}
                   <button
-                    onClick={() => handleSetPrimary(dm)}
+                    type="button"
+                    onClick={() => startEdit(dm)}
                     className="action-btn secondary"
-                    style={{ padding: '0.35rem 0.75rem', fontSize: '0.75rem' }}
+                    style={{ padding: '0.35rem 0.75rem', fontSize: '0.75rem', minHeight: 38 }}
                   >
-                    ★ Set as Primary
+                    ✎ Edit / Verify
                   </button>
-                )}
-                <button
-                  onClick={() => startEdit(dm)}
-                  className="action-btn secondary"
-                  style={{ padding: '0.35rem 0.75rem', fontSize: '0.75rem' }}
-                >
-                  ✎ Edit
-                </button>
-                <button
-                  onClick={() => handleArchive(dm)}
-                  className="action-btn secondary"
-                  style={{ padding: '0.35rem 0.65rem', fontSize: '0.75rem', color: '#ef4444' }}
-                >
-                  ✕ Archive
-                </button>
+                  <button
+                    type="button"
+                    onClick={() => handleArchive(dm)}
+                    className="action-btn secondary"
+                    style={{ padding: '0.35rem 0.65rem', fontSize: '0.75rem', color: '#ef4444', minHeight: 38 }}
+                  >
+                    ✕ Archive
+                  </button>
+                </div>
               </div>
-            </div>
-          ))
+            );
+          })
         )}
       </div>
     </div>

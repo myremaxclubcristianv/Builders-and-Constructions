@@ -652,6 +652,93 @@ Would you be open to reviewing the audit this week?`,
             })()}
           </section>
 
+          {/* 2. COMMERCIAL EXECUTION PANEL (BELOW FIRST FOLD) */}
+          <section className="admin-panel" style={{ marginBottom: 24, border: '1px solid #38bdf8', background: 'rgba(13,16,15,0.95)', padding: 24 }}>
+            <div style={{ fontSize: '0.68rem', textTransform: 'uppercase', color: '#38bdf8', fontWeight: 800, letterSpacing: '0.1em', marginBottom: 4 }}>
+              COMMERCIAL EXECUTION ENGINE · STAGE DISCIPLINE
+            </div>
+            <h2 style={{ fontSize: '1.25rem', margin: '0 0 16px 0', fontWeight: 800, color: '#f3f1eb' }}>
+              COMMERCIAL EXECUTION & CONVERSION DIAGNOSTICS
+            </h2>
+
+            {(() => {
+              const hasLevel04Contact = Boolean(opp.owner_id);
+              const hasOutreachDraft = proposalList.length > 0 || activityList.length > 0;
+              const hasProposal = proposalList.length > 0;
+              const isCooling = status === 'follow_up' && opp.next_follow_up_at ? new Date(opp.next_follow_up_at) > new Date() : false;
+
+              let dominantAction = 'VERIFY LEVEL 04 CONTACT';
+              let dominantActionHref = `/admin/companies/${company.id}/decision-makers`;
+              let dominantActionColor = '#eab308';
+              let blockerText = 'Level 04 contact verification gap (missing direct phone/email).';
+
+              if (status === 'won') {
+                dominantAction = 'CLIENT WON';
+                dominantActionHref = `/companies/${company.slug}`;
+                dominantActionColor = '#22c55e';
+                blockerText = 'None — Contract verified and attributed.';
+              } else if (hasLevel04Contact && !isCooling) {
+                dominantAction = 'CALL NOW';
+                dominantActionHref = `tel:${company.website || ''}`;
+                dominantActionColor = '#22c55e';
+                blockerText = 'None — Level 03+ verified direct contact ready.';
+              } else if (hasProposal) {
+                dominantAction = 'PREPARE PROPOSAL NEGOTIATION';
+                dominantActionHref = `/proposal/${proposalList[0]?.id}`;
+                dominantActionColor = '#eab308';
+                blockerText = 'Active proposal negotiation pending client contract signing.';
+              } else if (hasOutreachDraft) {
+                dominantAction = 'LOG OUTCOME / RESPONSE';
+                dominantActionHref = `/admin/acquisition/outreach/${company.id}`;
+                dominantActionColor = '#38bdf8';
+                blockerText = 'Outreach sent — awaiting client commercial response.';
+              } else if (isCooling) {
+                dominantAction = 'WAIT (ACTIVE COOLING)';
+                dominantActionHref = '#';
+                dominantActionColor = '#38bdf8';
+                blockerText = 'Contact cooling period active until scheduled follow-up.';
+              }
+
+              return (
+                <div>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 12, marginBottom: 16 }}>
+                    <div style={{ background: 'rgba(0,0,0,0.3)', padding: 12, borderRadius: 4, border: '1px solid rgba(244,242,235,0.06)' }}>
+                      <span style={{ fontSize: '0.6rem', color: '#38bdf8', textTransform: 'uppercase', fontWeight: 800 }}>PIPELINE STAGE</span>
+                      <div style={{ fontSize: '0.9rem', color: '#f3f1eb', fontWeight: 800, marginTop: 2, textTransform: 'uppercase' }}>{status.replaceAll('_', ' ')}</div>
+                    </div>
+                    <div style={{ background: 'rgba(0,0,0,0.3)', padding: 12, borderRadius: 4, border: '1px solid rgba(244,242,235,0.06)' }}>
+                      <span style={{ fontSize: '0.6rem', color: '#c7a675', textTransform: 'uppercase', fontWeight: 800 }}>CONTACT LEVEL</span>
+                      <div style={{ fontSize: '0.9rem', color: '#f3f1eb', fontWeight: 800, marginTop: 2 }}>{hasLevel04Contact ? 'LEVEL 03+' : 'LEVEL 01-02'}</div>
+                    </div>
+                    <div style={{ background: 'rgba(0,0,0,0.3)', padding: 12, borderRadius: 4, border: '1px solid rgba(244,242,235,0.06)' }}>
+                      <span style={{ fontSize: '0.6rem', color: '#22c55e', textTransform: 'uppercase', fontWeight: 800 }}>OUTREACH READINESS</span>
+                      <div style={{ fontSize: '0.9rem', color: '#22c55e', fontWeight: 800, marginTop: 2 }}>{hasLevel04Contact ? '100% (READY)' : '45% (ENRICHMENT GAP)'}</div>
+                    </div>
+                    <div style={{ background: 'rgba(0,0,0,0.3)', padding: 12, borderRadius: 4, border: '1px solid rgba(244,242,235,0.06)' }}>
+                      <span style={{ fontSize: '0.6rem', color: '#a855f7', textTransform: 'uppercase', fontWeight: 800 }}>PROPOSAL STATUS</span>
+                      <div style={{ fontSize: '0.9rem', color: '#f3f1eb', fontWeight: 800, marginTop: 2 }}>{hasProposal ? `${proposalList.length} Proposal(s)` : 'NOT SENT'}</div>
+                    </div>
+                  </div>
+
+                  <div style={{ background: 'rgba(0,0,0,0.4)', padding: 14, borderRadius: 6, border: '1px solid rgba(244,242,235,0.08)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 12 }}>
+                    <div>
+                      <span style={{ fontSize: '0.6rem', color: '#ef4444', textTransform: 'uppercase', fontWeight: 800, display: 'block' }}>COMMERCIAL BLOCKER</span>
+                      <div style={{ fontSize: '0.78rem', color: '#f3f1eb', marginTop: 2 }}>{blockerText}</div>
+                    </div>
+
+                    <Link
+                      href={dominantActionHref}
+                      className="action-btn primary"
+                      style={{ padding: '8px 16px', fontSize: '0.78rem', fontWeight: 800, background: dominantActionColor, color: '#070908', minHeight: 44 }}
+                    >
+                      {dominantAction} →
+                    </Link>
+                  </div>
+                </div>
+              );
+            })()}
+          </section>
+
           {/* Digital Presence Audit Grid */}
           <section className="admin-panel" style={{ marginBottom: 24 }}>
             <div className="eyebrow">Internal Digital Presence Audit (8 Dimensions)</div>

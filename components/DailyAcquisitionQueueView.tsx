@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import { canExecuteCallNow } from '@/lib/contact-firewall';
 
 type QueueCardItem = {
   id: string;
@@ -233,16 +234,15 @@ export function DailyAcquisitionQueueView({ initialData }: { initialData: DailyQ
                 ) : (
                   <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', marginTop: 10, borderTop: '1px solid rgba(244,242,235,0.06)', paddingTop: 10 }}>
                     {(() => {
-                      const hasPhone = Boolean(item.primary_contact?.phone);
-                      const isLevel03Or04 = item.primary_contact?.role && (
-                        item.primary_contact.role.toLowerCase().includes('director') ||
-                        item.primary_contact.role.toLowerCase().includes('ceo') ||
-                        item.primary_contact.role.toLowerCase().includes('head') ||
-                        item.primary_contact.role.toLowerCase().includes('manager')
-                      );
-                      const canCallNow = hasPhone && isLevel03Or04 && item.pipeline_status !== 'not_a_fit';
+                      const callResult = canExecuteCallNow({
+                        phone: item.primary_contact?.phone,
+                        role: item.primary_contact?.role,
+                        contactLevel: item.primary_contact?.role ? 'LEVEL_03' : 'LEVEL_01',
+                        hasProvenance: Boolean(item.primary_contact?.name),
+                        isNotAFit: item.pipeline_status === 'not_a_fit'
+                      });
 
-                      if (canCallNow && item.primary_contact?.phone) {
+                      if (callResult.canCall && item.primary_contact?.phone) {
                         return (
                           <a
                             href={`tel:${item.primary_contact.phone}`}
@@ -259,6 +259,7 @@ export function DailyAcquisitionQueueView({ initialData }: { initialData: DailyQ
                           href={`/admin/companies/${item.id}/decision-makers`}
                           className="action-btn secondary"
                           style={{ padding: '6px 10px', fontSize: '0.72rem', minHeight: 44, color: '#eab308', borderColor: '#eab308' }}
+                          title={callResult.reason}
                         >
                           CONTACT VERIFICATION REQUIRED
                         </Link>
