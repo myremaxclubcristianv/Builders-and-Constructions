@@ -12,6 +12,7 @@ export function SiteHeader() {
         <Link href="/pipeline">Pipeline</Link>
         <Link href="/cities">Cities</Link>
         <Link href="/activity">Activity</Link>
+        <Link href="/compare">Compare</Link>
         <Link href="/rankings">Rankings</Link>
         <Link href="/map">Map</Link>
         <Link href="/contractors">Contractors</Link>

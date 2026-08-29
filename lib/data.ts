@@ -8,6 +8,8 @@ import {
   RealSource
 } from '@/lib/real-romanian-data';
 
+export { realCompaniesDataset, realProjectsDataset, realLocationsDataset };
+
 export type Project = {
   id?: string;
   name: string;
@@ -72,6 +74,13 @@ export type Company = {
   published_at?: string | null;
   sources?: RealSource[];
   last_verified_at?: string;
+  financials_2025?: any;
+  financials_2024?: any;
+  financial_timeline?: any[];
+  revenue_growth_yoy?: number;
+  employees_count?: number;
+  backlog_contracts_eur?: number;
+  completeness_score?: number;
 };
 
 export type ProgressMilestone = {
@@ -210,7 +219,14 @@ export const mappedRealCompanies: Company[] = realCompaniesDataset.map(c => ({
   website_verification: 'verified',
   published_at: '2026-01-01T00:00:00Z',
   sources: c.sources,
-  last_verified_at: c.last_verified_at
+  last_verified_at: c.last_verified_at,
+  financials_2025: c.financials_2025,
+  financials_2024: c.financials_2024,
+  financial_timeline: c.financial_timeline,
+  revenue_growth_yoy: c.revenue_growth_yoy,
+  employees_count: c.employees_count,
+  backlog_contracts_eur: c.backlog_contracts_eur,
+  completeness_score: c.completeness_score
 }));
 
 export const mappedRealProjects: Project[] = realProjectsDataset.map(p => ({
