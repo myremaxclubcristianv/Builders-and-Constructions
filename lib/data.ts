@@ -81,6 +81,10 @@ export type Company = {
   employees_count?: number;
   backlog_contracts_eur?: number;
   completeness_score?: number;
+  image?: string;
+  image_alt?: string;
+  logo_url?: string;
+  image_verified?: boolean;
 };
 
 export type ProgressMilestone = {
@@ -226,7 +230,11 @@ export const mappedRealCompanies: Company[] = realCompaniesDataset.map(c => ({
   revenue_growth_yoy: c.revenue_growth_yoy,
   employees_count: c.employees_count,
   backlog_contracts_eur: c.backlog_contracts_eur,
-  completeness_score: c.completeness_score
+  completeness_score: c.completeness_score,
+  image: c.image,
+  image_alt: c.image_alt,
+  logo_url: c.logo_url,
+  image_verified: c.image_verified
 }));
 
 export const mappedRealProjects: Project[] = realProjectsDataset.map(p => ({
