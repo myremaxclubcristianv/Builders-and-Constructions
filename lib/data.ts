@@ -290,7 +290,7 @@ export async function getPublishedCompanies(): Promise<Company[]> {
     .order('is_featured', { ascending: false })
     .order('name');
 
-  if (error || !data || !data.length) {
+  if (error || !data || data.length < mappedRealCompanies.length) {
     return mappedRealCompanies;
   }
 
@@ -462,7 +462,7 @@ export async function getPublishedProjects(): Promise<Project[]> {
     .order('is_featured', { ascending: false })
     .order('created_at', { ascending: false });
 
-  if (error || !data || !data.length) {
+  if (error || !data || data.length < mappedRealProjects.length) {
     return mappedRealProjects;
   }
 
@@ -568,7 +568,7 @@ export async function getIndustryHubData() {
     geography: realLocationsDataset.slice(0, 10).map(loc => ({
       region: loc.name,
       companies_count: 12,
-      projects_count: realProjectsDataset.filter(p => p.location_slug === loc.slug || p.county === loc.county).length || 5,
+      projects_count: realProjectsDataset.filter(p => p.location.toLowerCase().includes(loc.name.toLowerCase())).length || 5,
       signals_count: 10,
       last_activity: '2026-08-28T10:00:00Z'
     })),

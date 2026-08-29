@@ -19,10 +19,10 @@ export default async function CityDetailPage({ params }: { params: Promise<{ slu
   const loc = realLocationsDataset.find(l => l.slug === slug);
   if (!loc) notFound();
 
-  const cityProjects = realProjectsDataset.filter(p => p.location_slug === loc.slug || p.county === loc.county);
+  const cityProjects = realProjectsDataset.filter(p => p.location.toLowerCase().includes(loc.name.toLowerCase()) || p.location.toLowerCase().includes(loc.city.toLowerCase()));
   const activeProjects = cityProjects.filter(p => p.status === 'under_construction');
   const completedProjects = cityProjects.filter(p => p.status === 'completed');
-  const upcomingProjects = cityProjects.filter(p => p.status === 'announced' || p.status === 'planning' || p.status === 'permitting');
+  const upcomingProjects = cityProjects.filter(p => p.status === 'upcoming');
 
   const developerSlugs = Array.from(new Set(cityProjects.map(p => p.developer_slug)));
   const cityDevelopers = realCompaniesDataset.filter(c => developerSlugs.includes(c.slug));

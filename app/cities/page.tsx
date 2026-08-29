@@ -16,7 +16,7 @@ export default function CitiesPage() {
     const cityName = loc.county === 'Bucharest' || loc.county === 'Ilfov' ? loc.name : loc.name;
     const key = loc.slug;
     
-    const cityProjects = realProjectsDataset.filter(p => p.location_slug === loc.slug || p.county === loc.county);
+    const cityProjects = realProjectsDataset.filter(p => p.location.toLowerCase().includes(loc.name.toLowerCase()) || p.location.toLowerCase().includes(loc.city.toLowerCase()));
     const cityDevs = new Set(cityProjects.map(p => p.developer_slug));
 
     citiesMap.set(key, {

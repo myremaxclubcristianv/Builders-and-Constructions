@@ -53,8 +53,8 @@ export default function ConstructionMapPage() {
             {/* City Distribution Cards Grid */}
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: 16 }}>
               {realLocationsDataset.slice(0, 12).map(loc => {
-                const count = realProjectsDataset.filter(p => p.location_slug === loc.slug || p.county === loc.county).length;
-                const active = realProjectsDataset.filter(p => (p.location_slug === loc.slug || p.county === loc.county) && p.status === 'under_construction').length;
+                const count = realProjectsDataset.filter(p => p.location.toLowerCase().includes(loc.name.toLowerCase()) || p.location.toLowerCase().includes(loc.city.toLowerCase())).length;
+                const active = realProjectsDataset.filter(p => (p.location.toLowerCase().includes(loc.name.toLowerCase()) || p.location.toLowerCase().includes(loc.city.toLowerCase())) && p.status === 'under_construction').length;
 
                 return (
                   <Link
