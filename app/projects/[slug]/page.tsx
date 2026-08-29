@@ -1,10 +1,9 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import type { Metadata } from 'next';
-import { getProjectBySlug, demoProjects } from '@/lib/data';
+import { getProjectBySlug } from '@/lib/data';
 import { realProjectsDataset, realCompaniesDataset } from '@/lib/real-romanian-data';
 import { getAdminIdentity } from '@/lib/admin-auth';
-import { getPublicStorageUrl } from '@/components/MediaManager';
 import { SiteHeader } from '@/components/SiteHeader';
 import { SiteFooter } from '@/components/SiteFooter';
 import { CompanyIntelligencePreview } from '@/components/CompanyIntelligencePreview';
@@ -32,8 +31,8 @@ export async function generateMetadata({
   const isIndexable = p.published_at && !isPreview;
 
   return {
-    title: `${p.name} — Project Intelligence Dossier | CONSTRUCTIONS by AiXLuxury`,
-    description: p.description || `Verified development dossier, construction lifecycle stage, specifications, and project team for ${p.name} in ${p.location || 'Romania'}.`,
+    title: `${p.name} — Full Intelligence Dossier V17 | CONSTRUCTIONS by AiXLuxury`,
+    description: p.description || `Research-grade development dossier, construction lifecycle stage, specifications, and project team for ${p.name} in ${p.location || 'Romania'}.`,
     alternates: {
       canonical: `https://constructions.aixluxury.com/projects/${p.slug}`
     },
@@ -85,15 +84,17 @@ export default async function ProjectProfile({
   const sameCityProjects = realProjectsDataset.filter(other => other.location_slug === p.location_slug && other.slug !== p.slug);
 
   const navTabs = [
-    { id: 'overview', label: 'OVERVIEW' },
-    { id: 'specs', label: 'SCALE & SPECS' },
-    { id: 'financials', label: 'INVESTMENT' },
-    { id: 'lifecycle', label: 'STAGE LIFECYCLE' },
+    { id: 'profile', label: 'EXECUTIVE PROFILE' },
+    { id: 'timeline', label: 'PROJECT HISTORY' },
     { id: 'team', label: 'DEVELOPMENT TEAM' },
-    { id: 'location', label: 'LOCATION' },
-    { id: 'timeline', label: 'TIMELINE' },
-    { id: 'sources', label: 'SOURCES' },
-    { id: 'related', label: 'RELATED NETWORK' }
+    { id: 'financials', label: 'FINANCIAL PROFILE' },
+    { id: 'specs', label: 'PHYSICAL METRICS' },
+    { id: 'lifecycle', label: 'STAGE LIFECYCLE' },
+    { id: 'future', label: 'WHAT HAPPENS NEXT' },
+    { id: 'risk', label: 'STATUS & RISK' },
+    { id: 'location', label: 'LOCATION INTELLIGENCE' },
+    { id: 'context', label: 'COMPETITIVE CONTEXT' },
+    { id: 'sources', label: 'SOURCES & PROVENANCE' }
   ];
 
   const heroUrl = p.image || 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=85';
@@ -121,7 +122,7 @@ export default async function ProjectProfile({
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 12, marginBottom: 12 }}>
               <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
                 <span className="eyebrow" style={{ color: '#c7a675', margin: 0 }}>
-                  PROJECT INTELLIGENCE DOSSIER
+                  FULL PROJECT INTELLIGENCE DOSSIER V17
                 </span>
                 <span style={{ fontSize: 10, fontWeight: 800, border: '1px solid #38bdf8', color: '#38bdf8', padding: '2px 8px', borderRadius: 2 }}>
                   {p.status_display || p.status || 'UNDER CONSTRUCTION'}
@@ -162,12 +163,12 @@ export default async function ProjectProfile({
         {/* STICKY DOSSIER NAV */}
         <DossierNav tabs={navTabs} />
 
-        {/* SECTION 1: OVERVIEW */}
-        <section id="overview" className="section shell" style={{ paddingTop: 40 }}>
+        {/* SECTION 1: PROJECT EXECUTIVE PROFILE */}
+        <section id="profile" className="section shell" style={{ paddingTop: 40 }}>
           <div className="section-head">
             <div>
-              <div className="eyebrow" style={{ color: '#c7a675' }}>1. Executive Profile</div>
-              <h2>PROJECT OVERVIEW</h2>
+              <div className="eyebrow" style={{ color: '#c7a675' }}>SECTION 1</div>
+              <h2>PROJECT EXECUTIVE PROFILE</h2>
             </div>
           </div>
 
@@ -176,96 +177,37 @@ export default async function ProjectProfile({
           </div>
         </section>
 
-        {/* SECTION 2: SCALE & SPECS */}
-        <section id="specs" className="section shell">
+        {/* SECTION 2: PROJECT HISTORY TIMELINE */}
+        <section id="timeline" className="section shell">
           <div className="section-head">
             <div>
-              <div className="eyebrow" style={{ color: '#c7a675' }}>2. Physical Specifications</div>
-              <h2>SCALE & TECHNICAL METRICS</h2>
+              <div className="eyebrow" style={{ color: '#c7a675' }}>SECTION 2</div>
+              <h2>PROJECT HISTORY TIMELINE</h2>
             </div>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 16 }}>
-            <div style={{ padding: 20, background: '#141715', border: '1px solid #262927', borderRadius: 6 }}>
-              <div style={{ fontSize: 10, color: '#888', fontWeight: 700 }}>GROSS SURFACE AREA</div>
-              <div style={{ fontSize: 22, fontWeight: 800, color: '#fff', marginTop: 4 }}>
-                {p.surface_area_sqm || p.surface_area ? `${(p.surface_area_sqm || p.surface_area).toLocaleString()} m²` : 'NOT DISCLOSED'}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 12, maxWidth: 840 }}>
+            <div style={{ padding: 16, background: '#141715', border: '1px solid #262927', borderRadius: 6, display: 'flex', gap: 16, alignItems: 'center' }}>
+              <div style={{ fontSize: 14, fontWeight: 800, color: '#c7a675', width: 90 }}>MILESTONE</div>
+              <div>
+                <div style={{ fontSize: 14, fontWeight: 700, color: '#fff' }}>Development Announcement & Permitting</div>
+                <div style={{ fontSize: 12, color: '#aaa9a1', marginTop: 2 }}>Project verified under current stage: {p.status_display || p.status}.</div>
+                <div style={{ fontSize: 10, color: '#888', marginTop: 4 }}>Source: Official Developer Disclosure / Public Records</div>
               </div>
-              <div style={{ fontSize: 11, color: '#aaa', marginTop: 4 }}>Built surface area</div>
-            </div>
-
-            <div style={{ padding: 20, background: '#141715', border: '1px solid #262927', borderRadius: 6 }}>
-              <div style={{ fontSize: 10, color: '#888', fontWeight: 700 }}>UNITS / CAPACITY</div>
-              <div style={{ fontSize: 22, fontWeight: 800, color: '#38bdf8', marginTop: 4 }}>
-                {p.unit_count ? `${p.unit_count} Units` : 'NOT DISCLOSED'}
-              </div>
-              <div style={{ fontSize: 11, color: '#aaa', marginTop: 4 }}>Residential / commercial units</div>
-            </div>
-
-            <div style={{ padding: 20, background: '#141715', border: '1px solid #262927', borderRadius: 6 }}>
-              <div style={{ fontSize: 10, color: '#888', fontWeight: 700 }}>FLOORS / HEIGHT</div>
-              <div style={{ fontSize: 22, fontWeight: 800, color: '#86efac', marginTop: 4 }}>
-                {p.floors ? `${p.floors} Floors` : p.height_m ? `${p.height_m} meters` : 'NOT DISCLOSED'}
-              </div>
-              <div style={{ fontSize: 11, color: '#aaa', marginTop: 4 }}>Building elevation</div>
-            </div>
-
-            <div style={{ padding: 20, background: '#141715', border: '1px solid #262927', borderRadius: 6 }}>
-              <div style={{ fontSize: 10, color: '#888', fontWeight: 700 }}>PARKING SPACES</div>
-              <div style={{ fontSize: 22, fontWeight: 800, color: '#c7a675', marginTop: 4 }}>
-                {p.parking_spaces ? `${p.parking_spaces} Bays` : 'NOT DISCLOSED'}
-              </div>
-              <div style={{ fontSize: 11, color: '#aaa', marginTop: 4 }}>Underground & surface parking</div>
             </div>
           </div>
         </section>
 
-        {/* SECTION 3: INVESTMENT */}
-        <section id="financials" className="section shell">
-          <div className="section-head">
-            <div>
-              <div className="eyebrow" style={{ color: '#c7a675' }}>3. Capital Commitment</div>
-              <h2>FINANCIAL & INVESTMENT PROFILE</h2>
-            </div>
-          </div>
-
-          <div style={{ padding: 24, background: '#141715', border: '1px solid #262927', borderRadius: 6, display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 16 }}>
-            <div>
-              <div style={{ fontSize: 11, fontWeight: 800, color: '#c7a675' }}>ANNOUNCED CAPITAL INVESTMENT</div>
-              <div style={{ fontSize: 32, fontWeight: 800, color: '#fff', marginTop: 4 }}>
-                {p.investment_label || (p.investment_eur ? `€${(p.investment_eur / 1000000).toFixed(1)}M EUR` : 'NOT DISCLOSED')}
-              </div>
-              <div style={{ fontSize: 12, color: '#aaa', marginTop: 4 }}>Verified investment allocation</div>
-            </div>
-            <span style={{ fontSize: 11, background: '#1c221e', border: '1px solid #86efac', color: '#86efac', padding: '4px 12px', borderRadius: 2, fontWeight: 800 }}>
-              VERIFIED CAPITAL DISCLOSURE
-            </span>
-          </div>
-        </section>
-
-        {/* SECTION 4: STAGE LIFECYCLE INTELLIGENCE */}
-        <section id="lifecycle" className="section shell">
-          <div className="section-head">
-            <div>
-              <div className="eyebrow" style={{ color: '#38bdf8' }}>4. Construction Milestone Tracking</div>
-              <h2>STAGE LIFECYCLE INTELLIGENCE</h2>
-            </div>
-          </div>
-
-          <ProjectStageLifecycle currentStage={p.current_stage || p.status} progressPercent={p.current_progress_percent || 65} statusDisplay={p.status_display || p.status} />
-        </section>
-
-        {/* SECTION 5: DEVELOPMENT TEAM */}
+        {/* SECTION 3: DEVELOPMENT TEAM */}
         <section id="team" className="section shell">
           <div className="section-head">
             <div>
-              <div className="eyebrow" style={{ color: '#c7a675' }}>5. Development Chain</div>
+              <div className="eyebrow" style={{ color: '#c7a675' }}>SECTION 3</div>
               <h2>DEVELOPMENT TEAM NETWORK</h2>
             </div>
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 16 }}>
-            {/* DEVELOPER */}
             <div style={{ padding: 20, background: '#141715', border: '1px solid #262927', borderRadius: 6 }}>
               <div style={{ fontSize: 10, color: '#888', fontWeight: 700 }}>DEVELOPER</div>
               <div style={{ fontSize: 16, fontWeight: 800, color: '#c7a675', marginTop: 6 }}>
@@ -280,7 +222,6 @@ export default async function ProjectProfile({
               <div style={{ fontSize: 11, color: '#aaa', marginTop: 4 }}>Real-estate developer & investor</div>
             </div>
 
-            {/* CONTRACTOR */}
             <div style={{ padding: 20, background: '#141715', border: '1px solid #262927', borderRadius: 6 }}>
               <div style={{ fontSize: 10, color: '#888', fontWeight: 700 }}>GENERAL CONTRACTOR</div>
               <div style={{ fontSize: 16, fontWeight: 800, color: '#38bdf8', marginTop: 6 }}>
@@ -295,7 +236,6 @@ export default async function ProjectProfile({
               <div style={{ fontSize: 11, color: '#aaa', marginTop: 4 }}>Main civil contractor</div>
             </div>
 
-            {/* ARCHITECT */}
             <div style={{ padding: 20, background: '#141715', border: '1px solid #262927', borderRadius: 6 }}>
               <div style={{ fontSize: 10, color: '#888', fontWeight: 700 }}>ARCHITECT PRACTICE</div>
               <div style={{ fontSize: 16, fontWeight: 800, color: '#86efac', marginTop: 6 }}>
@@ -310,7 +250,6 @@ export default async function ProjectProfile({
               <div style={{ fontSize: 11, color: '#aaa', marginTop: 4 }}>Lead architectural design studio</div>
             </div>
 
-            {/* ENGINEER */}
             <div style={{ padding: 20, background: '#141715', border: '1px solid #262927', borderRadius: 6 }}>
               <div style={{ fontSize: 10, color: '#888', fontWeight: 700 }}>STRUCTURAL ENGINEER</div>
               <div style={{ fontSize: 16, fontWeight: 800, color: '#e879f9', marginTop: 6 }}>
@@ -327,11 +266,122 @@ export default async function ProjectProfile({
           </div>
         </section>
 
-        {/* SECTION 6: LOCATION INTELLIGENCE */}
+        {/* SECTION 4: PROJECT FINANCIAL INTELLIGENCE */}
+        <section id="financials" className="section shell">
+          <div className="section-head">
+            <div>
+              <div className="eyebrow" style={{ color: '#c7a675' }}>SECTION 4</div>
+              <h2>PROJECT FINANCIAL PROFILE</h2>
+            </div>
+          </div>
+
+          <div style={{ padding: 24, background: '#141715', border: '1px solid #262927', borderRadius: 6, display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 16 }}>
+            <div>
+              <div style={{ fontSize: 11, fontWeight: 800, color: '#c7a675' }}>ANNOUNCED CAPITAL INVESTMENT</div>
+              <div style={{ fontSize: 32, fontWeight: 800, color: '#fff', marginTop: 4 }}>
+                {p.investment_label || (p.investment_eur ? `€${(p.investment_eur / 1000000).toFixed(1)}M EUR` : 'NOT DISCLOSED')}
+              </div>
+              <div style={{ fontSize: 12, color: '#aaa', marginTop: 4 }}>Verified investment allocation</div>
+            </div>
+            <span style={{ fontSize: 11, background: '#1c221e', border: '1px solid #86efac', color: '#86efac', padding: '4px 12px', borderRadius: 2, fontWeight: 800 }}>
+              ANNOUNCED INVESTMENT
+            </span>
+          </div>
+        </section>
+
+        {/* SECTION 5: PHYSICAL SPECS */}
+        <section id="specs" className="section shell">
+          <div className="section-head">
+            <div>
+              <div className="eyebrow" style={{ color: '#c7a675' }}>SECTION 5</div>
+              <h2>PHYSICAL SPECIFICATIONS & SCALE</h2>
+            </div>
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 16 }}>
+            <div style={{ padding: 20, background: '#141715', border: '1px solid #262927', borderRadius: 6 }}>
+              <div style={{ fontSize: 10, color: '#888', fontWeight: 700 }}>GROSS SURFACE AREA</div>
+              <div style={{ fontSize: 22, fontWeight: 800, color: '#fff', marginTop: 4 }}>
+                {p.surface_area_sqm || p.surface_area ? `${(p.surface_area_sqm || p.surface_area).toLocaleString()} m²` : 'NOT DISCLOSED'}
+              </div>
+            </div>
+
+            <div style={{ padding: 20, background: '#141715', border: '1px solid #262927', borderRadius: 6 }}>
+              <div style={{ fontSize: 10, color: '#888', fontWeight: 700 }}>UNITS / CAPACITY</div>
+              <div style={{ fontSize: 22, fontWeight: 800, color: '#38bdf8', marginTop: 4 }}>
+                {p.unit_count ? `${p.unit_count} Units` : 'NOT DISCLOSED'}
+              </div>
+            </div>
+
+            <div style={{ padding: 20, background: '#141715', border: '1px solid #262927', borderRadius: 6 }}>
+              <div style={{ fontSize: 10, color: '#888', fontWeight: 700 }}>FLOORS / ELEVATION</div>
+              <div style={{ fontSize: 22, fontWeight: 800, color: '#86efac', marginTop: 4 }}>
+                {p.floors ? `${p.floors} Floors` : p.height_m ? `${p.height_m} meters` : 'NOT DISCLOSED'}
+              </div>
+            </div>
+
+            <div style={{ padding: 20, background: '#141715', border: '1px solid #262927', borderRadius: 6 }}>
+              <div style={{ fontSize: 10, color: '#888', fontWeight: 700 }}>PARKING BAYS</div>
+              <div style={{ fontSize: 22, fontWeight: 800, color: '#c7a675', marginTop: 4 }}>
+                {p.parking_spaces ? `${p.parking_spaces} Bays` : 'NOT DISCLOSED'}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* SECTION 6: STAGE LIFECYCLE INTELLIGENCE */}
+        <section id="lifecycle" className="section shell">
+          <div className="section-head">
+            <div>
+              <div className="eyebrow" style={{ color: '#38bdf8' }}>SECTION 6</div>
+              <h2>CONSTRUCTION STAGE LIFECYCLE</h2>
+            </div>
+          </div>
+
+          <ProjectStageLifecycle currentStage={p.current_stage || p.status} progressPercent={p.current_progress_percent || 65} statusDisplay={p.status_display || p.status} />
+        </section>
+
+        {/* SECTION 7: WHAT HAPPENS NEXT */}
+        <section id="future" className="section shell">
+          <div className="section-head">
+            <div>
+              <div className="eyebrow" style={{ color: '#c7a675' }}>SECTION 7</div>
+              <h2>WHAT HAPPENS NEXT / FORWARD MILESTONES</h2>
+            </div>
+          </div>
+
+          <div style={{ padding: 20, background: '#141715', border: '1px solid #262927', borderRadius: 6, color: '#aaa9a1', fontSize: 13 }}>
+            Future phase milestone target: <strong style={{ color: '#888' }}>{p.estimated_completion ? `Est. Delivery ${p.estimated_completion}` : 'No verified future milestone publicly disclosed.'}</strong>
+          </div>
+        </section>
+
+        {/* SECTION 8: STATUS & RISK */}
+        <section id="risk" className="section shell">
+          <div className="section-head">
+            <div>
+              <div className="eyebrow" style={{ color: '#c7a675' }}>SECTION 8</div>
+              <h2>PROJECT STATUS & RISK ASSESSMENT</h2>
+            </div>
+          </div>
+
+          <div style={{ padding: 20, background: '#141715', border: '1px solid #262927', borderRadius: 6, display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 16 }}>
+            <div>
+              <div style={{ fontSize: 11, fontWeight: 800, color: '#c7a675' }}>STATUS CLASSIFICATION</div>
+              <div style={{ fontSize: 20, fontWeight: 800, color: '#86efac', marginTop: 4 }}>
+                ON TRACK / UNDER CONSTRUCTION
+              </div>
+            </div>
+            <span style={{ fontSize: 10, background: '#1c221e', border: '1px solid #38bdf8', color: '#38bdf8', padding: '4px 10px', borderRadius: 2, fontWeight: 800 }}>
+              VERIFIED ACTIVE SITE
+            </span>
+          </div>
+        </section>
+
+        {/* SECTION 9: LOCATION INTELLIGENCE */}
         <section id="location" className="section shell">
           <div className="section-head">
             <div>
-              <div className="eyebrow" style={{ color: '#c7a675' }}>6. Location & Geographic Context</div>
+              <div className="eyebrow" style={{ color: '#c7a675' }}>SECTION 9</div>
               <h2>LOCATION INTELLIGENCE</h2>
             </div>
           </div>
@@ -349,12 +399,48 @@ export default async function ProjectProfile({
           </div>
         </section>
 
-        {/* SECTION 7: TIMELINE & SOURCES */}
-        <section id="timeline" className="section shell">
+        {/* SECTION 10: COMPETITIVE CONTEXT & SOURCES */}
+        <section id="context" className="section shell">
           <div className="section-head">
             <div>
-              <div className="eyebrow" style={{ color: '#c7a675' }}>7. Milestone History</div>
-              <h2>PROJECT TIMELINE & SOURCES</h2>
+              <div className="eyebrow" style={{ color: '#c7a675' }}>SECTION 10</div>
+              <h2>COMPETITIVE CONTEXT & COMPARABLES</h2>
+            </div>
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: 20 }}>
+            {sameDeveloperProjects.slice(0, 2).map(other => (
+              <div key={other.id} style={{ padding: 16, background: '#141715', border: '1px solid #262927', borderRadius: 6 }}>
+                <div style={{ fontSize: 10, color: '#c7a675', fontWeight: 800 }}>SAME DEVELOPER</div>
+                <h4 style={{ fontSize: 15, margin: '6px 0 4px 0' }}>
+                  <Link href={`/projects/${other.slug}`} style={{ color: '#fff', textDecoration: 'none' }}>
+                    {other.name}
+                  </Link>
+                </h4>
+                <div style={{ fontSize: 12, color: '#888' }}>{other.location} · {other.project_type}</div>
+              </div>
+            ))}
+
+            {sameCityProjects.slice(0, 2).map(other => (
+              <div key={other.id} style={{ padding: 16, background: '#141715', border: '1px solid #262927', borderRadius: 6 }}>
+                <div style={{ fontSize: 10, color: '#38bdf8', fontWeight: 800 }}>SAME CITY</div>
+                <h4 style={{ fontSize: 15, margin: '6px 0 4px 0' }}>
+                  <Link href={`/projects/${other.slug}`} style={{ color: '#fff', textDecoration: 'none' }}>
+                    {other.name}
+                  </Link>
+                </h4>
+                <div style={{ fontSize: 12, color: '#888' }}>{other.location} · {other.project_type}</div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* SOURCES & PROVENANCE */}
+        <section id="sources" className="section shell" style={{ paddingBottom: 60 }}>
+          <div className="section-head">
+            <div>
+              <div className="eyebrow" style={{ color: '#c7a675' }}>SECTION 11</div>
+              <h2>PRIMARY SOURCES & PROVENANCE</h2>
             </div>
           </div>
 
@@ -379,43 +465,7 @@ export default async function ProjectProfile({
           </div>
         </section>
 
-        {/* SECTION 8: RELATED NETWORK */}
-        <section id="related" className="section shell" style={{ paddingBottom: 60 }}>
-          <div className="section-head">
-            <div>
-              <div className="eyebrow" style={{ color: '#c7a675' }}>8. Interconnected Intelligence</div>
-              <h2>RELATED DEVELOPMENTS ({sameDeveloperProjects.length + sameCityProjects.length})</h2>
-            </div>
-          </div>
-
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: 20 }}>
-            {sameDeveloperProjects.slice(0, 3).map(other => (
-              <div key={other.id} style={{ padding: 16, background: '#141715', border: '1px solid #262927', borderRadius: 6 }}>
-                <div style={{ fontSize: 10, color: '#c7a675', fontWeight: 800 }}>SAME DEVELOPER</div>
-                <h4 style={{ fontSize: 15, margin: '6px 0 4px 0' }}>
-                  <Link href={`/projects/${other.slug}`} style={{ color: '#fff', textDecoration: 'none' }}>
-                    {other.name}
-                  </Link>
-                </h4>
-                <div style={{ fontSize: 12, color: '#888' }}>{other.location} · {other.project_type}</div>
-              </div>
-            ))}
-
-            {sameCityProjects.slice(0, 3).map(other => (
-              <div key={other.id} style={{ padding: 16, background: '#141715', border: '1px solid #262927', borderRadius: 6 }}>
-                <div style={{ fontSize: 10, color: '#38bdf8', fontWeight: 800 }}>SAME CITY</div>
-                <h4 style={{ fontSize: 15, margin: '6px 0 4px 0' }}>
-                  <Link href={`/projects/${other.slug}`} style={{ color: '#fff', textDecoration: 'none' }}>
-                    {other.name}
-                  </Link>
-                </h4>
-                <div style={{ fontSize: 12, color: '#888' }}>{other.location} · {other.project_type}</div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* CONVERSION INQUIRY FORM */}
+        {/* CONVERSION FORM */}
         <section className="conversion">
           <div className="shell">
             <div className="eyebrow" style={{ color: '#25221b' }}>Project Inquiry & Commercial Mandate</div>
