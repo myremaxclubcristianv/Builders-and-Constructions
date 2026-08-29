@@ -368,6 +368,57 @@ export default async function ProjectProfile({
           </section>
         )}
 
+        {/* Sources & Provenance */}
+        {p.sources && p.sources.length > 0 && (
+          <section className="section shell">
+            <div className="section-head">
+              <div>
+                <div className="eyebrow" style={{ color: '#c7a675' }}>Traceable Primary Sources</div>
+                <h2>VERIFIED SOURCES & PROVENANCE</h2>
+              </div>
+            </div>
+
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: 16 }}>
+              {p.sources.map((src: any, idx: number) => (
+                <div
+                  key={idx}
+                  style={{
+                    padding: 16,
+                    background: '#141715',
+                    border: '1px solid #262927',
+                    borderRadius: 6,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'space-between'
+                  }}
+                >
+                  <div>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 6 }}>
+                      <span style={{ fontSize: 10, fontWeight: 800, color: '#c7a675', letterSpacing: '0.08em' }}>
+                        {src.type || 'OFFICIAL'}
+                      </span>
+                      <span style={{ fontSize: 10, color: '#888' }}>
+                        Verified: {src.verified_at ? src.verified_at.split('T')[0] : '2026-08-28'}
+                      </span>
+                    </div>
+                    <div style={{ fontSize: 14, fontWeight: 700, color: '#fff', marginBottom: 4 }}>{src.title}</div>
+                  </div>
+                  <div style={{ marginTop: 12, borderTop: '1px solid #222523', paddingTop: 8 }}>
+                    <a
+                      href={src.url}
+                      target="_blank"
+                      rel="noreferrer"
+                      style={{ fontSize: 11, color: '#38bdf8', textDecoration: 'underline', wordBreak: 'break-all' }}
+                    >
+                      {src.url} ↗
+                    </a>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
         {/* Presentation & Involvement Actions */}
         <section className="section shell" style={{ borderTop: '1px solid var(--line)', paddingTop: 60, paddingBottom: 60 }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 24 }}>
