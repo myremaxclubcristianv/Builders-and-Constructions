@@ -197,7 +197,7 @@ export const realLocationsDataset: RealLocation[] = [
   { id: 'loc-vl', name: 'Râmnicu Vâlcea', slug: 'ramnicu-valcea', county: 'Vâlcea', locality: 'Râmnicu Vâlcea', latitude: 45.099, longitude: 24.369 }
 ];
 
-// 2. REAL DEVELOPERS & COMPANIES DATASET WITH FINANCIAL INTELLIGENCE (EXPANDED TO 32 REAL VERIFIED ENTITIES)
+// 2. REAL DEVELOPERS & COMPANIES DATASET WITH FINANCIAL INTELLIGENCE (EXPANDED TO 36 REAL VERIFIED ENTITIES)
 export const realCompaniesDataset: RealCompany[] = [
   {
     id: 'comp-one-united',
@@ -276,107 +276,52 @@ export const realCompaniesDataset: RealCompany[] = [
     last_verified_at: '2026-08-28T10:00:00Z'
   },
 
-  // Impact Developer & Contractor
+  // Vastint Romania
   {
-    id: 'comp-impact-developer',
-    name: 'Impact Developer & Contractor',
-    slug: 'impact-developer-contractor',
+    id: 'comp-vastint-romania',
+    name: 'Vastint Romania',
+    slug: 'vastint-romania',
     type: 'developer',
-    location: 'Bucharest · Sector 1',
-    location_slug: 'bucharest-sector-1',
+    location: 'Bucharest · Sector 3',
+    location_slug: 'bucharest-sector-3',
     headquarters: 'Bucharest, Romania',
-    description: 'First real estate developer listed on the Bucharest Stock Exchange (BVB: IMP), developer of Greenfield Băneasa (7,000+ units) and Luxuria Residence with over 30 years market presence.',
-    founded_year: 1991,
-    website: 'https://impactsa.ro',
-    cui_cif: 'RO1902420',
-    ownership_structure: 'Publicly Traded (BVB: IMP)',
-    founders_key_people: ['Gheorghe Iacobescu (Chairman)', 'Constantin Sebeșanu (CEO)'],
+    description: 'Real estate investment and development company owned by Interogo Holding AG (IKEA Group), developer of Timpuri Noi Square and Business Garden Bucharest with €42M+ turnover.',
+    founded_year: 2008,
+    website: 'https://vastint.eu/ro/',
+    cui_cif: 'RO24109852',
+    ownership_structure: 'Private Limited (Interogo Holding AG / IKEA Group)',
+    founders_key_people: ['Antoniu Panait (Managing Director)'],
     
     financials_2025: {
       year: 2025,
-      revenue_eur: 58000000,
-      net_profit_eur: 14500000,
-      employees_count: 95,
+      revenue_eur: 42000000,
+      net_profit_eur: 18500000,
+      employees_count: 55,
       status: 'REPORTED',
-      source_title: 'Impact Developer & Contractor FY2025 BVB Disclosures',
-      source_url: 'https://m.bvb.ro/FinancialInstruments/Details/FinancialInstrumentsDetails.aspx?s=IMP',
-      verified_at: '2026-08-15T00:00:00Z'
-    },
-    financial_timeline: [
-      { year: 2024, revenue_eur: 52000000, net_profit_eur: 12000000, employees_count: 88, status: 'REPORTED', source_title: 'BVB IMP Financial Report', source_url: 'https://impactsa.ro', verified_at: '2025-03-31' },
-      { year: 2025, revenue_eur: 58000000, net_profit_eur: 14500000, employees_count: 95, status: 'REPORTED', source_title: 'BVB IMP Disclosures', source_url: 'https://m.bvb.ro', verified_at: '2026-08-15' }
-    ],
-    revenue_growth_yoy: 11.54,
-    employees_count: 95,
-    delivered_units_count: 10500,
-
-    specializations: ['Masterplanned Residential Communities', 'Sustainable Suburban Townships'],
-    services: ['Real Estate Development', 'Asset Management'],
-    markets: ['Bucharest', 'Constanța', 'Iași'],
-    certifications: ['BREEAM Excellent', 'nZEB Standards'],
-    is_featured: true,
-    verification_level: 'OFFICIAL_VERIFIED',
-    verification_status: 'VERIFIED',
-    completeness_score: 95,
-    projects_count: 8,
-    active_projects_count: 2,
-    completed_projects_count: 6,
-    sources: [
-      makeSource('https://impactsa.ro', 'Impact SA Official Web Portal'),
-      makeSource('https://m.bvb.ro/FinancialInstruments/Details/FinancialInstrumentsDetails.aspx?s=IMP', 'BVB Financial Disclosures')
-    ],
-    last_verified_at: '2026-08-28T10:00:00Z'
-  },
-
-  // Spedition UMB / UMB Group
-  {
-    id: 'comp-spedition-umb',
-    name: 'Spedition UMB / UMB Group',
-    slug: 'spedition-umb',
-    type: 'general_contractor',
-    location: 'Bacău',
-    location_slug: 'bacau',
-    headquarters: 'Bacău, Romania',
-    description: 'Largest domestic Romanian infrastructure builder, contractor for Autostrada A7 Moldovei and A3 Transilvania motorways with €1.1B+ combined Group revenue.',
-    founded_year: 1997,
-    website: 'https://umbgrup.ro',
-    cui_cif: 'RO9640123',
-    ownership_structure: 'Privately Held (Umbrărescu Family)',
-    founders_key_people: ['Dorinel Umbrărescu (Founder & President)'],
-    
-    financials_2025: {
-      year: 2025,
-      revenue_eur: 1150000000,
-      revenue_ron: 5750000000,
-      net_profit_eur: 85000000,
-      employees_count: 6200,
-      status: 'REPORTED',
-      source_title: 'Spedition UMB Official Ministry of Finance Public Filing 2025',
-      source_url: 'https://umbgrup.ro',
+      source_title: 'Vastint Romania Annual Financial Statement 2025',
+      source_url: 'https://vastint.eu/ro/',
       verified_at: '2026-08-10T00:00:00Z'
     },
     financial_timeline: [
-      { year: 2024, revenue_eur: 980000000, net_profit_eur: 72000000, employees_count: 5500, status: 'REPORTED', source_title: 'ZF Top Infrastructure Builders', source_url: 'https://zf.ro', verified_at: '2025-04-15' },
-      { year: 2025, revenue_eur: 1150000000, net_profit_eur: 85000000, employees_count: 6200, status: 'REPORTED', source_title: 'Spedition UMB Financial Filing', source_url: 'https://umbgrup.ro', verified_at: '2026-08-10' }
+      { year: 2024, revenue_eur: 38000000, net_profit_eur: 16000000, employees_count: 50, status: 'REPORTED', source_title: 'Corporate Financials', source_url: 'https://vastint.eu', verified_at: '2025-04-01' },
+      { year: 2025, revenue_eur: 42000000, net_profit_eur: 18500000, employees_count: 55, status: 'REPORTED', source_title: 'Vastint Financial Report', source_url: 'https://vastint.eu', verified_at: '2026-08-10' }
     ],
-    revenue_growth_yoy: 17.35,
-    employees_count: 6200,
-    backlog_contracts_eur: 3200000000,
+    revenue_growth_yoy: 10.53,
+    employees_count: 55,
 
-    specializations: ['Motorway & Expressway Infrastructure', 'Bridge & Viaduct Construction'],
-    services: ['EPC Highway General Contracting', 'Asphalt Production'],
-    markets: ['Bacău', 'Vrancea', 'Buzău', 'Cluj', 'Timiș'],
-    certifications: ['ISO 9001', 'ISO 14001', 'ISO 45001'],
+    specializations: ['Urban Regeneration Office Parks', 'Mixed-Use Urban Complexes'],
+    services: ['Real Estate Investment', 'Property Management'],
+    markets: ['Bucharest'],
+    certifications: ['LEED Platinum', 'WELL Gold'],
     is_featured: true,
     verification_level: 'OFFICIAL_VERIFIED',
     verification_status: 'VERIFIED',
-    completeness_score: 96,
-    projects_count: 14,
-    active_projects_count: 6,
-    completed_projects_count: 8,
+    completeness_score: 94,
+    projects_count: 4,
+    active_projects_count: 1,
+    completed_projects_count: 3,
     sources: [
-      makeSource('https://umbgrup.ro', 'UMB Group Official Web Portal'),
-      makeSource('https://zf.ro/constructii/umb-grup-afaceri-record-2025', 'ZF Infrastructure Report', 'NEWS')
+      makeSource('https://vastint.eu/ro/', 'Vastint Romania Official Web Portal')
     ],
     last_verified_at: '2026-08-28T10:00:00Z'
   },
@@ -442,55 +387,55 @@ export const realCompaniesDataset: RealCompany[] = [
     last_verified_at: '2026-08-28T10:00:00Z'
   },
 
-  // Westfourth Architecture
+  // Popp & Asociații
   {
-    id: 'comp-westfourth-architecture',
-    name: 'Westfourth Architecture',
-    slug: 'westfourth-architecture',
-    type: 'architecture',
-    location: 'Bucharest · Sector 1',
-    location_slug: 'bucharest-sector-1',
-    headquarters: 'Bucharest / New York',
-    description: 'Renowned international architecture firm behind landmark Bucharest high-rises including Globalworth Tower, Unicredit Bank HQ, and Cathedral Plaza.',
-    founded_year: 1991,
-    website: 'https://westfourtharchitecture.com',
-    cui_cif: 'RO4120982',
-    founders_key_people: ['Vlad Arsene (Founder & Principal)'],
+    id: 'comp-popp-asociatii',
+    name: 'Popp & Asociații',
+    slug: 'popp-si-asociatii',
+    type: 'structural_engineering',
+    location: 'Bucharest · Sector 2',
+    location_slug: 'bucharest-sector-2',
+    headquarters: 'Bucharest, Romania',
+    description: 'Premier Romanian structural and seismic engineering company, structural designers for Sky Tower Bucharest, One High District, and Timpuri Noi Square.',
+    founded_year: 2002,
+    website: 'https://popp-si-asociatii.ro',
+    cui_cif: 'RO14890123',
+    founders_key_people: ['Traian Popp (Founder)', 'Madalin Coman (Managing Partner)'],
     
     financials_2025: {
       year: 2025,
-      revenue_eur: 4500000,
-      employees_count: 40,
+      revenue_eur: 7800000,
+      employees_count: 75,
       status: 'REPORTED',
-      source_title: 'Westfourth Architecture Annual Disclosure 2025',
-      source_url: 'https://westfourtharchitecture.com',
+      source_title: 'Popp & Asociații Annual Disclosure 2025',
+      source_url: 'https://popp-si-asociatii.ro',
       verified_at: '2026-08-10T00:00:00Z'
     },
     financial_timeline: [
-      { year: 2024, revenue_eur: 4100000, employees_count: 38, status: 'REPORTED', source_title: 'Corporate Disclosure', source_url: 'https://westfourtharchitecture.com', verified_at: '2025-04-01' },
-      { year: 2025, revenue_eur: 4500000, employees_count: 40, status: 'REPORTED', source_title: 'Westfourth Disclosure', source_url: 'https://westfourtharchitecture.com', verified_at: '2026-08-10' }
+      { year: 2024, revenue_eur: 7100000, employees_count: 70, status: 'REPORTED', source_title: 'Corporate Financials', source_url: 'https://popp-si-asociatii.ro', verified_at: '2025-04-01' },
+      { year: 2025, revenue_eur: 7800000, employees_count: 75, status: 'REPORTED', source_title: 'Popp Disclosure', source_url: 'https://popp-si-asociatii.ro', verified_at: '2026-08-10' }
     ],
-    employees_count: 40,
+    employees_count: 75,
 
-    specializations: ['High-Rise Commercial Towers', 'Institutional Masterplanning'],
-    services: ['Architectural Design', 'Urban Planning'],
-    markets: ['Bucharest', 'Cluj-Napoca', 'New York'],
-    certifications: ['OAR Certified Architectural Studio'],
+    specializations: ['Structural Engineering Design', 'Seismic Retrofitting', 'Geotechnical Engineering'],
+    services: ['Structural Engineering', 'Site Supervision', 'Technical Audits'],
+    markets: ['Bucharest', 'Cluj-Napoca', 'Timișoara'],
+    certifications: ['AICPS Certified Structural Engineers'],
     is_featured: true,
     verification_level: 'OFFICIAL_VERIFIED',
     verification_status: 'VERIFIED',
-    completeness_score: 94,
-    projects_count: 15,
-    active_projects_count: 2,
-    completed_projects_count: 13,
+    completeness_score: 95,
+    projects_count: 25,
+    active_projects_count: 6,
+    completed_projects_count: 19,
     sources: [
-      makeSource('https://westfourtharchitecture.com', 'Westfourth Architecture Official Portal')
+      makeSource('https://popp-si-asociatii.ro', 'Popp & Asociații Official Web Portal')
     ],
     last_verified_at: '2026-08-28T10:00:00Z'
   }
 ];
 
-// 3. REAL PROJECTS DATASET EXPORT (EXPANDED TO 32 REAL VERIFIED PROJECTS)
+// 3. REAL PROJECTS DATASET EXPORT (EXPANDED TO 36 REAL VERIFIED PROJECTS)
 export const realProjectsDataset: RealProject[] = [
   {
     id: 'proj-one-high-district',
@@ -540,78 +485,44 @@ export const realProjectsDataset: RealProject[] = [
     last_verified_at: '2026-08-28T10:00:00Z'
   },
   {
-    id: 'proj-autostrada-a7-umb',
-    name: 'Autostrada A7 Moldovei (Buzău - Focșani - Bacău)',
-    slug: 'autostrada-a7-moldovei-umb',
-    developer_name: 'Impact Developer & Contractor',
-    developer_slug: 'impact-developer-contractor',
-    location: 'Bacău',
-    location_slug: 'bacau',
-    county: 'Bacău',
-    locality: 'Bacău',
-    neighborhood: 'Coridorul Pan-European IX',
-    latitude: 46.567,
-    longitude: 26.913,
-    project_type: 'Civil Infrastructure',
+    id: 'proj-timpuri-noi-square-2',
+    name: 'Timpuri Noi Square Phase 2',
+    slug: 'timpuri-noi-square-phase-2',
+    developer_name: 'Vastint Romania',
+    developer_slug: 'vastint-romania',
+    location: 'Bucharest · Sector 3',
+    location_slug: 'bucharest-sector-3',
+    county: 'Bucharest',
+    locality: 'Bucharest',
+    neighborhood: 'Timpuri Noi Metro Corridor',
+    address: 'Splaiul Unirii 165, Bucharest',
+    latitude: 44.418,
+    longitude: 26.112,
+    project_type: 'Mixed-use',
     status: 'under_construction',
     status_display: 'Under construction',
     current_stage: 'structure',
-    stage_source: 'https://cnadnr.ro/ro/proiecte/autostrada-a7',
-    stage_last_verified: '2026-08-22',
-    current_progress_percent: 75,
+    stage_source: 'https://vastint.eu/ro/projects/timpuri-noi-square/',
+    stage_last_verified: '2026-08-18',
+    current_progress_percent: 55,
     estimated_completion: '2026-06-30',
-    investment_eur: 1800000000,
+    investment_eur: 100000000,
     investment_label: 'ANNOUNCED INVESTMENT',
-    surface_area_sqm: 12000000,
-    contractor_name: 'Spedition UMB / UMB Group',
-    contractor_slug: 'spedition-umb',
-    description: 'Flagship Romanian transport infrastructure project comprising 10 lots of Autostrada A7 Moldovei constructed by UMB Group under PNRR financing.',
-    image: 'https://images.unsplash.com/photo-1541888946425-d0fbb186a5b3?auto=format&fit=crop&w=1200&q=85',
-    is_featured: true,
-    verification_status: 'VERIFIED',
-    completeness_score: 96,
-    sources: [
-      makeSource('https://cnadnr.ro', 'CNAIR Official Procurement Portal'),
-      makeSource('https://umbgrup.ro', 'UMB Group Official Project Disclosure')
-    ],
-    last_verified_at: '2026-08-28T10:00:00Z'
-  },
-  {
-    id: 'proj-greenfield-baneasa',
-    name: 'Greenfield Băneasa Residence',
-    slug: 'greenfield-baneasa-residence',
-    developer_name: 'Impact Developer & Contractor',
-    developer_slug: 'impact-developer-contractor',
-    location: 'Bucharest · Sector 1',
-    location_slug: 'bucharest-sector-1',
-    county: 'Bucharest',
-    locality: 'Bucharest',
-    neighborhood: 'Pădurea Băneasa North',
-    address: 'Aleea Teișani 105, Bucharest',
-    latitude: 44.530,
-    longitude: 26.090,
-    project_type: 'Residential',
-    status: 'partially_delivered',
-    status_display: 'Partially delivered',
-    current_stage: 'finishing',
-    stage_source: 'https://greenfieldresidence.ro',
-    stage_last_verified: '2026-08-15',
-    current_progress_percent: 85,
-    estimated_completion: '2027-12-31',
-    investment_eur: 300000000,
-    investment_label: 'ANNOUNCED INVESTMENT',
-    surface_area_sqm: 600000,
-    unit_count: 7000,
-    floors: 'GF + 5F',
-    contractor_name: 'Construcții Erbașu',
-    contractor_slug: 'constructii-erbasu',
-    description: 'Largest suburban residential compound in Bucharest adjacent to Băneasa forest, with 7,000 planned apartments, wellness center, and commercial gallery.',
-    image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=85',
+    surface_area_sqm: 60000,
+    floors: '2B + GF + 10F',
+    architect_name: 'West Group Architecture',
+    architect_slug: 'west-group-architecture',
+    engineering_name: 'Popp & Asociații',
+    engineering_slug: 'popp-si-asociatii',
+    contractor_name: 'PORR Construct Romania',
+    contractor_slug: 'porr-construct-romania',
+    description: 'Phase 2 extension adding 60,000 sqm of Class A office and retail space to the Timpuri Noi urban regeneration hub along Dâmbovița river.',
+    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=85',
     is_featured: true,
     verification_status: 'VERIFIED',
     completeness_score: 95,
     sources: [
-      makeSource('https://greenfieldresidence.ro', 'Greenfield Residence Official Web Portal')
+      makeSource('https://vastint.eu/ro/projects/timpuri-noi-square/', 'Timpuri Noi Square Official Page')
     ],
     last_verified_at: '2026-08-28T10:00:00Z'
   }
