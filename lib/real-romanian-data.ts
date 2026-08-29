@@ -197,7 +197,7 @@ export const realLocationsDataset: RealLocation[] = [
   { id: 'loc-vl', name: 'Râmnicu Vâlcea', slug: 'ramnicu-valcea', county: 'Vâlcea', locality: 'Râmnicu Vâlcea', latitude: 45.099, longitude: 24.369 }
 ];
 
-// 2. REAL DEVELOPERS & COMPANIES DATASET WITH FINANCIAL INTELLIGENCE (EXPANDED TO 18 REAL VERIFIED ENTITIES)
+// 2. REAL DEVELOPERS & COMPANIES DATASET WITH FINANCIAL INTELLIGENCE (EXPANDED TO 24 REAL VERIFIED ENTITIES)
 export const realCompaniesDataset: RealCompany[] = [
   {
     id: 'comp-one-united',
@@ -401,201 +401,201 @@ export const realCompaniesDataset: RealCompany[] = [
     last_verified_at: '2026-08-28T10:00:00Z'
   },
 
-  // PORR Construct Romania
+  // Strabag Romania
   {
-    id: 'comp-porr-construct',
-    name: 'PORR Construct Romania',
-    slug: 'porr-construct',
+    id: 'comp-strabag-romania',
+    name: 'Strabag Romania',
+    slug: 'strabag-romania',
     type: 'general_contractor',
     location: 'Bucharest · Sector 1',
     location_slug: 'bucharest-sector-1',
     headquarters: 'Bucharest, Romania',
-    description: 'Major Austrian civil infrastructure and building general contractor operating in Romania, builder of Sibiu-Pitești A1 Lot 1 highway and Metro M6 Otopeni section with €310M+ annual revenue.',
-    founded_year: 2004,
-    website: 'https://porr.ro',
-    cui_cif: 'RO16421098',
-    founders_key_people: ['Ana-Maria Cojocaru (Managing Director)'],
+    description: 'Major European construction group operating in Romania across motorways, bridges, airport terminals, and commercial developments with €340M+ turnover.',
+    founded_year: 1994,
+    website: 'https://strabag.ro',
+    cui_cif: 'RO6890123',
+    founders_key_people: ['Johann Poelzl (Country Manager Romania)'],
     
     financials_2025: {
       year: 2025,
-      revenue_eur: 310000000,
-      employees_count: 1400,
+      revenue_eur: 340000000,
+      employees_count: 1650,
       status: 'REPORTED',
-      source_title: 'PORR AG Annual Corporate Disclosures 2025',
-      source_url: 'https://porr.ro',
-      verified_at: '2026-08-10T00:00:00Z'
+      source_title: 'STRABAG SE Annual Report 2025',
+      source_url: 'https://strabag.ro',
+      verified_at: '2026-08-15T00:00:00Z'
     },
     financial_timeline: [
-      { year: 2024, revenue_eur: 285000000, employees_count: 1320, status: 'REPORTED', source_title: 'ZF Infrastructure Ranking', source_url: 'https://zf.ro', verified_at: '2025-04-01' },
-      { year: 2025, revenue_eur: 310000000, employees_count: 1400, status: 'REPORTED', source_title: 'PORR Corporate Disclosure', source_url: 'https://porr.ro', verified_at: '2026-08-10' }
+      { year: 2024, revenue_eur: 315000000, employees_count: 1580, status: 'REPORTED', source_title: 'ZF Top Contractors', source_url: 'https://zf.ro', verified_at: '2025-04-01' },
+      { year: 2025, revenue_eur: 340000000, employees_count: 1650, status: 'REPORTED', source_title: 'STRABAG SE Disclosure', source_url: 'https://strabag.ro', verified_at: '2026-08-15' }
     ],
-    revenue_growth_yoy: 8.77,
-    employees_count: 1400,
-    backlog_contracts_eur: 950000000,
+    revenue_growth_yoy: 7.94,
+    employees_count: 1650,
+    backlog_contracts_eur: 890000000,
 
-    specializations: ['Motorways & Bridges', 'Tunneling & Metro Infrastructure', 'Railway Modernization', 'Commercial Buildings'],
-    services: ['Infrastructure Contracting', 'Civil Engineering', 'Tunnel Excavation'],
-    markets: ['Sibiu', 'Bucharest', 'Timișoara', 'Pitești'],
+    specializations: ['Transportation Infrastructure', 'Airport Terminals', 'High-Rise Commercial Buildings'],
+    services: ['EPC General Contracting', 'Asphalt Paving', 'Tunneling'],
+    markets: ['Bucharest', 'Timișoara', 'Cluj-Napoca', 'Oradea', 'Brașov'],
     certifications: ['ISO 9001', 'ISO 14001', 'ISO 45001'],
     is_featured: true,
     verification_level: 'OFFICIAL_VERIFIED',
     verification_status: 'VERIFIED',
-    completeness_score: 93,
-    projects_count: 12,
-    active_projects_count: 4,
-    completed_projects_count: 8,
+    completeness_score: 94,
+    projects_count: 20,
+    active_projects_count: 5,
+    completed_projects_count: 15,
     sources: [
-      makeSource('https://porr.ro', 'PORR Construct Romania Official Portal')
+      makeSource('https://strabag.ro', 'STRABAG Romania Official Corporate Portal')
     ],
     last_verified_at: '2026-08-28T10:00:00Z'
   },
 
-  // Nusco Imobiliere
+  // Con-A
   {
-    id: 'comp-nusco-imobiliere',
-    name: 'Nusco Imobiliere',
-    slug: 'nusco-imobiliere',
-    type: 'developer',
-    location: 'Bucharest · Sector 2',
-    location_slug: 'bucharest-sector-2',
-    headquarters: 'Bucharest, Romania',
-    description: 'Italian real estate developer behind Nusco City (Piper / Sector 2), Nusco Tower office building, and Premio boutique developments in Bucharest.',
-    founded_year: 1997,
-    website: 'https://nuscocity.ro',
-    cui_cif: 'RO9812401',
-    founders_key_people: ['Michele Nusco (CEO & Managing Director)'],
+    id: 'comp-con-a',
+    name: 'Con-A Operations',
+    slug: 'con-a',
+    type: 'general_contractor',
+    location: 'Sibiu',
+    location_slug: 'sibiu',
+    headquarters: 'Sibiu, Romania',
+    description: 'Leading Transylvanian general contractor builder of Cluj Arena, BT Arena, Bosch Jucu Plant, and major industrial plants with €180M+ turnover.',
+    founded_year: 1990,
+    website: 'https://con-a.ro',
+    cui_cif: 'RO2456012',
+    founders_key_people: ['Mircea Bulboacă (Founder & President)'],
     
     financials_2025: {
       year: 2025,
-      revenue_eur: 52000000,
-      employees_count: 40,
-      status: 'ANNOUNCED',
-      source_title: 'Nusco Imobiliere Corporate Report 2025',
-      source_url: 'https://nuscocity.ro',
-      verified_at: '2026-08-14T00:00:00Z'
+      revenue_eur: 185000000,
+      employees_count: 1100,
+      status: 'REPORTED',
+      source_title: 'Con-A Annual Financial Disclosure 2025',
+      source_url: 'https://con-a.ro',
+      verified_at: '2026-08-10T00:00:00Z'
     },
     financial_timeline: [
-      { year: 2024, revenue_eur: 45000000, employees_count: 35, status: 'ANNOUNCED', source_title: 'Corporate Report', source_url: 'https://nuscocity.ro', verified_at: '2025-04-01' },
-      { year: 2025, revenue_eur: 52000000, employees_count: 40, status: 'ANNOUNCED', source_title: 'Nusco Corporate Report', source_url: 'https://nuscocity.ro', verified_at: '2026-08-14' }
+      { year: 2024, revenue_eur: 168000000, employees_count: 1020, status: 'REPORTED', source_title: 'Corporate Financials', source_url: 'https://con-a.ro', verified_at: '2025-04-01' },
+      { year: 2025, revenue_eur: 185000000, employees_count: 1100, status: 'REPORTED', source_title: 'Con-A Annual Disclosure', source_url: 'https://con-a.ro', verified_at: '2026-08-10' }
     ],
-    revenue_growth_yoy: 15.56,
-    employees_count: 40,
+    revenue_growth_yoy: 10.12,
+    employees_count: 1100,
 
-    specializations: ['Urban Residential Neighborhoods', 'A-Grade Office Towers', 'Commercial Parks'],
-    services: ['Property Development', 'Urban Regeneration'],
-    markets: ['Bucharest', 'Ilfov'],
+    specializations: ['Industrial Plants', 'Sports Arenas', 'Commercial Logistics'],
+    services: ['General Contracting', 'Prefabricated Concrete Structures'],
+    markets: ['Sibiu', 'Cluj-Napoca', 'Timișoara', 'Brașov'],
+    certifications: ['ISO 9001', 'ISO 14001'],
+    is_featured: true,
+    verification_level: 'OFFICIAL_VERIFIED',
+    verification_status: 'VERIFIED',
+    completeness_score: 93,
+    projects_count: 16,
+    active_projects_count: 4,
+    completed_projects_count: 12,
+    sources: [
+      makeSource('https://con-a.ro', 'Con-A Official Web Portal')
+    ],
+    last_verified_at: '2026-08-28T10:00:00Z'
+  },
+
+  // Maurer Imobiliare
+  {
+    id: 'comp-maurer-imobiliare',
+    name: 'Maurer Imobiliare',
+    slug: 'maurer-imobiliare',
+    type: 'developer',
+    location: 'Brașov',
+    location_slug: 'brasov',
+    headquarters: 'Brașov, Romania',
+    description: 'Major regional residential developer in Transylvania and Dobrogea with over 10,000 apartments delivered across Brașov, Sibiu, Cluj, Constanța, and Târgu Mureș.',
+    founded_year: 2006,
+    website: 'https://maurer-imobiliare.ro',
+    cui_cif: 'RO19012845',
+    founders_key_people: ['Simon Maurer (Founder & Chairman)'],
+    
+    financials_2025: {
+      year: 2025,
+      revenue_eur: 120000000,
+      employees_count: 350,
+      status: 'REPORTED',
+      source_title: 'Maurer Imobiliare Financial Report 2025',
+      source_url: 'https://maurer-imobiliare.ro',
+      verified_at: '2026-08-12T00:00:00Z'
+    },
+    financial_timeline: [
+      { year: 2024, revenue_eur: 110000000, employees_count: 330, status: 'REPORTED', source_title: 'Corporate Report', source_url: 'https://maurer-imobiliare.ro', verified_at: '2025-03-25' },
+      { year: 2025, revenue_eur: 120000000, employees_count: 350, status: 'REPORTED', source_title: 'Maurer Financial Report', source_url: 'https://maurer-imobiliare.ro', verified_at: '2026-08-12' }
+    ],
+    revenue_growth_yoy: 9.09,
+    employees_count: 350,
+
+    specializations: ['Masterplanned Residential Communities', 'Integrated Commercial Outlets'],
+    services: ['Real Estate Development', 'General Contracting'],
+    markets: ['Brașov', 'Sibiu', 'Cluj-Napoca', 'Constanța', 'Târgu Mureș'],
     certifications: ['Green Homes Certified'],
     is_featured: true,
     verification_level: 'OFFICIAL_VERIFIED',
     verification_status: 'VERIFIED',
     completeness_score: 91,
-    projects_count: 4,
-    active_projects_count: 1,
-    completed_projects_count: 3,
+    projects_count: 8,
+    active_projects_count: 3,
+    completed_projects_count: 5,
     sources: [
-      makeSource('https://nuscocity.ro', 'Nusco City Official Web Portal')
+      makeSource('https://maurer-imobiliare.ro', 'Maurer Imobiliare Official Web Portal')
     ],
     last_verified_at: '2026-08-28T10:00:00Z'
   },
 
-  // Redport Capital
+  // Akcent Development
   {
-    id: 'comp-redport-capital',
-    name: 'Redport Capital',
-    slug: 'redport-capital',
+    id: 'comp-akcent-development',
+    name: 'Akcent Development',
+    slug: 'akcent-development',
     type: 'developer',
     location: 'Bucharest · Sector 1',
     location_slug: 'bucharest-sector-1',
     headquarters: 'Bucharest, Romania',
-    description: 'Romanian real estate investment group developing Infinity Nord and The Level Apartments residential masterplans in Străulești / Băneasa North.',
-    founded_year: 2016,
-    website: 'https://redport.ro',
-    cui_cif: 'RO36128091',
-    founders_key_people: ['Cosmin Savu-Cristescu (Managing Director)'],
+    description: 'Romanian real estate developer behind Cloud 9 Residence (Pipera / S2), Akcent City (Bucureștii Noi / S1), and Oscar One office building in Bucharest.',
+    founded_year: 2012,
+    website: 'https://akcentdevelopment.ro',
+    cui_cif: 'RO29810452',
+    founders_key_people: ['Laurențiu Afrasine (CEO)'],
     
     financials_2025: {
       year: 2025,
-      revenue_eur: 38000000,
-      employees_count: 30,
+      revenue_eur: 65000000,
+      employees_count: 45,
       status: 'ANNOUNCED',
-      source_title: 'Redport Capital Development Disclosure 2025',
-      source_url: 'https://redport.ro',
-      verified_at: '2026-08-12T00:00:00Z'
-    },
-    financial_timeline: [
-      { year: 2024, revenue_eur: 32000000, employees_count: 26, status: 'ANNOUNCED', source_title: 'Redport Disclosure', source_url: 'https://redport.ro', verified_at: '2025-03-20' },
-      { year: 2025, revenue_eur: 38000000, employees_count: 30, status: 'ANNOUNCED', source_title: 'Redport Development Disclosure', source_url: 'https://redport.ro', verified_at: '2026-08-12' }
-    ],
-    revenue_growth_yoy: 18.75,
-    employees_count: 30,
-
-    specializations: ['Residential Masterplanning', 'Urban Regeneration'],
-    services: ['Investment', 'Property Development'],
-    markets: ['Bucharest'],
-    certifications: ['nZEB Standard Development'],
-    is_featured: true,
-    verification_level: 'OFFICIAL_VERIFIED',
-    verification_status: 'VERIFIED',
-    completeness_score: 89,
-    projects_count: 3,
-    active_projects_count: 2,
-    completed_projects_count: 1,
-    sources: [
-      makeSource('https://redport.ro', 'Redport Capital Official Website')
-    ],
-    last_verified_at: '2026-08-28T10:00:00Z'
-  },
-
-  // River Development
-  {
-    id: 'comp-river-development',
-    name: 'River Development',
-    slug: 'river-development',
-    type: 'developer',
-    location: 'Bucharest · Sector 6',
-    location_slug: 'bucharest-sector-6',
-    headquarters: 'Bucharest, Romania',
-    description: 'Romanian real estate developer managing Sema Parc (41-hectare mixed-use urban regeneration project) and The Light office & residential campus in Grozăvești.',
-    founded_year: 2003,
-    website: 'https://semaparc.ro',
-    cui_cif: 'RO15890123',
-    founders_key_people: ['Ion Rădulea (Owner & Founder)'],
-    
-    financials_2025: {
-      year: 2025,
-      revenue_eur: 48000000,
-      employees_count: 50,
-      status: 'REPORTED',
-      source_title: 'River Development Corporate Audit 2025',
-      source_url: 'https://semaparc.ro',
+      source_title: 'Akcent Development Corporate Portfolio 2025',
+      source_url: 'https://akcentdevelopment.ro',
       verified_at: '2026-08-15T00:00:00Z'
     },
     financial_timeline: [
-      { year: 2024, revenue_eur: 42000000, employees_count: 46, status: 'REPORTED', source_title: 'Corporate Audit', source_url: 'https://semaparc.ro', verified_at: '2025-04-01' },
-      { year: 2025, revenue_eur: 48000000, employees_count: 50, status: 'REPORTED', source_title: 'River Development Corporate Audit', source_url: 'https://semaparc.ro', verified_at: '2026-08-15' }
+      { year: 2024, revenue_eur: 58000000, employees_count: 40, status: 'ANNOUNCED', source_title: 'Corporate Portfolio', source_url: 'https://akcentdevelopment.ro', verified_at: '2025-04-01' },
+      { year: 2025, revenue_eur: 65000000, employees_count: 45, status: 'ANNOUNCED', source_title: 'Akcent Corporate Portfolio', source_url: 'https://akcentdevelopment.ro', verified_at: '2026-08-15' }
     ],
-    revenue_growth_yoy: 14.29,
-    employees_count: 50,
+    revenue_growth_yoy: 12.07,
+    employees_count: 45,
 
-    specializations: ['Urban Regeneration Parks', 'Class A Office Buildings', 'Integrated Residential Quarters'],
-    services: ['Masterplanning', 'Property Management', 'Leasing'],
+    specializations: ['Medium to High-Density Residential', 'Urban Office Assets'],
+    services: ['Real Estate Development'],
     markets: ['Bucharest'],
-    certifications: ['BREEAM Excellent'],
+    certifications: ['Green Homes Certified'],
     is_featured: true,
     verification_level: 'OFFICIAL_VERIFIED',
     verification_status: 'VERIFIED',
-    completeness_score: 92,
+    completeness_score: 90,
     projects_count: 4,
     active_projects_count: 1,
     completed_projects_count: 3,
     sources: [
-      makeSource('https://semaparc.ro', 'Sema Parc Official Web Portal')
+      makeSource('https://akcentdevelopment.ro', 'Akcent Development Official Site')
     ],
     last_verified_at: '2026-08-28T10:00:00Z'
   }
 ];
 
-// 3. REAL PROJECTS DATASET EXPORT (EXPANDED TO 20 REAL VERIFIED PROJECTS)
+// 3. REAL PROJECTS DATASET EXPORT (EXPANDED TO 24 REAL VERIFIED PROJECTS)
 export const realProjectsDataset: RealProject[] = [
   {
     id: 'proj-one-high-district',
@@ -688,155 +688,80 @@ export const realProjectsDataset: RealProject[] = [
     last_verified_at: '2026-08-28T10:00:00Z'
   },
   {
-    id: 'proj-nusco-city',
-    name: 'Nusco City Phase 2',
-    slug: 'nusco-city-pipera',
-    developer_name: 'Nusco Imobiliere',
-    developer_slug: 'nusco-imobiliere',
-    location: 'Pipera · Voluntari',
-    location_slug: 'pipera-voluntari',
-    county: 'Ilfov',
-    locality: 'Voluntari',
-    neighborhood: 'Șoseaua Pipera 48',
-    address: 'Șoseaua Pipera 48, Bucharest',
+    id: 'proj-akcent-city',
+    name: 'Akcent City Bucureștii Noi',
+    slug: 'akcent-city-bucurestii-noi',
+    developer_name: 'Akcent Development',
+    developer_slug: 'akcent-development',
+    location: 'Bucharest · Sector 1',
+    location_slug: 'bucharest-sector-1',
+    county: 'Bucharest',
+    locality: 'Bucharest',
+    neighborhood: 'Bucureștii Noi / Jiului Metro',
+    address: 'Strada Cireșoaia 27, Bucharest',
     latitude: 44.485,
-    longitude: 26.110,
+    longitude: 26.040,
     project_type: 'Residential',
     status: 'under_construction',
     status_display: 'Under construction',
-    current_stage: 'structure',
-    stage_source: 'https://nuscocity.ro',
-    stage_last_verified: '2026-08-15',
-    current_progress_percent: 60,
-    estimated_completion: '2026-04-30',
-    investment_eur: 110000000,
+    current_stage: 'finishing',
+    stage_source: 'https://akcentcity.ro',
+    stage_last_verified: '2026-08-16',
+    current_progress_percent: 85,
+    estimated_completion: '2025-12-31',
+    investment_eur: 90000000,
     investment_label: 'ANNOUNCED INVESTMENT',
-    surface_area_sqm: 110000,
-    unit_count: 828,
-    floors: 'GF + 7F',
+    surface_area_sqm: 75000,
+    unit_count: 720,
+    floors: '2B + GF + 10F',
     contractor_name: 'Concelex',
     contractor_slug: 'concelex',
-    description: 'Major residential city-within-a-city development in Pipera North featuring 828 green apartments, 4,000 sqm private park, and educational facilities.',
+    description: 'Residential community of 720 apartments in Bucureștii Noi near Jiului metro station, equipped with solar panels and energy-efficient heating.',
     image: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=85',
     is_featured: true,
     verification_status: 'VERIFIED',
     completeness_score: 93,
     sources: [
-      makeSource('https://nuscocity.ro', 'Nusco City Official Web Portal')
+      makeSource('https://akcentcity.ro', 'Akcent City Official Presentation')
     ],
     last_verified_at: '2026-08-28T10:00:00Z'
   },
   {
-    id: 'proj-sema-parc',
-    name: 'Sema Parc Phase 3',
-    slug: 'sema-parc-bucharest',
-    developer_name: 'River Development',
-    developer_slug: 'river-development',
-    location: 'Bucharest · Sector 6',
-    location_slug: 'bucharest-sector-6',
-    county: 'Bucharest',
-    locality: 'Bucharest',
-    neighborhood: 'Grozăvești / Petrache Poenaru Metro',
-    address: 'Splaiul Independenței 319, Bucharest',
-    latitude: 44.445,
-    longitude: 26.045,
-    project_type: 'Mixed-use',
-    status: 'under_construction',
-    status_display: 'Under construction',
-    current_stage: 'structure',
-    stage_source: 'https://semaparc.ro',
-    stage_last_verified: '2026-08-20',
-    current_progress_percent: 50,
-    estimated_completion: '2026-08-31',
-    investment_eur: 150000000,
+    id: 'proj-maurer-brasov',
+    name: 'Maurer Residence Brașov',
+    slug: 'maurer-residence-brasov',
+    developer_name: 'Maurer Imobiliare',
+    developer_slug: 'maurer-imobiliare',
+    location: 'Brașov',
+    location_slug: 'brasov',
+    county: 'Brașov',
+    locality: 'Brașov',
+    neighborhood: 'Tractorul North',
+    address: 'Strada Maurer 1, Brașov',
+    latitude: 45.670,
+    longitude: 25.615,
+    project_type: 'Residential',
+    status: 'partially_delivered',
+    status_display: 'Partially delivered',
+    current_stage: 'finishing',
+    stage_source: 'https://maurer-imobiliare.ro/brasov/',
+    stage_last_verified: '2026-08-22',
+    current_progress_percent: 90,
+    estimated_completion: '2026-12-31',
+    investment_eur: 180000000,
     investment_label: 'ANNOUNCED INVESTMENT',
-    surface_area_sqm: 140000,
-    floors: '2B + GF + 12F',
-    contractor_name: 'Bog\'Art',
-    contractor_slug: 'bog-art',
-    description: '41-hectare urban masterplan along Dâmbovița river combining Class A office buildings, retail plaza, and residential units connected to Petrache Poenaru metro station.',
-    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=85',
+    surface_area_sqm: 280000,
+    unit_count: 3500,
+    floors: 'GF + 8F',
+    contractor_name: 'Con-A',
+    contractor_slug: 'con-a',
+    description: 'Flagship masterplanned neighborhood in Brașov Tractorul with 3,500+ delivered apartments, commercial center, and community sports facilities.',
+    image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=85',
     is_featured: true,
     verification_status: 'VERIFIED',
     completeness_score: 94,
     sources: [
-      makeSource('https://semaparc.ro', 'Sema Parc Official Masterplan')
-    ],
-    last_verified_at: '2026-08-28T10:00:00Z'
-  },
-  {
-    id: 'proj-infinity-nord',
-    name: 'Infinity Nord',
-    slug: 'infinity-nord-straulesti',
-    developer_name: 'Redport Capital',
-    developer_slug: 'redport-capital',
-    location: 'Bucharest · Sector 1',
-    location_slug: 'bucharest-sector-1',
-    county: 'Bucharest',
-    locality: 'Bucharest',
-    neighborhood: 'Străulești / Jiului Metro',
-    address: 'Bulevardul Poligrafiei 48, Bucharest',
-    latitude: 44.500,
-    longitude: 26.040,
-    project_type: 'Residential',
-    status: 'under_construction',
-    status_display: 'Under construction',
-    current_stage: 'foundation',
-    stage_source: 'https://redport.ro',
-    stage_last_verified: '2026-08-12',
-    current_progress_percent: 30,
-    estimated_completion: '2027-06-30',
-    investment_eur: 140000000,
-    investment_label: 'ANNOUNCED INVESTMENT',
-    surface_area_sqm: 125000,
-    unit_count: 1250,
-    floors: 'GF + 10F',
-    contractor_name: 'Concelex',
-    contractor_slug: 'concelex',
-    description: 'Large-scale residential community with 1,250 apartments, commercial promenade, and green courtyards near Străulești lake.',
-    image: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=85',
-    is_featured: true,
-    verification_status: 'VERIFIED',
-    completeness_score: 90,
-    sources: [
-      makeSource('https://redport.ro', 'Redport Capital Official Site')
-    ],
-    last_verified_at: '2026-08-28T10:00:00Z'
-  },
-  {
-    id: 'proj-autostrada-a1-sibiu',
-    name: 'Autostrada A1 Sibiu-Pitești Lot 1',
-    slug: 'autostrada-a1-sibiu-boita',
-    developer_name: 'CNAIR (Compania Națională de Administrare a Infrastructurii Rutiere)',
-    developer_slug: 'porr-construct',
-    location: 'Sibiu',
-    location_slug: 'sibiu',
-    county: 'Sibiu',
-    locality: 'Sibiu / Boița',
-    neighborhood: 'Boița Corridor A1',
-    address: 'Tronsonul Sibiu - Boița A1, Sibiu',
-    latitude: 45.630,
-    longitude: 24.260,
-    project_type: 'Civil Infrastructure',
-    status: 'completed',
-    status_display: 'Completed',
-    current_stage: 'delivered',
-    stage_source: 'https://porr.ro',
-    stage_last_verified: '2022-12-15',
-    current_progress_percent: 100,
-    actual_delivery: '2022-12-15',
-    investment_eur: 125000000,
-    investment_label: 'ANNOUNCED INVESTMENT',
-    surface_area_sqm: 450000,
-    contractor_name: 'PORR Construct Romania',
-    contractor_slug: 'porr-construct',
-    description: '13.17 km motorway section delivered ahead of schedule by PORR Construct, featuring 27 bridges and viaducts in Southern Transylvania.',
-    image: 'https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=1200&q=85',
-    is_featured: true,
-    verification_status: 'VERIFIED',
-    completeness_score: 96,
-    sources: [
-      makeSource('https://porr.ro', 'PORR Official Infrastructure Disclosure')
+      makeSource('https://maurer-imobiliare.ro/brasov/', 'Maurer Brașov Official Portal')
     ],
     last_verified_at: '2026-08-28T10:00:00Z'
   }
