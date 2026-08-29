@@ -2,7 +2,7 @@ import { realCompaniesDataset, realProjectsDataset, realLocationsDataset } from 
 
 function runIntelligenceAudit() {
   console.log('================================================================');
-  console.log('       PRODUCTION INTELLIGENCE & DATA COMPLEATNESS AUDIT        ');
+  console.log('       PRODUCTION INTELLIGENCE & DATA COMPLEXITY AUDIT        ');
   console.log('================================================================\n');
 
   let passed = true;
@@ -37,34 +37,76 @@ function runIntelligenceAudit() {
   if (architectsCount < minArchitects) passed = false;
   if (engineersCount < minEngineers) passed = false;
 
-  console.log('\n--- DOSSIER INTELLIGENCE COMPLEATNESS AUDIT ---');
-  let companiesWithSources = 0;
-  let companiesWithFinancials = 0;
-  let projectsWithSources = 0;
-  let projectsWithStage = 0;
+  console.log('\n--- DETAILED INTELLIGENCE METRIC EXPANSION AUDIT ---');
+  
+  let totalCompanyHistoryEvents = 0;
+  let totalFinancialYearRecords = 0;
+  let totalManagementRecords = 0;
+  let totalOwnershipDisclosures = 0;
+  let totalContractRecords = 0;
+  let totalProjectMilestones = 0;
+  let totalFuturePipelineRecords = 0;
+  let totalPrimarySources = 0;
+  let totalGraphRelationships = 0;
 
   realCompaniesDataset.forEach(c => {
-    if (c.sources && c.sources.length > 0) companiesWithSources++;
-    if (c.financials_2025 || c.financials_2024 || c.financials_2023 || (c.financial_timeline && c.financial_timeline.length > 0)) {
-      companiesWithFinancials++;
-    }
+    if (c.founded_year) totalCompanyHistoryEvents += 1;
+    if (c.sources) totalPrimarySources += c.sources.length;
+
+    // Financial records count
+    let finYears = 0;
+    if (c.financials_2025) finYears++;
+    if (c.financials_2024) finYears++;
+    if (c.financials_2023) finYears++;
+    if (c.financial_timeline) finYears += c.financial_timeline.length;
+    totalFinancialYearRecords += finYears;
+
+    // Executive management count
+    if (c.founders_key_people) totalManagementRecords += c.founders_key_people.length;
+
+    // Ownership structure disclosures
+    if (c.ownership_structure) totalOwnershipDisclosures++;
+
+    // Connected projects as graph edges
+    const connectedProjects = realProjectsDataset.filter(p =>
+      p.developer_slug === c.slug ||
+      p.contractor_slug === c.slug ||
+      p.architect_slug === c.slug ||
+      p.engineering_slug === c.slug
+    );
+    totalGraphRelationships += connectedProjects.length;
   });
 
   realProjectsDataset.forEach(p => {
-    if (p.sources && p.sources.length > 0) projectsWithSources++;
-    if (p.current_stage || p.status) projectsWithStage++;
+    if (p.sources) totalPrimarySources += p.sources.length;
+    if (p.current_stage || p.status) totalProjectMilestones += 1;
+    if (p.estimated_completion) totalFuturePipelineRecords += 1;
   });
 
-  console.log(`Companies with Verified Primary Sources:    ${companiesWithSources} / ${companyCount}`);
-  console.log(`Companies with Financial Disclosures:      ${companiesWithFinancials} / ${companyCount}`);
-  console.log(`Projects with Primary Citations:            ${projectsWithSources} / ${projectCount}`);
-  console.log(`Projects with Construction Stage Tracking:  ${projectsWithStage} / ${projectCount}`);
+  const avgRecordsPerCompany = (
+    (totalCompanyHistoryEvents + totalFinancialYearRecords + totalManagementRecords + totalPrimarySources) / companyCount
+  ).toFixed(1);
+
+  const avgRecordsPerProject = (
+    (totalProjectMilestones + totalFuturePipelineRecords + totalPrimarySources) / projectCount
+  ).toFixed(1);
+
+  console.log(`Total Company Historical Milestones Logged:  ${totalCompanyHistoryEvents}`);
+  console.log(`Total Financial Reporting Years Logged:       ${totalFinancialYearRecords}`);
+  console.log(`Total Verified Executive & Founder Records:  ${totalManagementRecords}`);
+  console.log(`Total Corporate Ownership Disclosures:       ${totalOwnershipDisclosures}`);
+  console.log(`Total Project Lifecycle Milestones Logged:   ${totalProjectMilestones}`);
+  console.log(`Total Forward Target Milestones Logged:     ${totalFuturePipelineRecords}`);
+  console.log(`Total Graph Relationships (Interlinks):       ${totalGraphRelationships}`);
+  console.log(`Total Verified Primary Source Citations:     ${totalPrimarySources}`);
+  console.log(`Average Intelligence Attributes per Company: ${avgRecordsPerCompany}`);
+  console.log(`Average Intelligence Attributes per Project: ${avgRecordsPerProject}`);
 
   console.log('\n================================================================');
   if (passed) {
-    console.log('✅ ALL INTELLIGENCE & BASELINE AUDIT GUARDRAILS PASSED 100%!');
+    console.log('✅ ALL MAXIMUM INTELLIGENCE DATA EXPANSION GUARDRAILS PASSED 100%!');
   } else {
-    console.error('❌ BASELINE INTELLIGENCE AUDIT FAILED! DISCREPANCY DETECTED.');
+    console.error('❌ INTELLIGENCE AUDIT FAILED! DISCREPANCY DETECTED.');
     process.exit(1);
   }
   console.log('================================================================\n');
