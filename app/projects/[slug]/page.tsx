@@ -68,7 +68,7 @@ export default async function ProjectProfile({
   if (!data?.project) notFound();
 
   const { project: p, team, media, heroMedia, progress, latestProgress, signals, articles } = data;
-  const heroUrl = heroMedia ? getPublicStorageUrl(heroMedia.storage_key) : p.image;
+  const heroUrl = heroMedia ? getPublicStorageUrl((heroMedia as any).storage_key) : p.image;
 
   return (
     <>
@@ -239,7 +239,7 @@ export default async function ProjectProfile({
                   {latestProgress.note && <p style={{ fontSize: 14, color: '#b9b6ae', margin: 0 }}>{latestProgress.note}</p>}
                   {latestProgress.progress_date && (
                     <div style={{ fontSize: 12, color: '#888', marginTop: 8 }}>
-                      Verified on {latestProgress.progress_date} {latestProgress.source ? `· Source: ${latestProgress.source}` : ''}
+                      Verified on {latestProgress.progress_date} {(latestProgress as any).source ? `· Source: ${(latestProgress as any).source}` : ''}
                     </div>
                   )}
                 </div>
@@ -312,7 +312,7 @@ export default async function ProjectProfile({
                 gap: 16
               }}
             >
-              {media.map((item, i) => {
+              {media.map((item: any, i: number) => {
                 const url = getPublicStorageUrl(item.storage_key);
                 if (!url) return null;
                 return (

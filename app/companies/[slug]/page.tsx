@@ -253,7 +253,7 @@ export default async function CompanyProfile({
             </div>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: 14, maxWidth: 840 }}>
-              {signals.map(sig => (
+              {signals.map((sig: any) => (
                 <div
                   key={sig.id}
                   style={{
@@ -326,7 +326,7 @@ export default async function CompanyProfile({
                 gap: 16
               }}
             >
-              {media.map((item, i) => {
+              {media.map((item: any, i: number) => {
                 const url = getPublicStorageUrl(item.storage_key);
                 if (!url) return null;
                 return (
