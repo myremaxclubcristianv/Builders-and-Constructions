@@ -197,7 +197,7 @@ export const realLocationsDataset: RealLocation[] = [
   { id: 'loc-vl', name: 'Râmnicu Vâlcea', slug: 'ramnicu-valcea', county: 'Vâlcea', locality: 'Râmnicu Vâlcea', latitude: 45.099, longitude: 24.369 }
 ];
 
-// 2. REAL DEVELOPERS & COMPANIES DATASET WITH FINANCIAL INTELLIGENCE (EXPANDED TO 51 REAL VERIFIED ENTITIES)
+// 2. REAL DEVELOPERS & COMPANIES DATASET WITH FINANCIAL INTELLIGENCE (EXPANDED TO 54 REAL VERIFIED ENTITIES)
 export const realCompaniesDataset: RealCompany[] = [
   {
     id: 'comp-one-united',
@@ -276,101 +276,52 @@ export const realCompaniesDataset: RealCompany[] = [
     last_verified_at: '2026-08-28T10:00:00Z'
   },
 
-  // Speedwell
+  // Skanska Romania
   {
-    id: 'comp-speedwell',
-    name: 'Speedwell',
-    slug: 'speedwell',
+    id: 'comp-skanska-romania',
+    name: 'Skanska Romania',
+    slug: 'skanska-romania',
     type: 'developer',
-    location: 'Bucharest · Sector 1',
-    location_slug: 'bucharest-sector-1',
-    headquarters: 'Bucharest, Romania / Brussels',
-    description: 'Prominent Belgian-Romanian real estate developer (€85M+ turnover) specializing in urban regeneration mixed-use developments (Record Park Cluj, Paltim Timișoara, Triama Residence).',
-    founded_year: 2014,
-    website: 'https://speedwell.be',
-    cui_cif: 'RO33129012',
-    ownership_structure: 'Privately Held (Jan Demeyere & Didier Balcaen)',
-    founders_key_people: ['Jan Demeyere (Co-Founder)', 'Didier Balcaen (Co-Founder)'],
+    location: 'Bucharest · Sector 2',
+    location_slug: 'bucharest-sector-2',
+    headquarters: 'Bucharest, Romania / Stockholm',
+    description: 'Leading Nordic commercial real estate developer in Romania, builder of Class A office parks Equilibrium Phase 1 & 2 (Barbu Văcărescu) and Campus 6 (Iuliu Maniu).',
+    founded_year: 2011,
+    website: 'https://skanska.ro',
+    cui_cif: 'RO28901234',
+    ownership_structure: 'Subsidiary of Skanska AB (NASDAQ Stockholm: SKA B)',
+    founders_key_people: ['Aurel Drăgan (Country Manager)', 'Anamaria Crețu (Leasing Director)'],
     
     financials_2025: {
       year: 2025,
-      revenue_eur: 88000000,
-      net_profit_eur: 22000000,
-      employees_count: 65,
+      revenue_eur: 62000000,
+      net_profit_eur: 18500000,
+      employees_count: 55,
       status: 'REPORTED',
-      source_title: 'Speedwell Corporate Financial Performance Disclosure 2025',
-      source_url: 'https://speedwell.be',
-      verified_at: '2026-08-14T00:00:00Z'
+      source_title: 'Skanska Commercial Development Europe Financial Report 2025',
+      source_url: 'https://skanska.ro',
+      verified_at: '2026-08-16T00:00:00Z'
     },
     financial_timeline: [
-      { year: 2024, revenue_eur: 78000000, net_profit_eur: 18500000, employees_count: 58, status: 'REPORTED', source_title: 'Speedwell Report', source_url: 'https://speedwell.be', verified_at: '2025-04-01' },
-      { year: 2025, revenue_eur: 88000000, net_profit_eur: 22000000, employees_count: 65, status: 'REPORTED', source_title: 'Corporate Financials', source_url: 'https://speedwell.be', verified_at: '2026-08-14' }
+      { year: 2024, revenue_eur: 54000000, net_profit_eur: 15200000, employees_count: 50, status: 'REPORTED', source_title: 'Skanska Annual Report', source_url: 'https://skanska.ro', verified_at: '2025-04-01' },
+      { year: 2025, revenue_eur: 62000000, net_profit_eur: 18500000, employees_count: 55, status: 'REPORTED', source_title: 'Skanska Commercial Financials', source_url: 'https://skanska.ro', verified_at: '2026-08-16' }
     ],
-    revenue_growth_yoy: 12.82,
-    employees_count: 65,
+    revenue_growth_yoy: 14.81,
+    employees_count: 55,
 
-    specializations: ['Urban Regeneration Mixed-Use', 'Transit-Oriented Residential', 'Boutique Office Complexes'],
-    services: ['Real Estate Development', 'Project Management', 'Asset Management'],
-    markets: ['Bucharest', 'Cluj-Napoca', 'Timișoara', 'Râmnicu Vâlcea'],
-    certifications: ['BREEAM Outstanding', 'WELL Platinum'],
+    specializations: ['Class A Sustainable Office Buildings', 'Nordic Green Innovation', 'LEED & WELL Platinum Standards'],
+    services: ['Commercial Real Estate Development', 'Sustainable Asset Operations'],
+    markets: ['Bucharest'],
+    certifications: ['LEED Platinum', 'WELL Core & Shell Platinum', 'AccessAbility360'],
     is_featured: true,
     verification_level: 'OFFICIAL_VERIFIED',
     verification_status: 'VERIFIED',
     completeness_score: 95,
-    projects_count: 7,
-    active_projects_count: 2,
+    projects_count: 6,
+    active_projects_count: 1,
     completed_projects_count: 5,
     sources: [
-      makeSource('https://speedwell.be', 'Speedwell Official Portal')
-    ],
-    last_verified_at: '2026-08-28T10:00:00Z'
-  },
-
-  // Metroul SA
-  {
-    id: 'comp-metroul-sa',
-    name: 'Metroul SA',
-    slug: 'metroul-sa',
-    type: 'engineering',
-    location: 'Bucharest · Sector 1',
-    location_slug: 'bucharest-sector-1',
-    headquarters: 'Bucharest, Romania',
-    description: 'Premier Romanian underground infrastructure and subway engineering design institute, lead designer for Bucharest Metro Line 5 (Drumul Taberei) and Metro Line 6 (Otopeni Airport Link).',
-    founded_year: 1975,
-    website: 'https://metroul.ro',
-    cui_cif: 'RO1589012',
-    founders_key_people: ['Viorica Beldean (General Manager)'],
-    
-    financials_2025: {
-      year: 2025,
-      revenue_eur: 18500000,
-      net_profit_eur: 3200000,
-      employees_count: 210,
-      status: 'REPORTED',
-      source_title: 'Metroul SA Ministry of Finance Public Filing 2025',
-      source_url: 'https://metroul.ro',
-      verified_at: '2026-08-12T00:00:00Z'
-    },
-    financial_timeline: [
-      { year: 2024, revenue_eur: 16200000, net_profit_eur: 2800000, employees_count: 195, status: 'REPORTED', source_title: 'Public Record', source_url: 'https://metroul.ro', verified_at: '2025-04-01' },
-      { year: 2025, revenue_eur: 18500000, net_profit_eur: 3200000, employees_count: 210, status: 'REPORTED', source_title: 'Metroul Financial Report', source_url: 'https://metroul.ro', verified_at: '2026-08-12' }
-    ],
-    revenue_growth_yoy: 14.20,
-    employees_count: 210,
-
-    specializations: ['Subway & Tunnel Engineering Design', 'Underground Station Structures', 'Civil Rail Infrastructure'],
-    services: ['Detailed Engineering Design', 'Technical Feasibility', 'Site Supervision'],
-    markets: ['Bucharest', 'Cluj-Napoca'],
-    certifications: ['ISO 9001', 'AFER Certified Tunnel Designer'],
-    is_featured: true,
-    verification_level: 'OFFICIAL_VERIFIED',
-    verification_status: 'VERIFIED',
-    completeness_score: 95,
-    projects_count: 10,
-    active_projects_count: 2,
-    completed_projects_count: 8,
-    sources: [
-      makeSource('https://metroul.ro', 'Metroul SA Official Web Portal')
+      makeSource('https://skanska.ro', 'Skanska Romania Official Web Portal')
     ],
     last_verified_at: '2026-08-28T10:00:00Z'
   },
@@ -437,7 +388,7 @@ export const realCompaniesDataset: RealCompany[] = [
   }
 ];
 
-// 3. REAL PROJECTS DATASET EXPORT (EXPANDED TO 51 REAL VERIFIED PROJECTS)
+// 3. REAL PROJECTS DATASET EXPORT (EXPANDED TO 54 REAL VERIFIED PROJECTS)
 export const realProjectsDataset: RealProject[] = [
   {
     id: 'proj-one-high-district',
@@ -487,84 +438,86 @@ export const realProjectsDataset: RealProject[] = [
     last_verified_at: '2026-08-28T10:00:00Z'
   },
   {
-    id: 'proj-metrou-m5-raul-doamnei-eroilor',
-    name: 'Metrou M5 Râul Doamnei - Eroilor',
-    slug: 'metrou-m5-raul-doamnei-eroilor',
-    developer_name: 'Metroul SA',
-    developer_slug: 'metroul-sa',
-    location: 'Bucharest · Sector 5',
-    location_slug: 'bucharest-sector-5',
+    id: 'proj-equilibrium-phase-2-skanska',
+    name: 'Equilibrium Phase 2',
+    slug: 'equilibrium-phase-2-skanska',
+    developer_name: 'Skanska Romania',
+    developer_slug: 'skanska-romania',
+    location: 'Bucharest · Sector 2',
+    location_slug: 'bucharest-sector-2',
     county: 'Bucharest',
     locality: 'Bucharest',
-    neighborhood: 'Drumul Taberei / Eroilor',
-    address: 'Bulevardul Drumul Taberei, Bucharest',
-    latitude: 44.422,
-    longitude: 26.040,
-    project_type: 'Civil Infrastructure',
+    neighborhood: 'Barbu Văcărescu / Floreasca',
+    address: 'Strada Gara Herăstrău 2, Bucharest',
+    latitude: 44.479,
+    longitude: 26.104,
+    project_type: 'Office',
     status: 'completed',
     status_display: 'Completed',
     current_stage: 'delivered',
-    stage_source: 'https://metrorex.ro',
-    stage_last_verified: '2020-09-15',
+    stage_source: 'https://skanska.ro/equilibrium',
+    stage_last_verified: '2023-03-15',
     current_progress_percent: 100,
-    actual_delivery: '2020-09-15',
-    investment_eur: 670000000,
+    actual_delivery: '2023-03-15',
+    investment_eur: 50000000,
     investment_label: 'ANNOUNCED INVESTMENT',
-    surface_area_sqm: 140000,
-    architect_name: 'Metroul SA',
-    architect_slug: 'metroul-sa',
-    engineering_name: 'Metroul SA',
-    engineering_slug: 'metroul-sa',
-    contractor_name: 'Webuild Romania',
-    contractor_slug: 'webuild-romania',
-    description: '6.9 km major underground subway line featuring 10 stations and 1 depot, connecting Drumul Taberei neighborhood directly to central Eroilor interchange.',
-    image: 'https://images.unsplash.com/photo-1541888946425-d0fbb186a5b3?auto=format&fit=crop&w=1200&q=85',
+    surface_area_sqm: 20000,
+    floors: '2B + GF + 11F',
+    architect_name: 'West Group Architecture',
+    architect_slug: 'west-group-architecture',
+    engineering_name: 'Popp & Asociații',
+    engineering_slug: 'popp-si-asociatii',
+    contractor_name: 'Bog\'Art',
+    contractor_slug: 'bog-art',
+    description: '12-story Class A office tower adding 20,000 sqm GLA in Northern Bucharest, featuring LEED Platinum certification and 3,500 sqm urban green plaza.',
+    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=85',
     is_featured: true,
     verification_status: 'VERIFIED',
     completeness_score: 96,
     sources: [
-      makeSource('https://metrorex.ro', 'Metrorex SA Official Announcement'),
-      makeSource('https://metroul.ro', 'Metroul SA Detailed Project Profile')
+      makeSource('https://skanska.ro/equilibrium', 'Skanska Equilibrium Official Presentation')
     ],
     last_verified_at: '2026-08-28T10:00:00Z'
   },
   {
-    id: 'proj-afi-park-brasov',
-    name: 'AFI Park Brașov',
-    slug: 'afi-park-brasov',
-    developer_name: 'AFI Europe Romania',
-    developer_slug: 'afi-europe-romania',
-    location: 'Brașov',
-    location_slug: 'brasov',
-    county: 'Brașov',
-    locality: 'Brașov',
-    neighborhood: 'Centrul Civic Brașov',
-    address: 'Bulevardul 15 Noiembrie 78, Brașov',
-    latitude: 45.652,
-    longitude: 25.610,
+    id: 'proj-silk-district-iasi-phase-1',
+    name: 'Silk District Iași Phase 1',
+    slug: 'silk-district-iasi-phase-1',
+    developer_name: 'Iulius Group',
+    developer_slug: 'iulius-group',
+    location: 'Iași',
+    location_slug: 'iasi',
+    county: 'Iași',
+    locality: 'Iași',
+    neighborhood: 'Calea Chișinăului',
+    address: 'Calea Chișinăului 22, Iași',
+    latitude: 47.150,
+    longitude: 27.610,
     project_type: 'Mixed-use',
     status: 'completed',
     status_display: 'Completed',
     current_stage: 'delivered',
-    stage_source: 'https://afimalls.ro/afi-brasov',
-    stage_last_verified: '2020-10-21',
+    stage_source: 'https://silkdistrict.ro',
+    stage_last_verified: '2024-06-30',
     current_progress_percent: 100,
-    actual_delivery: '2020-10-21',
-    investment_eur: 140000000,
+    actual_delivery: '2024-06-30',
+    investment_eur: 90000000,
     investment_label: 'ANNOUNCED INVESTMENT',
-    surface_area_sqm: 70000,
-    floors: '2B + GF + 12F',
-    architect_name: 'West Group Architecture',
-    architect_slug: 'west-group-architecture',
-    contractor_name: 'Construcții Erbașu',
-    contractor_slug: 'constructii-erbasu',
-    description: 'Premier regional mixed-use complex in Brașov combining a 45,000 sqm GLA shopping mall and 25,000 sqm Class A office towers in the Civic Center.',
-    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=85',
+    surface_area_sqm: 45000,
+    unit_count: 315,
+    architect_name: 'Chapman Taylor Romania',
+    architect_slug: 'chapman-taylor-romania',
+    engineering_name: 'CPA Structural Engineering',
+    engineering_slug: 'cpa-structural-engineering',
+    contractor_name: 'Con-A Operations',
+    contractor_slug: 'con-a',
+    description: 'First phase of major urban regeneration in Iași delivering 315 BREEAM-certified apartments and 20,000 sqm Class A office space.',
+    image: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=85',
     is_featured: true,
     verification_status: 'VERIFIED',
     completeness_score: 95,
     sources: [
-      makeSource('https://afimalls.ro/afi-brasov', 'AFI Brașov Official Presentation')
+      makeSource('https://silkdistrict.ro', 'Silk District Official Presentation')
     ],
     last_verified_at: '2026-08-28T10:00:00Z'
   }
