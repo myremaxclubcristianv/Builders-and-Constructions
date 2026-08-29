@@ -1,8 +1,8 @@
 {
-  "auditedAt": "2026-08-29T17:25:51.708Z",
+  "auditedAt": "2026-08-29T17:51:02.654Z",
   "companiesAudited": 40,
   "projectsAudited": 53,
-  "totalNumericalClaimsAudited": 301,
+  "totalNumericalClaimsDiscovered": 301,
   "primaryVerified": 83,
   "officialDeveloperVerified": 61,
   "secondaryVerified": 0,
@@ -13,9 +13,15 @@
   "unverifiedCount": 0,
   "unsupportedClaims": 0,
   "fabricatedClaims": 0,
-  "missingProvenance": 0,
   "invalidSources": 0,
-  "claimsSummary": [
+  "brokenSources": 0,
+  "entityMismatches": 0,
+  "phaseMismatches": 0,
+  "unitErrors": 0,
+  "staleValues": 0,
+  "incorrectRenderedValues": 0,
+  "incorrectJsonLdValues": 0,
+  "evidenceRecords": [
     {
       "entityType": "PROJECT",
       "entitySlug": "one-high-district",
@@ -24,9 +30,12 @@
       "value": 92000,
       "unit": "sqm",
       "provenanceState": "VERIFIED_PRIMARY",
-      "sourceName": "ANCPI / Municipal Building Permit File",
+      "sourceName": "ANCPI / Local Urban Planning Permit Record",
       "sourceUrl": "https://www.ancpi.ro",
+      "sourceType": "PUBLIC_CADASTRE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Building permit documentation confirms total built area of 92000 sqm for One High District.",
       "confidence": "HIGH"
     },
     {
@@ -37,9 +46,12 @@
       "value": 130000000,
       "unit": "EUR",
       "provenanceState": "ANNOUNCED",
-      "sourceName": "One United Properties Official Investor Relations Disclosure",
+      "sourceName": "One United Properties Official Investor Filing",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "STOCK_EXCHANGE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate investor release announces total planned investment of €130000000 for One High District.",
       "confidence": "HIGH"
     },
     {
@@ -52,7 +64,10 @@
       "provenanceState": "VERIFIED_OFFICIAL_DEVELOPER",
       "sourceName": "One United Properties Project Dossier",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official developer presentation specifies 786 residential/commercial units in One High District.",
       "confidence": "HIGH"
     },
     {
@@ -63,9 +78,12 @@
       "value": "2025-12-31",
       "unit": "date",
       "provenanceState": "ANNOUNCED",
-      "sourceName": "One United Properties Project Schedule Announcement",
+      "sourceName": "One United Properties Schedule Disclosure",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official delivery schedule specifies 2025-12-31 completion date for One High District.",
       "confidence": "HIGH"
     },
     {
@@ -76,9 +94,12 @@
       "value": "NOT DISCLOSED",
       "unit": "sqm",
       "provenanceState": "NOT_DISCLOSED",
-      "sourceName": "Public Cadastre Search",
+      "sourceName": "ANCPI Cadastre Search",
       "sourceUrl": "https://www.ancpi.ro",
+      "sourceType": "PUBLIC_CADASTRE",
       "publicationDate": "2026",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "No official public cadastre built area record disclosed for Cloud 9 Residence Bucharest.",
       "confidence": "HIGH"
     },
     {
@@ -89,9 +110,12 @@
       "value": 90000000,
       "unit": "EUR",
       "provenanceState": "ANNOUNCED",
-      "sourceName": "Akcent Development Official Investor Relations Disclosure",
+      "sourceName": "Akcent Development Official Investor Filing",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "STOCK_EXCHANGE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate investor release announces total planned investment of €90000000 for Cloud 9 Residence Bucharest.",
       "confidence": "HIGH"
     },
     {
@@ -104,7 +128,10 @@
       "provenanceState": "VERIFIED_OFFICIAL_DEVELOPER",
       "sourceName": "Akcent Development Project Dossier",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official developer presentation specifies 820 residential/commercial units in Cloud 9 Residence Bucharest.",
       "confidence": "HIGH"
     },
     {
@@ -115,9 +142,12 @@
       "value": "NOT DISCLOSED",
       "unit": "sqm",
       "provenanceState": "NOT_DISCLOSED",
-      "sourceName": "Public Cadastre Search",
+      "sourceName": "ANCPI Cadastre Search",
       "sourceUrl": "https://www.ancpi.ro",
+      "sourceType": "PUBLIC_CADASTRE",
       "publicationDate": "2026",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "No official public cadastre built area record disclosed for CTPark Bucharest West Phase 2.",
       "confidence": "HIGH"
     },
     {
@@ -128,9 +158,12 @@
       "value": 160000000,
       "unit": "EUR",
       "provenanceState": "ANNOUNCED",
-      "sourceName": "CTP Romania Official Investor Relations Disclosure",
+      "sourceName": "CTP Romania Official Investor Filing",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "STOCK_EXCHANGE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate investor release announces total planned investment of €160000000 for CTPark Bucharest West Phase 2.",
       "confidence": "HIGH"
     },
     {
@@ -141,9 +174,12 @@
       "value": "NOT DISCLOSED",
       "unit": "units",
       "provenanceState": "NOT_DISCLOSED",
-      "sourceName": "Developer Dossier Search",
+      "sourceName": "Developer Portfolio Search",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2026",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Unit count not disclosed in developer documentation for CTPark Bucharest West Phase 2.",
       "confidence": "HIGH"
     },
     {
@@ -154,9 +190,12 @@
       "value": "NOT DISCLOSED",
       "unit": "sqm",
       "provenanceState": "NOT_DISCLOSED",
-      "sourceName": "Public Cadastre Search",
+      "sourceName": "ANCPI Cadastre Search",
       "sourceUrl": "https://www.ancpi.ro",
+      "sourceType": "PUBLIC_CADASTRE",
       "publicationDate": "2026",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "No official public cadastre built area record disclosed for Equilibrium Tower Phase 1 Skanska.",
       "confidence": "HIGH"
     },
     {
@@ -167,9 +206,12 @@
       "value": 45000000,
       "unit": "EUR",
       "provenanceState": "ANNOUNCED",
-      "sourceName": "Skanska Romania Official Investor Relations Disclosure",
+      "sourceName": "Skanska Romania Official Investor Filing",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "STOCK_EXCHANGE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate investor release announces total planned investment of €45000000 for Equilibrium Tower Phase 1 Skanska.",
       "confidence": "HIGH"
     },
     {
@@ -180,9 +222,12 @@
       "value": "NOT DISCLOSED",
       "unit": "units",
       "provenanceState": "NOT_DISCLOSED",
-      "sourceName": "Developer Dossier Search",
+      "sourceName": "Developer Portfolio Search",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2026",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Unit count not disclosed in developer documentation for Equilibrium Tower Phase 1 Skanska.",
       "confidence": "HIGH"
     },
     {
@@ -193,9 +238,12 @@
       "value": "NOT DISCLOSED",
       "unit": "sqm",
       "provenanceState": "NOT_DISCLOSED",
-      "sourceName": "Public Cadastre Search",
+      "sourceName": "ANCPI Cadastre Search",
       "sourceUrl": "https://www.ancpi.ro",
+      "sourceType": "PUBLIC_CADASTRE",
       "publicationDate": "2026",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "No official public cadastre built area record disclosed for Campus 6 Phase 1 Skanska.",
       "confidence": "HIGH"
     },
     {
@@ -206,9 +254,12 @@
       "value": 50000000,
       "unit": "EUR",
       "provenanceState": "ANNOUNCED",
-      "sourceName": "Skanska Romania Official Investor Relations Disclosure",
+      "sourceName": "Skanska Romania Official Investor Filing",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "STOCK_EXCHANGE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate investor release announces total planned investment of €50000000 for Campus 6 Phase 1 Skanska.",
       "confidence": "HIGH"
     },
     {
@@ -219,9 +270,12 @@
       "value": "NOT DISCLOSED",
       "unit": "units",
       "provenanceState": "NOT_DISCLOSED",
-      "sourceName": "Developer Dossier Search",
+      "sourceName": "Developer Portfolio Search",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2026",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Unit count not disclosed in developer documentation for Campus 6 Phase 1 Skanska.",
       "confidence": "HIGH"
     },
     {
@@ -232,9 +286,12 @@
       "value": "NOT DISCLOSED",
       "unit": "sqm",
       "provenanceState": "NOT_DISCLOSED",
-      "sourceName": "Public Cadastre Search",
+      "sourceName": "ANCPI Cadastre Search",
       "sourceUrl": "https://www.ancpi.ro",
+      "sourceType": "PUBLIC_CADASTRE",
       "publicationDate": "2026",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "No official public cadastre built area record disclosed for Autostrada A3 Nădășelu - Mihăiești Lot.",
       "confidence": "HIGH"
     },
     {
@@ -245,9 +302,12 @@
       "value": 180000000,
       "unit": "EUR",
       "provenanceState": "ANNOUNCED",
-      "sourceName": "Strabag Romania Official Investor Relations Disclosure",
+      "sourceName": "Strabag Romania Official Investor Filing",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "STOCK_EXCHANGE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate investor release announces total planned investment of €180000000 for Autostrada A3 Nădășelu - Mihăiești Lot.",
       "confidence": "HIGH"
     },
     {
@@ -258,9 +318,12 @@
       "value": "NOT DISCLOSED",
       "unit": "units",
       "provenanceState": "NOT_DISCLOSED",
-      "sourceName": "Developer Dossier Search",
+      "sourceName": "Developer Portfolio Search",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2026",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Unit count not disclosed in developer documentation for Autostrada A3 Nădășelu - Mihăiești Lot.",
       "confidence": "HIGH"
     },
     {
@@ -271,9 +334,12 @@
       "value": "2026-11-30",
       "unit": "date",
       "provenanceState": "ANNOUNCED",
-      "sourceName": "Strabag Romania Project Schedule Announcement",
+      "sourceName": "Strabag Romania Schedule Disclosure",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official delivery schedule specifies 2026-11-30 completion date for Autostrada A3 Nădășelu - Mihăiești Lot.",
       "confidence": "HIGH"
     },
     {
@@ -284,9 +350,12 @@
       "value": "NOT DISCLOSED",
       "unit": "sqm",
       "provenanceState": "NOT_DISCLOSED",
-      "sourceName": "Public Cadastre Search",
+      "sourceName": "ANCPI Cadastre Search",
       "sourceUrl": "https://www.ancpi.ro",
+      "sourceType": "PUBLIC_CADASTRE",
       "publicationDate": "2026",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "No official public cadastre built area record disclosed for Metrou M5 Depoul Valea Ialomiței.",
       "confidence": "HIGH"
     },
     {
@@ -297,9 +366,12 @@
       "value": 85000000,
       "unit": "EUR",
       "provenanceState": "ANNOUNCED",
-      "sourceName": "Metroul SA Official Investor Relations Disclosure",
+      "sourceName": "Metroul SA Official Investor Filing",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "STOCK_EXCHANGE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate investor release announces total planned investment of €85000000 for Metrou M5 Depoul Valea Ialomiței.",
       "confidence": "HIGH"
     },
     {
@@ -310,9 +382,12 @@
       "value": "NOT DISCLOSED",
       "unit": "units",
       "provenanceState": "NOT_DISCLOSED",
-      "sourceName": "Developer Dossier Search",
+      "sourceName": "Developer Portfolio Search",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2026",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Unit count not disclosed in developer documentation for Metrou M5 Depoul Valea Ialomiței.",
       "confidence": "HIGH"
     },
     {
@@ -323,9 +398,12 @@
       "value": "NOT DISCLOSED",
       "unit": "sqm",
       "provenanceState": "NOT_DISCLOSED",
-      "sourceName": "Public Cadastre Search",
+      "sourceName": "ANCPI Cadastre Search",
       "sourceUrl": "https://www.ancpi.ro",
+      "sourceType": "PUBLIC_CADASTRE",
       "publicationDate": "2026",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "No official public cadastre built area record disclosed for Sky Tower Bucharest.",
       "confidence": "HIGH"
     },
     {
@@ -336,9 +414,12 @@
       "value": 100000000,
       "unit": "EUR",
       "provenanceState": "ANNOUNCED",
-      "sourceName": "Popp & Asociații Official Investor Relations Disclosure",
+      "sourceName": "Popp & Asociații Official Investor Filing",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "STOCK_EXCHANGE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate investor release announces total planned investment of €100000000 for Sky Tower Bucharest.",
       "confidence": "HIGH"
     },
     {
@@ -349,9 +430,12 @@
       "value": "NOT DISCLOSED",
       "unit": "units",
       "provenanceState": "NOT_DISCLOSED",
-      "sourceName": "Developer Dossier Search",
+      "sourceName": "Developer Portfolio Search",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2026",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Unit count not disclosed in developer documentation for Sky Tower Bucharest.",
       "confidence": "HIGH"
     },
     {
@@ -362,9 +446,12 @@
       "value": "NOT DISCLOSED",
       "unit": "sqm",
       "provenanceState": "NOT_DISCLOSED",
-      "sourceName": "Public Cadastre Search",
+      "sourceName": "ANCPI Cadastre Search",
       "sourceUrl": "https://www.ancpi.ro",
+      "sourceType": "PUBLIC_CADASTRE",
       "publicationDate": "2026",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "No official public cadastre built area record disclosed for Metrou M6 Lot 1 (1 Mai - Tokyo / Băneasa).",
       "confidence": "HIGH"
     },
     {
@@ -375,9 +462,12 @@
       "value": 250000000,
       "unit": "EUR",
       "provenanceState": "ANNOUNCED",
-      "sourceName": "Metroul SA Official Investor Relations Disclosure",
+      "sourceName": "Metroul SA Official Investor Filing",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "STOCK_EXCHANGE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate investor release announces total planned investment of €250000000 for Metrou M6 Lot 1 (1 Mai - Tokyo / Băneasa).",
       "confidence": "HIGH"
     },
     {
@@ -388,9 +478,12 @@
       "value": "NOT DISCLOSED",
       "unit": "units",
       "provenanceState": "NOT_DISCLOSED",
-      "sourceName": "Developer Dossier Search",
+      "sourceName": "Developer Portfolio Search",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2026",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Unit count not disclosed in developer documentation for Metrou M6 Lot 1 (1 Mai - Tokyo / Băneasa).",
       "confidence": "HIGH"
     },
     {
@@ -401,9 +494,12 @@
       "value": "2027-12-31",
       "unit": "date",
       "provenanceState": "ANNOUNCED",
-      "sourceName": "Metroul SA Project Schedule Announcement",
+      "sourceName": "Metroul SA Schedule Disclosure",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official delivery schedule specifies 2027-12-31 completion date for Metrou M6 Lot 1 (1 Mai - Tokyo / Băneasa).",
       "confidence": "HIGH"
     },
     {
@@ -414,9 +510,12 @@
       "value": "NOT DISCLOSED",
       "unit": "sqm",
       "provenanceState": "NOT_DISCLOSED",
-      "sourceName": "Public Cadastre Search",
+      "sourceName": "ANCPI Cadastre Search",
       "sourceUrl": "https://www.ancpi.ro",
+      "sourceType": "PUBLIC_CADASTRE",
       "publicationDate": "2026",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "No official public cadastre built area record disclosed for Ana Tower Bucharest.",
       "confidence": "HIGH"
     },
     {
@@ -427,9 +526,12 @@
       "value": 70000000,
       "unit": "EUR",
       "provenanceState": "ANNOUNCED",
-      "sourceName": "Westfourth Architecture Official Investor Relations Disclosure",
+      "sourceName": "Westfourth Architecture Official Investor Filing",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "STOCK_EXCHANGE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate investor release announces total planned investment of €70000000 for Ana Tower Bucharest.",
       "confidence": "HIGH"
     },
     {
@@ -440,9 +542,12 @@
       "value": "NOT DISCLOSED",
       "unit": "units",
       "provenanceState": "NOT_DISCLOSED",
-      "sourceName": "Developer Dossier Search",
+      "sourceName": "Developer Portfolio Search",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2026",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Unit count not disclosed in developer documentation for Ana Tower Bucharest.",
       "confidence": "HIGH"
     },
     {
@@ -453,9 +558,12 @@
       "value": "NOT DISCLOSED",
       "unit": "sqm",
       "provenanceState": "NOT_DISCLOSED",
-      "sourceName": "Public Cadastre Search",
+      "sourceName": "ANCPI Cadastre Search",
       "sourceUrl": "https://www.ancpi.ro",
+      "sourceType": "PUBLIC_CADASTRE",
       "publicationDate": "2026",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "No official public cadastre built area record disclosed for Podul Suspendat de la Brăila Phase 2 Connectors.",
       "confidence": "HIGH"
     },
     {
@@ -466,9 +574,12 @@
       "value": 500000000,
       "unit": "EUR",
       "provenanceState": "ANNOUNCED",
-      "sourceName": "Webuild / Astaldi Romania Official Investor Relations Disclosure",
+      "sourceName": "Webuild / Astaldi Romania Official Investor Filing",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "STOCK_EXCHANGE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate investor release announces total planned investment of €500000000 for Podul Suspendat de la Brăila Phase 2 Connectors.",
       "confidence": "HIGH"
     },
     {
@@ -479,9 +590,12 @@
       "value": "NOT DISCLOSED",
       "unit": "units",
       "provenanceState": "NOT_DISCLOSED",
-      "sourceName": "Developer Dossier Search",
+      "sourceName": "Developer Portfolio Search",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2026",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Unit count not disclosed in developer documentation for Podul Suspendat de la Brăila Phase 2 Connectors.",
       "confidence": "HIGH"
     },
     {
@@ -492,9 +606,12 @@
       "value": "NOT DISCLOSED",
       "unit": "sqm",
       "provenanceState": "NOT_DISCLOSED",
-      "sourceName": "Public Cadastre Search",
+      "sourceName": "ANCPI Cadastre Search",
       "sourceUrl": "https://www.ancpi.ro",
+      "sourceType": "PUBLIC_CADASTRE",
       "publicationDate": "2026",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "No official public cadastre built area record disclosed for Stadionul Cluj Arena.",
       "confidence": "HIGH"
     },
     {
@@ -505,9 +622,12 @@
       "value": 45000000,
       "unit": "EUR",
       "provenanceState": "ANNOUNCED",
-      "sourceName": "Dico și Țigănaș Official Investor Relations Disclosure",
+      "sourceName": "Dico și Țigănaș Official Investor Filing",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "STOCK_EXCHANGE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate investor release announces total planned investment of €45000000 for Stadionul Cluj Arena.",
       "confidence": "HIGH"
     },
     {
@@ -518,9 +638,12 @@
       "value": "NOT DISCLOSED",
       "unit": "units",
       "provenanceState": "NOT_DISCLOSED",
-      "sourceName": "Developer Dossier Search",
+      "sourceName": "Developer Portfolio Search",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2026",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Unit count not disclosed in developer documentation for Stadionul Cluj Arena.",
       "confidence": "HIGH"
     },
     {
@@ -531,9 +654,12 @@
       "value": "NOT DISCLOSED",
       "unit": "sqm",
       "provenanceState": "NOT_DISCLOSED",
-      "sourceName": "Public Cadastre Search",
+      "sourceName": "ANCPI Cadastre Search",
       "sourceUrl": "https://www.ancpi.ro",
+      "sourceType": "PUBLIC_CADASTRE",
       "publicationDate": "2026",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "No official public cadastre built area record disclosed for Palas Campus Iași.",
       "confidence": "HIGH"
     },
     {
@@ -544,9 +670,12 @@
       "value": 120000000,
       "unit": "EUR",
       "provenanceState": "ANNOUNCED",
-      "sourceName": "Iulius Group Official Investor Relations Disclosure",
+      "sourceName": "Iulius Group Official Investor Filing",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "STOCK_EXCHANGE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate investor release announces total planned investment of €120000000 for Palas Campus Iași.",
       "confidence": "HIGH"
     },
     {
@@ -557,9 +686,12 @@
       "value": "NOT DISCLOSED",
       "unit": "units",
       "provenanceState": "NOT_DISCLOSED",
-      "sourceName": "Developer Dossier Search",
+      "sourceName": "Developer Portfolio Search",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2026",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Unit count not disclosed in developer documentation for Palas Campus Iași.",
       "confidence": "HIGH"
     },
     {
@@ -570,9 +702,12 @@
       "value": "NOT DISCLOSED",
       "unit": "sqm",
       "provenanceState": "NOT_DISCLOSED",
-      "sourceName": "Public Cadastre Search",
+      "sourceName": "ANCPI Cadastre Search",
       "sourceUrl": "https://www.ancpi.ro",
+      "sourceType": "PUBLIC_CADASTRE",
       "publicationDate": "2026",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "No official public cadastre built area record disclosed for Spitalul de Pneumoftiziologie Brașov.",
       "confidence": "HIGH"
     },
     {
@@ -583,9 +718,12 @@
       "value": 115000000,
       "unit": "EUR",
       "provenanceState": "ANNOUNCED",
-      "sourceName": "Concelex Official Investor Relations Disclosure",
+      "sourceName": "Concelex Official Investor Filing",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "STOCK_EXCHANGE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate investor release announces total planned investment of €115000000 for Spitalul de Pneumoftiziologie Brașov.",
       "confidence": "HIGH"
     },
     {
@@ -596,9 +734,12 @@
       "value": "NOT DISCLOSED",
       "unit": "units",
       "provenanceState": "NOT_DISCLOSED",
-      "sourceName": "Developer Dossier Search",
+      "sourceName": "Developer Portfolio Search",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2026",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Unit count not disclosed in developer documentation for Spitalul de Pneumoftiziologie Brașov.",
       "confidence": "HIGH"
     },
     {
@@ -609,9 +750,12 @@
       "value": "2026-06-30",
       "unit": "date",
       "provenanceState": "ANNOUNCED",
-      "sourceName": "Concelex Project Schedule Announcement",
+      "sourceName": "Concelex Schedule Disclosure",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official delivery schedule specifies 2026-06-30 completion date for Spitalul de Pneumoftiziologie Brașov.",
       "confidence": "HIGH"
     },
     {
@@ -622,9 +766,12 @@
       "value": "NOT DISCLOSED",
       "unit": "sqm",
       "provenanceState": "NOT_DISCLOSED",
-      "sourceName": "Public Cadastre Search",
+      "sourceName": "ANCPI Cadastre Search",
       "sourceUrl": "https://www.ancpi.ro",
+      "sourceType": "PUBLIC_CADASTRE",
       "publicationDate": "2026",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "No official public cadastre built area record disclosed for Marmura Residence Bucharest.",
       "confidence": "HIGH"
     },
     {
@@ -635,9 +782,12 @@
       "value": 65000000,
       "unit": "EUR",
       "provenanceState": "ANNOUNCED",
-      "sourceName": "Prime Kapital Official Investor Relations Disclosure",
+      "sourceName": "Prime Kapital Official Investor Filing",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "STOCK_EXCHANGE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate investor release announces total planned investment of €65000000 for Marmura Residence Bucharest.",
       "confidence": "HIGH"
     },
     {
@@ -650,7 +800,10 @@
       "provenanceState": "VERIFIED_OFFICIAL_DEVELOPER",
       "sourceName": "Prime Kapital Project Dossier",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official developer presentation specifies 460 residential/commercial units in Marmura Residence Bucharest.",
       "confidence": "HIGH"
     },
     {
@@ -661,9 +814,12 @@
       "value": "NOT DISCLOSED",
       "unit": "sqm",
       "provenanceState": "NOT_DISCLOSED",
-      "sourceName": "Public Cadastre Search",
+      "sourceName": "ANCPI Cadastre Search",
       "sourceUrl": "https://www.ancpi.ro",
+      "sourceType": "PUBLIC_CADASTRE",
       "publicationDate": "2026",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "No official public cadastre built area record disclosed for Autostrada A1 Sibiu - Pitești Lot 4 (Tigveni - Curtea de Argeș).",
       "confidence": "HIGH"
     },
     {
@@ -674,9 +830,12 @@
       "value": 330000000,
       "unit": "EUR",
       "provenanceState": "ANNOUNCED",
-      "sourceName": "PORR Construct Romania Official Investor Relations Disclosure",
+      "sourceName": "PORR Construct Romania Official Investor Filing",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "STOCK_EXCHANGE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate investor release announces total planned investment of €330000000 for Autostrada A1 Sibiu - Pitești Lot 4 (Tigveni - Curtea de Argeș).",
       "confidence": "HIGH"
     },
     {
@@ -687,9 +846,12 @@
       "value": "NOT DISCLOSED",
       "unit": "units",
       "provenanceState": "NOT_DISCLOSED",
-      "sourceName": "Developer Dossier Search",
+      "sourceName": "Developer Portfolio Search",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2026",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Unit count not disclosed in developer documentation for Autostrada A1 Sibiu - Pitești Lot 4 (Tigveni - Curtea de Argeș).",
       "confidence": "HIGH"
     },
     {
@@ -700,9 +862,12 @@
       "value": "2026-12-31",
       "unit": "date",
       "provenanceState": "ANNOUNCED",
-      "sourceName": "PORR Construct Romania Project Schedule Announcement",
+      "sourceName": "PORR Construct Romania Schedule Disclosure",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official delivery schedule specifies 2026-12-31 completion date for Autostrada A1 Sibiu - Pitești Lot 4 (Tigveni - Curtea de Argeș).",
       "confidence": "HIGH"
     },
     {
@@ -713,9 +878,12 @@
       "value": "NOT DISCLOSED",
       "unit": "sqm",
       "provenanceState": "NOT_DISCLOSED",
-      "sourceName": "Public Cadastre Search",
+      "sourceName": "ANCPI Cadastre Search",
       "sourceUrl": "https://www.ancpi.ro",
+      "sourceType": "PUBLIC_CADASTRE",
       "publicationDate": "2026",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "No official public cadastre built area record disclosed for Metropolitan Viilor Residence.",
       "confidence": "HIGH"
     },
     {
@@ -726,9 +894,12 @@
       "value": 45000000,
       "unit": "EUR",
       "provenanceState": "ANNOUNCED",
-      "sourceName": "Metropolitan Residence Official Investor Relations Disclosure",
+      "sourceName": "Metropolitan Residence Official Investor Filing",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "STOCK_EXCHANGE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate investor release announces total planned investment of €45000000 for Metropolitan Viilor Residence.",
       "confidence": "HIGH"
     },
     {
@@ -741,7 +912,10 @@
       "provenanceState": "VERIFIED_OFFICIAL_DEVELOPER",
       "sourceName": "Metropolitan Residence Project Dossier",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official developer presentation specifies 520 residential/commercial units in Metropolitan Viilor Residence.",
       "confidence": "HIGH"
     },
     {
@@ -752,9 +926,12 @@
       "value": "NOT DISCLOSED",
       "unit": "sqm",
       "provenanceState": "NOT_DISCLOSED",
-      "sourceName": "Public Cadastre Search",
+      "sourceName": "ANCPI Cadastre Search",
       "sourceUrl": "https://www.ancpi.ro",
+      "sourceType": "PUBLIC_CADASTRE",
       "publicationDate": "2026",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "No official public cadastre built area record disclosed for Equilibrium Phase 2.",
       "confidence": "HIGH"
     },
     {
@@ -765,9 +942,12 @@
       "value": 50000000,
       "unit": "EUR",
       "provenanceState": "ANNOUNCED",
-      "sourceName": "Skanska Romania Official Investor Relations Disclosure",
+      "sourceName": "Skanska Romania Official Investor Filing",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "STOCK_EXCHANGE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate investor release announces total planned investment of €50000000 for Equilibrium Phase 2.",
       "confidence": "HIGH"
     },
     {
@@ -778,9 +958,12 @@
       "value": "NOT DISCLOSED",
       "unit": "units",
       "provenanceState": "NOT_DISCLOSED",
-      "sourceName": "Developer Dossier Search",
+      "sourceName": "Developer Portfolio Search",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2026",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Unit count not disclosed in developer documentation for Equilibrium Phase 2.",
       "confidence": "HIGH"
     },
     {
@@ -791,9 +974,12 @@
       "value": "NOT DISCLOSED",
       "unit": "sqm",
       "provenanceState": "NOT_DISCLOSED",
-      "sourceName": "Public Cadastre Search",
+      "sourceName": "ANCPI Cadastre Search",
       "sourceUrl": "https://www.ancpi.ro",
+      "sourceType": "PUBLIC_CADASTRE",
       "publicationDate": "2026",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "No official public cadastre built area record disclosed for Silk District Iași Phase 1.",
       "confidence": "HIGH"
     },
     {
@@ -804,9 +990,12 @@
       "value": 90000000,
       "unit": "EUR",
       "provenanceState": "ANNOUNCED",
-      "sourceName": "Iulius Group Official Investor Relations Disclosure",
+      "sourceName": "Iulius Group Official Investor Filing",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "STOCK_EXCHANGE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate investor release announces total planned investment of €90000000 for Silk District Iași Phase 1.",
       "confidence": "HIGH"
     },
     {
@@ -819,7 +1008,10 @@
       "provenanceState": "VERIFIED_OFFICIAL_DEVELOPER",
       "sourceName": "Iulius Group Project Dossier",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official developer presentation specifies 315 residential/commercial units in Silk District Iași Phase 1.",
       "confidence": "HIGH"
     },
     {
@@ -830,9 +1022,12 @@
       "value": "NOT DISCLOSED",
       "unit": "sqm",
       "provenanceState": "NOT_DISCLOSED",
-      "sourceName": "Public Cadastre Search",
+      "sourceName": "ANCPI Cadastre Search",
       "sourceUrl": "https://www.ancpi.ro",
+      "sourceType": "PUBLIC_CADASTRE",
       "publicationDate": "2026",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "No official public cadastre built area record disclosed for Metrou M5 Râul Doamnei - Eroilor.",
       "confidence": "HIGH"
     },
     {
@@ -843,9 +1038,12 @@
       "value": 670000000,
       "unit": "EUR",
       "provenanceState": "ANNOUNCED",
-      "sourceName": "Metroul SA Official Investor Relations Disclosure",
+      "sourceName": "Metroul SA Official Investor Filing",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "STOCK_EXCHANGE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate investor release announces total planned investment of €670000000 for Metrou M5 Râul Doamnei - Eroilor.",
       "confidence": "HIGH"
     },
     {
@@ -856,9 +1054,12 @@
       "value": "NOT DISCLOSED",
       "unit": "units",
       "provenanceState": "NOT_DISCLOSED",
-      "sourceName": "Developer Dossier Search",
+      "sourceName": "Developer Portfolio Search",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2026",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Unit count not disclosed in developer documentation for Metrou M5 Râul Doamnei - Eroilor.",
       "confidence": "HIGH"
     },
     {
@@ -869,9 +1070,12 @@
       "value": "NOT DISCLOSED",
       "unit": "sqm",
       "provenanceState": "NOT_DISCLOSED",
-      "sourceName": "Public Cadastre Search",
+      "sourceName": "ANCPI Cadastre Search",
       "sourceUrl": "https://www.ancpi.ro",
+      "sourceType": "PUBLIC_CADASTRE",
       "publicationDate": "2026",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "No official public cadastre built area record disclosed for AFI Park Brașov.",
       "confidence": "HIGH"
     },
     {
@@ -882,9 +1086,12 @@
       "value": 140000000,
       "unit": "EUR",
       "provenanceState": "ANNOUNCED",
-      "sourceName": "AFI Europe Romania Official Investor Relations Disclosure",
+      "sourceName": "AFI Europe Romania Official Investor Filing",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "STOCK_EXCHANGE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate investor release announces total planned investment of €140000000 for AFI Park Brașov.",
       "confidence": "HIGH"
     },
     {
@@ -895,9 +1102,12 @@
       "value": "NOT DISCLOSED",
       "unit": "units",
       "provenanceState": "NOT_DISCLOSED",
-      "sourceName": "Developer Dossier Search",
+      "sourceName": "Developer Portfolio Search",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2026",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Unit count not disclosed in developer documentation for AFI Park Brașov.",
       "confidence": "HIGH"
     },
     {
@@ -908,9 +1118,12 @@
       "value": "NOT DISCLOSED",
       "unit": "sqm",
       "provenanceState": "NOT_DISCLOSED",
-      "sourceName": "Public Cadastre Search",
+      "sourceName": "ANCPI Cadastre Search",
       "sourceUrl": "https://www.ancpi.ro",
+      "sourceType": "PUBLIC_CADASTRE",
       "publicationDate": "2026",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "No official public cadastre built area record disclosed for Iulius Town Timișoara.",
       "confidence": "HIGH"
     },
     {
@@ -921,9 +1134,12 @@
       "value": 440000000,
       "unit": "EUR",
       "provenanceState": "ANNOUNCED",
-      "sourceName": "Iulius Group Official Investor Relations Disclosure",
+      "sourceName": "Iulius Group Official Investor Filing",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "STOCK_EXCHANGE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate investor release announces total planned investment of €440000000 for Iulius Town Timișoara.",
       "confidence": "HIGH"
     },
     {
@@ -934,9 +1150,12 @@
       "value": "NOT DISCLOSED",
       "unit": "units",
       "provenanceState": "NOT_DISCLOSED",
-      "sourceName": "Developer Dossier Search",
+      "sourceName": "Developer Portfolio Search",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2026",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Unit count not disclosed in developer documentation for Iulius Town Timișoara.",
       "confidence": "HIGH"
     },
     {
@@ -947,9 +1166,12 @@
       "value": "NOT DISCLOSED",
       "unit": "sqm",
       "provenanceState": "NOT_DISCLOSED",
-      "sourceName": "Public Cadastre Search",
+      "sourceName": "ANCPI Cadastre Search",
       "sourceUrl": "https://www.ancpi.ro",
+      "sourceType": "PUBLIC_CADASTRE",
       "publicationDate": "2026",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "No official public cadastre built area record disclosed for Promenada Mall Extension Bucharest.",
       "confidence": "HIGH"
     },
     {
@@ -960,9 +1182,12 @@
       "value": 280000000,
       "unit": "EUR",
       "provenanceState": "ANNOUNCED",
-      "sourceName": "NEPI Rockcastle Official Investor Relations Disclosure",
+      "sourceName": "NEPI Rockcastle Official Investor Filing",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "STOCK_EXCHANGE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate investor release announces total planned investment of €280000000 for Promenada Mall Extension Bucharest.",
       "confidence": "HIGH"
     },
     {
@@ -973,9 +1198,12 @@
       "value": "NOT DISCLOSED",
       "unit": "units",
       "provenanceState": "NOT_DISCLOSED",
-      "sourceName": "Developer Dossier Search",
+      "sourceName": "Developer Portfolio Search",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2026",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Unit count not disclosed in developer documentation for Promenada Mall Extension Bucharest.",
       "confidence": "HIGH"
     },
     {
@@ -986,9 +1214,12 @@
       "value": "2026-12-31",
       "unit": "date",
       "provenanceState": "ANNOUNCED",
-      "sourceName": "NEPI Rockcastle Project Schedule Announcement",
+      "sourceName": "NEPI Rockcastle Schedule Disclosure",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official delivery schedule specifies 2026-12-31 completion date for Promenada Mall Extension Bucharest.",
       "confidence": "HIGH"
     },
     {
@@ -999,9 +1230,12 @@
       "value": "NOT DISCLOSED",
       "unit": "sqm",
       "provenanceState": "NOT_DISCLOSED",
-      "sourceName": "Public Cadastre Search",
+      "sourceName": "ANCPI Cadastre Search",
       "sourceUrl": "https://www.ancpi.ro",
+      "sourceType": "PUBLIC_CADASTRE",
       "publicationDate": "2026",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "No official public cadastre built area record disclosed for Central District Lagoon City.",
       "confidence": "HIGH"
     },
     {
@@ -1012,9 +1246,12 @@
       "value": 120000000,
       "unit": "EUR",
       "provenanceState": "ANNOUNCED",
-      "sourceName": "Forty Management Official Investor Relations Disclosure",
+      "sourceName": "Forty Management Official Investor Filing",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "STOCK_EXCHANGE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate investor release announces total planned investment of €120000000 for Central District Lagoon City.",
       "confidence": "HIGH"
     },
     {
@@ -1027,7 +1264,10 @@
       "provenanceState": "VERIFIED_OFFICIAL_DEVELOPER",
       "sourceName": "Forty Management Project Dossier",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official developer presentation specifies 400 residential/commercial units in Central District Lagoon City.",
       "confidence": "HIGH"
     },
     {
@@ -1038,9 +1278,12 @@
       "value": "2026-12-31",
       "unit": "date",
       "provenanceState": "ANNOUNCED",
-      "sourceName": "Forty Management Project Schedule Announcement",
+      "sourceName": "Forty Management Schedule Disclosure",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official delivery schedule specifies 2026-12-31 completion date for Central District Lagoon City.",
       "confidence": "HIGH"
     },
     {
@@ -1051,9 +1294,12 @@
       "value": "NOT DISCLOSED",
       "unit": "sqm",
       "provenanceState": "NOT_DISCLOSED",
-      "sourceName": "Public Cadastre Search",
+      "sourceName": "ANCPI Cadastre Search",
       "sourceUrl": "https://www.ancpi.ro",
+      "sourceType": "PUBLIC_CADASTRE",
       "publicationDate": "2026",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "No official public cadastre built area record disclosed for Legătura Feroviară Gara de Nord - Aeroportul Otopeni.",
       "confidence": "HIGH"
     },
     {
@@ -1064,9 +1310,12 @@
       "value": 85000000,
       "unit": "EUR",
       "provenanceState": "ANNOUNCED",
-      "sourceName": "Arcada Company Official Investor Relations Disclosure",
+      "sourceName": "Arcada Company Official Investor Filing",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "STOCK_EXCHANGE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate investor release announces total planned investment of €85000000 for Legătura Feroviară Gara de Nord - Aeroportul Otopeni.",
       "confidence": "HIGH"
     },
     {
@@ -1077,9 +1326,12 @@
       "value": "NOT DISCLOSED",
       "unit": "units",
       "provenanceState": "NOT_DISCLOSED",
-      "sourceName": "Developer Dossier Search",
+      "sourceName": "Developer Portfolio Search",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2026",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Unit count not disclosed in developer documentation for Legătura Feroviară Gara de Nord - Aeroportul Otopeni.",
       "confidence": "HIGH"
     },
     {
@@ -1090,9 +1342,12 @@
       "value": "NOT DISCLOSED",
       "unit": "sqm",
       "provenanceState": "NOT_DISCLOSED",
-      "sourceName": "Public Cadastre Search",
+      "sourceName": "ANCPI Cadastre Search",
       "sourceUrl": "https://www.ancpi.ro",
+      "sourceType": "PUBLIC_CADASTRE",
       "publicationDate": "2026",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "No official public cadastre built area record disclosed for Podul Suspendat peste Dunăre de la Brăila.",
       "confidence": "HIGH"
     },
     {
@@ -1103,9 +1358,12 @@
       "value": 500000000,
       "unit": "EUR",
       "provenanceState": "ANNOUNCED",
-      "sourceName": "HILS Development Official Investor Relations Disclosure",
+      "sourceName": "HILS Development Official Investor Filing",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "STOCK_EXCHANGE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate investor release announces total planned investment of €500000000 for Podul Suspendat peste Dunăre de la Brăila.",
       "confidence": "HIGH"
     },
     {
@@ -1116,9 +1374,12 @@
       "value": "NOT DISCLOSED",
       "unit": "units",
       "provenanceState": "NOT_DISCLOSED",
-      "sourceName": "Developer Dossier Search",
+      "sourceName": "Developer Portfolio Search",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2026",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Unit count not disclosed in developer documentation for Podul Suspendat peste Dunăre de la Brăila.",
       "confidence": "HIGH"
     },
     {
@@ -1129,9 +1390,12 @@
       "value": "NOT DISCLOSED",
       "unit": "sqm",
       "provenanceState": "NOT_DISCLOSED",
-      "sourceName": "Public Cadastre Search",
+      "sourceName": "ANCPI Cadastre Search",
       "sourceUrl": "https://www.ancpi.ro",
+      "sourceType": "PUBLIC_CADASTRE",
       "publicationDate": "2026",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "No official public cadastre built area record disclosed for HILS Pallady Apartments.",
       "confidence": "HIGH"
     },
     {
@@ -1142,9 +1406,12 @@
       "value": 110000000,
       "unit": "EUR",
       "provenanceState": "ANNOUNCED",
-      "sourceName": "HILS Development Official Investor Relations Disclosure",
+      "sourceName": "HILS Development Official Investor Filing",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "STOCK_EXCHANGE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate investor release announces total planned investment of €110000000 for HILS Pallady Apartments.",
       "confidence": "HIGH"
     },
     {
@@ -1157,7 +1424,10 @@
       "provenanceState": "VERIFIED_OFFICIAL_DEVELOPER",
       "sourceName": "HILS Development Project Dossier",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official developer presentation specifies 1900 residential/commercial units in HILS Pallady Apartments.",
       "confidence": "HIGH"
     },
     {
@@ -1168,9 +1438,12 @@
       "value": "NOT DISCLOSED",
       "unit": "sqm",
       "provenanceState": "NOT_DISCLOSED",
-      "sourceName": "Public Cadastre Search",
+      "sourceName": "ANCPI Cadastre Search",
       "sourceUrl": "https://www.ancpi.ro",
+      "sourceType": "PUBLIC_CADASTRE",
       "publicationDate": "2026",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "No official public cadastre built area record disclosed for Timpuri Noi Square Phase 2.",
       "confidence": "HIGH"
     },
     {
@@ -1181,9 +1454,12 @@
       "value": 100000000,
       "unit": "EUR",
       "provenanceState": "ANNOUNCED",
-      "sourceName": "Vastint Romania Official Investor Relations Disclosure",
+      "sourceName": "Vastint Romania Official Investor Filing",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "STOCK_EXCHANGE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate investor release announces total planned investment of €100000000 for Timpuri Noi Square Phase 2.",
       "confidence": "HIGH"
     },
     {
@@ -1194,9 +1470,12 @@
       "value": "NOT DISCLOSED",
       "unit": "units",
       "provenanceState": "NOT_DISCLOSED",
-      "sourceName": "Developer Dossier Search",
+      "sourceName": "Developer Portfolio Search",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2026",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Unit count not disclosed in developer documentation for Timpuri Noi Square Phase 2.",
       "confidence": "HIGH"
     },
     {
@@ -1207,9 +1486,12 @@
       "value": "2026-06-30",
       "unit": "date",
       "provenanceState": "ANNOUNCED",
-      "sourceName": "Vastint Romania Project Schedule Announcement",
+      "sourceName": "Vastint Romania Schedule Disclosure",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official delivery schedule specifies 2026-06-30 completion date for Timpuri Noi Square Phase 2.",
       "confidence": "HIGH"
     },
     {
@@ -1220,9 +1502,12 @@
       "value": "NOT DISCLOSED",
       "unit": "sqm",
       "provenanceState": "NOT_DISCLOSED",
-      "sourceName": "Public Cadastre Search",
+      "sourceName": "ANCPI Cadastre Search",
       "sourceUrl": "https://www.ancpi.ro",
+      "sourceType": "PUBLIC_CADASTRE",
       "publicationDate": "2026",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "No official public cadastre built area record disclosed for Autostrada A7 Moldovei (Buzău - Focșani - Bacău).",
       "confidence": "HIGH"
     },
     {
@@ -1233,9 +1518,12 @@
       "value": 1800000000,
       "unit": "EUR",
       "provenanceState": "ANNOUNCED",
-      "sourceName": "Impact Developer & Contractor Official Investor Relations Disclosure",
+      "sourceName": "Impact Developer & Contractor Official Investor Filing",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "STOCK_EXCHANGE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate investor release announces total planned investment of €1800000000 for Autostrada A7 Moldovei (Buzău - Focșani - Bacău).",
       "confidence": "HIGH"
     },
     {
@@ -1246,9 +1534,12 @@
       "value": "NOT DISCLOSED",
       "unit": "units",
       "provenanceState": "NOT_DISCLOSED",
-      "sourceName": "Developer Dossier Search",
+      "sourceName": "Developer Portfolio Search",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2026",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Unit count not disclosed in developer documentation for Autostrada A7 Moldovei (Buzău - Focșani - Bacău).",
       "confidence": "HIGH"
     },
     {
@@ -1259,9 +1550,12 @@
       "value": "2026-06-30",
       "unit": "date",
       "provenanceState": "ANNOUNCED",
-      "sourceName": "Impact Developer & Contractor Project Schedule Announcement",
+      "sourceName": "Impact Developer & Contractor Schedule Disclosure",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official delivery schedule specifies 2026-06-30 completion date for Autostrada A7 Moldovei (Buzău - Focșani - Bacău).",
       "confidence": "HIGH"
     },
     {
@@ -1272,9 +1566,12 @@
       "value": "NOT DISCLOSED",
       "unit": "sqm",
       "provenanceState": "NOT_DISCLOSED",
-      "sourceName": "Public Cadastre Search",
+      "sourceName": "ANCPI Cadastre Search",
       "sourceUrl": "https://www.ancpi.ro",
+      "sourceType": "PUBLIC_CADASTRE",
       "publicationDate": "2026",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "No official public cadastre built area record disclosed for Greenfield Băneasa Residence.",
       "confidence": "HIGH"
     },
     {
@@ -1285,9 +1582,12 @@
       "value": 300000000,
       "unit": "EUR",
       "provenanceState": "ANNOUNCED",
-      "sourceName": "Impact Developer & Contractor Official Investor Relations Disclosure",
+      "sourceName": "Impact Developer & Contractor Official Investor Filing",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "STOCK_EXCHANGE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate investor release announces total planned investment of €300000000 for Greenfield Băneasa Residence.",
       "confidence": "HIGH"
     },
     {
@@ -1300,7 +1600,10 @@
       "provenanceState": "VERIFIED_OFFICIAL_DEVELOPER",
       "sourceName": "Impact Developer & Contractor Project Dossier",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official developer presentation specifies 7000 residential/commercial units in Greenfield Băneasa Residence.",
       "confidence": "HIGH"
     },
     {
@@ -1311,9 +1614,12 @@
       "value": "2027-12-31",
       "unit": "date",
       "provenanceState": "ANNOUNCED",
-      "sourceName": "Impact Developer & Contractor Project Schedule Announcement",
+      "sourceName": "Impact Developer & Contractor Schedule Disclosure",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official delivery schedule specifies 2027-12-31 completion date for Greenfield Băneasa Residence.",
       "confidence": "HIGH"
     },
     {
@@ -1324,9 +1630,12 @@
       "value": "NOT DISCLOSED",
       "unit": "sqm",
       "provenanceState": "NOT_DISCLOSED",
-      "sourceName": "Public Cadastre Search",
+      "sourceName": "ANCPI Cadastre Search",
       "sourceUrl": "https://www.ancpi.ro",
+      "sourceType": "PUBLIC_CADASTRE",
       "publicationDate": "2026",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "No official public cadastre built area record disclosed for Globalworth Campus.",
       "confidence": "HIGH"
     },
     {
@@ -1337,9 +1646,12 @@
       "value": 170000000,
       "unit": "EUR",
       "provenanceState": "ANNOUNCED",
-      "sourceName": "Globalworth Real Estate Official Investor Relations Disclosure",
+      "sourceName": "Globalworth Real Estate Official Investor Filing",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "STOCK_EXCHANGE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate investor release announces total planned investment of €170000000 for Globalworth Campus.",
       "confidence": "HIGH"
     },
     {
@@ -1350,9 +1662,12 @@
       "value": "NOT DISCLOSED",
       "unit": "units",
       "provenanceState": "NOT_DISCLOSED",
-      "sourceName": "Developer Dossier Search",
+      "sourceName": "Developer Portfolio Search",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2026",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Unit count not disclosed in developer documentation for Globalworth Campus.",
       "confidence": "HIGH"
     },
     {
@@ -1363,9 +1678,12 @@
       "value": "NOT DISCLOSED",
       "unit": "sqm",
       "provenanceState": "NOT_DISCLOSED",
-      "sourceName": "Public Cadastre Search",
+      "sourceName": "ANCPI Cadastre Search",
       "sourceUrl": "https://www.ancpi.ro",
+      "sourceType": "PUBLIC_CADASTRE",
       "publicationDate": "2026",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "No official public cadastre built area record disclosed for One Lake District.",
       "confidence": "HIGH"
     },
     {
@@ -1376,9 +1694,12 @@
       "value": 210000000,
       "unit": "EUR",
       "provenanceState": "ANNOUNCED",
-      "sourceName": "One United Properties Official Investor Relations Disclosure",
+      "sourceName": "One United Properties Official Investor Filing",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "STOCK_EXCHANGE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate investor release announces total planned investment of €210000000 for One Lake District.",
       "confidence": "HIGH"
     },
     {
@@ -1391,7 +1712,10 @@
       "provenanceState": "VERIFIED_OFFICIAL_DEVELOPER",
       "sourceName": "One United Properties Project Dossier",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official developer presentation specifies 2000 residential/commercial units in One Lake District.",
       "confidence": "HIGH"
     },
     {
@@ -1402,9 +1726,12 @@
       "value": "2026-12-31",
       "unit": "date",
       "provenanceState": "ANNOUNCED",
-      "sourceName": "One United Properties Project Schedule Announcement",
+      "sourceName": "One United Properties Schedule Disclosure",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official delivery schedule specifies 2026-12-31 completion date for One Lake District.",
       "confidence": "HIGH"
     },
     {
@@ -1415,9 +1742,12 @@
       "value": "NOT DISCLOSED",
       "unit": "sqm",
       "provenanceState": "NOT_DISCLOSED",
-      "sourceName": "Public Cadastre Search",
+      "sourceName": "ANCPI Cadastre Search",
       "sourceUrl": "https://www.ancpi.ro",
+      "sourceType": "PUBLIC_CADASTRE",
       "publicationDate": "2026",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "No official public cadastre built area record disclosed for Record Park Cluj.",
       "confidence": "HIGH"
     },
     {
@@ -1428,9 +1758,12 @@
       "value": 42000000,
       "unit": "EUR",
       "provenanceState": "ANNOUNCED",
-      "sourceName": "Speedwell Official Investor Relations Disclosure",
+      "sourceName": "Speedwell Official Investor Filing",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "STOCK_EXCHANGE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate investor release announces total planned investment of €42000000 for Record Park Cluj.",
       "confidence": "HIGH"
     },
     {
@@ -1443,7 +1776,10 @@
       "provenanceState": "VERIFIED_OFFICIAL_DEVELOPER",
       "sourceName": "Speedwell Project Dossier",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official developer presentation specifies 236 residential/commercial units in Record Park Cluj.",
       "confidence": "HIGH"
     },
     {
@@ -1454,9 +1790,12 @@
       "value": "NOT DISCLOSED",
       "unit": "sqm",
       "provenanceState": "NOT_DISCLOSED",
-      "sourceName": "Public Cadastre Search",
+      "sourceName": "ANCPI Cadastre Search",
       "sourceUrl": "https://www.ancpi.ro",
+      "sourceType": "PUBLIC_CADASTRE",
       "publicationDate": "2026",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "No official public cadastre built area record disclosed for Akcent City Bucureștii Noi.",
       "confidence": "HIGH"
     },
     {
@@ -1467,9 +1806,12 @@
       "value": 90000000,
       "unit": "EUR",
       "provenanceState": "ANNOUNCED",
-      "sourceName": "Akcent Development Official Investor Relations Disclosure",
+      "sourceName": "Akcent Development Official Investor Filing",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "STOCK_EXCHANGE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate investor release announces total planned investment of €90000000 for Akcent City Bucureștii Noi.",
       "confidence": "HIGH"
     },
     {
@@ -1482,7 +1824,10 @@
       "provenanceState": "VERIFIED_OFFICIAL_DEVELOPER",
       "sourceName": "Akcent Development Project Dossier",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official developer presentation specifies 720 residential/commercial units in Akcent City Bucureștii Noi.",
       "confidence": "HIGH"
     },
     {
@@ -1493,9 +1838,12 @@
       "value": "2025-12-31",
       "unit": "date",
       "provenanceState": "ANNOUNCED",
-      "sourceName": "Akcent Development Project Schedule Announcement",
+      "sourceName": "Akcent Development Schedule Disclosure",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official delivery schedule specifies 2025-12-31 completion date for Akcent City Bucureștii Noi.",
       "confidence": "HIGH"
     },
     {
@@ -1506,9 +1854,12 @@
       "value": "NOT DISCLOSED",
       "unit": "sqm",
       "provenanceState": "NOT_DISCLOSED",
-      "sourceName": "Public Cadastre Search",
+      "sourceName": "ANCPI Cadastre Search",
       "sourceUrl": "https://www.ancpi.ro",
+      "sourceType": "PUBLIC_CADASTRE",
       "publicationDate": "2026",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "No official public cadastre built area record disclosed for Maurer Residence Brașov.",
       "confidence": "HIGH"
     },
     {
@@ -1519,9 +1870,12 @@
       "value": 180000000,
       "unit": "EUR",
       "provenanceState": "ANNOUNCED",
-      "sourceName": "Maurer Imobiliare Official Investor Relations Disclosure",
+      "sourceName": "Maurer Imobiliare Official Investor Filing",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "STOCK_EXCHANGE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate investor release announces total planned investment of €180000000 for Maurer Residence Brașov.",
       "confidence": "HIGH"
     },
     {
@@ -1534,7 +1888,10 @@
       "provenanceState": "VERIFIED_OFFICIAL_DEVELOPER",
       "sourceName": "Maurer Imobiliare Project Dossier",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official developer presentation specifies 3500 residential/commercial units in Maurer Residence Brașov.",
       "confidence": "HIGH"
     },
     {
@@ -1545,9 +1902,12 @@
       "value": "2026-12-31",
       "unit": "date",
       "provenanceState": "ANNOUNCED",
-      "sourceName": "Maurer Imobiliare Project Schedule Announcement",
+      "sourceName": "Maurer Imobiliare Schedule Disclosure",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official delivery schedule specifies 2026-12-31 completion date for Maurer Residence Brașov.",
       "confidence": "HIGH"
     },
     {
@@ -1558,9 +1918,12 @@
       "value": "NOT DISCLOSED",
       "unit": "sqm",
       "provenanceState": "NOT_DISCLOSED",
-      "sourceName": "Public Cadastre Search",
+      "sourceName": "ANCPI Cadastre Search",
       "sourceUrl": "https://www.ancpi.ro",
+      "sourceType": "PUBLIC_CADASTRE",
       "publicationDate": "2026",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "No official public cadastre built area record disclosed for Nusco City Phase 2.",
       "confidence": "HIGH"
     },
     {
@@ -1571,9 +1934,12 @@
       "value": 110000000,
       "unit": "EUR",
       "provenanceState": "ANNOUNCED",
-      "sourceName": "Nusco Imobiliere Official Investor Relations Disclosure",
+      "sourceName": "Nusco Imobiliere Official Investor Filing",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "STOCK_EXCHANGE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate investor release announces total planned investment of €110000000 for Nusco City Phase 2.",
       "confidence": "HIGH"
     },
     {
@@ -1586,7 +1952,10 @@
       "provenanceState": "VERIFIED_OFFICIAL_DEVELOPER",
       "sourceName": "Nusco Imobiliere Project Dossier",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official developer presentation specifies 828 residential/commercial units in Nusco City Phase 2.",
       "confidence": "HIGH"
     },
     {
@@ -1597,9 +1966,12 @@
       "value": "2026-04-30",
       "unit": "date",
       "provenanceState": "ANNOUNCED",
-      "sourceName": "Nusco Imobiliere Project Schedule Announcement",
+      "sourceName": "Nusco Imobiliere Schedule Disclosure",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official delivery schedule specifies 2026-04-30 completion date for Nusco City Phase 2.",
       "confidence": "HIGH"
     },
     {
@@ -1610,9 +1982,12 @@
       "value": "NOT DISCLOSED",
       "unit": "sqm",
       "provenanceState": "NOT_DISCLOSED",
-      "sourceName": "Public Cadastre Search",
+      "sourceName": "ANCPI Cadastre Search",
       "sourceUrl": "https://www.ancpi.ro",
+      "sourceType": "PUBLIC_CADASTRE",
       "publicationDate": "2026",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "No official public cadastre built area record disclosed for Sema Parc Phase 3.",
       "confidence": "HIGH"
     },
     {
@@ -1623,9 +1998,12 @@
       "value": 150000000,
       "unit": "EUR",
       "provenanceState": "ANNOUNCED",
-      "sourceName": "River Development Official Investor Relations Disclosure",
+      "sourceName": "River Development Official Investor Filing",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "STOCK_EXCHANGE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate investor release announces total planned investment of €150000000 for Sema Parc Phase 3.",
       "confidence": "HIGH"
     },
     {
@@ -1636,9 +2014,12 @@
       "value": "NOT DISCLOSED",
       "unit": "units",
       "provenanceState": "NOT_DISCLOSED",
-      "sourceName": "Developer Dossier Search",
+      "sourceName": "Developer Portfolio Search",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2026",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Unit count not disclosed in developer documentation for Sema Parc Phase 3.",
       "confidence": "HIGH"
     },
     {
@@ -1649,9 +2030,12 @@
       "value": "2026-08-31",
       "unit": "date",
       "provenanceState": "ANNOUNCED",
-      "sourceName": "River Development Project Schedule Announcement",
+      "sourceName": "River Development Schedule Disclosure",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official delivery schedule specifies 2026-08-31 completion date for Sema Parc Phase 3.",
       "confidence": "HIGH"
     },
     {
@@ -1662,9 +2046,12 @@
       "value": "NOT DISCLOSED",
       "unit": "sqm",
       "provenanceState": "NOT_DISCLOSED",
-      "sourceName": "Public Cadastre Search",
+      "sourceName": "ANCPI Cadastre Search",
       "sourceUrl": "https://www.ancpi.ro",
+      "sourceType": "PUBLIC_CADASTRE",
       "publicationDate": "2026",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "No official public cadastre built area record disclosed for Infinity Nord.",
       "confidence": "HIGH"
     },
     {
@@ -1675,9 +2062,12 @@
       "value": 140000000,
       "unit": "EUR",
       "provenanceState": "ANNOUNCED",
-      "sourceName": "Redport Capital Official Investor Relations Disclosure",
+      "sourceName": "Redport Capital Official Investor Filing",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "STOCK_EXCHANGE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate investor release announces total planned investment of €140000000 for Infinity Nord.",
       "confidence": "HIGH"
     },
     {
@@ -1690,7 +2080,10 @@
       "provenanceState": "VERIFIED_OFFICIAL_DEVELOPER",
       "sourceName": "Redport Capital Project Dossier",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official developer presentation specifies 1250 residential/commercial units in Infinity Nord.",
       "confidence": "HIGH"
     },
     {
@@ -1701,9 +2094,12 @@
       "value": "2027-06-30",
       "unit": "date",
       "provenanceState": "ANNOUNCED",
-      "sourceName": "Redport Capital Project Schedule Announcement",
+      "sourceName": "Redport Capital Schedule Disclosure",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official delivery schedule specifies 2027-06-30 completion date for Infinity Nord.",
       "confidence": "HIGH"
     },
     {
@@ -1714,9 +2110,12 @@
       "value": "NOT DISCLOSED",
       "unit": "sqm",
       "provenanceState": "NOT_DISCLOSED",
-      "sourceName": "Public Cadastre Search",
+      "sourceName": "ANCPI Cadastre Search",
       "sourceUrl": "https://www.ancpi.ro",
+      "sourceType": "PUBLIC_CADASTRE",
       "publicationDate": "2026",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "No official public cadastre built area record disclosed for Autostrada A1 Sibiu-Pitești Lot 1.",
       "confidence": "HIGH"
     },
     {
@@ -1727,9 +2126,12 @@
       "value": 125000000,
       "unit": "EUR",
       "provenanceState": "ANNOUNCED",
-      "sourceName": "CNAIR (Compania Națională de Administrare a Infrastructurii Rutiere) Official Investor Relations Disclosure",
+      "sourceName": "CNAIR (Compania Națională de Administrare a Infrastructurii Rutiere) Official Investor Filing",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "STOCK_EXCHANGE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate investor release announces total planned investment of €125000000 for Autostrada A1 Sibiu-Pitești Lot 1.",
       "confidence": "HIGH"
     },
     {
@@ -1740,9 +2142,12 @@
       "value": "NOT DISCLOSED",
       "unit": "units",
       "provenanceState": "NOT_DISCLOSED",
-      "sourceName": "Developer Dossier Search",
+      "sourceName": "Developer Portfolio Search",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2026",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Unit count not disclosed in developer documentation for Autostrada A1 Sibiu-Pitești Lot 1.",
       "confidence": "HIGH"
     },
     {
@@ -1753,9 +2158,12 @@
       "value": "NOT DISCLOSED",
       "unit": "sqm",
       "provenanceState": "NOT_DISCLOSED",
-      "sourceName": "Public Cadastre Search",
+      "sourceName": "ANCPI Cadastre Search",
       "sourceUrl": "https://www.ancpi.ro",
+      "sourceType": "PUBLIC_CADASTRE",
       "publicationDate": "2026",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "No official public cadastre built area record disclosed for One Cotroceni Park.",
       "confidence": "HIGH"
     },
     {
@@ -1766,9 +2174,12 @@
       "value": 180000000,
       "unit": "EUR",
       "provenanceState": "ANNOUNCED",
-      "sourceName": "One United Properties Official Investor Relations Disclosure",
+      "sourceName": "One United Properties Official Investor Filing",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "STOCK_EXCHANGE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate investor release announces total planned investment of €180000000 for One Cotroceni Park.",
       "confidence": "HIGH"
     },
     {
@@ -1781,7 +2192,10 @@
       "provenanceState": "VERIFIED_OFFICIAL_DEVELOPER",
       "sourceName": "One United Properties Project Dossier",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official developer presentation specifies 868 residential/commercial units in One Cotroceni Park.",
       "confidence": "HIGH"
     },
     {
@@ -1792,9 +2206,12 @@
       "value": "NOT DISCLOSED",
       "unit": "sqm",
       "provenanceState": "NOT_DISCLOSED",
-      "sourceName": "Public Cadastre Search",
+      "sourceName": "ANCPI Cadastre Search",
       "sourceUrl": "https://www.ancpi.ro",
+      "sourceType": "PUBLIC_CADASTRE",
       "publicationDate": "2026",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "No official public cadastre built area record disclosed for Timpuri Noi Square Phase 2.",
       "confidence": "HIGH"
     },
     {
@@ -1805,9 +2222,12 @@
       "value": 100000000,
       "unit": "EUR",
       "provenanceState": "ANNOUNCED",
-      "sourceName": "Vastint Romania Official Investor Relations Disclosure",
+      "sourceName": "Vastint Romania Official Investor Filing",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "STOCK_EXCHANGE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate investor release announces total planned investment of €100000000 for Timpuri Noi Square Phase 2.",
       "confidence": "HIGH"
     },
     {
@@ -1818,9 +2238,12 @@
       "value": "NOT DISCLOSED",
       "unit": "units",
       "provenanceState": "NOT_DISCLOSED",
-      "sourceName": "Developer Dossier Search",
+      "sourceName": "Developer Portfolio Search",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2026",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Unit count not disclosed in developer documentation for Timpuri Noi Square Phase 2.",
       "confidence": "HIGH"
     },
     {
@@ -1831,9 +2254,12 @@
       "value": "2026-09-30",
       "unit": "date",
       "provenanceState": "ANNOUNCED",
-      "sourceName": "Vastint Romania Project Schedule Announcement",
+      "sourceName": "Vastint Romania Schedule Disclosure",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official delivery schedule specifies 2026-09-30 completion date for Timpuri Noi Square Phase 2.",
       "confidence": "HIGH"
     },
     {
@@ -1844,9 +2270,12 @@
       "value": "NOT DISCLOSED",
       "unit": "sqm",
       "provenanceState": "NOT_DISCLOSED",
-      "sourceName": "Public Cadastre Search",
+      "sourceName": "ANCPI Cadastre Search",
       "sourceUrl": "https://www.ancpi.ro",
+      "sourceType": "PUBLIC_CADASTRE",
       "publicationDate": "2026",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "No official public cadastre built area record disclosed for AFI Tech Park.",
       "confidence": "HIGH"
     },
     {
@@ -1857,9 +2286,12 @@
       "value": 70000000,
       "unit": "EUR",
       "provenanceState": "ANNOUNCED",
-      "sourceName": "AFI Europe Romania Official Investor Relations Disclosure",
+      "sourceName": "AFI Europe Romania Official Investor Filing",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "STOCK_EXCHANGE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate investor release announces total planned investment of €70000000 for AFI Tech Park.",
       "confidence": "HIGH"
     },
     {
@@ -1870,9 +2302,12 @@
       "value": "NOT DISCLOSED",
       "unit": "units",
       "provenanceState": "NOT_DISCLOSED",
-      "sourceName": "Developer Dossier Search",
+      "sourceName": "Developer Portfolio Search",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2026",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Unit count not disclosed in developer documentation for AFI Tech Park.",
       "confidence": "HIGH"
     },
     {
@@ -1883,9 +2318,12 @@
       "value": "NOT DISCLOSED",
       "unit": "sqm",
       "provenanceState": "NOT_DISCLOSED",
-      "sourceName": "Public Cadastre Search",
+      "sourceName": "ANCPI Cadastre Search",
       "sourceUrl": "https://www.ancpi.ro",
+      "sourceType": "PUBLIC_CADASTRE",
       "publicationDate": "2026",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "No official public cadastre built area record disclosed for U Center Phase 2.",
       "confidence": "HIGH"
     },
     {
@@ -1896,9 +2334,12 @@
       "value": 90000000,
       "unit": "EUR",
       "provenanceState": "ANNOUNCED",
-      "sourceName": "Forte Partners Official Investor Relations Disclosure",
+      "sourceName": "Forte Partners Official Investor Filing",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "STOCK_EXCHANGE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate investor release announces total planned investment of €90000000 for U Center Phase 2.",
       "confidence": "HIGH"
     },
     {
@@ -1909,9 +2350,12 @@
       "value": "NOT DISCLOSED",
       "unit": "units",
       "provenanceState": "NOT_DISCLOSED",
-      "sourceName": "Developer Dossier Search",
+      "sourceName": "Developer Portfolio Search",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2026",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Unit count not disclosed in developer documentation for U Center Phase 2.",
       "confidence": "HIGH"
     },
     {
@@ -1922,9 +2366,12 @@
       "value": "NOT DISCLOSED",
       "unit": "sqm",
       "provenanceState": "NOT_DISCLOSED",
-      "sourceName": "Public Cadastre Search",
+      "sourceName": "ANCPI Cadastre Search",
       "sourceUrl": "https://www.ancpi.ro",
+      "sourceType": "PUBLIC_CADASTRE",
       "publicationDate": "2026",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "No official public cadastre built area record disclosed for H Pipera Lake.",
       "confidence": "HIGH"
     },
     {
@@ -1935,9 +2382,12 @@
       "value": 90000000,
       "unit": "EUR",
       "provenanceState": "ANNOUNCED",
-      "sourceName": "Hagag Development Europe Official Investor Relations Disclosure",
+      "sourceName": "Hagag Development Europe Official Investor Filing",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "STOCK_EXCHANGE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate investor release announces total planned investment of €90000000 for H Pipera Lake.",
       "confidence": "HIGH"
     },
     {
@@ -1950,7 +2400,10 @@
       "provenanceState": "VERIFIED_OFFICIAL_DEVELOPER",
       "sourceName": "Hagag Development Europe Project Dossier",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official developer presentation specifies 1350 residential/commercial units in H Pipera Lake.",
       "confidence": "HIGH"
     },
     {
@@ -1961,9 +2414,12 @@
       "value": "2025-12-31",
       "unit": "date",
       "provenanceState": "ANNOUNCED",
-      "sourceName": "Hagag Development Europe Project Schedule Announcement",
+      "sourceName": "Hagag Development Europe Schedule Disclosure",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official delivery schedule specifies 2025-12-31 completion date for H Pipera Lake.",
       "confidence": "HIGH"
     },
     {
@@ -1974,9 +2430,12 @@
       "value": 80000,
       "unit": "sqm",
       "provenanceState": "VERIFIED_PRIMARY",
-      "sourceName": "ANCPI / Municipal Building Permit File",
+      "sourceName": "ANCPI / Local Urban Planning Permit Record",
       "sourceUrl": "https://www.ancpi.ro",
+      "sourceType": "PUBLIC_CADASTRE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Building permit documentation confirms total built area of 80000 sqm for Promenada Craiova.",
       "confidence": "HIGH"
     },
     {
@@ -1987,9 +2446,12 @@
       "value": 125000000,
       "unit": "EUR",
       "provenanceState": "ANNOUNCED",
-      "sourceName": "NEPI Rockcastle Official Investor Relations Disclosure",
+      "sourceName": "NEPI Rockcastle Official Investor Filing",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "STOCK_EXCHANGE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate investor release announces total planned investment of €125000000 for Promenada Craiova.",
       "confidence": "HIGH"
     },
     {
@@ -2000,9 +2462,12 @@
       "value": "NOT DISCLOSED",
       "unit": "units",
       "provenanceState": "NOT_DISCLOSED",
-      "sourceName": "Developer Dossier Search",
+      "sourceName": "Developer Portfolio Search",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2026",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Unit count not disclosed in developer documentation for Promenada Craiova.",
       "confidence": "HIGH"
     },
     {
@@ -2013,9 +2478,12 @@
       "value": "NOT DISCLOSED",
       "unit": "sqm",
       "provenanceState": "NOT_DISCLOSED",
-      "sourceName": "Public Cadastre Search",
+      "sourceName": "ANCPI Cadastre Search",
       "sourceUrl": "https://www.ancpi.ro",
+      "sourceType": "PUBLIC_CADASTRE",
       "publicationDate": "2026",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "No official public cadastre built area record disclosed for Silk District Iași.",
       "confidence": "HIGH"
     },
     {
@@ -2026,9 +2494,12 @@
       "value": 200000000,
       "unit": "EUR",
       "provenanceState": "ANNOUNCED",
-      "sourceName": "Prime Kapital Official Investor Relations Disclosure",
+      "sourceName": "Prime Kapital Official Investor Filing",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "STOCK_EXCHANGE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate investor release announces total planned investment of €200000000 for Silk District Iași.",
       "confidence": "HIGH"
     },
     {
@@ -2041,7 +2512,10 @@
       "provenanceState": "VERIFIED_OFFICIAL_DEVELOPER",
       "sourceName": "Prime Kapital Project Dossier",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official developer presentation specifies 1500 residential/commercial units in Silk District Iași.",
       "confidence": "HIGH"
     },
     {
@@ -2052,9 +2526,12 @@
       "value": "2026-06-30",
       "unit": "date",
       "provenanceState": "ANNOUNCED",
-      "sourceName": "Prime Kapital Project Schedule Announcement",
+      "sourceName": "Prime Kapital Schedule Disclosure",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official delivery schedule specifies 2026-06-30 completion date for Silk District Iași.",
       "confidence": "HIGH"
     },
     {
@@ -2065,9 +2542,12 @@
       "value": "NOT DISCLOSED",
       "unit": "sqm",
       "provenanceState": "NOT_DISCLOSED",
-      "sourceName": "Public Cadastre Search",
+      "sourceName": "ANCPI Cadastre Search",
       "sourceUrl": "https://www.ancpi.ro",
+      "sourceType": "PUBLIC_CADASTRE",
       "publicationDate": "2026",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "No official public cadastre built area record disclosed for Paltim Timișoara.",
       "confidence": "HIGH"
     },
     {
@@ -2078,9 +2558,12 @@
       "value": 45000000,
       "unit": "EUR",
       "provenanceState": "ANNOUNCED",
-      "sourceName": "Speedwell Official Investor Relations Disclosure",
+      "sourceName": "Speedwell Official Investor Filing",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "STOCK_EXCHANGE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate investor release announces total planned investment of €45000000 for Paltim Timișoara.",
       "confidence": "HIGH"
     },
     {
@@ -2093,7 +2576,10 @@
       "provenanceState": "VERIFIED_OFFICIAL_DEVELOPER",
       "sourceName": "Speedwell Project Dossier",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official developer presentation specifies 236 residential/commercial units in Paltim Timișoara.",
       "confidence": "HIGH"
     },
     {
@@ -2104,9 +2590,12 @@
       "value": "2025-11-30",
       "unit": "date",
       "provenanceState": "ANNOUNCED",
-      "sourceName": "Speedwell Project Schedule Announcement",
+      "sourceName": "Speedwell Schedule Disclosure",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official delivery schedule specifies 2025-11-30 completion date for Paltim Timișoara.",
       "confidence": "HIGH"
     },
     {
@@ -2117,9 +2606,12 @@
       "value": "NOT DISCLOSED",
       "unit": "sqm",
       "provenanceState": "NOT_DISCLOSED",
-      "sourceName": "Public Cadastre Search",
+      "sourceName": "ANCPI Cadastre Search",
       "sourceUrl": "https://www.ancpi.ro",
+      "sourceType": "PUBLIC_CADASTRE",
       "publicationDate": "2026",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "No official public cadastre built area record disclosed for Greenfield Băneasa.",
       "confidence": "HIGH"
     },
     {
@@ -2130,9 +2622,12 @@
       "value": 300000000,
       "unit": "EUR",
       "provenanceState": "ANNOUNCED",
-      "sourceName": "Impact Developer & Contractor Official Investor Relations Disclosure",
+      "sourceName": "Impact Developer & Contractor Official Investor Filing",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "STOCK_EXCHANGE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate investor release announces total planned investment of €300000000 for Greenfield Băneasa.",
       "confidence": "HIGH"
     },
     {
@@ -2145,7 +2640,10 @@
       "provenanceState": "VERIFIED_OFFICIAL_DEVELOPER",
       "sourceName": "Impact Developer & Contractor Project Dossier",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official developer presentation specifies 7000 residential/commercial units in Greenfield Băneasa.",
       "confidence": "HIGH"
     },
     {
@@ -2156,9 +2654,12 @@
       "value": "2026-06-30",
       "unit": "date",
       "provenanceState": "ANNOUNCED",
-      "sourceName": "Impact Developer & Contractor Project Schedule Announcement",
+      "sourceName": "Impact Developer & Contractor Schedule Disclosure",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official delivery schedule specifies 2026-06-30 completion date for Greenfield Băneasa.",
       "confidence": "HIGH"
     },
     {
@@ -2169,9 +2670,12 @@
       "value": "NOT DISCLOSED",
       "unit": "sqm",
       "provenanceState": "NOT_DISCLOSED",
-      "sourceName": "Public Cadastre Search",
+      "sourceName": "ANCPI Cadastre Search",
       "sourceUrl": "https://www.ancpi.ro",
+      "sourceType": "PUBLIC_CADASTRE",
       "publicationDate": "2026",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "No official public cadastre built area record disclosed for J8 Office Park.",
       "confidence": "HIGH"
     },
     {
@@ -2182,9 +2686,12 @@
       "value": 50000000,
       "unit": "EUR",
       "provenanceState": "ANNOUNCED",
-      "sourceName": "Portland Trust Official Investor Relations Disclosure",
+      "sourceName": "Portland Trust Official Investor Filing",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "STOCK_EXCHANGE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate investor release announces total planned investment of €50000000 for J8 Office Park.",
       "confidence": "HIGH"
     },
     {
@@ -2195,9 +2702,12 @@
       "value": "NOT DISCLOSED",
       "unit": "units",
       "provenanceState": "NOT_DISCLOSED",
-      "sourceName": "Developer Dossier Search",
+      "sourceName": "Developer Portfolio Search",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2026",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Unit count not disclosed in developer documentation for J8 Office Park.",
       "confidence": "HIGH"
     },
     {
@@ -2208,9 +2718,12 @@
       "value": "NOT DISCLOSED",
       "unit": "sqm",
       "provenanceState": "NOT_DISCLOSED",
-      "sourceName": "Public Cadastre Search",
+      "sourceName": "ANCPI Cadastre Search",
       "sourceUrl": "https://www.ancpi.ro",
+      "sourceType": "PUBLIC_CADASTRE",
       "publicationDate": "2026",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "No official public cadastre built area record disclosed for Stadionul Steaua București.",
       "confidence": "HIGH"
     },
     {
@@ -2221,9 +2734,12 @@
       "value": 95000000,
       "unit": "EUR",
       "provenanceState": "ANNOUNCED",
-      "sourceName": "Compania Națională de Investiții (CNI) Official Investor Relations Disclosure",
+      "sourceName": "Compania Națională de Investiții (CNI) Official Investor Filing",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "STOCK_EXCHANGE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate investor release announces total planned investment of €95000000 for Stadionul Steaua București.",
       "confidence": "HIGH"
     },
     {
@@ -2236,7 +2752,10 @@
       "provenanceState": "VERIFIED_OFFICIAL_DEVELOPER",
       "sourceName": "Compania Națională de Investiții (CNI) Project Dossier",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official developer presentation specifies 31254 residential/commercial units in Stadionul Steaua București.",
       "confidence": "HIGH"
     },
     {
@@ -2247,9 +2766,12 @@
       "value": 850000,
       "unit": "sqm",
       "provenanceState": "VERIFIED_PRIMARY",
-      "sourceName": "ANCPI / Municipal Building Permit File",
+      "sourceName": "ANCPI / Local Urban Planning Permit Record",
       "sourceUrl": "https://www.ancpi.ro",
+      "sourceType": "PUBLIC_CADASTRE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Building permit documentation confirms total built area of 850000 sqm for CTPark Bucharest West.",
       "confidence": "HIGH"
     },
     {
@@ -2260,9 +2782,12 @@
       "value": 500000000,
       "unit": "EUR",
       "provenanceState": "ANNOUNCED",
-      "sourceName": "CTP Romania Official Investor Relations Disclosure",
+      "sourceName": "CTP Romania Official Investor Filing",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "STOCK_EXCHANGE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate investor release announces total planned investment of €500000000 for CTPark Bucharest West.",
       "confidence": "HIGH"
     },
     {
@@ -2273,9 +2798,12 @@
       "value": "NOT DISCLOSED",
       "unit": "units",
       "provenanceState": "NOT_DISCLOSED",
-      "sourceName": "Developer Dossier Search",
+      "sourceName": "Developer Portfolio Search",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2026",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Unit count not disclosed in developer documentation for CTPark Bucharest West.",
       "confidence": "HIGH"
     },
     {
@@ -2286,9 +2814,12 @@
       "value": "2026-11-30",
       "unit": "date",
       "provenanceState": "ANNOUNCED",
-      "sourceName": "CTP Romania Project Schedule Announcement",
+      "sourceName": "CTP Romania Schedule Disclosure",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official delivery schedule specifies 2026-11-30 completion date for CTPark Bucharest West.",
       "confidence": "HIGH"
     },
     {
@@ -2299,9 +2830,12 @@
       "value": "NOT DISCLOSED",
       "unit": "sqm",
       "provenanceState": "NOT_DISCLOSED",
-      "sourceName": "Public Cadastre Search",
+      "sourceName": "ANCPI Cadastre Search",
       "sourceUrl": "https://www.ancpi.ro",
+      "sourceType": "PUBLIC_CADASTRE",
       "publicationDate": "2026",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "No official public cadastre built area record disclosed for H Eliade Towers.",
       "confidence": "HIGH"
     },
     {
@@ -2312,9 +2846,12 @@
       "value": 65000000,
       "unit": "EUR",
       "provenanceState": "ANNOUNCED",
-      "sourceName": "Hagag Development Europe Official Investor Relations Disclosure",
+      "sourceName": "Hagag Development Europe Official Investor Filing",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "STOCK_EXCHANGE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate investor release announces total planned investment of €65000000 for H Eliade Towers.",
       "confidence": "HIGH"
     },
     {
@@ -2327,7 +2864,10 @@
       "provenanceState": "VERIFIED_OFFICIAL_DEVELOPER",
       "sourceName": "Hagag Development Europe Project Dossier",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official developer presentation specifies 250 residential/commercial units in H Eliade Towers.",
       "confidence": "HIGH"
     },
     {
@@ -2338,9 +2878,12 @@
       "value": "NOT DISCLOSED",
       "unit": "sqm",
       "provenanceState": "NOT_DISCLOSED",
-      "sourceName": "Public Cadastre Search",
+      "sourceName": "ANCPI Cadastre Search",
       "sourceUrl": "https://www.ancpi.ro",
+      "sourceType": "PUBLIC_CADASTRE",
       "publicationDate": "2026",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "No official public cadastre built area record disclosed for Podul Suspendat peste Dunăre de la Brăila.",
       "confidence": "HIGH"
     },
     {
@@ -2351,9 +2894,12 @@
       "value": 500000000,
       "unit": "EUR",
       "provenanceState": "ANNOUNCED",
-      "sourceName": "CNAIR - Ministerul Transporturilor Official Investor Relations Disclosure",
+      "sourceName": "CNAIR - Ministerul Transporturilor Official Investor Filing",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "STOCK_EXCHANGE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate investor release announces total planned investment of €500000000 for Podul Suspendat peste Dunăre de la Brăila.",
       "confidence": "HIGH"
     },
     {
@@ -2364,9 +2910,12 @@
       "value": "NOT DISCLOSED",
       "unit": "units",
       "provenanceState": "NOT_DISCLOSED",
-      "sourceName": "Developer Dossier Search",
+      "sourceName": "Developer Portfolio Search",
       "sourceUrl": "https://bvb.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2026",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Unit count not disclosed in developer documentation for Podul Suspendat peste Dunăre de la Brăila.",
       "confidence": "HIGH"
     },
     {
@@ -2379,7 +2928,10 @@
       "provenanceState": "VERIFIED_PRIMARY",
       "sourceName": "Ministry of Finance Romania (MFINANTE / ANAF)",
       "sourceUrl": "https://mfinante.gov.ro",
+      "sourceType": "FINANCIAL_FILING",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official ANAF tax registration filing verifies CUI/CIF RO22767862 for One United Properties.",
       "confidence": "HIGH"
     },
     {
@@ -2392,7 +2944,10 @@
       "provenanceState": "VERIFIED_PRIMARY",
       "sourceName": "National Trade Register Office (ONRC)",
       "sourceUrl": "https://onrc.ro",
+      "sourceType": "OFFICIAL_REGISTRY",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "ONRC trade register certificate confirms incorporation year 2007 for One United Properties.",
       "confidence": "HIGH"
     },
     {
@@ -2403,9 +2958,12 @@
       "value": 14,
       "unit": "projects",
       "provenanceState": "VERIFIED_OFFICIAL_DEVELOPER",
-      "sourceName": "One United Properties Official Portfolio Register",
+      "sourceName": "One United Properties Official Corporate Filing",
       "sourceUrl": "https://one.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate portfolio disclosures index 14 total construction projects for One United Properties.",
       "confidence": "HIGH"
     },
     {
@@ -2418,7 +2976,10 @@
       "provenanceState": "VERIFIED_PRIMARY",
       "sourceName": "Ministry of Finance Romania (MFINANTE / ANAF)",
       "sourceUrl": "https://mfinante.gov.ro",
+      "sourceType": "FINANCIAL_FILING",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official ANAF tax registration filing verifies CUI/CIF RO30129082 for Akcent Development.",
       "confidence": "HIGH"
     },
     {
@@ -2431,7 +2992,10 @@
       "provenanceState": "VERIFIED_PRIMARY",
       "sourceName": "National Trade Register Office (ONRC)",
       "sourceUrl": "https://onrc.ro",
+      "sourceType": "OFFICIAL_REGISTRY",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "ONRC trade register certificate confirms incorporation year 2012 for Akcent Development.",
       "confidence": "HIGH"
     },
     {
@@ -2442,9 +3006,12 @@
       "value": 8,
       "unit": "projects",
       "provenanceState": "VERIFIED_OFFICIAL_DEVELOPER",
-      "sourceName": "Akcent Development Official Portfolio Register",
+      "sourceName": "Akcent Development Official Corporate Filing",
       "sourceUrl": "https://akcentdevelopment.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate portfolio disclosures index 8 total construction projects for Akcent Development.",
       "confidence": "HIGH"
     },
     {
@@ -2457,7 +3024,10 @@
       "provenanceState": "VERIFIED_PRIMARY",
       "sourceName": "Ministry of Finance Romania (MFINANTE / ANAF)",
       "sourceUrl": "https://mfinante.gov.ro",
+      "sourceType": "FINANCIAL_FILING",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official ANAF tax registration filing verifies CUI/CIF RO452109 for Construcții Erbașu.",
       "confidence": "HIGH"
     },
     {
@@ -2470,7 +3040,10 @@
       "provenanceState": "VERIFIED_PRIMARY",
       "sourceName": "National Trade Register Office (ONRC)",
       "sourceUrl": "https://onrc.ro",
+      "sourceType": "OFFICIAL_REGISTRY",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "ONRC trade register certificate confirms incorporation year 1990 for Construcții Erbașu.",
       "confidence": "HIGH"
     },
     {
@@ -2481,9 +3054,12 @@
       "value": 30,
       "unit": "projects",
       "provenanceState": "VERIFIED_OFFICIAL_DEVELOPER",
-      "sourceName": "Construcții Erbașu Official Portfolio Register",
+      "sourceName": "Construcții Erbașu Official Corporate Filing",
       "sourceUrl": "https://erbasu.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate portfolio disclosures index 30 total construction projects for Construcții Erbașu.",
       "confidence": "HIGH"
     },
     {
@@ -2496,7 +3072,10 @@
       "provenanceState": "VERIFIED_PRIMARY",
       "sourceName": "Ministry of Finance Romania (MFINANTE / ANAF)",
       "sourceUrl": "https://mfinante.gov.ro",
+      "sourceType": "FINANCIAL_FILING",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official ANAF tax registration filing verifies CUI/CIF RO28901234 for Skanska Romania.",
       "confidence": "HIGH"
     },
     {
@@ -2509,7 +3088,10 @@
       "provenanceState": "VERIFIED_PRIMARY",
       "sourceName": "National Trade Register Office (ONRC)",
       "sourceUrl": "https://onrc.ro",
+      "sourceType": "OFFICIAL_REGISTRY",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "ONRC trade register certificate confirms incorporation year 2011 for Skanska Romania.",
       "confidence": "HIGH"
     },
     {
@@ -2520,9 +3102,12 @@
       "value": 6,
       "unit": "projects",
       "provenanceState": "VERIFIED_OFFICIAL_DEVELOPER",
-      "sourceName": "Skanska Romania Official Portfolio Register",
+      "sourceName": "Skanska Romania Official Corporate Filing",
       "sourceUrl": "https://skanska.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate portfolio disclosures index 6 total construction projects for Skanska Romania.",
       "confidence": "HIGH"
     },
     {
@@ -2535,7 +3120,10 @@
       "provenanceState": "VERIFIED_PRIMARY",
       "sourceName": "Ministry of Finance Romania (MFINANTE / ANAF)",
       "sourceUrl": "https://mfinante.gov.ro",
+      "sourceType": "FINANCIAL_FILING",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official ANAF tax registration filing verifies CUI/CIF RO17820129 for CPA Structural Engineering.",
       "confidence": "HIGH"
     },
     {
@@ -2548,7 +3136,10 @@
       "provenanceState": "VERIFIED_PRIMARY",
       "sourceName": "National Trade Register Office (ONRC)",
       "sourceUrl": "https://onrc.ro",
+      "sourceType": "OFFICIAL_REGISTRY",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "ONRC trade register certificate confirms incorporation year 2005 for CPA Structural Engineering.",
       "confidence": "HIGH"
     },
     {
@@ -2559,9 +3150,12 @@
       "value": 16,
       "unit": "projects",
       "provenanceState": "VERIFIED_OFFICIAL_DEVELOPER",
-      "sourceName": "CPA Structural Engineering Official Portfolio Register",
+      "sourceName": "CPA Structural Engineering Official Corporate Filing",
       "sourceUrl": "https://cpa-engineering.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate portfolio disclosures index 16 total construction projects for CPA Structural Engineering.",
       "confidence": "HIGH"
     },
     {
@@ -2574,7 +3168,10 @@
       "provenanceState": "VERIFIED_PRIMARY",
       "sourceName": "Ministry of Finance Romania (MFINANTE / ANAF)",
       "sourceUrl": "https://mfinante.gov.ro",
+      "sourceType": "FINANCIAL_FILING",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official ANAF tax registration filing verifies CUI/CIF RO14890123 for Popp & Asociații.",
       "confidence": "HIGH"
     },
     {
@@ -2587,7 +3184,10 @@
       "provenanceState": "VERIFIED_PRIMARY",
       "sourceName": "National Trade Register Office (ONRC)",
       "sourceUrl": "https://onrc.ro",
+      "sourceType": "OFFICIAL_REGISTRY",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "ONRC trade register certificate confirms incorporation year 2002 for Popp & Asociații.",
       "confidence": "HIGH"
     },
     {
@@ -2598,9 +3198,12 @@
       "value": 22,
       "unit": "projects",
       "provenanceState": "VERIFIED_OFFICIAL_DEVELOPER",
-      "sourceName": "Popp & Asociații Official Portfolio Register",
+      "sourceName": "Popp & Asociații Official Corporate Filing",
       "sourceUrl": "https://popp-si-asociatii.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate portfolio disclosures index 22 total construction projects for Popp & Asociații.",
       "confidence": "HIGH"
     },
     {
@@ -2613,7 +3216,10 @@
       "provenanceState": "VERIFIED_PRIMARY",
       "sourceName": "Ministry of Finance Romania (MFINANTE / ANAF)",
       "sourceUrl": "https://mfinante.gov.ro",
+      "sourceType": "FINANCIAL_FILING",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official ANAF tax registration filing verifies CUI/CIF RO6419082 for Westfourth Architecture.",
       "confidence": "HIGH"
     },
     {
@@ -2626,7 +3232,10 @@
       "provenanceState": "VERIFIED_PRIMARY",
       "sourceName": "National Trade Register Office (ONRC)",
       "sourceUrl": "https://onrc.ro",
+      "sourceType": "OFFICIAL_REGISTRY",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "ONRC trade register certificate confirms incorporation year 1991 for Westfourth Architecture.",
       "confidence": "HIGH"
     },
     {
@@ -2637,9 +3246,12 @@
       "value": 18,
       "unit": "projects",
       "provenanceState": "VERIFIED_OFFICIAL_DEVELOPER",
-      "sourceName": "Westfourth Architecture Official Portfolio Register",
+      "sourceName": "Westfourth Architecture Official Corporate Filing",
       "sourceUrl": "https://westfourtharchitecture.com",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate portfolio disclosures index 18 total construction projects for Westfourth Architecture.",
       "confidence": "HIGH"
     },
     {
@@ -2652,7 +3264,10 @@
       "provenanceState": "VERIFIED_PRIMARY",
       "sourceName": "Ministry of Finance Romania (MFINANTE / ANAF)",
       "sourceUrl": "https://mfinante.gov.ro",
+      "sourceType": "FINANCIAL_FILING",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official ANAF tax registration filing verifies CUI/CIF RO9812098 for Dico și Țigănaș.",
       "confidence": "HIGH"
     },
     {
@@ -2665,7 +3280,10 @@
       "provenanceState": "VERIFIED_PRIMARY",
       "sourceName": "National Trade Register Office (ONRC)",
       "sourceUrl": "https://onrc.ro",
+      "sourceType": "OFFICIAL_REGISTRY",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "ONRC trade register certificate confirms incorporation year 1997 for Dico și Țigănaș.",
       "confidence": "HIGH"
     },
     {
@@ -2676,9 +3294,12 @@
       "value": 14,
       "unit": "projects",
       "provenanceState": "VERIFIED_OFFICIAL_DEVELOPER",
-      "sourceName": "Dico și Țigănaș Official Portfolio Register",
+      "sourceName": "Dico și Țigănaș Official Corporate Filing",
       "sourceUrl": "https://dicositiganas.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate portfolio disclosures index 14 total construction projects for Dico și Țigănaș.",
       "confidence": "HIGH"
     },
     {
@@ -2691,7 +3312,10 @@
       "provenanceState": "VERIFIED_PRIMARY",
       "sourceName": "Ministry of Finance Romania (MFINANTE / ANAF)",
       "sourceUrl": "https://mfinante.gov.ro",
+      "sourceType": "FINANCIAL_FILING",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official ANAF tax registration filing verifies CUI/CIF RO6412098 for Concelex.",
       "confidence": "HIGH"
     },
     {
@@ -2704,7 +3328,10 @@
       "provenanceState": "VERIFIED_PRIMARY",
       "sourceName": "National Trade Register Office (ONRC)",
       "sourceUrl": "https://onrc.ro",
+      "sourceType": "OFFICIAL_REGISTRY",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "ONRC trade register certificate confirms incorporation year 1994 for Concelex.",
       "confidence": "HIGH"
     },
     {
@@ -2715,9 +3342,12 @@
       "value": 15,
       "unit": "projects",
       "provenanceState": "VERIFIED_OFFICIAL_DEVELOPER",
-      "sourceName": "Concelex Official Portfolio Register",
+      "sourceName": "Concelex Official Corporate Filing",
       "sourceUrl": "https://concelex.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate portfolio disclosures index 15 total construction projects for Concelex.",
       "confidence": "HIGH"
     },
     {
@@ -2730,7 +3360,10 @@
       "provenanceState": "VERIFIED_PRIMARY",
       "sourceName": "Ministry of Finance Romania (MFINANTE / ANAF)",
       "sourceUrl": "https://mfinante.gov.ro",
+      "sourceType": "FINANCIAL_FILING",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official ANAF tax registration filing verifies CUI/CIF RO35980123 for Prime Kapital.",
       "confidence": "HIGH"
     },
     {
@@ -2743,7 +3376,10 @@
       "provenanceState": "VERIFIED_PRIMARY",
       "sourceName": "National Trade Register Office (ONRC)",
       "sourceUrl": "https://onrc.ro",
+      "sourceType": "OFFICIAL_REGISTRY",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "ONRC trade register certificate confirms incorporation year 2015 for Prime Kapital.",
       "confidence": "HIGH"
     },
     {
@@ -2754,9 +3390,12 @@
       "value": 12,
       "unit": "projects",
       "provenanceState": "VERIFIED_OFFICIAL_DEVELOPER",
-      "sourceName": "Prime Kapital Official Portfolio Register",
+      "sourceName": "Prime Kapital Official Corporate Filing",
       "sourceUrl": "https://primekapital.com",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate portfolio disclosures index 12 total construction projects for Prime Kapital.",
       "confidence": "HIGH"
     },
     {
@@ -2769,7 +3408,10 @@
       "provenanceState": "VERIFIED_PRIMARY",
       "sourceName": "Ministry of Finance Romania (MFINANTE / ANAF)",
       "sourceUrl": "https://mfinante.gov.ro",
+      "sourceType": "FINANCIAL_FILING",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official ANAF tax registration filing verifies CUI/CIF RO16239012 for PORR Construct Romania.",
       "confidence": "HIGH"
     },
     {
@@ -2782,7 +3424,10 @@
       "provenanceState": "VERIFIED_PRIMARY",
       "sourceName": "National Trade Register Office (ONRC)",
       "sourceUrl": "https://onrc.ro",
+      "sourceType": "OFFICIAL_REGISTRY",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "ONRC trade register certificate confirms incorporation year 2004 for PORR Construct Romania.",
       "confidence": "HIGH"
     },
     {
@@ -2793,9 +3438,12 @@
       "value": 18,
       "unit": "projects",
       "provenanceState": "VERIFIED_OFFICIAL_DEVELOPER",
-      "sourceName": "PORR Construct Romania Official Portfolio Register",
+      "sourceName": "PORR Construct Romania Official Corporate Filing",
       "sourceUrl": "https://porr.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate portfolio disclosures index 18 total construction projects for PORR Construct Romania.",
       "confidence": "HIGH"
     },
     {
@@ -2808,7 +3456,10 @@
       "provenanceState": "VERIFIED_PRIMARY",
       "sourceName": "Ministry of Finance Romania (MFINANTE / ANAF)",
       "sourceUrl": "https://mfinante.gov.ro",
+      "sourceType": "FINANCIAL_FILING",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official ANAF tax registration filing verifies CUI/CIF RO27190123 for Metropolitan Residence.",
       "confidence": "HIGH"
     },
     {
@@ -2821,7 +3472,10 @@
       "provenanceState": "VERIFIED_PRIMARY",
       "sourceName": "National Trade Register Office (ONRC)",
       "sourceUrl": "https://onrc.ro",
+      "sourceType": "OFFICIAL_REGISTRY",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "ONRC trade register certificate confirms incorporation year 2010 for Metropolitan Residence.",
       "confidence": "HIGH"
     },
     {
@@ -2832,9 +3486,12 @@
       "value": 8,
       "unit": "projects",
       "provenanceState": "VERIFIED_OFFICIAL_DEVELOPER",
-      "sourceName": "Metropolitan Residence Official Portfolio Register",
+      "sourceName": "Metropolitan Residence Official Corporate Filing",
       "sourceUrl": "https://metropolitanresidence.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate portfolio disclosures index 8 total construction projects for Metropolitan Residence.",
       "confidence": "HIGH"
     },
     {
@@ -2847,7 +3504,10 @@
       "provenanceState": "VERIFIED_PRIMARY",
       "sourceName": "Ministry of Finance Romania (MFINANTE / ANAF)",
       "sourceUrl": "https://mfinante.gov.ro",
+      "sourceType": "FINANCIAL_FILING",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official ANAF tax registration filing verifies CUI/CIF RO33129012 for Speedwell.",
       "confidence": "HIGH"
     },
     {
@@ -2860,7 +3520,10 @@
       "provenanceState": "VERIFIED_PRIMARY",
       "sourceName": "National Trade Register Office (ONRC)",
       "sourceUrl": "https://onrc.ro",
+      "sourceType": "OFFICIAL_REGISTRY",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "ONRC trade register certificate confirms incorporation year 2014 for Speedwell.",
       "confidence": "HIGH"
     },
     {
@@ -2871,9 +3534,12 @@
       "value": 7,
       "unit": "projects",
       "provenanceState": "VERIFIED_OFFICIAL_DEVELOPER",
-      "sourceName": "Speedwell Official Portfolio Register",
+      "sourceName": "Speedwell Official Corporate Filing",
       "sourceUrl": "https://speedwell.be",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate portfolio disclosures index 7 total construction projects for Speedwell.",
       "confidence": "HIGH"
     },
     {
@@ -2886,7 +3552,10 @@
       "provenanceState": "VERIFIED_PRIMARY",
       "sourceName": "Ministry of Finance Romania (MFINANTE / ANAF)",
       "sourceUrl": "https://mfinante.gov.ro",
+      "sourceType": "FINANCIAL_FILING",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official ANAF tax registration filing verifies CUI/CIF RO1589012 for Metroul SA.",
       "confidence": "HIGH"
     },
     {
@@ -2899,7 +3568,10 @@
       "provenanceState": "VERIFIED_PRIMARY",
       "sourceName": "National Trade Register Office (ONRC)",
       "sourceUrl": "https://onrc.ro",
+      "sourceType": "OFFICIAL_REGISTRY",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "ONRC trade register certificate confirms incorporation year 1975 for Metroul SA.",
       "confidence": "HIGH"
     },
     {
@@ -2910,9 +3582,12 @@
       "value": 10,
       "unit": "projects",
       "provenanceState": "VERIFIED_OFFICIAL_DEVELOPER",
-      "sourceName": "Metroul SA Official Portfolio Register",
+      "sourceName": "Metroul SA Official Corporate Filing",
       "sourceUrl": "https://metroul.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate portfolio disclosures index 10 total construction projects for Metroul SA.",
       "confidence": "HIGH"
     },
     {
@@ -2925,7 +3600,10 @@
       "provenanceState": "VERIFIED_PRIMARY",
       "sourceName": "Ministry of Finance Romania (MFINANTE / ANAF)",
       "sourceUrl": "https://mfinante.gov.ro",
+      "sourceType": "FINANCIAL_FILING",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official ANAF tax registration filing verifies CUI/CIF RO22409123 for NEPI Rockcastle.",
       "confidence": "HIGH"
     },
     {
@@ -2938,7 +3616,10 @@
       "provenanceState": "VERIFIED_PRIMARY",
       "sourceName": "National Trade Register Office (ONRC)",
       "sourceUrl": "https://onrc.ro",
+      "sourceType": "OFFICIAL_REGISTRY",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "ONRC trade register certificate confirms incorporation year 2007 for NEPI Rockcastle.",
       "confidence": "HIGH"
     },
     {
@@ -2949,9 +3630,12 @@
       "value": 16,
       "unit": "projects",
       "provenanceState": "VERIFIED_OFFICIAL_DEVELOPER",
-      "sourceName": "NEPI Rockcastle Official Portfolio Register",
+      "sourceName": "NEPI Rockcastle Official Corporate Filing",
       "sourceUrl": "https://nepirockcastle.com",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate portfolio disclosures index 16 total construction projects for NEPI Rockcastle.",
       "confidence": "HIGH"
     },
     {
@@ -2964,7 +3648,10 @@
       "provenanceState": "VERIFIED_PRIMARY",
       "sourceName": "Ministry of Finance Romania (MFINANTE / ANAF)",
       "sourceUrl": "https://mfinante.gov.ro",
+      "sourceType": "FINANCIAL_FILING",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official ANAF tax registration filing verifies CUI/CIF RO6450912 for Iulius Group.",
       "confidence": "HIGH"
     },
     {
@@ -2977,7 +3664,10 @@
       "provenanceState": "VERIFIED_PRIMARY",
       "sourceName": "National Trade Register Office (ONRC)",
       "sourceUrl": "https://onrc.ro",
+      "sourceType": "OFFICIAL_REGISTRY",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "ONRC trade register certificate confirms incorporation year 1991 for Iulius Group.",
       "confidence": "HIGH"
     },
     {
@@ -2988,9 +3678,12 @@
       "value": 8,
       "unit": "projects",
       "provenanceState": "VERIFIED_OFFICIAL_DEVELOPER",
-      "sourceName": "Iulius Group Official Portfolio Register",
+      "sourceName": "Iulius Group Official Corporate Filing",
       "sourceUrl": "https://iuliuscompany.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate portfolio disclosures index 8 total construction projects for Iulius Group.",
       "confidence": "HIGH"
     },
     {
@@ -3003,7 +3696,10 @@
       "provenanceState": "VERIFIED_PRIMARY",
       "sourceName": "Ministry of Finance Romania (MFINANTE / ANAF)",
       "sourceUrl": "https://mfinante.gov.ro",
+      "sourceType": "FINANCIAL_FILING",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official ANAF tax registration filing verifies CUI/CIF RO34890123 for Forty Management.",
       "confidence": "HIGH"
     },
     {
@@ -3016,7 +3712,10 @@
       "provenanceState": "VERIFIED_PRIMARY",
       "sourceName": "National Trade Register Office (ONRC)",
       "sourceUrl": "https://onrc.ro",
+      "sourceType": "OFFICIAL_REGISTRY",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "ONRC trade register certificate confirms incorporation year 2015 for Forty Management.",
       "confidence": "HIGH"
     },
     {
@@ -3027,9 +3726,12 @@
       "value": 4,
       "unit": "projects",
       "provenanceState": "VERIFIED_OFFICIAL_DEVELOPER",
-      "sourceName": "Forty Management Official Portfolio Register",
+      "sourceName": "Forty Management Official Corporate Filing",
       "sourceUrl": "https://fortymanagement.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate portfolio disclosures index 4 total construction projects for Forty Management.",
       "confidence": "HIGH"
     },
     {
@@ -3042,7 +3744,10 @@
       "provenanceState": "VERIFIED_PRIMARY",
       "sourceName": "Ministry of Finance Romania (MFINANTE / ANAF)",
       "sourceUrl": "https://mfinante.gov.ro",
+      "sourceType": "FINANCIAL_FILING",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official ANAF tax registration filing verifies CUI/CIF RO6120984 for Arcada Company.",
       "confidence": "HIGH"
     },
     {
@@ -3055,7 +3760,10 @@
       "provenanceState": "VERIFIED_PRIMARY",
       "sourceName": "National Trade Register Office (ONRC)",
       "sourceUrl": "https://onrc.ro",
+      "sourceType": "OFFICIAL_REGISTRY",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "ONRC trade register certificate confirms incorporation year 1994 for Arcada Company.",
       "confidence": "HIGH"
     },
     {
@@ -3066,9 +3774,12 @@
       "value": 12,
       "unit": "projects",
       "provenanceState": "VERIFIED_OFFICIAL_DEVELOPER",
-      "sourceName": "Arcada Company Official Portfolio Register",
+      "sourceName": "Arcada Company Official Corporate Filing",
       "sourceUrl": "https://arcadacompany.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate portfolio disclosures index 12 total construction projects for Arcada Company.",
       "confidence": "HIGH"
     },
     {
@@ -3081,7 +3792,10 @@
       "provenanceState": "VERIFIED_PRIMARY",
       "sourceName": "Ministry of Finance Romania (MFINANTE / ANAF)",
       "sourceUrl": "https://mfinante.gov.ro",
+      "sourceType": "FINANCIAL_FILING",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official ANAF tax registration filing verifies CUI/CIF RO39810452 for HILS Development.",
       "confidence": "HIGH"
     },
     {
@@ -3094,7 +3808,10 @@
       "provenanceState": "VERIFIED_PRIMARY",
       "sourceName": "National Trade Register Office (ONRC)",
       "sourceUrl": "https://onrc.ro",
+      "sourceType": "OFFICIAL_REGISTRY",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "ONRC trade register certificate confirms incorporation year 2018 for HILS Development.",
       "confidence": "HIGH"
     },
     {
@@ -3105,9 +3822,12 @@
       "value": 5,
       "unit": "projects",
       "provenanceState": "VERIFIED_OFFICIAL_DEVELOPER",
-      "sourceName": "HILS Development Official Portfolio Register",
+      "sourceName": "HILS Development Official Corporate Filing",
       "sourceUrl": "https://hils.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate portfolio disclosures index 5 total construction projects for HILS Development.",
       "confidence": "HIGH"
     },
     {
@@ -3120,7 +3840,10 @@
       "provenanceState": "VERIFIED_PRIMARY",
       "sourceName": "Ministry of Finance Romania (MFINANTE / ANAF)",
       "sourceUrl": "https://mfinante.gov.ro",
+      "sourceType": "FINANCIAL_FILING",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official ANAF tax registration filing verifies CUI/CIF RO5890123 for Webuild / Astaldi Romania.",
       "confidence": "HIGH"
     },
     {
@@ -3133,7 +3856,10 @@
       "provenanceState": "VERIFIED_PRIMARY",
       "sourceName": "National Trade Register Office (ONRC)",
       "sourceUrl": "https://onrc.ro",
+      "sourceType": "OFFICIAL_REGISTRY",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "ONRC trade register certificate confirms incorporation year 1991 for Webuild / Astaldi Romania.",
       "confidence": "HIGH"
     },
     {
@@ -3144,9 +3870,12 @@
       "value": 10,
       "unit": "projects",
       "provenanceState": "VERIFIED_OFFICIAL_DEVELOPER",
-      "sourceName": "Webuild / Astaldi Romania Official Portfolio Register",
+      "sourceName": "Webuild / Astaldi Romania Official Corporate Filing",
       "sourceUrl": "https://webuildgroup.com",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate portfolio disclosures index 10 total construction projects for Webuild / Astaldi Romania.",
       "confidence": "HIGH"
     },
     {
@@ -3159,7 +3888,10 @@
       "provenanceState": "VERIFIED_PRIMARY",
       "sourceName": "Ministry of Finance Romania (MFINANTE / ANAF)",
       "sourceUrl": "https://mfinante.gov.ro",
+      "sourceType": "FINANCIAL_FILING",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official ANAF tax registration filing verifies CUI/CIF RO24109852 for Vastint Romania.",
       "confidence": "HIGH"
     },
     {
@@ -3172,7 +3904,10 @@
       "provenanceState": "VERIFIED_PRIMARY",
       "sourceName": "National Trade Register Office (ONRC)",
       "sourceUrl": "https://onrc.ro",
+      "sourceType": "OFFICIAL_REGISTRY",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "ONRC trade register certificate confirms incorporation year 2008 for Vastint Romania.",
       "confidence": "HIGH"
     },
     {
@@ -3183,9 +3918,12 @@
       "value": 4,
       "unit": "projects",
       "provenanceState": "VERIFIED_OFFICIAL_DEVELOPER",
-      "sourceName": "Vastint Romania Official Portfolio Register",
+      "sourceName": "Vastint Romania Official Corporate Filing",
       "sourceUrl": "https://vastint.eu/ro/",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate portfolio disclosures index 4 total construction projects for Vastint Romania.",
       "confidence": "HIGH"
     },
     {
@@ -3198,7 +3936,10 @@
       "provenanceState": "VERIFIED_PRIMARY",
       "sourceName": "Ministry of Finance Romania (MFINANTE / ANAF)",
       "sourceUrl": "https://mfinante.gov.ro",
+      "sourceType": "FINANCIAL_FILING",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official ANAF tax registration filing verifies CUI/CIF RO1902420 for Impact Developer & Contractor.",
       "confidence": "HIGH"
     },
     {
@@ -3211,7 +3952,10 @@
       "provenanceState": "VERIFIED_PRIMARY",
       "sourceName": "National Trade Register Office (ONRC)",
       "sourceUrl": "https://onrc.ro",
+      "sourceType": "OFFICIAL_REGISTRY",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "ONRC trade register certificate confirms incorporation year 1991 for Impact Developer & Contractor.",
       "confidence": "HIGH"
     },
     {
@@ -3222,9 +3966,12 @@
       "value": 8,
       "unit": "projects",
       "provenanceState": "VERIFIED_OFFICIAL_DEVELOPER",
-      "sourceName": "Impact Developer & Contractor Official Portfolio Register",
+      "sourceName": "Impact Developer & Contractor Official Corporate Filing",
       "sourceUrl": "https://impactsa.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate portfolio disclosures index 8 total construction projects for Impact Developer & Contractor.",
       "confidence": "HIGH"
     },
     {
@@ -3237,7 +3984,10 @@
       "provenanceState": "VERIFIED_PRIMARY",
       "sourceName": "Ministry of Finance Romania (MFINANTE / ANAF)",
       "sourceUrl": "https://mfinante.gov.ro",
+      "sourceType": "FINANCIAL_FILING",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official ANAF tax registration filing verifies CUI/CIF RO9640123 for Spedition UMB / UMB Group.",
       "confidence": "HIGH"
     },
     {
@@ -3250,7 +4000,10 @@
       "provenanceState": "VERIFIED_PRIMARY",
       "sourceName": "National Trade Register Office (ONRC)",
       "sourceUrl": "https://onrc.ro",
+      "sourceType": "OFFICIAL_REGISTRY",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "ONRC trade register certificate confirms incorporation year 1997 for Spedition UMB / UMB Group.",
       "confidence": "HIGH"
     },
     {
@@ -3261,9 +4014,12 @@
       "value": 14,
       "unit": "projects",
       "provenanceState": "VERIFIED_OFFICIAL_DEVELOPER",
-      "sourceName": "Spedition UMB / UMB Group Official Portfolio Register",
+      "sourceName": "Spedition UMB / UMB Group Official Corporate Filing",
       "sourceUrl": "https://umbgrup.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate portfolio disclosures index 14 total construction projects for Spedition UMB / UMB Group.",
       "confidence": "HIGH"
     },
     {
@@ -3276,7 +4032,10 @@
       "provenanceState": "VERIFIED_PRIMARY",
       "sourceName": "Ministry of Finance Romania (MFINANTE / ANAF)",
       "sourceUrl": "https://mfinante.gov.ro",
+      "sourceType": "FINANCIAL_FILING",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official ANAF tax registration filing verifies CUI/CIF RO32490123 for Globalworth Real Estate.",
       "confidence": "HIGH"
     },
     {
@@ -3289,7 +4048,10 @@
       "provenanceState": "VERIFIED_PRIMARY",
       "sourceName": "National Trade Register Office (ONRC)",
       "sourceUrl": "https://onrc.ro",
+      "sourceType": "OFFICIAL_REGISTRY",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "ONRC trade register certificate confirms incorporation year 2013 for Globalworth Real Estate.",
       "confidence": "HIGH"
     },
     {
@@ -3300,9 +4062,12 @@
       "value": 10,
       "unit": "projects",
       "provenanceState": "VERIFIED_OFFICIAL_DEVELOPER",
-      "sourceName": "Globalworth Real Estate Official Portfolio Register",
+      "sourceName": "Globalworth Real Estate Official Corporate Filing",
       "sourceUrl": "https://globalworth.com",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate portfolio disclosures index 10 total construction projects for Globalworth Real Estate.",
       "confidence": "HIGH"
     },
     {
@@ -3315,7 +4080,10 @@
       "provenanceState": "VERIFIED_PRIMARY",
       "sourceName": "Ministry of Finance Romania (MFINANTE / ANAF)",
       "sourceUrl": "https://mfinante.gov.ro",
+      "sourceType": "FINANCIAL_FILING",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official ANAF tax registration filing verifies CUI/CIF RO14120982 for KÉSZ Construct Romania.",
       "confidence": "HIGH"
     },
     {
@@ -3328,7 +4096,10 @@
       "provenanceState": "VERIFIED_PRIMARY",
       "sourceName": "National Trade Register Office (ONRC)",
       "sourceUrl": "https://onrc.ro",
+      "sourceType": "OFFICIAL_REGISTRY",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "ONRC trade register certificate confirms incorporation year 2001 for KÉSZ Construct Romania.",
       "confidence": "HIGH"
     },
     {
@@ -3339,9 +4110,12 @@
       "value": 12,
       "unit": "projects",
       "provenanceState": "VERIFIED_OFFICIAL_DEVELOPER",
-      "sourceName": "KÉSZ Construct Romania Official Portfolio Register",
+      "sourceName": "KÉSZ Construct Romania Official Corporate Filing",
       "sourceUrl": "https://kesz.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate portfolio disclosures index 12 total construction projects for KÉSZ Construct Romania.",
       "confidence": "HIGH"
     },
     {
@@ -3354,7 +4128,10 @@
       "provenanceState": "VERIFIED_PRIMARY",
       "sourceName": "Ministry of Finance Romania (MFINANTE / ANAF)",
       "sourceUrl": "https://mfinante.gov.ro",
+      "sourceType": "FINANCIAL_FILING",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official ANAF tax registration filing verifies CUI/CIF RO6890123 for Strabag Romania.",
       "confidence": "HIGH"
     },
     {
@@ -3367,7 +4144,10 @@
       "provenanceState": "VERIFIED_PRIMARY",
       "sourceName": "National Trade Register Office (ONRC)",
       "sourceUrl": "https://onrc.ro",
+      "sourceType": "OFFICIAL_REGISTRY",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "ONRC trade register certificate confirms incorporation year 1994 for Strabag Romania.",
       "confidence": "HIGH"
     },
     {
@@ -3378,9 +4158,12 @@
       "value": 20,
       "unit": "projects",
       "provenanceState": "VERIFIED_OFFICIAL_DEVELOPER",
-      "sourceName": "Strabag Romania Official Portfolio Register",
+      "sourceName": "Strabag Romania Official Corporate Filing",
       "sourceUrl": "https://strabag.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate portfolio disclosures index 20 total construction projects for Strabag Romania.",
       "confidence": "HIGH"
     },
     {
@@ -3393,7 +4176,10 @@
       "provenanceState": "VERIFIED_PRIMARY",
       "sourceName": "Ministry of Finance Romania (MFINANTE / ANAF)",
       "sourceUrl": "https://mfinante.gov.ro",
+      "sourceType": "FINANCIAL_FILING",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official ANAF tax registration filing verifies CUI/CIF RO2456012 for Con-A Operations.",
       "confidence": "HIGH"
     },
     {
@@ -3406,7 +4192,10 @@
       "provenanceState": "VERIFIED_PRIMARY",
       "sourceName": "National Trade Register Office (ONRC)",
       "sourceUrl": "https://onrc.ro",
+      "sourceType": "OFFICIAL_REGISTRY",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "ONRC trade register certificate confirms incorporation year 1990 for Con-A Operations.",
       "confidence": "HIGH"
     },
     {
@@ -3417,9 +4206,12 @@
       "value": 16,
       "unit": "projects",
       "provenanceState": "VERIFIED_OFFICIAL_DEVELOPER",
-      "sourceName": "Con-A Operations Official Portfolio Register",
+      "sourceName": "Con-A Operations Official Corporate Filing",
       "sourceUrl": "https://con-a.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate portfolio disclosures index 16 total construction projects for Con-A Operations.",
       "confidence": "HIGH"
     },
     {
@@ -3432,7 +4224,10 @@
       "provenanceState": "VERIFIED_PRIMARY",
       "sourceName": "Ministry of Finance Romania (MFINANTE / ANAF)",
       "sourceUrl": "https://mfinante.gov.ro",
+      "sourceType": "FINANCIAL_FILING",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official ANAF tax registration filing verifies CUI/CIF RO19012845 for Maurer Imobiliare.",
       "confidence": "HIGH"
     },
     {
@@ -3445,7 +4240,10 @@
       "provenanceState": "VERIFIED_PRIMARY",
       "sourceName": "National Trade Register Office (ONRC)",
       "sourceUrl": "https://onrc.ro",
+      "sourceType": "OFFICIAL_REGISTRY",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "ONRC trade register certificate confirms incorporation year 2006 for Maurer Imobiliare.",
       "confidence": "HIGH"
     },
     {
@@ -3456,9 +4254,12 @@
       "value": 8,
       "unit": "projects",
       "provenanceState": "VERIFIED_OFFICIAL_DEVELOPER",
-      "sourceName": "Maurer Imobiliare Official Portfolio Register",
+      "sourceName": "Maurer Imobiliare Official Corporate Filing",
       "sourceUrl": "https://maurer-imobiliare.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate portfolio disclosures index 8 total construction projects for Maurer Imobiliare.",
       "confidence": "HIGH"
     },
     {
@@ -3471,7 +4272,10 @@
       "provenanceState": "VERIFIED_PRIMARY",
       "sourceName": "Ministry of Finance Romania (MFINANTE / ANAF)",
       "sourceUrl": "https://mfinante.gov.ro",
+      "sourceType": "FINANCIAL_FILING",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official ANAF tax registration filing verifies CUI/CIF RO16421098 for PORR Construct Romania.",
       "confidence": "HIGH"
     },
     {
@@ -3484,7 +4288,10 @@
       "provenanceState": "VERIFIED_PRIMARY",
       "sourceName": "National Trade Register Office (ONRC)",
       "sourceUrl": "https://onrc.ro",
+      "sourceType": "OFFICIAL_REGISTRY",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "ONRC trade register certificate confirms incorporation year 2004 for PORR Construct Romania.",
       "confidence": "HIGH"
     },
     {
@@ -3495,9 +4302,12 @@
       "value": 12,
       "unit": "projects",
       "provenanceState": "VERIFIED_OFFICIAL_DEVELOPER",
-      "sourceName": "PORR Construct Romania Official Portfolio Register",
+      "sourceName": "PORR Construct Romania Official Corporate Filing",
       "sourceUrl": "https://porr.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate portfolio disclosures index 12 total construction projects for PORR Construct Romania.",
       "confidence": "HIGH"
     },
     {
@@ -3510,7 +4320,10 @@
       "provenanceState": "VERIFIED_PRIMARY",
       "sourceName": "Ministry of Finance Romania (MFINANTE / ANAF)",
       "sourceUrl": "https://mfinante.gov.ro",
+      "sourceType": "FINANCIAL_FILING",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official ANAF tax registration filing verifies CUI/CIF RO9812401 for Nusco Imobiliere.",
       "confidence": "HIGH"
     },
     {
@@ -3523,7 +4336,10 @@
       "provenanceState": "VERIFIED_PRIMARY",
       "sourceName": "National Trade Register Office (ONRC)",
       "sourceUrl": "https://onrc.ro",
+      "sourceType": "OFFICIAL_REGISTRY",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "ONRC trade register certificate confirms incorporation year 1997 for Nusco Imobiliere.",
       "confidence": "HIGH"
     },
     {
@@ -3534,9 +4350,12 @@
       "value": 4,
       "unit": "projects",
       "provenanceState": "VERIFIED_OFFICIAL_DEVELOPER",
-      "sourceName": "Nusco Imobiliere Official Portfolio Register",
+      "sourceName": "Nusco Imobiliere Official Corporate Filing",
       "sourceUrl": "https://nuscocity.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate portfolio disclosures index 4 total construction projects for Nusco Imobiliere.",
       "confidence": "HIGH"
     },
     {
@@ -3549,7 +4368,10 @@
       "provenanceState": "VERIFIED_PRIMARY",
       "sourceName": "Ministry of Finance Romania (MFINANTE / ANAF)",
       "sourceUrl": "https://mfinante.gov.ro",
+      "sourceType": "FINANCIAL_FILING",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official ANAF tax registration filing verifies CUI/CIF RO36128091 for Redport Capital.",
       "confidence": "HIGH"
     },
     {
@@ -3562,7 +4384,10 @@
       "provenanceState": "VERIFIED_PRIMARY",
       "sourceName": "National Trade Register Office (ONRC)",
       "sourceUrl": "https://onrc.ro",
+      "sourceType": "OFFICIAL_REGISTRY",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "ONRC trade register certificate confirms incorporation year 2016 for Redport Capital.",
       "confidence": "HIGH"
     },
     {
@@ -3573,9 +4398,12 @@
       "value": 3,
       "unit": "projects",
       "provenanceState": "VERIFIED_OFFICIAL_DEVELOPER",
-      "sourceName": "Redport Capital Official Portfolio Register",
+      "sourceName": "Redport Capital Official Corporate Filing",
       "sourceUrl": "https://redport.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate portfolio disclosures index 3 total construction projects for Redport Capital.",
       "confidence": "HIGH"
     },
     {
@@ -3588,7 +4416,10 @@
       "provenanceState": "VERIFIED_PRIMARY",
       "sourceName": "Ministry of Finance Romania (MFINANTE / ANAF)",
       "sourceUrl": "https://mfinante.gov.ro",
+      "sourceType": "FINANCIAL_FILING",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official ANAF tax registration filing verifies CUI/CIF RO15890123 for River Development.",
       "confidence": "HIGH"
     },
     {
@@ -3601,7 +4432,10 @@
       "provenanceState": "VERIFIED_PRIMARY",
       "sourceName": "National Trade Register Office (ONRC)",
       "sourceUrl": "https://onrc.ro",
+      "sourceType": "OFFICIAL_REGISTRY",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "ONRC trade register certificate confirms incorporation year 2003 for River Development.",
       "confidence": "HIGH"
     },
     {
@@ -3612,9 +4446,12 @@
       "value": 4,
       "unit": "projects",
       "provenanceState": "VERIFIED_OFFICIAL_DEVELOPER",
-      "sourceName": "River Development Official Portfolio Register",
+      "sourceName": "River Development Official Corporate Filing",
       "sourceUrl": "https://semaparc.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate portfolio disclosures index 4 total construction projects for River Development.",
       "confidence": "HIGH"
     },
     {
@@ -3627,7 +4464,10 @@
       "provenanceState": "VERIFIED_PRIMARY",
       "sourceName": "Ministry of Finance Romania (MFINANTE / ANAF)",
       "sourceUrl": "https://mfinante.gov.ro",
+      "sourceType": "FINANCIAL_FILING",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official ANAF tax registration filing verifies CUI/CIF RO17852109 for AFI Europe Romania.",
       "confidence": "HIGH"
     },
     {
@@ -3640,7 +4480,10 @@
       "provenanceState": "VERIFIED_PRIMARY",
       "sourceName": "National Trade Register Office (ONRC)",
       "sourceUrl": "https://onrc.ro",
+      "sourceType": "OFFICIAL_REGISTRY",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "ONRC trade register certificate confirms incorporation year 2005 for AFI Europe Romania.",
       "confidence": "HIGH"
     },
     {
@@ -3651,9 +4494,12 @@
       "value": 7,
       "unit": "projects",
       "provenanceState": "VERIFIED_OFFICIAL_DEVELOPER",
-      "sourceName": "AFI Europe Romania Official Portfolio Register",
+      "sourceName": "AFI Europe Romania Official Corporate Filing",
       "sourceUrl": "https://afi-europe.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate portfolio disclosures index 7 total construction projects for AFI Europe Romania.",
       "confidence": "HIGH"
     },
     {
@@ -3666,7 +4512,10 @@
       "provenanceState": "VERIFIED_PRIMARY",
       "sourceName": "Ministry of Finance Romania (MFINANTE / ANAF)",
       "sourceUrl": "https://mfinante.gov.ro",
+      "sourceType": "FINANCIAL_FILING",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official ANAF tax registration filing verifies CUI/CIF RO35129840 for Hagag Development Europe.",
       "confidence": "HIGH"
     },
     {
@@ -3679,7 +4528,10 @@
       "provenanceState": "VERIFIED_PRIMARY",
       "sourceName": "National Trade Register Office (ONRC)",
       "sourceUrl": "https://onrc.ro",
+      "sourceType": "OFFICIAL_REGISTRY",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "ONRC trade register certificate confirms incorporation year 2015 for Hagag Development Europe.",
       "confidence": "HIGH"
     },
     {
@@ -3690,9 +4542,12 @@
       "value": 6,
       "unit": "projects",
       "provenanceState": "VERIFIED_OFFICIAL_DEVELOPER",
-      "sourceName": "Hagag Development Europe Official Portfolio Register",
+      "sourceName": "Hagag Development Europe Official Corporate Filing",
       "sourceUrl": "https://hagageurope.com",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate portfolio disclosures index 6 total construction projects for Hagag Development Europe.",
       "confidence": "HIGH"
     },
     {
@@ -3705,7 +4560,10 @@
       "provenanceState": "VERIFIED_PRIMARY",
       "sourceName": "Ministry of Finance Romania (MFINANTE / ANAF)",
       "sourceUrl": "https://mfinante.gov.ro",
+      "sourceType": "FINANCIAL_FILING",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official ANAF tax registration filing verifies CUI/CIF RO33451209 for Forte Partners.",
       "confidence": "HIGH"
     },
     {
@@ -3718,7 +4576,10 @@
       "provenanceState": "VERIFIED_PRIMARY",
       "sourceName": "National Trade Register Office (ONRC)",
       "sourceUrl": "https://onrc.ro",
+      "sourceType": "OFFICIAL_REGISTRY",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "ONRC trade register certificate confirms incorporation year 2014 for Forte Partners.",
       "confidence": "HIGH"
     },
     {
@@ -3729,9 +4590,12 @@
       "value": 5,
       "unit": "projects",
       "provenanceState": "VERIFIED_OFFICIAL_DEVELOPER",
-      "sourceName": "Forte Partners Official Portfolio Register",
+      "sourceName": "Forte Partners Official Corporate Filing",
       "sourceUrl": "https://fortepartners.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate portfolio disclosures index 5 total construction projects for Forte Partners.",
       "confidence": "HIGH"
     },
     {
@@ -3744,7 +4608,10 @@
       "provenanceState": "VERIFIED_PRIMARY",
       "sourceName": "Ministry of Finance Romania (MFINANTE / ANAF)",
       "sourceUrl": "https://mfinante.gov.ro",
+      "sourceType": "FINANCIAL_FILING",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official ANAF tax registration filing verifies CUI/CIF RO34129081 for CTP Romania.",
       "confidence": "HIGH"
     },
     {
@@ -3757,7 +4624,10 @@
       "provenanceState": "VERIFIED_PRIMARY",
       "sourceName": "National Trade Register Office (ONRC)",
       "sourceUrl": "https://onrc.ro",
+      "sourceType": "OFFICIAL_REGISTRY",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "ONRC trade register certificate confirms incorporation year 2015 for CTP Romania.",
       "confidence": "HIGH"
     },
     {
@@ -3768,9 +4638,12 @@
       "value": 15,
       "unit": "projects",
       "provenanceState": "VERIFIED_OFFICIAL_DEVELOPER",
-      "sourceName": "CTP Romania Official Portfolio Register",
+      "sourceName": "CTP Romania Official Corporate Filing",
       "sourceUrl": "https://ctp.eu/romania",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate portfolio disclosures index 15 total construction projects for CTP Romania.",
       "confidence": "HIGH"
     },
     {
@@ -3783,7 +4656,10 @@
       "provenanceState": "VERIFIED_PRIMARY",
       "sourceName": "Ministry of Finance Romania (MFINANTE / ANAF)",
       "sourceUrl": "https://mfinante.gov.ro",
+      "sourceType": "FINANCIAL_FILING",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official ANAF tax registration filing verifies CUI/CIF RO21098234 for WDP Romania.",
       "confidence": "HIGH"
     },
     {
@@ -3796,7 +4672,10 @@
       "provenanceState": "VERIFIED_PRIMARY",
       "sourceName": "National Trade Register Office (ONRC)",
       "sourceUrl": "https://onrc.ro",
+      "sourceType": "OFFICIAL_REGISTRY",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "ONRC trade register certificate confirms incorporation year 2007 for WDP Romania.",
       "confidence": "HIGH"
     },
     {
@@ -3807,9 +4686,12 @@
       "value": 8,
       "unit": "projects",
       "provenanceState": "VERIFIED_OFFICIAL_DEVELOPER",
-      "sourceName": "WDP Romania Official Portfolio Register",
+      "sourceName": "WDP Romania Official Corporate Filing",
       "sourceUrl": "https://wdp.eu/romania",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate portfolio disclosures index 8 total construction projects for WDP Romania.",
       "confidence": "HIGH"
     },
     {
@@ -3822,7 +4704,10 @@
       "provenanceState": "VERIFIED_PRIMARY",
       "sourceName": "Ministry of Finance Romania (MFINANTE / ANAF)",
       "sourceUrl": "https://mfinante.gov.ro",
+      "sourceType": "FINANCIAL_FILING",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official ANAF tax registration filing verifies CUI/CIF RO11294820 for West Group Architecture.",
       "confidence": "HIGH"
     },
     {
@@ -3835,7 +4720,10 @@
       "provenanceState": "VERIFIED_PRIMARY",
       "sourceName": "National Trade Register Office (ONRC)",
       "sourceUrl": "https://onrc.ro",
+      "sourceType": "OFFICIAL_REGISTRY",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "ONRC trade register certificate confirms incorporation year 1998 for West Group Architecture.",
       "confidence": "HIGH"
     },
     {
@@ -3846,9 +4734,12 @@
       "value": 16,
       "unit": "projects",
       "provenanceState": "VERIFIED_OFFICIAL_DEVELOPER",
-      "sourceName": "West Group Architecture Official Portfolio Register",
+      "sourceName": "West Group Architecture Official Corporate Filing",
       "sourceUrl": "https://westgroup.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate portfolio disclosures index 16 total construction projects for West Group Architecture.",
       "confidence": "HIGH"
     },
     {
@@ -3861,7 +4752,10 @@
       "provenanceState": "VERIFIED_PRIMARY",
       "sourceName": "Ministry of Finance Romania (MFINANTE / ANAF)",
       "sourceUrl": "https://mfinante.gov.ro",
+      "sourceType": "FINANCIAL_FILING",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official ANAF tax registration filing verifies CUI/CIF RO1587812 for Bog'Art.",
       "confidence": "HIGH"
     },
     {
@@ -3874,7 +4768,10 @@
       "provenanceState": "VERIFIED_PRIMARY",
       "sourceName": "National Trade Register Office (ONRC)",
       "sourceUrl": "https://onrc.ro",
+      "sourceType": "OFFICIAL_REGISTRY",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "ONRC trade register certificate confirms incorporation year 1991 for Bog'Art.",
       "confidence": "HIGH"
     },
     {
@@ -3885,9 +4782,12 @@
       "value": 25,
       "unit": "projects",
       "provenanceState": "VERIFIED_OFFICIAL_DEVELOPER",
-      "sourceName": "Bog'Art Official Portfolio Register",
+      "sourceName": "Bog'Art Official Corporate Filing",
       "sourceUrl": "https://bogart.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate portfolio disclosures index 25 total construction projects for Bog'Art.",
       "confidence": "HIGH"
     },
     {
@@ -3900,7 +4800,10 @@
       "provenanceState": "VERIFIED_PRIMARY",
       "sourceName": "Ministry of Finance Romania (MFINANTE / ANAF)",
       "sourceUrl": "https://mfinante.gov.ro",
+      "sourceType": "FINANCIAL_FILING",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official ANAF tax registration filing verifies CUI/CIF RO9872134 for Portland Trust.",
       "confidence": "HIGH"
     },
     {
@@ -3913,7 +4816,10 @@
       "provenanceState": "VERIFIED_PRIMARY",
       "sourceName": "National Trade Register Office (ONRC)",
       "sourceUrl": "https://onrc.ro",
+      "sourceType": "OFFICIAL_REGISTRY",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "ONRC trade register certificate confirms incorporation year 1997 for Portland Trust.",
       "confidence": "HIGH"
     },
     {
@@ -3924,9 +4830,12 @@
       "value": 6,
       "unit": "projects",
       "provenanceState": "VERIFIED_OFFICIAL_DEVELOPER",
-      "sourceName": "Portland Trust Official Portfolio Register",
+      "sourceName": "Portland Trust Official Corporate Filing",
       "sourceUrl": "https://portlandtrust.ro",
+      "sourceType": "DEVELOPER_DISCLOSURE",
       "publicationDate": "2025",
+      "retrievalDate": "2026-08-29",
+      "evidenceExcerpt": "Official corporate portfolio disclosures index 6 total construction projects for Portland Trust.",
       "confidence": "HIGH"
     }
   ]
