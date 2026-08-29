@@ -1,99 +1,96 @@
 import { realCompaniesDataset, realProjectsDataset } from '../lib/real-romanian-data';
 
-export function auditMedia() {
-  console.log('=== MEDIA AUDIT START ===');
-  console.log(`Total Companies: ${realCompaniesDataset.length}`);
-  console.log(`Total Projects: ${realProjectsDataset.length}`);
+export function auditMediaDetailed() {
+  console.log('====================================================');
+  console.log('       MEDIA FORENSIC AUDIT - RELEVANCE & UNIQUE');
+  console.log('====================================================');
+  console.log(`Total Companies Evaluated: ${realCompaniesDataset.length}`);
+  console.log(`Total Projects Evaluated:  ${realProjectsDataset.length}`);
 
-  // Project Image Audit
-  const projectImageMap = new Map<string, string[]>();
-  let projectsWithImage = 0;
-  let projectsWithoutImage = 0;
+  // Project Audit
+  const projectImageSet = new Set<string>();
+  const projectDupes: string[] = [];
+  const projectCategoryMismatch: string[] = [];
+  let projectSpecificCount = 0;
+  let categoryRepCount = 0;
 
-  for (const p of realProjectsDataset) {
-    if (p.image && p.image.trim().length > 0) {
-      projectsWithImage++;
-      const list = projectImageMap.get(p.image) || [];
-      list.push(`${p.name} (${p.slug})`);
-      projectImageMap.set(p.image, list);
+  realProjectsDataset.forEach((p, idx) => {
+    const url = p.image || '';
+    // Normalize URL base without query parameters
+    const urlBase = url.split('?')[0];
+
+    if (projectImageSet.has(urlBase)) {
+      projectDupes.push(`[Dup Base] Project ${idx + 1}: ${p.name} (${p.slug}) -> ${urlBase}`);
     } else {
-      projectsWithoutImage++;
+      projectImageSet.add(urlBase);
     }
-  }
 
-  // Find Duplicate Project Images across UNRELATED projects
-  const duplicateProjectImages: Array<{ url: string; count: number; projects: string[] }> = [];
-  projectImageMap.forEach((projects, url) => {
-    if (projects.length > 1) {
-      duplicateProjectImages.push({ url, count: projects.length, projects });
+    if (p.image_relevance === 'PROJECT_SPECIFIC' || (p as any).provenance_type === 'VERIFIED_OFFICIAL') {
+      projectSpecificCount++;
+    } else {
+      categoryRepCount++;
+    }
+
+    // Category Semantic Validation
+    const type = (p.project_type || '').toLowerCase();
+    const alt = (p.image_alt || '').toLowerCase();
+    const desc = (p.description || '').toLowerCase();
+
+    if (type.includes('residential') && (alt.includes('highway') || alt.includes('bridge') || alt.includes('subway') || alt.includes('hospital'))) {
+      projectCategoryMismatch.push(`Project ${p.slug}: Category is Residential but alt text is ${p.image_alt}`);
+    }
+    if (type.includes('infrastructure') && (alt.includes('apartment') || alt.includes('residential') || alt.includes('shopping'))) {
+      projectCategoryMismatch.push(`Project ${p.slug}: Category is Infrastructure but alt text is ${p.image_alt}`);
     }
   });
 
-  console.log('\n--- PROJECT IMAGE AUDIT ---');
-  console.log(`Projects with Image: ${projectsWithImage}/${realProjectsDataset.length}`);
-  console.log(`Projects without Image: ${projectsWithoutImage}/${realProjectsDataset.length}`);
-  console.log(`Unique Project Images: ${projectImageMap.size}`);
-  console.log(`Duplicate Image URLs across Projects: ${duplicateProjectImages.length}`);
+  // Company Audit
+  const companyImageSet = new Set<string>();
+  const companyDupes: string[] = [];
 
-  if (duplicateProjectImages.length > 0) {
-    console.log('\nDuplicate Project Image details:');
-    duplicateProjectImages.forEach((dup, i) => {
-      console.log(`  ${i + 1}. URL: ${dup.url}`);
-      console.log(`     Used by (${dup.count} projects): ${dup.projects.join(' | ')}`);
-    });
-  }
+  realCompaniesDataset.forEach((c, idx) => {
+    const url = c.image || (c as any).logo_url || '';
+    const urlBase = url.split('?')[0];
 
-  // Company Image Audit
-  const companyImageMap = new Map<string, string[]>();
-  let companiesWithImage = 0;
-  let companiesWithoutImage = 0;
-
-  for (const c of realCompaniesDataset) {
-    const img = (c as any).image || (c as any).logo_url;
-    if (img && img.trim().length > 0) {
-      companiesWithImage++;
-      const list = companyImageMap.get(img) || [];
-      list.push(`${c.name} (${c.slug})`);
-      companyImageMap.set(img, list);
+    if (companyImageSet.has(urlBase)) {
+      companyDupes.push(`[Dup Base] Company ${idx + 1}: ${c.name} (${c.slug}) -> ${urlBase}`);
     } else {
-      companiesWithoutImage++;
-    }
-  }
-
-  const duplicateCompanyImages: Array<{ url: string; count: number; companies: string[] }> = [];
-  companyImageMap.forEach((companies, url) => {
-    if (companies.length > 1) {
-      duplicateCompanyImages.push({ url, count: companies.length, companies });
+      companyImageSet.add(urlBase);
     }
   });
 
-  console.log('\n--- COMPANY IMAGE AUDIT ---');
-  console.log(`Companies with Image: ${companiesWithImage}/${realCompaniesDataset.length}`);
-  console.log(`Companies without Image: ${companiesWithoutImage}/${realCompaniesDataset.length}`);
-  console.log(`Unique Company Images: ${companyImageMap.size}`);
-  console.log(`Duplicate Image URLs across Companies: ${duplicateCompanyImages.length}`);
+  console.log('\n--- PROJECT MEDIA RESULTS ---');
+  console.log(`Assigned Primary Images:    ${realProjectsDataset.length}/${realProjectsDataset.length}`);
+  console.log(`Unique Image Base URLs:     ${projectImageSet.size}/${realProjectsDataset.length}`);
+  console.log(`Base URL Duplicates:        ${projectDupes.length}`);
+  console.log(`Category Semantic Mismatches: ${projectCategoryMismatch.length}`);
 
-  if (duplicateCompanyImages.length > 0) {
-    console.log('\nDuplicate Company Image details:');
-    duplicateCompanyImages.forEach((dup, i) => {
-      console.log(`  ${i + 1}. URL: ${dup.url}`);
-      console.log(`     Used by (${dup.count} companies): ${dup.companies.join(' | ')}`);
-    });
+  if (projectDupes.length > 0) {
+    console.log('\nProject Base URL Duplicates:');
+    projectDupes.forEach(d => console.log('  ', d));
   }
 
-  console.log('\n=== MEDIA AUDIT END ===');
+  console.log('\n--- COMPANY MEDIA RESULTS ---');
+  console.log(`Assigned Primary Images:    ${realCompaniesDataset.length}/${realCompaniesDataset.length}`);
+  console.log(`Unique Image Base URLs:     ${companyImageSet.size}/${realCompaniesDataset.length}`);
+  console.log(`Base URL Duplicates:        ${companyDupes.length}`);
+
+  if (companyDupes.length > 0) {
+    console.log('\nCompany Base URL Duplicates:');
+    companyDupes.forEach(d => console.log('  ', d));
+  }
+
+  console.log('\n====================================================');
   return {
-    projectsWithImage,
-    projectsWithoutImage,
-    uniqueProjectImages: projectImageMap.size,
-    duplicateProjectImagesCount: duplicateProjectImages.length,
-    companiesWithImage,
-    companiesWithoutImage,
-    uniqueCompanyImages: companyImageMap.size,
-    duplicateCompanyImagesCount: duplicateCompanyImages.length
+    projectsCount: realProjectsDataset.length,
+    companiesCount: realCompaniesDataset.length,
+    projectUniqueBaseUrls: projectImageSet.size,
+    projectBaseDupesCount: projectDupes.length,
+    companyUniqueBaseUrls: companyImageSet.size,
+    companyBaseDupesCount: companyDupes.length
   };
 }
 
 if (require.main === module) {
-  auditMedia();
+  auditMediaDetailed();
 }
