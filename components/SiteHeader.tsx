@@ -17,6 +17,7 @@ export function SiteHeader() {
         <Link href="/map">Map</Link>
         <Link href="/contractors">Contractors</Link>
         <Link href="/architects">Architects</Link>
+        <Link href="/engineers">Engineers</Link>
         <Link href="/search" style={{ color: '#c7a675', fontWeight: 600 }}>🔍 Search</Link>
         <Link className="nav-cta" href="/promote">Promote Entity</Link>
       </nav>
