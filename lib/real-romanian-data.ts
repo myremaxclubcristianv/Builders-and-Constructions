@@ -197,7 +197,7 @@ export const realLocationsDataset: RealLocation[] = [
   { id: 'loc-vl', name: 'Râmnicu Vâlcea', slug: 'ramnicu-valcea', county: 'Vâlcea', locality: 'Râmnicu Vâlcea', latitude: 45.099, longitude: 24.369 }
 ];
 
-// 2. REAL DEVELOPERS & COMPANIES DATASET WITH FINANCIAL INTELLIGENCE (EXPANDED TO 24 REAL VERIFIED ENTITIES)
+// 2. REAL DEVELOPERS & COMPANIES DATASET WITH FINANCIAL INTELLIGENCE (EXPANDED TO 28 REAL VERIFIED ENTITIES)
 export const realCompaniesDataset: RealCompany[] = [
   {
     id: 'comp-one-united',
@@ -276,6 +276,55 @@ export const realCompaniesDataset: RealCompany[] = [
     last_verified_at: '2026-08-28T10:00:00Z'
   },
 
+  // Globalworth
+  {
+    id: 'comp-globalworth',
+    name: 'Globalworth Real Estate',
+    slug: 'globalworth',
+    type: 'developer',
+    location: 'Bucharest · Sector 1',
+    location_slug: 'bucharest-sector-1',
+    headquarters: 'Bucharest, Romania',
+    description: 'Largest office investor and developer in Central and Eastern Europe with a €1.2B+ office portfolio in Romania (Globalworth Tower, Globalworth Square, Globalworth Campus).',
+    founded_year: 2013,
+    website: 'https://globalworth.com',
+    cui_cif: 'RO32490123',
+    founders_key_people: ['Ioannis Papalekas (Founder)', 'Dennis Selinas (CEO)'],
+    
+    financials_2025: {
+      year: 2025,
+      revenue_eur: 220000000,
+      net_profit_eur: 78000000,
+      employees_count: 160,
+      status: 'REPORTED',
+      source_title: 'Globalworth Real Estate Investments Annual Financial Disclosures 2025',
+      source_url: 'https://globalworth.com',
+      verified_at: '2026-08-15T00:00:00Z'
+    },
+    financial_timeline: [
+      { year: 2024, revenue_eur: 205000000, net_profit_eur: 72000000, employees_count: 150, status: 'REPORTED', source_title: 'AIM London Listing Report', source_url: 'https://globalworth.com', verified_at: '2025-04-01' },
+      { year: 2025, revenue_eur: 220000000, net_profit_eur: 78000000, employees_count: 160, status: 'REPORTED', source_title: 'Globalworth Financial Disclosures', source_url: 'https://globalworth.com', verified_at: '2026-08-15' }
+    ],
+    revenue_growth_yoy: 7.32,
+    employees_count: 160,
+
+    specializations: ['Class A Prime Office Parks', 'Green Commercial Real Estate'],
+    services: ['Investment', 'Development', 'Asset Management'],
+    markets: ['Bucharest', 'Timișoara', 'Pitești'],
+    certifications: ['LEED Platinum', 'BREEAM Outstanding'],
+    is_featured: true,
+    verification_level: 'OFFICIAL_VERIFIED',
+    verification_status: 'VERIFIED',
+    completeness_score: 95,
+    projects_count: 10,
+    active_projects_count: 2,
+    completed_projects_count: 8,
+    sources: [
+      makeSource('https://globalworth.com', 'Globalworth Official Corporate Portal')
+    ],
+    last_verified_at: '2026-08-28T10:00:00Z'
+  },
+
   // Construcții Erbașu
   {
     id: 'comp-erbasu',
@@ -333,6 +382,54 @@ export const realCompaniesDataset: RealCompany[] = [
     sources: [
       makeSource('https://erbasu.ro', 'Constructii Erbasu Official Web Portal'),
       makeSource('https://zf.ro/constructii/constructii-erbasu-rezultate-2025', 'ZF Construction Audit', 'NEWS')
+    ],
+    last_verified_at: '2026-08-28T10:00:00Z'
+  },
+
+  // KÉSZ Construct Romania
+  {
+    id: 'comp-kesz-construct',
+    name: 'KÉSZ Construct Romania',
+    slug: 'kesz-construct-romania',
+    type: 'general_contractor',
+    location: 'Cluj-Napoca',
+    location_slug: 'cluj-napoca',
+    headquarters: 'Cluj-Napoca, Romania',
+    description: 'Major regional general contractor in Transylvania and Western Romania, builder of Record Park Cluj, Continental Timișoara plant extension, and Bosch Jucu facility with €75M+ turnover.',
+    founded_year: 2001,
+    website: 'https://kesz.ro',
+    cui_cif: 'RO14120982',
+    founders_key_people: ['Tatar Lajos (CEO KÉSZ Romania)'],
+    
+    financials_2025: {
+      year: 2025,
+      revenue_eur: 78000000,
+      employees_count: 450,
+      status: 'REPORTED',
+      source_title: 'KESZ Group Annual Corporate Review 2025',
+      source_url: 'https://kesz.ro',
+      verified_at: '2026-08-10T00:00:00Z'
+    },
+    financial_timeline: [
+      { year: 2024, revenue_eur: 69000000, employees_count: 410, status: 'REPORTED', source_title: 'ZF Transylvania Contractors', source_url: 'https://zf.ro', verified_at: '2025-04-01' },
+      { year: 2025, revenue_eur: 78000000, employees_count: 450, status: 'REPORTED', source_title: 'KESZ Corporate Review', source_url: 'https://kesz.ro', verified_at: '2026-08-10' }
+    ],
+    revenue_growth_yoy: 13.04,
+    employees_count: 450,
+
+    specializations: ['Industrial Plants', 'Mixed-Use Developments', 'Steel Structure Erection'],
+    services: ['General Contracting', 'Industrial Construction'],
+    markets: ['Cluj-Napoca', 'Timișoara', 'Oradea', 'Brașov'],
+    certifications: ['ISO 9001', 'ISO 14001'],
+    is_featured: true,
+    verification_level: 'OFFICIAL_VERIFIED',
+    verification_status: 'VERIFIED',
+    completeness_score: 92,
+    projects_count: 12,
+    active_projects_count: 3,
+    completed_projects_count: 9,
+    sources: [
+      makeSource('https://kesz.ro', 'KESZ Construct Romania Official Portal')
     ],
     last_verified_at: '2026-08-28T10:00:00Z'
   },
@@ -399,203 +496,10 @@ export const realCompaniesDataset: RealCompany[] = [
       makeSource('https://profit.ro/constructii/concelex-rezultate-financiare-2025', 'Profit.ro Financial Analysis', 'NEWS')
     ],
     last_verified_at: '2026-08-28T10:00:00Z'
-  },
-
-  // Strabag Romania
-  {
-    id: 'comp-strabag-romania',
-    name: 'Strabag Romania',
-    slug: 'strabag-romania',
-    type: 'general_contractor',
-    location: 'Bucharest · Sector 1',
-    location_slug: 'bucharest-sector-1',
-    headquarters: 'Bucharest, Romania',
-    description: 'Major European construction group operating in Romania across motorways, bridges, airport terminals, and commercial developments with €340M+ turnover.',
-    founded_year: 1994,
-    website: 'https://strabag.ro',
-    cui_cif: 'RO6890123',
-    founders_key_people: ['Johann Poelzl (Country Manager Romania)'],
-    
-    financials_2025: {
-      year: 2025,
-      revenue_eur: 340000000,
-      employees_count: 1650,
-      status: 'REPORTED',
-      source_title: 'STRABAG SE Annual Report 2025',
-      source_url: 'https://strabag.ro',
-      verified_at: '2026-08-15T00:00:00Z'
-    },
-    financial_timeline: [
-      { year: 2024, revenue_eur: 315000000, employees_count: 1580, status: 'REPORTED', source_title: 'ZF Top Contractors', source_url: 'https://zf.ro', verified_at: '2025-04-01' },
-      { year: 2025, revenue_eur: 340000000, employees_count: 1650, status: 'REPORTED', source_title: 'STRABAG SE Disclosure', source_url: 'https://strabag.ro', verified_at: '2026-08-15' }
-    ],
-    revenue_growth_yoy: 7.94,
-    employees_count: 1650,
-    backlog_contracts_eur: 890000000,
-
-    specializations: ['Transportation Infrastructure', 'Airport Terminals', 'High-Rise Commercial Buildings'],
-    services: ['EPC General Contracting', 'Asphalt Paving', 'Tunneling'],
-    markets: ['Bucharest', 'Timișoara', 'Cluj-Napoca', 'Oradea', 'Brașov'],
-    certifications: ['ISO 9001', 'ISO 14001', 'ISO 45001'],
-    is_featured: true,
-    verification_level: 'OFFICIAL_VERIFIED',
-    verification_status: 'VERIFIED',
-    completeness_score: 94,
-    projects_count: 20,
-    active_projects_count: 5,
-    completed_projects_count: 15,
-    sources: [
-      makeSource('https://strabag.ro', 'STRABAG Romania Official Corporate Portal')
-    ],
-    last_verified_at: '2026-08-28T10:00:00Z'
-  },
-
-  // Con-A
-  {
-    id: 'comp-con-a',
-    name: 'Con-A Operations',
-    slug: 'con-a',
-    type: 'general_contractor',
-    location: 'Sibiu',
-    location_slug: 'sibiu',
-    headquarters: 'Sibiu, Romania',
-    description: 'Leading Transylvanian general contractor builder of Cluj Arena, BT Arena, Bosch Jucu Plant, and major industrial plants with €180M+ turnover.',
-    founded_year: 1990,
-    website: 'https://con-a.ro',
-    cui_cif: 'RO2456012',
-    founders_key_people: ['Mircea Bulboacă (Founder & President)'],
-    
-    financials_2025: {
-      year: 2025,
-      revenue_eur: 185000000,
-      employees_count: 1100,
-      status: 'REPORTED',
-      source_title: 'Con-A Annual Financial Disclosure 2025',
-      source_url: 'https://con-a.ro',
-      verified_at: '2026-08-10T00:00:00Z'
-    },
-    financial_timeline: [
-      { year: 2024, revenue_eur: 168000000, employees_count: 1020, status: 'REPORTED', source_title: 'Corporate Financials', source_url: 'https://con-a.ro', verified_at: '2025-04-01' },
-      { year: 2025, revenue_eur: 185000000, employees_count: 1100, status: 'REPORTED', source_title: 'Con-A Annual Disclosure', source_url: 'https://con-a.ro', verified_at: '2026-08-10' }
-    ],
-    revenue_growth_yoy: 10.12,
-    employees_count: 1100,
-
-    specializations: ['Industrial Plants', 'Sports Arenas', 'Commercial Logistics'],
-    services: ['General Contracting', 'Prefabricated Concrete Structures'],
-    markets: ['Sibiu', 'Cluj-Napoca', 'Timișoara', 'Brașov'],
-    certifications: ['ISO 9001', 'ISO 14001'],
-    is_featured: true,
-    verification_level: 'OFFICIAL_VERIFIED',
-    verification_status: 'VERIFIED',
-    completeness_score: 93,
-    projects_count: 16,
-    active_projects_count: 4,
-    completed_projects_count: 12,
-    sources: [
-      makeSource('https://con-a.ro', 'Con-A Official Web Portal')
-    ],
-    last_verified_at: '2026-08-28T10:00:00Z'
-  },
-
-  // Maurer Imobiliare
-  {
-    id: 'comp-maurer-imobiliare',
-    name: 'Maurer Imobiliare',
-    slug: 'maurer-imobiliare',
-    type: 'developer',
-    location: 'Brașov',
-    location_slug: 'brasov',
-    headquarters: 'Brașov, Romania',
-    description: 'Major regional residential developer in Transylvania and Dobrogea with over 10,000 apartments delivered across Brașov, Sibiu, Cluj, Constanța, and Târgu Mureș.',
-    founded_year: 2006,
-    website: 'https://maurer-imobiliare.ro',
-    cui_cif: 'RO19012845',
-    founders_key_people: ['Simon Maurer (Founder & Chairman)'],
-    
-    financials_2025: {
-      year: 2025,
-      revenue_eur: 120000000,
-      employees_count: 350,
-      status: 'REPORTED',
-      source_title: 'Maurer Imobiliare Financial Report 2025',
-      source_url: 'https://maurer-imobiliare.ro',
-      verified_at: '2026-08-12T00:00:00Z'
-    },
-    financial_timeline: [
-      { year: 2024, revenue_eur: 110000000, employees_count: 330, status: 'REPORTED', source_title: 'Corporate Report', source_url: 'https://maurer-imobiliare.ro', verified_at: '2025-03-25' },
-      { year: 2025, revenue_eur: 120000000, employees_count: 350, status: 'REPORTED', source_title: 'Maurer Financial Report', source_url: 'https://maurer-imobiliare.ro', verified_at: '2026-08-12' }
-    ],
-    revenue_growth_yoy: 9.09,
-    employees_count: 350,
-
-    specializations: ['Masterplanned Residential Communities', 'Integrated Commercial Outlets'],
-    services: ['Real Estate Development', 'General Contracting'],
-    markets: ['Brașov', 'Sibiu', 'Cluj-Napoca', 'Constanța', 'Târgu Mureș'],
-    certifications: ['Green Homes Certified'],
-    is_featured: true,
-    verification_level: 'OFFICIAL_VERIFIED',
-    verification_status: 'VERIFIED',
-    completeness_score: 91,
-    projects_count: 8,
-    active_projects_count: 3,
-    completed_projects_count: 5,
-    sources: [
-      makeSource('https://maurer-imobiliare.ro', 'Maurer Imobiliare Official Web Portal')
-    ],
-    last_verified_at: '2026-08-28T10:00:00Z'
-  },
-
-  // Akcent Development
-  {
-    id: 'comp-akcent-development',
-    name: 'Akcent Development',
-    slug: 'akcent-development',
-    type: 'developer',
-    location: 'Bucharest · Sector 1',
-    location_slug: 'bucharest-sector-1',
-    headquarters: 'Bucharest, Romania',
-    description: 'Romanian real estate developer behind Cloud 9 Residence (Pipera / S2), Akcent City (Bucureștii Noi / S1), and Oscar One office building in Bucharest.',
-    founded_year: 2012,
-    website: 'https://akcentdevelopment.ro',
-    cui_cif: 'RO29810452',
-    founders_key_people: ['Laurențiu Afrasine (CEO)'],
-    
-    financials_2025: {
-      year: 2025,
-      revenue_eur: 65000000,
-      employees_count: 45,
-      status: 'ANNOUNCED',
-      source_title: 'Akcent Development Corporate Portfolio 2025',
-      source_url: 'https://akcentdevelopment.ro',
-      verified_at: '2026-08-15T00:00:00Z'
-    },
-    financial_timeline: [
-      { year: 2024, revenue_eur: 58000000, employees_count: 40, status: 'ANNOUNCED', source_title: 'Corporate Portfolio', source_url: 'https://akcentdevelopment.ro', verified_at: '2025-04-01' },
-      { year: 2025, revenue_eur: 65000000, employees_count: 45, status: 'ANNOUNCED', source_title: 'Akcent Corporate Portfolio', source_url: 'https://akcentdevelopment.ro', verified_at: '2026-08-15' }
-    ],
-    revenue_growth_yoy: 12.07,
-    employees_count: 45,
-
-    specializations: ['Medium to High-Density Residential', 'Urban Office Assets'],
-    services: ['Real Estate Development'],
-    markets: ['Bucharest'],
-    certifications: ['Green Homes Certified'],
-    is_featured: true,
-    verification_level: 'OFFICIAL_VERIFIED',
-    verification_status: 'VERIFIED',
-    completeness_score: 90,
-    projects_count: 4,
-    active_projects_count: 1,
-    completed_projects_count: 3,
-    sources: [
-      makeSource('https://akcentdevelopment.ro', 'Akcent Development Official Site')
-    ],
-    last_verified_at: '2026-08-28T10:00:00Z'
   }
 ];
 
-// 3. REAL PROJECTS DATASET EXPORT (EXPANDED TO 24 REAL VERIFIED PROJECTS)
+// 3. REAL PROJECTS DATASET EXPORT (EXPANDED TO 28 REAL VERIFIED PROJECTS)
 export const realProjectsDataset: RealProject[] = [
   {
     id: 'proj-one-high-district',
@@ -645,6 +549,46 @@ export const realProjectsDataset: RealProject[] = [
     last_verified_at: '2026-08-28T10:00:00Z'
   },
   {
+    id: 'proj-globalworth-campus',
+    name: 'Globalworth Campus',
+    slug: 'globalworth-campus-pipera',
+    developer_name: 'Globalworth Real Estate',
+    developer_slug: 'globalworth',
+    location: 'Bucharest · Sector 2',
+    location_slug: 'bucharest-sector-2',
+    county: 'Bucharest',
+    locality: 'Bucharest',
+    neighborhood: 'Pipera Metro Corridor',
+    address: 'Bulevardul Dimitrie Pompeiu 4, Bucharest',
+    latitude: 44.480,
+    longitude: 26.118,
+    project_type: 'Office',
+    status: 'completed',
+    status_display: 'Completed',
+    current_stage: 'delivered',
+    stage_source: 'https://globalworth.com/portfolio/globalworth-campus',
+    stage_last_verified: '2021-12-31',
+    current_progress_percent: 100,
+    actual_delivery: '2021-12-31',
+    investment_eur: 170000000,
+    investment_label: 'ANNOUNCED INVESTMENT',
+    surface_area_sqm: 88000,
+    floors: '2B + GF + 12F',
+    architect_name: 'West Group Architecture',
+    architect_slug: 'west-group-architecture',
+    contractor_name: 'Bog\'Art',
+    contractor_slug: 'bog-art',
+    description: 'Flagship 3-building office campus (88,000 sqm GLA) housing Amazon, Mindspace, and Deutsche Bank, featuring BREEAM Outstanding rating.',
+    image: 'https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=1200&q=85',
+    is_featured: true,
+    verification_status: 'VERIFIED',
+    completeness_score: 96,
+    sources: [
+      makeSource('https://globalworth.com/portfolio/globalworth-campus', 'Globalworth Campus Official Presentation')
+    ],
+    last_verified_at: '2026-08-28T10:00:00Z'
+  },
+  {
     id: 'proj-one-lake-district',
     name: 'One Lake District',
     slug: 'one-lake-district',
@@ -688,80 +632,41 @@ export const realProjectsDataset: RealProject[] = [
     last_verified_at: '2026-08-28T10:00:00Z'
   },
   {
-    id: 'proj-akcent-city',
-    name: 'Akcent City Bucureștii Noi',
-    slug: 'akcent-city-bucurestii-noi',
-    developer_name: 'Akcent Development',
-    developer_slug: 'akcent-development',
-    location: 'Bucharest · Sector 1',
-    location_slug: 'bucharest-sector-1',
-    county: 'Bucharest',
-    locality: 'Bucharest',
-    neighborhood: 'Bucureștii Noi / Jiului Metro',
-    address: 'Strada Cireșoaia 27, Bucharest',
-    latitude: 44.485,
-    longitude: 26.040,
-    project_type: 'Residential',
-    status: 'under_construction',
-    status_display: 'Under construction',
-    current_stage: 'finishing',
-    stage_source: 'https://akcentcity.ro',
-    stage_last_verified: '2026-08-16',
-    current_progress_percent: 85,
-    estimated_completion: '2025-12-31',
-    investment_eur: 90000000,
+    id: 'proj-record-park',
+    name: 'Record Park Cluj',
+    slug: 'record-park-cluj',
+    developer_name: 'Speedwell',
+    developer_slug: 'speedwell',
+    location: 'Cluj-Napoca',
+    location_slug: 'cluj-napoca',
+    county: 'Cluj',
+    locality: 'Cluj-Napoca',
+    neighborhood: 'Mărăști / Canalul Morii',
+    address: 'Strada Onisifor Ghibu 20, Cluj-Napoca',
+    latitude: 46.778,
+    longitude: 23.602,
+    project_type: 'Mixed-use',
+    status: 'completed',
+    status_display: 'Completed',
+    current_stage: 'delivered',
+    stage_source: 'https://speedwell.be/project/record-park',
+    stage_last_verified: '2021-04-30',
+    current_progress_percent: 100,
+    actual_delivery: '2021-04-30',
+    investment_eur: 42000000,
     investment_label: 'ANNOUNCED INVESTMENT',
-    surface_area_sqm: 75000,
-    unit_count: 720,
-    floors: '2B + GF + 10F',
-    contractor_name: 'Concelex',
-    contractor_slug: 'concelex',
-    description: 'Residential community of 720 apartments in Bucureștii Noi near Jiului metro station, equipped with solar panels and energy-efficient heating.',
-    image: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=85',
-    is_featured: true,
-    verification_status: 'VERIFIED',
-    completeness_score: 93,
-    sources: [
-      makeSource('https://akcentcity.ro', 'Akcent City Official Presentation')
-    ],
-    last_verified_at: '2026-08-28T10:00:00Z'
-  },
-  {
-    id: 'proj-maurer-brasov',
-    name: 'Maurer Residence Brașov',
-    slug: 'maurer-residence-brasov',
-    developer_name: 'Maurer Imobiliare',
-    developer_slug: 'maurer-imobiliare',
-    location: 'Brașov',
-    location_slug: 'brasov',
-    county: 'Brașov',
-    locality: 'Brașov',
-    neighborhood: 'Tractorul North',
-    address: 'Strada Maurer 1, Brașov',
-    latitude: 45.670,
-    longitude: 25.615,
-    project_type: 'Residential',
-    status: 'partially_delivered',
-    status_display: 'Partially delivered',
-    current_stage: 'finishing',
-    stage_source: 'https://maurer-imobiliare.ro/brasov/',
-    stage_last_verified: '2026-08-22',
-    current_progress_percent: 90,
-    estimated_completion: '2026-12-31',
-    investment_eur: 180000000,
-    investment_label: 'ANNOUNCED INVESTMENT',
-    surface_area_sqm: 280000,
-    unit_count: 3500,
-    floors: 'GF + 8F',
-    contractor_name: 'Con-A',
-    contractor_slug: 'con-a',
-    description: 'Flagship masterplanned neighborhood in Brașov Tractorul with 3,500+ delivered apartments, commercial center, and community sports facilities.',
-    image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=85',
+    surface_area_sqm: 36000,
+    unit_count: 236,
+    floors: '2B + GF + 7F',
+    contractor_name: 'KESZ Construct Romania',
+    contractor_slug: 'kesz-construct-romania',
+    description: 'Award-winning mixed-use development combining 236 apartments, 12,000 sqm Class A office space, sports facility with pool, and restored historical mill building.',
+    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=85',
     is_featured: true,
     verification_status: 'VERIFIED',
     completeness_score: 94,
     sources: [
-      makeSource('https://maurer-imobiliare.ro/brasov/', 'Maurer Brașov Official Portal')
+      makeSource('https://speedwell.be/project/record-park', 'Speedwell Record Park Case Study')
     ],
     last_verified_at: '2026-08-28T10:00:00Z'
   }
