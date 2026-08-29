@@ -6657,5 +6657,245 @@ export const realLocationsDataset: RealLocation[] = [
     "projects_count": 1,
     "active_sites_count": 1,
     "developers_count": 1
+  },
+  {
+    "id": "loc-13",
+    "slug": "arad",
+    "name": "Arad",
+    "city": "Arad",
+    "county": "Arad",
+    "projects_count": 1,
+    "active_sites_count": 1,
+    "developers_count": 1
+  },
+  {
+    "id": "loc-14",
+    "slug": "bacau",
+    "name": "Bacău",
+    "city": "Bacău",
+    "county": "Bacău",
+    "projects_count": 1,
+    "active_sites_count": 1,
+    "developers_count": 1
+  },
+  {
+    "id": "loc-15",
+    "slug": "baia-mare",
+    "name": "Baia Mare",
+    "city": "Baia Mare",
+    "county": "Maramureș",
+    "projects_count": 1,
+    "active_sites_count": 1,
+    "developers_count": 1
+  },
+  {
+    "id": "loc-16",
+    "slug": "botosani",
+    "name": "Botoșani",
+    "city": "Botoșani",
+    "county": "Botoșani",
+    "projects_count": 1,
+    "active_sites_count": 1,
+    "developers_count": 1
+  },
+  {
+    "id": "loc-17",
+    "slug": "buzau",
+    "name": "Buzău",
+    "city": "Buzău",
+    "county": "Buzău",
+    "projects_count": 1,
+    "active_sites_count": 1,
+    "developers_count": 1
+  },
+  {
+    "id": "loc-18",
+    "slug": "focsani",
+    "name": "Focșani",
+    "city": "Focșani",
+    "county": "Vrancea",
+    "projects_count": 1,
+    "active_sites_count": 1,
+    "developers_count": 1
+  },
+  {
+    "id": "loc-19",
+    "slug": "galati",
+    "name": "Galați",
+    "city": "Galați",
+    "county": "Galați",
+    "projects_count": 1,
+    "active_sites_count": 1,
+    "developers_count": 1
+  },
+  {
+    "id": "loc-20",
+    "slug": "giurgiu",
+    "name": "Giurgiu",
+    "city": "Giurgiu",
+    "county": "Giurgiu",
+    "projects_count": 1,
+    "active_sites_count": 1,
+    "developers_count": 1
+  },
+  {
+    "id": "loc-21",
+    "slug": "targu-mures",
+    "name": "Târgu Mureș",
+    "city": "Târgu Mureș",
+    "county": "Mureș",
+    "projects_count": 1,
+    "active_sites_count": 1,
+    "developers_count": 1
+  },
+  {
+    "id": "loc-22",
+    "slug": "piatra-neamt",
+    "name": "Piatra Neamț",
+    "city": "Piatra Neamț",
+    "county": "Neamț",
+    "projects_count": 1,
+    "active_sites_count": 1,
+    "developers_count": 1
+  },
+  {
+    "id": "loc-23",
+    "slug": "satu-mare",
+    "name": "Satu Mare",
+    "city": "Satu Mare",
+    "county": "Satu Mare",
+    "projects_count": 1,
+    "active_sites_count": 1,
+    "developers_count": 1
+  },
+  {
+    "id": "loc-24",
+    "slug": "suceava",
+    "name": "Suceava",
+    "city": "Suceava",
+    "county": "Suceava",
+    "projects_count": 1,
+    "active_sites_count": 1,
+    "developers_count": 1
+  },
+  {
+    "id": "loc-25",
+    "slug": "targoviste",
+    "name": "Târgoviște",
+    "city": "Târgoviște",
+    "county": "Dâmbovița",
+    "projects_count": 1,
+    "active_sites_count": 1,
+    "developers_count": 1
+  },
+  {
+    "id": "loc-26",
+    "slug": "tulcea",
+    "name": "Tulcea",
+    "city": "Tulcea",
+    "county": "Tulcea",
+    "projects_count": 1,
+    "active_sites_count": 1,
+    "developers_count": 1
+  },
+  {
+    "id": "loc-27",
+    "slug": "vaslui",
+    "name": "Vaslui",
+    "city": "Vaslui",
+    "county": "Vaslui",
+    "projects_count": 1,
+    "active_sites_count": 1,
+    "developers_count": 1
+  },
+  {
+    "id": "loc-28",
+    "slug": "zalau",
+    "name": "Zalău",
+    "city": "Zalău",
+    "county": "Sălaj",
+    "projects_count": 1,
+    "active_sites_count": 1,
+    "developers_count": 1
+  },
+  {
+    "id": "loc-29",
+    "slug": "alba-iulia",
+    "name": "Alba Iulia",
+    "city": "Alba Iulia",
+    "county": "Alba",
+    "projects_count": 1,
+    "active_sites_count": 1,
+    "developers_count": 1
+  },
+  {
+    "id": "loc-30",
+    "slug": "bistrita",
+    "name": "Bistrița",
+    "city": "Bistrița",
+    "county": "Bistrița-Năsăud",
+    "projects_count": 1,
+    "active_sites_count": 1,
+    "developers_count": 1
+  },
+  {
+    "id": "loc-31",
+    "slug": "deva",
+    "name": "Deva",
+    "city": "Deva",
+    "county": "Hunedoara",
+    "projects_count": 1,
+    "active_sites_count": 1,
+    "developers_count": 1
+  },
+  {
+    "id": "loc-32",
+    "slug": "drobeta-turnu-severin",
+    "name": "Drobeta-Turnu Severin",
+    "city": "Drobeta-Turnu Severin",
+    "county": "Mehedinți",
+    "projects_count": 1,
+    "active_sites_count": 1,
+    "developers_count": 1
+  },
+  {
+    "id": "loc-33",
+    "slug": "miercurea-ciuc",
+    "name": "Miercurea Ciuc",
+    "city": "Miercurea Ciuc",
+    "county": "Harghita",
+    "projects_count": 1,
+    "active_sites_count": 1,
+    "developers_count": 1
+  },
+  {
+    "id": "loc-34",
+    "slug": "resita",
+    "name": "Reșița",
+    "city": "Reșița",
+    "county": "Caraș-Severin",
+    "projects_count": 1,
+    "active_sites_count": 1,
+    "developers_count": 1
+  },
+  {
+    "id": "loc-35",
+    "slug": "sfantu-gheorghe",
+    "name": "Sfântu Gheorghe",
+    "city": "Sfântu Gheorghe",
+    "county": "Covasna",
+    "projects_count": 1,
+    "active_sites_count": 1,
+    "developers_count": 1
+  },
+  {
+    "id": "loc-36",
+    "slug": "slatina",
+    "name": "Slatina",
+    "city": "Slatina",
+    "county": "Olt",
+    "projects_count": 1,
+    "active_sites_count": 1,
+    "developers_count": 1
   }
 ];

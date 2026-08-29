@@ -1,96 +1,126 @@
-import { realCompaniesDataset, realProjectsDataset } from '../lib/real-romanian-data';
+import { realCompaniesDataset, realProjectsDataset, realLocationsDataset } from '../lib/real-romanian-data';
 
-export function auditMediaDetailed() {
-  console.log('====================================================');
-  console.log('       MEDIA FORENSIC AUDIT - RELEVANCE & UNIQUE');
-  console.log('====================================================');
-  console.log(`Total Companies Evaluated: ${realCompaniesDataset.length}`);
-  console.log(`Total Projects Evaluated:  ${realProjectsDataset.length}`);
+export function auditMediaForensic() {
+  console.log('================================================================');
+  console.log('       PRODUCTION MEDIA & DATA-PRESERVATION FORENSIC AUDIT       ');
+  console.log('================================================================');
 
-  // Project Audit
-  const projectImageSet = new Set<string>();
-  const projectDupes: string[] = [];
-  const projectCategoryMismatch: string[] = [];
-  let projectSpecificCount = 0;
-  let categoryRepCount = 0;
+  // 1. DATA INTEGRITY GUARDRAILS
+  const companyCount = realCompaniesDataset.length;
+  const projectCount = realProjectsDataset.length;
+  const locationCount = realLocationsDataset.length;
+
+  const contractors = realCompaniesDataset.filter(c => c.type === 'general_contractor' || c.type === 'construction_company' || (c.services && c.services.includes('General Contracting')));
+  const architects = realCompaniesDataset.filter(c => c.type === 'architecture' || (c.specializations && c.specializations.includes('Architecture')));
+  const engineers = realCompaniesDataset.filter(c => c.type === 'engineering' || c.type === 'structural_engineering' || (c.specializations && (c.specializations.includes('Engineering') || c.specializations.includes('Structural Design'))));
+
+  console.log('\n--- DATASET BASELINE AUDIT ---');
+  console.log(`Companies Baseline Count:   ${companyCount} / 40 (MIN EXPECTED: 40)`);
+  console.log(`Projects Baseline Count:    ${projectCount} / 53 (MIN EXPECTED: 53)`);
+  console.log(`Locations Baseline Count:   ${locationCount} / 36 (MIN EXPECTED: 36)`);
+  console.log(`Contractors Count:          ${contractors.length} / 11 (MIN EXPECTED: 11)`);
+  console.log(`Architects Count:           ${architects.length} / 3  (MIN EXPECTED: 3)`);
+  console.log(`Engineers Count:            ${engineers.length} / 3  (MIN EXPECTED: 3)`);
+
+  if (companyCount < 40 || projectCount < 53 || locationCount < 36 || contractors.length < 11 || architects.length < 3 || engineers.length < 3) {
+    console.error('\n🚨 DATA TRUNCATION FAILURE: Dataset counts are below mandatory baseline threshold!');
+    process.exit(1);
+  }
+
+  // 2. PROJECT MEDIA AUDIT
+  const exactProjectUrls = new Set<string>();
+  const normalizedProjectUrls = new Set<string>();
+  const baseProjectUrls = new Set<string>();
+  let projectMissingImages = 0;
+  let projectSemanticMismatches = 0;
 
   realProjectsDataset.forEach((p, idx) => {
-    const url = p.image || '';
-    // Normalize URL base without query parameters
-    const urlBase = url.split('?')[0];
-
-    if (projectImageSet.has(urlBase)) {
-      projectDupes.push(`[Dup Base] Project ${idx + 1}: ${p.name} (${p.slug}) -> ${urlBase}`);
-    } else {
-      projectImageSet.add(urlBase);
+    const rawUrl = p.image || '';
+    if (!rawUrl.trim()) {
+      projectMissingImages++;
+      return;
     }
+    const normUrl = rawUrl.toLowerCase().trim();
+    const baseUrl = rawUrl.split('?')[0].toLowerCase().trim();
 
-    if (p.image_relevance === 'PROJECT_SPECIFIC' || (p as any).provenance_type === 'VERIFIED_OFFICIAL') {
-      projectSpecificCount++;
-    } else {
-      categoryRepCount++;
-    }
+    exactProjectUrls.add(rawUrl);
+    normalizedProjectUrls.add(normUrl);
+    baseProjectUrls.add(baseUrl);
 
-    // Category Semantic Validation
-    const type = (p.project_type || '').toLowerCase();
+    // Semantic matching check
+    const pType = (p.project_type || '').toLowerCase();
     const alt = (p.image_alt || '').toLowerCase();
-    const desc = (p.description || '').toLowerCase();
-
-    if (type.includes('residential') && (alt.includes('highway') || alt.includes('bridge') || alt.includes('subway') || alt.includes('hospital'))) {
-      projectCategoryMismatch.push(`Project ${p.slug}: Category is Residential but alt text is ${p.image_alt}`);
+    if (pType.includes('residential') && (alt.includes('bridge') || alt.includes('highway') || alt.includes('hospital'))) {
+      projectSemanticMismatches++;
     }
-    if (type.includes('infrastructure') && (alt.includes('apartment') || alt.includes('residential') || alt.includes('shopping'))) {
-      projectCategoryMismatch.push(`Project ${p.slug}: Category is Infrastructure but alt text is ${p.image_alt}`);
+    if (pType.includes('infrastructure') && (alt.includes('residential') || alt.includes('apartment'))) {
+      projectSemanticMismatches++;
     }
   });
 
-  // Company Audit
-  const companyImageSet = new Set<string>();
-  const companyDupes: string[] = [];
+  const projectExactDupes = projectCount - projectMissingImages - exactProjectUrls.size;
+  const projectNormalizedDupes = projectCount - projectMissingImages - normalizedProjectUrls.size;
+  const projectBaseDupes = projectCount - projectMissingImages - baseProjectUrls.size;
 
-  realCompaniesDataset.forEach((c, idx) => {
-    const url = c.image || (c as any).logo_url || '';
-    const urlBase = url.split('?')[0];
+  // 3. COMPANY MEDIA AUDIT
+  const exactCompanyUrls = new Set<string>();
+  const normalizedCompanyUrls = new Set<string>();
+  const baseCompanyUrls = new Set<string>();
+  let companyMissingImages = 0;
 
-    if (companyImageSet.has(urlBase)) {
-      companyDupes.push(`[Dup Base] Company ${idx + 1}: ${c.name} (${c.slug}) -> ${urlBase}`);
-    } else {
-      companyImageSet.add(urlBase);
+  realCompaniesDataset.forEach(c => {
+    const rawUrl = c.image || (c as any).logo_url || '';
+    if (!rawUrl.trim()) {
+      companyMissingImages++;
+      return;
     }
+    const normUrl = rawUrl.toLowerCase().trim();
+    const baseUrl = rawUrl.split('?')[0].toLowerCase().trim();
+
+    exactCompanyUrls.add(rawUrl);
+    normalizedCompanyUrls.add(normUrl);
+    baseCompanyUrls.add(baseUrl);
   });
 
-  console.log('\n--- PROJECT MEDIA RESULTS ---');
-  console.log(`Assigned Primary Images:    ${realProjectsDataset.length}/${realProjectsDataset.length}`);
-  console.log(`Unique Image Base URLs:     ${projectImageSet.size}/${realProjectsDataset.length}`);
-  console.log(`Base URL Duplicates:        ${projectDupes.length}`);
-  console.log(`Category Semantic Mismatches: ${projectCategoryMismatch.length}`);
+  const companyExactDupes = companyCount - companyMissingImages - exactCompanyUrls.size;
+  const companyNormalizedDupes = companyCount - companyMissingImages - normalizedCompanyUrls.size;
+  const companyBaseDupes = companyCount - companyMissingImages - baseCompanyUrls.size;
 
-  if (projectDupes.length > 0) {
-    console.log('\nProject Base URL Duplicates:');
-    projectDupes.forEach(d => console.log('  ', d));
+  console.log('\n--- PROJECT MEDIA AUDIT ---');
+  console.log(`Assigned Primary Images:    ${projectCount - projectMissingImages} / ${projectCount}`);
+  console.log(`Missing Images:             ${projectMissingImages}`);
+  console.log(`Exact URL Duplicates:       ${projectExactDupes}`);
+  console.log(`Normalized URL Duplicates:  ${projectNormalizedDupes}`);
+  console.log(`Base URL Duplicates:        ${projectBaseDupes}`);
+  console.log(`Semantic Mismatches:        ${projectSemanticMismatches}`);
+
+  console.log('\n--- COMPANY MEDIA AUDIT ---');
+  console.log(`Assigned Primary Images:    ${companyCount - companyMissingImages} / ${companyCount}`);
+  console.log(`Missing Images:             ${companyMissingImages}`);
+  console.log(`Exact URL Duplicates:       ${companyExactDupes}`);
+  console.log(`Normalized URL Duplicates:  ${companyNormalizedDupes}`);
+  console.log(`Base URL Duplicates:        ${companyBaseDupes}`);
+
+  const totalMissing = projectMissingImages + companyMissingImages;
+  const totalExactDupes = projectExactDupes + companyExactDupes;
+  const totalNormalizedDupes = projectNormalizedDupes + companyNormalizedDupes;
+  const totalBaseDupes = projectBaseDupes + companyBaseDupes;
+
+  console.log('\n================================================================');
+  console.log(`TOTAL ASSIGNED IMAGES:      ${(projectCount - projectMissingImages) + (companyCount - companyMissingImages)} / ${projectCount + companyCount}`);
+  console.log(`TOTAL MISSING IMAGES:       ${totalMissing}`);
+  console.log(`TOTAL BASE DUPES:           ${totalBaseDupes}`);
+  console.log(`TOTAL SEMANTIC MISMATCHES:  ${projectSemanticMismatches}`);
+  console.log('================================================================');
+
+  if (totalMissing > 0 || totalExactDupes > 0 || totalNormalizedDupes > 0 || totalBaseDupes > 0 || projectSemanticMismatches > 0) {
+    console.error('\n🚨 MEDIA FORENSIC FAILURE: Duplicates, missing images, or semantic mismatches detected!');
+    process.exit(1);
   }
 
-  console.log('\n--- COMPANY MEDIA RESULTS ---');
-  console.log(`Assigned Primary Images:    ${realCompaniesDataset.length}/${realCompaniesDataset.length}`);
-  console.log(`Unique Image Base URLs:     ${companyImageSet.size}/${realCompaniesDataset.length}`);
-  console.log(`Base URL Duplicates:        ${companyDupes.length}`);
-
-  if (companyDupes.length > 0) {
-    console.log('\nCompany Base URL Duplicates:');
-    companyDupes.forEach(d => console.log('  ', d));
-  }
-
-  console.log('\n====================================================');
-  return {
-    projectsCount: realProjectsDataset.length,
-    companiesCount: realCompaniesDataset.length,
-    projectUniqueBaseUrls: projectImageSet.size,
-    projectBaseDupesCount: projectDupes.length,
-    companyUniqueBaseUrls: companyImageSet.size,
-    companyBaseDupesCount: companyDupes.length
-  };
+  console.log('\n✅ MEDIA & DATA INTEGRITY GUARDRAILS PASSED 100%!');
 }
 
 if (require.main === module) {
-  auditMediaDetailed();
+  auditMediaForensic();
 }
