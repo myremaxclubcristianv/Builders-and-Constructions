@@ -143,13 +143,18 @@ export function PipelineWorkstation({ initialProjects }: PipelineWorkstationProp
         </div>
       </div>
 
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20 }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20, flexWrap: 'wrap', gap: 12 }}>
         <h2 style={{ fontSize: 20, fontWeight: 700, margin: 0, color: '#fff' }}>
           VERIFIED CONSTRUCTION PROJECTS ({filteredProjects.length})
         </h2>
-        <span style={{ fontSize: 12, color: '#888' }}>
-          Click &quot;Advance Stage &quot; to simulate live site progress updates
-        </span>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+          <span style={{ fontSize: 10, color: '#86efac', background: 'rgba(134,239,172,0.1)', border: '1px solid #86efac', padding: '3px 8px', borderRadius: 3, fontWeight: 700 }}>
+            Session Overrides: {Object.keys(stageOverrides).length} Saved Locally
+          </span>
+          <span style={{ fontSize: 12, color: '#888' }}>
+            Click &quot;Advance Stage ⚡&quot; to simulate live site progress updates
+          </span>
+        </div>
       </div>
 
       {/* Grid of Projects */}
