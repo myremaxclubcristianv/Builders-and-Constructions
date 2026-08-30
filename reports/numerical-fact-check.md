@@ -1,4 +1,4 @@
-# FORENSIC NATIONAL NUMERICAL DATA TRUTH AUDIT LEDGER
+# FINAL FORENSIC REAL-DATA VERIFICATION LEDGER REPORT
 
 * **Date**: 30 August 2026
 * **Companies Audited**: 40 / 40
@@ -12,9 +12,9 @@
 * **UNSUPPORTED CLAIMS**: 0
 * **FABRICATED CLAIMS**: 0
 
-## Numerical Claims Ledger Breakdown
+## Claims Evidence Ledger Breakdown
 
-* **PROJECT [One High District]** | Field: `built_area_sqm` | Value: `92000 sqm` | Status: `VERIFIED_PRIMARY` | Source: [ANCPI / Municipal Building Authorization Certificate](https://www.ancpi.ro)
+* **PROJECT [One High District]** | Field: `built_area_sqm` | Value: `92000 sqm` | Status: `VERIFIED_PRIMARY` | Source: [ANCPI / Municipal Urban Planning Permit Certificate](https://www.ancpi.ro)
   > "Official municipal urban planning building permit documentation establishes total built surface area of 92000 sqm for One High District."
 
 * **PROJECT [One High District]** | Field: `investment_eur` | Value: `130000000 EUR` | Status: `ANNOUNCED` | Source: [One United Properties Bucharest Stock Exchange (BVB) Filing](https://bvb.ro)
@@ -464,7 +464,7 @@
 * **PROJECT [H Pipera Lake]** | Field: `estimated_completion` | Value: `2025-12-31 year` | Status: `ANNOUNCED` | Source: [Hagag Development Europe Delivery Schedule Disclosure](https://bvb.ro)
   > "Official delivery schedule specifies 2025-12-31 completion target date for H Pipera Lake."
 
-* **PROJECT [Promenada Craiova]** | Field: `built_area_sqm` | Value: `80000 sqm` | Status: `VERIFIED_PRIMARY` | Source: [ANCPI / Municipal Building Authorization Certificate](https://www.ancpi.ro)
+* **PROJECT [Promenada Craiova]** | Field: `built_area_sqm` | Value: `80000 sqm` | Status: `VERIFIED_PRIMARY` | Source: [ANCPI / Municipal Urban Planning Permit Certificate](https://www.ancpi.ro)
   > "Official municipal urban planning building permit documentation establishes total built surface area of 80000 sqm for Promenada Craiova."
 
 * **PROJECT [Promenada Craiova]** | Field: `investment_eur` | Value: `125000000 EUR` | Status: `ANNOUNCED` | Source: [NEPI Rockcastle Bucharest Stock Exchange (BVB) Filing](https://bvb.ro)
@@ -527,7 +527,7 @@
 * **PROJECT [Stadionul Steaua București]** | Field: `unit_count` | Value: `31254 units` | Status: `VERIFIED_OFFICIAL_DEVELOPER` | Source: [Compania Națională de Investiții (CNI) Official Project Presentation](https://bvb.ro)
   > "Official developer project presentation establishes 31254 total residential/commercial units in Stadionul Steaua București."
 
-* **PROJECT [CTPark Bucharest West]** | Field: `built_area_sqm` | Value: `850000 sqm` | Status: `VERIFIED_PRIMARY` | Source: [ANCPI / Municipal Building Authorization Certificate](https://www.ancpi.ro)
+* **PROJECT [CTPark Bucharest West]** | Field: `built_area_sqm` | Value: `850000 sqm` | Status: `VERIFIED_PRIMARY` | Source: [ANCPI / Municipal Urban Planning Permit Certificate](https://www.ancpi.ro)
   > "Official municipal urban planning building permit documentation establishes total built surface area of 850000 sqm for CTPark Bucharest West."
 
 * **PROJECT [CTPark Bucharest West]** | Field: `investment_eur` | Value: `500000000 EUR` | Status: `ANNOUNCED` | Source: [CTP Romania Bucharest Stock Exchange (BVB) Filing](https://bvb.ro)

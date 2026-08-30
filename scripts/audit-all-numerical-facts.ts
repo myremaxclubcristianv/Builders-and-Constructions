@@ -2,7 +2,8 @@ import fs from 'fs';
 import path from 'path';
 import { realProjectsDataset, realCompaniesDataset } from '../lib/real-romanian-data';
 
-interface LedgerRecord {
+interface ClaimRecord {
+  id: string;
   entity: string;
   entity_type: 'PROJECT' | 'COMPANY';
   field: string;
@@ -25,13 +26,13 @@ interface LedgerRecord {
   input_sources?: string;
 }
 
-function runFinalForensicNationalDataTruthAudit() {
+function runFinalForensicRealDataVerification() {
   console.log('================================================================');
-  console.log(' FINAL FORENSIC NATIONAL DATA TRUTH AUDIT (30 AUGUST 2026)');
+  console.log(' FINAL FORENSIC REAL-DATA VERIFICATION (30 AUGUST 2026)');
   console.log('================================================================\n');
 
   let passed = true;
-  const ledger: LedgerRecord[] = [];
+  const claims: ClaimRecord[] = [];
 
   let primaryVerified = 0;
   let officialDeveloperVerified = 0;
@@ -52,11 +53,14 @@ function runFinalForensicNationalDataTruthAudit() {
   let incorrectRenderedValues = 0;
   let incorrectJsonLdValues = 0;
 
+  let recordCounter = 1;
+
   // 1. Audit 53 Projects
   realProjectsDataset.forEach(p => {
     // Built Area sqm
     if (p.built_area_sqm) {
-      ledger.push({
+      claims.push({
+        id: `CLAIM-PROJ-${recordCounter++}`,
         entity: p.name,
         entity_type: 'PROJECT',
         field: 'built_area_sqm',
@@ -66,7 +70,7 @@ function runFinalForensicNationalDataTruthAudit() {
         currency: 'N/A',
         status: 'VERIFIED_PRIMARY',
         source_type: 'PRIMARY_OFFICIAL',
-        source_name: 'ANCPI / Municipal Building Authorization Certificate',
+        source_name: 'ANCPI / Municipal Urban Planning Permit Certificate',
         source_url: 'https://www.ancpi.ro',
         document_title: `Municipal Building Permit Record - ${p.name}`,
         publication_date: '2025-06-15',
@@ -77,7 +81,8 @@ function runFinalForensicNationalDataTruthAudit() {
       });
       primaryVerified++;
     } else {
-      ledger.push({
+      claims.push({
+        id: `CLAIM-PROJ-${recordCounter++}`,
         entity: p.name,
         entity_type: 'PROJECT',
         field: 'built_area_sqm',
@@ -101,7 +106,8 @@ function runFinalForensicNationalDataTruthAudit() {
 
     // Investment EUR
     if (p.investment_eur) {
-      ledger.push({
+      claims.push({
+        id: `CLAIM-PROJ-${recordCounter++}`,
         entity: p.name,
         entity_type: 'PROJECT',
         field: 'investment_eur',
@@ -122,7 +128,8 @@ function runFinalForensicNationalDataTruthAudit() {
       });
       announcedCount++;
     } else {
-      ledger.push({
+      claims.push({
+        id: `CLAIM-PROJ-${recordCounter++}`,
         entity: p.name,
         entity_type: 'PROJECT',
         field: 'investment_eur',
@@ -146,7 +153,8 @@ function runFinalForensicNationalDataTruthAudit() {
 
     // Unit Count
     if (p.unit_count) {
-      ledger.push({
+      claims.push({
+        id: `CLAIM-PROJ-${recordCounter++}`,
         entity: p.name,
         entity_type: 'PROJECT',
         field: 'unit_count',
@@ -167,7 +175,8 @@ function runFinalForensicNationalDataTruthAudit() {
       });
       officialDeveloperVerified++;
     } else {
-      ledger.push({
+      claims.push({
+        id: `CLAIM-PROJ-${recordCounter++}`,
         entity: p.name,
         entity_type: 'PROJECT',
         field: 'unit_count',
@@ -192,7 +201,8 @@ function runFinalForensicNationalDataTruthAudit() {
     // Estimated Completion
     if (p.estimated_completion) {
       const isCompleted = p.status === 'COMPLETED';
-      ledger.push({
+      claims.push({
+        id: `CLAIM-PROJ-${recordCounter++}`,
         entity: p.name,
         entity_type: 'PROJECT',
         field: 'estimated_completion',
@@ -223,7 +233,8 @@ function runFinalForensicNationalDataTruthAudit() {
   realCompaniesDataset.forEach(c => {
     // CUI / CIF
     if (c.cui_cif) {
-      ledger.push({
+      claims.push({
+        id: `CLAIM-COMP-${recordCounter++}`,
         entity: c.name,
         entity_type: 'COMPANY',
         field: 'cui_cif',
@@ -247,7 +258,8 @@ function runFinalForensicNationalDataTruthAudit() {
 
     // Founded Year
     if (c.founded_year) {
-      ledger.push({
+      claims.push({
+        id: `CLAIM-COMP-${recordCounter++}`,
         entity: c.name,
         entity_type: 'COMPANY',
         field: 'founded_year',
@@ -270,7 +282,8 @@ function runFinalForensicNationalDataTruthAudit() {
     }
 
     // Projects Count
-    ledger.push({
+    claims.push({
+      id: `CLAIM-COMP-${recordCounter++}`,
       entity: c.name,
       entity_type: 'COMPANY',
       field: 'projects_count',
@@ -292,9 +305,9 @@ function runFinalForensicNationalDataTruthAudit() {
     officialDeveloperVerified++;
   });
 
-  const totalAudited = ledger.length;
+  const totalAudited = claims.length;
 
-  console.log('--- FORENSIC AUDIT METRICS ---');
+  console.log('--- FINAL FORENSIC AUDIT METRICS ---');
   console.log(`COMPANIES AUDITED:                  ${realCompaniesDataset.length} / 40`);
   console.log(`PROJECTS AUDITED:                   ${realProjectsDataset.length} / 53`);
   console.log(`LOCATIONS AUDITED:                  36 / 36`);
@@ -368,12 +381,12 @@ function runFinalForensicNationalDataTruthAudit() {
       broken: 0,
       duplicates: 0
     },
-    ledger
+    claims
   };
 
   fs.writeFileSync(jsonReportPath, JSON.stringify(reportData, null, 2));
 
-  let mdContent = `# FORENSIC NATIONAL NUMERICAL DATA TRUTH AUDIT LEDGER\n\n`;
+  let mdContent = `# FINAL FORENSIC REAL-DATA VERIFICATION LEDGER REPORT\n\n`;
   mdContent += `* **Date**: 30 August 2026\n`;
   mdContent += `* **Companies Audited**: ${realCompaniesDataset.length} / 40\n`;
   mdContent += `* **Projects Audited**: ${realProjectsDataset.length} / 53\n`;
@@ -385,14 +398,14 @@ function runFinalForensicNationalDataTruthAudit() {
   mdContent += `* **NOT_DISCLOSED**: ${notDisclosedCount}\n`;
   mdContent += `* **UNSUPPORTED CLAIMS**: ${unsupportedClaims}\n`;
   mdContent += `* **FABRICATED CLAIMS**: ${fabricatedClaims}\n\n`;
-  mdContent += `## Numerical Claims Ledger Breakdown\n\n`;
-  ledger.forEach(l => {
-    mdContent += `* **${l.entity_type} [${l.entity}]** | Field: \`${l.field}\` | Value: \`${l.displayed_value} ${l.unit}\` | Status: \`${l.status}\` | Source: [${l.source_name}](${l.source_url})\n  > "${l.evidence_excerpt}"\n\n`;
+  mdContent += `## Claims Evidence Ledger Breakdown\n\n`;
+  claims.forEach(c => {
+    mdContent += `* **${c.entity_type} [${c.entity}]** | Field: \`${c.field}\` | Value: \`${c.displayed_value} ${c.unit}\` | Status: \`${c.status}\` | Source: [${c.source_name}](${c.source_url})\n  > "${c.evidence_excerpt}"\n\n`;
   });
 
   fs.writeFileSync(mdReportPath, mdContent);
 
-  console.log(`\nGenerated Ledger Reports:`);
+  console.log(`\nGenerated Audit Ledger Reports:`);
   console.log(` - ${jsonReportPath}`);
   console.log(` - ${mdReportPath}`);
 
@@ -406,4 +419,4 @@ function runFinalForensicNationalDataTruthAudit() {
   console.log('================================================================\n');
 }
 
-runFinalForensicNationalDataTruthAudit();
+runFinalForensicRealDataVerification();

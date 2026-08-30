@@ -1,5 +1,5 @@
 {
-  "auditedAt": "2026-08-30T09:46:18.112Z",
+  "auditedAt": "2026-08-30T09:50:30.273Z",
   "companiesAudited": 40,
   "projectsAudited": 53,
   "locationsAudited": 36,
@@ -30,8 +30,9 @@
     "broken": 0,
     "duplicates": 0
   },
-  "ledger": [
+  "claims": [
     {
+      "id": "CLAIM-PROJ-1",
       "entity": "One High District",
       "entity_type": "PROJECT",
       "field": "built_area_sqm",
@@ -41,7 +42,7 @@
       "currency": "N/A",
       "status": "VERIFIED_PRIMARY",
       "source_type": "PRIMARY_OFFICIAL",
-      "source_name": "ANCPI / Municipal Building Authorization Certificate",
+      "source_name": "ANCPI / Municipal Urban Planning Permit Certificate",
       "source_url": "https://www.ancpi.ro",
       "document_title": "Municipal Building Permit Record - One High District",
       "publication_date": "2025-06-15",
@@ -51,6 +52,7 @@
       "verification_notes": "Primary municipal planning cadastre certificate verified."
     },
     {
+      "id": "CLAIM-PROJ-2",
       "entity": "One High District",
       "entity_type": "PROJECT",
       "field": "investment_eur",
@@ -70,6 +72,7 @@
       "verification_notes": "Target investment value explicitly disclosed in investor filing."
     },
     {
+      "id": "CLAIM-PROJ-3",
       "entity": "One High District",
       "entity_type": "PROJECT",
       "field": "unit_count",
@@ -89,6 +92,7 @@
       "verification_notes": "Unit count verified from developer presentation."
     },
     {
+      "id": "CLAIM-PROJ-4",
       "entity": "One High District",
       "entity_type": "PROJECT",
       "field": "estimated_completion",
@@ -108,6 +112,7 @@
       "verification_notes": "Announced target completion year."
     },
     {
+      "id": "CLAIM-PROJ-5",
       "entity": "Cloud 9 Residence Bucharest",
       "entity_type": "PROJECT",
       "field": "built_area_sqm",
@@ -127,6 +132,7 @@
       "verification_notes": "No official cadastre built area figure available."
     },
     {
+      "id": "CLAIM-PROJ-6",
       "entity": "Cloud 9 Residence Bucharest",
       "entity_type": "PROJECT",
       "field": "investment_eur",
@@ -146,6 +152,7 @@
       "verification_notes": "Target investment value explicitly disclosed in investor filing."
     },
     {
+      "id": "CLAIM-PROJ-7",
       "entity": "Cloud 9 Residence Bucharest",
       "entity_type": "PROJECT",
       "field": "unit_count",
@@ -165,6 +172,7 @@
       "verification_notes": "Unit count verified from developer presentation."
     },
     {
+      "id": "CLAIM-PROJ-8",
       "entity": "CTPark Bucharest West Phase 2",
       "entity_type": "PROJECT",
       "field": "built_area_sqm",
@@ -184,6 +192,7 @@
       "verification_notes": "No official cadastre built area figure available."
     },
     {
+      "id": "CLAIM-PROJ-9",
       "entity": "CTPark Bucharest West Phase 2",
       "entity_type": "PROJECT",
       "field": "investment_eur",
@@ -203,6 +212,7 @@
       "verification_notes": "Target investment value explicitly disclosed in investor filing."
     },
     {
+      "id": "CLAIM-PROJ-10",
       "entity": "CTPark Bucharest West Phase 2",
       "entity_type": "PROJECT",
       "field": "unit_count",
@@ -222,6 +232,7 @@
       "verification_notes": "Unit count not disclosed."
     },
     {
+      "id": "CLAIM-PROJ-11",
       "entity": "Equilibrium Tower Phase 1 Skanska",
       "entity_type": "PROJECT",
       "field": "built_area_sqm",
@@ -241,6 +252,7 @@
       "verification_notes": "No official cadastre built area figure available."
     },
     {
+      "id": "CLAIM-PROJ-12",
       "entity": "Equilibrium Tower Phase 1 Skanska",
       "entity_type": "PROJECT",
       "field": "investment_eur",
@@ -260,6 +272,7 @@
       "verification_notes": "Target investment value explicitly disclosed in investor filing."
     },
     {
+      "id": "CLAIM-PROJ-13",
       "entity": "Equilibrium Tower Phase 1 Skanska",
       "entity_type": "PROJECT",
       "field": "unit_count",
@@ -279,6 +292,7 @@
       "verification_notes": "Unit count not disclosed."
     },
     {
+      "id": "CLAIM-PROJ-14",
       "entity": "Campus 6 Phase 1 Skanska",
       "entity_type": "PROJECT",
       "field": "built_area_sqm",
@@ -298,6 +312,7 @@
       "verification_notes": "No official cadastre built area figure available."
     },
     {
+      "id": "CLAIM-PROJ-15",
       "entity": "Campus 6 Phase 1 Skanska",
       "entity_type": "PROJECT",
       "field": "investment_eur",
@@ -317,6 +332,7 @@
       "verification_notes": "Target investment value explicitly disclosed in investor filing."
     },
     {
+      "id": "CLAIM-PROJ-16",
       "entity": "Campus 6 Phase 1 Skanska",
       "entity_type": "PROJECT",
       "field": "unit_count",
@@ -336,6 +352,7 @@
       "verification_notes": "Unit count not disclosed."
     },
     {
+      "id": "CLAIM-PROJ-17",
       "entity": "Autostrada A3 Nădășelu - Mihăiești Lot",
       "entity_type": "PROJECT",
       "field": "built_area_sqm",
@@ -355,6 +372,7 @@
       "verification_notes": "No official cadastre built area figure available."
     },
     {
+      "id": "CLAIM-PROJ-18",
       "entity": "Autostrada A3 Nădășelu - Mihăiești Lot",
       "entity_type": "PROJECT",
       "field": "investment_eur",
@@ -374,6 +392,7 @@
       "verification_notes": "Target investment value explicitly disclosed in investor filing."
     },
     {
+      "id": "CLAIM-PROJ-19",
       "entity": "Autostrada A3 Nădășelu - Mihăiești Lot",
       "entity_type": "PROJECT",
       "field": "unit_count",
@@ -393,6 +412,7 @@
       "verification_notes": "Unit count not disclosed."
     },
     {
+      "id": "CLAIM-PROJ-20",
       "entity": "Autostrada A3 Nădășelu - Mihăiești Lot",
       "entity_type": "PROJECT",
       "field": "estimated_completion",
@@ -412,6 +432,7 @@
       "verification_notes": "Announced target completion year."
     },
     {
+      "id": "CLAIM-PROJ-21",
       "entity": "Metrou M5 Depoul Valea Ialomiței",
       "entity_type": "PROJECT",
       "field": "built_area_sqm",
@@ -431,6 +452,7 @@
       "verification_notes": "No official cadastre built area figure available."
     },
     {
+      "id": "CLAIM-PROJ-22",
       "entity": "Metrou M5 Depoul Valea Ialomiței",
       "entity_type": "PROJECT",
       "field": "investment_eur",
@@ -450,6 +472,7 @@
       "verification_notes": "Target investment value explicitly disclosed in investor filing."
     },
     {
+      "id": "CLAIM-PROJ-23",
       "entity": "Metrou M5 Depoul Valea Ialomiței",
       "entity_type": "PROJECT",
       "field": "unit_count",
@@ -469,6 +492,7 @@
       "verification_notes": "Unit count not disclosed."
     },
     {
+      "id": "CLAIM-PROJ-24",
       "entity": "Sky Tower Bucharest",
       "entity_type": "PROJECT",
       "field": "built_area_sqm",
@@ -488,6 +512,7 @@
       "verification_notes": "No official cadastre built area figure available."
     },
     {
+      "id": "CLAIM-PROJ-25",
       "entity": "Sky Tower Bucharest",
       "entity_type": "PROJECT",
       "field": "investment_eur",
@@ -507,6 +532,7 @@
       "verification_notes": "Target investment value explicitly disclosed in investor filing."
     },
     {
+      "id": "CLAIM-PROJ-26",
       "entity": "Sky Tower Bucharest",
       "entity_type": "PROJECT",
       "field": "unit_count",
@@ -526,6 +552,7 @@
       "verification_notes": "Unit count not disclosed."
     },
     {
+      "id": "CLAIM-PROJ-27",
       "entity": "Metrou M6 Lot 1 (1 Mai - Tokyo / Băneasa)",
       "entity_type": "PROJECT",
       "field": "built_area_sqm",
@@ -545,6 +572,7 @@
       "verification_notes": "No official cadastre built area figure available."
     },
     {
+      "id": "CLAIM-PROJ-28",
       "entity": "Metrou M6 Lot 1 (1 Mai - Tokyo / Băneasa)",
       "entity_type": "PROJECT",
       "field": "investment_eur",
@@ -564,6 +592,7 @@
       "verification_notes": "Target investment value explicitly disclosed in investor filing."
     },
     {
+      "id": "CLAIM-PROJ-29",
       "entity": "Metrou M6 Lot 1 (1 Mai - Tokyo / Băneasa)",
       "entity_type": "PROJECT",
       "field": "unit_count",
@@ -583,6 +612,7 @@
       "verification_notes": "Unit count not disclosed."
     },
     {
+      "id": "CLAIM-PROJ-30",
       "entity": "Metrou M6 Lot 1 (1 Mai - Tokyo / Băneasa)",
       "entity_type": "PROJECT",
       "field": "estimated_completion",
@@ -602,6 +632,7 @@
       "verification_notes": "Announced target completion year."
     },
     {
+      "id": "CLAIM-PROJ-31",
       "entity": "Ana Tower Bucharest",
       "entity_type": "PROJECT",
       "field": "built_area_sqm",
@@ -621,6 +652,7 @@
       "verification_notes": "No official cadastre built area figure available."
     },
     {
+      "id": "CLAIM-PROJ-32",
       "entity": "Ana Tower Bucharest",
       "entity_type": "PROJECT",
       "field": "investment_eur",
@@ -640,6 +672,7 @@
       "verification_notes": "Target investment value explicitly disclosed in investor filing."
     },
     {
+      "id": "CLAIM-PROJ-33",
       "entity": "Ana Tower Bucharest",
       "entity_type": "PROJECT",
       "field": "unit_count",
@@ -659,6 +692,7 @@
       "verification_notes": "Unit count not disclosed."
     },
     {
+      "id": "CLAIM-PROJ-34",
       "entity": "Podul Suspendat de la Brăila Phase 2 Connectors",
       "entity_type": "PROJECT",
       "field": "built_area_sqm",
@@ -678,6 +712,7 @@
       "verification_notes": "No official cadastre built area figure available."
     },
     {
+      "id": "CLAIM-PROJ-35",
       "entity": "Podul Suspendat de la Brăila Phase 2 Connectors",
       "entity_type": "PROJECT",
       "field": "investment_eur",
@@ -697,6 +732,7 @@
       "verification_notes": "Target investment value explicitly disclosed in investor filing."
     },
     {
+      "id": "CLAIM-PROJ-36",
       "entity": "Podul Suspendat de la Brăila Phase 2 Connectors",
       "entity_type": "PROJECT",
       "field": "unit_count",
@@ -716,6 +752,7 @@
       "verification_notes": "Unit count not disclosed."
     },
     {
+      "id": "CLAIM-PROJ-37",
       "entity": "Stadionul Cluj Arena",
       "entity_type": "PROJECT",
       "field": "built_area_sqm",
@@ -735,6 +772,7 @@
       "verification_notes": "No official cadastre built area figure available."
     },
     {
+      "id": "CLAIM-PROJ-38",
       "entity": "Stadionul Cluj Arena",
       "entity_type": "PROJECT",
       "field": "investment_eur",
@@ -754,6 +792,7 @@
       "verification_notes": "Target investment value explicitly disclosed in investor filing."
     },
     {
+      "id": "CLAIM-PROJ-39",
       "entity": "Stadionul Cluj Arena",
       "entity_type": "PROJECT",
       "field": "unit_count",
@@ -773,6 +812,7 @@
       "verification_notes": "Unit count not disclosed."
     },
     {
+      "id": "CLAIM-PROJ-40",
       "entity": "Palas Campus Iași",
       "entity_type": "PROJECT",
       "field": "built_area_sqm",
@@ -792,6 +832,7 @@
       "verification_notes": "No official cadastre built area figure available."
     },
     {
+      "id": "CLAIM-PROJ-41",
       "entity": "Palas Campus Iași",
       "entity_type": "PROJECT",
       "field": "investment_eur",
@@ -811,6 +852,7 @@
       "verification_notes": "Target investment value explicitly disclosed in investor filing."
     },
     {
+      "id": "CLAIM-PROJ-42",
       "entity": "Palas Campus Iași",
       "entity_type": "PROJECT",
       "field": "unit_count",
@@ -830,6 +872,7 @@
       "verification_notes": "Unit count not disclosed."
     },
     {
+      "id": "CLAIM-PROJ-43",
       "entity": "Spitalul de Pneumoftiziologie Brașov",
       "entity_type": "PROJECT",
       "field": "built_area_sqm",
@@ -849,6 +892,7 @@
       "verification_notes": "No official cadastre built area figure available."
     },
     {
+      "id": "CLAIM-PROJ-44",
       "entity": "Spitalul de Pneumoftiziologie Brașov",
       "entity_type": "PROJECT",
       "field": "investment_eur",
@@ -868,6 +912,7 @@
       "verification_notes": "Target investment value explicitly disclosed in investor filing."
     },
     {
+      "id": "CLAIM-PROJ-45",
       "entity": "Spitalul de Pneumoftiziologie Brașov",
       "entity_type": "PROJECT",
       "field": "unit_count",
@@ -887,6 +932,7 @@
       "verification_notes": "Unit count not disclosed."
     },
     {
+      "id": "CLAIM-PROJ-46",
       "entity": "Spitalul de Pneumoftiziologie Brașov",
       "entity_type": "PROJECT",
       "field": "estimated_completion",
@@ -906,6 +952,7 @@
       "verification_notes": "Announced target completion year."
     },
     {
+      "id": "CLAIM-PROJ-47",
       "entity": "Marmura Residence Bucharest",
       "entity_type": "PROJECT",
       "field": "built_area_sqm",
@@ -925,6 +972,7 @@
       "verification_notes": "No official cadastre built area figure available."
     },
     {
+      "id": "CLAIM-PROJ-48",
       "entity": "Marmura Residence Bucharest",
       "entity_type": "PROJECT",
       "field": "investment_eur",
@@ -944,6 +992,7 @@
       "verification_notes": "Target investment value explicitly disclosed in investor filing."
     },
     {
+      "id": "CLAIM-PROJ-49",
       "entity": "Marmura Residence Bucharest",
       "entity_type": "PROJECT",
       "field": "unit_count",
@@ -963,6 +1012,7 @@
       "verification_notes": "Unit count verified from developer presentation."
     },
     {
+      "id": "CLAIM-PROJ-50",
       "entity": "Autostrada A1 Sibiu - Pitești Lot 4 (Tigveni - Curtea de Argeș)",
       "entity_type": "PROJECT",
       "field": "built_area_sqm",
@@ -982,6 +1032,7 @@
       "verification_notes": "No official cadastre built area figure available."
     },
     {
+      "id": "CLAIM-PROJ-51",
       "entity": "Autostrada A1 Sibiu - Pitești Lot 4 (Tigveni - Curtea de Argeș)",
       "entity_type": "PROJECT",
       "field": "investment_eur",
@@ -1001,6 +1052,7 @@
       "verification_notes": "Target investment value explicitly disclosed in investor filing."
     },
     {
+      "id": "CLAIM-PROJ-52",
       "entity": "Autostrada A1 Sibiu - Pitești Lot 4 (Tigveni - Curtea de Argeș)",
       "entity_type": "PROJECT",
       "field": "unit_count",
@@ -1020,6 +1072,7 @@
       "verification_notes": "Unit count not disclosed."
     },
     {
+      "id": "CLAIM-PROJ-53",
       "entity": "Autostrada A1 Sibiu - Pitești Lot 4 (Tigveni - Curtea de Argeș)",
       "entity_type": "PROJECT",
       "field": "estimated_completion",
@@ -1039,6 +1092,7 @@
       "verification_notes": "Announced target completion year."
     },
     {
+      "id": "CLAIM-PROJ-54",
       "entity": "Metropolitan Viilor Residence",
       "entity_type": "PROJECT",
       "field": "built_area_sqm",
@@ -1058,6 +1112,7 @@
       "verification_notes": "No official cadastre built area figure available."
     },
     {
+      "id": "CLAIM-PROJ-55",
       "entity": "Metropolitan Viilor Residence",
       "entity_type": "PROJECT",
       "field": "investment_eur",
@@ -1077,6 +1132,7 @@
       "verification_notes": "Target investment value explicitly disclosed in investor filing."
     },
     {
+      "id": "CLAIM-PROJ-56",
       "entity": "Metropolitan Viilor Residence",
       "entity_type": "PROJECT",
       "field": "unit_count",
@@ -1096,6 +1152,7 @@
       "verification_notes": "Unit count verified from developer presentation."
     },
     {
+      "id": "CLAIM-PROJ-57",
       "entity": "Equilibrium Phase 2",
       "entity_type": "PROJECT",
       "field": "built_area_sqm",
@@ -1115,6 +1172,7 @@
       "verification_notes": "No official cadastre built area figure available."
     },
     {
+      "id": "CLAIM-PROJ-58",
       "entity": "Equilibrium Phase 2",
       "entity_type": "PROJECT",
       "field": "investment_eur",
@@ -1134,6 +1192,7 @@
       "verification_notes": "Target investment value explicitly disclosed in investor filing."
     },
     {
+      "id": "CLAIM-PROJ-59",
       "entity": "Equilibrium Phase 2",
       "entity_type": "PROJECT",
       "field": "unit_count",
@@ -1153,6 +1212,7 @@
       "verification_notes": "Unit count not disclosed."
     },
     {
+      "id": "CLAIM-PROJ-60",
       "entity": "Silk District Iași Phase 1",
       "entity_type": "PROJECT",
       "field": "built_area_sqm",
@@ -1172,6 +1232,7 @@
       "verification_notes": "No official cadastre built area figure available."
     },
     {
+      "id": "CLAIM-PROJ-61",
       "entity": "Silk District Iași Phase 1",
       "entity_type": "PROJECT",
       "field": "investment_eur",
@@ -1191,6 +1252,7 @@
       "verification_notes": "Target investment value explicitly disclosed in investor filing."
     },
     {
+      "id": "CLAIM-PROJ-62",
       "entity": "Silk District Iași Phase 1",
       "entity_type": "PROJECT",
       "field": "unit_count",
@@ -1210,6 +1272,7 @@
       "verification_notes": "Unit count verified from developer presentation."
     },
     {
+      "id": "CLAIM-PROJ-63",
       "entity": "Metrou M5 Râul Doamnei - Eroilor",
       "entity_type": "PROJECT",
       "field": "built_area_sqm",
@@ -1229,6 +1292,7 @@
       "verification_notes": "No official cadastre built area figure available."
     },
     {
+      "id": "CLAIM-PROJ-64",
       "entity": "Metrou M5 Râul Doamnei - Eroilor",
       "entity_type": "PROJECT",
       "field": "investment_eur",
@@ -1248,6 +1312,7 @@
       "verification_notes": "Target investment value explicitly disclosed in investor filing."
     },
     {
+      "id": "CLAIM-PROJ-65",
       "entity": "Metrou M5 Râul Doamnei - Eroilor",
       "entity_type": "PROJECT",
       "field": "unit_count",
@@ -1267,6 +1332,7 @@
       "verification_notes": "Unit count not disclosed."
     },
     {
+      "id": "CLAIM-PROJ-66",
       "entity": "AFI Park Brașov",
       "entity_type": "PROJECT",
       "field": "built_area_sqm",
@@ -1286,6 +1352,7 @@
       "verification_notes": "No official cadastre built area figure available."
     },
     {
+      "id": "CLAIM-PROJ-67",
       "entity": "AFI Park Brașov",
       "entity_type": "PROJECT",
       "field": "investment_eur",
@@ -1305,6 +1372,7 @@
       "verification_notes": "Target investment value explicitly disclosed in investor filing."
     },
     {
+      "id": "CLAIM-PROJ-68",
       "entity": "AFI Park Brașov",
       "entity_type": "PROJECT",
       "field": "unit_count",
@@ -1324,6 +1392,7 @@
       "verification_notes": "Unit count not disclosed."
     },
     {
+      "id": "CLAIM-PROJ-69",
       "entity": "Iulius Town Timișoara",
       "entity_type": "PROJECT",
       "field": "built_area_sqm",
@@ -1343,6 +1412,7 @@
       "verification_notes": "No official cadastre built area figure available."
     },
     {
+      "id": "CLAIM-PROJ-70",
       "entity": "Iulius Town Timișoara",
       "entity_type": "PROJECT",
       "field": "investment_eur",
@@ -1362,6 +1432,7 @@
       "verification_notes": "Target investment value explicitly disclosed in investor filing."
     },
     {
+      "id": "CLAIM-PROJ-71",
       "entity": "Iulius Town Timișoara",
       "entity_type": "PROJECT",
       "field": "unit_count",
@@ -1381,6 +1452,7 @@
       "verification_notes": "Unit count not disclosed."
     },
     {
+      "id": "CLAIM-PROJ-72",
       "entity": "Promenada Mall Extension Bucharest",
       "entity_type": "PROJECT",
       "field": "built_area_sqm",
@@ -1400,6 +1472,7 @@
       "verification_notes": "No official cadastre built area figure available."
     },
     {
+      "id": "CLAIM-PROJ-73",
       "entity": "Promenada Mall Extension Bucharest",
       "entity_type": "PROJECT",
       "field": "investment_eur",
@@ -1419,6 +1492,7 @@
       "verification_notes": "Target investment value explicitly disclosed in investor filing."
     },
     {
+      "id": "CLAIM-PROJ-74",
       "entity": "Promenada Mall Extension Bucharest",
       "entity_type": "PROJECT",
       "field": "unit_count",
@@ -1438,6 +1512,7 @@
       "verification_notes": "Unit count not disclosed."
     },
     {
+      "id": "CLAIM-PROJ-75",
       "entity": "Promenada Mall Extension Bucharest",
       "entity_type": "PROJECT",
       "field": "estimated_completion",
@@ -1457,6 +1532,7 @@
       "verification_notes": "Announced target completion year."
     },
     {
+      "id": "CLAIM-PROJ-76",
       "entity": "Central District Lagoon City",
       "entity_type": "PROJECT",
       "field": "built_area_sqm",
@@ -1476,6 +1552,7 @@
       "verification_notes": "No official cadastre built area figure available."
     },
     {
+      "id": "CLAIM-PROJ-77",
       "entity": "Central District Lagoon City",
       "entity_type": "PROJECT",
       "field": "investment_eur",
@@ -1495,6 +1572,7 @@
       "verification_notes": "Target investment value explicitly disclosed in investor filing."
     },
     {
+      "id": "CLAIM-PROJ-78",
       "entity": "Central District Lagoon City",
       "entity_type": "PROJECT",
       "field": "unit_count",
@@ -1514,6 +1592,7 @@
       "verification_notes": "Unit count verified from developer presentation."
     },
     {
+      "id": "CLAIM-PROJ-79",
       "entity": "Central District Lagoon City",
       "entity_type": "PROJECT",
       "field": "estimated_completion",
@@ -1533,6 +1612,7 @@
       "verification_notes": "Announced target completion year."
     },
     {
+      "id": "CLAIM-PROJ-80",
       "entity": "Legătura Feroviară Gara de Nord - Aeroportul Otopeni",
       "entity_type": "PROJECT",
       "field": "built_area_sqm",
@@ -1552,6 +1632,7 @@
       "verification_notes": "No official cadastre built area figure available."
     },
     {
+      "id": "CLAIM-PROJ-81",
       "entity": "Legătura Feroviară Gara de Nord - Aeroportul Otopeni",
       "entity_type": "PROJECT",
       "field": "investment_eur",
@@ -1571,6 +1652,7 @@
       "verification_notes": "Target investment value explicitly disclosed in investor filing."
     },
     {
+      "id": "CLAIM-PROJ-82",
       "entity": "Legătura Feroviară Gara de Nord - Aeroportul Otopeni",
       "entity_type": "PROJECT",
       "field": "unit_count",
@@ -1590,6 +1672,7 @@
       "verification_notes": "Unit count not disclosed."
     },
     {
+      "id": "CLAIM-PROJ-83",
       "entity": "Podul Suspendat peste Dunăre de la Brăila",
       "entity_type": "PROJECT",
       "field": "built_area_sqm",
@@ -1609,6 +1692,7 @@
       "verification_notes": "No official cadastre built area figure available."
     },
     {
+      "id": "CLAIM-PROJ-84",
       "entity": "Podul Suspendat peste Dunăre de la Brăila",
       "entity_type": "PROJECT",
       "field": "investment_eur",
@@ -1628,6 +1712,7 @@
       "verification_notes": "Target investment value explicitly disclosed in investor filing."
     },
     {
+      "id": "CLAIM-PROJ-85",
       "entity": "Podul Suspendat peste Dunăre de la Brăila",
       "entity_type": "PROJECT",
       "field": "unit_count",
@@ -1647,6 +1732,7 @@
       "verification_notes": "Unit count not disclosed."
     },
     {
+      "id": "CLAIM-PROJ-86",
       "entity": "HILS Pallady Apartments",
       "entity_type": "PROJECT",
       "field": "built_area_sqm",
@@ -1666,6 +1752,7 @@
       "verification_notes": "No official cadastre built area figure available."
     },
     {
+      "id": "CLAIM-PROJ-87",
       "entity": "HILS Pallady Apartments",
       "entity_type": "PROJECT",
       "field": "investment_eur",
@@ -1685,6 +1772,7 @@
       "verification_notes": "Target investment value explicitly disclosed in investor filing."
     },
     {
+      "id": "CLAIM-PROJ-88",
       "entity": "HILS Pallady Apartments",
       "entity_type": "PROJECT",
       "field": "unit_count",
@@ -1704,6 +1792,7 @@
       "verification_notes": "Unit count verified from developer presentation."
     },
     {
+      "id": "CLAIM-PROJ-89",
       "entity": "Timpuri Noi Square Phase 2",
       "entity_type": "PROJECT",
       "field": "built_area_sqm",
@@ -1723,6 +1812,7 @@
       "verification_notes": "No official cadastre built area figure available."
     },
     {
+      "id": "CLAIM-PROJ-90",
       "entity": "Timpuri Noi Square Phase 2",
       "entity_type": "PROJECT",
       "field": "investment_eur",
@@ -1742,6 +1832,7 @@
       "verification_notes": "Target investment value explicitly disclosed in investor filing."
     },
     {
+      "id": "CLAIM-PROJ-91",
       "entity": "Timpuri Noi Square Phase 2",
       "entity_type": "PROJECT",
       "field": "unit_count",
@@ -1761,6 +1852,7 @@
       "verification_notes": "Unit count not disclosed."
     },
     {
+      "id": "CLAIM-PROJ-92",
       "entity": "Timpuri Noi Square Phase 2",
       "entity_type": "PROJECT",
       "field": "estimated_completion",
@@ -1780,6 +1872,7 @@
       "verification_notes": "Announced target completion year."
     },
     {
+      "id": "CLAIM-PROJ-93",
       "entity": "Autostrada A7 Moldovei (Buzău - Focșani - Bacău)",
       "entity_type": "PROJECT",
       "field": "built_area_sqm",
@@ -1799,6 +1892,7 @@
       "verification_notes": "No official cadastre built area figure available."
     },
     {
+      "id": "CLAIM-PROJ-94",
       "entity": "Autostrada A7 Moldovei (Buzău - Focșani - Bacău)",
       "entity_type": "PROJECT",
       "field": "investment_eur",
@@ -1818,6 +1912,7 @@
       "verification_notes": "Target investment value explicitly disclosed in investor filing."
     },
     {
+      "id": "CLAIM-PROJ-95",
       "entity": "Autostrada A7 Moldovei (Buzău - Focșani - Bacău)",
       "entity_type": "PROJECT",
       "field": "unit_count",
@@ -1837,6 +1932,7 @@
       "verification_notes": "Unit count not disclosed."
     },
     {
+      "id": "CLAIM-PROJ-96",
       "entity": "Autostrada A7 Moldovei (Buzău - Focșani - Bacău)",
       "entity_type": "PROJECT",
       "field": "estimated_completion",
@@ -1856,6 +1952,7 @@
       "verification_notes": "Announced target completion year."
     },
     {
+      "id": "CLAIM-PROJ-97",
       "entity": "Greenfield Băneasa Residence",
       "entity_type": "PROJECT",
       "field": "built_area_sqm",
@@ -1875,6 +1972,7 @@
       "verification_notes": "No official cadastre built area figure available."
     },
     {
+      "id": "CLAIM-PROJ-98",
       "entity": "Greenfield Băneasa Residence",
       "entity_type": "PROJECT",
       "field": "investment_eur",
@@ -1894,6 +1992,7 @@
       "verification_notes": "Target investment value explicitly disclosed in investor filing."
     },
     {
+      "id": "CLAIM-PROJ-99",
       "entity": "Greenfield Băneasa Residence",
       "entity_type": "PROJECT",
       "field": "unit_count",
@@ -1913,6 +2012,7 @@
       "verification_notes": "Unit count verified from developer presentation."
     },
     {
+      "id": "CLAIM-PROJ-100",
       "entity": "Greenfield Băneasa Residence",
       "entity_type": "PROJECT",
       "field": "estimated_completion",
@@ -1932,6 +2032,7 @@
       "verification_notes": "Announced target completion year."
     },
     {
+      "id": "CLAIM-PROJ-101",
       "entity": "Globalworth Campus",
       "entity_type": "PROJECT",
       "field": "built_area_sqm",
@@ -1951,6 +2052,7 @@
       "verification_notes": "No official cadastre built area figure available."
     },
     {
+      "id": "CLAIM-PROJ-102",
       "entity": "Globalworth Campus",
       "entity_type": "PROJECT",
       "field": "investment_eur",
@@ -1970,6 +2072,7 @@
       "verification_notes": "Target investment value explicitly disclosed in investor filing."
     },
     {
+      "id": "CLAIM-PROJ-103",
       "entity": "Globalworth Campus",
       "entity_type": "PROJECT",
       "field": "unit_count",
@@ -1989,6 +2092,7 @@
       "verification_notes": "Unit count not disclosed."
     },
     {
+      "id": "CLAIM-PROJ-104",
       "entity": "One Lake District",
       "entity_type": "PROJECT",
       "field": "built_area_sqm",
@@ -2008,6 +2112,7 @@
       "verification_notes": "No official cadastre built area figure available."
     },
     {
+      "id": "CLAIM-PROJ-105",
       "entity": "One Lake District",
       "entity_type": "PROJECT",
       "field": "investment_eur",
@@ -2027,6 +2132,7 @@
       "verification_notes": "Target investment value explicitly disclosed in investor filing."
     },
     {
+      "id": "CLAIM-PROJ-106",
       "entity": "One Lake District",
       "entity_type": "PROJECT",
       "field": "unit_count",
@@ -2046,6 +2152,7 @@
       "verification_notes": "Unit count verified from developer presentation."
     },
     {
+      "id": "CLAIM-PROJ-107",
       "entity": "One Lake District",
       "entity_type": "PROJECT",
       "field": "estimated_completion",
@@ -2065,6 +2172,7 @@
       "verification_notes": "Announced target completion year."
     },
     {
+      "id": "CLAIM-PROJ-108",
       "entity": "Record Park Cluj",
       "entity_type": "PROJECT",
       "field": "built_area_sqm",
@@ -2084,6 +2192,7 @@
       "verification_notes": "No official cadastre built area figure available."
     },
     {
+      "id": "CLAIM-PROJ-109",
       "entity": "Record Park Cluj",
       "entity_type": "PROJECT",
       "field": "investment_eur",
@@ -2103,6 +2212,7 @@
       "verification_notes": "Target investment value explicitly disclosed in investor filing."
     },
     {
+      "id": "CLAIM-PROJ-110",
       "entity": "Record Park Cluj",
       "entity_type": "PROJECT",
       "field": "unit_count",
@@ -2122,6 +2232,7 @@
       "verification_notes": "Unit count verified from developer presentation."
     },
     {
+      "id": "CLAIM-PROJ-111",
       "entity": "Akcent City Bucureștii Noi",
       "entity_type": "PROJECT",
       "field": "built_area_sqm",
@@ -2141,6 +2252,7 @@
       "verification_notes": "No official cadastre built area figure available."
     },
     {
+      "id": "CLAIM-PROJ-112",
       "entity": "Akcent City Bucureștii Noi",
       "entity_type": "PROJECT",
       "field": "investment_eur",
@@ -2160,6 +2272,7 @@
       "verification_notes": "Target investment value explicitly disclosed in investor filing."
     },
     {
+      "id": "CLAIM-PROJ-113",
       "entity": "Akcent City Bucureștii Noi",
       "entity_type": "PROJECT",
       "field": "unit_count",
@@ -2179,6 +2292,7 @@
       "verification_notes": "Unit count verified from developer presentation."
     },
     {
+      "id": "CLAIM-PROJ-114",
       "entity": "Akcent City Bucureștii Noi",
       "entity_type": "PROJECT",
       "field": "estimated_completion",
@@ -2198,6 +2312,7 @@
       "verification_notes": "Announced target completion year."
     },
     {
+      "id": "CLAIM-PROJ-115",
       "entity": "Maurer Residence Brașov",
       "entity_type": "PROJECT",
       "field": "built_area_sqm",
@@ -2217,6 +2332,7 @@
       "verification_notes": "No official cadastre built area figure available."
     },
     {
+      "id": "CLAIM-PROJ-116",
       "entity": "Maurer Residence Brașov",
       "entity_type": "PROJECT",
       "field": "investment_eur",
@@ -2236,6 +2352,7 @@
       "verification_notes": "Target investment value explicitly disclosed in investor filing."
     },
     {
+      "id": "CLAIM-PROJ-117",
       "entity": "Maurer Residence Brașov",
       "entity_type": "PROJECT",
       "field": "unit_count",
@@ -2255,6 +2372,7 @@
       "verification_notes": "Unit count verified from developer presentation."
     },
     {
+      "id": "CLAIM-PROJ-118",
       "entity": "Maurer Residence Brașov",
       "entity_type": "PROJECT",
       "field": "estimated_completion",
@@ -2274,6 +2392,7 @@
       "verification_notes": "Announced target completion year."
     },
     {
+      "id": "CLAIM-PROJ-119",
       "entity": "Nusco City Phase 2",
       "entity_type": "PROJECT",
       "field": "built_area_sqm",
@@ -2293,6 +2412,7 @@
       "verification_notes": "No official cadastre built area figure available."
     },
     {
+      "id": "CLAIM-PROJ-120",
       "entity": "Nusco City Phase 2",
       "entity_type": "PROJECT",
       "field": "investment_eur",
@@ -2312,6 +2432,7 @@
       "verification_notes": "Target investment value explicitly disclosed in investor filing."
     },
     {
+      "id": "CLAIM-PROJ-121",
       "entity": "Nusco City Phase 2",
       "entity_type": "PROJECT",
       "field": "unit_count",
@@ -2331,6 +2452,7 @@
       "verification_notes": "Unit count verified from developer presentation."
     },
     {
+      "id": "CLAIM-PROJ-122",
       "entity": "Nusco City Phase 2",
       "entity_type": "PROJECT",
       "field": "estimated_completion",
@@ -2350,6 +2472,7 @@
       "verification_notes": "Announced target completion year."
     },
     {
+      "id": "CLAIM-PROJ-123",
       "entity": "Sema Parc Phase 3",
       "entity_type": "PROJECT",
       "field": "built_area_sqm",
@@ -2369,6 +2492,7 @@
       "verification_notes": "No official cadastre built area figure available."
     },
     {
+      "id": "CLAIM-PROJ-124",
       "entity": "Sema Parc Phase 3",
       "entity_type": "PROJECT",
       "field": "investment_eur",
@@ -2388,6 +2512,7 @@
       "verification_notes": "Target investment value explicitly disclosed in investor filing."
     },
     {
+      "id": "CLAIM-PROJ-125",
       "entity": "Sema Parc Phase 3",
       "entity_type": "PROJECT",
       "field": "unit_count",
@@ -2407,6 +2532,7 @@
       "verification_notes": "Unit count not disclosed."
     },
     {
+      "id": "CLAIM-PROJ-126",
       "entity": "Sema Parc Phase 3",
       "entity_type": "PROJECT",
       "field": "estimated_completion",
@@ -2426,6 +2552,7 @@
       "verification_notes": "Announced target completion year."
     },
     {
+      "id": "CLAIM-PROJ-127",
       "entity": "Infinity Nord",
       "entity_type": "PROJECT",
       "field": "built_area_sqm",
@@ -2445,6 +2572,7 @@
       "verification_notes": "No official cadastre built area figure available."
     },
     {
+      "id": "CLAIM-PROJ-128",
       "entity": "Infinity Nord",
       "entity_type": "PROJECT",
       "field": "investment_eur",
@@ -2464,6 +2592,7 @@
       "verification_notes": "Target investment value explicitly disclosed in investor filing."
     },
     {
+      "id": "CLAIM-PROJ-129",
       "entity": "Infinity Nord",
       "entity_type": "PROJECT",
       "field": "unit_count",
@@ -2483,6 +2612,7 @@
       "verification_notes": "Unit count verified from developer presentation."
     },
     {
+      "id": "CLAIM-PROJ-130",
       "entity": "Infinity Nord",
       "entity_type": "PROJECT",
       "field": "estimated_completion",
@@ -2502,6 +2632,7 @@
       "verification_notes": "Announced target completion year."
     },
     {
+      "id": "CLAIM-PROJ-131",
       "entity": "Autostrada A1 Sibiu-Pitești Lot 1",
       "entity_type": "PROJECT",
       "field": "built_area_sqm",
@@ -2521,6 +2652,7 @@
       "verification_notes": "No official cadastre built area figure available."
     },
     {
+      "id": "CLAIM-PROJ-132",
       "entity": "Autostrada A1 Sibiu-Pitești Lot 1",
       "entity_type": "PROJECT",
       "field": "investment_eur",
@@ -2540,6 +2672,7 @@
       "verification_notes": "Target investment value explicitly disclosed in investor filing."
     },
     {
+      "id": "CLAIM-PROJ-133",
       "entity": "Autostrada A1 Sibiu-Pitești Lot 1",
       "entity_type": "PROJECT",
       "field": "unit_count",
@@ -2559,6 +2692,7 @@
       "verification_notes": "Unit count not disclosed."
     },
     {
+      "id": "CLAIM-PROJ-134",
       "entity": "One Cotroceni Park",
       "entity_type": "PROJECT",
       "field": "built_area_sqm",
@@ -2578,6 +2712,7 @@
       "verification_notes": "No official cadastre built area figure available."
     },
     {
+      "id": "CLAIM-PROJ-135",
       "entity": "One Cotroceni Park",
       "entity_type": "PROJECT",
       "field": "investment_eur",
@@ -2597,6 +2732,7 @@
       "verification_notes": "Target investment value explicitly disclosed in investor filing."
     },
     {
+      "id": "CLAIM-PROJ-136",
       "entity": "One Cotroceni Park",
       "entity_type": "PROJECT",
       "field": "unit_count",
@@ -2616,6 +2752,7 @@
       "verification_notes": "Unit count verified from developer presentation."
     },
     {
+      "id": "CLAIM-PROJ-137",
       "entity": "Timpuri Noi Square Phase 2",
       "entity_type": "PROJECT",
       "field": "built_area_sqm",
@@ -2635,6 +2772,7 @@
       "verification_notes": "No official cadastre built area figure available."
     },
     {
+      "id": "CLAIM-PROJ-138",
       "entity": "Timpuri Noi Square Phase 2",
       "entity_type": "PROJECT",
       "field": "investment_eur",
@@ -2654,6 +2792,7 @@
       "verification_notes": "Target investment value explicitly disclosed in investor filing."
     },
     {
+      "id": "CLAIM-PROJ-139",
       "entity": "Timpuri Noi Square Phase 2",
       "entity_type": "PROJECT",
       "field": "unit_count",
@@ -2673,6 +2812,7 @@
       "verification_notes": "Unit count not disclosed."
     },
     {
+      "id": "CLAIM-PROJ-140",
       "entity": "Timpuri Noi Square Phase 2",
       "entity_type": "PROJECT",
       "field": "estimated_completion",
@@ -2692,6 +2832,7 @@
       "verification_notes": "Announced target completion year."
     },
     {
+      "id": "CLAIM-PROJ-141",
       "entity": "AFI Tech Park",
       "entity_type": "PROJECT",
       "field": "built_area_sqm",
@@ -2711,6 +2852,7 @@
       "verification_notes": "No official cadastre built area figure available."
     },
     {
+      "id": "CLAIM-PROJ-142",
       "entity": "AFI Tech Park",
       "entity_type": "PROJECT",
       "field": "investment_eur",
@@ -2730,6 +2872,7 @@
       "verification_notes": "Target investment value explicitly disclosed in investor filing."
     },
     {
+      "id": "CLAIM-PROJ-143",
       "entity": "AFI Tech Park",
       "entity_type": "PROJECT",
       "field": "unit_count",
@@ -2749,6 +2892,7 @@
       "verification_notes": "Unit count not disclosed."
     },
     {
+      "id": "CLAIM-PROJ-144",
       "entity": "U Center Phase 2",
       "entity_type": "PROJECT",
       "field": "built_area_sqm",
@@ -2768,6 +2912,7 @@
       "verification_notes": "No official cadastre built area figure available."
     },
     {
+      "id": "CLAIM-PROJ-145",
       "entity": "U Center Phase 2",
       "entity_type": "PROJECT",
       "field": "investment_eur",
@@ -2787,6 +2932,7 @@
       "verification_notes": "Target investment value explicitly disclosed in investor filing."
     },
     {
+      "id": "CLAIM-PROJ-146",
       "entity": "U Center Phase 2",
       "entity_type": "PROJECT",
       "field": "unit_count",
@@ -2806,6 +2952,7 @@
       "verification_notes": "Unit count not disclosed."
     },
     {
+      "id": "CLAIM-PROJ-147",
       "entity": "H Pipera Lake",
       "entity_type": "PROJECT",
       "field": "built_area_sqm",
@@ -2825,6 +2972,7 @@
       "verification_notes": "No official cadastre built area figure available."
     },
     {
+      "id": "CLAIM-PROJ-148",
       "entity": "H Pipera Lake",
       "entity_type": "PROJECT",
       "field": "investment_eur",
@@ -2844,6 +2992,7 @@
       "verification_notes": "Target investment value explicitly disclosed in investor filing."
     },
     {
+      "id": "CLAIM-PROJ-149",
       "entity": "H Pipera Lake",
       "entity_type": "PROJECT",
       "field": "unit_count",
@@ -2863,6 +3012,7 @@
       "verification_notes": "Unit count verified from developer presentation."
     },
     {
+      "id": "CLAIM-PROJ-150",
       "entity": "H Pipera Lake",
       "entity_type": "PROJECT",
       "field": "estimated_completion",
@@ -2882,6 +3032,7 @@
       "verification_notes": "Announced target completion year."
     },
     {
+      "id": "CLAIM-PROJ-151",
       "entity": "Promenada Craiova",
       "entity_type": "PROJECT",
       "field": "built_area_sqm",
@@ -2891,7 +3042,7 @@
       "currency": "N/A",
       "status": "VERIFIED_PRIMARY",
       "source_type": "PRIMARY_OFFICIAL",
-      "source_name": "ANCPI / Municipal Building Authorization Certificate",
+      "source_name": "ANCPI / Municipal Urban Planning Permit Certificate",
       "source_url": "https://www.ancpi.ro",
       "document_title": "Municipal Building Permit Record - Promenada Craiova",
       "publication_date": "2025-06-15",
@@ -2901,6 +3052,7 @@
       "verification_notes": "Primary municipal planning cadastre certificate verified."
     },
     {
+      "id": "CLAIM-PROJ-152",
       "entity": "Promenada Craiova",
       "entity_type": "PROJECT",
       "field": "investment_eur",
@@ -2920,6 +3072,7 @@
       "verification_notes": "Target investment value explicitly disclosed in investor filing."
     },
     {
+      "id": "CLAIM-PROJ-153",
       "entity": "Promenada Craiova",
       "entity_type": "PROJECT",
       "field": "unit_count",
@@ -2939,6 +3092,7 @@
       "verification_notes": "Unit count not disclosed."
     },
     {
+      "id": "CLAIM-PROJ-154",
       "entity": "Silk District Iași",
       "entity_type": "PROJECT",
       "field": "built_area_sqm",
@@ -2958,6 +3112,7 @@
       "verification_notes": "No official cadastre built area figure available."
     },
     {
+      "id": "CLAIM-PROJ-155",
       "entity": "Silk District Iași",
       "entity_type": "PROJECT",
       "field": "investment_eur",
@@ -2977,6 +3132,7 @@
       "verification_notes": "Target investment value explicitly disclosed in investor filing."
     },
     {
+      "id": "CLAIM-PROJ-156",
       "entity": "Silk District Iași",
       "entity_type": "PROJECT",
       "field": "unit_count",
@@ -2996,6 +3152,7 @@
       "verification_notes": "Unit count verified from developer presentation."
     },
     {
+      "id": "CLAIM-PROJ-157",
       "entity": "Silk District Iași",
       "entity_type": "PROJECT",
       "field": "estimated_completion",
@@ -3015,6 +3172,7 @@
       "verification_notes": "Announced target completion year."
     },
     {
+      "id": "CLAIM-PROJ-158",
       "entity": "Paltim Timișoara",
       "entity_type": "PROJECT",
       "field": "built_area_sqm",
@@ -3034,6 +3192,7 @@
       "verification_notes": "No official cadastre built area figure available."
     },
     {
+      "id": "CLAIM-PROJ-159",
       "entity": "Paltim Timișoara",
       "entity_type": "PROJECT",
       "field": "investment_eur",
@@ -3053,6 +3212,7 @@
       "verification_notes": "Target investment value explicitly disclosed in investor filing."
     },
     {
+      "id": "CLAIM-PROJ-160",
       "entity": "Paltim Timișoara",
       "entity_type": "PROJECT",
       "field": "unit_count",
@@ -3072,6 +3232,7 @@
       "verification_notes": "Unit count verified from developer presentation."
     },
     {
+      "id": "CLAIM-PROJ-161",
       "entity": "Paltim Timișoara",
       "entity_type": "PROJECT",
       "field": "estimated_completion",
@@ -3091,6 +3252,7 @@
       "verification_notes": "Announced target completion year."
     },
     {
+      "id": "CLAIM-PROJ-162",
       "entity": "Greenfield Băneasa",
       "entity_type": "PROJECT",
       "field": "built_area_sqm",
@@ -3110,6 +3272,7 @@
       "verification_notes": "No official cadastre built area figure available."
     },
     {
+      "id": "CLAIM-PROJ-163",
       "entity": "Greenfield Băneasa",
       "entity_type": "PROJECT",
       "field": "investment_eur",
@@ -3129,6 +3292,7 @@
       "verification_notes": "Target investment value explicitly disclosed in investor filing."
     },
     {
+      "id": "CLAIM-PROJ-164",
       "entity": "Greenfield Băneasa",
       "entity_type": "PROJECT",
       "field": "unit_count",
@@ -3148,6 +3312,7 @@
       "verification_notes": "Unit count verified from developer presentation."
     },
     {
+      "id": "CLAIM-PROJ-165",
       "entity": "Greenfield Băneasa",
       "entity_type": "PROJECT",
       "field": "estimated_completion",
@@ -3167,6 +3332,7 @@
       "verification_notes": "Announced target completion year."
     },
     {
+      "id": "CLAIM-PROJ-166",
       "entity": "J8 Office Park",
       "entity_type": "PROJECT",
       "field": "built_area_sqm",
@@ -3186,6 +3352,7 @@
       "verification_notes": "No official cadastre built area figure available."
     },
     {
+      "id": "CLAIM-PROJ-167",
       "entity": "J8 Office Park",
       "entity_type": "PROJECT",
       "field": "investment_eur",
@@ -3205,6 +3372,7 @@
       "verification_notes": "Target investment value explicitly disclosed in investor filing."
     },
     {
+      "id": "CLAIM-PROJ-168",
       "entity": "J8 Office Park",
       "entity_type": "PROJECT",
       "field": "unit_count",
@@ -3224,6 +3392,7 @@
       "verification_notes": "Unit count not disclosed."
     },
     {
+      "id": "CLAIM-PROJ-169",
       "entity": "Stadionul Steaua București",
       "entity_type": "PROJECT",
       "field": "built_area_sqm",
@@ -3243,6 +3412,7 @@
       "verification_notes": "No official cadastre built area figure available."
     },
     {
+      "id": "CLAIM-PROJ-170",
       "entity": "Stadionul Steaua București",
       "entity_type": "PROJECT",
       "field": "investment_eur",
@@ -3262,6 +3432,7 @@
       "verification_notes": "Target investment value explicitly disclosed in investor filing."
     },
     {
+      "id": "CLAIM-PROJ-171",
       "entity": "Stadionul Steaua București",
       "entity_type": "PROJECT",
       "field": "unit_count",
@@ -3281,6 +3452,7 @@
       "verification_notes": "Unit count verified from developer presentation."
     },
     {
+      "id": "CLAIM-PROJ-172",
       "entity": "CTPark Bucharest West",
       "entity_type": "PROJECT",
       "field": "built_area_sqm",
@@ -3290,7 +3462,7 @@
       "currency": "N/A",
       "status": "VERIFIED_PRIMARY",
       "source_type": "PRIMARY_OFFICIAL",
-      "source_name": "ANCPI / Municipal Building Authorization Certificate",
+      "source_name": "ANCPI / Municipal Urban Planning Permit Certificate",
       "source_url": "https://www.ancpi.ro",
       "document_title": "Municipal Building Permit Record - CTPark Bucharest West",
       "publication_date": "2025-06-15",
@@ -3300,6 +3472,7 @@
       "verification_notes": "Primary municipal planning cadastre certificate verified."
     },
     {
+      "id": "CLAIM-PROJ-173",
       "entity": "CTPark Bucharest West",
       "entity_type": "PROJECT",
       "field": "investment_eur",
@@ -3319,6 +3492,7 @@
       "verification_notes": "Target investment value explicitly disclosed in investor filing."
     },
     {
+      "id": "CLAIM-PROJ-174",
       "entity": "CTPark Bucharest West",
       "entity_type": "PROJECT",
       "field": "unit_count",
@@ -3338,6 +3512,7 @@
       "verification_notes": "Unit count not disclosed."
     },
     {
+      "id": "CLAIM-PROJ-175",
       "entity": "CTPark Bucharest West",
       "entity_type": "PROJECT",
       "field": "estimated_completion",
@@ -3357,6 +3532,7 @@
       "verification_notes": "Announced target completion year."
     },
     {
+      "id": "CLAIM-PROJ-176",
       "entity": "H Eliade Towers",
       "entity_type": "PROJECT",
       "field": "built_area_sqm",
@@ -3376,6 +3552,7 @@
       "verification_notes": "No official cadastre built area figure available."
     },
     {
+      "id": "CLAIM-PROJ-177",
       "entity": "H Eliade Towers",
       "entity_type": "PROJECT",
       "field": "investment_eur",
@@ -3395,6 +3572,7 @@
       "verification_notes": "Target investment value explicitly disclosed in investor filing."
     },
     {
+      "id": "CLAIM-PROJ-178",
       "entity": "H Eliade Towers",
       "entity_type": "PROJECT",
       "field": "unit_count",
@@ -3414,6 +3592,7 @@
       "verification_notes": "Unit count verified from developer presentation."
     },
     {
+      "id": "CLAIM-PROJ-179",
       "entity": "Podul Suspendat peste Dunăre de la Brăila",
       "entity_type": "PROJECT",
       "field": "built_area_sqm",
@@ -3433,6 +3612,7 @@
       "verification_notes": "No official cadastre built area figure available."
     },
     {
+      "id": "CLAIM-PROJ-180",
       "entity": "Podul Suspendat peste Dunăre de la Brăila",
       "entity_type": "PROJECT",
       "field": "investment_eur",
@@ -3452,6 +3632,7 @@
       "verification_notes": "Target investment value explicitly disclosed in investor filing."
     },
     {
+      "id": "CLAIM-PROJ-181",
       "entity": "Podul Suspendat peste Dunăre de la Brăila",
       "entity_type": "PROJECT",
       "field": "unit_count",
@@ -3471,6 +3652,7 @@
       "verification_notes": "Unit count not disclosed."
     },
     {
+      "id": "CLAIM-COMP-182",
       "entity": "One United Properties",
       "entity_type": "COMPANY",
       "field": "cui_cif",
@@ -3490,6 +3672,7 @@
       "verification_notes": "Primary ANAF tax registration ID verified."
     },
     {
+      "id": "CLAIM-COMP-183",
       "entity": "One United Properties",
       "entity_type": "COMPANY",
       "field": "founded_year",
@@ -3509,6 +3692,7 @@
       "verification_notes": "Primary ONRC incorporation year verified."
     },
     {
+      "id": "CLAIM-COMP-184",
       "entity": "One United Properties",
       "entity_type": "COMPANY",
       "field": "projects_count",
@@ -3528,6 +3712,7 @@
       "verification_notes": "Company portfolio project count verified."
     },
     {
+      "id": "CLAIM-COMP-185",
       "entity": "Akcent Development",
       "entity_type": "COMPANY",
       "field": "cui_cif",
@@ -3547,6 +3732,7 @@
       "verification_notes": "Primary ANAF tax registration ID verified."
     },
     {
+      "id": "CLAIM-COMP-186",
       "entity": "Akcent Development",
       "entity_type": "COMPANY",
       "field": "founded_year",
@@ -3566,6 +3752,7 @@
       "verification_notes": "Primary ONRC incorporation year verified."
     },
     {
+      "id": "CLAIM-COMP-187",
       "entity": "Akcent Development",
       "entity_type": "COMPANY",
       "field": "projects_count",
@@ -3585,6 +3772,7 @@
       "verification_notes": "Company portfolio project count verified."
     },
     {
+      "id": "CLAIM-COMP-188",
       "entity": "Construcții Erbașu",
       "entity_type": "COMPANY",
       "field": "cui_cif",
@@ -3604,6 +3792,7 @@
       "verification_notes": "Primary ANAF tax registration ID verified."
     },
     {
+      "id": "CLAIM-COMP-189",
       "entity": "Construcții Erbașu",
       "entity_type": "COMPANY",
       "field": "founded_year",
@@ -3623,6 +3812,7 @@
       "verification_notes": "Primary ONRC incorporation year verified."
     },
     {
+      "id": "CLAIM-COMP-190",
       "entity": "Construcții Erbașu",
       "entity_type": "COMPANY",
       "field": "projects_count",
@@ -3642,6 +3832,7 @@
       "verification_notes": "Company portfolio project count verified."
     },
     {
+      "id": "CLAIM-COMP-191",
       "entity": "Skanska Romania",
       "entity_type": "COMPANY",
       "field": "cui_cif",
@@ -3661,6 +3852,7 @@
       "verification_notes": "Primary ANAF tax registration ID verified."
     },
     {
+      "id": "CLAIM-COMP-192",
       "entity": "Skanska Romania",
       "entity_type": "COMPANY",
       "field": "founded_year",
@@ -3680,6 +3872,7 @@
       "verification_notes": "Primary ONRC incorporation year verified."
     },
     {
+      "id": "CLAIM-COMP-193",
       "entity": "Skanska Romania",
       "entity_type": "COMPANY",
       "field": "projects_count",
@@ -3699,6 +3892,7 @@
       "verification_notes": "Company portfolio project count verified."
     },
     {
+      "id": "CLAIM-COMP-194",
       "entity": "CPA Structural Engineering",
       "entity_type": "COMPANY",
       "field": "cui_cif",
@@ -3718,6 +3912,7 @@
       "verification_notes": "Primary ANAF tax registration ID verified."
     },
     {
+      "id": "CLAIM-COMP-195",
       "entity": "CPA Structural Engineering",
       "entity_type": "COMPANY",
       "field": "founded_year",
@@ -3737,6 +3932,7 @@
       "verification_notes": "Primary ONRC incorporation year verified."
     },
     {
+      "id": "CLAIM-COMP-196",
       "entity": "CPA Structural Engineering",
       "entity_type": "COMPANY",
       "field": "projects_count",
@@ -3756,6 +3952,7 @@
       "verification_notes": "Company portfolio project count verified."
     },
     {
+      "id": "CLAIM-COMP-197",
       "entity": "Popp & Asociații",
       "entity_type": "COMPANY",
       "field": "cui_cif",
@@ -3775,6 +3972,7 @@
       "verification_notes": "Primary ANAF tax registration ID verified."
     },
     {
+      "id": "CLAIM-COMP-198",
       "entity": "Popp & Asociații",
       "entity_type": "COMPANY",
       "field": "founded_year",
@@ -3794,6 +3992,7 @@
       "verification_notes": "Primary ONRC incorporation year verified."
     },
     {
+      "id": "CLAIM-COMP-199",
       "entity": "Popp & Asociații",
       "entity_type": "COMPANY",
       "field": "projects_count",
@@ -3813,6 +4012,7 @@
       "verification_notes": "Company portfolio project count verified."
     },
     {
+      "id": "CLAIM-COMP-200",
       "entity": "Westfourth Architecture",
       "entity_type": "COMPANY",
       "field": "cui_cif",
@@ -3832,6 +4032,7 @@
       "verification_notes": "Primary ANAF tax registration ID verified."
     },
     {
+      "id": "CLAIM-COMP-201",
       "entity": "Westfourth Architecture",
       "entity_type": "COMPANY",
       "field": "founded_year",
@@ -3851,6 +4052,7 @@
       "verification_notes": "Primary ONRC incorporation year verified."
     },
     {
+      "id": "CLAIM-COMP-202",
       "entity": "Westfourth Architecture",
       "entity_type": "COMPANY",
       "field": "projects_count",
@@ -3870,6 +4072,7 @@
       "verification_notes": "Company portfolio project count verified."
     },
     {
+      "id": "CLAIM-COMP-203",
       "entity": "Dico și Țigănaș",
       "entity_type": "COMPANY",
       "field": "cui_cif",
@@ -3889,6 +4092,7 @@
       "verification_notes": "Primary ANAF tax registration ID verified."
     },
     {
+      "id": "CLAIM-COMP-204",
       "entity": "Dico și Țigănaș",
       "entity_type": "COMPANY",
       "field": "founded_year",
@@ -3908,6 +4112,7 @@
       "verification_notes": "Primary ONRC incorporation year verified."
     },
     {
+      "id": "CLAIM-COMP-205",
       "entity": "Dico și Țigănaș",
       "entity_type": "COMPANY",
       "field": "projects_count",
@@ -3927,6 +4132,7 @@
       "verification_notes": "Company portfolio project count verified."
     },
     {
+      "id": "CLAIM-COMP-206",
       "entity": "Concelex",
       "entity_type": "COMPANY",
       "field": "cui_cif",
@@ -3946,6 +4152,7 @@
       "verification_notes": "Primary ANAF tax registration ID verified."
     },
     {
+      "id": "CLAIM-COMP-207",
       "entity": "Concelex",
       "entity_type": "COMPANY",
       "field": "founded_year",
@@ -3965,6 +4172,7 @@
       "verification_notes": "Primary ONRC incorporation year verified."
     },
     {
+      "id": "CLAIM-COMP-208",
       "entity": "Concelex",
       "entity_type": "COMPANY",
       "field": "projects_count",
@@ -3984,6 +4192,7 @@
       "verification_notes": "Company portfolio project count verified."
     },
     {
+      "id": "CLAIM-COMP-209",
       "entity": "Prime Kapital",
       "entity_type": "COMPANY",
       "field": "cui_cif",
@@ -4003,6 +4212,7 @@
       "verification_notes": "Primary ANAF tax registration ID verified."
     },
     {
+      "id": "CLAIM-COMP-210",
       "entity": "Prime Kapital",
       "entity_type": "COMPANY",
       "field": "founded_year",
@@ -4022,6 +4232,7 @@
       "verification_notes": "Primary ONRC incorporation year verified."
     },
     {
+      "id": "CLAIM-COMP-211",
       "entity": "Prime Kapital",
       "entity_type": "COMPANY",
       "field": "projects_count",
@@ -4041,6 +4252,7 @@
       "verification_notes": "Company portfolio project count verified."
     },
     {
+      "id": "CLAIM-COMP-212",
       "entity": "PORR Construct Romania",
       "entity_type": "COMPANY",
       "field": "cui_cif",
@@ -4060,6 +4272,7 @@
       "verification_notes": "Primary ANAF tax registration ID verified."
     },
     {
+      "id": "CLAIM-COMP-213",
       "entity": "PORR Construct Romania",
       "entity_type": "COMPANY",
       "field": "founded_year",
@@ -4079,6 +4292,7 @@
       "verification_notes": "Primary ONRC incorporation year verified."
     },
     {
+      "id": "CLAIM-COMP-214",
       "entity": "PORR Construct Romania",
       "entity_type": "COMPANY",
       "field": "projects_count",
@@ -4098,6 +4312,7 @@
       "verification_notes": "Company portfolio project count verified."
     },
     {
+      "id": "CLAIM-COMP-215",
       "entity": "Metropolitan Residence",
       "entity_type": "COMPANY",
       "field": "cui_cif",
@@ -4117,6 +4332,7 @@
       "verification_notes": "Primary ANAF tax registration ID verified."
     },
     {
+      "id": "CLAIM-COMP-216",
       "entity": "Metropolitan Residence",
       "entity_type": "COMPANY",
       "field": "founded_year",
@@ -4136,6 +4352,7 @@
       "verification_notes": "Primary ONRC incorporation year verified."
     },
     {
+      "id": "CLAIM-COMP-217",
       "entity": "Metropolitan Residence",
       "entity_type": "COMPANY",
       "field": "projects_count",
@@ -4155,6 +4372,7 @@
       "verification_notes": "Company portfolio project count verified."
     },
     {
+      "id": "CLAIM-COMP-218",
       "entity": "Speedwell",
       "entity_type": "COMPANY",
       "field": "cui_cif",
@@ -4174,6 +4392,7 @@
       "verification_notes": "Primary ANAF tax registration ID verified."
     },
     {
+      "id": "CLAIM-COMP-219",
       "entity": "Speedwell",
       "entity_type": "COMPANY",
       "field": "founded_year",
@@ -4193,6 +4412,7 @@
       "verification_notes": "Primary ONRC incorporation year verified."
     },
     {
+      "id": "CLAIM-COMP-220",
       "entity": "Speedwell",
       "entity_type": "COMPANY",
       "field": "projects_count",
@@ -4212,6 +4432,7 @@
       "verification_notes": "Company portfolio project count verified."
     },
     {
+      "id": "CLAIM-COMP-221",
       "entity": "Metroul SA",
       "entity_type": "COMPANY",
       "field": "cui_cif",
@@ -4231,6 +4452,7 @@
       "verification_notes": "Primary ANAF tax registration ID verified."
     },
     {
+      "id": "CLAIM-COMP-222",
       "entity": "Metroul SA",
       "entity_type": "COMPANY",
       "field": "founded_year",
@@ -4250,6 +4472,7 @@
       "verification_notes": "Primary ONRC incorporation year verified."
     },
     {
+      "id": "CLAIM-COMP-223",
       "entity": "Metroul SA",
       "entity_type": "COMPANY",
       "field": "projects_count",
@@ -4269,6 +4492,7 @@
       "verification_notes": "Company portfolio project count verified."
     },
     {
+      "id": "CLAIM-COMP-224",
       "entity": "NEPI Rockcastle",
       "entity_type": "COMPANY",
       "field": "cui_cif",
@@ -4288,6 +4512,7 @@
       "verification_notes": "Primary ANAF tax registration ID verified."
     },
     {
+      "id": "CLAIM-COMP-225",
       "entity": "NEPI Rockcastle",
       "entity_type": "COMPANY",
       "field": "founded_year",
@@ -4307,6 +4532,7 @@
       "verification_notes": "Primary ONRC incorporation year verified."
     },
     {
+      "id": "CLAIM-COMP-226",
       "entity": "NEPI Rockcastle",
       "entity_type": "COMPANY",
       "field": "projects_count",
@@ -4326,6 +4552,7 @@
       "verification_notes": "Company portfolio project count verified."
     },
     {
+      "id": "CLAIM-COMP-227",
       "entity": "Iulius Group",
       "entity_type": "COMPANY",
       "field": "cui_cif",
@@ -4345,6 +4572,7 @@
       "verification_notes": "Primary ANAF tax registration ID verified."
     },
     {
+      "id": "CLAIM-COMP-228",
       "entity": "Iulius Group",
       "entity_type": "COMPANY",
       "field": "founded_year",
@@ -4364,6 +4592,7 @@
       "verification_notes": "Primary ONRC incorporation year verified."
     },
     {
+      "id": "CLAIM-COMP-229",
       "entity": "Iulius Group",
       "entity_type": "COMPANY",
       "field": "projects_count",
@@ -4383,6 +4612,7 @@
       "verification_notes": "Company portfolio project count verified."
     },
     {
+      "id": "CLAIM-COMP-230",
       "entity": "Forty Management",
       "entity_type": "COMPANY",
       "field": "cui_cif",
@@ -4402,6 +4632,7 @@
       "verification_notes": "Primary ANAF tax registration ID verified."
     },
     {
+      "id": "CLAIM-COMP-231",
       "entity": "Forty Management",
       "entity_type": "COMPANY",
       "field": "founded_year",
@@ -4421,6 +4652,7 @@
       "verification_notes": "Primary ONRC incorporation year verified."
     },
     {
+      "id": "CLAIM-COMP-232",
       "entity": "Forty Management",
       "entity_type": "COMPANY",
       "field": "projects_count",
@@ -4440,6 +4672,7 @@
       "verification_notes": "Company portfolio project count verified."
     },
     {
+      "id": "CLAIM-COMP-233",
       "entity": "Arcada Company",
       "entity_type": "COMPANY",
       "field": "cui_cif",
@@ -4459,6 +4692,7 @@
       "verification_notes": "Primary ANAF tax registration ID verified."
     },
     {
+      "id": "CLAIM-COMP-234",
       "entity": "Arcada Company",
       "entity_type": "COMPANY",
       "field": "founded_year",
@@ -4478,6 +4712,7 @@
       "verification_notes": "Primary ONRC incorporation year verified."
     },
     {
+      "id": "CLAIM-COMP-235",
       "entity": "Arcada Company",
       "entity_type": "COMPANY",
       "field": "projects_count",
@@ -4497,6 +4732,7 @@
       "verification_notes": "Company portfolio project count verified."
     },
     {
+      "id": "CLAIM-COMP-236",
       "entity": "HILS Development",
       "entity_type": "COMPANY",
       "field": "cui_cif",
@@ -4516,6 +4752,7 @@
       "verification_notes": "Primary ANAF tax registration ID verified."
     },
     {
+      "id": "CLAIM-COMP-237",
       "entity": "HILS Development",
       "entity_type": "COMPANY",
       "field": "founded_year",
@@ -4535,6 +4772,7 @@
       "verification_notes": "Primary ONRC incorporation year verified."
     },
     {
+      "id": "CLAIM-COMP-238",
       "entity": "HILS Development",
       "entity_type": "COMPANY",
       "field": "projects_count",
@@ -4554,6 +4792,7 @@
       "verification_notes": "Company portfolio project count verified."
     },
     {
+      "id": "CLAIM-COMP-239",
       "entity": "Webuild / Astaldi Romania",
       "entity_type": "COMPANY",
       "field": "cui_cif",
@@ -4573,6 +4812,7 @@
       "verification_notes": "Primary ANAF tax registration ID verified."
     },
     {
+      "id": "CLAIM-COMP-240",
       "entity": "Webuild / Astaldi Romania",
       "entity_type": "COMPANY",
       "field": "founded_year",
@@ -4592,6 +4832,7 @@
       "verification_notes": "Primary ONRC incorporation year verified."
     },
     {
+      "id": "CLAIM-COMP-241",
       "entity": "Webuild / Astaldi Romania",
       "entity_type": "COMPANY",
       "field": "projects_count",
@@ -4611,6 +4852,7 @@
       "verification_notes": "Company portfolio project count verified."
     },
     {
+      "id": "CLAIM-COMP-242",
       "entity": "Vastint Romania",
       "entity_type": "COMPANY",
       "field": "cui_cif",
@@ -4630,6 +4872,7 @@
       "verification_notes": "Primary ANAF tax registration ID verified."
     },
     {
+      "id": "CLAIM-COMP-243",
       "entity": "Vastint Romania",
       "entity_type": "COMPANY",
       "field": "founded_year",
@@ -4649,6 +4892,7 @@
       "verification_notes": "Primary ONRC incorporation year verified."
     },
     {
+      "id": "CLAIM-COMP-244",
       "entity": "Vastint Romania",
       "entity_type": "COMPANY",
       "field": "projects_count",
@@ -4668,6 +4912,7 @@
       "verification_notes": "Company portfolio project count verified."
     },
     {
+      "id": "CLAIM-COMP-245",
       "entity": "Impact Developer & Contractor",
       "entity_type": "COMPANY",
       "field": "cui_cif",
@@ -4687,6 +4932,7 @@
       "verification_notes": "Primary ANAF tax registration ID verified."
     },
     {
+      "id": "CLAIM-COMP-246",
       "entity": "Impact Developer & Contractor",
       "entity_type": "COMPANY",
       "field": "founded_year",
@@ -4706,6 +4952,7 @@
       "verification_notes": "Primary ONRC incorporation year verified."
     },
     {
+      "id": "CLAIM-COMP-247",
       "entity": "Impact Developer & Contractor",
       "entity_type": "COMPANY",
       "field": "projects_count",
@@ -4725,6 +4972,7 @@
       "verification_notes": "Company portfolio project count verified."
     },
     {
+      "id": "CLAIM-COMP-248",
       "entity": "Spedition UMB / UMB Group",
       "entity_type": "COMPANY",
       "field": "cui_cif",
@@ -4744,6 +4992,7 @@
       "verification_notes": "Primary ANAF tax registration ID verified."
     },
     {
+      "id": "CLAIM-COMP-249",
       "entity": "Spedition UMB / UMB Group",
       "entity_type": "COMPANY",
       "field": "founded_year",
@@ -4763,6 +5012,7 @@
       "verification_notes": "Primary ONRC incorporation year verified."
     },
     {
+      "id": "CLAIM-COMP-250",
       "entity": "Spedition UMB / UMB Group",
       "entity_type": "COMPANY",
       "field": "projects_count",
@@ -4782,6 +5032,7 @@
       "verification_notes": "Company portfolio project count verified."
     },
     {
+      "id": "CLAIM-COMP-251",
       "entity": "Globalworth Real Estate",
       "entity_type": "COMPANY",
       "field": "cui_cif",
@@ -4801,6 +5052,7 @@
       "verification_notes": "Primary ANAF tax registration ID verified."
     },
     {
+      "id": "CLAIM-COMP-252",
       "entity": "Globalworth Real Estate",
       "entity_type": "COMPANY",
       "field": "founded_year",
@@ -4820,6 +5072,7 @@
       "verification_notes": "Primary ONRC incorporation year verified."
     },
     {
+      "id": "CLAIM-COMP-253",
       "entity": "Globalworth Real Estate",
       "entity_type": "COMPANY",
       "field": "projects_count",
@@ -4839,6 +5092,7 @@
       "verification_notes": "Company portfolio project count verified."
     },
     {
+      "id": "CLAIM-COMP-254",
       "entity": "KÉSZ Construct Romania",
       "entity_type": "COMPANY",
       "field": "cui_cif",
@@ -4858,6 +5112,7 @@
       "verification_notes": "Primary ANAF tax registration ID verified."
     },
     {
+      "id": "CLAIM-COMP-255",
       "entity": "KÉSZ Construct Romania",
       "entity_type": "COMPANY",
       "field": "founded_year",
@@ -4877,6 +5132,7 @@
       "verification_notes": "Primary ONRC incorporation year verified."
     },
     {
+      "id": "CLAIM-COMP-256",
       "entity": "KÉSZ Construct Romania",
       "entity_type": "COMPANY",
       "field": "projects_count",
@@ -4896,6 +5152,7 @@
       "verification_notes": "Company portfolio project count verified."
     },
     {
+      "id": "CLAIM-COMP-257",
       "entity": "Strabag Romania",
       "entity_type": "COMPANY",
       "field": "cui_cif",
@@ -4915,6 +5172,7 @@
       "verification_notes": "Primary ANAF tax registration ID verified."
     },
     {
+      "id": "CLAIM-COMP-258",
       "entity": "Strabag Romania",
       "entity_type": "COMPANY",
       "field": "founded_year",
@@ -4934,6 +5192,7 @@
       "verification_notes": "Primary ONRC incorporation year verified."
     },
     {
+      "id": "CLAIM-COMP-259",
       "entity": "Strabag Romania",
       "entity_type": "COMPANY",
       "field": "projects_count",
@@ -4953,6 +5212,7 @@
       "verification_notes": "Company portfolio project count verified."
     },
     {
+      "id": "CLAIM-COMP-260",
       "entity": "Con-A Operations",
       "entity_type": "COMPANY",
       "field": "cui_cif",
@@ -4972,6 +5232,7 @@
       "verification_notes": "Primary ANAF tax registration ID verified."
     },
     {
+      "id": "CLAIM-COMP-261",
       "entity": "Con-A Operations",
       "entity_type": "COMPANY",
       "field": "founded_year",
@@ -4991,6 +5252,7 @@
       "verification_notes": "Primary ONRC incorporation year verified."
     },
     {
+      "id": "CLAIM-COMP-262",
       "entity": "Con-A Operations",
       "entity_type": "COMPANY",
       "field": "projects_count",
@@ -5010,6 +5272,7 @@
       "verification_notes": "Company portfolio project count verified."
     },
     {
+      "id": "CLAIM-COMP-263",
       "entity": "Maurer Imobiliare",
       "entity_type": "COMPANY",
       "field": "cui_cif",
@@ -5029,6 +5292,7 @@
       "verification_notes": "Primary ANAF tax registration ID verified."
     },
     {
+      "id": "CLAIM-COMP-264",
       "entity": "Maurer Imobiliare",
       "entity_type": "COMPANY",
       "field": "founded_year",
@@ -5048,6 +5312,7 @@
       "verification_notes": "Primary ONRC incorporation year verified."
     },
     {
+      "id": "CLAIM-COMP-265",
       "entity": "Maurer Imobiliare",
       "entity_type": "COMPANY",
       "field": "projects_count",
@@ -5067,6 +5332,7 @@
       "verification_notes": "Company portfolio project count verified."
     },
     {
+      "id": "CLAIM-COMP-266",
       "entity": "PORR Construct Romania",
       "entity_type": "COMPANY",
       "field": "cui_cif",
@@ -5086,6 +5352,7 @@
       "verification_notes": "Primary ANAF tax registration ID verified."
     },
     {
+      "id": "CLAIM-COMP-267",
       "entity": "PORR Construct Romania",
       "entity_type": "COMPANY",
       "field": "founded_year",
@@ -5105,6 +5372,7 @@
       "verification_notes": "Primary ONRC incorporation year verified."
     },
     {
+      "id": "CLAIM-COMP-268",
       "entity": "PORR Construct Romania",
       "entity_type": "COMPANY",
       "field": "projects_count",
@@ -5124,6 +5392,7 @@
       "verification_notes": "Company portfolio project count verified."
     },
     {
+      "id": "CLAIM-COMP-269",
       "entity": "Nusco Imobiliere",
       "entity_type": "COMPANY",
       "field": "cui_cif",
@@ -5143,6 +5412,7 @@
       "verification_notes": "Primary ANAF tax registration ID verified."
     },
     {
+      "id": "CLAIM-COMP-270",
       "entity": "Nusco Imobiliere",
       "entity_type": "COMPANY",
       "field": "founded_year",
@@ -5162,6 +5432,7 @@
       "verification_notes": "Primary ONRC incorporation year verified."
     },
     {
+      "id": "CLAIM-COMP-271",
       "entity": "Nusco Imobiliere",
       "entity_type": "COMPANY",
       "field": "projects_count",
@@ -5181,6 +5452,7 @@
       "verification_notes": "Company portfolio project count verified."
     },
     {
+      "id": "CLAIM-COMP-272",
       "entity": "Redport Capital",
       "entity_type": "COMPANY",
       "field": "cui_cif",
@@ -5200,6 +5472,7 @@
       "verification_notes": "Primary ANAF tax registration ID verified."
     },
     {
+      "id": "CLAIM-COMP-273",
       "entity": "Redport Capital",
       "entity_type": "COMPANY",
       "field": "founded_year",
@@ -5219,6 +5492,7 @@
       "verification_notes": "Primary ONRC incorporation year verified."
     },
     {
+      "id": "CLAIM-COMP-274",
       "entity": "Redport Capital",
       "entity_type": "COMPANY",
       "field": "projects_count",
@@ -5238,6 +5512,7 @@
       "verification_notes": "Company portfolio project count verified."
     },
     {
+      "id": "CLAIM-COMP-275",
       "entity": "River Development",
       "entity_type": "COMPANY",
       "field": "cui_cif",
@@ -5257,6 +5532,7 @@
       "verification_notes": "Primary ANAF tax registration ID verified."
     },
     {
+      "id": "CLAIM-COMP-276",
       "entity": "River Development",
       "entity_type": "COMPANY",
       "field": "founded_year",
@@ -5276,6 +5552,7 @@
       "verification_notes": "Primary ONRC incorporation year verified."
     },
     {
+      "id": "CLAIM-COMP-277",
       "entity": "River Development",
       "entity_type": "COMPANY",
       "field": "projects_count",
@@ -5295,6 +5572,7 @@
       "verification_notes": "Company portfolio project count verified."
     },
     {
+      "id": "CLAIM-COMP-278",
       "entity": "AFI Europe Romania",
       "entity_type": "COMPANY",
       "field": "cui_cif",
@@ -5314,6 +5592,7 @@
       "verification_notes": "Primary ANAF tax registration ID verified."
     },
     {
+      "id": "CLAIM-COMP-279",
       "entity": "AFI Europe Romania",
       "entity_type": "COMPANY",
       "field": "founded_year",
@@ -5333,6 +5612,7 @@
       "verification_notes": "Primary ONRC incorporation year verified."
     },
     {
+      "id": "CLAIM-COMP-280",
       "entity": "AFI Europe Romania",
       "entity_type": "COMPANY",
       "field": "projects_count",
@@ -5352,6 +5632,7 @@
       "verification_notes": "Company portfolio project count verified."
     },
     {
+      "id": "CLAIM-COMP-281",
       "entity": "Hagag Development Europe",
       "entity_type": "COMPANY",
       "field": "cui_cif",
@@ -5371,6 +5652,7 @@
       "verification_notes": "Primary ANAF tax registration ID verified."
     },
     {
+      "id": "CLAIM-COMP-282",
       "entity": "Hagag Development Europe",
       "entity_type": "COMPANY",
       "field": "founded_year",
@@ -5390,6 +5672,7 @@
       "verification_notes": "Primary ONRC incorporation year verified."
     },
     {
+      "id": "CLAIM-COMP-283",
       "entity": "Hagag Development Europe",
       "entity_type": "COMPANY",
       "field": "projects_count",
@@ -5409,6 +5692,7 @@
       "verification_notes": "Company portfolio project count verified."
     },
     {
+      "id": "CLAIM-COMP-284",
       "entity": "Forte Partners",
       "entity_type": "COMPANY",
       "field": "cui_cif",
@@ -5428,6 +5712,7 @@
       "verification_notes": "Primary ANAF tax registration ID verified."
     },
     {
+      "id": "CLAIM-COMP-285",
       "entity": "Forte Partners",
       "entity_type": "COMPANY",
       "field": "founded_year",
@@ -5447,6 +5732,7 @@
       "verification_notes": "Primary ONRC incorporation year verified."
     },
     {
+      "id": "CLAIM-COMP-286",
       "entity": "Forte Partners",
       "entity_type": "COMPANY",
       "field": "projects_count",
@@ -5466,6 +5752,7 @@
       "verification_notes": "Company portfolio project count verified."
     },
     {
+      "id": "CLAIM-COMP-287",
       "entity": "CTP Romania",
       "entity_type": "COMPANY",
       "field": "cui_cif",
@@ -5485,6 +5772,7 @@
       "verification_notes": "Primary ANAF tax registration ID verified."
     },
     {
+      "id": "CLAIM-COMP-288",
       "entity": "CTP Romania",
       "entity_type": "COMPANY",
       "field": "founded_year",
@@ -5504,6 +5792,7 @@
       "verification_notes": "Primary ONRC incorporation year verified."
     },
     {
+      "id": "CLAIM-COMP-289",
       "entity": "CTP Romania",
       "entity_type": "COMPANY",
       "field": "projects_count",
@@ -5523,6 +5812,7 @@
       "verification_notes": "Company portfolio project count verified."
     },
     {
+      "id": "CLAIM-COMP-290",
       "entity": "WDP Romania",
       "entity_type": "COMPANY",
       "field": "cui_cif",
@@ -5542,6 +5832,7 @@
       "verification_notes": "Primary ANAF tax registration ID verified."
     },
     {
+      "id": "CLAIM-COMP-291",
       "entity": "WDP Romania",
       "entity_type": "COMPANY",
       "field": "founded_year",
@@ -5561,6 +5852,7 @@
       "verification_notes": "Primary ONRC incorporation year verified."
     },
     {
+      "id": "CLAIM-COMP-292",
       "entity": "WDP Romania",
       "entity_type": "COMPANY",
       "field": "projects_count",
@@ -5580,6 +5872,7 @@
       "verification_notes": "Company portfolio project count verified."
     },
     {
+      "id": "CLAIM-COMP-293",
       "entity": "West Group Architecture",
       "entity_type": "COMPANY",
       "field": "cui_cif",
@@ -5599,6 +5892,7 @@
       "verification_notes": "Primary ANAF tax registration ID verified."
     },
     {
+      "id": "CLAIM-COMP-294",
       "entity": "West Group Architecture",
       "entity_type": "COMPANY",
       "field": "founded_year",
@@ -5618,6 +5912,7 @@
       "verification_notes": "Primary ONRC incorporation year verified."
     },
     {
+      "id": "CLAIM-COMP-295",
       "entity": "West Group Architecture",
       "entity_type": "COMPANY",
       "field": "projects_count",
@@ -5637,6 +5932,7 @@
       "verification_notes": "Company portfolio project count verified."
     },
     {
+      "id": "CLAIM-COMP-296",
       "entity": "Bog'Art",
       "entity_type": "COMPANY",
       "field": "cui_cif",
@@ -5656,6 +5952,7 @@
       "verification_notes": "Primary ANAF tax registration ID verified."
     },
     {
+      "id": "CLAIM-COMP-297",
       "entity": "Bog'Art",
       "entity_type": "COMPANY",
       "field": "founded_year",
@@ -5675,6 +5972,7 @@
       "verification_notes": "Primary ONRC incorporation year verified."
     },
     {
+      "id": "CLAIM-COMP-298",
       "entity": "Bog'Art",
       "entity_type": "COMPANY",
       "field": "projects_count",
@@ -5694,6 +5992,7 @@
       "verification_notes": "Company portfolio project count verified."
     },
     {
+      "id": "CLAIM-COMP-299",
       "entity": "Portland Trust",
       "entity_type": "COMPANY",
       "field": "cui_cif",
@@ -5713,6 +6012,7 @@
       "verification_notes": "Primary ANAF tax registration ID verified."
     },
     {
+      "id": "CLAIM-COMP-300",
       "entity": "Portland Trust",
       "entity_type": "COMPANY",
       "field": "founded_year",
@@ -5732,6 +6032,7 @@
       "verification_notes": "Primary ONRC incorporation year verified."
     },
     {
+      "id": "CLAIM-COMP-301",
       "entity": "Portland Trust",
       "entity_type": "COMPANY",
       "field": "projects_count",
