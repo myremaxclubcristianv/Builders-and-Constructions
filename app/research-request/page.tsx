@@ -150,6 +150,9 @@ export default function ResearchRequestPage() {
                       <option value="Competitive">Competitive — Developer Benchmarking & Market Positioning</option>
                       <option value="Contractor">Contractor — General Contractor Track Record & Capacity</option>
                       <option value="Developer Pipeline">Developer Pipeline — Multi-Site Expansion Audit</option>
+                      <option value="City / Regional">City / Regional — Municipal Hub & Sector Deep-Dive</option>
+                      <option value="Project Due Diligence">Project Due Diligence — Permitting & Legal Audit</option>
+                      <option value="Market Signal Research">Market Signal Research — Disclosures & Activity Monitoring</option>
                     </select>
                   </div>
 
