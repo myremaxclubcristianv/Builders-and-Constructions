@@ -95,7 +95,7 @@ export default async function MarketDashboardPage() {
                 <span className="text-[9px] text-[#C9A227] block font-bold">VERIFIED</span>
               </div>
               <div className="p-4 bg-[#111111] border border-[#1A1D1B] rounded-xl space-y-1">
-                <span className="text-[10px] text-[#888888] block">PROJECTS</span>
+                <span className="text-[10px] text-[#888888] block">TOTAL PROJECTS</span>
                 <div className="text-2xl font-bold text-white">{realProjectsDataset.length}</div>
                 <span className="text-[9px] text-[#38bdf8] block font-bold">DOCUMENTED</span>
               </div>
@@ -128,6 +128,28 @@ export default async function MarketDashboardPage() {
                 <span className="text-[10px] text-[#888888] block">REGIONAL HUBS</span>
                 <div className="text-2xl font-bold text-white">{realLocationsDataset.length}</div>
                 <span className="text-[9px] text-[#C9A227] block font-bold">COVERAGE</span>
+              </div>
+            </div>
+
+            {/* Construction Stage Breakdown Bar */}
+            <div className="p-4 bg-[#111111] border border-[#1A1D1B] rounded-xl grid grid-cols-1 sm:grid-cols-3 gap-4 font-mono text-xs">
+              <div className="flex items-center justify-between p-3 bg-[#050505] border border-[#1A1D1B] rounded-lg">
+                <span className="text-[#888888]">ACTIVE SITES UNDER CONSTRUCTION</span>
+                <strong className="text-[#38bdf8] font-bold text-sm">
+                  {realProjectsDataset.filter(p => p.status !== 'completed' && p.status !== 'delivered').length} SITES
+                </strong>
+              </div>
+              <div className="flex items-center justify-between p-3 bg-[#050505] border border-[#1A1D1B] rounded-lg">
+                <span className="text-[#888888]">PERMITTED / PLANNING PIPELINE</span>
+                <strong className="text-[#C9A227] font-bold text-sm">
+                  {realProjectsDataset.filter(p => (p.status || '').toLowerCase().includes('plan') || (p.status || '').toLowerCase().includes('permit') || (p.status || '').toLowerCase().includes('announced')).length} PROJECTS
+                </strong>
+              </div>
+              <div className="flex items-center justify-between p-3 bg-[#050505] border border-[#1A1D1B] rounded-lg">
+                <span className="text-[#888888]">DOCUMENTED RECENT DELIVERIES</span>
+                <strong className="text-[#86efac] font-bold text-sm">
+                  {realProjectsDataset.filter(p => p.status === 'completed' || p.status === 'delivered').length} COMPLETED
+                </strong>
               </div>
             </div>
           </div>
