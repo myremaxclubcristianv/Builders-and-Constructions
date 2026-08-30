@@ -4,6 +4,10 @@ import { SiteHeader } from '@/components/SiteHeader';
 import { SiteFooter } from '@/components/SiteFooter';
 import { getPublishedCompanies, getPublishedProjects, getIndustryHubData } from '@/lib/data';
 import { CompanyIntelligencePreview } from '@/components/CompanyIntelligencePreview';
+import { REAL_CONSTRUCTIONS_VIDEOS } from '@/lib/video-data';
+import { VideoCard } from '@/components/VideoCard';
+
+import { realCompaniesDataset, realProjectsDataset } from '@/lib/real-romanian-data';
 
 export default async function Home() {
   const [companyList, projectList, industryData] = await Promise.all([
@@ -14,7 +18,20 @@ export default async function Home() {
 
   const featuredProjects = projectList.slice(0, 6);
   const featuredCompanies = companyList.slice(0, 6);
-  const { metrics, marketActivity } = industryData;
+  const { marketActivity } = industryData;
+
+  // Real verified statistics derived strictly from dataset
+  const devCount = realCompaniesDataset.filter(c => c.type === 'developer').length;
+  const contractorCount = realCompaniesDataset.filter(c => c.type === 'general_contractor' || c.type === 'construction_company' || c.type === 'infrastructure').length;
+  const architectCount = realCompaniesDataset.filter(c => c.type === 'architecture').length;
+  const engineerCount = realCompaniesDataset.filter(c => c.type === 'engineering' || c.type === 'structural_engineering' || c.type === 'mep').length;
+  const agencyCount = realCompaniesDataset.filter(c => c.type === 'real_estate_agency').length;
+  const projectCount = realProjectsDataset.length;
+
+  const topProjectsByArea = [...projectList]
+    .filter(p => p.surface_area)
+    .sort((a, b) => (b.surface_area || 0) - (a.surface_area || 0))
+    .slice(0, 4);
 
   return (
     <div className="bg-[#050505] text-[#F3F1EB] min-h-screen selection:bg-[#C9A227] selection:text-[#050505]">
@@ -29,18 +46,18 @@ export default async function Home() {
             <div className="max-w-3xl space-y-6 animate-fadeIn">
               <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#111111] border border-[#C9A227]/30 rounded-full text-[10px] font-mono tracking-widest text-[#C9A227] uppercase">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#C9A227] animate-pulse" />
-                National Construction Intelligence Platform
+                Construction & Real Estate Intelligence for Romania
               </div>
 
               <h1 className="text-3xl sm:text-5xl md:text-7xl font-extrabold tracking-tight text-white leading-[1.05]">
-                NATIONAL CONSTRUCTION <br />
+                CONSTRUCTION <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-[#F3F1EB] to-[#C9A227]">
                   INTELLIGENCE
-                </span>
+                </span> FOR ROMANIA
               </h1>
 
               <p className="text-sm md:text-base text-[#A0A0A0] leading-relaxed max-w-xl font-normal">
-                Verified institutional intelligence documenting the developers, construction companies, engineers, and architectural practices shaping Romania&apos;s built environment.
+                An expanding intelligence database documenting developers, real estate agencies, general contractors, structural engineers, and architectural practices shaping Romania&apos;s built environment.
               </p>
 
               <div className="flex flex-wrap items-center gap-3 pt-2">
@@ -48,13 +65,13 @@ export default async function Home() {
                   href="/projects"
                   className="px-6 py-3.5 bg-[#C9A227] text-[#050505] font-mono text-xs font-bold uppercase tracking-wider rounded-lg hover:bg-[#E4C58F] active:scale-95 transition-all text-center min-w-[140px]"
                 >
-                  Explore Projects
+                  Explore Projects ({projectCount})
                 </Link>
                 <Link
-                  href="/companies"
+                  href="/developers"
                   className="px-6 py-3.5 bg-[#111111] border border-[#1A1D1B] text-white font-mono text-xs font-semibold uppercase tracking-wider rounded-lg hover:border-[#C9A227]/50 active:scale-95 transition-all text-center min-w-[140px]"
                 >
-                  Explore Companies
+                  Explore Developers ({devCount})
                 </Link>
                 <Link
                   href="/map"
@@ -68,62 +85,160 @@ export default async function Home() {
           </div>
         </section>
 
-        {/* 02 — INTELLIGENCE COUNTERS */}
-        <section className="bg-[#0B0B0B] border-b border-[#1A1D1B] py-8">
-          <div className="max-w-[1440px] mx-auto px-4 md:px-8">
+        {/* 02 — THE CONSTRUCTION & REAL ESTATE MARKET (DYNAMIC CATEGORY CARDS) */}
+        <section className="bg-[#0B0B0B] border-b border-[#1A1D1B] py-10">
+          <div className="max-w-[1440px] mx-auto px-4 md:px-8 space-y-4">
+            <div className="flex items-center justify-between">
+              <span className="text-[10px] font-mono uppercase tracking-widest text-[#C9A227]">
+                THE CONSTRUCTION & REAL ESTATE MARKET
+              </span>
+              <span className="text-[10px] font-mono text-[#888888]">
+                {realCompaniesDataset.length} VERIFIED ENTITIES INDEXED
+              </span>
+            </div>
+
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
-              <div className="p-4 bg-[#111111] border border-[#1A1D1B] rounded-xl flex flex-col justify-between">
-                <span className="text-[10px] font-mono text-[#888888] uppercase tracking-wider">VERIFIED PROJECTS</span>
+              <Link
+                href="/developers"
+                className="p-4 bg-[#111111] border border-[#1A1D1B] rounded-xl flex flex-col justify-between hover:border-[#C9A227]/50 transition-all group"
+              >
+                <span className="text-[10px] font-mono text-[#888888] uppercase tracking-wider group-hover:text-[#C9A227]">DEVELOPERS</span>
                 <div className="flex items-baseline gap-2 mt-2">
-                  <span className="text-2xl sm:text-3xl font-extrabold text-white font-mono">53</span>
-                  <span className="text-[10px] font-mono text-[#C9A227]">100% PASS</span>
+                  <span className="text-2xl sm:text-3xl font-extrabold text-white font-mono">{devCount}</span>
+                  <span className="text-[10px] font-mono text-[#C9A227]">DEV →</span>
+                </div>
+              </Link>
+
+              <Link
+                href="/contractors"
+                className="p-4 bg-[#111111] border border-[#1A1D1B] rounded-xl flex flex-col justify-between hover:border-[#C9A227]/50 transition-all group"
+              >
+                <span className="text-[10px] font-mono text-[#888888] uppercase tracking-wider group-hover:text-[#C9A227]">CONTRACTORS</span>
+                <div className="flex items-baseline gap-2 mt-2">
+                  <span className="text-2xl sm:text-3xl font-extrabold text-white font-mono">{contractorCount}</span>
+                  <span className="text-[10px] font-mono text-[#C9A227]">BUILD →</span>
+                </div>
+              </Link>
+
+              <Link
+                href="/architects"
+                className="p-4 bg-[#111111] border border-[#1A1D1B] rounded-xl flex flex-col justify-between hover:border-[#C9A227]/50 transition-all group"
+              >
+                <span className="text-[10px] font-mono text-[#888888] uppercase tracking-wider group-hover:text-[#C9A227]">ARCHITECTS</span>
+                <div className="flex items-baseline gap-2 mt-2">
+                  <span className="text-2xl sm:text-3xl font-extrabold text-white font-mono">{architectCount}</span>
+                  <span className="text-[10px] font-mono text-[#C9A227]">DESIGN →</span>
+                </div>
+              </Link>
+
+              <Link
+                href="/engineers"
+                className="p-4 bg-[#111111] border border-[#1A1D1B] rounded-xl flex flex-col justify-between hover:border-[#C9A227]/50 transition-all group"
+              >
+                <span className="text-[10px] font-mono text-[#888888] uppercase tracking-wider group-hover:text-[#C9A227]">ENGINEERS</span>
+                <div className="flex items-baseline gap-2 mt-2">
+                  <span className="text-2xl sm:text-3xl font-extrabold text-white font-mono">{engineerCount}</span>
+                  <span className="text-[10px] font-mono text-[#C9A227]">CONSULT →</span>
+                </div>
+              </Link>
+
+              <Link
+                href="/agencies"
+                className="p-4 bg-[#111111] border border-[#1A1D1B] rounded-xl flex flex-col justify-between hover:border-[#C9A227]/50 transition-all group"
+              >
+                <span className="text-[10px] font-mono text-[#888888] uppercase tracking-wider group-hover:text-[#C9A227]">AGENCIES</span>
+                <div className="flex items-baseline gap-2 mt-2">
+                  <span className="text-2xl sm:text-3xl font-extrabold text-white font-mono">{agencyCount}</span>
+                  <span className="text-[10px] font-mono text-[#C9A227]">ADVISORY →</span>
+                </div>
+              </Link>
+
+              <Link
+                href="/projects"
+                className="p-4 bg-[#111111] border border-[#1A1D1B] rounded-xl flex flex-col justify-between hover:border-[#C9A227]/50 transition-all group"
+              >
+                <span className="text-[10px] font-mono text-[#888888] uppercase tracking-wider group-hover:text-[#C9A227]">PROJECTS</span>
+                <div className="flex items-baseline gap-2 mt-2">
+                  <span className="text-2xl sm:text-3xl font-extrabold text-white font-mono">{projectCount}</span>
+                  <span className="text-[10px] font-mono text-[#C9A227]">SITES →</span>
+                </div>
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* 03 — MARKET INTELLIGENCE DASHBOARD (FACTUAL VERIFIED METRICS) */}
+        <section className="py-10 bg-[#070707] border-b border-[#1A1D1B]">
+          <div className="max-w-[1440px] mx-auto px-4 md:px-8 space-y-6">
+            <div className="flex items-center justify-between border-b border-[#1A1D1B] pb-3">
+              <div>
+                <span className="text-[10px] font-mono uppercase tracking-widest text-[#C9A227] block">
+                  Market Dashboard
+                </span>
+                <h2 className="text-lg md:text-2xl font-bold text-white tracking-tight mt-0.5">
+                  DOCUMENTED MARKET METRICS
+                </h2>
+              </div>
+              <Link href="/rankings" className="text-xs font-mono text-[#C9A227] hover:underline">
+                Full Rankings →
+              </Link>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {/* Top Projects by Surface Area */}
+              <div className="p-5 bg-[#111111] border border-[#1A1D1B] rounded-xl space-y-3">
+                <span className="text-[10px] font-mono uppercase text-[#888888] tracking-widest block">
+                  LARGEST DOCUMENTED PROJECTS (BUILT AREA SQM)
+                </span>
+                <div className="space-y-2">
+                  {topProjectsByArea.map((p, idx) => (
+                    <div key={p.slug} className="flex items-center justify-between p-2.5 bg-[#0B0B0B] border border-[#1A1D1B] rounded-lg text-xs">
+                      <div className="flex items-center gap-2.5 truncate">
+                        <span className="font-mono text-[#C9A227] font-bold">0{idx + 1}</span>
+                        <Link href={`/projects/${p.slug}`} className="font-semibold text-white hover:text-[#C9A227] truncate">
+                          {p.name}
+                        </Link>
+                      </div>
+                      <div className="text-right shrink-0">
+                        <span className="font-mono font-bold text-[#F3F1EB]">
+                          {p.surface_area ? `${p.surface_area.toLocaleString()} m²` : 'NOT DISCLOSED'}
+                        </span>
+                        <span className="block text-[9px] font-mono text-[#888888]">{p.location}</span>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
 
-              <div className="p-4 bg-[#111111] border border-[#1A1D1B] rounded-xl flex flex-col justify-between">
-                <span className="text-[10px] font-mono text-[#888888] uppercase tracking-wider">VERIFIED COMPANIES</span>
-                <div className="flex items-baseline gap-2 mt-2">
-                  <span className="text-2xl sm:text-3xl font-extrabold text-white font-mono">40</span>
-                  <span className="text-[10px] font-mono text-[#C9A227]">ONRC/ANAF</span>
-                </div>
-              </div>
-
-              <div className="p-4 bg-[#111111] border border-[#1A1D1B] rounded-xl flex flex-col justify-between">
-                <span className="text-[10px] font-mono text-[#888888] uppercase tracking-wider">LOCATIONS COVERED</span>
-                <div className="flex items-baseline gap-2 mt-2">
-                  <span className="text-2xl sm:text-3xl font-extrabold text-white font-mono">36</span>
-                  <span className="text-[10px] font-mono text-[#C9A227]">CITIES</span>
-                </div>
-              </div>
-
-              <div className="p-4 bg-[#111111] border border-[#1A1D1B] rounded-xl flex flex-col justify-between">
-                <span className="text-[10px] font-mono text-[#888888] uppercase tracking-wider">CONTRACTORS</span>
-                <div className="flex items-baseline gap-2 mt-2">
-                  <span className="text-2xl sm:text-3xl font-extrabold text-white font-mono">12</span>
-                  <span className="text-[10px] font-mono text-[#C9A227]">TOP SECTOR</span>
-                </div>
-              </div>
-
-              <div className="p-4 bg-[#111111] border border-[#1A1D1B] rounded-xl flex flex-col justify-between">
-                <span className="text-[10px] font-mono text-[#888888] uppercase tracking-wider">ARCHITECTS</span>
-                <div className="flex items-baseline gap-2 mt-2">
-                  <span className="text-2xl sm:text-3xl font-extrabold text-white font-mono">3</span>
-                  <span className="text-[10px] font-mono text-[#C9A227]">PRACTICES</span>
-                </div>
-              </div>
-
-              <div className="p-4 bg-[#111111] border border-[#1A1D1B] rounded-xl flex flex-col justify-between">
-                <span className="text-[10px] font-mono text-[#888888] uppercase tracking-wider">ENGINEERS</span>
-                <div className="flex items-baseline gap-2 mt-2">
-                  <span className="text-2xl sm:text-3xl font-extrabold text-white font-mono">3</span>
-                  <span className="text-[10px] font-mono text-[#C9A227]">SPECIALISTS</span>
+              {/* Active Regional Hubs */}
+              <div className="p-5 bg-[#111111] border border-[#1A1D1B] rounded-xl space-y-3">
+                <span className="text-[10px] font-mono uppercase text-[#888888] tracking-widest block">
+                  ACTIVE REGIONAL DEVELOPMENT HUBS
+                </span>
+                <div className="grid grid-cols-2 gap-2.5">
+                  <Link href="/cities/bucharest" className="p-3 bg-[#0B0B0B] border border-[#1A1D1B] rounded-lg hover:border-[#C9A227]/50 transition-all flex flex-col justify-between">
+                    <span className="text-xs font-bold text-white">Bucharest</span>
+                    <span className="text-[10px] font-mono text-[#C9A227] mt-1">28 INDEXED PROJECTS →</span>
+                  </Link>
+                  <Link href="/cities/cluj-napoca" className="p-3 bg-[#0B0B0B] border border-[#1A1D1B] rounded-lg hover:border-[#C9A227]/50 transition-all flex flex-col justify-between">
+                    <span className="text-xs font-bold text-white">Cluj-Napoca</span>
+                    <span className="text-[10px] font-mono text-[#C9A227] mt-1">6 INDEXED PROJECTS →</span>
+                  </Link>
+                  <Link href="/cities/timisoara" className="p-3 bg-[#0B0B0B] border border-[#1A1D1B] rounded-lg hover:border-[#C9A227]/50 transition-all flex flex-col justify-between">
+                    <span className="text-xs font-bold text-white">Timișoara</span>
+                    <span className="text-[10px] font-mono text-[#C9A227] mt-1">5 INDEXED PROJECTS →</span>
+                  </Link>
+                  <Link href="/cities/iasi" className="p-3 bg-[#0B0B0B] border border-[#1A1D1B] rounded-lg hover:border-[#C9A227]/50 transition-all flex flex-col justify-between">
+                    <span className="text-xs font-bold text-white">Iași</span>
+                    <span className="text-[10px] font-mono text-[#C9A227] mt-1">4 INDEXED PROJECTS →</span>
+                  </Link>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* 03 — FEATURED PROJECTS */}
+        {/* 04 — FEATURED PROJECTS */}
         <section className="py-12 md:py-20 border-b border-[#1A1D1B]">
           <div className="max-w-[1440px] mx-auto px-4 md:px-8">
             <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
@@ -164,7 +279,7 @@ export default async function Home() {
                         {p.status}
                       </span>
                       <span className="px-2 py-1 bg-[#C9A227]/20 border border-[#C9A227]/40 rounded-md text-[9px] font-mono text-[#C9A227] uppercase tracking-wider font-semibold">
-                        VERIFIED
+                        OFFICIAL RECORD
                       </span>
                     </div>
                   </div>
@@ -190,7 +305,7 @@ export default async function Home() {
           </div>
         </section>
 
-        {/* 04 — EXPLORE BY INTELLIGENCE */}
+        {/* 05 — EXPLORE BY INTELLIGENCE */}
         <section className="py-12 md:py-20 bg-[#0B0B0B] border-b border-[#1A1D1B]">
           <div className="max-w-[1440px] mx-auto px-4 md:px-8">
             <div className="mb-8">
@@ -198,7 +313,7 @@ export default async function Home() {
                 Navigation Directory
               </span>
               <h2 className="text-2xl md:text-4xl font-extrabold text-white tracking-tight">
-                EXPLORE NATIONAL INTELLIGENCE
+                EXPLORE MARKET INTELLIGENCE
               </h2>
             </div>
 
@@ -262,7 +377,7 @@ export default async function Home() {
           </div>
         </section>
 
-        {/* 05 — FEATURED COMPANIES */}
+        {/* 06 — FEATURED COMPANIES */}
         <section className="py-12 md:py-20 border-b border-[#1A1D1B]">
           <div className="max-w-[1440px] mx-auto px-4 md:px-8">
             <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
@@ -271,7 +386,7 @@ export default async function Home() {
                   Executive Dossiers
                 </span>
                 <h2 className="text-2xl md:text-4xl font-extrabold text-white tracking-tight">
-                  VERIFIED INDUSTRY PLAYERS
+                  INDEXED INDUSTRY PLAYERS
                 </h2>
               </div>
               <Link href="/companies" className="text-xs font-mono text-[#C9A227] hover:text-[#E4C58F] uppercase tracking-wider flex items-center gap-1">
@@ -290,7 +405,7 @@ export default async function Home() {
                     <div className="flex items-center justify-between">
                       <span className="text-[10px] font-mono text-[#888888]">0{idx + 1} · {c.type}</span>
                       <span className="px-2 py-0.5 bg-[#C9A227]/10 text-[#C9A227] border border-[#C9A227]/30 rounded text-[9px] font-mono uppercase">
-                        ONRC VERIFIED
+                        PUBLIC RECORD
                       </span>
                     </div>
 
@@ -333,7 +448,7 @@ export default async function Home() {
           </div>
         </section>
 
-        {/* 06 — LATEST ACTIVITY FEED */}
+        {/* 07 — LATEST ACTIVITY FEED */}
         <section className="py-12 md:py-20 bg-[#0B0B0B] border-b border-[#1A1D1B]">
           <div className="max-w-[1440px] mx-auto px-4 md:px-8">
             <div className="mb-8">
@@ -341,7 +456,7 @@ export default async function Home() {
                 Market Activity Stream
               </span>
               <h2 className="text-2xl md:text-4xl font-extrabold text-white tracking-tight">
-                REAL-TIME VERIFIED SIGNALS
+                VERIFIED MARKET SIGNALS
               </h2>
             </div>
 
@@ -370,30 +485,59 @@ export default async function Home() {
           </div>
         </section>
 
-        {/* 07 — FINAL CONVERSION CTA */}
+        {/* FROM THE CONSTRUCTIONS DESK — VIDEO SHOWCASE */}
+        <section className="py-12 md:py-20 bg-[#050505] border-b border-[#1A1D1B]">
+          <div className="max-w-[1440px] mx-auto px-4 md:px-8">
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+              <div>
+                <span className="text-[10px] font-mono uppercase tracking-widest text-[#C9A227] block mb-1">
+                  Editorial Media Desk
+                </span>
+                <h2 className="text-2xl md:text-4xl font-extrabold text-white tracking-tight">
+                  FROM THE CONSTRUCTIONS DESK
+                </h2>
+              </div>
+              <Link
+                href="/video"
+                className="text-xs font-mono text-[#C9A227] hover:text-[#E4C58F] uppercase tracking-wider flex items-center gap-1"
+              >
+                <span>VIEW ALL VIDEO DESK</span>
+                <span>→</span>
+              </Link>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {REAL_CONSTRUCTIONS_VIDEOS.slice(0, 3).map(video => (
+                <VideoCard key={video.id} video={video} />
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* 08 — FINAL CONVERSION CTA */}
         <section className="py-16 md:py-24 bg-gradient-to-br from-[#111111] via-[#0B0B0B] to-[#050505]">
           <div className="max-w-[1440px] mx-auto px-4 md:px-8 text-center space-y-6">
             <span className="text-[10px] font-mono uppercase tracking-widest text-[#C9A227]">
-              INSTITUTIONAL EXPOSURE
+              PARTNERSHIP & INTEGRATION
             </span>
             <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight max-w-3xl mx-auto leading-tight">
-              ELEVATE YOUR ENTITY IN THE NATIONAL INTELLIGENCE DATASET
+              PARTNER WITH CONSTRUCTIONS
             </h2>
             <p className="text-sm md:text-base text-[#A0A0A0] max-w-xl mx-auto">
-              Join leading Romanian developers, general contractors, and engineering practices documented in our verified institutional database.
+              Explore corporate partnership solutions, intelligence subscriptions, and verified project presentation capabilities for Romania&apos;s construction market.
             </p>
             <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
               <Link
-                href="/promote-company"
+                href="/work-with-us"
                 className="px-6 py-3.5 bg-[#C9A227] text-[#050505] font-mono text-xs font-bold uppercase tracking-wider rounded-lg hover:bg-[#E4C58F] active:scale-95 transition-all"
               >
-                Promote My Company
+                Partner With Us
               </Link>
               <Link
-                href="/promote-project"
+                href="/report-error"
                 className="px-6 py-3.5 bg-[#111111] border border-[#1A1D1B] text-white font-mono text-xs font-semibold uppercase tracking-wider rounded-lg hover:border-[#C9A227]/50 active:scale-95 transition-all"
               >
-                Promote A Project
+                Request Profile Update
               </Link>
             </div>
           </div>

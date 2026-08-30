@@ -637,9 +637,23 @@ export async function getIndustryHubData() {
   };
 }
 
+function normalizeDiacritics(str: string): string {
+  if (!str) return '';
+  return str
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/ș/g, 's')
+    .replace(/ț/g, 't')
+    .replace(/ă/g, 'a')
+    .replace(/â/g, 'a')
+    .replace(/î/g, 'i');
+}
+
 export async function searchIntelligenceGlobal(term: string) {
-  const query = term.toLowerCase().trim();
-  if (!query) {
+  const rawQuery = term.toLowerCase().trim();
+  const normalizedQuery = normalizeDiacritics(rawQuery);
+  if (!rawQuery) {
     return {
       matchingCompanies: [],
       matchingProjects: [],
@@ -648,18 +662,50 @@ export async function searchIntelligenceGlobal(term: string) {
     };
   }
 
-  const matchingCompanies = mappedRealCompanies.filter(
-    c => c.name.toLowerCase().includes(query) || c.description?.toLowerCase().includes(query) || c.location?.toLowerCase().includes(query) || c.type.toLowerCase().includes(query) || c.specializations?.some(s => s.toLowerCase().includes(query))
-  );
+  const matchingCompanies = mappedRealCompanies.filter(c => {
+    const nameNorm = normalizeDiacritics(c.name);
+    const descNorm = normalizeDiacritics(c.description || '');
+    const locNorm = normalizeDiacritics(c.location || '');
+    const typeNorm = normalizeDiacritics(c.type || '');
+    const specsNorm = (c.specializations || []).map(normalizeDiacritics);
 
-  const matchingProjects = mappedRealProjects.filter(
-    p => p.name.toLowerCase().includes(query) || p.description?.toLowerCase().includes(query) || p.location?.toLowerCase().includes(query) || p.project_type?.toLowerCase().includes(query) || p.developer?.toLowerCase().includes(query) || p.contractor_name?.toLowerCase().includes(query) || p.architect_name?.toLowerCase().includes(query)
-  );
+    return nameNorm.includes(normalizedQuery) ||
+      descNorm.includes(normalizedQuery) ||
+      locNorm.includes(normalizedQuery) ||
+      typeNorm.includes(normalizedQuery) ||
+      specsNorm.some(s => s.includes(normalizedQuery));
+  });
+
+  const matchingProjects = mappedRealProjects.filter(p => {
+    const nameNorm = normalizeDiacritics(p.name);
+    const descNorm = normalizeDiacritics(p.description || '');
+    const locNorm = normalizeDiacritics(p.location || '');
+    const typeNorm = normalizeDiacritics(p.project_type || '');
+    const devNorm = normalizeDiacritics(p.developer || '');
+    const gcNorm = normalizeDiacritics(p.contractor_name || '');
+    const archNorm = normalizeDiacritics(p.architect_name || '');
+
+    return nameNorm.includes(normalizedQuery) ||
+      descNorm.includes(normalizedQuery) ||
+      locNorm.includes(normalizedQuery) ||
+      typeNorm.includes(normalizedQuery) ||
+      devNorm.includes(normalizedQuery) ||
+      gcNorm.includes(normalizedQuery) ||
+      archNorm.includes(normalizedQuery);
+  });
 
   const hubData = await getIndustryHubData();
-  const matchingSignals = hubData.marketActivity.filter(
-    s => s.title.toLowerCase().includes(query) || s.summary.toLowerCase().includes(query) || s.company_name.toLowerCase().includes(query) || s.location.toLowerCase().includes(query)
-  );
+  const matchingSignals = hubData.marketActivity.filter(s => {
+    const titleNorm = normalizeDiacritics(s.title);
+    const sumNorm = normalizeDiacritics(s.summary || '');
+    const compNorm = normalizeDiacritics(s.company_name || '');
+    const locNorm = normalizeDiacritics(s.location || '');
+
+    return titleNorm.includes(normalizedQuery) ||
+      sumNorm.includes(normalizedQuery) ||
+      compNorm.includes(normalizedQuery) ||
+      locNorm.includes(normalizedQuery);
+  });
 
   return {
     matchingCompanies,

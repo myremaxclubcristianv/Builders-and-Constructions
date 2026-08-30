@@ -6,10 +6,10 @@ import { realProjectsDataset, realCompaniesDataset } from '@/lib/real-romanian-d
 import { getAdminIdentity } from '@/lib/admin-auth';
 import { SiteHeader } from '@/components/SiteHeader';
 import { SiteFooter } from '@/components/SiteFooter';
-import { CompanyIntelligencePreview } from '@/components/CompanyIntelligencePreview';
 import { DossierNav } from '@/components/DossierNav';
 import { ProjectStageLifecycle } from '@/components/ProjectStageLifecycle';
 import { LeadForm } from '@/components/LeadForm';
+import { BookmarkButton } from '@/components/BookmarkButton';
 
 export async function generateMetadata({
   params,
@@ -31,10 +31,23 @@ export async function generateMetadata({
   const isIndexable = p.published_at && !isPreview;
 
   return {
-    title: `${p.name} — Full Intelligence Dossier V17 | CONSTRUCTIONS by AiXLuxury`,
-    description: p.description || `Research-grade development dossier, construction lifecycle stage, specifications, and project team for ${p.name} in ${p.location || 'Romania'}.`,
+    title: `${p.name} — Project Dossier | CONSTRUCTIONS by AiXLuxury`,
+    description: p.description || `Development dossier, construction lifecycle stage, specifications, and project team for ${p.name} in ${p.location || 'Romania'}.`,
     alternates: {
-      canonical: `https://constructions.aixluxury.com/projects/${p.slug}`
+      canonical: `https://constructions.cristianvaduva.com/projects/${p.slug}`
+    },
+    openGraph: {
+      title: `${p.name} — Project Dossier | CONSTRUCTIONS by AiXLuxury`,
+      description: p.description || `Development dossier for ${p.name}.`,
+      url: `https://constructions.cristianvaduva.com/projects/${p.slug}`,
+      siteName: 'CONSTRUCTIONS by AiXLuxury',
+      locale: 'en_US',
+      type: 'website'
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${p.name} | CONSTRUCTIONS by AiXLuxury`,
+      description: p.description || `Development dossier for ${p.name}.`
     },
     robots: {
       index: Boolean(isIndexable),
@@ -99,8 +112,26 @@ export default async function ProjectProfile({
 
   const heroUrl = p.image || 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=85';
 
+  // Schema.org Place / Building JSON-LD
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Place',
+    name: p.name,
+    description: p.description,
+    url: `https://constructions.cristianvaduva.com/projects/${p.slug}`,
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: p.location || 'Romania',
+      addressCountry: 'RO'
+    }
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <SiteHeader />
       <main style={{ background: '#0c0e0c', color: '#fff', minHeight: '100vh' }}>
         {isPreviewAllowed && (
@@ -122,13 +153,14 @@ export default async function ProjectProfile({
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 12, marginBottom: 12 }}>
               <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
                 <span className="eyebrow" style={{ color: '#c7a675', margin: 0 }}>
-                  FULL PROJECT INTELLIGENCE DOSSIER V17
+                  PROJECT DOSSIER
                 </span>
                 <span style={{ fontSize: 10, fontWeight: 800, border: '1px solid #38bdf8', color: '#38bdf8', padding: '2px 8px', borderRadius: 2 }}>
                   {p.status_display || p.status || 'UNDER CONSTRUCTION'}
                 </span>
               </div>
-              <div style={{ display: 'flex', gap: 8 }}>
+              <div style={{ display: 'flex', gap: 8, alignItems: 'center', flexWrap: 'wrap' }}>
+                <BookmarkButton id={p.slug} name={p.name} type="project" slug={p.slug} subtext={`${p.project_type || 'Development'} · ${p.location || 'Romania'}`} />
                 <Link href={`/compare?p1=${p.slug}`} className="btn-secondary" style={{ padding: '6px 14px', fontSize: 11 }}>
                   ⚖️ COMPARE PROJECT
                 </Link>
@@ -157,6 +189,16 @@ export default async function ProjectProfile({
                 </span>
               )}
             </p>
+
+            {/* COMPACT BUSINESS-SAFE DISCLOSURE BOX */}
+            <div style={{ marginTop: 24, padding: 16, background: '#111412', border: '1px solid #242926', borderRadius: 6, fontSize: 12, color: '#a0a0a0', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 12 }}>
+              <div>
+                <strong style={{ color: '#fff' }}>Independent Platform Disclosure:</strong> CONSTRUCTIONS is an independent information and research platform. Inclusion of an entity does not imply representation, endorsement, partnership, or commercial relationship with that entity.
+              </div>
+              <Link href={`/report-error?project=${encodeURIComponent(p.name)}`} style={{ color: '#c7a675', fontWeight: 700, textDecoration: 'none', whiteSpace: 'nowrap' }}>
+                Request Correction →
+              </Link>
+            </div>
           </div>
         </section>
 
@@ -173,7 +215,7 @@ export default async function ProjectProfile({
           </div>
 
           <div style={{ padding: 24, background: '#141715', border: '1px solid #262927', borderRadius: 6, fontSize: 15, lineHeight: 1.7, color: '#d4d2c8' }}>
-            {p.description || `Verified Romanian real-estate & civil infrastructure development project tracked in terminal.`}
+            {p.description || `Verified Romanian real-estate & civil infrastructure development project.`}
           </div>
         </section>
 
@@ -279,7 +321,11 @@ export default async function ProjectProfile({
             <div>
               <div style={{ fontSize: 11, fontWeight: 800, color: '#c7a675' }}>ANNOUNCED CAPITAL INVESTMENT</div>
               <div style={{ fontSize: 32, fontWeight: 800, color: '#fff', marginTop: 4 }}>
-                {p.investment_label || (p.investment_eur ? `€${(p.investment_eur / 1000000).toFixed(1)}M EUR` : 'NOT DISCLOSED')}
+                {p.investment_eur && p.investment_eur > 0
+                  ? `€${(p.investment_eur / 1000000).toFixed(1)}M EUR`
+                  : p.investment_label?.toUpperCase().includes('ANNOUNCED')
+                  ? 'ANNOUNCED — AMOUNT NOT DISCLOSED'
+                  : p.investment_label || 'NOT DISCLOSED'}
               </div>
               <div style={{ fontSize: 12, color: '#aaa', marginTop: 4 }}>Verified investment allocation</div>
             </div>
@@ -465,16 +511,26 @@ export default async function ProjectProfile({
           </div>
         </section>
 
-        {/* CONVERSION FORM */}
+        {/* RESEARCH INTAKE SECTION */}
         <section className="conversion">
           <div className="shell">
-            <div className="eyebrow" style={{ color: '#25221b' }}>Project Inquiry & Commercial Mandate</div>
-            <h2>INTERESTED IN THIS DEVELOPMENT?</h2>
-            <p style={{ color: '#25221b', marginBottom: 28, maxWidth: 540 }}>
-              Initiate direct procurement, architectural presentations or drone media coverage for this project.
+            <div className="eyebrow" style={{ color: '#25221b' }}>Independent Intelligence & Due Diligence</div>
+            <h2>NEED ADDITIONAL PROJECT DUE DILIGENCE?</h2>
+            <p style={{ color: '#25221b', marginBottom: 20, maxWidth: 580, lineHeight: 1.6 }}>
+              CONSTRUCTIONS provides independently researched market information. Request additional due diligence, physical spec verification, or site research through the CONSTRUCTIONS research team.
             </p>
-            <div style={{ maxWidth: 680 }}>
-              <LeadForm kind="project" company={p.name} />
+
+            <div style={{ padding: 16, background: 'rgba(5, 5, 5, 0.05)', border: '1px solid rgba(5, 5, 5, 0.15)', borderRadius: 6, marginBottom: 24, fontSize: 11, color: '#333', lineHeight: 1.5, maxWidth: 680 }}>
+              <strong>INDEPENDENT PLATFORM DISCLOSURE:</strong> CONSTRUCTIONS is an independent information and research platform. Inclusion of an entity does not imply representation, endorsement, partnership, or commercial relationship with that entity. Requests submitted through CONSTRUCTIONS are handled by the CONSTRUCTIONS research team and are not automatically forwarded to the profiled entity.
+            </div>
+
+            <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+              <Link href={`/research-request?category=PROJECT&subject=${encodeURIComponent(p.name)}`} className="btn fill font-mono text-xs">
+                REQUEST INSTITUTIONAL RESEARCH →
+              </Link>
+              <Link href={`/report-error?project=${encodeURIComponent(p.name)}`} style={{ fontSize: 11, border: '1px solid #111', color: '#111', padding: '12px 20px', borderRadius: 4, fontWeight: 800, textDecoration: 'none', display: 'inline-flex', alignItems: 'center' }}>
+                REQUEST PROFILE CORRECTION
+              </Link>
             </div>
           </div>
         </section>

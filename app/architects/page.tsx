@@ -1,90 +1,115 @@
 import Link from 'next/link';
+import type { Metadata } from 'next';
 import { SiteHeader } from '@/components/SiteHeader';
 import { SiteFooter } from '@/components/SiteFooter';
-import { realCompaniesDataset, realProjectsDataset } from '@/lib/real-romanian-data';
+import { realCompaniesDataset } from '@/lib/real-romanian-data';
 
-export const metadata = {
-  title: 'Romanian Architects & Masterplanning Practices · CONSTRUCTIONS by AiXLuxury',
-  description: 'Verified directory of architectural practices, masterplanning studios, and facade design offices shaping developments in Romania.'
+export const metadata: Metadata = {
+  title: 'Architecture & Urban Planning Studios | CONSTRUCTIONS by AiXLuxury',
+  description: 'Verified public-source directory of architectural design studios, urban planners, interior architects, and masterplanning practices in Romania.',
+  alternates: {
+    canonical: 'https://constructions.cristianvaduva.com/architects'
+  }
 };
 
 export default function ArchitectsPage() {
   const architects = realCompaniesDataset.filter(c => c.type === 'architecture');
 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: 'Architecture Studios Directory',
+    description: 'Verified directory of architectural practices and urban planners in Romania.',
+    url: 'https://constructions.cristianvaduva.com/architects',
+    numberOfItems: architects.length
+  };
+
   return (
-    <>
-      <main>
-        <div className="hero" style={{ paddingBottom: 50 }}>
-          <SiteHeader />
-          <div className="shell hero-content">
-            <div className="eyebrow" style={{ color: '#c7a675' }}>Architectural Design & Urban Masterplanning</div>
-            <h1>ROMANIAN ARCHITECTURE FIRMS</h1>
-            <p>Verified profile database of architectural practices, urban masterplanners, and facade design studios behind Romania’s landmark residential, office, and mixed-use complexes.</p>
-          </div>
-        </div>
+    <div className="bg-[#050505] text-[#F3F1EB] min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <SiteHeader />
 
-        <section className="section shell">
-          <div className="section-head">
-            <div>
-              <div className="eyebrow" style={{ color: '#c7a675' }}>Verified Practices</div>
-              <h2>ARCHITECTURE & DESIGN STUDIOS ({architects.length})</h2>
+      <main className="pt-24 pb-20">
+        <section className="border-b border-[#1A1D1B] bg-[#0B0B0B] py-12 md:py-16">
+          <div className="max-w-[1440px] mx-auto px-4 md:px-8 space-y-4">
+            <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#C9A227]">
+              <span>MARKET TAXONOMY</span>
+              <span>·</span>
+              <span className="text-white font-bold">{architects.length} VERIFIED ARCHITECTURE STUDIOS</span>
             </div>
+            <h1 className="text-3xl md:text-5xl font-extrabold text-white tracking-tight">
+              ARCHITECTURE & URBAN PLANNING STUDIOS
+            </h1>
+            <p className="text-sm md:text-base text-[#A0A0A0] max-w-3xl leading-relaxed font-mono">
+              Independent coverage of architectural practices, healthcare designers, urban masterplanners, heritage restoration architects, and nZEB sustainable design practices.
+            </p>
           </div>
+        </section>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: 24 }}>
-            {architects.map(comp => {
-              const designedProjects = realProjectsDataset.filter(p => p.architect_slug === comp.slug);
-
-              return (
-                <div
-                  key={comp.slug}
-                  style={{
-                    background: '#141715',
-                    border: '1px solid #262927',
-                    borderRadius: 6,
-                    padding: 24,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'space-between'
-                  }}
-                >
-                  <div>
-                    <div style={{ fontSize: 10, color: '#c7a675', fontWeight: 800, letterSpacing: '0.08em' }}>ARCHITECTURE FIRM</div>
-                    <h3 style={{ fontSize: 20, fontWeight: 700, margin: '6px 0 10px', color: '#fff' }}>
-                      <Link href={`/companies/${comp.slug}`} style={{ color: '#fff', textDecoration: 'none' }}>{comp.name}</Link>
-                    </h3>
-                    <p style={{ fontSize: 13, color: '#aaa', lineHeight: 1.5, marginBottom: 16 }}>{comp.description}</p>
-                    
-                    <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', marginBottom: 16 }}>
-                      {comp.specializations.map(spec => (
-                        <span key={spec} style={{ fontSize: 10, background: '#222523', color: '#ccc', padding: '3px 8px', borderRadius: 3 }}>
-                          {spec}
-                        </span>
-                      ))}
-                    </div>
+        <section className="max-w-[1440px] mx-auto px-4 md:px-8 pt-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {architects.map(arch => (
+              <div
+                key={arch.id}
+                className="bg-[#0B0B0B] border border-[#1A1D1B] hover:border-[#C9A227]/50 transition-all rounded-xl p-6 flex flex-col justify-between space-y-4 group"
+              >
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between">
+                    <span className="px-2.5 py-0.5 bg-[#a855f7]/10 text-[#a855f7] border border-[#a855f7]/30 text-[10px] font-mono font-bold uppercase rounded">
+                      ARCHITECTURE
+                    </span>
+                    <span className="text-[10px] font-mono text-[#888888]">
+                      Founded {arch.founded_year || 'N/A'}
+                    </span>
                   </div>
 
-                  <div style={{ borderTop: '1px solid #222523', paddingTop: 14 }}>
-                    <div style={{ fontSize: 12, color: '#888', marginBottom: 10 }}>
-                      Tracked Designed Projects: <strong style={{ color: '#fff' }}>{designedProjects.length}</strong>
-                    </div>
+                  <h2 className="text-lg font-bold text-white group-hover:text-[#C9A227] transition-colors leading-snug">
+                    <Link href={`/companies/${arch.slug}`}>
+                      {arch.name}
+                    </Link>
+                  </h2>
 
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                      <a href={comp.website} target="_blank" rel="noopener noreferrer" style={{ fontSize: 11, color: '#c7a675', textDecoration: 'underline' }}>
-                        Official Practice Site →
-                      </a>
-                      <Link className="btn" href={`/companies/${comp.slug}`} style={{ fontSize: 11, minHeight: 32, padding: '0 12px' }}>
-                        View Profile
-                      </Link>
-                    </div>
+                  <p className="text-xs text-[#A0A0A0] font-sans line-clamp-3 leading-relaxed">
+                    {arch.description}
+                  </p>
+
+                  <div className="pt-2 text-[11px] font-mono text-[#888888] space-y-1">
+                    <div>📍 <span className="text-[#C5C5C5]">{arch.location}</span></div>
+                    <div>🏢 Specializations: <span className="text-[#C5C5C5]">{arch.specializations?.slice(0, 2).join(', ') || 'Architectural Design'}</span></div>
                   </div>
                 </div>
-              );
-            })}
+
+                <div className="pt-4 border-t border-[#1A1D1B] flex items-center justify-between">
+                  <span className="text-[10px] font-mono text-[#666666]">
+                    VERIFIED SOURCE
+                  </span>
+                  <Link
+                    href={`/companies/${arch.slug}`}
+                    className="text-xs font-mono font-bold text-[#C9A227] hover:underline flex items-center gap-1"
+                  >
+                    <span>VIEW DOSSIER</span>
+                    <span>→</span>
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="max-w-[1440px] mx-auto px-4 md:px-8 mt-16 pt-8 border-t border-[#1A1D1B]">
+          <div className="p-6 bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl text-xs font-mono space-y-2">
+            <span className="text-[#C9A227] uppercase font-bold block">INDEPENDENT PLATFORM DISCLOSURE</span>
+            <p className="text-[#A0A0A0] leading-relaxed">
+              CONSTRUCTIONS is an independent information and research platform. Inclusion of an architectural studio does not imply representation, endorsement, partnership, or commercial relationship with that entity.
+            </p>
           </div>
         </section>
       </main>
+
       <SiteFooter />
-    </>
+    </div>
   );
 }

@@ -1,20 +1,24 @@
-import {SiteHeader} from '@/components/SiteHeader';
-import {SiteFooter} from '@/components/SiteFooter';
-import {LeadForm} from '@/components/LeadForm';
+import { SiteHeader } from '@/components/SiteHeader';
+import { SiteFooter } from '@/components/SiteFooter';
+import { LeadForm } from '@/components/LeadForm';
 
 export const metadata = {
-  title: 'Promote Your Company | CONSTRUCTIONS by AiXLuxury',
-  description: 'Turn your construction, engineering, or development practice into a prestigious digital brand.'
+  title: 'Work With CONSTRUCTIONS | Platform Partnerships',
+  description: 'Partner directly with CONSTRUCTIONS by AiXLuxury for verified profile updates, site media coverage, and institutional research mandates.'
 };
 
-export default function Promote(){
+export default function Promote() {
   return (
     <>
-      <SiteHeader/>
+      <SiteHeader />
       <main>
         <section className="page-hero shell">
           <div className="eyebrow">For Construction & Real Estate Companies</div>
-          <h1>YOUR WORK DESERVES<br/>TO BE SEEN.</h1>
+          <h1>
+            YOUR WORK DESERVES
+            <br />
+            TO BE SEEN.
+          </h1>
           <p>Your projects are real. Your experience is proven. We ensure your digital presentation matches the prestige of your built work.</p>
         </section>
         <section className="section shell">
@@ -31,24 +35,24 @@ export default function Promote(){
             </div>
             <div className="company">
               <span className="company-num">03</span>
-              <h3>High-Intent Leads</h3>
-              <p>Editorial spotlight · corporate inquiry capture · client routing</p>
+              <h3>Institutional Reach</h3>
+              <p>Editorial spotlight · verified data audit · research team desk</p>
             </div>
           </div>
         </section>
-        <section className="section shell" style={{paddingTop:0}}>
+        <section className="section shell" style={{ paddingTop: 0 }}>
           <div className="section-head">
             <div>
               <div className="eyebrow">Start a Conversation</div>
-              <h2>GET YOUR COMPANY FEATURED</h2>
+              <h2>WORK WITH CONSTRUCTIONS</h2>
             </div>
           </div>
-          <div style={{maxWidth:720}}>
-            <LeadForm kind="promote" source="promote_company"/>
+          <div style={{ maxWidth: 720 }}>
+            <LeadForm kind="promote" source="promote_company" />
           </div>
         </section>
       </main>
-      <SiteFooter/>
+      <SiteFooter />
     </>
   );
 }

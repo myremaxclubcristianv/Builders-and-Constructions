@@ -16,7 +16,9 @@ export default async function Search({
 }) {
   const { q = '' } = await searchParams;
   const term = q.trim();
-  const { matchingCompanies, matchingProjects, matchingSignals, matchingArticles } = await searchIntelligenceGlobal(term);
+  const { matchingCompanies, matchingProjects, matchingSignals } = await searchIntelligenceGlobal(term);
+
+  const totalResults = matchingCompanies.length + matchingProjects.length + matchingSignals.length;
 
   return (
     <div className="bg-[#050505] text-[#F3F1EB] min-h-screen">
@@ -68,20 +70,46 @@ export default async function Search({
               </div>
             </div>
           </section>
+        ) : totalResults === 0 ? (
+          <section className="py-16 text-center">
+            <div className="max-w-lg mx-auto px-4 space-y-6">
+              <div className="p-8 bg-[#111111] border border-[#1A1D1B] rounded-2xl space-y-4">
+                <span className="text-3xl">🔍</span>
+                <h2 className="text-xl font-bold text-white">No Direct Matches for &quot;{q}&quot;</h2>
+                <p className="text-xs text-[#A0A0A0] leading-relaxed">
+                  Our coverage is continuously expanding across Romania&apos;s construction market. You can explore our indexed directories or submit a request to index this entity.
+                </p>
+                <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
+                  <Link href="/projects" className="px-4 py-2 bg-[#0B0B0B] border border-[#1A1D1B] text-xs font-mono text-white rounded-lg hover:border-[#C9A227]/50">
+                    Browse Projects (53)
+                  </Link>
+                  <Link href="/companies" className="px-4 py-2 bg-[#0B0B0B] border border-[#1A1D1B] text-xs font-mono text-white rounded-lg hover:border-[#C9A227]/50">
+                    Browse Companies (40)
+                  </Link>
+                  <Link href="/cities" className="px-4 py-2 bg-[#0B0B0B] border border-[#1A1D1B] text-xs font-mono text-white rounded-lg hover:border-[#C9A227]/50">
+                    Browse Cities (36)
+                  </Link>
+                  <Link href="/report-error" className="px-4 py-2 bg-[#C9A227]/20 border border-[#C9A227]/40 text-xs font-mono text-[#C9A227] rounded-lg hover:bg-[#C9A227]/30">
+                    Request Entity Indexing →
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </section>
         ) : (
           <section className="py-10 md:py-16">
             <div className="max-w-[1440px] mx-auto px-4 md:px-8 space-y-12">
               <div className="border-b border-[#1A1D1B] pb-4">
                 <span className="text-[10px] font-mono text-[#888888] uppercase">Results for</span>
-                <h2 className="text-xl md:text-2xl font-bold text-white mt-1">&quot;{q}&quot;</h2>
+                <h2 className="text-xl md:text-2xl font-bold text-white mt-1">&quot;{q}&quot; ({totalResults})</h2>
               </div>
 
               {/* Companies Category */}
-              <div className="space-y-4">
-                <h3 className="text-xs font-mono text-[#C9A227] uppercase tracking-widest flex items-center justify-between">
-                  <span>COMPANIES ({matchingCompanies.length})</span>
-                </h3>
-                {matchingCompanies.length ? (
+              {matchingCompanies.length > 0 && (
+                <div className="space-y-4">
+                  <h3 className="text-xs font-mono text-[#C9A227] uppercase tracking-widest flex items-center justify-between">
+                    <span>COMPANIES ({matchingCompanies.length})</span>
+                  </h3>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     {matchingCompanies.map((c: any) => (
                       <div key={c.slug} className="p-5 bg-[#111111] border border-[#1A1D1B] rounded-xl flex flex-col justify-between space-y-3">
@@ -105,17 +133,15 @@ export default async function Search({
                       </div>
                     ))}
                   </div>
-                ) : (
-                  <p className="text-xs text-[#666666] italic">No matching companies found.</p>
-                )}
-              </div>
+                </div>
+              )}
 
               {/* Projects Category */}
-              <div className="space-y-4">
-                <h3 className="text-xs font-mono text-[#C9A227] uppercase tracking-widest flex items-center justify-between">
-                  <span>PROJECTS ({matchingProjects.length})</span>
-                </h3>
-                {matchingProjects.length ? (
+              {matchingProjects.length > 0 && (
+                <div className="space-y-4">
+                  <h3 className="text-xs font-mono text-[#C9A227] uppercase tracking-widest flex items-center justify-between">
+                    <span>PROJECTS ({matchingProjects.length})</span>
+                  </h3>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     {matchingProjects.map((p: any) => (
                       <div key={p.slug} className="p-5 bg-[#111111] border border-[#1A1D1B] rounded-xl flex flex-col justify-between space-y-3">
@@ -137,10 +163,8 @@ export default async function Search({
                       </div>
                     ))}
                   </div>
-                ) : (
-                  <p className="text-xs text-[#666666] italic">No matching projects found.</p>
-                )}
-              </div>
+                </div>
+              )}
 
               {/* Market Signals Category */}
               {matchingSignals.length > 0 && (

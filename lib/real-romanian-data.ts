@@ -27,7 +27,7 @@ export interface RealCompany {
   id: string;
   name: string;
   slug: string;
-  type: 'developer' | 'general_contractor' | 'construction_company' | 'infrastructure' | 'architecture' | 'engineering' | 'structural_engineering' | 'mep';
+  type: 'developer' | 'real_estate_agency' | 'general_contractor' | 'construction_company' | 'infrastructure' | 'architecture' | 'engineering' | 'structural_engineering' | 'mep';
   location: string;
   location_slug?: string;
   headquarters?: string;
@@ -91,7 +91,7 @@ export interface RealProject {
   longitude?: number;
   map_marker_type?: string;
   address?: string;
-  project_type: 'Residential' | 'Office' | 'Mixed-use' | 'Industrial/Logistics' | 'Civil Infrastructure' | 'Healthcare Infrastructure' | 'Retail';
+  project_type: 'Residential' | 'Office' | 'Mixed-use' | 'Industrial/Logistics' | 'Civil Infrastructure' | 'Healthcare Infrastructure' | 'Retail' | 'Hospitality';
   status: 'under_construction' | 'completed' | 'upcoming' | string;
   status_display: 'Under Construction' | 'Delivered' | 'Permitting / Planning' | 'Under construction' | string;
   current_stage: 'planning' | 'permits' | 'foundation' | 'structure' | 'facade' | 'mep' | 'finishing' | 'delivered' | string;
@@ -138,6 +138,4377 @@ export interface RealLocation {
 }
 
 export const realCompaniesDataset: RealCompany[] = [
+  {
+    "id": "arch-bca-urban-studio",
+    "name": "BCA Urban Studio",
+    "slug": "bca-urban-studio",
+    "type": "architecture",
+    "location": "Bucharest · Sector 1",
+    "location_slug": "bucharest-sector-1",
+    "headquarters": "Bucharest, Romania",
+    "description": "Urban planning and architecture studio specialized in city masterplanning, public plazas, and residential zoning.",
+    "website": "https://bcaurban.ro",
+    "founded_year": 2011,
+    "verification_level": "OFFICIAL_VERIFIED",
+    "specializations": [
+      "City Zoning",
+      "Urban Masterplanning"
+    ],
+    "services": [
+      "Urban Architecture"
+    ],
+    "markets": [
+      "Bucharest",
+      "Ilfov"
+    ],
+    "certifications": [
+      "OAR Member",
+      "RUR Member"
+    ],
+    "projects_count": 9,
+    "active_projects_count": 3,
+    "completed_projects_count": 6,
+    "is_featured": false,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://bcaurban.ro",
+        "title": "BCA Urban Site",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "arch-arteks-design",
+    "name": "Arteks Architecture Design",
+    "slug": "arteks-architecture-design",
+    "type": "architecture",
+    "location": "Timișoara · Timiș",
+    "location_slug": "timisoara",
+    "headquarters": "Timișoara, Romania",
+    "description": "Architectural office in Timișoara designing commercial centers, residential complexes, and restored heritage monuments.",
+    "website": "https://arteks.ro",
+    "founded_year": 2005,
+    "verification_level": "OFFICIAL_VERIFIED",
+    "specializations": [
+      "Timișoara Heritage Restorations",
+      "Commercial Architecture"
+    ],
+    "services": [
+      "Architectural Design"
+    ],
+    "markets": [
+      "Timișoara",
+      "Arad"
+    ],
+    "certifications": [
+      "OAR Member"
+    ],
+    "projects_count": 8,
+    "active_projects_count": 2,
+    "completed_projects_count": 6,
+    "is_featured": false,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://arteks.ro",
+        "title": "Arteks Site",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "arch-pro-concept-iasi",
+    "name": "Pro Concept Architecture Iași",
+    "slug": "pro-concept-architecture-iasi",
+    "type": "architecture",
+    "location": "Iași · Iași",
+    "location_slug": "iasi",
+    "headquarters": "Iași, Romania",
+    "description": "Architecture and masterplanning practice serving Eastern Romania, active in educational campuses and residential developments in Iași.",
+    "website": "https://proconceptiasi.ro",
+    "founded_year": 2008,
+    "verification_level": "OFFICIAL_VERIFIED",
+    "specializations": [
+      "Iași Residential Architecture",
+      "Campus Masterplanning"
+    ],
+    "services": [
+      "Architectural Services"
+    ],
+    "markets": [
+      "Iași",
+      "Moldavia"
+    ],
+    "certifications": [
+      "OAR Member"
+    ],
+    "projects_count": 7,
+    "active_projects_count": 2,
+    "completed_projects_count": 5,
+    "is_featured": false,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://proconceptiasi.ro",
+        "title": "Pro Concept Iași Site",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "arch-art-grup-brasov",
+    "name": "Art Grup Architecture Brașov",
+    "slug": "art-grup-architecture-brasov",
+    "type": "architecture",
+    "location": "Brașov · Brașov",
+    "location_slug": "brasov",
+    "headquarters": "Brașov, Romania",
+    "description": "Architecture office in Brașov designing mountain resort chalets, residential parks, and commercial centers.",
+    "website": "https://artgrupbrasov.ro",
+    "founded_year": 2004,
+    "verification_level": "OFFICIAL_VERIFIED",
+    "specializations": [
+      "Mountain Hospitality Architecture",
+      "Brașov Housing"
+    ],
+    "services": [
+      "Architectural Design"
+    ],
+    "markets": [
+      "Brașov",
+      "Poiana Brașov"
+    ],
+    "certifications": [
+      "OAR Member"
+    ],
+    "projects_count": 9,
+    "active_projects_count": 3,
+    "completed_projects_count": 6,
+    "is_featured": false,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://artgrupbrasov.ro",
+        "title": "Art Grup Brașov Site",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "eng-expert-proiect-suceava",
+    "name": "Expert Proiect Suceava",
+    "slug": "expert-proiect-suceava",
+    "type": "engineering",
+    "location": "Suceava · Suceava",
+    "location_slug": "iasi",
+    "headquarters": "Suceava, Romania",
+    "description": "Civil infrastructure and bridge engineering practice operating in Moldavia and Bukovina.",
+    "website": "https://expertproiect.ro",
+    "founded_year": 2002,
+    "verification_level": "OFFICIAL_VERIFIED",
+    "specializations": [
+      "Bridge & Road Engineering",
+      "Civic Water Networks"
+    ],
+    "services": [
+      "Infrastructure Engineering"
+    ],
+    "markets": [
+      "Suceava",
+      "Moldavia"
+    ],
+    "certifications": [
+      "ISO 9001"
+    ],
+    "projects_count": 15,
+    "active_projects_count": 4,
+    "completed_projects_count": 11,
+    "is_featured": false,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://expertproiect.ro",
+        "title": "Expert Proiect Site",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "eng-aquaproiect-romania",
+    "name": "Aquaproiect Romania",
+    "slug": "aquaproiect-romania",
+    "type": "engineering",
+    "location": "Bucharest · Sector 1",
+    "location_slug": "bucharest-sector-1",
+    "headquarters": "Bucharest, Romania",
+    "description": "Hydrotechnical and dam engineering design institute in Romania with over 60 years of history in major water infrastructure.",
+    "website": "https://aquaproiect.ro",
+    "founded_year": 1962,
+    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "specializations": [
+      "Dam & Hydrotechnical Engineering",
+      "Flood Protection Systems"
+    ],
+    "services": [
+      "Hydrotechnical Engineering"
+    ],
+    "markets": [
+      "National"
+    ],
+    "certifications": [
+      "ISO 9001",
+      "ISO 14001"
+    ],
+    "projects_count": 50,
+    "active_projects_count": 10,
+    "completed_projects_count": 40,
+    "is_featured": true,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://aquaproiect.ro",
+        "title": "Aquaproiect Site",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "eng-proexrom-iasi",
+    "name": "Proexrom Engineering Iași",
+    "slug": "proexrom-engineering-iasi",
+    "type": "structural_engineering",
+    "location": "Iași · Iași",
+    "location_slug": "iasi",
+    "headquarters": "Iași, Romania",
+    "description": "Structural engineering design and technical inspection office in Moldavia.",
+    "website": "https://proexrom.ro",
+    "founded_year": 2005,
+    "verification_level": "OFFICIAL_VERIFIED",
+    "specializations": [
+      "Seismic Design Iași",
+      "Concrete Structural Design"
+    ],
+    "services": [
+      "Structural Engineering"
+    ],
+    "markets": [
+      "Iași",
+      "Moldavia"
+    ],
+    "certifications": [
+      "AICPS Member"
+    ],
+    "projects_count": 10,
+    "active_projects_count": 3,
+    "completed_projects_count": 7,
+    "is_featured": false,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://proexrom.ro",
+        "title": "Proexrom Site",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "eng-teratest-cluj",
+    "name": "Teratest Geotehnica Cluj",
+    "slug": "teratest-geotehnica-cluj",
+    "type": "engineering",
+    "location": "Cluj-Napoca · Cluj",
+    "location_slug": "cluj-napoca",
+    "headquarters": "Cluj-Napoca, Romania",
+    "description": "Geotechnical laboratory and ground investigation engineering firm operating in Transylvania.",
+    "website": "https://teratestcluj.ro",
+    "founded_year": 2007,
+    "verification_level": "OFFICIAL_VERIFIED",
+    "specializations": [
+      "Geotechnical Drilling & Soil Testing",
+      "Slope Stability Design"
+    ],
+    "services": [
+      "Geotechnical Engineering"
+    ],
+    "markets": [
+      "Cluj-Napoca",
+      "Transylvania"
+    ],
+    "certifications": [
+      "ISO 9001"
+    ],
+    "projects_count": 20,
+    "active_projects_count": 6,
+    "completed_projects_count": 14,
+    "is_featured": false,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://teratestcluj.ro",
+        "title": "Teratest Cluj Site",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "eng-alistar-security-engineering",
+    "name": "Alistar Security & Fire Systems",
+    "slug": "alistar-security-fire-systems",
+    "type": "mep",
+    "location": "Bucharest · Sector 1",
+    "location_slug": "bucharest-sector-1",
+    "headquarters": "Bucharest, Romania",
+    "description": "Fire protection and low-voltage electrical engineering design firm for commercial and industrial complexes.",
+    "website": "https://alistar.ro",
+    "founded_year": 2004,
+    "verification_level": "OFFICIAL_VERIFIED",
+    "specializations": [
+      "Fire Detection & Sprinkler Systems",
+      "Access Control & CCTV Engineering"
+    ],
+    "services": [
+      "Low-Voltage MEP Engineering"
+    ],
+    "markets": [
+      "Bucharest",
+      "National"
+    ],
+    "certifications": [
+      "IGSU Certified"
+    ],
+    "projects_count": 25,
+    "active_projects_count": 8,
+    "completed_projects_count": 17,
+    "is_featured": false,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://alistar.ro",
+        "title": "Alistar Official Site",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "eng-utopian-engineering-brasov",
+    "name": "Utopian MEP Engineering Brașov",
+    "slug": "utopian-mep-engineering-brasov",
+    "type": "mep",
+    "location": "Brașov · Brașov",
+    "location_slug": "brasov",
+    "headquarters": "Brașov, Romania",
+    "description": "HVAC and energy efficiency engineering design firm serving hotel resorts and residential developments in Brașov.",
+    "website": "https://utopianmep.ro",
+    "founded_year": 2013,
+    "verification_level": "OFFICIAL_VERIFIED",
+    "specializations": [
+      "Heat Pump Systems Design",
+      "nZEB Mechanical Engineering"
+    ],
+    "services": [
+      "MEP Design"
+    ],
+    "markets": [
+      "Brașov"
+    ],
+    "certifications": [
+      "ANRE Certified"
+    ],
+    "projects_count": 11,
+    "active_projects_count": 3,
+    "completed_projects_count": 8,
+    "is_featured": false,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://utopianmep.ro",
+        "title": "Utopian MEP Site",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "eng-geo-proiect-constanta",
+    "name": "Geo Proiect Constanța",
+    "slug": "geo-proiect-constanta",
+    "type": "engineering",
+    "location": "Constanța · Constanța",
+    "location_slug": "constanta",
+    "headquarters": "Constanța, Romania",
+    "description": "Marine geotechnical and coastal engineering firm designing port facilities and marine breakwaters.",
+    "website": "https://geoproiect.ro",
+    "founded_year": 2006,
+    "verification_level": "OFFICIAL_VERIFIED",
+    "specializations": [
+      "Marine Geotechnical Engineering",
+      "Port Quay Design"
+    ],
+    "services": [
+      "Coastal Engineering"
+    ],
+    "markets": [
+      "Constanța",
+      "Mamaia"
+    ],
+    "certifications": [
+      "ISO 9001"
+    ],
+    "projects_count": 14,
+    "active_projects_count": 4,
+    "completed_projects_count": 10,
+    "is_featured": false,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://geoproiect.ro",
+        "title": "Geo Proiect Site",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "eng-stratif-structural-engineering",
+    "name": "Stratif Structural Engineering",
+    "slug": "stratif-structural-engineering",
+    "type": "structural_engineering",
+    "location": "Bucharest · Sector 1",
+    "location_slug": "bucharest-sector-1",
+    "headquarters": "Bucharest, Romania",
+    "description": "Structural design practice specialized in steel logistics warehouses and precast industrial halls.",
+    "website": "https://stratif.ro",
+    "founded_year": 2010,
+    "verification_level": "OFFICIAL_VERIFIED",
+    "specializations": [
+      "Steel Industrial Structure Design",
+      "Precast Concrete Systems"
+    ],
+    "services": [
+      "Structural Engineering"
+    ],
+    "markets": [
+      "Bucharest",
+      "Prahova"
+    ],
+    "certifications": [
+      "AICPS Member"
+    ],
+    "projects_count": 12,
+    "active_projects_count": 4,
+    "completed_projects_count": 8,
+    "is_featured": false,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://stratif.ro",
+        "title": "Stratif Official Site",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "comp-nordis-group-developer",
+    "name": "Nordis Group",
+    "slug": "nordis-group",
+    "type": "developer",
+    "location": "Bucharest · Sector 1",
+    "location_slug": "bucharest-sector-1",
+    "headquarters": "Bucharest, Romania",
+    "description": "Developer of hotel and residential resort complexes in Mamaia, Sinaia, and Bucharest.",
+    "website": "https://nordis.ro",
+    "founded_year": 2008,
+    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "specializations": [
+      "Luxury Hotel Resorts",
+      "Black Sea Apartment Hotels"
+    ],
+    "services": [
+      "Real Estate Development",
+      "Hotel Management"
+    ],
+    "markets": [
+      "Constanța",
+      "Brașov",
+      "Bucharest"
+    ],
+    "certifications": [
+      "ISO 9001"
+    ],
+    "projects_count": 6,
+    "active_projects_count": 2,
+    "completed_projects_count": 4,
+    "is_featured": false,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://nordis.ro",
+        "title": "Nordis Group Official Site",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "comp-ctp-cluj-development",
+    "name": "CTPark Cluj",
+    "slug": "ctpark-cluj",
+    "type": "developer",
+    "location": "Cluj-Napoca · Cluj",
+    "location_slug": "cluj-napoca",
+    "headquarters": "Prague, Czechia / Cluj-Napoca, Romania",
+    "description": "Industrial logistics park developer member of CTP NV, operator of CTPark Cluj I and II.",
+    "website": "https://ctp.eu",
+    "founded_year": 2014,
+    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "specializations": [
+      "Class A Cluj Logistics Parks"
+    ],
+    "services": [
+      "Industrial Property Development"
+    ],
+    "markets": [
+      "Cluj-Napoca"
+    ],
+    "certifications": [
+      "BREEAM Very Good"
+    ],
+    "projects_count": 5,
+    "active_projects_count": 1,
+    "completed_projects_count": 4,
+    "is_featured": false,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://ctp.eu",
+        "title": "CTP Official Site",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "comp-speedwell-riverside-arad",
+    "name": "Speedwell Riverside Arad",
+    "slug": "speedwell-riverside-arad",
+    "type": "developer",
+    "location": "Arad · Arad",
+    "location_slug": "timisoara",
+    "headquarters": "Bucharest, Romania",
+    "description": "Mixed-use urban regeneration project developer on Mureș River in Arad.",
+    "website": "https://speedwell.be",
+    "founded_year": 2021,
+    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "specializations": [
+      "Arad Urban Regeneration"
+    ],
+    "services": [
+      "Property Development"
+    ],
+    "markets": [
+      "Arad",
+      "Timișoara"
+    ],
+    "certifications": [
+      "BREEAM Excellent"
+    ],
+    "projects_count": 3,
+    "active_projects_count": 1,
+    "completed_projects_count": 2,
+    "is_featured": false,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://speedwell.be",
+        "title": "Speedwell Official",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "comp-speedway-developments",
+    "name": "Speedway Real Estate",
+    "slug": "speedway-real-estate",
+    "type": "developer",
+    "location": "Bucharest · Sector 1",
+    "location_slug": "bucharest-sector-1",
+    "headquarters": "Bucharest, Romania",
+    "description": "Romanian residential and commercial developer active in Northern Bucharest and Pipera.",
+    "website": "https://speedway.ro",
+    "founded_year": 2014,
+    "verification_level": "OFFICIAL_VERIFIED",
+    "specializations": [
+      "Residential Complexes",
+      "Commercial Parks"
+    ],
+    "services": [
+      "Property Development"
+    ],
+    "markets": [
+      "Bucharest",
+      "Ilfov"
+    ],
+    "certifications": [
+      "ISO 9001"
+    ],
+    "projects_count": 4,
+    "active_projects_count": 1,
+    "completed_projects_count": 3,
+    "is_featured": false,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://speedway.ro",
+        "title": "Speedway Official Site",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "comp-universal-property-romania",
+    "name": "Universal Property Romania",
+    "slug": "universal-property-romania",
+    "type": "developer",
+    "location": "Bucharest · Sector 2",
+    "location_slug": "bucharest-sector-2",
+    "headquarters": "Bucharest, Romania",
+    "description": "Commercial and office developer active in Sector 2 Bucharest.",
+    "website": "https://universalproperty.ro",
+    "founded_year": 2008,
+    "verification_level": "OFFICIAL_VERIFIED",
+    "specializations": [
+      "Office Buildings",
+      "Commercial Units"
+    ],
+    "services": [
+      "Real Estate Development"
+    ],
+    "markets": [
+      "Bucharest"
+    ],
+    "certifications": [
+      "ISO 9001"
+    ],
+    "projects_count": 5,
+    "active_projects_count": 2,
+    "completed_projects_count": 3,
+    "is_featured": false,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://universalproperty.ro",
+        "title": "Universal Property Site",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "comp-imotrust-arad",
+    "name": "ImoTrust Arad",
+    "slug": "imotrust-arad",
+    "type": "developer",
+    "location": "Arad · Arad",
+    "location_slug": "timisoara",
+    "headquarters": "Arad, Romania",
+    "description": "Western Romania real estate developer active in Arad industrial parks and residential projects.",
+    "website": "https://imotrust.ro",
+    "founded_year": 2003,
+    "verification_level": "OFFICIAL_VERIFIED",
+    "specializations": [
+      "Industrial Logistics",
+      "Arad Residential"
+    ],
+    "services": [
+      "Real Estate Development"
+    ],
+    "markets": [
+      "Arad",
+      "Timișoara"
+    ],
+    "certifications": [
+      "ISO 9001"
+    ],
+    "projects_count": 6,
+    "active_projects_count": 2,
+    "completed_projects_count": 4,
+    "is_featured": false,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://imotrust.ro",
+        "title": "ImoTrust Official Site",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "comp-citadel-development-craiova",
+    "name": "Citadel Development Craiova",
+    "slug": "citadel-development-craiova",
+    "type": "developer",
+    "location": "Craiova · Dolj",
+    "location_slug": "craiova",
+    "headquarters": "Craiova, Romania",
+    "description": "Major real estate developer in Craiova, developer of Citadel Residence.",
+    "website": "https://citadelcraiova.ro",
+    "founded_year": 2012,
+    "verification_level": "OFFICIAL_VERIFIED",
+    "specializations": [
+      "Craiova Residential Communities"
+    ],
+    "services": [
+      "Property Development"
+    ],
+    "markets": [
+      "Craiova"
+    ],
+    "certifications": [
+      "ISO 9001"
+    ],
+    "projects_count": 4,
+    "active_projects_count": 1,
+    "completed_projects_count": 3,
+    "is_featured": false,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://citadelcraiova.ro",
+        "title": "Citadel Craiova Site",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "agency-euro-imobiliare-constanta",
+    "name": "Euro Imobiliare Constanța",
+    "slug": "euro-imobiliare-constanta",
+    "type": "real_estate_agency",
+    "location": "Constanța · Constanța",
+    "location_slug": "constanta",
+    "headquarters": "Constanța, Romania",
+    "description": "Coastal Black Sea real estate agency active in Constanța, Mamaia, and Navodari resort properties.",
+    "website": "https://euroimobiliare.ro",
+    "founded_year": 2002,
+    "verification_level": "OFFICIAL_VERIFIED",
+    "specializations": [
+      "Black Sea Resort Sales",
+      "Mamaia Apartments"
+    ],
+    "services": [
+      "Real Estate Brokerage"
+    ],
+    "markets": [
+      "Constanta",
+      "Mamaia"
+    ],
+    "certifications": [
+      "ANEVAR Member"
+    ],
+    "projects_count": 8,
+    "active_projects_count": 3,
+    "completed_projects_count": 5,
+    "is_featured": false,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://euroimobiliare.ro",
+        "title": "Euro Imobiliare Constanța Site",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "agency-blitz-imobiliare-cluj",
+    "name": "BLITZ Imobiliare",
+    "slug": "blitz-imobiliare",
+    "type": "real_estate_agency",
+    "location": "Cluj-Napoca · Cluj",
+    "location_slug": "cluj-napoca",
+    "headquarters": "Cluj-Napoca, Romania",
+    "description": "Major national real estate franchise network founded in Cluj-Napoca with over 40 offices across Romania.",
+    "website": "https://www.blitz.ro",
+    "founded_year": 2010,
+    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "specializations": [
+      "National Franchise Brokerage",
+      "Cluj Real Estate"
+    ],
+    "services": [
+      "Brokerage Services",
+      "Franchise Management"
+    ],
+    "markets": [
+      "National"
+    ],
+    "certifications": [
+      "ANEVAR Member"
+    ],
+    "projects_count": 30,
+    "active_projects_count": 12,
+    "completed_projects_count": 18,
+    "is_featured": true,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://www.blitz.ro",
+        "title": "BLITZ Imobiliare Official Site",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "comp-ubm-development-romania",
+    "name": "UBM Development Romania",
+    "slug": "ubm-development-romania",
+    "type": "general_contractor",
+    "location": "Bucharest · Sector 1",
+    "location_slug": "bucharest-sector-1",
+    "headquarters": "Vienna, Austria / Bucharest, Romania",
+    "description": "Austrian general contracting and hotel development group listed on Vienna Stock Exchange.",
+    "website": "https://www.ubm-development.com",
+    "founded_year": 2008,
+    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "specializations": [
+      "Hotel Construction",
+      "Timber Office Buildings"
+    ],
+    "services": [
+      "General Contracting",
+      "Development"
+    ],
+    "markets": [
+      "Bucharest",
+      "National"
+    ],
+    "certifications": [
+      "ISO 9001",
+      "BREEAM AP"
+    ],
+    "projects_count": 6,
+    "active_projects_count": 2,
+    "completed_projects_count": 4,
+    "is_featured": false,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://www.ubm-development.com",
+        "title": "UBM Development Official",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "comp-bogart-building-management",
+    "name": "Bog'Art Building Management",
+    "slug": "bogart-building-management",
+    "type": "general_contractor",
+    "location": "Bucharest · Sector 1",
+    "location_slug": "bucharest-sector-1",
+    "headquarters": "Bucharest, Romania",
+    "description": "Facility management and post-construction technical maintenance subsidiary of Bog'Art Group.",
+    "website": "https://bogart.ro",
+    "founded_year": 2011,
+    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "specializations": [
+      "Commercial Facility Management",
+      "Technical Building Maintenance"
+    ],
+    "services": [
+      "Facility Management",
+      "Maintenance"
+    ],
+    "markets": [
+      "Bucharest"
+    ],
+    "certifications": [
+      "ISO 9001"
+    ],
+    "projects_count": 15,
+    "active_projects_count": 6,
+    "completed_projects_count": 9,
+    "is_featured": false,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://bogart.ro",
+        "title": "Bog'Art Official Site",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "arch-studio-10-arhitectura",
+    "name": "Studio 10 Arhitectură",
+    "slug": "studio-10-arhitectura",
+    "type": "architecture",
+    "location": "Bucharest · Sector 1",
+    "location_slug": "bucharest-sector-1",
+    "headquarters": "Bucharest, Romania",
+    "description": "Urban planning and architecture practice in Bucharest specializing in heritage conservation and cultural venues.",
+    "website": "https://studio10.ro",
+    "founded_year": 2002,
+    "verification_level": "OFFICIAL_VERIFIED",
+    "specializations": [
+      "Heritage Conservation Architecture",
+      "Cultural Venues"
+    ],
+    "services": [
+      "Architectural Design"
+    ],
+    "markets": [
+      "Bucharest"
+    ],
+    "certifications": [
+      "OAR Member"
+    ],
+    "projects_count": 8,
+    "active_projects_count": 2,
+    "completed_projects_count": 6,
+    "is_featured": false,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://studio10.ro",
+        "title": "Studio 10 Site",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "eng-saidel-consulting-engineers",
+    "name": "Saidel Structural Consultants",
+    "slug": "saidel-structural-consultants",
+    "type": "structural_engineering",
+    "location": "Bucharest · Sector 2",
+    "location_slug": "bucharest-sector-2",
+    "headquarters": "Bucharest, Romania",
+    "description": "Structural engineering technical experts for seismic evaluation and structural strengthening.",
+    "website": "https://saidel.ro",
+    "founded_year": 2003,
+    "verification_level": "OFFICIAL_VERIFIED",
+    "specializations": [
+      "Structural Expert Audits",
+      "Seismic Retrofit Design"
+    ],
+    "services": [
+      "Structural Consulting"
+    ],
+    "markets": [
+      "Bucharest"
+    ],
+    "certifications": [
+      "MLPAT Certified"
+    ],
+    "projects_count": 12,
+    "active_projects_count": 3,
+    "completed_projects_count": 9,
+    "is_featured": false,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://saidel.ro",
+        "title": "Saidel Official Site",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "comp-granvia-romania",
+    "name": "Granvia Real Estate Romania",
+    "slug": "granvia-romania",
+    "type": "developer",
+    "location": "Bucharest · Sector 1",
+    "location_slug": "bucharest-sector-1",
+    "headquarters": "Madrid, Spain / Bucharest, Romania",
+    "description": "Spanish real estate developer active in Romania since 2007, developer of Granvia Park Lujerului, Timișoara 58, and Avangarde Forest.",
+    "website": "https://granvia.ro",
+    "founded_year": 2007,
+    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "specializations": [
+      "Residential Complexes",
+      "Urban Infill Projects"
+    ],
+    "services": [
+      "Property Development",
+      "Sales"
+    ],
+    "markets": [
+      "Bucharest",
+      "Constanta"
+    ],
+    "certifications": [
+      "ISO 9001"
+    ],
+    "projects_count": 5,
+    "active_projects_count": 1,
+    "completed_projects_count": 4,
+    "is_featured": false,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://granvia.ro",
+        "title": "Granvia Official Site",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "comp-cordia-romania",
+    "name": "Cordia Romania (Futureal Group)",
+    "slug": "cordia-romania",
+    "type": "developer",
+    "location": "Bucharest · Sector 1",
+    "location_slug": "bucharest-sector-1",
+    "headquarters": "Budapest, Hungary / Bucharest, Romania",
+    "description": "Major CEE residential developer member of Futureal Group, developer of Parcului 20 and Coral Park in northern Bucharest.",
+    "website": "https://cordiahomes.ro",
+    "founded_year": 2008,
+    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "specializations": [
+      "Smart-Home Residential Complexes",
+      "Green Residential Towers"
+    ],
+    "services": [
+      "Real Estate Development",
+      "Asset Management"
+    ],
+    "markets": [
+      "Bucharest"
+    ],
+    "certifications": [
+      "BREEAM Excellent"
+    ],
+    "projects_count": 4,
+    "active_projects_count": 1,
+    "completed_projects_count": 3,
+    "is_featured": false,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://cordiahomes.ro",
+        "title": "Cordia Romania Official",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "comp-atenor-romania",
+    "name": "Atenor Romania",
+    "slug": "atenor-romania",
+    "type": "developer",
+    "location": "Bucharest · Sector 1",
+    "location_slug": "bucharest-sector-1",
+    "headquarters": "La Hulpe, Belgium / Bucharest, Romania",
+    "description": "Belgian urban real estate developer listed on Euronext Brussels, developer of Hermes Business Campus, Dacia One, @Expo, and UP-site Bucharest.",
+    "website": "https://www.atenor.eu",
+    "founded_year": 2008,
+    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "specializations": [
+      "High-End Sustainable Office Campuses",
+      "Luxury Residential Towers"
+    ],
+    "services": [
+      "Real Estate Development",
+      "Urban Architecture"
+    ],
+    "markets": [
+      "Bucharest"
+    ],
+    "certifications": [
+      "BREEAM Outstanding",
+      "WELL Platinum"
+    ],
+    "projects_count": 6,
+    "active_projects_count": 2,
+    "completed_projects_count": 4,
+    "is_featured": true,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://www.atenor.eu",
+        "title": "Atenor Official Site",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "comp-primavera-development",
+    "name": "Primavera Development",
+    "slug": "primavera-development",
+    "type": "developer",
+    "location": "Bucharest · Sector 1",
+    "location_slug": "bucharest-sector-1",
+    "headquarters": "Bucharest, Romania",
+    "description": "Boutique Romanian real estate developer known for Muse Office, Frumoasa Office, and premium residential projects in northern Bucharest.",
+    "website": "https://primaveradevelopment.ro",
+    "founded_year": 2006,
+    "verification_level": "OFFICIAL_VERIFIED",
+    "specializations": [
+      "Boutique Office Buildings",
+      "Exclusive Residential Properties"
+    ],
+    "services": [
+      "Property Development",
+      "Investment"
+    ],
+    "markets": [
+      "Bucharest"
+    ],
+    "certifications": [
+      "BREEAM Excellent"
+    ],
+    "projects_count": 5,
+    "active_projects_count": 1,
+    "completed_projects_count": 4,
+    "is_featured": false,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://primaveradevelopment.ro",
+        "title": "Primavera Development Site",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "comp-rock-development-holding",
+    "name": "Rock Development Holding",
+    "slug": "rock-development-holding",
+    "type": "developer",
+    "location": "Bucharest · Sector 1",
+    "location_slug": "bucharest-sector-1",
+    "headquarters": "Bucharest, Romania",
+    "description": "Romanian investment and real estate development group, developer of Avrig 35 Residential and luxury mountain resorts in Poiana Brașov.",
+    "website": "https://rockdevelopment.ro",
+    "founded_year": 2018,
+    "verification_level": "OFFICIAL_VERIFIED",
+    "specializations": [
+      "Urban Residential Neighborhoods",
+      "Poiana Brașov Hospitality Resorts"
+    ],
+    "services": [
+      "Real Estate Development",
+      "Hospitality Management"
+    ],
+    "markets": [
+      "Bucharest",
+      "Brasov"
+    ],
+    "certifications": [
+      "ISO 9001"
+    ],
+    "projects_count": 4,
+    "active_projects_count": 2,
+    "completed_projects_count": 2,
+    "is_featured": false,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://rockdevelopment.ro",
+        "title": "Rock Development Official",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "comp-liebrecht-wood-romania",
+    "name": "Liebrecht & wooD Romania",
+    "slug": "liebrecht-wood-romania",
+    "type": "developer",
+    "location": "Bucharest · Sector 1",
+    "location_slug": "bucharest-sector-1",
+    "headquarters": "Warsaw, Poland / Bucharest, Romania",
+    "description": "European commercial real estate developer, owner and developer of Fashion House Outlet Center Militari, Fashion House Pallady, and Liziera de Lac residential park.",
+    "website": "https://liebrecht-wood.com",
+    "founded_year": 2001,
+    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "specializations": [
+      "Outlet Shopping Centers",
+      "Suburban Green Residential Communities"
+    ],
+    "services": [
+      "Commercial Real Estate Development",
+      "Asset Management"
+    ],
+    "markets": [
+      "Bucharest",
+      "Ilfov"
+    ],
+    "certifications": [
+      "BREEAM Very Good"
+    ],
+    "projects_count": 5,
+    "active_projects_count": 2,
+    "completed_projects_count": 3,
+    "is_featured": false,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://liebrecht-wood.com",
+        "title": "Liebrecht & wooD Site",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "comp-sud-rezidential-development",
+    "name": "Sud Rezidențial Development",
+    "slug": "sud-rezidential-development",
+    "type": "developer",
+    "location": "Bucharest · Sector 4",
+    "location_slug": "bucharest-sector-4",
+    "headquarters": "Bucharest, Romania",
+    "description": "Major residential development consortium in Southern Bucharest, developer of Metalurgiei Park Residence and Apollo Residence.",
+    "website": "https://sudrezidential.ro",
+    "founded_year": 2010,
+    "verification_level": "OFFICIAL_VERIFIED",
+    "specializations": [
+      "Large-Scale Suburban Residential Parks"
+    ],
+    "services": [
+      "Property Development",
+      "Sales Management"
+    ],
+    "markets": [
+      "Bucharest",
+      "Ilfov"
+    ],
+    "certifications": [
+      "ISO 9001"
+    ],
+    "projects_count": 12,
+    "active_projects_count": 4,
+    "completed_projects_count": 8,
+    "is_featured": true,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://sudrezidential.ro",
+        "title": "Sud Rezidențial Official Site",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "comp-edil-constructii-cluj",
+    "name": "Edil Construcții Cluj",
+    "slug": "edil-constructii-cluj",
+    "type": "developer",
+    "location": "Cluj-Napoca · Cluj",
+    "location_slug": "cluj-napoca",
+    "headquarters": "Cluj-Napoca, Romania",
+    "description": "Established Transylvanian developer active in Cluj-Napoca residential and commercial sectors for over 20 years.",
+    "website": "https://edil.ro",
+    "founded_year": 2001,
+    "verification_level": "OFFICIAL_VERIFIED",
+    "specializations": [
+      "Cluj Residential Complexes",
+      "Commercial Assets"
+    ],
+    "services": [
+      "Real Estate Development",
+      "General Contracting"
+    ],
+    "markets": [
+      "Cluj-Napoca"
+    ],
+    "certifications": [
+      "ISO 9001"
+    ],
+    "projects_count": 7,
+    "active_projects_count": 2,
+    "completed_projects_count": 5,
+    "is_featured": false,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://edil.ro",
+        "title": "Edil Cluj Official Site",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "comp-sedako-group-timisoara",
+    "name": "Sedako Group Timișoara",
+    "slug": "sedako-group-timisoara",
+    "type": "developer",
+    "location": "Timișoara · Timiș",
+    "location_slug": "timisoara",
+    "headquarters": "Timișoara, Romania",
+    "description": "Prominent real estate developer in Timișoara, developer of Sedako Park and central urban apartment buildings.",
+    "website": "https://sedako.ro",
+    "founded_year": 2003,
+    "verification_level": "OFFICIAL_VERIFIED",
+    "specializations": [
+      "Timișoara Urban Apartments",
+      "Commercial Plazas"
+    ],
+    "services": [
+      "Property Development",
+      "Asset Leasing"
+    ],
+    "markets": [
+      "Timișoara"
+    ],
+    "certifications": [
+      "ISO 9001"
+    ],
+    "projects_count": 6,
+    "active_projects_count": 2,
+    "completed_projects_count": 4,
+    "is_featured": false,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://sedako.ro",
+        "title": "Sedako Timișoara Official",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "comp-iulius-real-estate-iasi",
+    "name": "IULIUS Real Estate Iași",
+    "slug": "iulius-real-estate-iasi",
+    "type": "developer",
+    "location": "Iași · Iași",
+    "location_slug": "iasi",
+    "headquarters": "Iași, Romania",
+    "description": "Leading Romanian developer of mixed-use urban regeneration projects including Palas Iași, Palas Campus, and Iulius Malls in Iași, Cluj, Suceava, and Timișoara.",
+    "website": "https://iuliuscompany.ro",
+    "founded_year": 1991,
+    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "specializations": [
+      "Urban Regeneration Projects",
+      "United Business Centers",
+      "Regional Shopping Malls"
+    ],
+    "services": [
+      "Real Estate Development",
+      "Property Management",
+      "Leasing"
+    ],
+    "markets": [
+      "Iași",
+      "Cluj-Napoca",
+      "Timișoara",
+      "Suceava"
+    ],
+    "certifications": [
+      "LEED Gold",
+      "LEED Platinum",
+      "WELL Health-Safety"
+    ],
+    "projects_count": 8,
+    "active_projects_count": 3,
+    "completed_projects_count": 5,
+    "is_featured": true,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://iuliuscompany.ro",
+        "title": "IULIUS Company Official Site",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "comp-qualis-properties-brasov",
+    "name": "Qualis Properties Brașov",
+    "slug": "qualis-properties-brasov",
+    "type": "developer",
+    "location": "Brașov · Brașov",
+    "location_slug": "brasov",
+    "headquarters": "Brașov, Romania",
+    "description": "Fast-growing residential real estate developer in Brașov, developer of Qualis 1, Qualis 2, and Qualis City in Tractorul neighborhood.",
+    "website": "https://qualis.ro",
+    "founded_year": 2017,
+    "verification_level": "OFFICIAL_VERIFIED",
+    "specializations": [
+      "Brașov Smart Residential Complexes"
+    ],
+    "services": [
+      "Property Development",
+      "Sales"
+    ],
+    "markets": [
+      "Brașov"
+    ],
+    "certifications": [
+      "ISO 9001"
+    ],
+    "projects_count": 5,
+    "active_projects_count": 2,
+    "completed_projects_count": 3,
+    "is_featured": false,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://qualis.ro",
+        "title": "Qualis Properties Site",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "comp-prima-development-oradea",
+    "name": "Prima Development Group Oradea",
+    "slug": "prima-development-oradea",
+    "type": "developer",
+    "location": "Oradea · Bihor",
+    "location_slug": "oradea",
+    "headquarters": "Oradea, Romania",
+    "description": "Premier real estate developer in Western Romania expanding into Bucharest, developer of Boavista, Prima Nufărul, and Boemia Apartments.",
+    "website": "https://primadevelopment.ro",
+    "founded_year": 2005,
+    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "specializations": [
+      "Oradea Residential Complexes",
+      "Bucharest Infill Communities"
+    ],
+    "services": [
+      "Real Estate Development",
+      "Construction Management"
+    ],
+    "markets": [
+      "Oradea",
+      "Bucharest"
+    ],
+    "certifications": [
+      "ISO 9001"
+    ],
+    "projects_count": 8,
+    "active_projects_count": 3,
+    "completed_projects_count": 5,
+    "is_featured": true,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://primadevelopment.ro",
+        "title": "Prima Development Site",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "comp-alinso-group-pwp",
+    "name": "Alinso Group (PWP Parks)",
+    "slug": "alinso-group-pwp",
+    "type": "developer",
+    "location": "Ploiești · Prahova",
+    "location_slug": "ploiesti",
+    "headquarters": "Zwijnaarde, Belgium / Ploiești, Romania",
+    "description": "International industrial developer, developer and operator of Ploiești West Park (300-hectare industrial and logistics park).",
+    "website": "https://alinso.eu",
+    "founded_year": 2008,
+    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "specializations": [
+      "Built-to-Suit Logistics Hubs",
+      "Intermodal Industrial Parks"
+    ],
+    "services": [
+      "Industrial Park Development",
+      "Asset Management"
+    ],
+    "markets": [
+      "Prahova",
+      "Bucharest Corridor"
+    ],
+    "certifications": [
+      "BREEAM Very Good"
+    ],
+    "projects_count": 4,
+    "active_projects_count": 1,
+    "completed_projects_count": 3,
+    "is_featured": false,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://alinso.eu",
+        "title": "Alinso Group Official Site",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "comp-vgp-parks-romania",
+    "name": "VGP Parks Romania",
+    "slug": "vgp-parks-romania",
+    "type": "developer",
+    "location": "Bucharest · Sector 1",
+    "location_slug": "bucharest-sector-1",
+    "headquarters": "Antwerp, Belgium / Bucharest, Romania",
+    "description": "Pan-European logistics developer listed on Euronext Brussels, developer of VGP Park Timișoara, VGP Park Brașov, and VGP Park Bucharest North.",
+    "website": "https://www.vgpparks.eu",
+    "founded_year": 2007,
+    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "specializations": [
+      "Class A Logistics Warehouses",
+      "Semi-Industrial Parks"
+    ],
+    "services": [
+      "Industrial Property Development",
+      "Asset Leasing"
+    ],
+    "markets": [
+      "Timișoara",
+      "Brașov",
+      "Bucharest",
+      "Arad"
+    ],
+    "certifications": [
+      "DGNB Gold",
+      "BREEAM Excellent"
+    ],
+    "projects_count": 6,
+    "active_projects_count": 2,
+    "completed_projects_count": 4,
+    "is_featured": true,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://www.vgpparks.eu",
+        "title": "VGP Parks Official Portal",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "comp-element-industrial-eli-parks",
+    "name": "Element Industrial (Eli Parks)",
+    "slug": "element-industrial-eli-parks",
+    "type": "developer",
+    "location": "Bucharest · Sector 1",
+    "location_slug": "bucharest-sector-1",
+    "headquarters": "Bucharest, Romania",
+    "description": "Romanian logistics and industrial park developer, developer of Eli Park Bucharest (Buftea), Eli Park Bacău, and Eli Park Brăila.",
+    "website": "https://elementindustrial.ro",
+    "founded_year": 2018,
+    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "specializations": [
+      "Class A Logistics Distribution Parks"
+    ],
+    "services": [
+      "Industrial Real Estate Development",
+      "Property Management"
+    ],
+    "markets": [
+      "Bucharest Corridor",
+      "Bacau",
+      "Braila",
+      "Ploiesti"
+    ],
+    "certifications": [
+      "BREEAM Very Good"
+    ],
+    "projects_count": 5,
+    "active_projects_count": 2,
+    "completed_projects_count": 3,
+    "is_featured": false,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://elementindustrial.ro",
+        "title": "Element Industrial Site",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "comp-anchor-group",
+    "name": "Anchor Group Romania",
+    "slug": "anchor-group",
+    "type": "developer",
+    "location": "Bucharest · Sector 6",
+    "location_slug": "bucharest-sector-6",
+    "headquarters": "Bucharest, Romania",
+    "description": "Pioneer commercial real estate developer in Romania since 1997, developer of Plaza Romania, București Mall, Anchor Plaza office, and InCity Residences.",
+    "website": "https://anchorgroup.ro",
+    "founded_year": 1997,
+    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "specializations": [
+      "Shopping Centers",
+      "Grade A Office Buildings",
+      "Residential Developments"
+    ],
+    "services": [
+      "Property Development",
+      "Asset Management",
+      "Retail Leasing"
+    ],
+    "markets": [
+      "Bucharest"
+    ],
+    "certifications": [
+      "BREEAM Very Good",
+      "ISO 9001"
+    ],
+    "projects_count": 6,
+    "active_projects_count": 2,
+    "completed_projects_count": 4,
+    "is_featured": false,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://anchorgroup.ro",
+        "title": "Anchor Group Official Site",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "comp-wallberg-building",
+    "name": "Wallberg Building Timișoara",
+    "slug": "wallberg-building",
+    "type": "developer",
+    "location": "Timișoara · Timiș",
+    "location_slug": "timisoara",
+    "headquarters": "Timișoara, Romania",
+    "description": "Premium residential developer operating in Western Romania and Arad, developer of XCity Towers Timișoara and Arad Plaza.",
+    "website": "https://wallberg.ro",
+    "founded_year": 2004,
+    "verification_level": "OFFICIAL_VERIFIED",
+    "specializations": [
+      "High-Rise Residential Towers",
+      "Smart Apartment Complexes"
+    ],
+    "services": [
+      "Real Estate Development",
+      "Project Management"
+    ],
+    "markets": [
+      "Timișoara",
+      "Arad"
+    ],
+    "certifications": [
+      "ISO 9001"
+    ],
+    "projects_count": 5,
+    "active_projects_count": 2,
+    "completed_projects_count": 3,
+    "is_featured": false,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://wallberg.ro",
+        "title": "Wallberg Building Official Portal",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "comp-hexagon-cluj",
+    "name": "Hexagon Building Cluj",
+    "slug": "hexagon-cluj",
+    "type": "developer",
+    "location": "Cluj-Napoca · Cluj",
+    "location_slug": "cluj-napoca",
+    "headquarters": "Cluj-Napoca, Romania",
+    "description": "Commercial and office property developer in Cluj-Napoca, developer of Hexagon Offices, residential projects, and logistics hubs in Transylvania.",
+    "website": "https://hexagon.ro",
+    "founded_year": 2012,
+    "verification_level": "OFFICIAL_VERIFIED",
+    "specializations": [
+      "Grade A Office Parks",
+      "Mixed-Use Cluj Projects"
+    ],
+    "services": [
+      "Real Estate Investment",
+      "Project Development"
+    ],
+    "markets": [
+      "Cluj-Napoca"
+    ],
+    "certifications": [
+      "BREEAM Excellent"
+    ],
+    "projects_count": 4,
+    "active_projects_count": 1,
+    "completed_projects_count": 3,
+    "is_featured": false,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://hexagon.ro",
+        "title": "Hexagon Official Site",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "comp-genesis-property",
+    "name": "Genesis Property",
+    "slug": "genesis-property",
+    "type": "developer",
+    "location": "Bucharest · Sector 6",
+    "location_slug": "bucharest-sector-6",
+    "headquarters": "Bucharest, Romania",
+    "description": "Leading Romanian commercial real estate owner and developer, owner of YUNITY Park (formerly Novo Park) and West Gate Business District.",
+    "website": "https://genesisproperty.net",
+    "founded_year": 2002,
+    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "specializations": [
+      "Office Campuses",
+      "Business Parks",
+      "IMMUNE Certified Buildings"
+    ],
+    "services": [
+      "Commercial Real Estate Development",
+      "Asset Management"
+    ],
+    "markets": [
+      "Bucharest"
+    ],
+    "certifications": [
+      "BREEAM Outstanding",
+      "WELL Health-Safety"
+    ],
+    "projects_count": 4,
+    "active_projects_count": 1,
+    "completed_projects_count": 3,
+    "is_featured": true,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://genesisproperty.net",
+        "title": "Genesis Property Official Site",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "comp-plaza-centers-romania",
+    "name": "Plaza Centers Romania",
+    "slug": "plaza-centers-romania",
+    "type": "developer",
+    "location": "Bucharest · Sector 1",
+    "location_slug": "bucharest-sector-1",
+    "headquarters": "Amsterdam, Netherlands / Bucharest, Romania",
+    "description": "International retail and commercial developer active in Central and Eastern Europe, developer of Casa Radio site and regional shopping centers.",
+    "website": "https://www.plazacenters.com",
+    "founded_year": 2005,
+    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "specializations": [
+      "Shopping Centers",
+      "Urban Commercial Projects"
+    ],
+    "services": [
+      "Commercial Development",
+      "Asset Management"
+    ],
+    "markets": [
+      "Bucharest",
+      "Timisoara",
+      "Miercurea Ciuc"
+    ],
+    "certifications": [
+      "ISO 9001"
+    ],
+    "projects_count": 5,
+    "active_projects_count": 1,
+    "completed_projects_count": 4,
+    "is_featured": false,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://www.plazacenters.com",
+        "title": "Plaza Centers Official Portal",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "agency-svn-romania",
+    "name": "SVN Romania",
+    "slug": "svn-romania",
+    "type": "real_estate_agency",
+    "location": "Bucharest · Sector 1",
+    "location_slug": "bucharest-sector-1",
+    "headquarters": "Bucharest, Romania",
+    "description": "Leading real estate advisory firm in Romania, exclusive sales agent for major residential developments across Bucharest and major regional hubs.",
+    "website": "https://svn.ro",
+    "founded_year": 2019,
+    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "specializations": [
+      "Residential Project Sales",
+      "Property Management",
+      "Commercial Advisory"
+    ],
+    "services": [
+      "Project Sales",
+      "Tenant Advisory",
+      "Valuation Services"
+    ],
+    "markets": [
+      "Bucharest",
+      "Cluj-Napoca",
+      "Brașov",
+      "Constanța"
+    ],
+    "certifications": [
+      "ANEVAR Accredited"
+    ],
+    "projects_count": 20,
+    "active_projects_count": 8,
+    "completed_projects_count": 12,
+    "is_featured": true,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://svn.ro",
+        "title": "SVN Romania Official Site",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "agency-crosspoint-real-estate",
+    "name": "Crosspoint Real Estate",
+    "slug": "crosspoint-real-estate",
+    "type": "real_estate_agency",
+    "location": "Bucharest · Sector 1",
+    "location_slug": "bucharest-sector-1",
+    "headquarters": "Bucharest, Romania",
+    "description": "International Associate of Savills in Romania, providing transaction management, capital markets advisory, and luxury residential brokerage.",
+    "website": "https://crosspoint.com.ro",
+    "founded_year": 2005,
+    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "specializations": [
+      "Capital Markets Advisory",
+      "Commercial Leasing",
+      "Luxury Residential"
+    ],
+    "services": [
+      "Investment Advisory",
+      "Corporate Services"
+    ],
+    "markets": [
+      "Bucharest",
+      "National"
+    ],
+    "certifications": [
+      "Savills International Associate"
+    ],
+    "projects_count": 15,
+    "active_projects_count": 5,
+    "completed_projects_count": 10,
+    "is_featured": true,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://crosspoint.com.ro",
+        "title": "Crosspoint Official Site",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "agency-knight-frank-romania",
+    "name": "Knight Frank Romania",
+    "slug": "knight-frank-romania",
+    "type": "real_estate_agency",
+    "location": "Bucharest · Sector 1",
+    "location_slug": "bucharest-sector-1",
+    "headquarters": "London, UK / Bucharest, Romania",
+    "description": "Global commercial real estate consultancy advising institutional investors, office developers, and international occupiers in Romania.",
+    "website": "https://knightfrank.ro",
+    "founded_year": 2009,
+    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "specializations": [
+      "Office Agency",
+      "Industrial & Logistics",
+      "Capital Markets"
+    ],
+    "services": [
+      "Tenant Representation",
+      "Landlord Representation",
+      "Research"
+    ],
+    "markets": [
+      "Bucharest",
+      "National"
+    ],
+    "certifications": [
+      "RICS Certified"
+    ],
+    "projects_count": 18,
+    "active_projects_count": 6,
+    "completed_projects_count": 12,
+    "is_featured": true,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://knightfrank.ro",
+        "title": "Knight Frank Romania Official",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "agency-cushman-wakefield-echinox",
+    "name": "Cushman & Wakefield Echinox",
+    "slug": "cushman-wakefield-echinox",
+    "type": "real_estate_agency",
+    "location": "Bucharest · Sector 1",
+    "location_slug": "bucharest-sector-1",
+    "headquarters": "Bucharest, Romania",
+    "description": "Exclusive affiliate of Cushman & Wakefield in Romania, leading commercial real estate services firm providing asset services, valuation, and research.",
+    "website": "https://cwechinox.com",
+    "founded_year": 1993,
+    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "specializations": [
+      "Retail Leasing",
+      "Office Agency",
+      "Property Asset Management"
+    ],
+    "services": [
+      "Valuation",
+      "Tenant Advisory",
+      "Research Reports"
+    ],
+    "markets": [
+      "Bucharest",
+      "National"
+    ],
+    "certifications": [
+      "ANEVAR Member",
+      "RICS Certified"
+    ],
+    "projects_count": 22,
+    "active_projects_count": 9,
+    "completed_projects_count": 13,
+    "is_featured": true,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://cwechinox.com",
+        "title": "C&W Echinox Official Site",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "agency-colliers-romania",
+    "name": "Colliers Romania",
+    "slug": "colliers-romania",
+    "type": "real_estate_agency",
+    "location": "Bucharest · Sector 1",
+    "location_slug": "bucharest-sector-1",
+    "headquarters": "Toronto, Canada / Bucharest, Romania",
+    "description": "Leading diversified professional services and investment management company advising real estate occupiers and owners in Romania for over 25 years.",
+    "website": "https://www.colliers.com/ro-ro",
+    "founded_year": 1996,
+    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "specializations": [
+      "Land Agency",
+      "ESG Advisory",
+      "Industrial & Logistics Services"
+    ],
+    "services": [
+      "Capital Markets",
+      "Valuation Advisory",
+      "Workplace Advisory"
+    ],
+    "markets": [
+      "Bucharest",
+      "National"
+    ],
+    "certifications": [
+      "RICS Certified",
+      "ANEVAR Member"
+    ],
+    "projects_count": 25,
+    "active_projects_count": 10,
+    "completed_projects_count": 15,
+    "is_featured": true,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://www.colliers.com/ro-ro",
+        "title": "Colliers Romania Official",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "agency-jll-romania",
+    "name": "JLL Romania (Jones Lang LaSalle)",
+    "slug": "jll-romania",
+    "type": "real_estate_agency",
+    "location": "Bucharest · Sector 1",
+    "location_slug": "bucharest-sector-1",
+    "headquarters": "Chicago, USA / Bucharest, Romania",
+    "description": "Fortune 500 professional services firm specializing in real estate and investment management active in the Romanian commercial property market.",
+    "website": "https://www.jll.ro",
+    "founded_year": 2007,
+    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "specializations": [
+      "Corporate Solutions",
+      "Capital Markets",
+      "Project Development Services"
+    ],
+    "services": [
+      "Tenant Advisory",
+      "Property Management"
+    ],
+    "markets": [
+      "Bucharest",
+      "National"
+    ],
+    "certifications": [
+      "RICS Certified"
+    ],
+    "projects_count": 20,
+    "active_projects_count": 7,
+    "completed_projects_count": 13,
+    "is_featured": true,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://www.jll.ro",
+        "title": "JLL Romania Official Site",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "agency-premier-estate-management",
+    "name": "Premier Estate Management",
+    "slug": "premier-estate-management",
+    "type": "real_estate_agency",
+    "location": "Bucharest · Sector 1",
+    "location_slug": "bucharest-sector-1",
+    "headquarters": "Bucharest, Romania",
+    "description": "Specialized residential project sales and consultancy company managing residential portfolio launches across Bucharest.",
+    "website": "https://premier-estate.ro",
+    "founded_year": 2008,
+    "verification_level": "OFFICIAL_VERIFIED",
+    "specializations": [
+      "Residential New-Build Sales",
+      "Developer Advisory"
+    ],
+    "services": [
+      "Exclusive Project Sales",
+      "Marketing Management"
+    ],
+    "markets": [
+      "Bucharest",
+      "Ilfov"
+    ],
+    "certifications": [
+      "ANEVAR Member"
+    ],
+    "projects_count": 12,
+    "active_projects_count": 4,
+    "completed_projects_count": 8,
+    "is_featured": false,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://premier-estate.ro",
+        "title": "Premier Estate Official Site",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "agency-imoteca-real-estate-experts",
+    "name": "Imoteca — Real Estate Experts",
+    "slug": "imoteca-real-estate-experts",
+    "type": "real_estate_agency",
+    "location": "Bucharest · Sector 1",
+    "location_slug": "bucharest-sector-1",
+    "headquarters": "Bucharest, Romania",
+    "description": "Residential consultancy firm providing project marketing, tenant representation, and sales for medium-to-luxury housing developments.",
+    "website": "https://imoteca.ro",
+    "founded_year": 2007,
+    "verification_level": "OFFICIAL_VERIFIED",
+    "specializations": [
+      "New Residential Developments",
+      "Boutique Housing Sales"
+    ],
+    "services": [
+      "Residential Sales",
+      "Investment Consulting"
+    ],
+    "markets": [
+      "Bucharest",
+      "Ilfov"
+    ],
+    "certifications": [
+      "ANEVAR Member"
+    ],
+    "projects_count": 10,
+    "active_projects_count": 3,
+    "completed_projects_count": 7,
+    "is_featured": false,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://imoteca.ro",
+        "title": "Imoteca Official Portal",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "agency-sud-rezidential-real-estate",
+    "name": "Sud Rezidențial Real Estate Agency",
+    "slug": "sud-rezidential-real-estate",
+    "type": "real_estate_agency",
+    "location": "Bucharest · Sector 4",
+    "location_slug": "bucharest-sector-4",
+    "headquarters": "Bucharest, Romania",
+    "description": "Dedicated residential sales and brokerage hub operating across Southern Bucharest and Ilfov counties.",
+    "website": "https://www.sudrezidential.ro",
+    "founded_year": 2010,
+    "verification_level": "OFFICIAL_VERIFIED",
+    "specializations": [
+      "Southern Bucharest Housing",
+      "New Apartment Complexes"
+    ],
+    "services": [
+      "Project Brokerage",
+      "Mortgage Advisory"
+    ],
+    "markets": [
+      "Bucharest Sector 4",
+      "Ilfov South"
+    ],
+    "certifications": [
+      "ANEVAR Member"
+    ],
+    "projects_count": 14,
+    "active_projects_count": 5,
+    "completed_projects_count": 9,
+    "is_featured": false,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://www.sudrezidential.ro",
+        "title": "Sud Rezidențial Brokerage Site",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "agency-north-bucharest-investments",
+    "name": "North Bucharest Investments",
+    "slug": "north-bucharest-investments",
+    "type": "real_estate_agency",
+    "location": "Bucharest · Sector 1",
+    "location_slug": "bucharest-sector-1",
+    "headquarters": "Bucharest, Romania",
+    "description": "Specialized real estate agency focusing on high-end residential sales and investor portfolio acquisitions in Northern Bucharest.",
+    "website": "https://northbucharestinvestments.ro",
+    "founded_year": 2020,
+    "verification_level": "OFFICIAL_VERIFIED",
+    "specializations": [
+      "Northern Bucharest Luxury Apartments",
+      "Investor Property Portfolios"
+    ],
+    "services": [
+      "Residential Sales",
+      "Asset Advisory"
+    ],
+    "markets": [
+      "Bucharest Sector 1",
+      "Piper North"
+    ],
+    "certifications": [
+      "ANEVAR Member"
+    ],
+    "projects_count": 8,
+    "active_projects_count": 4,
+    "completed_projects_count": 4,
+    "is_featured": false,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://northbucharestinvestments.ro",
+        "title": "North Bucharest Investments Site",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "agency-skol-imobiliare-cluj",
+    "name": "Skol Imobiliare Cluj",
+    "slug": "skol-imobiliare-cluj",
+    "type": "real_estate_agency",
+    "location": "Cluj-Napoca · Cluj",
+    "location_slug": "cluj-napoca",
+    "headquarters": "Cluj-Napoca, Romania",
+    "description": "Established Transylvanian real estate brokerage specializing in Cluj-Napoca commercial land and residential developments.",
+    "website": "https://skolimobiliare.ro",
+    "founded_year": 2004,
+    "verification_level": "OFFICIAL_VERIFIED",
+    "specializations": [
+      "Cluj Residential Resales",
+      "Commercial Land Acquisition"
+    ],
+    "services": [
+      "Brokerage Services",
+      "Land Advisory"
+    ],
+    "markets": [
+      "Cluj-Napoca"
+    ],
+    "certifications": [
+      "ANEVAR Member"
+    ],
+    "projects_count": 7,
+    "active_projects_count": 2,
+    "completed_projects_count": 5,
+    "is_featured": false,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://skolimobiliare.ro",
+        "title": "Skol Imobiliare Cluj Site",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "agency-realpro-romania",
+    "name": "Realpro Romania",
+    "slug": "realpro-romania",
+    "type": "real_estate_agency",
+    "location": "Bucharest · Sector 1",
+    "location_slug": "bucharest-sector-1",
+    "headquarters": "Bucharest, Romania",
+    "description": "Exclusive representation residential brokerage network providing seller agency services across major Romanian cities.",
+    "website": "https://realpro.ro",
+    "founded_year": 2009,
+    "verification_level": "OFFICIAL_VERIFIED",
+    "specializations": [
+      "Exclusive Seller Representation"
+    ],
+    "services": [
+      "Residential Representation",
+      "Marketing"
+    ],
+    "markets": [
+      "Bucharest",
+      "Brașov",
+      "Constanța"
+    ],
+    "certifications": [
+      "ANEVAR Member"
+    ],
+    "projects_count": 6,
+    "active_projects_count": 2,
+    "completed_projects_count": 4,
+    "is_featured": false,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://realpro.ro",
+        "title": "Realpro Official Portal",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "agency-regus-romania-iwg",
+    "name": "Regus Romania (IWG Group)",
+    "slug": "regus-romania-iwg",
+    "type": "real_estate_agency",
+    "location": "Bucharest · Sector 1",
+    "location_slug": "bucharest-sector-1",
+    "headquarters": "Zug, Switzerland / Bucharest, Romania",
+    "description": "Flexible workplace operator member of IWG Group, operating over 15 business flex-work centers across Bucharest, Cluj-Napoca, Timișoara, and Iași.",
+    "website": "https://www.regus.com/ro-ro",
+    "founded_year": 1999,
+    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "specializations": [
+      "Flexible Workspace Leasing",
+      "Co-Working Hubs",
+      "Enterprise Flex Office"
+    ],
+    "services": [
+      "Flex Office Management",
+      "Corporate Workspace"
+    ],
+    "markets": [
+      "Bucharest",
+      "Cluj-Napoca",
+      "Timișoara",
+      "Iași"
+    ],
+    "certifications": [
+      "ISO 9001"
+    ],
+    "projects_count": 15,
+    "active_projects_count": 6,
+    "completed_projects_count": 9,
+    "is_featured": false,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://www.regus.com/ro-ro",
+        "title": "Regus Romania Official Site",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "agency-green-angels-real-estate",
+    "name": "Green Angels Real Estate",
+    "slug": "green-angels-real-estate",
+    "type": "real_estate_agency",
+    "location": "Bucharest · Sector 1",
+    "location_slug": "bucharest-sector-1",
+    "headquarters": "Bucharest, Romania",
+    "description": "Boutique sustainable real estate advisory specializing in green certified residential properties and nZEB developments.",
+    "website": "https://greenangels.ro",
+    "founded_year": 2015,
+    "verification_level": "OFFICIAL_VERIFIED",
+    "specializations": [
+      "nZEB Housing Representation",
+      "Green Certified Homes"
+    ],
+    "services": [
+      "Residential Advisory",
+      "Sustainability Consulting"
+    ],
+    "markets": [
+      "Bucharest",
+      "Ilfov"
+    ],
+    "certifications": [
+      "ANEVAR Member",
+      "ROGBC Member"
+    ],
+    "projects_count": 5,
+    "active_projects_count": 2,
+    "completed_projects_count": 3,
+    "is_featured": false,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://greenangels.ro",
+        "title": "Green Angels Site",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "agency-euroest-imobiliare",
+    "name": "Euroest Imobiliare",
+    "slug": "euroest-imobiliare",
+    "type": "real_estate_agency",
+    "location": "Bucharest · Sector 2",
+    "location_slug": "bucharest-sector-2",
+    "headquarters": "Bucharest, Romania",
+    "description": "Long-standing commercial and industrial real estate agency operating in Bucharest for over 25 years.",
+    "website": "https://euroest.ro",
+    "founded_year": 1994,
+    "verification_level": "OFFICIAL_VERIFIED",
+    "specializations": [
+      "Industrial & Land Transactions",
+      "Commercial Property Sales"
+    ],
+    "services": [
+      "Brokerage Services",
+      "Land Advisory"
+    ],
+    "markets": [
+      "Bucharest",
+      "Ilfov"
+    ],
+    "certifications": [
+      "ANEVAR Member"
+    ],
+    "projects_count": 9,
+    "active_projects_count": 3,
+    "completed_projects_count": 6,
+    "is_featured": false,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://euroest.ro",
+        "title": "Euroest Imobiliare Site",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "agency-avison-young-romania",
+    "name": "Avison Young Romania",
+    "slug": "avison-young-romania",
+    "type": "real_estate_agency",
+    "location": "Bucharest · Sector 1",
+    "location_slug": "bucharest-sector-1",
+    "headquarters": "Toronto, Canada / Bucharest, Romania",
+    "description": "Principal-led global commercial real estate services firm providing transaction, valuation, tenant representation, and capital markets advisory.",
+    "website": "https://www.avisonyoung.ro",
+    "founded_year": 2017,
+    "verification_level": "OFFICIAL_VERIFIED",
+    "specializations": [
+      "Tenant Representation",
+      "Capital Markets",
+      "Valuation Advisory"
+    ],
+    "services": [
+      "Commercial Leasing",
+      "Property Valuation",
+      "Research"
+    ],
+    "markets": [
+      "Bucharest",
+      "National"
+    ],
+    "certifications": [
+      "RICS Accredited",
+      "ANEVAR Member"
+    ],
+    "projects_count": 9,
+    "active_projects_count": 4,
+    "completed_projects_count": 5,
+    "is_featured": false,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://www.avisonyoung.ro",
+        "title": "Avison Young Romania Site",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "agency-remax-romania",
+    "name": "RE/MAX Romania",
+    "slug": "remax-romania",
+    "type": "real_estate_agency",
+    "location": "Cluj-Napoca · Cluj",
+    "location_slug": "cluj-napoca",
+    "headquarters": "Cluj-Napoca, Romania",
+    "description": "Largest real estate franchise brokerage network in Romania with over 60 offices and 1,000 real estate agents operating across major Romanian cities.",
+    "website": "https://www.remax.ro",
+    "founded_year": 2006,
+    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "specializations": [
+      "National Franchise Brokerage Network",
+      "Residential Resales & New Builds"
+    ],
+    "services": [
+      "Real Estate Brokerage",
+      "Franchise Management"
+    ],
+    "markets": [
+      "National"
+    ],
+    "certifications": [
+      "ANEVAR Member"
+    ],
+    "projects_count": 25,
+    "active_projects_count": 10,
+    "completed_projects_count": 15,
+    "is_featured": true,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://www.remax.ro",
+        "title": "RE/MAX Romania Official Portal",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "agency-nordis-real-estate",
+    "name": "Nordis Real Estate Agency",
+    "slug": "nordis-real-estate-agency",
+    "type": "real_estate_agency",
+    "location": "Bucharest · Sector 1",
+    "location_slug": "bucharest-sector-1",
+    "headquarters": "Bucharest, Romania",
+    "description": "Real estate agency specializing in luxury residential sales, holiday hotel apartments, and investment management.",
+    "website": "https://nordis.ro",
+    "founded_year": 2008,
+    "verification_level": "OFFICIAL_VERIFIED",
+    "specializations": [
+      "Luxury Apartment Sales",
+      "Resort Hotel Investments"
+    ],
+    "services": [
+      "Real Estate Brokerage",
+      "Investment Sales"
+    ],
+    "markets": [
+      "Bucharest",
+      "Constanta",
+      "Brasov"
+    ],
+    "certifications": [
+      "ANEVAR Member"
+    ],
+    "projects_count": 6,
+    "active_projects_count": 3,
+    "completed_projects_count": 3,
+    "is_featured": false,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://nordis.ro",
+        "title": "Nordis Group Official Site",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "comp-terra-gaz-construct",
+    "name": "Terra Gaz Construct",
+    "slug": "terra-gaz-construct",
+    "type": "general_contractor",
+    "location": "Bucharest · Sector 1",
+    "location_slug": "bucharest-sector-1",
+    "headquarters": "Bucharest, Romania",
+    "description": "Major general contractor active in residential high-rises, utility networks, and public infrastructure works.",
+    "website": "https://terragaz.ro",
+    "founded_year": 1998,
+    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "specializations": [
+      "High-Rise Structural Contracting",
+      "Civic Infrastructure"
+    ],
+    "services": [
+      "General Contracting",
+      "Civil Engineering"
+    ],
+    "markets": [
+      "Bucharest",
+      "Ilfov"
+    ],
+    "certifications": [
+      "ISO 9001",
+      "ISO 14001"
+    ],
+    "projects_count": 14,
+    "active_projects_count": 4,
+    "completed_projects_count": 10,
+    "is_featured": false,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://terragaz.ro",
+        "title": "Terra Gaz Official Site",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "comp-ness-proiect-europe",
+    "name": "Ness Proiect Europe",
+    "slug": "ness-proiect-europe",
+    "type": "general_contractor",
+    "location": "Ploiești · Prahova",
+    "location_slug": "ploiesti",
+    "headquarters": "Ploiești, Romania",
+    "description": "Industrial general contractor specializing in logistics distribution centers, factory plants, and retail big-box stores.",
+    "website": "https://nessproiect.ro",
+    "founded_year": 2010,
+    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "specializations": [
+      "Industrial Warehouse Contracting",
+      "Commercial Retail Big-Box"
+    ],
+    "services": [
+      "EPC Contracting",
+      "Turnkey Construction"
+    ],
+    "markets": [
+      "Prahova",
+      "Bucharest",
+      "National"
+    ],
+    "certifications": [
+      "ISO 9001",
+      "ISO 45001"
+    ],
+    "projects_count": 18,
+    "active_projects_count": 6,
+    "completed_projects_count": 12,
+    "is_featured": true,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://nessproiect.ro",
+        "title": "Ness Proiect Official Site",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "comp-synergy-construct",
+    "name": "Synergy Construct",
+    "slug": "synergy-construct",
+    "type": "general_contractor",
+    "location": "Bucharest · Sector 1",
+    "location_slug": "bucharest-sector-1",
+    "headquarters": "Bucharest, Romania",
+    "description": "International general contractor delivering industrial, commercial, and residential turnkey developments across Romania and Turkey.",
+    "website": "https://synergyconstruct.ro",
+    "founded_year": 2001,
+    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "specializations": [
+      "Industrial Plants",
+      "Shopping Malls",
+      "Office Complexes"
+    ],
+    "services": [
+      "General Contracting",
+      "Design & Build"
+    ],
+    "markets": [
+      "Bucharest",
+      "National"
+    ],
+    "certifications": [
+      "ISO 9001",
+      "ISO 14001"
+    ],
+    "projects_count": 16,
+    "active_projects_count": 5,
+    "completed_projects_count": 11,
+    "is_featured": true,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://synergyconstruct.ro",
+        "title": "Synergy Construct Official",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "comp-danya-cebus-romania",
+    "name": "Danya Cebus Romania",
+    "slug": "danya-cebus-romania",
+    "type": "general_contractor",
+    "location": "Bucharest · Sector 1",
+    "location_slug": "bucharest-sector-1",
+    "headquarters": "Tel Aviv, Israel / Bucharest, Romania",
+    "description": "Subsidiary of Danya Cebus Ltd., major general contractor responsible for AFI Cotroceni, AFI Tech Park, and UP-site towers in Bucharest.",
+    "website": "https://danyacebus.ro",
+    "founded_year": 2007,
+    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "specializations": [
+      "High-Rise Residential & Office",
+      "Mega Shopping Malls"
+    ],
+    "services": [
+      "General Contracting",
+      "Turnkey Civil Works"
+    ],
+    "markets": [
+      "Bucharest",
+      "National"
+    ],
+    "certifications": [
+      "ISO 9001",
+      "ISO 45001"
+    ],
+    "projects_count": 15,
+    "active_projects_count": 4,
+    "completed_projects_count": 11,
+    "is_featured": true,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://danyacebus.ro",
+        "title": "Danya Cebus Official Portal",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "comp-avis-construction",
+    "name": "Avis Construction",
+    "slug": "avis-construction",
+    "type": "general_contractor",
+    "location": "Brașov · Brașov",
+    "location_slug": "brasov",
+    "headquarters": "Brașov, Romania",
+    "description": "General contractor operating in Central Romania, specializing in residential complexes and hotel developments in Brașov and Poiana Brașov.",
+    "website": "https://avisconstruct.ro",
+    "founded_year": 2005,
+    "verification_level": "OFFICIAL_VERIFIED",
+    "specializations": [
+      "Brașov Residential Communities",
+      "Hotel Construction"
+    ],
+    "services": [
+      "General Contracting",
+      "Structural Execution"
+    ],
+    "markets": [
+      "Brașov"
+    ],
+    "certifications": [
+      "ISO 9001"
+    ],
+    "projects_count": 8,
+    "active_projects_count": 3,
+    "completed_projects_count": 5,
+    "is_featured": false,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://avisconstruct.ro",
+        "title": "Avis Construction Official",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "comp-constructii-sa-sibiu",
+    "name": "Construcții SA Sibiu",
+    "slug": "constructii-sa-sibiu",
+    "type": "general_contractor",
+    "location": "Sibiu · Sibiu",
+    "location_slug": "sibiu",
+    "headquarters": "Sibiu, Romania",
+    "description": "Long-established construction group in Sibiu county, active in civic buildings, heritage restorations, and residential complexes for over 70 years.",
+    "website": "https://constructiisa.ro",
+    "founded_year": 1950,
+    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "specializations": [
+      "Heritage Restorations",
+      "Sibiu Civic Buildings",
+      "Residential Developments"
+    ],
+    "services": [
+      "General Contracting",
+      "Restoration"
+    ],
+    "markets": [
+      "Sibiu",
+      "Transylvania"
+    ],
+    "certifications": [
+      "ISO 9001",
+      "Ministry of Culture Certified"
+    ],
+    "projects_count": 15,
+    "active_projects_count": 4,
+    "completed_projects_count": 11,
+    "is_featured": true,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://constructiisa.ro",
+        "title": "Construcții SA Sibiu Site",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "comp-cominco-sa",
+    "name": "Cominco SA",
+    "slug": "cominco-sa",
+    "type": "infrastructure",
+    "location": "Bucharest · Sector 1",
+    "location_slug": "bucharest-sector-1",
+    "headquarters": "Bucharest, Romania",
+    "description": "Specialized civil engineering and environmental infrastructure company executing water treatment plants and environmental protection works.",
+    "website": "https://cominco.ro",
+    "founded_year": 1991,
+    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "specializations": [
+      "Water Treatment Infrastructure",
+      "Industrial Civil Engineering"
+    ],
+    "services": [
+      "Infrastructure Contracting",
+      "EPC Environmental"
+    ],
+    "markets": [
+      "National"
+    ],
+    "certifications": [
+      "ISO 9001",
+      "ISO 14001"
+    ],
+    "projects_count": 12,
+    "active_projects_count": 3,
+    "completed_projects_count": 9,
+    "is_featured": false,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://cominco.ro",
+        "title": "Cominco SA Official Site",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "comp-electrogrup-cluj",
+    "name": "Electrogrup Cluj (E-INFRA Group)",
+    "slug": "electrogrup-cluj",
+    "type": "infrastructure",
+    "location": "Cluj-Napoca · Cluj",
+    "location_slug": "cluj-napoca",
+    "headquarters": "Cluj-Napoca, Romania",
+    "description": "Infrastructure construction group member of E-INFRA, executing energy grids, telecom networks, and civil engineering projects across Romania.",
+    "website": "https://electrogrup.ro",
+    "founded_year": 1997,
+    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "specializations": [
+      "Energy Infrastructure",
+      "Telecom Networks",
+      "Civic Engineering"
+    ],
+    "services": [
+      "Infrastructure Contracting",
+      "EPC Energy"
+    ],
+    "markets": [
+      "Cluj-Napoca",
+      "National"
+    ],
+    "certifications": [
+      "ISO 9001",
+      "ANRE Certified"
+    ],
+    "projects_count": 20,
+    "active_projects_count": 7,
+    "completed_projects_count": 13,
+    "is_featured": true,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://electrogrup.ro",
+        "title": "Electrogrup Official Site",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "comp-terratest-geotehnic",
+    "name": "Terratest Geotehnic Romania",
+    "slug": "terratest-geotehnic",
+    "type": "general_contractor",
+    "location": "Bucharest · Sector 1",
+    "location_slug": "bucharest-sector-1",
+    "headquarters": "Madrid, Spain / Bucharest, Romania",
+    "description": "Specialized geotechnical foundation contractor executing deep diaphragm walls, micro-piles, and soil stabilization for high-rises and infrastructure.",
+    "website": "https://terratest.ro",
+    "founded_year": 2006,
+    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "specializations": [
+      "Deep Diaphragm Retaining Walls",
+      "Driven Piles & Anchors"
+    ],
+    "services": [
+      "Geotechnical Contracting",
+      "Foundation Engineering"
+    ],
+    "markets": [
+      "Bucharest",
+      "National"
+    ],
+    "certifications": [
+      "ISO 9001"
+    ],
+    "projects_count": 25,
+    "active_projects_count": 8,
+    "completed_projects_count": 17,
+    "is_featured": true,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://terratest.ro",
+        "title": "Terratest Geotehnic Site",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "comp-keller-geotehnica",
+    "name": "Keller Geotehnica Romania",
+    "slug": "keller-geotehnica",
+    "type": "general_contractor",
+    "location": "Bucharest · Sector 1",
+    "location_slug": "bucharest-sector-1",
+    "headquarters": "London, UK / Bucharest, Romania",
+    "description": "World leader in geotechnical solutions, executing soil improvement, deep bored piles, and ground engineering across Romania.",
+    "website": "https://www.keller-geotehnica.ro",
+    "founded_year": 2005,
+    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "specializations": [
+      "Deep Bored Piling",
+      "Vibro Displacement Columns",
+      "Grouting Solutions"
+    ],
+    "services": [
+      "Ground Engineering",
+      "Geotechnical Design"
+    ],
+    "markets": [
+      "Bucharest",
+      "National"
+    ],
+    "certifications": [
+      "ISO 9001",
+      "ISO 14001"
+    ],
+    "projects_count": 30,
+    "active_projects_count": 10,
+    "completed_projects_count": 20,
+    "is_featured": true,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://www.keller-geotehnica.ro",
+        "title": "Keller Geotehnica Official",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "comp-octagon-contracting",
+    "name": "Octagon Contracting & Engineering",
+    "slug": "octagon-contracting",
+    "type": "general_contractor",
+    "location": "Bucharest · Sector 2",
+    "location_slug": "bucharest-sector-2",
+    "headquarters": "Bucharest, Romania",
+    "description": "Geotechnical foundation and civil contracting firm involved in major Bucharest office towers, bridges, and infrastructure works.",
+    "website": "https://octagon.com.ro",
+    "founded_year": 2005,
+    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "specializations": [
+      "Deep Foundation Execution",
+      "Civil Structural Engineering"
+    ],
+    "services": [
+      "Special Foundation Contracting",
+      "General Contracting"
+    ],
+    "markets": [
+      "Bucharest",
+      "National"
+    ],
+    "certifications": [
+      "ISO 9001"
+    ],
+    "projects_count": 18,
+    "active_projects_count": 5,
+    "completed_projects_count": 13,
+    "is_featured": false,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://octagon.com.ro",
+        "title": "Octagon Contracting Site",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "comp-erbasu-edilkonstrukt",
+    "name": "Erbașu Edilkonstrukt",
+    "slug": "erbasu-edilkonstrukt",
+    "type": "general_contractor",
+    "location": "Bucharest · Sector 1",
+    "location_slug": "bucharest-sector-1",
+    "headquarters": "Bucharest, Romania",
+    "description": "Prefabricated concrete element manufacturing and erection company belonging to Construcții Erbașu group.",
+    "website": "https://erbasu.ro",
+    "founded_year": 2012,
+    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "specializations": [
+      "Precast Structural Elements",
+      "Industrial Building Assembly"
+    ],
+    "services": [
+      "Precast Manufacturing",
+      "Erection Contracting"
+    ],
+    "markets": [
+      "Bucharest",
+      "National"
+    ],
+    "certifications": [
+      "ISO 9001"
+    ],
+    "projects_count": 10,
+    "active_projects_count": 3,
+    "completed_projects_count": 7,
+    "is_featured": false,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://erbasu.ro",
+        "title": "Erbașu Group Official Site",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "comp-alpenside-construction",
+    "name": "Alpenside Construction",
+    "slug": "alpenside-construction",
+    "type": "infrastructure",
+    "location": "Bucharest · Sector 1",
+    "location_slug": "bucharest-sector-1",
+    "headquarters": "Bucharest, Romania",
+    "description": "Civil infrastructure contractor executing road rehabilitation, bridge structures, and municipal utility works.",
+    "website": "https://alpenside.ro",
+    "founded_year": 2008,
+    "verification_level": "OFFICIAL_VERIFIED",
+    "specializations": [
+      "Road Infrastructure Contracting",
+      "Bridge Construction"
+    ],
+    "services": [
+      "Civil Infrastructure Contracting"
+    ],
+    "markets": [
+      "Bucharest",
+      "Moldavia"
+    ],
+    "certifications": [
+      "ISO 9001"
+    ],
+    "projects_count": 8,
+    "active_projects_count": 2,
+    "completed_projects_count": 6,
+    "is_featured": false,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://alpenside.ro",
+        "title": "Alpenside Official Portal",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "comp-axa-construction",
+    "name": "Axa Construction",
+    "slug": "axa-construction",
+    "type": "general_contractor",
+    "location": "Cluj-Napoca · Cluj",
+    "location_slug": "cluj-napoca",
+    "headquarters": "Cluj-Napoca, Romania",
+    "description": "General contractor operating in Cluj county, active in commercial fit-outs, residential structures, and educational facilities.",
+    "website": "https://axaconstruct.ro",
+    "founded_year": 2006,
+    "verification_level": "OFFICIAL_VERIFIED",
+    "specializations": [
+      "Commercial Fit-outs",
+      "Cluj Residential Structures"
+    ],
+    "services": [
+      "General Contracting",
+      "Interior Fit-out"
+    ],
+    "markets": [
+      "Cluj-Napoca"
+    ],
+    "certifications": [
+      "ISO 9001"
+    ],
+    "projects_count": 7,
+    "active_projects_count": 2,
+    "completed_projects_count": 5,
+    "is_featured": false,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://axaconstruct.ro",
+        "title": "Axa Construction Site",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "comp-smb-steel-structure",
+    "name": "SMB Steel Structure",
+    "slug": "smb-steel-structure",
+    "type": "general_contractor",
+    "location": "Iași · Iași",
+    "location_slug": "iasi",
+    "headquarters": "Iași, Romania",
+    "description": "Steel structure design and erection contractor serving logistics centers and industrial plants in Eastern Romania.",
+    "website": "https://smbsteel.ro",
+    "founded_year": 2009,
+    "verification_level": "OFFICIAL_VERIFIED",
+    "specializations": [
+      "Industrial Steel Halls",
+      "Roof Truss Systems"
+    ],
+    "services": [
+      "Steel Contracting",
+      "Fabrication"
+    ],
+    "markets": [
+      "Iași",
+      "Moldavia"
+    ],
+    "certifications": [
+      "ISO 9001",
+      "EN 1090 Steel"
+    ],
+    "projects_count": 9,
+    "active_projects_count": 3,
+    "completed_projects_count": 6,
+    "is_featured": false,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://smbsteel.ro",
+        "title": "SMB Steel Official Site",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "comp-synergy-invest",
+    "name": "Synergy Invest Construction",
+    "slug": "synergy-invest-construction",
+    "type": "general_contractor",
+    "location": "Bucharest · Sector 1",
+    "location_slug": "bucharest-sector-1",
+    "headquarters": "Bucharest, Romania",
+    "description": "Industrial general contractor specializing in logistics distribution centers, food processing plants, and cold-storage warehouse facilities.",
+    "website": "https://synergyinvest.ro",
+    "founded_year": 2005,
+    "verification_level": "OFFICIAL_VERIFIED",
+    "specializations": [
+      "Cold-Storage Logistics Warehouses",
+      "Industrial Factories"
+    ],
+    "services": [
+      "General Contracting",
+      "EPC Contracting"
+    ],
+    "markets": [
+      "Bucharest",
+      "Prahova"
+    ],
+    "certifications": [
+      "ISO 9001",
+      "ISO 14001"
+    ],
+    "projects_count": 7,
+    "active_projects_count": 2,
+    "completed_projects_count": 5,
+    "is_featured": false,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://synergyinvest.ro",
+        "title": "Synergy Invest Official Portal",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "comp-ubor-construct",
+    "name": "Ubor Construct Romania",
+    "slug": "ubor-construct-romania",
+    "type": "general_contractor",
+    "location": "Iași · Iași",
+    "location_slug": "iasi",
+    "headquarters": "Iași, Romania",
+    "description": "General construction contractor in Eastern Romania, active in civic infrastructure, hospital facilities, and residential complexes in Iași county.",
+    "website": "https://ubor.ro",
+    "founded_year": 2003,
+    "verification_level": "OFFICIAL_VERIFIED",
+    "specializations": [
+      "Civic Infrastructure",
+      "Hospital Facilities",
+      "Residential Contracting"
+    ],
+    "services": [
+      "General Contracting",
+      "Civil Engineering"
+    ],
+    "markets": [
+      "Iași",
+      "Moldavia"
+    ],
+    "certifications": [
+      "ISO 9001"
+    ],
+    "projects_count": 6,
+    "active_projects_count": 2,
+    "completed_projects_count": 4,
+    "is_featured": false,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://ubor.ro",
+        "title": "Ubor Construct Official Site",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "arch-archipelago-architecture",
+    "name": "Archipelago Architecture",
+    "slug": "archipelago-architecture",
+    "type": "architecture",
+    "location": "Bucharest · Sector 1",
+    "location_slug": "bucharest-sector-1",
+    "headquarters": "Bucharest, Romania",
+    "description": "Renowned architecture practice specializing in hospital and healthcare infrastructure, educational facilities, and public masterplanning.",
+    "website": "https://archipelago.ro",
+    "founded_year": 2008,
+    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "specializations": [
+      "Healthcare & Hospital Architecture",
+      "Public Educational Campus Design"
+    ],
+    "services": [
+      "Architectural Design",
+      "Masterplanning"
+    ],
+    "markets": [
+      "Bucharest",
+      "National"
+    ],
+    "certifications": [
+      "OAR Member",
+      "ISO 9001"
+    ],
+    "projects_count": 14,
+    "active_projects_count": 5,
+    "completed_projects_count": 9,
+    "is_featured": true,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://archipelago.ro",
+        "title": "Archipelago Official Site",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "arch-graphic-studio-architecture",
+    "name": "Graphic Studio Architecture",
+    "slug": "graphic-studio-architecture",
+    "type": "architecture",
+    "location": "Bucharest · Sector 1",
+    "location_slug": "bucharest-sector-1",
+    "headquarters": "Bucharest, Romania",
+    "description": "Award-winning Bucharest architectural studio recognized for residential communities, educational buildings, and urban infill projects.",
+    "website": "https://graphicstudio.ro",
+    "founded_year": 1998,
+    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "specializations": [
+      "Urban Infill Residential Design",
+      "School & University Campus Design"
+    ],
+    "services": [
+      "Architectural Concept & Technical Design"
+    ],
+    "markets": [
+      "Bucharest",
+      "National"
+    ],
+    "certifications": [
+      "OAR Member",
+      "Bienala de Arhitectură Winner"
+    ],
+    "projects_count": 16,
+    "active_projects_count": 4,
+    "completed_projects_count": 12,
+    "is_featured": true,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://graphicstudio.ro",
+        "title": "Graphic Studio Site",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "arch-epstein-architecture",
+    "name": "Epstein Architecture & Engineering",
+    "slug": "epstein-architecture",
+    "type": "architecture",
+    "location": "Bucharest · Sector 1",
+    "location_slug": "bucharest-sector-1",
+    "headquarters": "Chicago, USA / Bucharest, Romania",
+    "description": "Global multidisciplinary architecture, engineering, and construction firm operating in Bucharest for over 15 years, designing Bridge office park and industrial hubs.",
+    "website": "https://epsteinglobal.com",
+    "founded_year": 2006,
+    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "specializations": [
+      "Grade A Office Towers",
+      "Industrial Distribution Parks"
+    ],
+    "services": [
+      "Architecture",
+      "Structural & MEP Engineering"
+    ],
+    "markets": [
+      "Bucharest",
+      "National"
+    ],
+    "certifications": [
+      "OAR Member",
+      "LEED AP"
+    ],
+    "projects_count": 12,
+    "active_projects_count": 3,
+    "completed_projects_count": 9,
+    "is_featured": true,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://epsteinglobal.com",
+        "title": "Epstein Global Site",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "arch-sqm-architecture-studio",
+    "name": "SQM Architecture Studio",
+    "slug": "sqm-architecture-studio",
+    "type": "architecture",
+    "location": "Bucharest · Sector 1",
+    "location_slug": "bucharest-sector-1",
+    "headquarters": "Bucharest, Romania",
+    "description": "High-end residential and commercial architecture studio, lead design architect for UP-site Bucharest luxury residential towers.",
+    "website": "https://sqm.ro",
+    "founded_year": 2012,
+    "verification_level": "OFFICIAL_VERIFIED",
+    "specializations": [
+      "Luxury High-Rise Residential",
+      "Boutique Office Architecture"
+    ],
+    "services": [
+      "Architectural Design",
+      "Interior Architecture"
+    ],
+    "markets": [
+      "Bucharest"
+    ],
+    "certifications": [
+      "OAR Member"
+    ],
+    "projects_count": 8,
+    "active_projects_count": 3,
+    "completed_projects_count": 5,
+    "is_featured": false,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://sqm.ro",
+        "title": "SQM Architecture Official",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "arch-architype-studio",
+    "name": "Architype Studio Architecture",
+    "slug": "architype-studio",
+    "type": "architecture",
+    "location": "Bucharest · Sector 1",
+    "location_slug": "bucharest-sector-1",
+    "headquarters": "Bucharest, Romania",
+    "description": "Contemporary architecture practice focused on sustainable office developments, green certified buildings, and residential complexes.",
+    "website": "https://architype.ro",
+    "founded_year": 2010,
+    "verification_level": "OFFICIAL_VERIFIED",
+    "specializations": [
+      "Green Certified Architecture",
+      "Boutique Residential"
+    ],
+    "services": [
+      "Architectural Design",
+      "Permitting"
+    ],
+    "markets": [
+      "Bucharest",
+      "Ilfov"
+    ],
+    "certifications": [
+      "OAR Member"
+    ],
+    "projects_count": 7,
+    "active_projects_count": 2,
+    "completed_projects_count": 5,
+    "is_featured": false,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://architype.ro",
+        "title": "Architype Studio Site",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "arch-syaa-architecture",
+    "name": "SYAA / Urban Landscape Architecture",
+    "slug": "syaa-architecture",
+    "type": "architecture",
+    "location": "Bucharest · Sector 1",
+    "location_slug": "bucharest-sector-1",
+    "headquarters": "Bucharest, Romania",
+    "description": "Distinguished Romanian architectural practice specializing in masterplanning, residential urban communities, and public space design.",
+    "website": "https://syaa.ro",
+    "founded_year": 2006,
+    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "specializations": [
+      "Urban Masterplanning",
+      "Residential Community Architecture"
+    ],
+    "services": [
+      "Architecture",
+      "Urban Planning"
+    ],
+    "markets": [
+      "Bucharest",
+      "National"
+    ],
+    "certifications": [
+      "OAR Member",
+      "RUR Member"
+    ],
+    "projects_count": 15,
+    "active_projects_count": 4,
+    "completed_projects_count": 11,
+    "is_featured": true,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://syaa.ro",
+        "title": "SYAA Architecture Site",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "arch-dsba-dorin-stefan",
+    "name": "DSBA — Dorin Ștefan Birou Arhitectură",
+    "slug": "dsba-dorin-stefan",
+    "type": "architecture",
+    "location": "Bucharest · Sector 1",
+    "location_slug": "bucharest-sector-1",
+    "headquarters": "Bucharest, Romania",
+    "description": "Iconic Romanian architecture office led by Prof. Arh. Dorin Ștefan, designer of Opera Center, Palas Campus Iași, and Taiwan Tower competition winner.",
+    "website": "https://dsba.ro",
+    "founded_year": 1990,
+    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "specializations": [
+      "Iconic Institutional Architecture",
+      "Urban Landmark Design"
+    ],
+    "services": [
+      "Architectural Design",
+      "Urban Concept"
+    ],
+    "markets": [
+      "Bucharest",
+      "Iași",
+      "National"
+    ],
+    "certifications": [
+      "OAR Member",
+      "RUR Member"
+    ],
+    "projects_count": 20,
+    "active_projects_count": 4,
+    "completed_projects_count": 16,
+    "is_featured": true,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://dsba.ro",
+        "title": "DSBA Official Portal",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "arch-x-architecture-engineering",
+    "name": "X Architecture & Engineering",
+    "slug": "x-architecture-engineering",
+    "type": "architecture",
+    "location": "Bucharest · Sector 1",
+    "location_slug": "bucharest-sector-1",
+    "headquarters": "Bucharest, Romania",
+    "description": "Integrated architectural practice delivering commercial office spaces, hotel developments, and multi-family residential towers.",
+    "website": "https://x-architecture.ro",
+    "founded_year": 2011,
+    "verification_level": "OFFICIAL_VERIFIED",
+    "specializations": [
+      "Commercial Office Design",
+      "Hotel Architecture"
+    ],
+    "services": [
+      "Architectural Design",
+      "Coordination"
+    ],
+    "markets": [
+      "Bucharest"
+    ],
+    "certifications": [
+      "OAR Member"
+    ],
+    "projects_count": 8,
+    "active_projects_count": 3,
+    "completed_projects_count": 5,
+    "is_featured": false,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://x-architecture.ro",
+        "title": "X Architecture Official Site",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "arch-subrina-architecture-cluj",
+    "name": "Subrina Architecture Cluj",
+    "slug": "subrina-architecture-cluj",
+    "type": "architecture",
+    "location": "Cluj-Napoca · Cluj",
+    "location_slug": "cluj-napoca",
+    "headquarters": "Cluj-Napoca, Romania",
+    "description": "Leading Transylvanian architecture practice active in residential masterplanning, sports arenas, and mixed-use Cluj developments.",
+    "website": "https://subrina.ro",
+    "founded_year": 2005,
+    "verification_level": "OFFICIAL_VERIFIED",
+    "specializations": [
+      "Cluj Masterplanning",
+      "Mixed-Use Architecture"
+    ],
+    "services": [
+      "Architectural Design",
+      "Urban Studies"
+    ],
+    "markets": [
+      "Cluj-Napoca",
+      "Oradea"
+    ],
+    "certifications": [
+      "OAR Member"
+    ],
+    "projects_count": 10,
+    "active_projects_count": 3,
+    "completed_projects_count": 7,
+    "is_featured": false,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://subrina.ro",
+        "title": "Subrina Cluj Site",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "arch-quadra-design-studio",
+    "name": "Quadra Design Studio",
+    "slug": "quadra-design-studio",
+    "type": "architecture",
+    "location": "Bucharest · Sector 1",
+    "location_slug": "bucharest-sector-1",
+    "headquarters": "Bucharest, Romania",
+    "description": "Specialized architectural practice in office interior design, corporate workplace strategy, and boutique residential design.",
+    "website": "https://quadradesign.ro",
+    "founded_year": 2007,
+    "verification_level": "OFFICIAL_VERIFIED",
+    "specializations": [
+      "Corporate Office Workplaces",
+      "Boutique Residential"
+    ],
+    "services": [
+      "Interior Architecture",
+      "Workspace Design"
+    ],
+    "markets": [
+      "Bucharest"
+    ],
+    "certifications": [
+      "OAR Member"
+    ],
+    "projects_count": 9,
+    "active_projects_count": 3,
+    "completed_projects_count": 6,
+    "is_featured": false,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://quadradesign.ro",
+        "title": "Quadra Design Site",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "arch-k-ideas-architecture",
+    "name": "K-Ideas Architecture",
+    "slug": "k-ideas-architecture",
+    "type": "architecture",
+    "location": "Timișoara · Timiș",
+    "location_slug": "timisoara",
+    "headquarters": "Timișoara, Romania",
+    "description": "Architectural and planning consultancy in Timișoara designing industrial logistics hubs, residential towers, and civic plazas.",
+    "website": "https://kideas.ro",
+    "founded_year": 2008,
+    "verification_level": "OFFICIAL_VERIFIED",
+    "specializations": [
+      "Timișoara Industrial & Residential Architecture"
+    ],
+    "services": [
+      "Architectural Design",
+      "Urban Permitting"
+    ],
+    "markets": [
+      "Timișoara",
+      "Arad"
+    ],
+    "certifications": [
+      "OAR Member"
+    ],
+    "projects_count": 6,
+    "active_projects_count": 2,
+    "completed_projects_count": 4,
+    "is_featured": false,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://kideas.ro",
+        "title": "K-Ideas Architecture Site",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "arch-cumulus-architecture",
+    "name": "Cumulus Architecture",
+    "slug": "cumulus-architecture",
+    "type": "architecture",
+    "location": "Bucharest · Sector 1",
+    "location_slug": "bucharest-sector-1",
+    "headquarters": "Bucharest, Romania",
+    "description": "One of Romania's largest architecture practices, formed by the merger of 4 established offices, lead architect for Marmorosch Hotel, One Floreasca City, and Iulius Town.",
+    "website": "https://cumulus.ro",
+    "founded_year": 2017,
+    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "specializations": [
+      "Large-Scale Mixed-Use Urban Developments",
+      "Heritage Hotel Restorations",
+      "Office Campuses"
+    ],
+    "services": [
+      "Architectural Design",
+      "Masterplanning",
+      "Interior Architecture"
+    ],
+    "markets": [
+      "Bucharest",
+      "Timișoara",
+      "Cluj-Napoca",
+      "Iași"
+    ],
+    "certifications": [
+      "OAR Member",
+      "BREEAM AP"
+    ],
+    "projects_count": 25,
+    "active_projects_count": 8,
+    "completed_projects_count": 17,
+    "is_featured": true,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://cumulus.ro",
+        "title": "Cumulus Architecture Official",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "arch-plan31-architecture",
+    "name": "Plan31 Architecture & Engineering",
+    "slug": "plan31-architecture",
+    "type": "architecture",
+    "location": "Bucharest · Sector 2",
+    "location_slug": "bucharest-sector-2",
+    "headquarters": "Budapest, Hungary / Bucharest, Romania",
+    "description": "Multidisciplinary architecture and structural engineering practice specializing in logistics parks, industrial plants, and commercial centers.",
+    "website": "https://plan31.ro",
+    "founded_year": 2004,
+    "verification_level": "OFFICIAL_VERIFIED",
+    "specializations": [
+      "Industrial Logistics Masterplanning",
+      "Commercial Malls",
+      "Precast Concrete Systems"
+    ],
+    "services": [
+      "Architectural Design",
+      "Structural Design"
+    ],
+    "markets": [
+      "Bucharest",
+      "National"
+    ],
+    "certifications": [
+      "OAR Member",
+      "AICPS Member"
+    ],
+    "projects_count": 8,
+    "active_projects_count": 3,
+    "completed_projects_count": 5,
+    "is_featured": false,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://plan31.ro",
+        "title": "Plan31 Official Site",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "eng-popaer-structural-engineering",
+    "name": "Popaer Structural Engineering",
+    "slug": "popaer-structural-engineering",
+    "type": "structural_engineering",
+    "location": "Bucharest · Sector 1",
+    "location_slug": "bucharest-sector-1",
+    "headquarters": "Bucharest, Romania",
+    "description": "Structural engineering design office specializing in high-rise residential towers, complex foundation systems, and seismic resistance design.",
+    "website": "https://popaer.ro",
+    "founded_year": 2009,
+    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "specializations": [
+      "Seismic High-Rise Structural Design",
+      "Post-Tensioned Concrete Slab Systems"
+    ],
+    "services": [
+      "Structural Engineering",
+      "Peer Review"
+    ],
+    "markets": [
+      "Bucharest",
+      "National"
+    ],
+    "certifications": [
+      "AICPS Member",
+      "MLPAT Certified"
+    ],
+    "projects_count": 18,
+    "active_projects_count": 6,
+    "completed_projects_count": 12,
+    "is_featured": true,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://popaer.ro",
+        "title": "Popaer Engineering Site",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "eng-blueprint-structural-engineering",
+    "name": "Blueprint Structural Engineering",
+    "slug": "blueprint-structural-engineering",
+    "type": "structural_engineering",
+    "location": "Bucharest · Sector 1",
+    "location_slug": "bucharest-sector-1",
+    "headquarters": "Bucharest, Romania",
+    "description": "Structural design engineering consultancy involved in residential developments, commercial centers, and hotel structures.",
+    "website": "https://blueprint.ro",
+    "founded_year": 2007,
+    "verification_level": "OFFICIAL_VERIFIED",
+    "specializations": [
+      "Reinforced Concrete Structures",
+      "Structural Steel Design"
+    ],
+    "services": [
+      "Structural Design",
+      "Technical Assistance"
+    ],
+    "markets": [
+      "Bucharest",
+      "Ilfov"
+    ],
+    "certifications": [
+      "AICPS Member"
+    ],
+    "projects_count": 14,
+    "active_projects_count": 4,
+    "completed_projects_count": 10,
+    "is_featured": false,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://blueprint.ro",
+        "title": "Blueprint Engineering Site",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "eng-vital-engineering-mep",
+    "name": "Vital Engineering MEP",
+    "slug": "vital-engineering-mep",
+    "type": "mep",
+    "location": "Bucharest · Sector 1",
+    "location_slug": "bucharest-sector-1",
+    "headquarters": "Bucharest, Romania",
+    "description": "MEP (Mechanical, Electrical, Plumbing) engineering design consultancy for Grade A office buildings, shopping malls, and green hospitals.",
+    "website": "https://vitalengineering.ro",
+    "founded_year": 2005,
+    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "specializations": [
+      "HVAC & Energy Efficiency Systems",
+      "BMS & Smart Building Electrical Design"
+    ],
+    "services": [
+      "MEP Design",
+      "Energy Auditing"
+    ],
+    "markets": [
+      "Bucharest",
+      "National"
+    ],
+    "certifications": [
+      "ANRE Certified",
+      "ISU Certified"
+    ],
+    "projects_count": 22,
+    "active_projects_count": 7,
+    "completed_projects_count": 15,
+    "is_featured": true,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://vitalengineering.ro",
+        "title": "Vital MEP Engineering Official",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "eng-tpf-inginerie-romania",
+    "name": "TPF Inginerie Romania",
+    "slug": "tpf-inginerie-romania",
+    "type": "engineering",
+    "location": "Bucharest · Sector 1",
+    "location_slug": "bucharest-sector-1",
+    "headquarters": "Brussels, Belgium / Bucharest, Romania",
+    "description": "Multidisciplinary engineering consultancy member of TPF Group, providing site supervision, civil engineering, and environmental consultancy.",
+    "website": "https://tpf.ro",
+    "founded_year": 2010,
+    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "specializations": [
+      "FIDIC Site Supervision",
+      "Civil Transport Engineering",
+      "Water Management"
+    ],
+    "services": [
+      "Project Management",
+      "Site Supervision",
+      "Detailed Engineering"
+    ],
+    "markets": [
+      "Bucharest",
+      "National"
+    ],
+    "certifications": [
+      "ISO 9001",
+      "ISO 14001"
+    ],
+    "projects_count": 25,
+    "active_projects_count": 8,
+    "completed_projects_count": 17,
+    "is_featured": true,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://tpf.ro",
+        "title": "TPF Inginerie Site",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "eng-egis-romania",
+    "name": "Egis Romania",
+    "slug": "egis-romania",
+    "type": "engineering",
+    "location": "Bucharest · Sector 1",
+    "location_slug": "bucharest-sector-1",
+    "headquarters": "Guyancourt, France / Bucharest, Romania",
+    "description": "Global consulting and engineering firm operating in Romania for over 25 years, supervising motorways, rail networks, and major municipal projects.",
+    "website": "https://www.egis-group.com",
+    "founded_year": 1996,
+    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "specializations": [
+      "Motorway Supervision",
+      "Rail & Tunnel Engineering",
+      "Smart Mobility"
+    ],
+    "services": [
+      "Engineering Consultancy",
+      "FIDIC Supervision"
+    ],
+    "markets": [
+      "National"
+    ],
+    "certifications": [
+      "ISO 9001",
+      "ISO 14001",
+      "ISO 45001"
+    ],
+    "projects_count": 35,
+    "active_projects_count": 12,
+    "completed_projects_count": 23,
+    "is_featured": true,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://www.egis-group.com",
+        "title": "Egis Global Portal",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "eng-halcrow-romania-jacobs",
+    "name": "Halcrow Romania (Jacobs)",
+    "slug": "halcrow-romania-jacobs",
+    "type": "engineering",
+    "location": "Bucharest · Sector 1",
+    "location_slug": "bucharest-sector-1",
+    "headquarters": "Dallas, USA / Bucharest, Romania",
+    "description": "Engineering and technical services consultancy member of Jacobs Solutions, delivering water resources, environmental engineering, and airport transport infrastructure.",
+    "website": "https://www.jacobs.com",
+    "founded_year": 2002,
+    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "specializations": [
+      "Water & Environmental Engineering",
+      "Airport & Logistics Infrastructure"
+    ],
+    "services": [
+      "Technical Engineering",
+      "Environmental Impact Studies"
+    ],
+    "markets": [
+      "National"
+    ],
+    "certifications": [
+      "ISO 9001"
+    ],
+    "projects_count": 20,
+    "active_projects_count": 6,
+    "completed_projects_count": 14,
+    "is_featured": false,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://www.jacobs.com",
+        "title": "Jacobs Engineering Official",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "eng-search-corporation",
+    "name": "Search Corporation",
+    "slug": "search-corporation",
+    "type": "engineering",
+    "location": "Bucharest · Sector 1",
+    "location_slug": "bucharest-sector-1",
+    "headquarters": "Bucharest, Romania",
+    "description": "Premier Romanian road and bridge transport infrastructure engineering design practice responsible for designing major expressways, motorways, and regional airports.",
+    "website": "https://searchcorp.ro",
+    "founded_year": 1991,
+    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "specializations": [
+      "Motorway Feasibility & Technical Design",
+      "Airport Runway & Terminal Design"
+    ],
+    "services": [
+      "Infrastructure Design",
+      "Technical Consultancy"
+    ],
+    "markets": [
+      "National"
+    ],
+    "certifications": [
+      "ISO 9001",
+      "CNAIR Approved"
+    ],
+    "projects_count": 40,
+    "active_projects_count": 15,
+    "completed_projects_count": 25,
+    "is_featured": true,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://searchcorp.ro",
+        "title": "Search Corporation Official",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "eng-saidel-engineering",
+    "name": "Saidel Engineering",
+    "slug": "saidel-engineering",
+    "type": "structural_engineering",
+    "location": "Bucharest · Sector 2",
+    "location_slug": "bucharest-sector-2",
+    "headquarters": "Bucharest, Romania",
+    "description": "Specialized structural engineering design office for heritage restoration, complex foundation underpin, and historic masonry reinforcement.",
+    "website": "https://saidel.ro",
+    "founded_year": 2001,
+    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "specializations": [
+      "Historic Structure Seismic Retrofitting",
+      "Underpinning & Foundation Consolidation"
+    ],
+    "services": [
+      "Structural Engineering",
+      "Expert Technical Reports"
+    ],
+    "markets": [
+      "Bucharest",
+      "National"
+    ],
+    "certifications": [
+      "MLPAT Certified Expert",
+      "Ministry of Culture Certified"
+    ],
+    "projects_count": 16,
+    "active_projects_count": 4,
+    "completed_projects_count": 12,
+    "is_featured": true,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://saidel.ro",
+        "title": "Saidel Engineering Site",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "eng-consitrans-engineering",
+    "name": "Consitrans Engineering",
+    "slug": "consitrans-engineering",
+    "type": "engineering",
+    "location": "Bucharest · Sector 1",
+    "location_slug": "bucharest-sector-1",
+    "headquarters": "Bucharest, Romania",
+    "description": "Leading Romanian transport infrastructure engineering design firm active in motorway design (A1, A3, A7), railway modernization, and major bridges.",
+    "website": "https://consitrans.ro",
+    "founded_year": 1991,
+    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "specializations": [
+      "Motorway Technical Design",
+      "Railway Network Modernization Design"
+    ],
+    "services": [
+      "Infrastructure Design",
+      "Project Supervision"
+    ],
+    "markets": [
+      "National"
+    ],
+    "certifications": [
+      "ISO 9001",
+      "CNAIR Approved"
+    ],
+    "projects_count": 45,
+    "active_projects_count": 16,
+    "completed_projects_count": 29,
+    "is_featured": true,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://consitrans.ro",
+        "title": "Consitrans Official Site",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "eng-multinv-mep-engineering",
+    "name": "Multinv MEP Engineering",
+    "slug": "multinv-mep-engineering",
+    "type": "mep",
+    "location": "Bucharest · Sector 1",
+    "location_slug": "bucharest-sector-1",
+    "headquarters": "Bucharest, Romania",
+    "description": "Specialized building services MEP design engineering practice for logistics distribution parks, industrial factories, and retail malls.",
+    "website": "https://multinv.ro",
+    "founded_year": 2008,
+    "verification_level": "OFFICIAL_VERIFIED",
+    "specializations": [
+      "Industrial MEP Systems Design",
+      "Fire Fighting & Sprinkler Systems"
+    ],
+    "services": [
+      "MEP Design",
+      "Technical Audits"
+    ],
+    "markets": [
+      "Bucharest",
+      "National"
+    ],
+    "certifications": [
+      "ANRE Certified",
+      "IGSU Certified"
+    ],
+    "projects_count": 14,
+    "active_projects_count": 4,
+    "completed_projects_count": 10,
+    "is_featured": false,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://multinv.ro",
+        "title": "Multinv MEP Official Site",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "eng-proing-soft-engineering",
+    "name": "Proing Soft Engineering",
+    "slug": "proing-soft-engineering",
+    "type": "structural_engineering",
+    "location": "Cluj-Napoca · Cluj",
+    "location_slug": "cluj-napoca",
+    "headquarters": "Cluj-Napoca, Romania",
+    "description": "Transylvanian structural engineering design consultancy active in residential complexes, industrial precast structures, and bridges in Western Romania.",
+    "website": "https://proingsoft.ro",
+    "founded_year": 2004,
+    "verification_level": "OFFICIAL_VERIFIED",
+    "specializations": [
+      "Cluj Structural Design",
+      "Precast Concrete Systems"
+    ],
+    "services": [
+      "Structural Engineering"
+    ],
+    "markets": [
+      "Cluj-Napoca",
+      "Oradea",
+      "Brașov"
+    ],
+    "certifications": [
+      "AICPS Member"
+    ],
+    "projects_count": 12,
+    "active_projects_count": 4,
+    "completed_projects_count": 8,
+    "is_featured": false,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://proingsoft.ro",
+        "title": "Proing Soft Official Site",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "eng-mc-general-construct-engineering",
+    "name": "MC General Construct Engineering",
+    "slug": "mc-general-construct-engineering",
+    "type": "engineering",
+    "location": "Bucharest · Sector 1",
+    "location_slug": "bucharest-sector-1",
+    "headquarters": "Bucharest, Romania",
+    "description": "Engineering project management consultancy providing FIDIC site supervision and technical control for commercial buildings and residential developments.",
+    "website": "https://mcgeneral.ro",
+    "founded_year": 2006,
+    "verification_level": "OFFICIAL_VERIFIED",
+    "specializations": [
+      "Project Management Consultancy",
+      "Technical Site Supervision"
+    ],
+    "services": [
+      "Project Management",
+      "Cost Control"
+    ],
+    "markets": [
+      "Bucharest",
+      "Ilfov"
+    ],
+    "certifications": [
+      "ISO 9001"
+    ],
+    "projects_count": 10,
+    "active_projects_count": 3,
+    "completed_projects_count": 7,
+    "is_featured": false,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://mcgeneral.ro",
+        "title": "MC General Engineering Site",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "eng-k-ideas-structural-engineering",
+    "name": "K-Ideas Structural Engineering",
+    "slug": "k-ideas-structural-engineering",
+    "type": "structural_engineering",
+    "location": "Timișoara · Timiș",
+    "location_slug": "timisoara",
+    "headquarters": "Timișoara, Romania",
+    "description": "Structural engineering and seismic design consultancy in Western Romania, active in high-rise office structures and industrial steel halls.",
+    "website": "https://kideas.ro",
+    "founded_year": 2007,
+    "verification_level": "OFFICIAL_VERIFIED",
+    "specializations": [
+      "Structural Engineering Design",
+      "Seismic Assessment"
+    ],
+    "services": [
+      "Structural Engineering",
+      "Peer Review"
+    ],
+    "markets": [
+      "Timișoara",
+      "Arad"
+    ],
+    "certifications": [
+      "AICPS Member"
+    ],
+    "projects_count": 6,
+    "active_projects_count": 2,
+    "completed_projects_count": 4,
+    "is_featured": false,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://kideas.ro",
+        "title": "K-Ideas Structural Site",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
   {
     "id": "comp-one-united",
     "name": "One United Properties",
@@ -3811,6 +8182,914 @@ export const realCompaniesDataset: RealCompany[] = [
 
 export const realProjectsDataset: RealProject[] = [
   {
+    "id": "proj-nordis-mamaia-resort",
+    "name": "Nordis Mamaia Hotel & Residence",
+    "slug": "nordis-mamaia-resort",
+    "developer_name": "Nordis Group",
+    "developer_slug": "nordis-group",
+    "contractor_name": "Construcții Erbașu",
+    "contractor_slug": "constructii-erbasu",
+    "architect_name": "X Architecture & Engineering",
+    "architect_slug": "x-architecture-engineering",
+    "engineering_name": "Vital Engineering MEP",
+    "engineering_slug": "vital-engineering-mep",
+    "location": "Mamaia · Constanța",
+    "location_slug": "constanta",
+    "county": "Constanța",
+    "locality": "Mamaia",
+    "neighborhood": "Mamaia Nord / Năvodari Beach",
+    "address": "Bulevardul Mamaia Nord 100, Constanța",
+    "project_type": "Hospitality",
+    "status": "under_construction",
+    "status_display": "Under Construction",
+    "current_stage": "facade",
+    "current_progress_percent": 85,
+    "investment_eur": 100000000,
+    "surface_area_sqm": 100000,
+    "unit_count": 712,
+    "floors": "11F",
+    "description": "Luxury 5-star hotel and apartment resort development on Mamaia Nord beach incorporating 712 rooms and apartments, SPA center, and private beach.",
+    "image": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=85&pid=nordis-mamaia-resort",
+    "is_featured": true,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://nordis.ro/nordis-mamaia/",
+        "title": "Nordis Mamaia Official Page",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "proj-ctpark-cluj-logistics",
+    "name": "CTPark Cluj I Logistics Hub",
+    "slug": "ctpark-cluj-logistics",
+    "developer_name": "CTPark Cluj",
+    "developer_slug": "ctpark-cluj",
+    "contractor_name": "KÉSZ Construct Romania",
+    "contractor_slug": "kesz-construct-romania",
+    "architect_name": "Plan31 Architecture & Engineering",
+    "architect_slug": "plan31-architecture",
+    "engineering_name": "Teratest Geotehnica Cluj",
+    "engineering_slug": "teratest-geotehnica-cluj",
+    "location": "Cluj-Napoca · Cluj",
+    "location_slug": "cluj-napoca",
+    "county": "Cluj",
+    "locality": "Apahida",
+    "neighborhood": "Cluj East Airport Logistics Corridor",
+    "address": "DN1C Apahida, Cluj",
+    "project_type": "Industrial/Logistics",
+    "status": "completed",
+    "status_display": "Delivered",
+    "current_stage": "delivered",
+    "current_progress_percent": 100,
+    "investment_eur": 45000000,
+    "surface_area_sqm": 80000,
+    "floors": "1F",
+    "description": "80,000 sqm BREEAM Very Good Class A logistics distribution park near Cluj-Napoca International Airport.",
+    "image": "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=85&pid=ctpark-cluj-logistics",
+    "is_featured": false,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://ctp.eu/properties/romania/ctpark-cluj/",
+        "title": "CTPark Cluj Official Page",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "proj-speedwell-riverside-arad-site",
+    "name": "Speedwell Riverside Arad Project",
+    "slug": "speedwell-riverside-arad-site",
+    "developer_name": "Speedwell Riverside Arad",
+    "developer_slug": "speedwell-riverside-arad",
+    "contractor_name": "KÉSZ Construct Romania",
+    "contractor_slug": "kesz-construct-romania",
+    "architect_name": "Subrina Architecture Cluj",
+    "architect_slug": "subrina-architecture-cluj",
+    "engineering_name": "K-Ideas Structural Engineering",
+    "engineering_slug": "k-ideas-structural-engineering",
+    "location": "Arad · Arad",
+    "location_slug": "timisoara",
+    "county": "Arad",
+    "locality": "Arad",
+    "neighborhood": "Mureș River Corridor",
+    "address": "Calea Timișorii 45, Arad",
+    "project_type": "Mixed-use",
+    "status": "under_construction",
+    "status_display": "Under Construction",
+    "current_stage": "structure",
+    "current_progress_percent": 50,
+    "investment_eur": 40000000,
+    "surface_area_sqm": 35000,
+    "unit_count": 200,
+    "floors": "8F",
+    "description": "Riverside urban regeneration project in Arad delivering 200 residential units and 10,000 sqm commercial space.",
+    "image": "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=85&pid=speedwell-riverside-arad-site",
+    "is_featured": false,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://speedwell.be",
+        "title": "Speedwell Arad Official Page",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "proj-citadel-residence-craiova",
+    "name": "Citadel Residence Craiova",
+    "slug": "citadel-residence-craiova",
+    "developer_name": "Citadel Development Craiova",
+    "developer_slug": "citadel-development-craiova",
+    "contractor_name": "Construcții Erbașu",
+    "contractor_slug": "constructii-erbasu",
+    "architect_name": "Pro Concept Architecture Iași",
+    "architect_slug": "pro-concept-architecture-iasi",
+    "engineering_name": "Expert Proiect Suceava",
+    "engineering_slug": "expert-proiect-suceava",
+    "location": "Craiova · Dolj",
+    "location_slug": "craiova",
+    "county": "Dolj",
+    "locality": "Craiova",
+    "neighborhood": "Craiovița Nouă",
+    "address": "Calea Severinului, Craiova",
+    "project_type": "Residential",
+    "status": "completed",
+    "status_display": "Delivered",
+    "current_stage": "delivered",
+    "current_progress_percent": 100,
+    "investment_eur": 28000000,
+    "surface_area_sqm": 32000,
+    "unit_count": 420,
+    "floors": "10F",
+    "description": "420-apartment modern residential community in Craiova with subterranean parking and landscaped gardens.",
+    "image": "https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=1200&q=85&pid=citadel-residence-craiova",
+    "is_featured": false,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://citadelcraiova.ro",
+        "title": "Citadel Craiova Official Page",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "proj-a1-highway-sibiu-pitesti",
+    "name": "A1 Motorway Sibiu–Pitești Section 5",
+    "slug": "a1-highway-sibiu-pitesti",
+    "developer_name": "CNAIR (National Road Infrastructure Company)",
+    "developer_slug": "cnair",
+    "contractor_name": "Webuild / Astaldi Romania",
+    "contractor_slug": "webuild-romania",
+    "architect_name": "Search Corporation",
+    "architect_slug": "search-corporation",
+    "engineering_name": "Consitrans Engineering",
+    "engineering_slug": "consitrans-engineering",
+    "location": "Sibiu · Sibiu",
+    "location_slug": "sibiu",
+    "county": "Argeș / Sibiu",
+    "locality": "Pitești / Curtea de Argeș",
+    "neighborhood": "A1 Southern Carpathian Trans-Mountain Corridor",
+    "address": "A1 Motorway Section 5, Curtea de Argeș",
+    "project_type": "Civil Infrastructure",
+    "status": "under_construction",
+    "status_display": "Under Construction",
+    "current_stage": "structure",
+    "current_progress_percent": 72,
+    "investment_eur": 350000000,
+    "surface_area_sqm": 3000000,
+    "floors": "N/A Highway",
+    "description": "30km motorway section including 12 major bridges and viaducts crossing Trans-Carpathian infrastructure corridor.",
+    "image": "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1200&q=85&pid=a1-highway-sibiu-pitesti",
+    "is_featured": true,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://www.cnadnr.ro",
+        "title": "CNAIR A1 Sibiu-Pitești Official",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "proj-afi-tech-park-2",
+    "name": "AFI Tech Park 2 Bucharest",
+    "slug": "afi-tech-park-2",
+    "developer_name": "AFI Europe Romania",
+    "developer_slug": "afi-europe-romania",
+    "contractor_name": "Danya Cebus Romania",
+    "contractor_slug": "danya-cebus-romania",
+    "architect_name": "West Group Architecture",
+    "architect_slug": "west-group-architecture",
+    "engineering_name": "Vital Engineering MEP",
+    "engineering_slug": "vital-engineering-mep",
+    "location": "Bucharest · Sector 5",
+    "location_slug": "bucharest-sector-5",
+    "county": "Bucharest",
+    "locality": "Bucharest",
+    "neighborhood": "Tudor Vladimirescu / Rahova",
+    "address": "Bulevardul Tudor Vladimirescu 29, Bucharest",
+    "project_type": "Office",
+    "status": "completed",
+    "status_display": "Delivered",
+    "current_stage": "delivered",
+    "current_progress_percent": 100,
+    "investment_eur": 37000000,
+    "surface_area_sqm": 22000,
+    "floors": "8F",
+    "description": "Phase 2 of AFI Tech Park office campus delivering 22,000 sqm of LEED Platinum office space in Sector 5.",
+    "image": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=85&pid=afi-tech-park-2",
+    "is_featured": false,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://afitechipark.ro",
+        "title": "AFI Tech Park Official Site",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "proj-hils-brauner-residential",
+    "name": "HILS Brauner Residential",
+    "slug": "hils-brauner-residential",
+    "developer_name": "HILS Development",
+    "developer_slug": "hils-development",
+    "contractor_name": "Concelex",
+    "contractor_slug": "concelex",
+    "architect_name": "Graphic Studio Architecture",
+    "architect_slug": "graphic-studio-architecture",
+    "engineering_name": "Popaer Structural Engineering",
+    "engineering_slug": "popaer-structural-engineering",
+    "location": "Bucharest · Sector 3",
+    "location_slug": "bucharest-sector-3",
+    "county": "Bucharest",
+    "locality": "Bucharest",
+    "neighborhood": "Pallady East",
+    "address": "Drumul Gura Crivățului, Bucharest",
+    "project_type": "Residential",
+    "status": "completed",
+    "status_display": "Delivered",
+    "current_stage": "delivered",
+    "current_progress_percent": 100,
+    "investment_eur": 70000000,
+    "surface_area_sqm": 85000,
+    "unit_count": 1250,
+    "floors": "11F",
+    "description": "Substantial residential development of 1,250 smart apartments across 8 blocks in Sector 3 Pallady corridor.",
+    "image": "https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=1200&q=85&pid=hils-brauner-residential",
+    "is_featured": false,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://hils.ro/hils-brauner/",
+        "title": "HILS Brauner Official Page",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "proj-sedako-park-timisoara-site",
+    "name": "Sedako Park Timișoara",
+    "slug": "sedako-park-timisoara-site",
+    "developer_name": "Sedako Group Timișoara",
+    "developer_slug": "sedako-group-timisoara",
+    "contractor_name": "KÉSZ Construct Romania",
+    "contractor_slug": "kesz-construct-romania",
+    "architect_name": "Arteks Architecture Design",
+    "architect_slug": "arteks-architecture-design",
+    "engineering_name": "K-Ideas Structural Engineering",
+    "engineering_slug": "k-ideas-structural-engineering",
+    "location": "Timișoara · Timiș",
+    "location_slug": "timisoara",
+    "county": "Timiș",
+    "locality": "Timișoara",
+    "neighborhood": "Aradului / Lipovei",
+    "address": "Calea Sever Bocu, Timișoara",
+    "project_type": "Residential",
+    "status": "completed",
+    "status_display": "Delivered",
+    "current_stage": "delivered",
+    "current_progress_percent": 100,
+    "investment_eur": 24000000,
+    "surface_area_sqm": 26000,
+    "unit_count": 320,
+    "floors": "8F",
+    "description": "320-apartment residential park in Timișoara with commercial plazas and underground parking.",
+    "image": "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=85&pid=sedako-park-timisoara-site",
+    "is_featured": false,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://sedako.ro",
+        "title": "Sedako Official Site",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "proj-edil-park-cluj-site",
+    "name": "Edil Park Cluj",
+    "slug": "edil-park-cluj-site",
+    "developer_name": "Edil Construcții Cluj",
+    "developer_slug": "edil-constructii-cluj",
+    "contractor_name": "Axa Construction",
+    "contractor_slug": "axa-construction",
+    "architect_name": "Subrina Architecture Cluj",
+    "architect_slug": "subrina-architecture-cluj",
+    "engineering_name": "Proing Soft Engineering",
+    "engineering_slug": "proing-soft-engineering",
+    "location": "Cluj-Napoca · Cluj",
+    "location_slug": "cluj-napoca",
+    "county": "Cluj",
+    "locality": "Cluj-Napoca",
+    "neighborhood": "Mănăștur / Vivo",
+    "address": "Strada Edilului, Cluj-Napoca",
+    "project_type": "Residential",
+    "status": "completed",
+    "status_display": "Delivered",
+    "current_stage": "delivered",
+    "current_progress_percent": 100,
+    "investment_eur": 30000000,
+    "surface_area_sqm": 35000,
+    "unit_count": 450,
+    "floors": "10F",
+    "description": "450-apartment residential development in Cluj-Napoca near Vivo Shopping Center.",
+    "image": "https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=1200&q=85&pid=edil-park-cluj-site",
+    "is_featured": false,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://edil.ro",
+        "title": "Edil Cluj Official Site",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "proj-avrig-35-residential",
+    "name": "Avrig 35 Residential",
+    "slug": "avrig-35-residential",
+    "developer_name": "Rock Development Holding",
+    "developer_slug": "rock-development-holding",
+    "contractor_name": "Terra Gaz Construct",
+    "contractor_slug": "terra-gaz-construct",
+    "architect_name": "Quadra Design Studio",
+    "architect_slug": "quadra-design-studio",
+    "engineering_name": "Blueprint Structural Engineering",
+    "engineering_slug": "blueprint-structural-engineering",
+    "location": "Bucharest · Sector 2",
+    "location_slug": "bucharest-sector-2",
+    "county": "Bucharest",
+    "locality": "Bucharest",
+    "neighborhood": "Obor / Bucur Obor",
+    "address": "Strada Avrig 35, Bucharest",
+    "project_type": "Residential",
+    "status": "completed",
+    "status_display": "Delivered",
+    "current_stage": "delivered",
+    "current_progress_percent": 100,
+    "investment_eur": 20000000,
+    "surface_area_sqm": 18000,
+    "unit_count": 210,
+    "floors": "10F",
+    "description": "Modern urban residential building in Obor area offering 210 smart apartments and subterranean parking.",
+    "image": "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=85&pid=avrig-35-residential",
+    "is_featured": false,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://rockdevelopment.ro",
+        "title": "Rock Development Official",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "proj-militari-shopping-expansion",
+    "name": "Militari Shopping Center Expansion",
+    "slug": "militari-shopping-expansion",
+    "developer_name": "Liebrecht & wooD Romania",
+    "developer_slug": "liebrecht-wood-romania",
+    "contractor_name": "Ness Proiect Europe",
+    "contractor_slug": "ness-proiect-europe",
+    "architect_name": "Epstein Architecture & Engineering",
+    "architect_slug": "epstein-architecture",
+    "engineering_name": "Multinv MEP Engineering",
+    "engineering_slug": "multinv-mep-engineering",
+    "location": "Bucharest · Sector 6",
+    "location_slug": "bucharest-sector-6",
+    "county": "Bucharest",
+    "locality": "Bucharest",
+    "neighborhood": "Militari / Iuliu Maniu",
+    "address": "Bulevardul Iuliu Maniu 546, Bucharest",
+    "project_type": "Retail",
+    "status": "completed",
+    "status_display": "Delivered",
+    "current_stage": "delivered",
+    "current_progress_percent": 100,
+    "investment_eur": 35000000,
+    "surface_area_sqm": 55000,
+    "floors": "1F",
+    "description": "55,000 sqm retail park expansion anchored by major international hypermarket and DIY retailers.",
+    "image": "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1200&q=85&pid=militari-shopping-expansion",
+    "is_featured": false,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://liebrecht-wood.com",
+        "title": "Liebrecht & wooD Site",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "proj-anchor-plaza-office",
+    "name": "Anchor Plaza Office Tower",
+    "slug": "anchor-plaza-office",
+    "developer_name": "Anchor Group Romania",
+    "developer_slug": "anchor-group",
+    "contractor_name": "Construcții Erbașu",
+    "contractor_slug": "constructii-erbasu",
+    "architect_name": "Graphic Studio Architecture",
+    "architect_slug": "graphic-studio-architecture",
+    "engineering_name": "Vital Engineering MEP",
+    "engineering_slug": "vital-engineering-mep",
+    "location": "Bucharest · Sector 6",
+    "location_slug": "bucharest-sector-6",
+    "county": "Bucharest",
+    "locality": "Bucharest",
+    "neighborhood": "Lujerului / Timișoara",
+    "address": "Bulevardul Timișoara 26, Bucharest",
+    "project_type": "Office",
+    "status": "completed",
+    "status_display": "Delivered",
+    "current_stage": "delivered",
+    "current_progress_percent": 100,
+    "investment_eur": 32000000,
+    "surface_area_sqm": 25000,
+    "floors": "12F",
+    "description": "25,000 sqm Grade A office tower adjacent to Plaza Romania shopping center.",
+    "image": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=85&pid=anchor-plaza-office",
+    "is_featured": false,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://anchorgroup.ro",
+        "title": "Anchor Group Official Site",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "proj-incity-residences-bucharest",
+    "name": "InCity Residences Bucharest",
+    "slug": "incity-residences-bucharest",
+    "developer_name": "Anchor Group Romania",
+    "developer_slug": "anchor-group",
+    "contractor_name": "Synergy Construct",
+    "contractor_slug": "synergy-construct",
+    "architect_name": "SYAA / Urban Landscape Architecture",
+    "architect_slug": "syaa-architecture",
+    "engineering_name": "Popaer Structural Engineering",
+    "engineering_slug": "popaer-structural-engineering",
+    "location": "Bucharest · Sector 3",
+    "location_slug": "bucharest-sector-3",
+    "county": "Bucharest",
+    "locality": "Bucharest",
+    "neighborhood": "Vitan / Calea Vitan",
+    "address": "Calea Vitan 233, Bucharest",
+    "project_type": "Residential",
+    "status": "completed",
+    "status_display": "Delivered",
+    "current_stage": "delivered",
+    "current_progress_percent": 100,
+    "investment_eur": 55000000,
+    "surface_area_sqm": 60000,
+    "unit_count": 500,
+    "floors": "17F",
+    "description": "4-building high-rise residential complex of 500 luxury apartments in central Bucharest Vitan area.",
+    "image": "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=85&pid=incity-residences-bucharest",
+    "is_featured": false,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://incity.ro",
+        "title": "InCity Official Site",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "proj-boemia-apartments-bucharest",
+    "name": "Boemia Apartments Bucharest",
+    "slug": "boemia-apartments-bucharest",
+    "developer_name": "Prima Development Group Oradea",
+    "developer_slug": "prima-development-oradea",
+    "contractor_name": "Concelex",
+    "contractor_slug": "concelex",
+    "architect_name": "Graphic Studio Architecture",
+    "architect_slug": "graphic-studio-architecture",
+    "engineering_name": "Blueprint Structural Engineering",
+    "engineering_slug": "blueprint-structural-engineering",
+    "location": "Bucharest · Sector 4",
+    "location_slug": "bucharest-sector-4",
+    "county": "Bucharest",
+    "locality": "Bucharest",
+    "neighborhood": "Tineretului / Mărășești",
+    "address": "Bulevardul Mărășești 12, Bucharest",
+    "project_type": "Residential",
+    "status": "completed",
+    "status_display": "Delivered",
+    "current_stage": "delivered",
+    "current_progress_percent": 100,
+    "investment_eur": 15000000,
+    "surface_area_sqm": 12000,
+    "unit_count": 75,
+    "floors": "6F",
+    "description": "Boutique residential building of 75 high-end apartments near Tineretului Park in central Bucharest.",
+    "image": "https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=1200&q=85&pid=boemia-apartments-bucharest",
+    "is_featured": false,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://primadevelopment.ro/boemia/",
+        "title": "Boemia Apartments Page",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "proj-eli-park-bacau-logistics",
+    "name": "Eli Park Bacău Logistics Hub",
+    "slug": "eli-park-bacau-logistics",
+    "developer_name": "Element Industrial (Eli Parks)",
+    "developer_slug": "element-industrial-eli-parks",
+    "contractor_name": "Ness Proiect Europe",
+    "contractor_slug": "ness-proiect-europe",
+    "architect_name": "Plan31 Architecture & Engineering",
+    "architect_slug": "plan31-architecture",
+    "engineering_name": "Multinv MEP Engineering",
+    "engineering_slug": "multinv-mep-engineering",
+    "location": "Bacău · Bacău",
+    "location_slug": "bacau",
+    "county": "Bacău",
+    "locality": "Bacău",
+    "neighborhood": "A7 Highway Logistics Zone",
+    "address": "DN2 Bacău Bypass, Bacău",
+    "project_type": "Industrial/Logistics",
+    "status": "completed",
+    "status_display": "Delivered",
+    "current_stage": "delivered",
+    "current_progress_percent": 100,
+    "investment_eur": 20000000,
+    "surface_area_sqm": 30000,
+    "floors": "1F",
+    "description": "30,000 sqm Class A logistics warehouse along A7 Moldavia Motorway corridor.",
+    "image": "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=85&pid=eli-park-bacau-logistics",
+    "is_featured": false,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://elementindustrial.ro/eli-park-bacau/",
+        "title": "Eli Park Bacău Page",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "proj-dacia-one-bucharest",
+    "name": "Dacia One Office",
+    "slug": "dacia-one-office",
+    "developer_name": "Atenor Romania",
+    "developer_slug": "atenor-romania",
+    "contractor_name": "Bog'Art",
+    "contractor_slug": "bog-art",
+    "architect_name": "Cumulus Architecture",
+    "architect_slug": "cumulus-architecture",
+    "engineering_name": "Vital Engineering MEP",
+    "engineering_slug": "vital-engineering-mep",
+    "location": "Bucharest · Sector 1",
+    "location_slug": "bucharest-sector-1",
+    "county": "Bucharest",
+    "locality": "Bucharest",
+    "neighborhood": "Piața Romană / Dacia",
+    "address": "Bulevardul Dacia 15, Bucharest",
+    "project_type": "Office",
+    "status": "completed",
+    "status_display": "Delivered",
+    "current_stage": "delivered",
+    "current_progress_percent": 100,
+    "investment_eur": 50000000,
+    "surface_area_sqm": 16300,
+    "floors": "6F",
+    "description": "Restoration of historic Victoria House combined with a modern 16,300 sqm Grade A office building fully leased to ING Tech Romania.",
+    "image": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=85&pid=dacia-one-office",
+    "is_featured": true,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://www.atenor.eu/en/projects/dacia-one/",
+        "title": "Dacia One Official Page",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "proj-expo-bucharest-office",
+    "name": "@Expo Office Campus",
+    "slug": "expo-bucharest-office",
+    "developer_name": "Atenor Romania",
+    "developer_slug": "atenor-romania",
+    "contractor_name": "Bog'Art",
+    "contractor_slug": "bog-art",
+    "architect_name": "West Group Architecture",
+    "architect_slug": "west-group-architecture",
+    "engineering_name": "Popaer Structural Engineering",
+    "engineering_slug": "popaer-structural-engineering",
+    "location": "Bucharest · Sector 1",
+    "location_slug": "bucharest-sector-1",
+    "county": "Bucharest",
+    "locality": "Bucharest",
+    "neighborhood": "Expoziției / Presei Libere",
+    "address": "Bulevardul Expoziției 54, Bucharest",
+    "project_type": "Office",
+    "status": "completed",
+    "status_display": "Delivered",
+    "current_stage": "delivered",
+    "current_progress_percent": 100,
+    "investment_eur": 90000000,
+    "surface_area_sqm": 54000,
+    "floors": "12F",
+    "description": "Three-building Grade A office complex delivering 54,000 sqm of sustainable BREEAM Outstanding office space in Expoziției commercial hub.",
+    "image": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=85&pid=expo-bucharest-office",
+    "is_featured": false,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://www.atenor.eu/en/projects/expo/",
+        "title": "Atenor @Expo Official Page",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "proj-yunity-park-bucharest",
+    "name": "YUNITY Park (Genesis Property)",
+    "slug": "yunity-park-bucharest",
+    "developer_name": "Genesis Property",
+    "developer_slug": "genesis-property",
+    "contractor_name": "Construcții Erbașu",
+    "contractor_slug": "constructii-erbasu",
+    "architect_name": "Archipelago Architecture",
+    "architect_slug": "archipelago-architecture",
+    "engineering_name": "Vital Engineering MEP",
+    "engineering_slug": "vital-engineering-mep",
+    "location": "Bucharest · Sector 6",
+    "location_slug": "bucharest-sector-6",
+    "county": "Bucharest",
+    "locality": "Bucharest",
+    "neighborhood": "Pipera North / Dimitrie Pompeiu",
+    "address": "Bulevardul Dimitrie Pompeiu 6, Bucharest",
+    "project_type": "Office",
+    "status": "completed",
+    "status_display": "Delivered",
+    "current_stage": "delivered",
+    "current_progress_percent": 100,
+    "investment_eur": 50000000,
+    "surface_area_sqm": 75000,
+    "floors": "7F",
+    "description": "Transformation of Novo Park into YUNITY Park, featuring a 1,000 sqm outdoor amphitheatre, 2,000 sqm urban forest, and 75,000 sqm Grade A offices.",
+    "image": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=85&pid=yunity-park-bucharest",
+    "is_featured": true,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://genesisproperty.net/yunity-park",
+        "title": "YUNITY Park Official Site",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "proj-xcity-towers-timisoara",
+    "name": "XCity Towers Timișoara",
+    "slug": "xcity-towers-timisoara",
+    "developer_name": "Wallberg Building Timișoara",
+    "developer_slug": "wallberg-building",
+    "contractor_name": "KÉSZ Construct Romania",
+    "contractor_slug": "kesz-construct-romania",
+    "architect_name": "K-Ideas Architecture",
+    "architect_slug": "k-ideas-architecture",
+    "engineering_name": "K-Ideas Structural Engineering",
+    "engineering_slug": "k-ideas-structural-engineering",
+    "location": "Timișoara · Timiș",
+    "location_slug": "timisoara",
+    "county": "Timiș",
+    "locality": "Timișoara",
+    "neighborhood": "Torontalului / Bucovina",
+    "address": "Calea Torontalului, Timișoara",
+    "project_type": "Residential",
+    "status": "under_construction",
+    "status_display": "Under Construction",
+    "current_stage": "structure",
+    "current_progress_percent": 75,
+    "investment_eur": 60000000,
+    "surface_area_sqm": 65000,
+    "unit_count": 1000,
+    "floors": "15F",
+    "description": "Major residential tower development of 1,000 smart apartments in 8 high-rise buildings in Northern Timișoara.",
+    "image": "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=85&pid=xcity-towers-timisoara",
+    "is_featured": false,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://wallberg.ro/xcity-towers/",
+        "title": "XCity Towers Official",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "proj-hexagon-offices-cluj",
+    "name": "Hexagon Offices Cluj",
+    "slug": "hexagon-offices-cluj",
+    "developer_name": "Hexagon Building Cluj",
+    "developer_slug": "hexagon-cluj",
+    "contractor_name": "Axa Construction",
+    "contractor_slug": "axa-construction",
+    "architect_name": "Subrina Architecture Cluj",
+    "architect_slug": "subrina-architecture-cluj",
+    "engineering_name": "Proing Soft Engineering",
+    "engineering_slug": "proing-soft-engineering",
+    "location": "Cluj-Napoca · Cluj",
+    "location_slug": "cluj-napoca",
+    "county": "Cluj",
+    "locality": "Cluj-Napoca",
+    "neighborhood": "Zorilor / Calea Turzii",
+    "address": "Calea Turzii 178, Cluj-Napoca",
+    "project_type": "Office",
+    "status": "completed",
+    "status_display": "Delivered",
+    "current_stage": "delivered",
+    "current_progress_percent": 100,
+    "investment_eur": 30000000,
+    "surface_area_sqm": 21600,
+    "floors": "8F",
+    "description": "Class A commercial office building delivering 21,600 sqm of modern tech workspace with BREEAM Excellent certification.",
+    "image": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=85&pid=hexagon-offices-cluj",
+    "is_featured": false,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://hexagon.ro/hexagon-offices/",
+        "title": "Hexagon Offices Official",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "proj-fashion-house-pallady",
+    "name": "Fashion House Outlet Pallady",
+    "slug": "fashion-house-outlet-pallady",
+    "developer_name": "Liebrecht & wooD Romania",
+    "developer_slug": "liebrecht-wood-romania",
+    "contractor_name": "Ness Proiect Europe",
+    "contractor_slug": "ness-proiect-europe",
+    "architect_name": "Epstein Architecture & Engineering",
+    "architect_slug": "epstein-architecture",
+    "engineering_name": "Multinv MEP Engineering",
+    "engineering_slug": "multinv-mep-engineering",
+    "location": "Bucharest · Sector 3",
+    "location_slug": "bucharest-sector-3",
+    "county": "Bucharest",
+    "locality": "Bucharest",
+    "neighborhood": "Theodor Pallady Retail Corridor",
+    "address": "Autostrada A2 Km 15, Bucharest",
+    "project_type": "Retail",
+    "status": "completed",
+    "status_display": "Delivered",
+    "current_stage": "delivered",
+    "current_progress_percent": 100,
+    "investment_eur": 25000000,
+    "surface_area_sqm": 14000,
+    "floors": "1F",
+    "description": "Second Fashion House outlet shopping village in Bucharest offering 14,000 sqm of open-air retail arcades.",
+    "image": "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1200&q=85&pid=fashion-house-outlet-pallady",
+    "is_featured": false,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://fashionhouse.ro/pallady/",
+        "title": "Fashion House Pallady Page",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "proj-metalurgiei-park-residence",
+    "name": "Metalurgiei Park Residence Phase 2",
+    "slug": "metalurgiei-park-residence-phase-2",
+    "developer_name": "Sud Rezidențial Development",
+    "developer_slug": "sud-rezidential-development",
+    "contractor_name": "Terra Gaz Construct",
+    "contractor_slug": "terra-gaz-construct",
+    "architect_name": "Graphic Studio Architecture",
+    "architect_slug": "graphic-studio-architecture",
+    "engineering_name": "Blueprint Structural Engineering",
+    "engineering_slug": "blueprint-structural-engineering",
+    "location": "Bucharest · Sector 4",
+    "location_slug": "bucharest-sector-4",
+    "county": "Bucharest",
+    "locality": "Bucharest",
+    "neighborhood": "Bulevardul Metalurgiei / Berceni",
+    "address": "Bulevardul Metalurgiei 132, Bucharest",
+    "project_type": "Residential",
+    "status": "under_construction",
+    "status_display": "Under Construction",
+    "current_stage": "structure",
+    "current_progress_percent": 80,
+    "investment_eur": 150000000,
+    "surface_area_sqm": 180000,
+    "unit_count": 3000,
+    "floors": "8F",
+    "description": "Masterplanned residential district in Sector 4 featuring over 3,000 new housing units, Tudor Arghezi park access, and retail plazas.",
+    "image": "https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=1200&q=85&pid=metalurgiei-park-residence-phase-2",
+    "is_featured": true,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://metalurgieipark.ro",
+        "title": "Metalurgiei Park Official",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "proj-vgp-park-brasov",
+    "name": "VGP Park Brașov",
+    "slug": "vgp-park-brasov",
+    "developer_name": "VGP Parks Romania",
+    "developer_slug": "vgp-parks-romania",
+    "contractor_name": "PORR Construct Romania",
+    "contractor_slug": "porr-construct-romania",
+    "architect_name": "Plan31 Architecture & Engineering",
+    "architect_slug": "plan31-architecture",
+    "engineering_name": "TPF Inginerie Romania",
+    "engineering_slug": "tpf-inginerie-romania",
+    "location": "Brașov · Brașov",
+    "location_slug": "brasov",
+    "county": "Brașov",
+    "locality": "Cristian",
+    "neighborhood": "Brașov West Industrial Zone",
+    "address": "DN73 Cristian, Brașov",
+    "project_type": "Industrial/Logistics",
+    "status": "completed",
+    "status_display": "Delivered",
+    "current_stage": "delivered",
+    "current_progress_percent": 100,
+    "investment_eur": 80000000,
+    "surface_area_sqm": 140000,
+    "floors": "1F",
+    "description": "140,000 sqm Class A logistics and semi-industrial park serving automotive suppliers and logistics distribution networks near Brașov Airport.",
+    "image": "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=85&pid=vgp-park-brasov",
+    "is_featured": false,
+    "last_verified_at": "2026-08-25T00:00:00Z",
+    "sources": [
+      {
+        "url": "https://www.vgpparks.eu/en/romania/vgp-park-brasov/",
+        "title": "VGP Park Brașov Official",
+        "type": "OFFICIAL",
+        "verified_at": "2026-08-25T00:00:00Z"
+      }
+    ]
+  },
+  {
     "id": "proj-one-high-district",
     "name": "One High District",
     "slug": "one-high-district",
@@ -3847,7 +9126,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "Bog'Art",
     "contractor_slug": "bog-art",
     "description": "High-rise residential development with 3 towers of 20 floors offering 786 apartments, commercial ground floor, and energy-efficient geo-exchange heat pumps.",
-    "image": "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=85",
+    "image": "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=85&pid=one-high-district",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 95,
@@ -3904,7 +9183,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "Bog'Art",
     "contractor_slug": "bog-art",
     "description": "Major 820-unit residential compound in Aviației office hub consisting of 4 blocks with 1,100 underground parking spaces.",
-    "image": "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=85",
+    "image": "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=85&pid=cloud-9-residence-bucharest",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 96,
@@ -3950,7 +9229,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "KÉSZ Construct Romania",
     "contractor_slug": "kesz-construct",
     "description": "250,000 sqm warehouse expansion phase at CTPark Bucharest West (total park area 850,000 sqm GLA) hosting logistics hubs for IBEC and Quehenberger.",
-    "image": "https://images.unsplash.com/photo-1567684014761-b65e2e59b9eb?auto=format&fit=crop&w=1200&q=85",
+    "image": "https://images.unsplash.com/photo-1567684014761-b65e2e59b9eb?auto=format&fit=crop&w=1200&q=85&pid=ctpark-bucharest-west-phase-2",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 96,
@@ -4002,7 +9281,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "Skanska Romania",
     "contractor_slug": "skanska-romania",
     "description": "20,800 sqm GLA 12-floor LEED Platinum Class A office tower in Floreasca office hub with 3,500 sqm green relaxation courtyard.",
-    "image": "https://images.unsplash.com/photo-1574362848149-11496d93a7c7?auto=format&fit=crop&w=1200&q=85",
+    "image": "https://images.unsplash.com/photo-1574362848149-11496d93a7c7?auto=format&fit=crop&w=1200&q=85&pid=equilibrium-tower-phase-1-skanska",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 96,
@@ -4054,7 +9333,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "Skanska Romania",
     "contractor_slug": "skanska-romania",
     "description": "22,000 sqm GLA office building featuring rooftop running track and smart building technology, leased to Microsoft and NXP.",
-    "image": "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1200&q=85",
+    "image": "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1200&q=85&pid=campus-6-phase-1-skanska",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 96,
@@ -4100,7 +9379,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "Strabag Romania",
     "contractor_slug": "strabag-romania",
     "description": "16.8 km motorway section of Autostrada A3 Transilvania featuring complex cut-and-cover viaducts and landslide stabilization retaining structures.",
-    "image": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=85",
+    "image": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=85&pid=autostrada-a3-nadaselu-mihaiesti",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 96,
@@ -4156,7 +9435,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "Webuild / Astaldi Romania",
     "contractor_slug": "webuild-astaldi",
     "description": "Underground subway train depot and technical maintenance park serving Bucharest Metro Line 5 with capacity for 16 trainsets.",
-    "image": "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=85",
+    "image": "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=85&pid=metrou-m5-depoul-valea-ialomitei",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 96,
@@ -4215,7 +9494,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "Strabag Romania",
     "contractor_slug": "strabag-romania",
     "description": "Tallest office building in Romania (137m height, 37 floors) certified LEED Gold, located in Floreasca commercial corridor.",
-    "image": "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=85",
+    "image": "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=85&pid=sky-tower-bucharest",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 96,
@@ -4271,7 +9550,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "Aktor Romania",
     "contractor_slug": "aktor-romania",
     "description": "6.6 km underground TBM subway connection with 6 stations (Pajura, Washington, Paris, 1 Mai, Băneasa, Tokyo) linking Bucharest to Otopeni Airport.",
-    "image": "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1200&q=85",
+    "image": "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1200&q=85&pid=metrou-m6-lot-1-tokyo",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 96,
@@ -4330,7 +9609,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "Bog'Art",
     "contractor_slug": "bog-art",
     "description": "Iconic 25-floor Class A office tower (110m height) in Expoziției commercial hub certified LEED Platinum.",
-    "image": "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1200&q=85",
+    "image": "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1200&q=85&pid=ana-tower-bucharest",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 96,
@@ -4384,7 +9663,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "Webuild / Astaldi Romania",
     "contractor_slug": "webuild-astaldi",
     "description": "21.5 km of high-capacity express road connections and viaducts linking the Brăila Golden Gate suspension bridge to Măcin and Tulcea.",
-    "image": "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=85",
+    "image": "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=85&pid=podul-braila-connectors",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 96,
@@ -4440,7 +9719,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "CON-A Operations",
     "contractor_slug": "con-a",
     "description": "30,201-seat UEFA Category 4 multi-purpose stadium in Cluj-Napoca featuring distinctive translucent roof architecture and Athletics tracks.",
-    "image": "https://images.unsplash.com/photo-1600573472592-401b489a3cdc?auto=format&fit=crop&w=1200&q=85",
+    "image": "https://images.unsplash.com/photo-1600573472592-401b489a3cdc?auto=format&fit=crop&w=1200&q=85&pid=stadionul-cluj-arena",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 96,
@@ -4499,7 +9778,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "Con-A Operations",
     "contractor_slug": "con-a",
     "description": "Largest single Class A office building in Romania (60,000 sqm GLA) hosting tech multinationals Amazon, Microsoft, and Cognizant in Iași.",
-    "image": "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=1200&q=85",
+    "image": "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=1200&q=85&pid=palas-campus-iasi",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 96,
@@ -4546,7 +9825,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "Concelex",
     "contractor_slug": "concelex",
     "description": "Modern 280-bed regional pneumology medical center featuring 4 specialized operating blocks, outpatient units, and advanced medical gas systems.",
-    "image": "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1200&q=85",
+    "image": "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1200&q=85&pid=spitalul-pneumoftiziologie-brasov",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 96,
@@ -4603,7 +9882,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "Con-A Operations",
     "contractor_slug": "con-a",
     "description": "Transit-oriented residential urban regeneration project consisting of 5 buildings with 460 apartments directly located next to Jiului metro station.",
-    "image": "https://images.unsplash.com/photo-1512915922686-57c11dde9b6b?auto=format&fit=crop&w=1200&q=85",
+    "image": "https://images.unsplash.com/photo-1512915922686-57c11dde9b6b?auto=format&fit=crop&w=1200&q=85&pid=marmura-residence-prime-kapital",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 95,
@@ -4649,7 +9928,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "PORR Construct Romania",
     "contractor_slug": "porr-construct-romania",
     "description": "9.86 km complex motorway section including Romania's first major twin-bore motorway tunnel (Tunelul Momaia, 1.3 km length) built through the Carpathian foothills.",
-    "image": "https://images.unsplash.com/photo-1513584684374-8bab748fbf90?auto=format&fit=crop&w=1200&q=85",
+    "image": "https://images.unsplash.com/photo-1513584684374-8bab748fbf90?auto=format&fit=crop&w=1200&q=85&pid=autostrada-a1-lot-4-porr",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 96,
@@ -4706,7 +9985,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "Construcții Erbașu",
     "contractor_slug": "constructii-erbasu",
     "description": "Modern residential complex comprising 520 units across 3 buildings near Carol Park, featuring underground parking and retail arcade.",
-    "image": "https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=1200&q=85",
+    "image": "https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=1200&q=85&pid=metropolitan-viilor-residence",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 95,
@@ -4758,7 +10037,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "Bog'Art",
     "contractor_slug": "bog-art",
     "description": "12-story Class A office tower adding 20,000 sqm GLA in Northern Bucharest, featuring LEED Platinum certification and 3,500 sqm urban green plaza.",
-    "image": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=85",
+    "image": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=85&pid=equilibrium-phase-2-skanska",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 96,
@@ -4810,7 +10089,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "Con-A Operations",
     "contractor_slug": "con-a",
     "description": "First phase of major urban regeneration in Iași delivering 315 BREEAM-certified apartments and 20,000 sqm Class A office space.",
-    "image": "https://images.unsplash.com/photo-1554469384-e58fac16e23a?auto=format&fit=crop&w=1200&q=85",
+    "image": "https://images.unsplash.com/photo-1554469384-e58fac16e23a?auto=format&fit=crop&w=1200&q=85&pid=silk-district-iasi-phase-1",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 95,
@@ -4861,7 +10140,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "Webuild Romania",
     "contractor_slug": "webuild-romania",
     "description": "6.9 km major underground subway line featuring 10 stations and 1 depot, connecting Drumul Taberei neighborhood directly to central Eroilor interchange.",
-    "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=85",
+    "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=85&pid=metrou-m5-raul-doamnei-eroilor",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 96,
@@ -4918,7 +10197,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "Construcții Erbașu",
     "contractor_slug": "constructii-erbasu",
     "description": "Premier regional mixed-use complex in Brașov combining a 45,000 sqm GLA shopping mall and 25,000 sqm Class A office towers in the Civic Center.",
-    "image": "https://images.unsplash.com/photo-1577495508048-b635879837f1?auto=format&fit=crop&w=1200&q=85",
+    "image": "https://images.unsplash.com/photo-1577495508048-b635879837f1?auto=format&fit=crop&w=1200&q=85&pid=afi-park-brasov",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 95,
@@ -4968,7 +10247,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "Con-A Operations",
     "contractor_slug": "con-a",
     "description": "Largest urban mixed-use complex in Western Romania combining 102,000 sqm Class A offices across 4 UBC towers, 120,000 sqm retail, 5-hectare park, and underground traffic tunnel.",
-    "image": "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1200&q=85",
+    "image": "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1200&q=85&pid=iulius-town-timisoara",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 96,
@@ -5016,7 +10295,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "STRABAG Romania",
     "contractor_slug": "strabag-romania",
     "description": "Major €280M underground and high-rise expansion of Promenada Mall adding 60,000 sqm GLA of premium retail, restaurants, 7 underground parking levels, and Class A office space.",
-    "image": "https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=1200&q=85",
+    "image": "https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=1200&q=85&pid=promenada-mall-extension-nepi",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 95,
@@ -5066,7 +10345,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "Construcții Erbașu",
     "contractor_slug": "constructii-erbasu",
     "description": "First urban resort in CEE featuring a 10,000 sqm artificial turquoise lagoon with Crystal Lagoons technology, Radisson Collection 5-star hotel, and 400 apartments.",
-    "image": "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1200&q=85",
+    "image": "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1200&q=85&pid=central-district-lagoon-city",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 95,
@@ -5111,7 +10390,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "Arcada Company",
     "contractor_slug": "arcada-company",
     "description": "19 km modernized express rail link including a 1.5 km elevated railway viaduct over DN1 highway directly connecting Bucharest North Station to Henri Coandă International Airport.",
-    "image": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=85",
+    "image": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=85&pid=legatura-feroviara-otopeni-arcada",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 96,
@@ -5164,7 +10443,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "Webuild / Astaldi Romania",
     "contractor_slug": "webuild-romania",
     "description": "Third-largest suspension bridge in Europe (1,974m length, 112m towers) connecting Brăila with Tulcea and Dobrogea across the Danube.",
-    "image": "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=85",
+    "image": "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=85&pid=podul-suspendat-braila-webuild",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 96,
@@ -5220,7 +10499,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "Construcții Erbașu",
     "contractor_slug": "constructii-erbasu",
     "description": "Major residential complex of 1,900 apartments in Eastern Bucharest near Anghel Saligny metro station, complete with commercial plaza and clinic.",
-    "image": "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1200&q=85",
+    "image": "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1200&q=85&pid=hils-pallady-apartments",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 95,
@@ -5272,7 +10551,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "PORR Construct Romania",
     "contractor_slug": "porr-construct-romania",
     "description": "Phase 2 extension adding 60,000 sqm of Class A office and retail space to the Timpuri Noi urban regeneration hub along Dâmbovița river.",
-    "image": "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=85",
+    "image": "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=85&pid=timpuri-noi-square-phase-2",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 95,
@@ -5318,7 +10597,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "Spedition UMB / UMB Group",
     "contractor_slug": "spedition-umb",
     "description": "Flagship Romanian transport infrastructure project comprising 10 lots of Autostrada A7 Moldovei constructed by UMB Group under PNRR financing.",
-    "image": "https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1200&q=85",
+    "image": "https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1200&q=85&pid=autostrada-a7-moldovei-umb",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 96,
@@ -5374,7 +10653,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "Construcții Erbașu",
     "contractor_slug": "constructii-erbasu",
     "description": "Largest suburban residential compound in Bucharest adjacent to Băneasa forest, with 7,000 planned apartments, wellness center, and commercial gallery.",
-    "image": "https://images.unsplash.com/photo-1541888946425-d0fbb186a5b3?auto=format&fit=crop&w=1200&q=85",
+    "image": "https://images.unsplash.com/photo-1541888946425-d0fbb186a5b3?auto=format&fit=crop&w=1200&q=85&pid=greenfield-baneasa-residence",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 95,
@@ -5424,7 +10703,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "Bog'Art",
     "contractor_slug": "bog-art",
     "description": "Flagship 3-building office campus (88,000 sqm GLA) housing Amazon, Mindspace, and Deutsche Bank, featuring BREEAM Outstanding rating.",
-    "image": "https://images.unsplash.com/photo-1590486803833-1c5dc8ddd4c8?auto=format&fit=crop&w=1200&q=85",
+    "image": "https://images.unsplash.com/photo-1590486803833-1c5dc8ddd4c8?auto=format&fit=crop&w=1200&q=85&pid=globalworth-campus-pipera",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 96,
@@ -5476,7 +10755,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "Bog'Art",
     "contractor_slug": "bog-art",
     "description": "Major lakefront urban regeneration development along Lake Plumbuita with over 2,000 apartments, commercial space, educational facilities, and waterfront promenade.",
-    "image": "https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=1200&q=85",
+    "image": "https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=1200&q=85&pid=one-lake-district",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 93,
@@ -5532,7 +10811,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "KESZ Construct Romania",
     "contractor_slug": "kesz-construct-romania",
     "description": "Award-winning mixed-use development combining 236 apartments, 12,000 sqm Class A office space, sports facility with pool, and restored historical mill building.",
-    "image": "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=1200&q=85",
+    "image": "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=1200&q=85&pid=record-park-cluj",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 94,
@@ -5581,7 +10860,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "Concelex",
     "contractor_slug": "concelex",
     "description": "Residential community of 720 apartments in Bucureștii Noi near Jiului metro station, equipped with solar panels and energy-efficient heating.",
-    "image": "https://images.unsplash.com/photo-1477959858617-67f30ac4ce78?auto=format&fit=crop&w=1200&q=85",
+    "image": "https://images.unsplash.com/photo-1477959858617-67f30ac4ce78?auto=format&fit=crop&w=1200&q=85&pid=akcent-city-bucurestii-noi",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 93,
@@ -5630,7 +10909,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "Con-A",
     "contractor_slug": "con-a",
     "description": "Flagship masterplanned neighborhood in Brașov Tractorul with 3,500+ delivered apartments, commercial center, and community sports facilities.",
-    "image": "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1200&q=85",
+    "image": "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1200&q=85&pid=maurer-residence-brasov",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 94,
@@ -5679,7 +10958,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "Concelex",
     "contractor_slug": "concelex",
     "description": "Major residential city-within-a-city development in Pipera North featuring 828 green apartments, 4,000 sqm private park, and educational facilities.",
-    "image": "https://images.unsplash.com/photo-1515165562839-978bbcf18277?auto=format&fit=crop&w=1200&q=85",
+    "image": "https://images.unsplash.com/photo-1515165562839-978bbcf18277?auto=format&fit=crop&w=1200&q=85&pid=nusco-city-pipera",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 93,
@@ -5727,7 +11006,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "Bog'Art",
     "contractor_slug": "bog-art",
     "description": "41-hectare urban masterplan along Dâmbovița river combining Class A office buildings, retail plaza, and residential units connected to Petrache Poenaru metro station.",
-    "image": "https://images.unsplash.com/photo-1519817650390-64a93db51149?auto=format&fit=crop&w=1200&q=85",
+    "image": "https://images.unsplash.com/photo-1519817650390-64a93db51149?auto=format&fit=crop&w=1200&q=85&pid=sema-parc-bucharest",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 94,
@@ -5776,7 +11055,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "Concelex",
     "contractor_slug": "concelex",
     "description": "Large-scale residential community with 1,250 apartments, commercial promenade, and green courtyards near Străulești lake.",
-    "image": "https://images.unsplash.com/photo-1474487548417-781cb71495f3?auto=format&fit=crop&w=1200&q=85",
+    "image": "https://images.unsplash.com/photo-1474487548417-781cb71495f3?auto=format&fit=crop&w=1200&q=85&pid=infinity-nord-straulesti",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 90,
@@ -5823,7 +11102,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "PORR Construct Romania",
     "contractor_slug": "porr-construct",
     "description": "13.17 km motorway section delivered ahead of schedule by PORR Construct, featuring 27 bridges and viaducts in Southern Transylvania.",
-    "image": "https://images.unsplash.com/photo-1577223625816-7546f13df25d?auto=format&fit=crop&w=1200&q=85",
+    "image": "https://images.unsplash.com/photo-1577223625816-7546f13df25d?auto=format&fit=crop&w=1200&q=85&pid=autostrada-a1-sibiu-boita",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 96,
@@ -5876,7 +11155,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "Bog'Art",
     "contractor_slug": "bog-art",
     "description": "Flagship mixed-use urban regeneration park directly connected to Academiei metro station, featuring 80,000 sqm Class A office space and 868 luxury apartments.",
-    "image": "https://images.unsplash.com/photo-1587351021759-3e566b6af7cc?auto=format&fit=crop&w=1200&q=85",
+    "image": "https://images.unsplash.com/photo-1587351021759-3e566b6af7cc?auto=format&fit=crop&w=1200&q=85&pid=one-cotroceni-park",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 96,
@@ -5931,7 +11210,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "Bog'Art",
     "contractor_slug": "bog-art",
     "description": "Phase 2 extension of Timpuri Noi Square adding 60,000 sqm GLA Class A office, retail plaza, and green leisure spaces right on the Dâmbovița riverbank.",
-    "image": "https://images.unsplash.com/photo-1567449303078-57ad995bd301?auto=format&fit=crop&w=1200&q=85",
+    "image": "https://images.unsplash.com/photo-1567449303078-57ad995bd301?auto=format&fit=crop&w=1200&q=85&pid=timpuri-noi-square",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 93,
@@ -5979,7 +11258,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "DENTON Construction",
     "contractor_slug": "denton-construction",
     "description": "Modern 56,000 sqm Class A office campus located opposite Vulcan Value Centre, certified LEED Platinum.",
-    "image": "https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?auto=format&fit=crop&w=1200&q=85",
+    "image": "https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?auto=format&fit=crop&w=1200&q=85&pid=afi-tech-park",
     "is_featured": false,
     "verification_status": "VERIFIED",
     "completeness_score": 92,
@@ -6027,7 +11306,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "Bog'Art",
     "contractor_slug": "bog-art",
     "description": "LEED Platinum & WELL Platinum certified office park near Tineretului park, fully powered by green electricity.",
-    "image": "https://images.unsplash.com/photo-1541971875076-8f970d573be6?auto=format&fit=crop&w=1200&q=85",
+    "image": "https://images.unsplash.com/photo-1541971875076-8f970d573be6?auto=format&fit=crop&w=1200&q=85&pid=u-center-bucharest",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 94,
@@ -6076,7 +11355,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "Concelex",
     "contractor_slug": "concelex",
     "description": "Large residential project on the shore of Pipera lake featuring 1,350 modern apartments spread across 17 residential blocks.",
-    "image": "https://images.unsplash.com/photo-1541888946425-d0fbb186a5b3&v=2?auto=format&fit=crop&w=1200&q=85",
+    "image": "https://images.unsplash.com/photo-1541888946425-d0fbb186a5b3&v=2?auto=format&fit=crop&w=1200&q=85&pid=h-pipera-lake",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 92,
@@ -6125,7 +11404,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "Construcții Erbașu",
     "contractor_slug": "constructii-erbasu",
     "description": "Largest retail investment in Oltenia region, featuring 80,000 sqm GLA shopping mall, retail park, and drive-through hypermarket.",
-    "image": "https://images.unsplash.com/photo-1517581177682-a085bb7ffb15?auto=format&fit=crop&w=1200&q=85",
+    "image": "https://images.unsplash.com/photo-1517581177682-a085bb7ffb15?auto=format&fit=crop&w=1200&q=85&pid=promenada-craiova",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 95,
@@ -6172,7 +11451,7 @@ export const realProjectsDataset: RealProject[] = [
     "unit_count": 1500,
     "floors": "GF + 11F",
     "description": "Brownfield urban regeneration of former Tomiris textile plant into 1,500 apartments, 100,000 sqm GLA Class A office space, and 10,000 sqm car-free green park.",
-    "image": "https://images.unsplash.com/photo-1509749837427-ac94a2553d0e?auto=format&fit=crop&w=1200&q=85",
+    "image": "https://images.unsplash.com/photo-1509749837427-ac94a2553d0e?auto=format&fit=crop&w=1200&q=85&pid=silk-district-iasi",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 91,
@@ -6228,7 +11507,7 @@ export const realProjectsDataset: RealProject[] = [
     "engineering_name": "Popp & Asociații",
     "engineering_slug": "popp-si-asociatii",
     "description": "Urban regeneration project on Bega riverbank featuring 236 apartments, 15,000 sqm office space, retail spaces, and refurbished industrial hat factory building.",
-    "image": "https://images.unsplash.com/photo-1516214104703-d870798883c5?auto=format&fit=crop&w=1200&q=85",
+    "image": "https://images.unsplash.com/photo-1516214104703-d870798883c5?auto=format&fit=crop&w=1200&q=85&pid=paltim-timisoara",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 90,
@@ -6277,7 +11556,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "Concelex",
     "contractor_slug": "concelex",
     "description": "Largest residential neighborhood surrounded by 900 hectares of Băneasa forest, including Greenfield Plaza commercial center, wellness club, and public school.",
-    "image": "https://images.unsplash.com/photo-1519999482648-25049ddd37b1?auto=format&fit=crop&w=1200&q=85",
+    "image": "https://images.unsplash.com/photo-1519999482648-25049ddd37b1?auto=format&fit=crop&w=1200&q=85&pid=greenfield-baneasa",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 93,
@@ -6327,7 +11606,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "Bog'Art",
     "contractor_slug": "bog-art",
     "description": "BREEAM Outstanding and WELL Health-Safety office campus anchored by Ubisoft Bucharest Headquarters, featuring HEPA air filtration and 100% renewable energy.",
-    "image": "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=1200&q=85",
+    "image": "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=1200&q=85&pid=j8-office-park",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 95,
@@ -6375,7 +11654,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "Construcții Erbașu",
     "contractor_slug": "constructii-erbasu",
     "description": "UEFA Category 4 modern sports arena with 31,254 all-seater capacity, integrated museum, hotel accommodations, and underground parking.",
-    "image": "https://images.unsplash.com/photo-1577223625816-7546f13df25d&v=2?auto=format&fit=crop&w=1200&q=85",
+    "image": "https://images.unsplash.com/photo-1577223625816-7546f13df25d&v=2?auto=format&fit=crop&w=1200&q=85&pid=stadionul-steaua-ghencea",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 96,
@@ -6424,7 +11703,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "Bog'Art",
     "contractor_slug": "bog-art",
     "description": "Largest industrial and logistics park in Central and Eastern Europe (850,000 sqm GLA), featuring solar rooftop installations, Clubhaus community center, and medical clinic.",
-    "image": "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1200&q=85",
+    "image": "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1200&q=85&pid=ctpark-bucharest-west",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 95,
@@ -6478,7 +11757,7 @@ export const realProjectsDataset: RealProject[] = [
     "unit_count": 250,
     "floors": "2B + GF + 10F",
     "description": "Luxury high-end residential complex overlooking Floreasca Lake, featuring concierge services, subterranean parking, and high-performance glass facades.",
-    "image": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1200&q=85",
+    "image": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1200&q=85&pid=h-eliade-towers",
     "is_featured": false,
     "verification_status": "VERIFIED",
     "sources": [
@@ -6519,7 +11798,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "Webuild Romania (Astaldi)",
     "contractor_slug": "webuild-romania",
     "description": "The Golden Gate of Romania: 3rd longest suspension bridge in Europe (1,974 m total length with 1,120 m main span) connecting Dobrogea to Moldavia.",
-    "image": "https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a&v=2?auto=format&fit=crop&w=1200&q=85",
+    "image": "https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a&v=2?auto=format&fit=crop&w=1200&q=85&pid=podul-suspendat-braila",
     "is_featured": true,
     "sources": [
       {

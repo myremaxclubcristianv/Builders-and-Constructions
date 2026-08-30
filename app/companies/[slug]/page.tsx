@@ -9,6 +9,7 @@ import { SiteFooter } from '@/components/SiteFooter';
 import { LeadForm } from '@/components/LeadForm';
 import { DossierNav } from '@/components/DossierNav';
 import { FinancialTrendChart } from '@/components/FinancialTrendChart';
+import { BookmarkButton } from '@/components/BookmarkButton';
 
 export async function generateMetadata({
   params,
@@ -30,10 +31,23 @@ export async function generateMetadata({
   const isIndexable = c.published_at && !isPreview;
 
   return {
-    title: `${c.name} — Full Intelligence Dossier V17 | CONSTRUCTIONS by AiXLuxury`,
-    description: c.description || `Research-grade corporate dossier, active development portfolio, financial disclosures, and market network for ${c.name} in ${c.location || 'Romania'}.`,
+    title: `${c.name} — Corporate Dossier | CONSTRUCTIONS by AiXLuxury`,
+    description: c.description || `Public record corporate dossier, active development portfolio, financial disclosures, and market network for ${c.name} in ${c.location || 'Romania'}.`,
     alternates: {
-      canonical: `https://constructions.aixluxury.com/companies/${c.slug}`
+      canonical: `https://constructions.cristianvaduva.com/companies/${c.slug}`
+    },
+    openGraph: {
+      title: `${c.name} — Corporate Dossier | CONSTRUCTIONS by AiXLuxury`,
+      description: c.description || `Public record corporate dossier for ${c.name}.`,
+      url: `https://constructions.cristianvaduva.com/companies/${c.slug}`,
+      siteName: 'CONSTRUCTIONS by AiXLuxury',
+      locale: 'en_US',
+      type: 'website'
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${c.name} | CONSTRUCTIONS by AiXLuxury`,
+      description: c.description || `Corporate dossier for ${c.name}.`
     },
     robots: {
       index: Boolean(isIndexable),
@@ -133,12 +147,9 @@ export default async function CompanyProfile({
   );
 
   const activeProjects = connectedProjects.filter(p => p.status !== 'completed' && p.status !== 'delivered');
-  const deliveredProjects = connectedProjects.filter(p => p.status === 'completed' || p.status === 'delivered');
 
-  // Derive total portfolio investment & totals
+  // Derive total portfolio investment
   const knownPortfolioValueEur = connectedProjects.reduce((acc, p) => acc + (p.investment_eur || 0), 0);
-  const totalSqm = connectedProjects.reduce((acc, p) => acc + (p.surface_area_sqm || 0), 0);
-  const totalUnits = connectedProjects.reduce((acc, p) => acc + (p.unit_count || 0), 0);
 
   // Financial disclosures
   const financials = [
@@ -179,13 +190,33 @@ export default async function CompanyProfile({
     { id: 'competitive', label: 'COMPARABLE ENTITIES' },
     { id: 'contracts', label: 'CONTRACTS' },
     { id: 'sources', label: 'SOURCES & PROVENANCE' },
-    { id: 'quality', label: 'DATA QUALITY' }
+    { id: 'quality', label: 'DATA DISCLOSURE' }
   ];
 
   const companyAge = c.founded_year ? 2026 - c.founded_year : null;
 
+  // Schema.org Organization JSON-LD
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: c.name,
+    url: `https://constructions.cristianvaduva.com/companies/${c.slug}`,
+    description: c.description,
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: c.location || 'Romania',
+      addressCountry: 'RO'
+    },
+    foundingDate: c.founded_year ? `${c.founded_year}` : undefined,
+    taxID: c.cui_cif || undefined
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <SiteHeader />
       <main style={{ background: '#0c0e0c', color: '#fff', minHeight: '100vh' }}>
         {isPreviewAllowed && (
@@ -200,18 +231,19 @@ export default async function CompanyProfile({
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 12, marginBottom: 16 }}>
               <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
                 <span className="eyebrow" style={{ color: '#c7a675', margin: 0 }}>
-                  FULL MARKET INTELLIGENCE DOSSIER V17
+                  PUBLIC RECORD CORPORATE DOSSIER
                 </span>
                 <span style={{ fontSize: 10, fontWeight: 800, border: '1px solid #86efac', color: '#86efac', padding: '2px 8px', borderRadius: 2 }}>
                   {c.verification_level || 'OFFICIAL_REGISTRY_VERIFIED'}
                 </span>
               </div>
-              <div style={{ display: 'flex', gap: 8 }}>
+              <div style={{ display: 'flex', gap: 8, alignItems: 'center', flexWrap: 'wrap' }}>
+                <BookmarkButton id={c.slug} name={c.name} type="company" slug={c.slug} subtext={`${(c.type || 'developer').replaceAll('_', ' ')} · ${c.location || 'Romania'}`} />
                 <Link href={`/compare?c1=${c.slug}`} className="btn-secondary" style={{ padding: '6px 14px', fontSize: 11 }}>
                   ⚖️ COMPARE ENTITY
                 </Link>
-                <Link href={`/companies/${c.slug}/claim`} className="btn" style={{ padding: '6px 14px', fontSize: 11 }}>
-                  CLAIM DOSSIER →
+                <Link href={`/report-error?company=${encodeURIComponent(c.name)}`} className="btn" style={{ padding: '6px 14px', fontSize: 11 }}>
+                  REQUEST CORRECTION →
                 </Link>
               </div>
             </div>
@@ -230,8 +262,7 @@ export default async function CompanyProfile({
                 </p>
                 <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', fontSize: 12, color: '#aaa9a1' }}>
                   <div>CUI/CIF: <strong style={{ color: c.cui_cif ? '#86efac' : '#aaa' }}>{c.cui_cif || 'NOT DISCLOSED'}</strong></div>
-                  <div>CONFIDENCE SCORE: <strong style={{ color: '#38bdf8' }}>95% HIGH</strong></div>
-                  <div>DATA FRESHNESS: <strong style={{ color: '#86efac' }}>LIVE DATA</strong></div>
+                  <div>DATA SOURCE: <strong style={{ color: '#38bdf8' }}>PUBLIC RECORDS & BVB</strong></div>
                   <div>LAST VERIFIED: <strong style={{ color: '#fff' }}>AUGUST 2026</strong></div>
                 </div>
               </div>
@@ -245,26 +276,36 @@ export default async function CompanyProfile({
                 </div>
               </div>
             </div>
+
+            {/* COMPACT BUSINESS-SAFE DISCLOSURE BOX */}
+            <div style={{ marginTop: 24, padding: 16, background: '#111412', border: '1px solid #242926', borderRadius: 6, fontSize: 12, color: '#a0a0a0', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 12 }}>
+              <div>
+                <strong style={{ color: '#fff' }}>Independent Platform Disclosure:</strong> CONSTRUCTIONS is an independent information and research platform. Inclusion of an entity does not imply representation, endorsement, partnership, or commercial relationship with that entity.
+              </div>
+              <Link href={`/report-error?company=${encodeURIComponent(c.name)}`} style={{ color: '#c7a675', fontWeight: 700, textDecoration: 'none', whiteSpace: 'nowrap' }}>
+                Request Correction →
+              </Link>
+            </div>
           </div>
         </section>
 
         {/* STICKY DOSSIER NAV */}
         <DossierNav tabs={navTabs} />
 
-        {/* SECTION A — EXECUTIVE PROFILE & ANALYST SUMMARY */}
+        {/* SECTION A — EXECUTIVE PROFILE */}
         <section id="profile" className="section shell" style={{ paddingTop: 40 }}>
           <div className="section-head">
             <div>
               <div className="eyebrow" style={{ color: '#c7a675' }}>SECTION A</div>
-              <h2>EXECUTIVE PROFILE & ANALYST SUMMARY</h2>
+              <h2>EXECUTIVE PROFILE & SUMMARY</h2>
             </div>
           </div>
 
           <div style={{ padding: 24, background: '#141715', border: '1px solid #262927', borderRadius: 6, fontSize: 14, lineHeight: 1.7, color: '#d4d2c8', marginBottom: 20 }}>
-            <h4 style={{ color: '#c7a675', margin: '0 0 8px 0', textTransform: 'uppercase', fontSize: 12 }}>ANALYST SUMMARY</h4>
+            <h4 style={{ color: '#c7a675', margin: '0 0 8px 0', textTransform: 'uppercase', fontSize: 12 }}>CORPORATE OVERVIEW</h4>
             <p style={{ margin: 0 }}>
-              {c.name} is a confirmed <strong>{(c.type || 'developer').replaceAll('_', ' ')}</strong> entity operating primarily out of <strong>{c.location || 'Romania'}</strong>.
-              The entity controls a tracked portfolio of <strong>{connectedProjects.length} projects</strong> with an aggregate verified investment allocation of <strong>{knownPortfolioValueEur > 0 ? `€${(knownPortfolioValueEur / 1000000).toFixed(1)}M EUR` : 'NOT DISCLOSED'}</strong>.
+              {c.name} is a confirmed <strong>{(c.type || 'developer').replaceAll('_', ' ')}</strong> entity operating out of <strong>{c.location || 'Romania'}</strong>.
+              The entity controls a tracked portfolio of <strong>{connectedProjects.length} projects</strong> with an aggregate investment allocation of <strong>{knownPortfolioValueEur > 0 ? `€${(knownPortfolioValueEur / 1000000).toFixed(1)}M EUR` : 'NOT DISCLOSED'}</strong>.
               Legal registration identifier (CUI/CIF): <strong>{c.cui_cif || 'NOT DISCLOSED'}</strong>.
             </p>
           </div>
@@ -286,7 +327,7 @@ export default async function CompanyProfile({
                 <div>
                   <div style={{ fontSize: 14, fontWeight: 700, color: '#fff' }}>Official Corporate Establishment</div>
                   <div style={{ fontSize: 12, color: '#aaa9a1', marginTop: 2 }}>Significance: Founded in {c.location || 'Romania'} as a specialized {(c.type || 'developer').replaceAll('_', ' ')}.</div>
-                  <div style={{ fontSize: 10, color: '#888', marginTop: 4 }}>Source: Trade Register / Corporate Disclosure</div>
+                  <div style={{ fontSize: 10, color: '#888', marginTop: 4 }}>Source: Trade Register / Corporate Filing</div>
                 </div>
               </div>
             )}
@@ -301,7 +342,7 @@ export default async function CompanyProfile({
           <div className="section-head">
             <div>
               <div className="eyebrow" style={{ color: '#c7a675' }}>SECTION C</div>
-              <h2>FINANCIAL HISTORY PROFILE</h2>
+              <h2>FINANCIAL DISCLOSURES</h2>
             </div>
           </div>
 
@@ -420,7 +461,7 @@ export default async function CompanyProfile({
                   <div key={idx} style={{ padding: 12, background: '#0c0e0c', border: '1px solid #222', borderRadius: 4 }}>
                     <div style={{ fontSize: 13, fontWeight: 800, color: '#fff' }}>👤 {person}</div>
                     <div style={{ fontSize: 11, color: '#c7a675', marginTop: 2 }}>Executive / Key Person</div>
-                    <div style={{ fontSize: 10, color: '#888', marginTop: 4 }}>Verified Official Record</div>
+                    <div style={{ fontSize: 10, color: '#888', marginTop: 4 }}>Public Register Disclosure</div>
                   </div>
                 ))}
               </div>
@@ -481,7 +522,7 @@ export default async function CompanyProfile({
           <div className="section-head">
             <div>
               <div className="eyebrow" style={{ color: '#c7a675' }}>SECTION I</div>
-              <h2>FORWARD PIPELINE & FUTURE OUTLOOK</h2>
+              <h2>FORWARD PIPELINE & OUTLOOK</h2>
             </div>
           </div>
 
@@ -501,7 +542,7 @@ export default async function CompanyProfile({
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 16 }}>
             <div style={{ padding: 16, background: '#141715', border: '1px solid #262927', borderRadius: 6 }}>
-              <div style={{ fontSize: 10, color: '#888', fontWeight: 700 }}>ACTIVE SITES RANKING</div>
+              <div style={{ fontSize: 10, color: '#888', fontWeight: 700 }}>ACTIVE SITES EXPOSURE</div>
               <div style={{ fontSize: 18, fontWeight: 800, color: '#fff', marginTop: 4 }}>Top Tier Regional Exposure</div>
             </div>
             <div style={{ padding: 16, background: '#141715', border: '1px solid #262927', borderRadius: 6 }}>
@@ -636,41 +677,48 @@ export default async function CompanyProfile({
           </div>
         </section>
 
-        {/* SECTION P — DATA QUALITY & CONFIDENCE PANEL */}
+        {/* SECTION P — DATA DISCLOSURE & CORRECTION */}
         <section id="quality" className="section shell" style={{ paddingBottom: 60 }}>
           <div className="section-head">
             <div>
               <div className="eyebrow" style={{ color: '#c7a675' }}>SECTION P</div>
-              <h2>DATA QUALITY & CONFIDENCE AUDIT</h2>
+              <h2>DATA DISCLOSURE & CORRECTION DESK</h2>
             </div>
           </div>
 
           <div style={{ padding: 24, background: '#141715', border: '1px solid #262927', borderRadius: 6, display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 16 }}>
             <div>
-              <div style={{ fontSize: 11, fontWeight: 800, color: '#c7a675' }}>DATA CONFIDENCE LEVEL</div>
-              <div style={{ fontSize: 28, fontWeight: 800, color: '#86efac', marginTop: 4 }}>
-                DATA CONFIDENCE: HIGH
-              </div>
-              <div style={{ fontSize: 12, color: '#aaa', marginTop: 4 }}>
-                Completeness Score: <strong>{c.completeness_score || 95}%</strong> · Verified Fields: <strong>14/14</strong>
+              <div style={{ fontSize: 11, fontWeight: 800, color: '#c7a675' }}>PUBLIC RECORD DATA DISCLOSURE</div>
+              <div style={{ fontSize: 14, color: '#ccc', marginTop: 4, maxWidth: 540, lineHeight: 1.6 }}>
+                Company information is compiled from publicly available records (ONRC, ANAF, Ministry of Finance) and official corporate releases. Entities may request an update or correction where applicable.
               </div>
             </div>
-            <span style={{ fontSize: 11, background: '#1c221e', border: '1px solid #86efac', color: '#86efac', padding: '6px 14px', borderRadius: 2, fontWeight: 800 }}>
-              VERIFIED NO FABRICATION
-            </span>
+            <Link href={`/report-error?company=${encodeURIComponent(c.name)}`} style={{ fontSize: 11, background: '#1c221e', border: '1px solid #c7a675', color: '#c7a675', padding: '10px 18px', borderRadius: 4, fontWeight: 800, textDecoration: 'none' }}>
+              REQUEST PROFILE CORRECTION →
+            </Link>
           </div>
         </section>
 
-        {/* INQUIRY FORM */}
+        {/* INVENT / RESEARCH INTAKE SECTION */}
         <section className="conversion">
           <div className="shell">
-            <div className="eyebrow" style={{ color: '#25221b' }}>Company Inquiry & Commercial Contact</div>
-            <h2>INTERESTED IN WORKING WITH THIS COMPANY?</h2>
-            <p style={{ color: '#25221b', marginBottom: 28, maxWidth: 540 }}>
-              Initiate direct procurement, sub-contracting, development partnerships or architectural mandates.
+            <div className="eyebrow" style={{ color: '#25221b' }}>Independent Intelligence & Research Intake</div>
+            <h2>NEED ADDITIONAL INFORMATION?</h2>
+            <p style={{ color: '#25221b', marginBottom: 20, maxWidth: 580, lineHeight: 1.6 }}>
+              CONSTRUCTIONS provides independently researched market information. Request additional research, clarification, or factual review through the CONSTRUCTIONS research team.
             </p>
-            <div style={{ maxWidth: 680 }}>
-              <LeadForm kind="work" company={c.name} />
+
+            <div style={{ padding: 16, background: 'rgba(5, 5, 5, 0.05)', border: '1px solid rgba(5, 5, 5, 0.15)', borderRadius: 6, marginBottom: 24, fontSize: 11, color: '#333', lineHeight: 1.5, maxWidth: 680 }}>
+              <strong>INDEPENDENT PLATFORM DISCLOSURE:</strong> CONSTRUCTIONS is an independent information and research platform. Inclusion of an entity does not imply representation, endorsement, partnership, or commercial relationship with that entity. Requests submitted through CONSTRUCTIONS are handled by the CONSTRUCTIONS research team and are not automatically forwarded to the profiled entity.
+            </div>
+
+            <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+              <Link href={`/research-request?category=COMPANY&subject=${encodeURIComponent(c.name)}`} className="btn fill font-mono text-xs">
+                REQUEST INSTITUTIONAL RESEARCH →
+              </Link>
+              <Link href={`/report-error?company=${encodeURIComponent(c.name)}`} style={{ fontSize: 11, border: '1px solid #111', color: '#111', padding: '12px 20px', borderRadius: 4, fontWeight: 800, textDecoration: 'none', display: 'inline-flex', alignItems: 'center' }}>
+                REQUEST PROFILE CORRECTION
+              </Link>
             </div>
           </div>
         </section>

@@ -1,1 +1,16 @@
-{"projectId":"prj_NqI3WHyilwtePpdHCcSrNRTOPtkZ","orgId":"team_b0rPp11V0UXBIo7HK0RKvejh","projectName":"constructions-aixluxury"}
+{
+  "projectId": "prj_NqI3WHyilwtePpdHCcSrNRTOPtkZ",
+  "orgId": "team_b0rPp11V0UXBIo7HK0RKvejh",
+  "projectName": "constructions-aixluxury",
+  "settings": {
+    "createdAt": 1787156707147,
+    "framework": "nextjs",
+    "devCommand": null,
+    "installCommand": null,
+    "buildCommand": null,
+    "outputDirectory": null,
+    "rootDirectory": null,
+    "directoryListing": false,
+    "nodeVersion": "24.x"
+  }
+}

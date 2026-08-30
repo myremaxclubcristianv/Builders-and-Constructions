@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { getServiceClient } from '@/lib/supabase';
+import { sendTelegramNotification } from '@/lib/telegram';
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const validSources = [
@@ -11,6 +12,10 @@ const validSources = [
   'claim_profile',
   'work_with_company',
   'work_with_project',
+  'work_with_us',
+  'research_request_form',
+  'report_error',
+  'correction_request',
   'industry',
   'search',
   'editorial',
@@ -21,98 +26,128 @@ export async function POST(request: Request) {
   try {
     const body = await request.json().catch(() => null);
     if (!body || typeof body.name !== 'string' || !emailPattern.test(body.email)) {
-      return NextResponse.json({ error: 'Please provide a name, a valid business email, and a valid source.' }, { status: 400 });
+      return NextResponse.json(
+        { ok: false, error: 'Please provide a name and a valid business email.' },
+        { status: 400 }
+      );
     }
 
     const source = validSources.includes(body.source) ? body.source : 'homepage';
+    const timestamp = new Date().toISOString();
+
+    // 1. Determine Internal Notification Header & Subject
+    let header = 'NEW CONSTRUCTIONS RESEARCH REQUEST';
+    if (source === 'work_with_us' || body.leadType === 'partnership_request' || body.kind === 'work') {
+      header = 'NEW CONSTRUCTIONS PARTNERSHIP REQUEST';
+    } else if (source === 'report_error' || source === 'correction_request' || body.leadType === 'correction_request') {
+      header = 'NEW CONSTRUCTIONS PROFILE CORRECTION';
+    } else if (source === 'research_request_form' || body.leadType === 'research_request') {
+      header = 'NEW CONSTRUCTIONS RESEARCH REQUEST';
+    }
+
+    const subjectLine = body.company
+      ? `Research Request — Subject: ${escapeHtml(body.company)}`
+      : 'General Research Request';
+
+    const telegramText = [
+      `<b>${header}</b>`,
+      header === 'NEW CONSTRUCTIONS RESEARCH REQUEST' ? `<b>Subject:</b> ${subjectLine}` : null,
+      body.company ? `<b>Entity / Organization:</b> ${escapeHtml(body.company)}` : null,
+      `<b>Name:</b> ${escapeHtml(body.name)}`,
+      `<b>Email:</b> ${escapeHtml(body.email)}`,
+      body.phone ? `<b>Phone:</b> ${escapeHtml(body.phone)}` : null,
+      body.requestType ? `<b>Category:</b> ${escapeHtml(body.requestType)}` : null,
+      body.message ? `<b>Details:</b> ${escapeHtml(body.message)}` : null,
+      `<b>Source:</b> https://constructions.cristianvaduva.com/${source}`,
+      `<b>Timestamp:</b> ${timestamp}`
+    ]
+      .filter(Boolean)
+      .join('\n');
+
+    const telegramSent = await sendTelegramNotification(telegramText);
+
+    // 2. Persist to Supabase if configured (Optional secondary persistence)
     const client = getServiceClient();
+    if (client) {
+      try {
+        let companyId = body.companyId || body.target_company_id || null;
+        if (!companyId && body.company) {
+          const { data: comp } = await client
+            .from('companies')
+            .select('id')
+            .ilike('name', body.company.trim())
+            .limit(1)
+            .maybeSingle();
+          if (comp) companyId = comp.id;
+        }
 
-    if (!client) {
-      return NextResponse.json({ error: 'Lead storage is not configured yet. Please contact the platform team.' }, { status: 503 });
-    }
+        const projectId = body.projectId || body.target_project_id || null;
 
-    // 1. Resolve company_id if not explicitly provided
-    let companyId = body.companyId || body.target_company_id || null;
-    if (!companyId && body.company) {
-      const { data: comp } = await client
-        .from('companies')
-        .select('id')
-        .ilike('name', body.company.trim())
-        .limit(1)
-        .maybeSingle();
-      if (comp) companyId = comp.id;
-    }
-
-    const projectId = body.projectId || body.target_project_id || null;
-
-    // 2. Insert Lead
-    const { data: lead, error: leadErr } = await client
-      .from('leads')
-      .insert({
-        name: body.name.trim(),
-        company_name: body.company?.trim() || null,
-        email: body.email.trim(),
-        phone: body.phone?.trim() || null,
-        company_id: companyId,
-        project_id: projectId,
-        target_company_id: companyId,
-        target_project_id: projectId,
-        landing_path: body.landing_path || null,
-        referrer: body.referrer || null,
-        request_type: body.requestType || null,
-        message: body.message?.trim() || null,
-        source,
-        lead_type: body.leadType || (source.includes('project') ? 'project_inquiry' : 'company_inquiry')
-      })
-      .select('id')
-      .single();
-
-    if (leadErr) {
-      return NextResponse.json({ error: 'We could not save your request. Please try again.' }, { status: 500 });
-    }
-
-    // 3. Connect / Create Sales Opportunity if companyId exists
-    if (companyId) {
-      const { data: existingOpp } = await client
-        .from('private_opportunity_scores')
-        .select('company_id, signals, recommended_services')
-        .eq('company_id', companyId)
-        .maybeSingle();
-
-      if (!existingOpp) {
-        // Create initial opportunity automatically
-        await client.from('private_opportunity_scores').insert({
-          company_id: companyId,
-          opportunity: 'high',
-          opportunity_score: 80,
-          score_reasons: ['Inbound lead conversion inquiry received (+30)', 'Strong commercial intent (+20)'],
-          pipeline_status: 'new',
-          signals: ['Inbound Lead Received', 'High Intent'],
-          recommended_services: ['Website', 'Project Marketing', 'Lead Generation'],
-          notes: `Automated opportunity created from inbound lead by ${body.name} (${body.email}) via ${source}.`
-        });
+        await client
+          .from('leads')
+          .insert({
+            name: body.name.trim(),
+            company_name: body.company?.trim() || null,
+            email: body.email.trim(),
+            phone: body.phone?.trim() || null,
+            company_id: companyId,
+            project_id: projectId,
+            target_company_id: companyId,
+            target_project_id: projectId,
+            landing_path: body.landing_path || null,
+            referrer: body.referrer || null,
+            request_type: body.requestType || null,
+            message: body.message?.trim() || null,
+            source,
+            lead_type: body.leadType || 'research_request'
+          });
+      } catch (dbErr) {
+        console.error('[Inquiry DB Exception]', dbErr);
       }
-
-      // Log chronological sales activity
-      await client.from('sales_activities').insert({
-        company_id: companyId,
-        activity_type: 'other',
-        summary: `Inbound lead received: ${body.name} (${body.email})`,
-        details: `Source: ${source}. Message: ${body.message || 'No additional note'}. Phone: ${body.phone || 'N/A'}`,
-        author_name: 'System / Inbound Funnel'
-      });
     }
 
-    // 4. Telemetry event
-    await client.from('analytics_events').insert({
-      event_type: 'contact_submit',
-      entity_type: companyId ? 'company' : projectId ? 'project' : 'general',
-      entity_id: companyId || projectId || null,
-      source
+    // 3. Operational Delivery Check: Telegram is REQUIRED for operational success
+    if (telegramSent) {
+      return NextResponse.json(
+        {
+          ok: true,
+          message: 'Request received. The CONSTRUCTIONS research team will review it.'
+        },
+        { status: 201 }
+      );
+    }
+
+    // Operational delivery failed
+    const hasCreds = Boolean(process.env.TELEGRAM_BOT_TOKEN && process.env.TELEGRAM_CHAT_ID && process.env.TELEGRAM_BOT_TOKEN.trim() !== '' && process.env.TELEGRAM_CHAT_ID.trim() !== '');
+    console.error('[TELEGRAM_NOTIFICATION_FAILED]', {
+      reason: hasCreds ? 'telegram_api_rejected' : 'missing_credentials',
+      source,
+      timestamp
     });
 
-    return NextResponse.json({ ok: true, leadId: lead?.id }, { status: 201 });
-  } catch {
-    return NextResponse.json({ error: 'Internal server error processing inquiry.' }, { status: 500 });
+    return NextResponse.json(
+      {
+        ok: false,
+        error: "We couldn't submit the request right now. Please try again shortly."
+      },
+      { status: 500 }
+    );
+  } catch (err) {
+    console.error('[Inquiry API Error]', err);
+    return NextResponse.json(
+      {
+        ok: false,
+        error: "We couldn't submit the request right now. Please try again shortly."
+      },
+      { status: 500 }
+    );
   }
+}
+
+function escapeHtml(str: string): string {
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
 }

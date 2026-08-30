@@ -3,8 +3,8 @@ import { SiteFooter } from '@/components/SiteFooter';
 import { LeadForm } from '@/components/LeadForm';
 
 export const metadata = {
-  title: 'Promote Your Company | Commercial Presentation',
-  description: 'Turn your construction, engineering, or development practice into a prestigious digital brand.'
+  title: 'Work With CONSTRUCTIONS | Institutional Presentation & Platform Partnership',
+  description: 'Engage directly with CONSTRUCTIONS by AiXLuxury for institutional research mandates, custom data solutions, site coverage, or strategic partnerships.'
 };
 
 export default function PromoteCompanyPage() {
@@ -13,15 +13,15 @@ export default function PromoteCompanyPage() {
       <SiteHeader />
       <main>
         <section className="page-hero shell">
-          <div className="eyebrow">For Construction Companies, Developers & Engineering Practices</div>
+          <div className="eyebrow">Institutional Presentation & Coverage Desk</div>
           <h1>
-            YOUR WORK DESERVES
+            INSTITUTIONAL MARKET
             <br />
-            TO BE SEEN.
+            PRESENTATION.
           </h1>
           <p>
             Your construction sites and completed buildings are real. Your engineering expertise is proven.
-            We ensure your digital presentation reflects the true caliber of your work.
+            We ensure your digital presentation reflects the true caliber of your built work.
           </p>
         </section>
 
@@ -52,10 +52,10 @@ export default function PromoteCompanyPage() {
             </div>
 
             <div className="company">
-              <span className="company-num">03 · Growth & Leads</span>
-              <h3>Inbound Conversion</h3>
+              <span className="company-num">03 · Institutional Coverage</span>
+              <h3>Market Intelligence</h3>
               <p>
-                Search engine dominance, targeted market positioning, and direct routing of high-intent development & procurement inquiries.
+                Search engine dominance, targeted market positioning, and direct research team collaboration for verified data audits and site coverage.
               </p>
             </div>
           </div>
@@ -66,7 +66,7 @@ export default function PromoteCompanyPage() {
           <div className="section-head">
             <div>
               <div className="eyebrow">Start a Conversation</div>
-              <h2>REQUEST COMPANY PROMOTION</h2>
+              <h2>WORK WITH CONSTRUCTIONS</h2>
             </div>
           </div>
           <div style={{ maxWidth: 720 }}>

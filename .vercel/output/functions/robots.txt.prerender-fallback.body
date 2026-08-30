@@ -1,0 +1,14 @@
+User-Agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /commercial
+Disallow: /product-health
+Disallow: /workspace
+Disallow: /accounts
+Disallow: /command
+Disallow: /dealflow
+Disallow: /outreach
+Disallow: /actions
+Disallow: /decisions
+
+Sitemap: https://constructions.cristianvaduva.com/sitemap.xml
