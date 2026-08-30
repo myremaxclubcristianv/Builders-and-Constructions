@@ -22,26 +22,36 @@ export default async function ComparePage({
   const selectedCompanies = [comp1, comp2, comp3];
 
   return (
-    <>
-      <main>
-        <div className="hero" style={{ paddingBottom: 40 }}>
-          <SiteHeader />
-          <div className="shell hero-content">
-            <div className="eyebrow" style={{ color: '#c7a675' }}>Comparative Intelligence Engine</div>
-            <h1>SIDE-BY-SIDE MARKET COMPARISON</h1>
-            <p>Compare reported financial performance, YoY revenue growth, employee productivity, active construction pipelines, and source-verified portfolios across Romanian market entities and developments.</p>
-          </div>
-        </div>
+    <div className="bg-[#050505] text-[#F3F1EB] min-h-screen">
+      <SiteHeader />
 
-        <section className="section shell">
-          <CompareWorkstation
-            companies={realCompaniesDataset}
-            projects={realProjectsDataset}
-            initialCompanies={selectedCompanies}
-          />
+      <main className="pt-20">
+        <section className="py-10 md:py-16 border-b border-[#1A1D1B] bg-[#0B0B0B]">
+          <div className="max-w-[1440px] mx-auto px-4 md:px-8 space-y-3">
+            <span className="text-[10px] font-mono uppercase tracking-widest text-[#C9A227] block">
+              Comparative Intelligence Engine
+            </span>
+            <h1 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
+              SIDE-BY-SIDE MARKET COMPARISON
+            </h1>
+            <p className="text-sm md:text-base text-[#A0A0A0] max-w-2xl leading-relaxed">
+              Compare reported financial performance, YoY revenue growth, employee productivity, active construction pipelines, and source-verified portfolios across Romanian market entities and developments.
+            </p>
+          </div>
+        </section>
+
+        <section className="py-10 md:py-16">
+          <div className="max-w-[1440px] mx-auto px-4 md:px-8">
+            <CompareWorkstation
+              companies={realCompaniesDataset}
+              projects={realProjectsDataset}
+              initialCompanies={selectedCompanies}
+            />
+          </div>
         </section>
       </main>
+
       <SiteFooter />
-    </>
+    </div>
   );
 }

@@ -57,197 +57,190 @@ export default async function Companies({
   });
 
   return (
-    <>
+    <div className="bg-[#050505] text-[#F3F1EB] min-h-screen">
       <SiteHeader />
-      <main className="shell">
-        <section className="page-hero">
-          <div className="eyebrow" style={{ color: '#c7a675' }}>Intelligence Objects & Market Participants</div>
-          <h1>COMPANIES</h1>
-          <p>
-            Discover verified Romanian developers, general contractors, structural engineers and architectural practices.
-            Explore active portfolios, project density, market activity freshness and verified credentials.
-          </p>
+
+      <main className="pt-20">
+        {/* Page Hero */}
+        <section className="py-10 md:py-16 border-b border-[#1A1D1B] bg-[#0B0B0B]">
+          <div className="max-w-[1440px] mx-auto px-4 md:px-8 space-y-3">
+            <span className="text-[10px] font-mono uppercase tracking-widest text-[#C9A227] block">
+              Verified Corporate Intelligence
+            </span>
+            <h1 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
+              COMPANIES DIRECTORY ({filtered.length})
+            </h1>
+            <p className="text-sm md:text-base text-[#A0A0A0] max-w-2xl leading-relaxed">
+              Discover verified Romanian developers, general contractors, structural engineers, and architectural practices with ONRC/ANAF primary-source records.
+            </p>
+          </div>
         </section>
 
-        {/* Intelligence Filterbar */}
-        <form className="filterbar" method="GET" action="/companies" style={{ flexWrap: 'wrap', gap: 10 }}>
-          <input
-            name="q"
-            defaultValue={q}
-            className="field"
-            placeholder="Search company, CUI, specialism..."
-            style={{ flex: '1 1 200px' }}
-          />
-          <select name="type" defaultValue={type} className="field" style={{ flex: '1 1 150px' }}>
-            {COMPANY_TYPES.map(t => (
-              <option key={t.value} value={t.value}>
-                {t.label}
-              </option>
-            ))}
-          </select>
-          <select name="location" defaultValue={location} className="field" style={{ flex: '1 1 150px' }}>
-            {LOCATIONS.map(l => (
-              <option key={l.value} value={l.value}>
-                {l.label}
-              </option>
-            ))}
-          </select>
-          <select name="freshness" defaultValue={freshness} className="field" style={{ flex: '1 1 150px' }}>
-            {FRESHNESS_OPTIONS.map(f => (
-              <option key={f.value} value={f.value}>
-                {f.label}
-              </option>
-            ))}
-          </select>
-          <button type="submit" className="btn fill">
-            Filter Directory
-          </button>
-          {(type || location || freshness || q) && (
-            <Link href="/companies" className="btn" style={{ borderColor: '#555', color: '#aaa' }}>
-              Clear
-            </Link>
-          )}
-        </form>
-
-        {/* Intelligence Company Cards */}
-        <div className="company-grid" style={{ marginBottom: 90 }}>
-          {filtered.length > 0 ? (
-            filtered.map((c, i) => {
-              const formattedDate = c.last_activity_date
-                ? new Date(c.last_activity_date).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }).toUpperCase()
-                : 'NOT AVAILABLE';
-
-              return (
-                <div
-                  className="company"
-                  key={c.slug}
-                  style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'space-between',
-                    padding: 24,
-                    background: '#141715',
-                    border: '1px solid #262927',
-                    borderRadius: 6
-                  }}
+        {/* Filter Controls Bar */}
+        <section className="py-6 border-b border-[#1A1D1B] bg-[#050505] sticky top-16 z-20 backdrop-blur-md bg-[#050505]/90">
+          <div className="max-w-[1440px] mx-auto px-4 md:px-8">
+            <form method="GET" action="/companies" className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3">
+              <input
+                name="q"
+                defaultValue={q}
+                className="flex-1 min-w-[200px] h-11 px-4 bg-[#111111] border border-[#1A1D1B] rounded-lg text-sm text-white placeholder-[#666666] focus:outline-none focus:border-[#C9A227]/50"
+                placeholder="Search company name, CUI, specialism..."
+              />
+              <select
+                name="type"
+                defaultValue={type}
+                className="h-11 px-3 bg-[#111111] border border-[#1A1D1B] rounded-lg text-xs font-mono text-white focus:outline-none focus:border-[#C9A227]/50"
+              >
+                {COMPANY_TYPES.map(t => (
+                  <option key={t.value} value={t.value}>
+                    {t.label}
+                  </option>
+                ))}
+              </select>
+              <select
+                name="location"
+                defaultValue={location}
+                className="h-11 px-3 bg-[#111111] border border-[#1A1D1B] rounded-lg text-xs font-mono text-white focus:outline-none focus:border-[#C9A227]/50"
+              >
+                {LOCATIONS.map(l => (
+                  <option key={l.value} value={l.value}>
+                    {l.label}
+                  </option>
+                ))}
+              </select>
+              <select
+                name="freshness"
+                defaultValue={freshness}
+                className="h-11 px-3 bg-[#111111] border border-[#1A1D1B] rounded-lg text-xs font-mono text-white focus:outline-none focus:border-[#C9A227]/50"
+              >
+                {FRESHNESS_OPTIONS.map(f => (
+                  <option key={f.value} value={f.value}>
+                    {f.label}
+                  </option>
+                ))}
+              </select>
+              <div className="flex items-center gap-2">
+                <button
+                  type="submit"
+                  className="flex-1 sm:flex-none h-11 px-5 bg-[#C9A227] text-[#050505] font-mono text-xs font-bold uppercase tracking-wider rounded-lg hover:bg-[#E4C58F] active:scale-95 transition-all"
                 >
-                  <div>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 }}>
-                      <span className="company-num" style={{ margin: 0 }}>
-                        {String(i + 1).padStart(2, '0')} · {c.type}
-                      </span>
+                  Filter
+                </button>
+                {(type || location || freshness || q) && (
+                  <Link
+                    href="/companies"
+                    className="h-11 px-4 flex items-center justify-center border border-[#1A1D1B] text-xs font-mono text-[#888888] hover:text-white rounded-lg"
+                  >
+                    Reset
+                  </Link>
+                )}
+              </div>
+            </form>
+          </div>
+        </section>
 
-                      {c.signal_freshness && (
-                        <span
-                          style={{
-                            fontSize: 9,
-                            fontWeight: 800,
-                            letterSpacing: '0.08em',
-                            padding: '2px 6px',
-                            borderRadius: 2,
-                            border: `1px solid ${c.signal_freshness === 'FRESH' ? '#38bdf8' : c.signal_freshness === 'RECENT' ? '#c7a675' : '#777'}`,
-                            color: c.signal_freshness === 'FRESH' ? '#38bdf8' : c.signal_freshness === 'RECENT' ? '#c7a675' : '#888'
+        {/* Company Dossier Grid */}
+        <section className="py-10 md:py-16">
+          <div className="max-w-[1440px] mx-auto px-4 md:px-8">
+            {filtered.length > 0 ? (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {filtered.map((c, i) => (
+                  <div
+                    key={c.slug}
+                    className="p-6 bg-[#111111] border border-[#1A1D1B] rounded-2xl flex flex-col justify-between space-y-4 hover:border-[#C9A227]/50 transition-all"
+                  >
+                    <div className="space-y-3">
+                      <div className="flex items-center justify-between">
+                        <span className="text-[10px] font-mono text-[#888888]">
+                          {String(i + 1).padStart(2, '0')} · {c.type}
+                        </span>
+                        {c.signal_freshness && (
+                          <span
+                            className={`px-2 py-0.5 border rounded text-[9px] font-mono uppercase font-semibold ${
+                              c.signal_freshness === 'FRESH'
+                                ? 'bg-[#38bdf8]/10 text-[#38bdf8] border-[#38bdf8]/40'
+                                : c.signal_freshness === 'RECENT'
+                                ? 'bg-[#C9A227]/10 text-[#C9A227] border-[#C9A227]/40'
+                                : 'bg-[#111111] text-[#888888] border-[#1A1D1B]'
+                            }`}
+                          >
+                            {c.signal_freshness}
+                          </span>
+                        )}
+                      </div>
+
+                      <h3 className="text-xl font-bold text-white">
+                        <CompanyIntelligencePreview
+                          company={{
+                            name: c.name,
+                            slug: c.slug,
+                            type: c.type,
+                            location: c.location,
+                            active_projects_count: c.active_projects_count,
+                            market_signals_count: c.market_signals_count,
+                            last_activity_date: c.last_activity_date,
+                            signal_freshness: c.signal_freshness,
+                            latest_signal: c.latest_signal
                           }}
                         >
-                          {c.signal_freshness}
-                        </span>
-                      )}
+                          <Link href={`/companies/${c.slug}`} className="hover:text-[#C9A227] transition-colors">
+                            {c.name}
+                          </Link>
+                        </CompanyIntelligencePreview>
+                      </h3>
+
+                      <p className="text-xs text-[#A0A0A0] line-clamp-3 leading-relaxed">
+                        {c.description}
+                      </p>
+
+                      <div className="grid grid-cols-2 gap-3 p-3 bg-[#0B0B0B] border border-[#1A1D1B] rounded-lg text-xs font-mono">
+                        <div>
+                          <span className="text-[9px] text-[#666666] uppercase block">ACTIVE PROJECTS</span>
+                          <span className="text-white font-bold text-sm">
+                            {c.active_projects_count !== null && c.active_projects_count !== undefined
+                              ? c.active_projects_count
+                              : 'Not Disclosed'}
+                          </span>
+                        </div>
+                        <div>
+                          <span className="text-[9px] text-[#666666] uppercase block">MARKET SIGNALS</span>
+                          <span className="text-[#C9A227] font-bold text-sm">
+                            {c.market_signals_count !== null && c.market_signals_count !== undefined
+                              ? c.market_signals_count
+                              : 'Not Disclosed'}
+                          </span>
+                        </div>
+                      </div>
                     </div>
 
-                    <h3 style={{ fontSize: 20, fontWeight: 800, color: '#fff', margin: '4px 0 8px 0' }}>
-                      <CompanyIntelligencePreview
-                        company={{
-                          name: c.name,
-                          slug: c.slug,
-                          type: c.type,
-                          location: c.location,
-                          active_projects_count: c.active_projects_count,
-                          market_signals_count: c.market_signals_count,
-                          last_activity_date: c.last_activity_date,
-                          signal_freshness: c.signal_freshness,
-                          latest_signal: c.latest_signal
-                        }}
+                    <div className="pt-4 border-t border-[#1A1D1B] flex items-center justify-between text-xs">
+                      <span className="text-[#888888] font-mono text-[11px]">{c.location}</span>
+                      <Link
+                        href={`/companies/${c.slug}`}
+                        className="font-mono text-xs font-semibold text-[#C9A227] hover:text-[#E4C58F] tracking-wider"
                       >
-                        <Link href={`/companies/${c.slug}`} style={{ color: '#fff', textDecoration: 'none' }}>
-                          {c.name}
-                        </Link>
-                      </CompanyIntelligencePreview>
-                    </h3>
-
-                    <p style={{ fontSize: 13, color: '#b5b3aa', margin: '0 0 16px 0', lineHeight: 1.5 }}>
-                      {c.description}
-                    </p>
-
-                    {/* Metrics Bar */}
-                    <div
-                      style={{
-                        display: 'grid',
-                        gridTemplateColumns: '1fr 1fr',
-                        gap: 8,
-                        padding: '10px 12px',
-                        background: '#0d100f',
-                        border: '1px solid #1c201e',
-                        borderRadius: 4,
-                        marginBottom: 16,
-                        fontSize: 11
-                      }}
-                    >
-                      <div>
-                        <div style={{ color: '#777', fontSize: 9, fontWeight: 700 }}>ACTIVE PROJECTS</div>
-                        <div style={{ color: '#fff', fontWeight: 800, marginTop: 2 }}>
-                          {c.active_projects_count !== null && c.active_projects_count !== undefined
-                            ? `${c.active_projects_count}`
-                            : 'NOT AVAILABLE'}
-                        </div>
-                      </div>
-                      <div>
-                        <div style={{ color: '#777', fontSize: 9, fontWeight: 700 }}>MARKET SIGNALS</div>
-                        <div style={{ color: '#c7a675', fontWeight: 800, marginTop: 2 }}>
-                          {c.market_signals_count !== null && c.market_signals_count !== undefined
-                            ? `${c.market_signals_count}`
-                            : 'NOT AVAILABLE'}
-                        </div>
-                      </div>
+                        OPEN DOSSIER →
+                      </Link>
                     </div>
                   </div>
-
-                  <footer
-                    style={{
-                      display: 'flex',
-                      justifyContent: 'space-between',
-                      alignItems: 'center',
-                      fontSize: 11,
-                      color: '#888',
-                      borderTop: '1px solid #1a1e1c',
-                      paddingTop: 12
-                    }}
-                  >
-                    <span>
-                      {c.location} · {c.status}
-                    </span>
-                    <Link
-                      href={`/companies/${c.slug}`}
-                      style={{ color: '#c7a675', fontWeight: 700, textDecoration: 'none' }}
-                    >
-                      OPEN DOSSIER →
-                    </Link>
-                  </footer>
-                </div>
-              );
-            })
-          ) : (
-            <div className="empty full" style={{ gridColumn: '1 / -1', padding: '40px 20px', textAlign: 'center' }}>
-              <p style={{ color: '#e5e5e5', fontSize: 16, marginBottom: 12 }}>
-                No published companies match your selected filters.
-              </p>
-              <Link href="/companies" className="btn">
-                Reset Filters
-              </Link>
-            </div>
-          )}
-        </div>
+                ))}
+              </div>
+            ) : (
+              <div className="py-20 text-center space-y-4">
+                <p className="text-base text-[#A0A0A0]">No verified companies match your current filter parameters.</p>
+                <Link
+                  href="/companies"
+                  className="inline-block px-5 py-2.5 bg-[#C9A227] text-[#050505] font-mono text-xs font-bold uppercase tracking-wider rounded-lg"
+                >
+                  Reset Company Filters
+                </Link>
+              </div>
+            )}
+          </div>
+        </section>
       </main>
+
       <SiteFooter />
-    </>
+    </div>
   );
 }

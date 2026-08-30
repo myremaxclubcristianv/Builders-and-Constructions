@@ -19,155 +19,159 @@ export default async function Search({
   const { matchingCompanies, matchingProjects, matchingSignals, matchingArticles } = await searchIntelligenceGlobal(term);
 
   return (
-    <>
+    <div className="bg-[#050505] text-[#F3F1EB] min-h-screen">
       <SiteHeader />
-      <main className="shell">
-        <section className="page-hero">
-          <div className="eyebrow" style={{ color: '#c7a675' }}>Global Intelligence Search</div>
-          <h1>SEARCH</h1>
-          <form className="filterbar" action="/search" method="GET">
-            <input
-              className="field"
-              name="q"
-              defaultValue={q}
-              placeholder="Search company name, project, CUI, location or market signal..."
-              autoFocus
-              style={{ flex: 1 }}
-            />
-            <button className="btn fill" type="submit">
-              Search Terminal
-            </button>
-          </form>
+
+      <main className="pt-20">
+        {/* Search Hero */}
+        <section className="py-10 md:py-16 border-b border-[#1A1D1B] bg-[#0B0B0B]">
+          <div className="max-w-[1440px] mx-auto px-4 md:px-8 space-y-4">
+            <span className="text-[10px] font-mono uppercase tracking-widest text-[#C9A227] block">
+              Global Intelligence Search
+            </span>
+            <h1 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
+              MARKET SEARCH TERMINAL
+            </h1>
+            <form action="/search" method="GET" className="flex items-center gap-2 max-w-2xl">
+              <input
+                className="flex-1 h-12 px-4 bg-[#111111] border border-[#1A1D1B] rounded-xl text-base text-white placeholder-[#666666] focus:outline-none focus:border-[#C9A227]/50"
+                name="q"
+                defaultValue={q}
+                placeholder="Search company, CUI, project name, city, signal..."
+                autoFocus
+              />
+              <button
+                type="submit"
+                className="h-12 px-6 bg-[#C9A227] text-[#050505] font-mono text-xs font-bold uppercase tracking-wider rounded-xl hover:bg-[#E4C58F] active:scale-95 transition-all"
+              >
+                Search
+              </button>
+            </form>
+          </div>
         </section>
 
         {!term ? (
-          <section className="section">
-            <p style={{ color: '#bdbbb4', fontSize: 16 }}>
-              Search across published construction companies, development projects, verified market activity signals, and editorial intelligence.
-            </p>
-          </section>
-        ) : (
-          <section className="section">
-            <div className="section-head">
-              <div>
-                <div className="eyebrow" style={{ color: '#c7a675' }}>Search Results For</div>
-                <h2>&quot;{q}&quot;</h2>
+          <section className="py-16 text-center">
+            <div className="max-w-md mx-auto px-4 space-y-3">
+              <p className="text-sm text-[#A0A0A0]">
+                Search across 53 verified projects, 40 companies, 36 locations, contractors, architects, and market signals.
+              </p>
+              <div className="flex flex-wrap items-center justify-center gap-2 pt-2 text-xs font-mono text-[#888888]">
+                <span>Popular:</span>
+                <Link href="/search?q=One+United" className="text-[#C9A227] hover:underline">One United</Link>
+                <span>·</span>
+                <Link href="/search?q=Skanska" className="text-[#C9A227] hover:underline">Skanska</Link>
+                <span>·</span>
+                <Link href="/search?q=Bucharest" className="text-[#C9A227] hover:underline">Bucharest</Link>
+                <span>·</span>
+                <Link href="/search?q=Infrastructure" className="text-[#C9A227] hover:underline">Infrastructure</Link>
               </div>
             </div>
+          </section>
+        ) : (
+          <section className="py-10 md:py-16">
+            <div className="max-w-[1440px] mx-auto px-4 md:px-8 space-y-12">
+              <div className="border-b border-[#1A1D1B] pb-4">
+                <span className="text-[10px] font-mono text-[#888888] uppercase">Results for</span>
+                <h2 className="text-xl md:text-2xl font-bold text-white mt-1">&quot;{q}&quot;</h2>
+              </div>
 
-            {/* Companies */}
-            <h3 className="eyebrow" style={{ marginTop: 24, color: '#c7a675', letterSpacing: '0.08em' }}>COMPANIES</h3>
-            <div className="search-results">
-              {matchingCompanies.length ? (
-                matchingCompanies.map((c: any) => (
-                  <div className="company" key={c.slug} style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-                    <div>
-                      <span className="company-num">{c.type}</span>
-                      <h3 style={{ marginTop: 4 }}>
-                        <CompanyIntelligencePreview company={{ name: c.name, slug: c.slug, type: c.type, location: c.location }}>
-                          <Link href={`/companies/${c.slug}`} style={{ color: '#fff', textDecoration: 'none' }}>
-                            {c.name}
+              {/* Companies Category */}
+              <div className="space-y-4">
+                <h3 className="text-xs font-mono text-[#C9A227] uppercase tracking-widest flex items-center justify-between">
+                  <span>COMPANIES ({matchingCompanies.length})</span>
+                </h3>
+                {matchingCompanies.length ? (
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    {matchingCompanies.map((c: any) => (
+                      <div key={c.slug} className="p-5 bg-[#111111] border border-[#1A1D1B] rounded-xl flex flex-col justify-between space-y-3">
+                        <div>
+                          <span className="text-[10px] font-mono text-[#888888]">{c.type}</span>
+                          <h4 className="text-base font-bold text-white mt-1">
+                            <CompanyIntelligencePreview company={{ name: c.name, slug: c.slug, type: c.type, location: c.location }}>
+                              <Link href={`/companies/${c.slug}`} className="hover:text-[#C9A227] transition-colors">
+                                {c.name}
+                              </Link>
+                            </CompanyIntelligencePreview>
+                          </h4>
+                          <p className="text-xs text-[#A0A0A0] line-clamp-2 mt-1">{c.description}</p>
+                        </div>
+                        <div className="pt-3 border-t border-[#1A1D1B] flex items-center justify-between text-xs font-mono">
+                          <span className="text-[#888888]">{c.location}</span>
+                          <Link href={`/companies/${c.slug}`} className="text-[#C9A227] font-semibold">
+                            DOSSIER →
                           </Link>
-                        </CompanyIntelligencePreview>
-                      </h3>
-                      <p style={{ marginTop: 6 }}>{c.description}</p>
-                    </div>
-                    <footer style={{ marginTop: 14, paddingTop: 10, borderTop: '1px solid #1a1e1c', display: 'flex', justifyContent: 'space-between', fontSize: 12 }}>
-                      <span>{c.location}</span>
-                      <Link href={`/companies/${c.slug}`} style={{ color: '#c7a675', fontWeight: 700, textDecoration: 'none' }}>
-                        DOSSIER →
-                      </Link>
-                    </footer>
-                  </div>
-                ))
-              ) : (
-                <div className="empty">No published company profiles found matching &quot;{term}&quot;.</div>
-              )}
-            </div>
-
-            {/* Projects */}
-            <h3 className="eyebrow" style={{ marginTop: 45, color: '#c7a675', letterSpacing: '0.08em' }}>PROJECTS</h3>
-            <div className="search-results">
-              {matchingProjects.length ? (
-                matchingProjects.map((p: any) => (
-                  <div className="company" key={p.slug} style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-                    <div>
-                      <span className="company-num">{p.status}</span>
-                      <h3 style={{ marginTop: 4 }}>
-                        <Link href={`/projects/${p.slug}`} style={{ color: '#fff', textDecoration: 'none' }}>
-                          {p.name}
-                        </Link>
-                      </h3>
-                      <p style={{ marginTop: 6 }}>{p.type} · {p.location}</p>
-                    </div>
-                    <footer style={{ marginTop: 14, paddingTop: 10, borderTop: '1px solid #1a1e1c', display: 'flex', justifyContent: 'space-between', fontSize: 12 }}>
-                      <span>{p.location}</span>
-                      <Link href={`/projects/${p.slug}`} style={{ color: '#38bdf8', fontWeight: 700, textDecoration: 'none' }}>
-                        PROJECT DOSSIER →
-                      </Link>
-                    </footer>
-                  </div>
-                ))
-              ) : (
-                <div className="empty">No published project profiles found matching &quot;{term}&quot;.</div>
-              )}
-            </div>
-
-            {/* Market Signals */}
-            {matchingSignals.length > 0 && (
-              <>
-                <h3 className="eyebrow" style={{ marginTop: 45, color: '#c7a675', letterSpacing: '0.08em' }}>MARKET SIGNALS & EVIDENCE</h3>
-                <div className="search-results">
-                  {matchingSignals.map((s: any) => (
-                    <div className="company" key={s.id} style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-                      <div>
-                        <span className="company-num" style={{ color: '#38bdf8' }}>{s.signal_type.replaceAll('_', ' ')}</span>
-                        <h3 style={{ marginTop: 4, color: '#fff', fontSize: 18 }}>{s.title}</h3>
-                        {s.summary && <p style={{ marginTop: 6 }}>{s.summary}</p>}
+                        </div>
                       </div>
-                      <footer style={{ marginTop: 14, paddingTop: 10, borderTop: '1px solid #1a1e1c', display: 'flex', justifyContent: 'space-between', fontSize: 12 }}>
-                        <span>
-                          {s.company_name ? `Company: ${s.company_name}` : 'Market event'}
-                        </span>
+                    ))}
+                  </div>
+                ) : (
+                  <p className="text-xs text-[#666666] italic">No matching companies found.</p>
+                )}
+              </div>
+
+              {/* Projects Category */}
+              <div className="space-y-4">
+                <h3 className="text-xs font-mono text-[#C9A227] uppercase tracking-widest flex items-center justify-between">
+                  <span>PROJECTS ({matchingProjects.length})</span>
+                </h3>
+                {matchingProjects.length ? (
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    {matchingProjects.map((p: any) => (
+                      <div key={p.slug} className="p-5 bg-[#111111] border border-[#1A1D1B] rounded-xl flex flex-col justify-between space-y-3">
+                        <div>
+                          <span className="text-[10px] font-mono text-[#888888]">{p.status}</span>
+                          <h4 className="text-base font-bold text-white mt-1">
+                            <Link href={`/projects/${p.slug}`} className="hover:text-[#C9A227] transition-colors">
+                              {p.name}
+                            </Link>
+                          </h4>
+                          <p className="text-xs text-[#A0A0A0] mt-1">{p.type} · {p.location}</p>
+                        </div>
+                        <div className="pt-3 border-t border-[#1A1D1B] flex items-center justify-between text-xs font-mono">
+                          <span className="text-[#888888]">{p.location}</span>
+                          <Link href={`/projects/${p.slug}`} className="text-[#C9A227] font-semibold">
+                            PROJECT DOSSIER →
+                          </Link>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <p className="text-xs text-[#666666] italic">No matching projects found.</p>
+                )}
+              </div>
+
+              {/* Market Signals Category */}
+              {matchingSignals.length > 0 && (
+                <div className="space-y-4">
+                  <h3 className="text-xs font-mono text-[#C9A227] uppercase tracking-widest">
+                    MARKET SIGNALS & EVIDENCE ({matchingSignals.length})
+                  </h3>
+                  <div className="space-y-3">
+                    {matchingSignals.map((s: any) => (
+                      <div key={s.id} className="p-4 bg-[#111111] border border-[#1A1D1B] rounded-xl flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                        <div>
+                          <span className="text-[10px] font-mono text-[#38bdf8] uppercase">{s.signal_type.replaceAll('_', ' ')}</span>
+                          <h4 className="text-sm font-semibold text-white mt-0.5">{s.title}</h4>
+                          {s.summary && <p className="text-xs text-[#888888] mt-1">{s.summary}</p>}
+                        </div>
                         {s.source_url && (
-                          <a href={s.source_url} target="_blank" rel="noreferrer" style={{ color: '#c7a675', fontWeight: 700, textDecoration: 'none' }}>
+                          <a href={s.source_url} target="_blank" rel="noreferrer" className="text-xs font-mono text-[#C9A227] hover:underline shrink-0">
                             CITATION ↗
                           </a>
                         )}
-                      </footer>
-                    </div>
-                  ))}
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </>
-            )}
-
-            {/* Articles */}
-            {matchingArticles.length > 0 && (
-              <>
-                <h3 className="eyebrow" style={{ marginTop: 45, color: '#c7a675', letterSpacing: '0.08em' }}>EDITORIAL STORIES</h3>
-                <div className="search-results">
-                  {matchingArticles.map((a: any) => (
-                    <Link className="company" href={`/editorial/${a.slug}`} key={a.slug}>
-                      <span className="company-num">{a.category}</span>
-                      <h3>{a.title}</h3>
-                      <p>{a.excerpt || 'View article'}</p>
-                    </Link>
-                  ))}
-                </div>
-              </>
-            )}
-
-            {!matchingCompanies.length && !matchingProjects.length && !matchingSignals.length && !matchingArticles.length && (
-              <div className="actions" style={{ marginTop: 40 }}>
-                <Link href="/promote" className="btn fill">
-                  Can&apos;t find your company? Get featured
-                </Link>
-              </div>
-            )}
+              )}
+            </div>
           </section>
         )}
       </main>
+
       <SiteFooter />
-    </>
+    </div>
   );
 }

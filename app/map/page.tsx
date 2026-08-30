@@ -13,116 +13,114 @@ export default function ConstructionMapPage() {
   const completedProjects = realProjectsDataset.filter(p => p.status === 'completed');
 
   return (
-    <>
-      <main>
-        <div className="hero" style={{ paddingBottom: 40 }}>
-          <SiteHeader />
-          <div className="shell hero-content">
-            <div className="eyebrow" style={{ color: '#c7a675' }}>Geographic Market Intelligence</div>
-            <h1>ROMANIAN NATIONAL CONSTRUCTION MAP</h1>
-            <p>Visual map of verified construction sites, active developer footprints, and development density across Bucharest, Ilfov, Cluj, Timișoara, Iași, Brașov, Constanța, and regional hubs.</p>
+    <div className="bg-[#050505] text-[#F3F1EB] min-h-screen">
+      <SiteHeader />
+
+      <main className="pt-20">
+        {/* Map Hero */}
+        <section className="py-10 md:py-16 border-b border-[#1A1D1B] bg-[#0B0B0B]">
+          <div className="max-w-[1440px] mx-auto px-4 md:px-8 space-y-3">
+            <span className="text-[10px] font-mono uppercase tracking-widest text-[#C9A227] block">
+              Geographic Market Intelligence
+            </span>
+            <h1 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
+              NATIONAL CONSTRUCTION DENSITY MAP
+            </h1>
+            <p className="text-sm md:text-base text-[#A0A0A0] max-w-2xl leading-relaxed">
+              Geographic distribution of verified construction sites, active developer footprints, and development density across Bucharest, Ilfov, Cluj, Timișoara, Iași, Brașov, and regional hubs.
+            </p>
           </div>
-        </div>
+        </section>
 
-        <section className="section shell">
-          {/* Map Visual Container */}
-          <div
-            style={{
-              background: '#0e110f',
-              border: '1px solid #262927',
-              borderRadius: 8,
-              padding: 24,
-              marginBottom: 40
-            }}
-          >
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20, flexWrap: 'wrap', gap: 12 }}>
-              <div>
-                <span style={{ fontSize: 11, color: '#c7a675', fontWeight: 800 }}>LIVE GEOGRAPHIC DISTRIBUTION</span>
-                <h2 style={{ fontSize: 22, fontWeight: 700, margin: '2px 0 0', color: '#fff' }}>ROMANIA CONSTRUCTION DENSITY</h2>
-              </div>
-              <div style={{ display: 'flex', gap: 16, fontSize: 12 }}>
-                <span style={{ display: 'flex', alignItems: 'center', gap: 6, color: '#fff' }}>
-                  <span style={{ width: 10, height: 10, borderRadius: '50%', background: '#c7a675' }}></span> Active Construction ({activeUnderConstruction.length})
-                </span>
-                <span style={{ display: 'flex', alignItems: 'center', gap: 6, color: '#fff' }}>
-                  <span style={{ width: 10, height: 10, borderRadius: '50%', background: '#22c55e' }}></span> Delivered ({completedProjects.length})
-                </span>
-              </div>
-            </div>
-
-            {/* City Distribution Cards Grid */}
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: 16 }}>
-              {realLocationsDataset.slice(0, 12).map(loc => {
-                const count = realProjectsDataset.filter(p => p.location.toLowerCase().includes(loc.name.toLowerCase()) || p.location.toLowerCase().includes(loc.city.toLowerCase())).length;
-                const active = realProjectsDataset.filter(p => (p.location.toLowerCase().includes(loc.name.toLowerCase()) || p.location.toLowerCase().includes(loc.city.toLowerCase())) && p.status === 'under_construction').length;
-
-                return (
-                  <Link
-                    href={`/cities/${loc.slug}`}
-                    key={loc.slug}
-                    style={{
-                      padding: 16,
-                      background: '#141715',
-                      border: '1px solid #222523',
-                      borderRadius: 6,
-                      textDecoration: 'none',
-                      color: '#fff',
-                      display: 'flex',
-                      justifyContent: 'space-between',
-                      alignItems: 'center'
-                    }}
-                  >
-                    <div>
-                      <div style={{ fontSize: 14, fontWeight: 700, color: '#fff' }}>{loc.name}</div>
-                      <div style={{ fontSize: 11, color: '#888', marginTop: 2 }}>{loc.county} County</div>
-                    </div>
-                    <div style={{ textAlign: 'right' }}>
-                      <div style={{ fontSize: 16, fontWeight: 800, color: active > 0 ? '#c7a675' : '#fff' }}>{count} Projects</div>
-                      <div style={{ fontSize: 10, color: '#888' }}>{active} Active Sites</div>
-                    </div>
-                  </Link>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* Active Projects List */}
-          <div className="section-head">
-            <div>
-              <div className="eyebrow" style={{ color: '#c7a675' }}>Geocoded Sites</div>
-              <h2>ALL RECORDED CONSTRUCTION LOCATIONS</h2>
-            </div>
-          </div>
-
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: 20 }}>
-            {realProjectsDataset.map(p => (
-              <Link
-                href={`/projects/${p.slug}`}
-                key={p.slug}
-                style={{
-                  padding: 20,
-                  background: '#141715',
-                  border: '1px solid #262927',
-                  borderRadius: 6,
-                  textDecoration: 'none',
-                  color: '#fff',
-                  display: 'block'
-                }}
-              >
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
-                  <span style={{ fontSize: 10, fontWeight: 800, color: p.status === 'under_construction' ? '#c7a675' : '#22c55e' }}>
-                    {p.status_display.toUpperCase()}
-                  </span>
-                  <span style={{ fontSize: 11, color: '#888' }}>{p.location}</span>
+        {/* Map Hub Distribution */}
+        <section className="py-10 md:py-16 border-b border-[#1A1D1B]">
+          <div className="max-w-[1440px] mx-auto px-4 md:px-8">
+            <div className="p-6 bg-[#111111] border border-[#1A1D1B] rounded-2xl space-y-6">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#1A1D1B] pb-4">
+                <div>
+                  <span className="text-[10px] font-mono text-[#C9A227] uppercase tracking-wider block">NATIONAL HUBS</span>
+                  <h2 className="text-xl font-bold text-white mt-0.5">GEOGRAPHIC DISTRIBUTION BY CITY</h2>
                 </div>
-                <h3 style={{ fontSize: 17, fontWeight: 700, margin: '0 0 6px', color: '#fff' }}>{p.name}</h3>
-                <p style={{ fontSize: 12, color: '#aaa', margin: 0 }}>{p.developer_name} · {p.project_type}</p>
-              </Link>
-            ))}
+                <div className="flex items-center gap-4 text-xs font-mono">
+                  <span className="flex items-center gap-2 text-white">
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#C9A227]" /> Active ({activeUnderConstruction.length})
+                  </span>
+                  <span className="flex items-center gap-2 text-white">
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#22c55e]" /> Delivered ({completedProjects.length})
+                  </span>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                {realLocationsDataset.slice(0, 12).map(loc => {
+                  const count = realProjectsDataset.filter(p => p.location.toLowerCase().includes(loc.name.toLowerCase()) || p.location.toLowerCase().includes(loc.city.toLowerCase())).length;
+                  const active = realProjectsDataset.filter(p => (p.location.toLowerCase().includes(loc.name.toLowerCase()) || p.location.toLowerCase().includes(loc.city.toLowerCase())) && p.status === 'under_construction').length;
+
+                  return (
+                    <Link
+                      key={loc.slug}
+                      href={`/cities/${loc.slug}`}
+                      className="p-4 bg-[#050505] border border-[#1A1D1B] rounded-xl hover:border-[#C9A227]/50 transition-all flex items-center justify-between group"
+                    >
+                      <div>
+                        <h3 className="text-sm font-bold text-white group-hover:text-[#C9A227] transition-colors">{loc.name}</h3>
+                        <p className="text-[11px] text-[#666666] font-mono">{loc.county} County</p>
+                      </div>
+                      <div className="text-right font-mono">
+                        <span className="text-sm font-extrabold text-[#C9A227] block">{count} Projects</span>
+                        <span className="text-[10px] text-[#888888]">{active} Active</span>
+                      </div>
+                    </Link>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* All Geocoded Sites Grid */}
+        <section className="py-10 md:py-16">
+          <div className="max-w-[1440px] mx-auto px-4 md:px-8">
+            <div className="mb-8">
+              <span className="text-[10px] font-mono uppercase tracking-widest text-[#C9A227] block mb-1">
+                Geocoded Sites Index
+              </span>
+              <h2 className="text-2xl md:text-3xl font-extrabold text-white tracking-tight">
+                ALL RECORDED CONSTRUCTION LOCATIONS ({realProjectsDataset.length})
+              </h2>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {realProjectsDataset.map(p => (
+                <Link
+                  key={p.slug}
+                  href={`/projects/${p.slug}`}
+                  className="p-5 bg-[#111111] border border-[#1A1D1B] rounded-xl hover:border-[#C9A227]/50 transition-all group flex flex-col justify-between space-y-3"
+                >
+                  <div className="space-y-1">
+                    <div className="flex items-center justify-between text-xs font-mono">
+                      <span className={`font-bold ${p.status === 'under_construction' ? 'text-[#C9A227]' : 'text-[#22c55e]'}`}>
+                        {p.status_display.toUpperCase()}
+                      </span>
+                      <span className="text-[#888888]">{p.location}</span>
+                    </div>
+                    <h3 className="text-base font-bold text-white group-hover:text-[#C9A227] transition-colors">
+                      {p.name}
+                    </h3>
+                  </div>
+
+                  <div className="pt-2 border-t border-[#1A1D1B] flex items-center justify-between text-xs font-mono text-[#888888]">
+                    <span>{p.developer_name}</span>
+                    <span>{p.project_type}</span>
+                  </div>
+                </Link>
+              ))}
+            </div>
           </div>
         </section>
       </main>
+
       <SiteFooter />
-    </>
+    </div>
   );
 }
