@@ -27,6 +27,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/video',
     '/coverage',
     '/methodology',
+    '/about/cristian-vaduva',
+    '/about/aixluxury',
     '/report-error',
     '/research-request',
     '/work-with-us',

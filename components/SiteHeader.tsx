@@ -331,15 +331,61 @@ export function SiteHeader() {
               MEDIA
             </Link>
 
-            {/* ABOUT */}
-            <Link
-              href="/work-with-us"
-              className={`hover:text-[#C9A227] transition-colors py-1 ${
-                pathname === '/work-with-us' ? 'text-[#C9A227] font-bold border-b border-[#C9A227] pb-0.5' : ''
-              }`}
-            >
-              ABOUT
-            </Link>
+            {/* ABOUT DROPDOWN */}
+            <div className="relative">
+              <button
+                onClick={() => toggleDropdown('about')}
+                aria-expanded={activeDropdown === 'about'}
+                aria-haspopup="true"
+                className={`flex items-center gap-1 hover:text-[#C9A227] transition-colors cursor-pointer py-1 ${
+                  pathname === '/about/cristian-vaduva' ||
+                  pathname === '/about/aixluxury' ||
+                  pathname === '/work-with-us'
+                    ? 'text-[#C9A227] font-bold border-b border-[#C9A227] pb-0.5'
+                    : ''
+                }`}
+              >
+                <span>ABOUT</span>
+                <svg
+                  className={`w-3.5 h-3.5 transition-transform duration-200 ${
+                    activeDropdown === 'about' ? 'rotate-180 text-[#C9A227]' : ''
+                  }`}
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+
+              {activeDropdown === 'about' && (
+                <div className="absolute left-0 top-full mt-2 w-72 bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl shadow-2xl p-4 space-y-2 animate-fadeIn z-50">
+                  <span className="text-[10px] font-mono uppercase tracking-widest text-[#C9A227] block mb-2">
+                    INSTITUTIONAL PROFILES
+                  </span>
+                  <div className="space-y-1 text-xs">
+                    <Link
+                      href="/about/cristian-vaduva"
+                      className="block p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors font-bold"
+                    >
+                      Cristian Văduva
+                    </Link>
+                    <Link
+                      href="/about/aixluxury"
+                      className="block p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors font-bold"
+                    >
+                      AiXLuxury Platform
+                    </Link>
+                    <Link
+                      href="/work-with-us"
+                      className="block p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors border-t border-[#1A1D1B] pt-2 mt-1"
+                    >
+                      Work With Us
+                    </Link>
+                  </div>
+                </div>
+              )}
+            </div>
           </nav>
 
           {/* Desktop Right CTA */}
