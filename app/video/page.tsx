@@ -103,7 +103,7 @@ export default async function VideoDeskPage() {
             <div className="p-6 bg-[#111111] border border-[#1A1D1B] rounded-xl text-xs font-mono space-y-2">
               <span className="text-[#C9A227] uppercase font-bold block">EDITORIAL MEDIA POLICY</span>
               <p className="text-[#A0A0A0] leading-relaxed">
-                Video documentations serve as an independent media layer and do not alter factual claim ledgers, official registry records, or core entity database counts (40 Companies, 53 Projects).
+                Video documentations serve as an independent media layer and do not alter factual claim ledgers, official registry records, or core entity database counts (146 Companies, 76 Projects).
               </p>
             </div>
 

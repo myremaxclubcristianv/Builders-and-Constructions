@@ -96,6 +96,10 @@ export default async function ProjectProfile({
   const sameDeveloperProjects = realProjectsDataset.filter(other => other.developer_slug === p.developer_slug && other.slug !== p.slug);
   const sameCityProjects = realProjectsDataset.filter(other => other.location_slug === p.location_slug && other.slug !== p.slug);
 
+  const sourcesList = p.sources || [];
+  const primarySourceCount = sourcesList.filter((s: any) => s.type === 'OFFICIAL' || s.type === 'PUBLIC_RECORD' || s.type === 'FINANCIAL_STATEMENT').length;
+  const secondarySourceCount = sourcesList.length - primarySourceCount;
+
   const navTabs = [
     { id: 'profile', label: 'EXECUTIVE PROFILE' },
     { id: 'timeline', label: 'PROJECT HISTORY' },

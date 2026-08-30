@@ -169,6 +169,10 @@ export default async function CompanyProfile({
     revenueGrowthTrend = 'INSUFFICIENT DATA';
   }
 
+  const sourcesList = c.sources || [];
+  const primarySourceCount = sourcesList.filter((s: any) => s.type === 'OFFICIAL' || s.type === 'PUBLIC_RECORD' || s.type === 'FINANCIAL_STATEMENT').length;
+  const secondarySourceCount = sourcesList.length - primarySourceCount;
+
   // Comparable entities
   const comparableCompanies = realCompaniesDataset.filter(other =>
     other.slug !== c.slug && (other.type === c.type || (other.location && other.location === c.location))
@@ -262,8 +266,8 @@ export default async function CompanyProfile({
                 </p>
                 <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', fontSize: 12, color: '#aaa9a1' }}>
                   <div>CUI/CIF: <strong style={{ color: c.cui_cif ? '#86efac' : '#aaa' }}>{c.cui_cif || 'NOT DISCLOSED'}</strong></div>
-                  <div>DATA SOURCE: <strong style={{ color: '#38bdf8' }}>PUBLIC RECORDS & BVB</strong></div>
-                  <div>LAST VERIFIED: <strong style={{ color: '#fff' }}>AUGUST 2026</strong></div>
+                  <div>SOURCES: <strong style={{ color: '#38bdf8' }}>{sourcesList.length} LEDGER ({primarySourceCount} PRIMARY, {secondarySourceCount} SECONDARY)</strong></div>
+                  <div>LAST VERIFIED: <strong style={{ color: '#fff' }}>2026-08-31</strong></div>
                 </div>
               </div>
 

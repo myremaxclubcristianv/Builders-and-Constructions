@@ -8219,7 +8219,8 @@ export const realProjectsDataset: RealProject[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "investment_label": "€100.0M EUR"
   },
   {
     "id": "proj-ctpark-cluj-logistics",
@@ -8258,7 +8259,8 @@ export const realProjectsDataset: RealProject[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "investment_label": "€45.0M EUR"
   },
   {
     "id": "proj-speedwell-riverside-arad-site",
@@ -8298,7 +8300,8 @@ export const realProjectsDataset: RealProject[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "investment_label": "€40.0M EUR"
   },
   {
     "id": "proj-citadel-residence-craiova",
@@ -8338,7 +8341,8 @@ export const realProjectsDataset: RealProject[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "investment_label": "€28.0M EUR"
   },
   {
     "id": "proj-a1-highway-sibiu-pitesti",
@@ -8377,7 +8381,8 @@ export const realProjectsDataset: RealProject[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "investment_label": "€350.0M EUR"
   },
   {
     "id": "proj-afi-tech-park-2",
@@ -8416,7 +8421,8 @@ export const realProjectsDataset: RealProject[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "investment_label": "€37.0M EUR"
   },
   {
     "id": "proj-hils-brauner-residential",
@@ -8456,7 +8462,8 @@ export const realProjectsDataset: RealProject[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "investment_label": "€70.0M EUR"
   },
   {
     "id": "proj-sedako-park-timisoara-site",
@@ -8496,7 +8503,8 @@ export const realProjectsDataset: RealProject[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "investment_label": "€24.0M EUR"
   },
   {
     "id": "proj-edil-park-cluj-site",
@@ -8536,7 +8544,8 @@ export const realProjectsDataset: RealProject[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "investment_label": "€30.0M EUR"
   },
   {
     "id": "proj-avrig-35-residential",
@@ -8576,7 +8585,8 @@ export const realProjectsDataset: RealProject[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "investment_label": "€20.0M EUR"
   },
   {
     "id": "proj-militari-shopping-expansion",
@@ -8615,7 +8625,8 @@ export const realProjectsDataset: RealProject[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "investment_label": "€35.0M EUR"
   },
   {
     "id": "proj-anchor-plaza-office",
@@ -8654,7 +8665,8 @@ export const realProjectsDataset: RealProject[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "investment_label": "€32.0M EUR"
   },
   {
     "id": "proj-incity-residences-bucharest",
@@ -8694,7 +8706,8 @@ export const realProjectsDataset: RealProject[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "investment_label": "€55.0M EUR"
   },
   {
     "id": "proj-boemia-apartments-bucharest",
@@ -8734,7 +8747,8 @@ export const realProjectsDataset: RealProject[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "investment_label": "€15.0M EUR"
   },
   {
     "id": "proj-eli-park-bacau-logistics",
@@ -8773,7 +8787,8 @@ export const realProjectsDataset: RealProject[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "investment_label": "€20.0M EUR"
   },
   {
     "id": "proj-dacia-one-bucharest",
@@ -8812,7 +8827,8 @@ export const realProjectsDataset: RealProject[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "investment_label": "€50.0M EUR"
   },
   {
     "id": "proj-expo-bucharest-office",
@@ -8851,7 +8867,8 @@ export const realProjectsDataset: RealProject[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "investment_label": "€90.0M EUR"
   },
   {
     "id": "proj-yunity-park-bucharest",
@@ -8890,7 +8907,8 @@ export const realProjectsDataset: RealProject[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "investment_label": "€50.0M EUR"
   },
   {
     "id": "proj-xcity-towers-timisoara",
@@ -8930,7 +8948,8 @@ export const realProjectsDataset: RealProject[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "investment_label": "€60.0M EUR"
   },
   {
     "id": "proj-hexagon-offices-cluj",
@@ -8969,7 +8988,8 @@ export const realProjectsDataset: RealProject[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "investment_label": "€30.0M EUR"
   },
   {
     "id": "proj-fashion-house-pallady",
@@ -9008,7 +9028,8 @@ export const realProjectsDataset: RealProject[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "investment_label": "€25.0M EUR"
   },
   {
     "id": "proj-metalurgiei-park-residence",
@@ -9048,7 +9069,8 @@ export const realProjectsDataset: RealProject[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "investment_label": "€150.0M EUR"
   },
   {
     "id": "proj-vgp-park-brasov",
@@ -9087,7 +9109,8 @@ export const realProjectsDataset: RealProject[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "investment_label": "€80.0M EUR"
   },
   {
     "id": "proj-one-high-district",
@@ -9112,7 +9135,7 @@ export const realProjectsDataset: RealProject[] = [
     "current_progress_percent": 65,
     "estimated_completion": "2025-12-31",
     "investment_eur": 130000000,
-    "investment_label": "ANNOUNCED INVESTMENT",
+    "investment_label": "€130.0M EUR",
     "surface_area_sqm": 92000,
     "built_area_sqm": 92000,
     "unit_count": 786,
@@ -9175,7 +9198,7 @@ export const realProjectsDataset: RealProject[] = [
     "current_progress_percent": 100,
     "actual_delivery": "2021-06-15",
     "investment_eur": 90000000,
-    "investment_label": "ANNOUNCED INVESTMENT",
+    "investment_label": "€90.0M EUR",
     "surface_area_sqm": 74000,
     "unit_count": 820,
     "architect_name": "West Group Architecture",
@@ -9224,7 +9247,7 @@ export const realProjectsDataset: RealProject[] = [
     "current_progress_percent": 100,
     "actual_delivery": "2023-11-20",
     "investment_eur": 160000000,
-    "investment_label": "ANNOUNCED INVESTMENT",
+    "investment_label": "€160.0M EUR",
     "surface_area_sqm": 250000,
     "contractor_name": "KÉSZ Construct Romania",
     "contractor_slug": "kesz-construct",
@@ -9271,7 +9294,7 @@ export const realProjectsDataset: RealProject[] = [
     "current_progress_percent": 100,
     "actual_delivery": "2019-11-01",
     "investment_eur": 45000000,
-    "investment_label": "ANNOUNCED INVESTMENT",
+    "investment_label": "€45.0M EUR",
     "surface_area_sqm": 20800,
     "floors": "3B + GF + 12F",
     "architect_name": "Chapman Taylor Romania",
@@ -9323,7 +9346,7 @@ export const realProjectsDataset: RealProject[] = [
     "current_progress_percent": 100,
     "actual_delivery": "2018-10-15",
     "investment_eur": 50000000,
-    "investment_label": "ANNOUNCED INVESTMENT",
+    "investment_label": "€50.0M EUR",
     "surface_area_sqm": 22000,
     "floors": "2B + GF + 11F",
     "architect_name": "West Group Architecture",
@@ -9374,7 +9397,7 @@ export const realProjectsDataset: RealProject[] = [
     "current_progress_percent": 75,
     "estimated_completion": "2026-11-30",
     "investment_eur": 180000000,
-    "investment_label": "ANNOUNCED INVESTMENT",
+    "investment_label": "€180.0M EUR",
     "surface_area_sqm": 16800,
     "contractor_name": "Strabag Romania",
     "contractor_slug": "strabag-romania",
@@ -9428,7 +9451,7 @@ export const realProjectsDataset: RealProject[] = [
     "current_progress_percent": 100,
     "actual_delivery": "2020-09-15",
     "investment_eur": 85000000,
-    "investment_label": "ANNOUNCED INVESTMENT",
+    "investment_label": "€85.0M EUR",
     "surface_area_sqm": 28000,
     "engineering_name": "Metroul SA",
     "engineering_slug": "metroul-sa",
@@ -9484,7 +9507,7 @@ export const realProjectsDataset: RealProject[] = [
     "current_progress_percent": 100,
     "actual_delivery": "2012-12-01",
     "investment_eur": 100000000,
-    "investment_label": "ANNOUNCED INVESTMENT",
+    "investment_label": "€100.0M EUR",
     "surface_area_sqm": 50400,
     "floors": "5B + GF + 37F",
     "architect_name": "West Group Architecture",
@@ -9543,7 +9566,7 @@ export const realProjectsDataset: RealProject[] = [
     "current_progress_percent": 35,
     "estimated_completion": "2027-12-31",
     "investment_eur": 250000000,
-    "investment_label": "ANNOUNCED INVESTMENT",
+    "investment_label": "€250.0M EUR",
     "surface_area_sqm": 6600,
     "engineering_name": "Metroul SA",
     "engineering_slug": "metroul-sa",
@@ -9599,7 +9622,7 @@ export const realProjectsDataset: RealProject[] = [
     "current_progress_percent": 100,
     "actual_delivery": "2020-03-15",
     "investment_eur": 70000000,
-    "investment_label": "ANNOUNCED INVESTMENT",
+    "investment_label": "€70.0M EUR",
     "surface_area_sqm": 43000,
     "floors": "3B + GF + 25F",
     "architect_name": "Westfourth Architecture",
@@ -9658,7 +9681,7 @@ export const realProjectsDataset: RealProject[] = [
     "current_progress_percent": 100,
     "actual_delivery": "2024-07-15",
     "investment_eur": 500000000,
-    "investment_label": "ANNOUNCED INVESTMENT",
+    "investment_label": "€500.0M EUR",
     "surface_area_sqm": 1974,
     "contractor_name": "Webuild / Astaldi Romania",
     "contractor_slug": "webuild-astaldi",
@@ -9712,7 +9735,7 @@ export const realProjectsDataset: RealProject[] = [
     "current_progress_percent": 100,
     "actual_delivery": "2011-10-01",
     "investment_eur": 45000000,
-    "investment_label": "ANNOUNCED INVESTMENT",
+    "investment_label": "€45.0M EUR",
     "surface_area_sqm": 43000,
     "architect_name": "Dico și Țigănaș",
     "architect_slug": "dico-si-tiganas",
@@ -9768,7 +9791,7 @@ export const realProjectsDataset: RealProject[] = [
     "current_progress_percent": 100,
     "actual_delivery": "2023-04-25",
     "investment_eur": 120000000,
-    "investment_label": "ANNOUNCED INVESTMENT",
+    "investment_label": "€120.0M EUR",
     "surface_area_sqm": 60000,
     "floors": "2B + GF + 6F",
     "architect_name": "Chapman Taylor Romania",
@@ -9820,7 +9843,7 @@ export const realProjectsDataset: RealProject[] = [
     "current_progress_percent": 60,
     "estimated_completion": "2026-06-30",
     "investment_eur": 115000000,
-    "investment_label": "ANNOUNCED INVESTMENT",
+    "investment_label": "€115.0M EUR",
     "surface_area_sqm": 42000,
     "contractor_name": "Concelex",
     "contractor_slug": "concelex",
@@ -9874,7 +9897,7 @@ export const realProjectsDataset: RealProject[] = [
     "current_progress_percent": 100,
     "actual_delivery": "2022-12-15",
     "investment_eur": 65000000,
-    "investment_label": "ANNOUNCED INVESTMENT",
+    "investment_label": "€65.0M EUR",
     "surface_area_sqm": 52000,
     "unit_count": 460,
     "architect_name": "West Group Architecture",
@@ -9923,7 +9946,7 @@ export const realProjectsDataset: RealProject[] = [
     "current_progress_percent": 55,
     "estimated_completion": "2026-12-31",
     "investment_eur": 330000000,
-    "investment_label": "ANNOUNCED INVESTMENT",
+    "investment_label": "€330.0M EUR",
     "surface_area_sqm": 450000,
     "contractor_name": "PORR Construct Romania",
     "contractor_slug": "porr-construct-romania",
@@ -9977,7 +10000,7 @@ export const realProjectsDataset: RealProject[] = [
     "current_progress_percent": 100,
     "actual_delivery": "2023-11-30",
     "investment_eur": 45000000,
-    "investment_label": "ANNOUNCED INVESTMENT",
+    "investment_label": "€45.0M EUR",
     "surface_area_sqm": 38000,
     "unit_count": 520,
     "architect_name": "West Group Architecture",
@@ -10027,7 +10050,7 @@ export const realProjectsDataset: RealProject[] = [
     "current_progress_percent": 100,
     "actual_delivery": "2023-03-15",
     "investment_eur": 50000000,
-    "investment_label": "ANNOUNCED INVESTMENT",
+    "investment_label": "€50.0M EUR",
     "surface_area_sqm": 20000,
     "floors": "2B + GF + 11F",
     "architect_name": "West Group Architecture",
@@ -10079,7 +10102,7 @@ export const realProjectsDataset: RealProject[] = [
     "current_progress_percent": 100,
     "actual_delivery": "2024-06-30",
     "investment_eur": 90000000,
-    "investment_label": "ANNOUNCED INVESTMENT",
+    "investment_label": "€90.0M EUR",
     "surface_area_sqm": 45000,
     "unit_count": 315,
     "architect_name": "Chapman Taylor Romania",
@@ -10131,7 +10154,7 @@ export const realProjectsDataset: RealProject[] = [
     "current_progress_percent": 100,
     "actual_delivery": "2020-09-15",
     "investment_eur": 670000000,
-    "investment_label": "ANNOUNCED INVESTMENT",
+    "investment_label": "€670.0M EUR",
     "surface_area_sqm": 140000,
     "architect_name": "Metroul SA",
     "architect_slug": "metroul-sa",
@@ -10189,7 +10212,7 @@ export const realProjectsDataset: RealProject[] = [
     "current_progress_percent": 100,
     "actual_delivery": "2020-10-21",
     "investment_eur": 140000000,
-    "investment_label": "ANNOUNCED INVESTMENT",
+    "investment_label": "€140.0M EUR",
     "surface_area_sqm": 70000,
     "floors": "2B + GF + 12F",
     "architect_name": "West Group Architecture",
@@ -10239,7 +10262,7 @@ export const realProjectsDataset: RealProject[] = [
     "current_progress_percent": 100,
     "actual_delivery": "2020-12-31",
     "investment_eur": 440000000,
-    "investment_label": "ANNOUNCED INVESTMENT",
+    "investment_label": "€440.0M EUR",
     "surface_area_sqm": 222000,
     "floors": "3B + GF + 27F",
     "architect_name": "West Group Architecture",
@@ -10289,7 +10312,7 @@ export const realProjectsDataset: RealProject[] = [
     "current_progress_percent": 40,
     "estimated_completion": "2026-12-31",
     "investment_eur": 280000000,
-    "investment_label": "ANNOUNCED INVESTMENT",
+    "investment_label": "€280.0M EUR",
     "surface_area_sqm": 60000,
     "floors": "7B + GF + 11F",
     "contractor_name": "STRABAG Romania",
@@ -10337,7 +10360,7 @@ export const realProjectsDataset: RealProject[] = [
     "current_progress_percent": 30,
     "estimated_completion": "2026-12-31",
     "investment_eur": 120000000,
-    "investment_label": "ANNOUNCED INVESTMENT",
+    "investment_label": "€120.0M EUR",
     "surface_area_sqm": 110000,
     "unit_count": 400,
     "architect_name": "West Group Architecture",
@@ -10386,7 +10409,7 @@ export const realProjectsDataset: RealProject[] = [
     "current_progress_percent": 100,
     "actual_delivery": "2020-12-13",
     "investment_eur": 85000000,
-    "investment_label": "ANNOUNCED INVESTMENT",
+    "investment_label": "€85.0M EUR",
     "contractor_name": "Arcada Company",
     "contractor_slug": "arcada-company",
     "description": "19 km modernized express rail link including a 1.5 km elevated railway viaduct over DN1 highway directly connecting Bucharest North Station to Henri Coandă International Airport.",
@@ -10438,7 +10461,7 @@ export const realProjectsDataset: RealProject[] = [
     "current_progress_percent": 100,
     "actual_delivery": "2023-07-06",
     "investment_eur": 500000000,
-    "investment_label": "ANNOUNCED INVESTMENT",
+    "investment_label": "€500.0M EUR",
     "surface_area_sqm": 197400,
     "contractor_name": "Webuild / Astaldi Romania",
     "contractor_slug": "webuild-romania",
@@ -10492,7 +10515,7 @@ export const realProjectsDataset: RealProject[] = [
     "current_progress_percent": 100,
     "actual_delivery": "2024-06-30",
     "investment_eur": 110000000,
-    "investment_label": "ANNOUNCED INVESTMENT",
+    "investment_label": "€110.0M EUR",
     "surface_area_sqm": 160000,
     "unit_count": 1900,
     "floors": "2B + GF + 11F",
@@ -10541,7 +10564,7 @@ export const realProjectsDataset: RealProject[] = [
     "current_progress_percent": 55,
     "estimated_completion": "2026-06-30",
     "investment_eur": 100000000,
-    "investment_label": "ANNOUNCED INVESTMENT",
+    "investment_label": "€100.0M EUR",
     "surface_area_sqm": 60000,
     "floors": "2B + GF + 10F",
     "architect_name": "West Group Architecture",
@@ -10592,7 +10615,7 @@ export const realProjectsDataset: RealProject[] = [
     "current_progress_percent": 75,
     "estimated_completion": "2026-06-30",
     "investment_eur": 1800000000,
-    "investment_label": "ANNOUNCED INVESTMENT",
+    "investment_label": "€1800.0M EUR",
     "surface_area_sqm": 12000000,
     "contractor_name": "Spedition UMB / UMB Group",
     "contractor_slug": "spedition-umb",
@@ -10646,7 +10669,7 @@ export const realProjectsDataset: RealProject[] = [
     "current_progress_percent": 85,
     "estimated_completion": "2027-12-31",
     "investment_eur": 300000000,
-    "investment_label": "ANNOUNCED INVESTMENT",
+    "investment_label": "€300.0M EUR",
     "surface_area_sqm": 600000,
     "unit_count": 7000,
     "floors": "GF + 5F",
@@ -10695,7 +10718,7 @@ export const realProjectsDataset: RealProject[] = [
     "current_progress_percent": 100,
     "actual_delivery": "2021-12-31",
     "investment_eur": 170000000,
-    "investment_label": "ANNOUNCED INVESTMENT",
+    "investment_label": "€170.0M EUR",
     "surface_area_sqm": 88000,
     "floors": "2B + GF + 12F",
     "architect_name": "West Group Architecture",
@@ -10745,7 +10768,7 @@ export const realProjectsDataset: RealProject[] = [
     "current_progress_percent": 35,
     "estimated_completion": "2026-12-31",
     "investment_eur": 210000000,
-    "investment_label": "ANNOUNCED INVESTMENT",
+    "investment_label": "€210.0M EUR",
     "surface_area_sqm": 250000,
     "unit_count": 2000,
     "parking_spaces": 2600,
@@ -10804,7 +10827,7 @@ export const realProjectsDataset: RealProject[] = [
     "current_progress_percent": 100,
     "actual_delivery": "2021-04-30",
     "investment_eur": 42000000,
-    "investment_label": "ANNOUNCED INVESTMENT",
+    "investment_label": "€42.0M EUR",
     "surface_area_sqm": 36000,
     "unit_count": 236,
     "floors": "2B + GF + 7F",
@@ -10853,7 +10876,7 @@ export const realProjectsDataset: RealProject[] = [
     "current_progress_percent": 85,
     "estimated_completion": "2025-12-31",
     "investment_eur": 90000000,
-    "investment_label": "ANNOUNCED INVESTMENT",
+    "investment_label": "€90.0M EUR",
     "surface_area_sqm": 75000,
     "unit_count": 720,
     "floors": "2B + GF + 10F",
@@ -10902,7 +10925,7 @@ export const realProjectsDataset: RealProject[] = [
     "current_progress_percent": 90,
     "estimated_completion": "2026-12-31",
     "investment_eur": 180000000,
-    "investment_label": "ANNOUNCED INVESTMENT",
+    "investment_label": "€180.0M EUR",
     "surface_area_sqm": 280000,
     "unit_count": 3500,
     "floors": "GF + 8F",
@@ -10951,7 +10974,7 @@ export const realProjectsDataset: RealProject[] = [
     "current_progress_percent": 60,
     "estimated_completion": "2026-04-30",
     "investment_eur": 110000000,
-    "investment_label": "ANNOUNCED INVESTMENT",
+    "investment_label": "€110.0M EUR",
     "surface_area_sqm": 110000,
     "unit_count": 828,
     "floors": "GF + 7F",
@@ -11000,7 +11023,7 @@ export const realProjectsDataset: RealProject[] = [
     "current_progress_percent": 50,
     "estimated_completion": "2026-08-31",
     "investment_eur": 150000000,
-    "investment_label": "ANNOUNCED INVESTMENT",
+    "investment_label": "€150.0M EUR",
     "surface_area_sqm": 140000,
     "floors": "2B + GF + 12F",
     "contractor_name": "Bog'Art",
@@ -11048,7 +11071,7 @@ export const realProjectsDataset: RealProject[] = [
     "current_progress_percent": 30,
     "estimated_completion": "2027-06-30",
     "investment_eur": 140000000,
-    "investment_label": "ANNOUNCED INVESTMENT",
+    "investment_label": "€140.0M EUR",
     "surface_area_sqm": 125000,
     "unit_count": 1250,
     "floors": "GF + 10F",
@@ -11097,7 +11120,7 @@ export const realProjectsDataset: RealProject[] = [
     "current_progress_percent": 100,
     "actual_delivery": "2022-12-15",
     "investment_eur": 125000000,
-    "investment_label": "ANNOUNCED INVESTMENT",
+    "investment_label": "€125.0M EUR",
     "surface_area_sqm": 450000,
     "contractor_name": "PORR Construct Romania",
     "contractor_slug": "porr-construct",
@@ -11144,7 +11167,7 @@ export const realProjectsDataset: RealProject[] = [
     "current_progress_percent": 100,
     "actual_delivery": "2023-11-30",
     "investment_eur": 180000000,
-    "investment_label": "ANNOUNCED INVESTMENT",
+    "investment_label": "€180.0M EUR",
     "surface_area_sqm": 220000,
     "unit_count": 868,
     "floors": "2B + GF + 12F",
@@ -11204,7 +11227,7 @@ export const realProjectsDataset: RealProject[] = [
     "current_progress_percent": 50,
     "estimated_completion": "2026-09-30",
     "investment_eur": 100000000,
-    "investment_label": "ANNOUNCED INVESTMENT",
+    "investment_label": "€100.0M EUR",
     "surface_area_sqm": 60000,
     "floors": "2B + GF + 14F",
     "contractor_name": "Bog'Art",
@@ -11252,7 +11275,7 @@ export const realProjectsDataset: RealProject[] = [
     "current_progress_percent": 100,
     "actual_delivery": "2022-09-30",
     "investment_eur": 70000000,
-    "investment_label": "ANNOUNCED INVESTMENT",
+    "investment_label": "€70.0M EUR",
     "surface_area_sqm": 56000,
     "floors": "2B + GF + 8F",
     "contractor_name": "DENTON Construction",
@@ -11300,7 +11323,7 @@ export const realProjectsDataset: RealProject[] = [
     "current_progress_percent": 100,
     "actual_delivery": "2023-09-30",
     "investment_eur": 90000000,
-    "investment_label": "ANNOUNCED INVESTMENT",
+    "investment_label": "€90.0M EUR",
     "surface_area_sqm": 63000,
     "floors": "2B + GF + 8F",
     "contractor_name": "Bog'Art",
@@ -11348,7 +11371,7 @@ export const realProjectsDataset: RealProject[] = [
     "current_progress_percent": 80,
     "estimated_completion": "2025-12-31",
     "investment_eur": 90000000,
-    "investment_label": "ANNOUNCED INVESTMENT",
+    "investment_label": "€90.0M EUR",
     "surface_area_sqm": 120000,
     "unit_count": 1350,
     "floors": "GF + 7F",
@@ -11397,7 +11420,7 @@ export const realProjectsDataset: RealProject[] = [
     "current_progress_percent": 100,
     "actual_delivery": "2023-10-05",
     "investment_eur": 125000000,
-    "investment_label": "ANNOUNCED INVESTMENT",
+    "investment_label": "€125.0M EUR",
     "surface_area_sqm": 80000,
     "built_area_sqm": 80000,
     "parking_spaces": 2800,
@@ -11446,7 +11469,7 @@ export const realProjectsDataset: RealProject[] = [
     "current_progress_percent": 55,
     "estimated_completion": "2026-06-30",
     "investment_eur": 200000000,
-    "investment_label": "ANNOUNCED INVESTMENT",
+    "investment_label": "€200.0M EUR",
     "surface_area_sqm": 350000,
     "unit_count": 1500,
     "floors": "GF + 11F",
@@ -11500,7 +11523,7 @@ export const realProjectsDataset: RealProject[] = [
     "current_progress_percent": 60,
     "estimated_completion": "2025-11-30",
     "investment_eur": 45000000,
-    "investment_label": "ANNOUNCED INVESTMENT",
+    "investment_label": "€45.0M EUR",
     "surface_area_sqm": 40000,
     "unit_count": 236,
     "floors": "GF + 9F",
@@ -11549,7 +11572,7 @@ export const realProjectsDataset: RealProject[] = [
     "current_progress_percent": 85,
     "estimated_completion": "2026-06-30",
     "investment_eur": 300000000,
-    "investment_label": "ANNOUNCED INVESTMENT",
+    "investment_label": "€300.0M EUR",
     "surface_area_sqm": 500000,
     "unit_count": 7000,
     "floors": "GF + 5F",
@@ -11598,7 +11621,7 @@ export const realProjectsDataset: RealProject[] = [
     "current_progress_percent": 100,
     "actual_delivery": "2021-10-31",
     "investment_eur": 50000000,
-    "investment_label": "ANNOUNCED INVESTMENT",
+    "investment_label": "€50.0M EUR",
     "surface_area_sqm": 46000,
     "floors": "2B + GF + 6F",
     "architect_name": "West Group Architecture",
@@ -11648,7 +11671,7 @@ export const realProjectsDataset: RealProject[] = [
     "current_progress_percent": 100,
     "actual_delivery": "2021-07-07",
     "investment_eur": 95000000,
-    "investment_label": "ANNOUNCED INVESTMENT",
+    "investment_label": "€95.0M EUR",
     "surface_area_sqm": 82000,
     "unit_count": 31254,
     "contractor_name": "Construcții Erbașu",
@@ -11696,7 +11719,7 @@ export const realProjectsDataset: RealProject[] = [
     "current_progress_percent": 75,
     "estimated_completion": "2026-11-30",
     "investment_eur": 500000000,
-    "investment_label": "ANNOUNCED INVESTMENT",
+    "investment_label": "€500.0M EUR",
     "surface_area_sqm": 850000,
     "built_area_sqm": 850000,
     "floors": "GF High Bay",
@@ -11752,7 +11775,7 @@ export const realProjectsDataset: RealProject[] = [
     "current_progress_percent": 100,
     "actual_delivery": "2022-12-31",
     "investment_eur": 65000000,
-    "investment_label": "ANNOUNCED INVESTMENT",
+    "investment_label": "€65.0M EUR",
     "surface_area_sqm": 30000,
     "unit_count": 250,
     "floors": "2B + GF + 10F",
@@ -11812,7 +11835,8 @@ export const realProjectsDataset: RealProject[] = [
     "image_alt": "Podul Suspendat peste Dunăre de la Brăila verified development photograph",
     "image_source_name": "Official Disclosure",
     "image_verified": true,
-    "image_relevance": "PROJECT_SPECIFIC"
+    "image_relevance": "PROJECT_SPECIFIC",
+    "investment_label": "€500.0M EUR"
   }
 ];
 
