@@ -132,42 +132,42 @@ export function SiteHeader() {
                       className="block p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors flex items-center justify-between"
                     >
                       <span>Real Estate Developers</span>
-                      <span className="text-[10px] font-mono text-[#888888]">38</span>
+                      <span className="text-[10px] font-mono text-[#888888]">50</span>
                     </Link>
                     <Link
                       href="/projects"
                       className="block p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors flex items-center justify-between"
                     >
                       <span>Construction Projects</span>
-                      <span className="text-[10px] font-mono text-[#888888]">53</span>
+                      <span className="text-[10px] font-mono text-[#888888]">76</span>
                     </Link>
                     <Link
                       href="/contractors"
                       className="block p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors flex items-center justify-between"
                     >
                       <span>Contractors & Builders</span>
-                      <span className="text-[10px] font-mono text-[#888888]">26</span>
+                      <span className="text-[10px] font-mono text-[#888888]">30</span>
                     </Link>
                     <Link
                       href="/architects"
                       className="block p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors flex items-center justify-between"
                     >
                       <span>Architects & Planners</span>
-                      <span className="text-[10px] font-mono text-[#888888]">15</span>
+                      <span className="text-[10px] font-mono text-[#888888]">21</span>
                     </Link>
                     <Link
                       href="/engineers"
                       className="block p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors flex items-center justify-between"
                     >
                       <span>Engineering Consultants</span>
-                      <span className="text-[10px] font-mono text-[#888888]">15</span>
+                      <span className="text-[10px] font-mono text-[#888888]">25</span>
                     </Link>
                     <Link
                       href="/agencies"
                       className="block p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors flex items-center justify-between"
                     >
                       <span>Real Estate Agencies</span>
-                      <span className="text-[10px] font-mono text-[#888888]">15</span>
+                      <span className="text-[10px] font-mono text-[#888888]">20</span>
                     </Link>
                     <Link
                       href="/cities"
@@ -188,13 +188,12 @@ export function SiteHeader() {
                 aria-expanded={activeDropdown === 'intelligence'}
                 aria-haspopup="true"
                 className={`flex items-center gap-1 hover:text-[#C9A227] transition-colors cursor-pointer py-1 ${
+                  pathname === '/market' ||
+                  pathname === '/changes' ||
                   pathname === '/search' ||
-                  pathname === '/decisions' ||
-                  pathname === '/opportunities' ||
-                  pathname === '/alerts' ||
+                  pathname === '/watchlist' ||
                   pathname === '/network' ||
                   pathname === '/coverage' ||
-                  pathname === '/rankings' ||
                   pathname === '/compare'
                     ? 'text-[#C9A227] font-bold border-b border-[#C9A227] pb-0.5'
                     : ''
@@ -220,16 +219,22 @@ export function SiteHeader() {
                   </span>
                   <div className="space-y-1 text-xs">
                     <Link
+                      href="/market"
+                      className="block p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors"
+                    >
+                      Market Dashboard
+                    </Link>
+                    <Link
+                      href="/changes"
+                      className="block p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors"
+                    >
+                      Recent Documented Changes
+                    </Link>
+                    <Link
                       href="/search"
                       className="block p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors"
                     >
                       Institutional Search
-                    </Link>
-                    <Link
-                      href="/rankings"
-                      className="block p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors"
-                    >
-                      Market Leaders & Rankings
                     </Link>
                     <Link
                       href="/compare"
@@ -250,10 +255,10 @@ export function SiteHeader() {
                       Coverage Matrix
                     </Link>
                     <Link
-                      href="/alerts"
+                      href="/watchlist"
                       className="block p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors"
                     >
-                      Market Signals & Alerts
+                      Market Watchlist & Monitoring
                     </Link>
                   </div>
                 </div>

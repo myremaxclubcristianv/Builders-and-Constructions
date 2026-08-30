@@ -8,6 +8,8 @@ export const metadata = {
   description: 'Institutional monitoring terminal tracking newly verified information, construction status transitions, and data freshness across Romania.'
 };
 
+import { WatchlistViewer } from '@/components/WatchlistViewer';
+
 export default async function WatchlistPage() {
   const hubData = await getIndustryHubData();
   const { marketActivity } = hubData;
@@ -19,7 +21,7 @@ export default async function WatchlistPage() {
       <main className="pt-20">
         <section className="py-10 md:py-16 border-b border-[#1A1D1B] bg-[#0B0B0B]">
           <div className="max-w-[1440px] mx-auto px-4 md:px-8 space-y-3">
-            <span className="text-[10px] font-mono uppercase tracking-widest text-[#C9A227] block">
+            <span className="text-[10px] font-mono uppercase tracking-widest text-[#C9A227] block font-bold">
               Institutional Monitoring Terminal
             </span>
             <h1 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
@@ -32,13 +34,12 @@ export default async function WatchlistPage() {
         </section>
 
         <section className="py-10 md:py-16">
-          <div className="max-w-[1440px] mx-auto px-4 md:px-8 space-y-8">
-            <div className="p-4 bg-[#111111] border border-[#1A1D1B] rounded-xl flex items-center justify-between font-mono text-xs text-[#888888]">
-              <span>MONITORING STATUS: ACTIVE (RESEARCH AUDITED)</span>
-              <span className="text-[#C9A227]">LAST RESEARCHED: 30 AUG 2026</span>
-            </div>
+          <div className="max-w-[1440px] mx-auto px-4 md:px-8 space-y-12">
+            
+            {/* Dynamic Client-Side Local Storage Watchlist */}
+            <WatchlistViewer />
 
-            <div className="space-y-4">
+            <div className="space-y-4 pt-6 border-t border-[#1A1D1B]">
               <h2 className="text-xs font-mono text-[#C9A227] uppercase tracking-widest">
                 VERIFIED MONITORING STREAM ({marketActivity.length})
               </h2>
