@@ -1,5 +1,27 @@
 import type { Metadata } from 'next';
+import { Manrope, DM_Mono, Playfair_Display } from 'next/font/google';
 import './globals.css';
+
+const manrope = Manrope({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700', '800'],
+  variable: '--font-manrope',
+  display: 'swap'
+});
+
+const dmMono = DM_Mono({
+  subsets: ['latin'],
+  weight: ['400', '500'],
+  variable: '--font-dm-mono',
+  display: 'swap'
+});
+
+const playfair = Playfair_Display({
+  subsets: ['latin'],
+  weight: ['500', '600'],
+  variable: '--font-playfair',
+  display: 'swap'
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://constructions.cristianvaduva.com'),
@@ -30,15 +52,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap"
-        />
-      </head>
+    <html lang="en" className={`${manrope.variable} ${dmMono.variable} ${playfair.variable}`}>
       <body>{children}</body>
     </html>
   );
