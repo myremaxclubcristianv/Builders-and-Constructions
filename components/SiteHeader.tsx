@@ -59,6 +59,22 @@ export function SiteHeader() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
+  const closeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  const handleMouseEnter = (menu: string) => {
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current);
+      closeTimeoutRef.current = null;
+    }
+    setActiveDropdown(menu);
+  };
+
+  const handleMouseLeave = () => {
+    closeTimeoutRef.current = setTimeout(() => {
+      setActiveDropdown(null);
+    }, 150);
+  };
+
   const toggleDropdown = (menu: string) => {
     setActiveDropdown(activeDropdown === menu ? null : menu);
   };
@@ -90,7 +106,11 @@ export function SiteHeader() {
           {/* Desktop Mega Navigation */}
           <nav className="hidden lg:flex items-center gap-6 text-xs tracking-wider uppercase font-medium text-[#C5C5C5]">
             {/* DISCOVER DROPDOWN */}
-            <div className="relative">
+            <div
+              className="relative py-2"
+              onMouseEnter={() => handleMouseEnter('discover')}
+              onMouseLeave={handleMouseLeave}
+            >
               <button
                 onClick={() => toggleDropdown('discover')}
                 aria-expanded={activeDropdown === 'discover'}
@@ -122,67 +142,77 @@ export function SiteHeader() {
               </button>
 
               {activeDropdown === 'discover' && (
-                <div className="absolute left-0 top-full mt-2 w-72 bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl shadow-2xl p-4 space-y-2 animate-fadeIn z-50">
-                  <span className="text-[10px] font-mono uppercase tracking-widest text-[#C9A227] block mb-2">
-                    MARKET ENTITIES & PROJECTS
-                  </span>
-                  <div className="space-y-1 text-xs">
-                    <Link
-                      href="/developers"
-                      className="block p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors flex items-center justify-between"
-                    >
-                      <span>Real Estate Developers</span>
-                      <span className="text-[10px] font-mono text-[#888888]">50</span>
-                    </Link>
-                    <Link
-                      href="/projects"
-                      className="block p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors flex items-center justify-between"
-                    >
-                      <span>Construction Projects</span>
-                      <span className="text-[10px] font-mono text-[#888888]">76</span>
-                    </Link>
-                    <Link
-                      href="/contractors"
-                      className="block p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors flex items-center justify-between"
-                    >
-                      <span>Contractors & Builders</span>
-                      <span className="text-[10px] font-mono text-[#888888]">30</span>
-                    </Link>
-                    <Link
-                      href="/architects"
-                      className="block p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors flex items-center justify-between"
-                    >
-                      <span>Architects & Planners</span>
-                      <span className="text-[10px] font-mono text-[#888888]">21</span>
-                    </Link>
-                    <Link
-                      href="/engineers"
-                      className="block p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors flex items-center justify-between"
-                    >
-                      <span>Engineering Consultants</span>
-                      <span className="text-[10px] font-mono text-[#888888]">25</span>
-                    </Link>
-                    <Link
-                      href="/agencies"
-                      className="block p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors flex items-center justify-between"
-                    >
-                      <span>Real Estate Agencies</span>
-                      <span className="text-[10px] font-mono text-[#888888]">20</span>
-                    </Link>
-                    <Link
-                      href="/cities"
-                      className="block p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors flex items-center justify-between"
-                    >
-                      <span>Geographic Locations</span>
-                      <span className="text-[10px] font-mono text-[#888888]">36</span>
-                    </Link>
+                <div
+                  className="absolute left-0 top-full pt-1 w-72 z-50"
+                  onMouseEnter={() => handleMouseEnter('discover')}
+                  onMouseLeave={handleMouseLeave}
+                >
+                  <div className="bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl shadow-2xl p-4 space-y-2 animate-fadeIn">
+                    <span className="text-[10px] font-mono uppercase tracking-widest text-[#C9A227] block mb-2">
+                      MARKET ENTITIES & PROJECTS
+                    </span>
+                    <div className="space-y-1 text-xs">
+                      <Link
+                        href="/developers"
+                        className="block p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors flex items-center justify-between"
+                      >
+                        <span>Real Estate Developers</span>
+                        <span className="text-[10px] font-mono text-[#888888]">50</span>
+                      </Link>
+                      <Link
+                        href="/projects"
+                        className="block p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors flex items-center justify-between"
+                      >
+                        <span>Construction Projects</span>
+                        <span className="text-[10px] font-mono text-[#888888]">76</span>
+                      </Link>
+                      <Link
+                        href="/contractors"
+                        className="block p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors flex items-center justify-between"
+                      >
+                        <span>Contractors & Builders</span>
+                        <span className="text-[10px] font-mono text-[#888888]">30</span>
+                      </Link>
+                      <Link
+                        href="/architects"
+                        className="block p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors flex items-center justify-between"
+                      >
+                        <span>Architects & Planners</span>
+                        <span className="text-[10px] font-mono text-[#888888]">21</span>
+                      </Link>
+                      <Link
+                        href="/engineers"
+                        className="block p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors flex items-center justify-between"
+                      >
+                        <span>Engineering Consultants</span>
+                        <span className="text-[10px] font-mono text-[#888888]">25</span>
+                      </Link>
+                      <Link
+                        href="/agencies"
+                        className="block p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors flex items-center justify-between"
+                      >
+                        <span>Real Estate Agencies</span>
+                        <span className="text-[10px] font-mono text-[#888888]">20</span>
+                      </Link>
+                      <Link
+                        href="/cities"
+                        className="block p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors flex items-center justify-between"
+                      >
+                        <span>Geographic Locations</span>
+                        <span className="text-[10px] font-mono text-[#888888]">36</span>
+                      </Link>
+                    </div>
                   </div>
                 </div>
               )}
             </div>
 
             {/* INTELLIGENCE DROPDOWN */}
-            <div className="relative">
+            <div
+              className="relative py-2"
+              onMouseEnter={() => handleMouseEnter('intelligence')}
+              onMouseLeave={handleMouseLeave}
+            >
               <button
                 onClick={() => toggleDropdown('intelligence')}
                 aria-expanded={activeDropdown === 'intelligence'}
@@ -214,66 +244,76 @@ export function SiteHeader() {
               </button>
 
               {activeDropdown === 'intelligence' && (
-                <div className="absolute left-0 top-full mt-2 w-72 bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl shadow-2xl p-4 space-y-2 animate-fadeIn z-50">
-                  <span className="text-[10px] font-mono uppercase tracking-widest text-[#C9A227] block mb-2">
-                    ANALYTICAL TERMINALS
-                  </span>
-                  <div className="space-y-1 text-xs">
-                    <Link
-                      href="/intelligence"
-                      className="block p-2 hover:bg-[#151515] rounded text-[#C9A227] hover:text-[#C9A227] transition-colors font-bold"
-                    >
-                      Market Intelligence Command Center
-                    </Link>
-                    <Link
-                      href="/market"
-                      className="block p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors"
-                    >
-                      Market Dashboard
-                    </Link>
-                    <Link
-                      href="/changes"
-                      className="block p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors"
-                    >
-                      Recent Documented Changes
-                    </Link>
-                    <Link
-                      href="/search"
-                      className="block p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors"
-                    >
-                      Institutional Search
-                    </Link>
-                    <Link
-                      href="/compare"
-                      className="block p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors"
-                    >
-                      Entity Comparison
-                    </Link>
-                    <Link
-                      href="/network"
-                      className="block p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors"
-                    >
-                      Discovery Network Graph
-                    </Link>
-                    <Link
-                      href="/coverage"
-                      className="block p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors"
-                    >
-                      Coverage Matrix
-                    </Link>
-                    <Link
-                      href="/watchlist"
-                      className="block p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors"
-                    >
-                      Market Watchlist & Monitoring
-                    </Link>
+                <div
+                  className="absolute left-0 top-full pt-1 w-72 z-50"
+                  onMouseEnter={() => handleMouseEnter('intelligence')}
+                  onMouseLeave={handleMouseLeave}
+                >
+                  <div className="bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl shadow-2xl p-4 space-y-2 animate-fadeIn">
+                    <span className="text-[10px] font-mono uppercase tracking-widest text-[#C9A227] block mb-2">
+                      ANALYTICAL TERMINALS
+                    </span>
+                    <div className="space-y-1 text-xs">
+                      <Link
+                        href="/intelligence"
+                        className="block p-2 hover:bg-[#151515] rounded text-[#C9A227] hover:text-[#C9A227] transition-colors font-bold"
+                      >
+                        Market Intelligence Command Center
+                      </Link>
+                      <Link
+                        href="/market"
+                        className="block p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors"
+                      >
+                        Market Dashboard
+                      </Link>
+                      <Link
+                        href="/changes"
+                        className="block p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors"
+                      >
+                        Recent Documented Changes
+                      </Link>
+                      <Link
+                        href="/search"
+                        className="block p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors"
+                      >
+                        Institutional Search
+                      </Link>
+                      <Link
+                        href="/compare"
+                        className="block p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors"
+                      >
+                        Entity Comparison
+                      </Link>
+                      <Link
+                        href="/network"
+                        className="block p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors"
+                      >
+                        Discovery Network Graph
+                      </Link>
+                      <Link
+                        href="/coverage"
+                        className="block p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors"
+                      >
+                        Coverage Matrix
+                      </Link>
+                      <Link
+                        href="/watchlist"
+                        className="block p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors"
+                      >
+                        Market Watchlist & Monitoring
+                      </Link>
+                    </div>
                   </div>
                 </div>
               )}
             </div>
 
             {/* RESEARCH DROPDOWN */}
-            <div className="relative">
+            <div
+              className="relative py-2"
+              onMouseEnter={() => handleMouseEnter('research')}
+              onMouseLeave={handleMouseLeave}
+            >
               <button
                 onClick={() => toggleDropdown('research')}
                 aria-expanded={activeDropdown === 'research'}
@@ -300,29 +340,35 @@ export function SiteHeader() {
               </button>
 
               {activeDropdown === 'research' && (
-                <div className="absolute left-0 top-full mt-2 w-72 bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl shadow-2xl p-4 space-y-2 animate-fadeIn z-50">
-                  <span className="text-[10px] font-mono uppercase tracking-widest text-[#C9A227] block mb-2">
-                    RESEARCH SERVICES
-                  </span>
-                  <div className="space-y-1 text-xs">
-                    <Link
-                      href="/research-request"
-                      className="block p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors"
-                    >
-                      Research Request Desk
-                    </Link>
-                    <Link
-                      href="/methodology"
-                      className="block p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors"
-                    >
-                      Provenance Methodology
-                    </Link>
-                    <Link
-                      href="/report-error"
-                      className="block p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors"
-                    >
-                      Request Profile Correction
-                    </Link>
+                <div
+                  className="absolute left-0 top-full pt-1 w-72 z-50"
+                  onMouseEnter={() => handleMouseEnter('research')}
+                  onMouseLeave={handleMouseLeave}
+                >
+                  <div className="bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl shadow-2xl p-4 space-y-2 animate-fadeIn">
+                    <span className="text-[10px] font-mono uppercase tracking-widest text-[#C9A227] block mb-2">
+                      RESEARCH SERVICES
+                    </span>
+                    <div className="space-y-1 text-xs">
+                      <Link
+                        href="/research-request"
+                        className="block p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors"
+                      >
+                        Research Request Desk
+                      </Link>
+                      <Link
+                        href="/methodology"
+                        className="block p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors"
+                      >
+                        Provenance Methodology
+                      </Link>
+                      <Link
+                        href="/report-error"
+                        className="block p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors"
+                      >
+                        Request Profile Correction
+                      </Link>
+                    </div>
                   </div>
                 </div>
               )}
@@ -339,7 +385,11 @@ export function SiteHeader() {
             </Link>
 
             {/* ABOUT DROPDOWN */}
-            <div className="relative">
+            <div
+              className="relative py-2"
+              onMouseEnter={() => handleMouseEnter('about')}
+              onMouseLeave={handleMouseLeave}
+            >
               <button
                 onClick={() => toggleDropdown('about')}
                 aria-expanded={activeDropdown === 'about'}
@@ -366,29 +416,35 @@ export function SiteHeader() {
               </button>
 
               {activeDropdown === 'about' && (
-                <div className="absolute left-0 top-full mt-2 w-72 bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl shadow-2xl p-4 space-y-2 animate-fadeIn z-50">
-                  <span className="text-[10px] font-mono uppercase tracking-widest text-[#C9A227] block mb-2">
-                    INSTITUTIONAL PROFILES
-                  </span>
-                  <div className="space-y-1 text-xs">
-                    <Link
-                      href="/about/cristian-vaduva"
-                      className="block p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors font-bold"
-                    >
-                      Cristian Văduva
-                    </Link>
-                    <Link
-                      href="/about/aixluxury"
-                      className="block p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors font-bold"
-                    >
-                      AiXLuxury Platform
-                    </Link>
-                    <Link
-                      href="/work-with-us"
-                      className="block p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors border-t border-[#1A1D1B] pt-2 mt-1"
-                    >
-                      Work With Us
-                    </Link>
+                <div
+                  className="absolute left-0 top-full pt-1 w-72 z-50"
+                  onMouseEnter={() => handleMouseEnter('about')}
+                  onMouseLeave={handleMouseLeave}
+                >
+                  <div className="bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl shadow-2xl p-4 space-y-2 animate-fadeIn">
+                    <span className="text-[10px] font-mono uppercase tracking-widest text-[#C9A227] block mb-2">
+                      INSTITUTIONAL PROFILES
+                    </span>
+                    <div className="space-y-1 text-xs">
+                      <Link
+                        href="/about/cristian-vaduva"
+                        className="block p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors font-bold"
+                      >
+                        Cristian Văduva
+                      </Link>
+                      <Link
+                        href="/about/aixluxury"
+                        className="block p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors font-bold"
+                      >
+                        AiXLuxury Platform
+                      </Link>
+                      <Link
+                        href="/work-with-us"
+                        className="block p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors border-t border-[#1A1D1B] pt-2 mt-1"
+                      >
+                        Work With Us
+                      </Link>
+                    </div>
                   </div>
                 </div>
               )}
