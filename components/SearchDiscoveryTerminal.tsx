@@ -269,9 +269,9 @@ export function SearchDiscoveryTerminal({
       </div>
 
       {totalResults === 0 ? (
-        <div className="p-12 text-center bg-[#111111] border border-[#1A1D1B] rounded-2xl space-y-4">
+        <div className="p-12 text-center bg-[#111111] border border-[#1A1D1B] rounded-2xl space-y-4 font-mono">
           <span className="text-3xl">🔍</span>
-          <h2 className="text-xl font-bold text-white">No Direct Matches Found</h2>
+          <h2 className="text-xl font-bold text-white tracking-wide uppercase">NO VERIFIED RESULTS</h2>
           <p className="text-xs text-[#A0A0A0] max-w-md mx-auto leading-relaxed">
             No indexed market entities, projects, or signals matched your search criteria. Try adjusting your query or resetting the entity filters.
           </p>

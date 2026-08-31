@@ -188,6 +188,7 @@ export function SiteHeader() {
                 aria-expanded={activeDropdown === 'intelligence'}
                 aria-haspopup="true"
                 className={`flex items-center gap-1 hover:text-[#C9A227] transition-colors cursor-pointer py-1 ${
+                  pathname === '/intelligence' ||
                   pathname === '/market' ||
                   pathname === '/changes' ||
                   pathname === '/search' ||
@@ -218,6 +219,12 @@ export function SiteHeader() {
                     ANALYTICAL TERMINALS
                   </span>
                   <div className="space-y-1 text-xs">
+                    <Link
+                      href="/intelligence"
+                      className="block p-2 hover:bg-[#151515] rounded text-[#C9A227] hover:text-[#C9A227] transition-colors font-bold"
+                    >
+                      Market Intelligence Command Center
+                    </Link>
                     <Link
                       href="/market"
                       className="block p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors"
@@ -521,6 +528,14 @@ export function SiteHeader() {
                   INTELLIGENCE & RESEARCH
                 </h4>
                 <div className="space-y-2">
+                  <Link
+                    href="/intelligence"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="p-3 bg-[#0B0B0B] border border-[#C9A227]/40 rounded-xl text-xs font-semibold text-[#C9A227] hover:border-[#C9A227] active:bg-[#111111] flex items-center justify-between min-h-[44px]"
+                  >
+                    <span>Market Intelligence Command Center</span>
+                    <span className="text-xs text-[#C9A227]">→</span>
+                  </Link>
                   <Link
                     href="/search"
                     onClick={() => setMobileMenuOpen(false)}
