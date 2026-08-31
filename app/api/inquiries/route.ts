@@ -25,9 +25,19 @@ const validSources = [
 export async function POST(request: Request) {
   try {
     const body = await request.json().catch(() => null);
-    if (!body || typeof body.name !== 'string' || !emailPattern.test(body.email)) {
+    if (
+      !body ||
+      typeof body.name !== 'string' ||
+      body.name.trim().length === 0 ||
+      body.name.length > 200 ||
+      typeof body.email !== 'string' ||
+      body.email.length > 200 ||
+      !emailPattern.test(body.email) ||
+      (body.message !== undefined && (typeof body.message !== 'string' || body.message.length > 5000)) ||
+      (body.company !== undefined && (typeof body.company !== 'string' || body.company.length > 300))
+    ) {
       return NextResponse.json(
-        { ok: false, error: 'Please provide a name and a valid business email.' },
+        { ok: false, error: 'Please provide a valid name and business email.' },
         { status: 400 }
       );
     }
