@@ -32,7 +32,7 @@ async function auditHeaderResponsiveUX() {
   }
 
   // Check 2: Verify primary navigation items count
-  const primaryNavItems = ['/companies', '/projects', '/cities', '/video'];
+  const primaryNavItems = ['/developers', '/projects', '/cities', '/video'];
   let primaryCount = 0;
   for (const item of primaryNavItems) {
     if (siteHeaderContent.includes(`href="${item}"`)) {
@@ -41,7 +41,7 @@ async function auditHeaderResponsiveUX() {
   }
 
   // Check 3: Verify MORE dropdown menu presence and items
-  const dropdownItems = ['/search', '/pipeline', '/map', '/compare', '/signals', '/coverage', '/research-request', '/report-error', '/work-with-us', '/methodology'];
+  const dropdownItems = ['/intelligence', '/changes', '/search', '/compare', '/network', '/coverage', '/watchlist', '/research-request', '/methodology', '/report-error'];
   let dropdownCount = 0;
   for (const item of dropdownItems) {
     if (siteHeaderContent.includes(`href="${item}"`)) {

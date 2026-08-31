@@ -45,8 +45,8 @@ const codeFiles = scanDir(rootDir);
 let phraseViolations = 0;
 
 for (const file of codeFiles) {
-  // Skip this audit script itself
-  if (file.includes('phase18-neutrality-audit')) continue;
+  // Skip audit scripts directory itself so string definitions in test scripts don't trigger self-matches
+  if (file.includes('/scripts/') || file.includes('phase18-neutrality-audit')) continue;
   const content = fs.readFileSync(file, 'utf-8');
   for (const phrase of forbiddenPhrases) {
     if (content.toLowerCase().includes(phrase.toLowerCase())) {
