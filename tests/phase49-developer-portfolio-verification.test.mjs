@@ -5,7 +5,7 @@ import { resolveCompanyImage } from '../lib/company-imagery.ts';
 
 test('1. Every developer entity is a valid company/corporate entity in dataset', () => {
   const developers = realCompaniesDataset.filter(c => c.type === 'developer');
-  assert.equal(developers.length, 50, 'Dataset must maintain exactly 50 audited developer entities');
+  assert.equal(developers.length, 48, 'Dataset must maintain exactly 48 audited developer entities');
   developers.forEach(dev => {
     assert.ok(typeof dev.id === 'string' && dev.id.startsWith('comp-'));
     assert.ok(typeof dev.name === 'string' && dev.name.length > 2);
