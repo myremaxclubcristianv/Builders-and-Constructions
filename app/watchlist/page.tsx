@@ -2,13 +2,13 @@ import Link from 'next/link';
 import { SiteHeader } from '@/components/SiteHeader';
 import { SiteFooter } from '@/components/SiteFooter';
 import { getIndustryHubData } from '@/lib/data';
+import { resolveEntityRoute } from '@/lib/entity-resolver';
+import { WatchlistViewer } from '@/components/WatchlistViewer';
 
 export const metadata = {
   title: 'Market Watchlist & Monitoring · CONSTRUCTIONS by AiXLuxury',
   description: 'Institutional monitoring terminal tracking newly verified information, construction status transitions, and data freshness across Romania.'
 };
-
-import { WatchlistViewer } from '@/components/WatchlistViewer';
 
 export default async function WatchlistPage() {
   const hubData = await getIndustryHubData();
@@ -45,32 +45,41 @@ export default async function WatchlistPage() {
               </h2>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {marketActivity.map(act => (
-                  <div key={act.id} className="p-5 bg-[#111111] border border-[#1A1D1B] rounded-xl space-y-3">
-                    <div className="flex items-center justify-between text-[10px] font-mono">
-                      <span className="px-2 py-0.5 bg-[#C9A227]/10 text-[#C9A227] rounded uppercase">
-                        {act.signal_type.replaceAll('_', ' ')}
-                      </span>
-                      <span className="text-[#888888]">{act.event_date}</span>
-                    </div>
+                {marketActivity.map(act => {
+                  const resolvedProj = act.project_slug ? resolveEntityRoute('project', act.project_slug, act.project_name) : null;
+                  const resolvedComp = act.company_slug ? resolveEntityRoute('company', act.company_slug, act.company_name) : null;
 
-                    <h3 className="text-base font-bold text-white">
-                      {act.title}
-                    </h3>
-                    <p className="text-xs text-[#A0A0A0] leading-relaxed">
-                      {act.summary}
-                    </p>
+                  return (
+                    <div key={act.id} className="p-5 bg-[#111111] border border-[#1A1D1B] rounded-xl space-y-3 font-mono">
+                      <div className="flex items-center justify-between text-[10px]">
+                        <span className="px-2 py-0.5 bg-[#C9A227]/10 text-[#C9A227] rounded uppercase font-bold">
+                          {act.signal_type.replaceAll('_', ' ')}
+                        </span>
+                        <span className="text-[#888888]">{act.event_date}</span>
+                      </div>
 
-                    <div className="pt-2 border-t border-[#1A1D1B] flex items-center justify-between text-xs font-mono text-[#888888]">
-                      <span>📍 {act.location}</span>
-                      {act.project_slug && (
-                        <Link href={`/projects/${act.project_slug}`} className="text-[#C9A227] hover:underline">
-                          VIEW DOSSIER →
-                        </Link>
-                      )}
+                      <h3 className="text-base font-bold text-white">
+                        {act.title}
+                      </h3>
+                      <p className="text-xs text-[#A0A0A0] leading-relaxed font-sans">
+                        {act.summary}
+                      </p>
+
+                      <div className="pt-2 border-t border-[#1A1D1B] flex items-center justify-between text-xs text-[#888888]">
+                        <span>📍 {act.location}</span>
+                        {resolvedProj && resolvedProj.isResolvable ? (
+                          <Link href={resolvedProj.href} className="text-[#C9A227] font-bold hover:underline">
+                            VIEW PROJECT →
+                          </Link>
+                        ) : resolvedComp && resolvedComp.isResolvable ? (
+                          <Link href={resolvedComp.href} className="text-[#C9A227] font-bold hover:underline">
+                            VIEW COMPANY →
+                          </Link>
+                        ) : null}
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
           </div>

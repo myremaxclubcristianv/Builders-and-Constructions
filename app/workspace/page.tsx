@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { SiteHeader } from '@/components/SiteHeader';
 import { SiteFooter } from '@/components/SiteFooter';
+import { resolveEntityRoute } from '@/lib/entity-resolver';
 
 type ResearchStatus = 'WATCHING' | 'RESEARCHING' | 'PRIORITY' | 'REVIEWED';
 
@@ -94,7 +95,7 @@ export default function WorkspacePage() {
       '',
       '1. EXECUTIVE SUMMARY & WORKSPACE COVERAGE',
       `Total Saved Research Entities: ${savedItems.length}`,
-      `Saved Corporate Entities: ${savedItems.filter(i => i.type === 'company').length}`,
+      `Saved Corporate Entities: ${savedItems.filter(i => i.type === 'company' || i.type === 'developer').length}`,
       `Saved Development Projects: ${savedItems.filter(i => i.type === 'project').length}`,
       '',
       '2. SAVED ENTITIES & PRIVATE RESEARCH LEDGER',
@@ -102,13 +103,14 @@ export default function WorkspacePage() {
     ];
 
     savedItems.forEach((item, idx) => {
-      briefLines.push(`[${String(idx + 1).padStart(2, '0')}] ${item.name.toUpperCase()}`);
-      briefLines.push(`     Type: ${item.type.toUpperCase()}`);
-      briefLines.push(`     Slug: ${item.slug}`);
+      const resolved = resolveEntityRoute(item.type, item.slug, item.name);
+      briefLines.push(`[${String(idx + 1).padStart(2, '0')}] ${(resolved.name || item.name).toUpperCase()}`);
+      briefLines.push(`     Type: ${resolved.type.toUpperCase()}`);
+      briefLines.push(`     Slug: ${resolved.canonicalSlug}`);
       briefLines.push(`     Details: ${item.subtext || 'N/A'}`);
       briefLines.push(`     Research Status Tag: ${item.status || 'WATCHING'}`);
       briefLines.push(`     Private Notes: ${item.note ? item.note : 'NONE RECORDED'}`);
-      briefLines.push(`     Dossier Link: https://constructions.cristianvaduva.com/${item.type === 'company' ? 'companies' : 'projects'}/${item.slug}`);
+      briefLines.push(`     Dossier Link: ${resolved.isResolvable ? `https://constructions.cristianvaduva.com${resolved.href}` : 'UNAVAILABLE'}`);
       briefLines.push('');
     });
 
@@ -128,8 +130,8 @@ export default function WorkspacePage() {
     document.body.removeChild(link);
   };
 
-  const companies = savedItems.filter(item => item.type === 'company');
-  const projects = savedItems.filter(item => item.type === 'project');
+  const companies = savedItems.filter(item => resolveEntityRoute(item.type, item.slug).type === 'company');
+  const projects = savedItems.filter(item => resolveEntityRoute(item.type, item.slug).type === 'project');
 
   return (
     <div className="bg-[#050505] text-[#F3F1EB] min-h-screen">
@@ -186,10 +188,10 @@ export default function WorkspacePage() {
                 </p>
                 <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
                   <Link href="/companies" className="px-4 py-2 bg-[#0B0B0B] border border-[#1A1D1B] text-xs font-mono text-white rounded-lg hover:border-[#C9A227]/50">
-                    Explore Companies (40)
+                    Explore Companies (143)
                   </Link>
                   <Link href="/projects" className="px-4 py-2 bg-[#0B0B0B] border border-[#1A1D1B] text-xs font-mono text-white rounded-lg hover:border-[#C9A227]/50">
-                    Explore Projects (53)
+                    Explore Projects (76)
                   </Link>
                 </div>
               </div>
@@ -206,57 +208,69 @@ export default function WorkspacePage() {
                     </h2>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                      {companies.map(item => (
-                        <div key={item.slug} className="p-5 bg-[#111111] border border-[#1A1D1B] rounded-xl flex flex-col justify-between space-y-4">
-                          <div className="space-y-2">
-                            <div className="flex items-center justify-between">
-                              <span className="text-[10px] font-mono text-[#C9A227]">COMPANY DOSSIER</span>
-                              <select
-                                value={item.status || 'WATCHING'}
-                                onChange={e => updateItem(item.slug, 'company', { status: e.target.value as ResearchStatus })}
-                                className="bg-[#050505] text-[10px] font-mono text-[#C9A227] border border-[#1A1D1B] rounded px-2 py-1"
+                      {companies.map(item => {
+                        const resolved = resolveEntityRoute(item.type, item.slug, item.name);
+
+                        return (
+                          <div key={item.slug} className="p-5 bg-[#111111] border border-[#1A1D1B] rounded-xl flex flex-col justify-between space-y-4">
+                            <div className="space-y-2">
+                              <div className="flex items-center justify-between">
+                                <span className="text-[10px] font-mono text-[#C9A227]">COMPANY DOSSIER</span>
+                                <select
+                                  value={item.status || 'WATCHING'}
+                                  onChange={e => updateItem(item.slug, item.type, { status: e.target.value as ResearchStatus })}
+                                  className="bg-[#050505] text-[10px] font-mono text-[#C9A227] border border-[#1A1D1B] rounded px-2 py-1"
+                                >
+                                  <option value="WATCHING">👀 WATCHING</option>
+                                  <option value="RESEARCHING">🔍 RESEARCHING</option>
+                                  <option value="PRIORITY">⚡ PRIORITY</option>
+                                  <option value="REVIEWED">✅ REVIEWED</option>
+                                </select>
+                              </div>
+
+                              <h3 className="text-base font-bold text-white">
+                                {resolved.isResolvable ? (
+                                  <Link href={resolved.href} className="hover:text-[#C9A227] transition-colors">
+                                    {resolved.name}
+                                  </Link>
+                                ) : (
+                                  <span className="text-gray-400 line-through">{item.name}</span>
+                                )}
+                              </h3>
+                              {item.subtext && <p className="text-xs text-[#888888]">{item.subtext}</p>}
+
+                              {/* Private Note Field */}
+                              <div className="pt-2">
+                                <label className="text-[9px] font-mono text-[#666666] uppercase block mb-1">
+                                  PRIVATE RESEARCH NOTES:
+                                </label>
+                                <textarea
+                                  value={item.note || ''}
+                                  onChange={e => updateItem(item.slug, item.type, { note: e.target.value })}
+                                  placeholder="Add private institutional notes..."
+                                  className="w-full h-16 bg-[#050505] border border-[#1A1D1B] rounded p-2 text-xs text-[#d8d6ce] focus:outline-none focus:border-[#C9A227]/50 resize-none font-mono"
+                                />
+                              </div>
+                            </div>
+
+                            <div className="pt-3 border-t border-[#1A1D1B] flex items-center justify-between text-xs font-mono">
+                              <button
+                                onClick={() => removeItem(item.slug, item.type)}
+                                className="text-[#ef4444] hover:underline text-[10px]"
                               >
-                                <option value="WATCHING">👀 WATCHING</option>
-                                <option value="RESEARCHING">🔍 RESEARCHING</option>
-                                <option value="PRIORITY">⚡ PRIORITY</option>
-                                <option value="REVIEWED">✅ REVIEWED</option>
-                              </select>
-                            </div>
-
-                            <h3 className="text-base font-bold text-white">
-                              <Link href={`/companies/${item.slug}`} className="hover:text-[#C9A227] transition-colors">
-                                {item.name}
-                              </Link>
-                            </h3>
-                            {item.subtext && <p className="text-xs text-[#888888]">{item.subtext}</p>}
-
-                            {/* Private Note Field */}
-                            <div className="pt-2">
-                              <label className="text-[9px] font-mono text-[#666666] uppercase block mb-1">
-                                PRIVATE RESEARCH NOTES:
-                              </label>
-                              <textarea
-                                value={item.note || ''}
-                                onChange={e => updateItem(item.slug, 'company', { note: e.target.value })}
-                                placeholder="Add private institutional notes..."
-                                className="w-full h-16 bg-[#050505] border border-[#1A1D1B] rounded p-2 text-xs text-[#d8d6ce] focus:outline-none focus:border-[#C9A227]/50 resize-none font-mono"
-                              />
+                                Remove
+                              </button>
+                              {resolved.isResolvable ? (
+                                <Link href={resolved.href} className="text-[#C9A227] font-semibold">
+                                  DOSSIER →
+                                </Link>
+                              ) : (
+                                <span className="text-red-400/60 font-bold">UNAVAILABLE</span>
+                              )}
                             </div>
                           </div>
-
-                          <div className="pt-3 border-t border-[#1A1D1B] flex items-center justify-between text-xs font-mono">
-                            <button
-                              onClick={() => removeItem(item.slug, 'company')}
-                              className="text-[#ef4444] hover:underline text-[10px]"
-                            >
-                              Remove
-                            </button>
-                            <Link href={`/companies/${item.slug}`} className="text-[#C9A227] font-semibold">
-                              DOSSIER →
-                            </Link>
-                          </div>
-                        </div>
-                      ))}
+                        );
+                      })}
                     </div>
                   </div>
                 )}
@@ -272,57 +286,69 @@ export default function WorkspacePage() {
                     </h2>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                      {projects.map(item => (
-                        <div key={item.slug} className="p-5 bg-[#111111] border border-[#1A1D1B] rounded-xl flex flex-col justify-between space-y-4">
-                          <div className="space-y-2">
-                            <div className="flex items-center justify-between">
-                              <span className="text-[10px] font-mono text-[#38bdf8]">PROJECT DOSSIER</span>
-                              <select
-                                value={item.status || 'WATCHING'}
-                                onChange={e => updateItem(item.slug, 'project', { status: e.target.value as ResearchStatus })}
-                                className="bg-[#050505] text-[10px] font-mono text-[#38bdf8] border border-[#1A1D1B] rounded px-2 py-1"
+                      {projects.map(item => {
+                        const resolved = resolveEntityRoute(item.type, item.slug, item.name);
+
+                        return (
+                          <div key={item.slug} className="p-5 bg-[#111111] border border-[#1A1D1B] rounded-xl flex flex-col justify-between space-y-4">
+                            <div className="space-y-2">
+                              <div className="flex items-center justify-between">
+                                <span className="text-[10px] font-mono text-[#38bdf8]">PROJECT DOSSIER</span>
+                                <select
+                                  value={item.status || 'WATCHING'}
+                                  onChange={e => updateItem(item.slug, item.type, { status: e.target.value as ResearchStatus })}
+                                  className="bg-[#050505] text-[10px] font-mono text-[#38bdf8] border border-[#1A1D1B] rounded px-2 py-1"
+                                >
+                                  <option value="WATCHING">👀 WATCHING</option>
+                                  <option value="RESEARCHING">🔍 RESEARCHING</option>
+                                  <option value="PRIORITY">⚡ PRIORITY</option>
+                                  <option value="REVIEWED">✅ REVIEWED</option>
+                                </select>
+                              </div>
+
+                              <h3 className="text-base font-bold text-white">
+                                {resolved.isResolvable ? (
+                                  <Link href={resolved.href} className="hover:text-[#C9A227] transition-colors">
+                                    {resolved.name}
+                                  </Link>
+                                ) : (
+                                  <span className="text-gray-400 line-through">{item.name}</span>
+                                )}
+                              </h3>
+                              {item.subtext && <p className="text-xs text-[#888888]">{item.subtext}</p>}
+
+                              {/* Private Note Field */}
+                              <div className="pt-2">
+                                <label className="text-[9px] font-mono text-[#666666] uppercase block mb-1">
+                                  PRIVATE RESEARCH NOTES:
+                                </label>
+                                <textarea
+                                  value={item.note || ''}
+                                  onChange={e => updateItem(item.slug, item.type, { note: e.target.value })}
+                                  placeholder="Add private institutional notes..."
+                                  className="w-full h-16 bg-[#050505] border border-[#1A1D1B] rounded p-2 text-xs text-[#d8d6ce] focus:outline-none focus:border-[#C9A227]/50 resize-none font-mono"
+                                />
+                              </div>
+                            </div>
+
+                            <div className="pt-3 border-t border-[#1A1D1B] flex items-center justify-between text-xs font-mono">
+                              <button
+                                onClick={() => removeItem(item.slug, item.type)}
+                                className="text-[#ef4444] hover:underline text-[10px]"
                               >
-                                <option value="WATCHING">👀 WATCHING</option>
-                                <option value="RESEARCHING">🔍 RESEARCHING</option>
-                                <option value="PRIORITY">⚡ PRIORITY</option>
-                                <option value="REVIEWED">✅ REVIEWED</option>
-                              </select>
-                            </div>
-
-                            <h3 className="text-base font-bold text-white">
-                              <Link href={`/projects/${item.slug}`} className="hover:text-[#C9A227] transition-colors">
-                                {item.name}
-                              </Link>
-                            </h3>
-                            {item.subtext && <p className="text-xs text-[#888888]">{item.subtext}</p>}
-
-                            {/* Private Note Field */}
-                            <div className="pt-2">
-                              <label className="text-[9px] font-mono text-[#666666] uppercase block mb-1">
-                                PRIVATE RESEARCH NOTES:
-                              </label>
-                              <textarea
-                                value={item.note || ''}
-                                onChange={e => updateItem(item.slug, 'project', { note: e.target.value })}
-                                placeholder="Add private institutional notes..."
-                                className="w-full h-16 bg-[#050505] border border-[#1A1D1B] rounded p-2 text-xs text-[#d8d6ce] focus:outline-none focus:border-[#C9A227]/50 resize-none font-mono"
-                              />
+                                Remove
+                              </button>
+                              {resolved.isResolvable ? (
+                                <Link href={resolved.href} className="text-[#C9A227] font-semibold">
+                                  DOSSIER →
+                                </Link>
+                              ) : (
+                                <span className="text-red-400/60 font-bold">UNAVAILABLE</span>
+                              )}
                             </div>
                           </div>
-
-                          <div className="pt-3 border-t border-[#1A1D1B] flex items-center justify-between text-xs font-mono">
-                            <button
-                              onClick={() => removeItem(item.slug, 'project')}
-                              className="text-[#ef4444] hover:underline text-[10px]"
-                            >
-                              Remove
-                            </button>
-                            <Link href={`/projects/${item.slug}`} className="text-[#C9A227] font-semibold">
-                              DOSSIER →
-                            </Link>
-                          </div>
-                        </div>
-                      ))}
+                        );
+                      })}
                     </div>
                   </div>
                 )}

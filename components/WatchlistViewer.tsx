@@ -2,12 +2,12 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { realCompaniesDataset, realProjectsDataset, realLocationsDataset } from '@/lib/real-romanian-data';
+import { resolveEntityRoute } from '@/lib/entity-resolver';
 
 interface SavedItem {
   id: string;
   name: string;
-  type: 'company' | 'project' | 'city';
+  type: 'company' | 'project' | 'city' | string;
   slug: string;
   subtext?: string;
   savedAt: string;
@@ -52,49 +52,23 @@ export function WatchlistViewer() {
       {savedItems.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 font-mono text-xs">
           {savedItems.map(item => {
-            // Find local dataset match for current state
-            let currentKnownStage = 'NOT YET MEASURED';
-            let latestDocumentedChange = 'NO VERIFIED UPDATE';
-            let latestMarketSignal = 'VERIFIED RECORD LOGGED';
-            let itemLocation = 'Romania';
-            let verificationState = 'VERIFIED';
-
-            if (item.type === 'company') {
-              const comp = realCompaniesDataset.find(c => c.slug === item.slug);
-              if (comp) {
-                currentKnownStage = comp.verification_level || 'OFFICIAL_VERIFIED';
-                itemLocation = comp.location || 'Romania';
-                verificationState = 'VERIFIED';
-                latestDocumentedChange = comp.last_verified_at ? `Profile verified ${comp.last_verified_at.slice(0, 10)}` : '2025 Financials Verified';
-                latestMarketSignal = comp.sources?.[0]?.title ? `Citation: ${comp.sources[0].title}` : 'Corporate Register Filing';
-              }
-            } else if (item.type === 'project') {
-              const proj = realProjectsDataset.find(p => p.slug === item.slug);
-              if (proj) {
-                currentKnownStage = proj.status_display || proj.status || 'UNDER CONSTRUCTION';
-                itemLocation = proj.location || 'Romania';
-                verificationState = 'VERIFIED';
-                latestDocumentedChange = proj.last_verified_at ? `Stage verified ${proj.last_verified_at.slice(0, 10)}` : 'Construction Milestone Logged';
-                latestMarketSignal = proj.sources?.[0]?.title ? `Source: ${proj.sources[0].title}` : 'Official Permit Citation';
-              }
-            } else if (item.type === 'city') {
-              const loc = realLocationsDataset.find(l => l.slug === item.slug);
-              if (loc) {
-                currentKnownStage = 'DOCUMENTED HUB';
-                itemLocation = loc.county ? `${loc.name} · ${loc.county}` : loc.name;
-                verificationState = 'DOCUMENTED';
-                latestDocumentedChange = 'Regional Intelligence Active';
-                latestMarketSignal = 'Hub Dataset Coverage Verified';
-              }
-            }
+            // Resolve canonical entity route & current stage info via central resolver
+            const resolved = resolveEntityRoute(item.type, item.slug, item.name);
 
             return (
               <div key={`${item.type}-${item.slug}`} className="p-5 bg-[#111111] border border-[#1A1D1B] rounded-xl flex flex-col justify-between space-y-4 hover:border-[#C9A227]/40 transition-all">
                 <div>
                   <div className="flex items-center justify-between text-[10px]">
-                    <span className="px-2 py-0.5 bg-[#C9A227]/10 text-[#C9A227] border border-[#C9A227]/30 rounded uppercase font-bold">
-                      {item.type}
-                    </span>
+                    <div className="flex items-center gap-1.5">
+                      <span className="px-2 py-0.5 bg-[#C9A227]/10 text-[#C9A227] border border-[#C9A227]/30 rounded uppercase font-bold">
+                        {resolved.type}
+                      </span>
+                      {resolved.isRemapped && (
+                        <span className="px-1.5 py-0.5 bg-blue-900/30 text-blue-400 text-[9px] rounded uppercase font-bold" title={`Remapped from ${resolved.remappedFrom}`}>
+                          CANONICAL
+                        </span>
+                      )}
+                    </div>
                     <button
                       onClick={() => removeSavedItem(item.slug, item.type)}
                       className="text-[#888888] hover:text-red-400 text-xs font-bold"
@@ -103,10 +77,15 @@ export function WatchlistViewer() {
                       ✕ REMOVE
                     </button>
                   </div>
+
                   <h3 className="text-base font-bold text-white mt-2">
-                    <Link href={`/${item.type === 'company' ? 'companies' : item.type === 'project' ? 'projects' : 'cities'}/${item.slug}`} className="hover:text-[#C9A227]">
-                      {item.name}
-                    </Link>
+                    {resolved.isResolvable ? (
+                      <Link href={resolved.href} className="hover:text-[#C9A227] transition-colors">
+                        {resolved.name || item.name}
+                      </Link>
+                    ) : (
+                      <span className="text-gray-400 line-through font-normal">{item.name || item.slug}</span>
+                    )}
                   </h3>
                   {item.subtext && <p className="text-xs text-[#888888] mt-1 font-sans">{item.subtext}</p>}
 
@@ -114,31 +93,39 @@ export function WatchlistViewer() {
                   <div className="mt-3 pt-3 border-t border-[#1A1D1B] space-y-1.5 text-[11px]">
                     <div className="flex justify-between">
                       <span className="text-[#888888]">Location:</span>
-                      <span className="text-white font-bold">{itemLocation}</span>
+                      <span className="text-white font-bold">{resolved.locationDisplay}</span>
                     </div>
                     <div className="flex justify-between">
                       <span className="text-[#888888]">Known State:</span>
-                      <span className="text-[#38bdf8] font-bold">{currentKnownStage}</span>
+                      <span className={resolved.isResolvable ? 'text-[#38bdf8] font-bold' : 'text-red-400 font-bold'}>
+                        {resolved.statusDisplay}
+                      </span>
                     </div>
                     <div className="flex justify-between">
                       <span className="text-[#888888]">Latest Change:</span>
-                      <span className="text-[#86efac] font-bold">{latestDocumentedChange}</span>
+                      <span className="text-[#86efac] font-bold">{resolved.latestChange}</span>
                     </div>
                     <div className="flex justify-between">
                       <span className="text-[#888888]">Verification:</span>
-                      <span className="text-[#C9A227] font-bold">{verificationState}</span>
+                      <span className="text-[#C9A227] font-bold">{resolved.verificationLevel}</span>
                     </div>
                   </div>
                 </div>
 
                 <div className="pt-3 border-t border-[#1A1D1B] flex items-center justify-between text-[10px] text-[#888888]">
-                  <span>Saved {new Date(item.savedAt).toLocaleDateString()}</span>
-                  <Link
-                    href={`/${item.type === 'company' ? 'companies' : item.type === 'project' ? 'projects' : 'cities'}/${item.slug}`}
-                    className="text-[#C9A227] font-bold hover:underline"
-                  >
-                    OPEN DOSSIER →
-                  </Link>
+                  <span>Saved {item.savedAt ? new Date(item.savedAt).toLocaleDateString() : 'Recently'}</span>
+                  {resolved.isResolvable ? (
+                    <Link
+                      href={resolved.href}
+                      className="text-[#C9A227] font-bold hover:underline"
+                    >
+                      OPEN DOSSIER →
+                    </Link>
+                  ) : (
+                    <span className="text-red-400/60 font-bold cursor-not-allowed">
+                      UNAVAILABLE
+                    </span>
+                  )}
                 </div>
               </div>
             );
