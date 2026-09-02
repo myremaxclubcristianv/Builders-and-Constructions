@@ -629,7 +629,7 @@ export const realCompaniesDataset: RealCompany[] = [
     "description": "Developer of hotel and residential resort complexes in Mamaia, Sinaia, and Bucharest.",
     "website": "https://nordis.ro",
     "founded_year": 2008,
-    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "specializations": [
       "Luxury Hotel Resorts",
       "Black Sea Apartment Hotels"
@@ -1068,7 +1068,7 @@ export const realCompaniesDataset: RealCompany[] = [
     "description": "Spanish real estate developer active in Romania since 2007, developer of Granvia Park Lujerului, Timișoara 58, and Avangarde Forest.",
     "website": "https://granvia.ro",
     "founded_year": 2007,
-    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "specializations": [
       "Residential Complexes",
       "Urban Infill Projects"
@@ -1109,7 +1109,7 @@ export const realCompaniesDataset: RealCompany[] = [
     "description": "Major CEE residential developer member of Futureal Group, developer of Parcului 20 and Coral Park in northern Bucharest.",
     "website": "https://cordiahomes.ro",
     "founded_year": 2008,
-    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "specializations": [
       "Smart-Home Residential Complexes",
       "Green Residential Towers"
@@ -1149,7 +1149,7 @@ export const realCompaniesDataset: RealCompany[] = [
     "description": "Belgian urban real estate developer listed on Euronext Brussels, developer of Hermes Business Campus, Dacia One, @Expo, and UP-site Bucharest.",
     "website": "https://www.atenor.eu",
     "founded_year": 2008,
-    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "specializations": [
       "High-End Sustainable Office Campuses",
       "Luxury Residential Towers"
@@ -1271,7 +1271,7 @@ export const realCompaniesDataset: RealCompany[] = [
     "description": "European commercial real estate developer, owner and developer of Fashion House Outlet Center Militari, Fashion House Pallady, and Liziera de Lac residential park.",
     "website": "https://liebrecht-wood.com",
     "founded_year": 2001,
-    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "specializations": [
       "Outlet Shopping Centers",
       "Suburban Green Residential Communities"
@@ -1432,7 +1432,7 @@ export const realCompaniesDataset: RealCompany[] = [
     "description": "Leading Romanian developer of mixed-use urban regeneration projects including Palas Iași, Palas Campus, and Iulius Malls in Iași, Cluj, Suceava, and Timișoara.",
     "website": "https://iuliuscompany.ro",
     "founded_year": 1991,
-    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "specializations": [
       "Urban Regeneration Projects",
       "United Business Centers",
@@ -1518,7 +1518,7 @@ export const realCompaniesDataset: RealCompany[] = [
     "description": "Premier real estate developer in Western Romania expanding into Bucharest, developer of Boavista, Prima Nufărul, and Boemia Apartments.",
     "website": "https://primadevelopment.ro",
     "founded_year": 2005,
-    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "specializations": [
       "Oradea Residential Complexes",
       "Bucharest Infill Communities"
@@ -1559,7 +1559,7 @@ export const realCompaniesDataset: RealCompany[] = [
     "description": "International industrial developer, developer and operator of Ploiești West Park (300-hectare industrial and logistics park).",
     "website": "https://alinso.eu",
     "founded_year": 2008,
-    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "specializations": [
       "Built-to-Suit Logistics Hubs",
       "Intermodal Industrial Parks"
@@ -1600,7 +1600,7 @@ export const realCompaniesDataset: RealCompany[] = [
     "description": "Pan-European logistics developer listed on Euronext Brussels, developer of VGP Park Timișoara, VGP Park Brașov, and VGP Park Bucharest North.",
     "website": "https://www.vgpparks.eu",
     "founded_year": 2007,
-    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "specializations": [
       "Class A Logistics Warehouses",
       "Semi-Industrial Parks"
@@ -1644,7 +1644,7 @@ export const realCompaniesDataset: RealCompany[] = [
     "description": "Romanian logistics and industrial park developer, developer of Eli Park Bucharest (Buftea), Eli Park Bacău, and Eli Park Brăila.",
     "website": "https://elementindustrial.ro",
     "founded_year": 2018,
-    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "specializations": [
       "Class A Logistics Distribution Parks"
     ],
@@ -1686,7 +1686,7 @@ export const realCompaniesDataset: RealCompany[] = [
     "description": "Pioneer commercial real estate developer in Romania since 1997, developer of Plaza Romania, București Mall, Anchor Plaza office, and InCity Residences.",
     "website": "https://anchorgroup.ro",
     "founded_year": 1997,
-    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "specializations": [
       "Shopping Centers",
       "Grade A Office Buildings",
@@ -1810,7 +1810,7 @@ export const realCompaniesDataset: RealCompany[] = [
     "description": "Leading Romanian commercial real estate owner and developer, owner of YUNITY Park (formerly Novo Park) and West Gate Business District.",
     "website": "https://genesisproperty.net",
     "founded_year": 2002,
-    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "specializations": [
       "Office Campuses",
       "Business Parks",
@@ -1852,7 +1852,7 @@ export const realCompaniesDataset: RealCompany[] = [
     "description": "International retail and commercial developer active in Central and Eastern Europe, developer of Casa Radio site and regional shopping centers.",
     "website": "https://www.plazacenters.com",
     "founded_year": 2005,
-    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "specializations": [
       "Shopping Centers",
       "Urban Commercial Projects"
