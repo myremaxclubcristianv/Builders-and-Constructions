@@ -56,12 +56,14 @@ export async function generateMetadata({
   };
 }
 
+import { resolveCompanyImage, getCompanyRolePortfolioMetadata } from '@/lib/company-imagery';
+
 export function generateStaticParams() {
   return realCompaniesDataset.map(c => ({ slug: c.slug }));
 }
 
 function ProjectCard({ project, role }: { project: any; role?: string }) {
-  const img = project.image || 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1000&q=85';
+  const hasImage = project.image && typeof project.image === 'string' && project.image.startsWith('http');
   return (
     <div
       style={{
@@ -76,9 +78,18 @@ function ProjectCard({ project, role }: { project: any; role?: string }) {
     >
       <div>
         <div style={{ height: 160, position: 'relative', background: '#0a0c0b' }}>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={img} alt={project.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-          <div style={{ position: 'absolute', top: 10, left: 10, background: 'rgba(0,0,0,0.75)', padding: '2px 8px', borderRadius: 2, fontSize: 10, color: '#c7a675', fontWeight: 800 }}>
+          {hasImage ? (
+            /* eslint-disable-next-line @next/next/no-img-element */
+            <img src={project.image} alt={project.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+          ) : (
+            <div style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', background: '#111412', color: '#666', padding: 12 }}>
+              <div style={{ fontSize: 24, marginBottom: 4 }}>🏗️</div>
+              <div style={{ fontSize: 9, fontWeight: 800, border: '1px solid #242926', color: '#888', padding: '2px 6px', borderRadius: 2 }}>
+                IMAGE STATUS: NOT DISCLOSED
+              </div>
+            </div>
+          )}
+          <div style={{ position: 'absolute', top: 10, left: 10, background: 'rgba(0,0,0,0.85)', border: '1px solid #262927', padding: '2px 8px', borderRadius: 2, fontSize: 10, color: '#c7a675', fontWeight: 800 }}>
             {project.project_type || 'Development'}
           </div>
           {role && (
@@ -88,7 +99,7 @@ function ProjectCard({ project, role }: { project: any; role?: string }) {
           )}
         </div>
         <div style={{ padding: 16 }}>
-          <h4 style={{ fontSize: 16, margin: '0 0 6px 0', textTransform: 'uppercase' }}>
+          <h4 style={{ fontSize: 15, margin: '0 0 6px 0', textTransform: 'uppercase', letterSpacing: '-0.01em' }}>
             <Link href={`/projects/${project.slug}`} style={{ color: '#fff', textDecoration: 'none' }}>
               {project.name}
             </Link>
@@ -98,7 +109,9 @@ function ProjectCard({ project, role }: { project: any; role?: string }) {
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8, fontSize: 11, color: '#b5b3aa' }}>
             <div>STAGE: <strong style={{ color: '#fff' }}>{project.status_display || project.status || 'Active'}</strong></div>
+            <div>UNITS: <strong style={{ color: project.unit_count ? '#86efac' : '#888' }}>{project.unit_count || 'NOT DISCLOSED'}</strong></div>
             <div>INVESTMENT: <strong style={{ color: '#c7a675' }}>{project.investment_label || (project.investment_eur ? `€${(project.investment_eur / 1000000).toFixed(1)}M` : 'NOT DISCLOSED')}</strong></div>
+            <div>SURFACE: <strong style={{ color: project.surface_area ? '#fff' : '#888' }}>{project.surface_area ? `${project.surface_area.toLocaleString()} sqm` : 'NOT DISCLOSED'}</strong></div>
           </div>
         </div>
       </div>
@@ -145,6 +158,9 @@ export default async function CompanyProfile({
     p.architect_slug === c.slug ||
     p.engineering_slug === c.slug
   );
+
+  const imgRes = resolveCompanyImage(c, connectedProjects);
+  const portfolioMeta = getCompanyRolePortfolioMetadata(c.type);
 
   const activeProjects = connectedProjects.filter(p => p.status !== 'completed' && p.status !== 'delivered');
 
@@ -206,6 +222,7 @@ export default async function CompanyProfile({
     name: c.name,
     url: `https://constructions.cristianvaduva.com/companies/${c.slug}`,
     description: c.description,
+    image: imgRes.url || undefined,
     address: {
       '@type': 'PostalAddress',
       addressLocality: c.location || 'Romania',
@@ -271,13 +288,30 @@ export default async function CompanyProfile({
                 </div>
               </div>
 
-              {/* Hero Image */}
-              <div style={{ height: 260, borderRadius: 6, overflow: 'hidden', border: '1px solid #262927', position: 'relative', background: '#111' }}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={c.image || 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1000&q=85'} alt={c.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                <div style={{ position: 'absolute', bottom: 0, insetInline: 0, padding: 12, background: 'linear-gradient(0deg, rgba(0,0,0,0.9), transparent)', fontSize: 11, color: '#ccc' }}>
-                  🏢 {c.image_alt || `${c.name} Corporate Headquarters`}
-                </div>
+              {/* Hero Image Container */}
+              <div style={{ height: 260, borderRadius: 6, overflow: 'hidden', border: '1px solid #262927', position: 'relative', background: '#141715', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+                {imgRes.url ? (
+                  <>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={imgRes.url} alt={c.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                    <div style={{ position: 'absolute', bottom: 0, insetInline: 0, padding: 12, background: 'linear-gradient(0deg, rgba(0,0,0,0.9), transparent)', fontSize: 11, color: '#ccc', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                      <span style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: '70%' }}>🏢 {imgRes.caption}</span>
+                      <span style={{ fontSize: 9, background: '#1c221e', border: '1px solid #c7a675', color: '#c7a675', padding: '2px 6px', borderRadius: 2, fontWeight: 800, whiteSpace: 'nowrap' }}>
+                        {imgRes.status === 'VERIFIED_CORPORATE_IMAGE' ? 'VERIFIED CORPORATE MEDIA' : 'VERIFIED PROJECT MEDIA'}
+                      </span>
+                    </div>
+                  </>
+                ) : (
+                  <div style={{ padding: 24, textAlign: 'center', color: '#888' }}>
+                    <div style={{ fontSize: 36, marginBottom: 8 }}>🏢</div>
+                    <div style={{ fontSize: 11, fontWeight: 800, color: '#c7a675', border: '1px solid #262927', padding: '4px 10px', borderRadius: 4, display: 'inline-block', letterSpacing: '0.05em' }}>
+                      IMAGE STATUS: NOT DISCLOSED IN PUBLIC BASELINE
+                    </div>
+                    <div style={{ fontSize: 11, color: '#666', marginTop: 8 }}>
+                      No verified entity-specific corporate image publicly filed. Stock media is never substituted.
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
 
@@ -482,19 +516,25 @@ export default async function CompanyProfile({
           <div className="section-head">
             <div>
               <div className="eyebrow" style={{ color: '#c7a675' }}>SECTION G</div>
-              <h2>PROJECT PORTFOLIO ({connectedProjects.length})</h2>
+              <h2>{portfolioMeta.sectionTitle} ({connectedProjects.length})</h2>
+              <div style={{ fontSize: 12, color: '#aaa9a1', marginTop: 4 }}>
+                <span style={{ background: '#1c221e', border: '1px solid #c7a675', color: '#c7a675', padding: '2px 8px', borderRadius: 2, fontSize: 10, fontWeight: 800, marginRight: 8 }}>
+                  {portfolioMeta.roleBadgeLabel}
+                </span>
+                {portfolioMeta.roleDescription}
+              </div>
             </div>
           </div>
 
           {connectedProjects.length > 0 ? (
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: 20 }}>
               {connectedProjects.map(p => (
-                <ProjectCard key={p.id} project={p} />
+                <ProjectCard key={p.id} project={p} role={c.type === 'developer' ? 'DEVELOPER — VERIFIED' : `${(c.type || 'ROLE').replaceAll('_', ' ')} — VERIFIED`} />
               ))}
             </div>
           ) : (
             <div style={{ padding: 20, background: '#141715', border: '1px solid #262927', borderRadius: 6, color: '#888', fontSize: 13 }}>
-              No individual project records connected.
+              0 VERIFIED PROJECTS IN PUBLIC BASELINE FOR THIS ENTITY.
             </div>
           )}
         </section>

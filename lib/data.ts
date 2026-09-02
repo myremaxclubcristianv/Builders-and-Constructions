@@ -25,7 +25,7 @@ export type Project = {
   surface_area?: number | null;
   unit_count?: number | null;
   developer?: string;
-  developer_slug?: string;
+  developer_slug?: string | null;
   developer_type?: string;
   image?: string;
   description?: string;
@@ -35,11 +35,11 @@ export type Project = {
   latest_signal?: string | null;
   evidence_url?: string | null;
   architect_name?: string;
-  architect_slug?: string;
+  architect_slug?: string | null;
   engineering_name?: string;
-  engineering_slug?: string;
+  engineering_slug?: string | null;
   contractor_name?: string;
-  contractor_slug?: string;
+  contractor_slug?: string | null;
   sources?: RealSource[];
   last_verified_at?: string;
 };

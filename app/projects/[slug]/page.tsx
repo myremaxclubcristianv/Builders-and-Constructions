@@ -192,7 +192,31 @@ export default async function ProjectProfile({
                   )}
                 </span>
               )}
-            </p>
+            </p>            {/* HERO IMAGE CONTAINER */}
+            <div style={{ marginTop: 24, height: 320, borderRadius: 6, overflow: 'hidden', border: '1px solid #262927', position: 'relative', background: '#141715', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+              {p.image && typeof p.image === 'string' && p.image.startsWith('http') ? (
+                <>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={p.image} alt={p.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                  <div style={{ position: 'absolute', bottom: 0, insetInline: 0, padding: 12, background: 'linear-gradient(0deg, rgba(0,0,0,0.9), transparent)', fontSize: 11, color: '#ccc', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <span>🏗️ {p.name} — Official Site Image</span>
+                    <span style={{ fontSize: 9, background: '#1c221e', border: '1px solid #38bdf8', color: '#38bdf8', padding: '2px 6px', borderRadius: 2, fontWeight: 800 }}>
+                      VERIFIED SITE MEDIA
+                    </span>
+                  </div>
+                </>
+              ) : (
+                <div style={{ padding: 24, textAlign: 'center', color: '#888' }}>
+                  <div style={{ fontSize: 36, marginBottom: 8 }}>🏗️</div>
+                  <div style={{ fontSize: 11, fontWeight: 800, color: '#c7a675', border: '1px solid #262927', padding: '4px 10px', borderRadius: 4, display: 'inline-block', letterSpacing: '0.05em' }}>
+                    IMAGE STATUS: NOT DISCLOSED IN PUBLIC BASELINE
+                  </div>
+                  <div style={{ fontSize: 11, color: '#666', marginTop: 8 }}>
+                    No verified site photograph publicly disclosed for this development. Stock media is never substituted.
+                  </div>
+                </div>
+              )}
+            </div>
 
             {/* COMPACT BUSINESS-SAFE DISCLOSURE BOX */}
             <div style={{ marginTop: 24, padding: 16, background: '#111412', border: '1px solid #242926', borderRadius: 6, fontSize: 12, color: '#a0a0a0', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 12 }}>
