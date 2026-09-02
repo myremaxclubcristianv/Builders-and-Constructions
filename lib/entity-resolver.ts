@@ -22,7 +22,8 @@ const LEGACY_SLUG_MAPPINGS: Record<string, { targetSlug: string; targetType: 'co
   'speedwell-riverside-arad': { targetSlug: 'speedwell-riverside-arad-site', targetType: 'project' },
   'comp-speedwell-riverside-arad': { targetSlug: 'speedwell', targetType: 'company' },
   'porr-construct': { targetSlug: 'porr-construct-romania', targetType: 'company' },
-  'comp-porr-construct': { targetSlug: 'porr-construct-romania', targetType: 'company' }
+  'comp-porr-construct': { targetSlug: 'porr-construct-romania', targetType: 'company' },
+  'a7-highway-focsani-bacau': { targetSlug: 'autostrada-a7-moldovei-umb', targetType: 'project' }
 };
 
 export function resolveEntityRoute(
