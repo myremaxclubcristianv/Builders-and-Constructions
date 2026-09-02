@@ -533,7 +533,7 @@ export function SiteHeader() {
                     className="p-3 bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl text-xs font-medium text-white hover:border-[#C9A227]/50 active:bg-[#111111] flex items-center justify-between min-h-[44px]"
                   >
                     <span>Developers</span>
-                    <span className="text-[10px] font-mono text-[#C9A227]">38</span>
+                    <span className="text-[10px] font-mono text-[#C9A227]">50</span>
                   </Link>
                   <Link
                     href="/projects"
@@ -541,7 +541,7 @@ export function SiteHeader() {
                     className="p-3 bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl text-xs font-medium text-white hover:border-[#C9A227]/50 active:bg-[#111111] flex items-center justify-between min-h-[44px]"
                   >
                     <span>Projects</span>
-                    <span className="text-[10px] font-mono text-[#C9A227]">53</span>
+                    <span className="text-[10px] font-mono text-[#C9A227]">76</span>
                   </Link>
                   <Link
                     href="/contractors"
@@ -549,7 +549,7 @@ export function SiteHeader() {
                     className="p-3 bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl text-xs font-medium text-white hover:border-[#C9A227]/50 active:bg-[#111111] flex items-center justify-between min-h-[44px]"
                   >
                     <span>Contractors</span>
-                    <span className="text-[10px] font-mono text-[#C9A227]">26</span>
+                    <span className="text-[10px] font-mono text-[#C9A227]">30</span>
                   </Link>
                   <Link
                     href="/architects"
@@ -557,7 +557,7 @@ export function SiteHeader() {
                     className="p-3 bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl text-xs font-medium text-white hover:border-[#C9A227]/50 active:bg-[#111111] flex items-center justify-between min-h-[44px]"
                   >
                     <span>Architects</span>
-                    <span className="text-[10px] font-mono text-[#C9A227]">15</span>
+                    <span className="text-[10px] font-mono text-[#C9A227]">21</span>
                   </Link>
                   <Link
                     href="/engineers"
@@ -565,7 +565,7 @@ export function SiteHeader() {
                     className="p-3 bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl text-xs font-medium text-white hover:border-[#C9A227]/50 active:bg-[#111111] flex items-center justify-between min-h-[44px]"
                   >
                     <span>Engineers</span>
-                    <span className="text-[10px] font-mono text-[#C9A227]">15</span>
+                    <span className="text-[10px] font-mono text-[#C9A227]">25</span>
                   </Link>
                   <Link
                     href="/agencies"
@@ -573,7 +573,7 @@ export function SiteHeader() {
                     className="p-3 bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl text-xs font-medium text-white hover:border-[#C9A227]/50 active:bg-[#111111] flex items-center justify-between min-h-[44px]"
                   >
                     <span>Agencies</span>
-                    <span className="text-[10px] font-mono text-[#C9A227]">15</span>
+                    <span className="text-[10px] font-mono text-[#C9A227]">20</span>
                   </Link>
                 </div>
               </div>
