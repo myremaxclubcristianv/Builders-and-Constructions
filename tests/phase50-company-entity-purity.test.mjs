@@ -73,7 +73,7 @@ test('9. Developer count is dynamically derived from canonical dataset', () => {
 
 test('10. Navigation counts match canonical dataset dynamically', () => {
   const totalCompanies = realCompaniesDataset.length;
-  assert.equal(totalCompanies, 144, 'Total company entities must equal 144 after removing project asset brands');
+  assert.equal(totalCompanies, 143, 'Total company entities must equal 143 after removing project asset brands and duplicate entry');
 });
 
 test('11. Company slugs are 100% unique', () => {

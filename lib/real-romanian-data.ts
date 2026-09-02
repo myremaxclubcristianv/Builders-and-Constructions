@@ -7081,98 +7081,6 @@ export const realCompaniesDataset: RealCompany[] = [
     "image_relevance": "COMPANY_SPECIFIC"
   },
   {
-    "id": "comp-porr-construct",
-    "name": "PORR Construct Romania",
-    "slug": "porr-construct",
-    "type": "general_contractor",
-    "location": "Bucharest · Sector 1",
-    "location_slug": "bucharest-sector-1",
-    "headquarters": "Bucharest, Romania",
-    "description": "Major Austrian civil infrastructure and building general contractor operating in Romania, builder of Sibiu-Pitești A1 Lot 1 highway and Metro M6 Otopeni section with €310M+ annual revenue.",
-    "founded_year": 2004,
-    "website": "https://porr.ro",
-    "cui_cif": "RO16421098",
-    "founders_key_people": [
-      "Ana-Maria Cojocaru (Managing Director)"
-    ],
-    "financials_2025": {
-      "year": 2025,
-      "revenue_eur": 310000000,
-      "employees_count": 1400,
-      "status": "REPORTED",
-      "source_title": "PORR AG Annual Corporate Disclosures 2025",
-      "source_url": "https://porr.ro",
-      "verified_at": "2026-08-10T00:00:00Z"
-    },
-    "financial_timeline": [
-      {
-        "year": 2024,
-        "revenue_eur": 285000000,
-        "employees_count": 1320,
-        "status": "REPORTED",
-        "source_title": "ZF Infrastructure Ranking",
-        "source_url": "https://zf.ro",
-        "verified_at": "2025-04-01"
-      },
-      {
-        "year": 2025,
-        "revenue_eur": 310000000,
-        "employees_count": 1400,
-        "status": "REPORTED",
-        "source_title": "PORR Corporate Disclosure",
-        "source_url": "https://porr.ro",
-        "verified_at": "2026-08-10"
-      }
-    ],
-    "revenue_growth_yoy": 8.77,
-    "employees_count": 1400,
-    "backlog_contracts_eur": 950000000,
-    "specializations": [
-      "Motorways & Bridges",
-      "Tunneling & Metro Infrastructure",
-      "Railway Modernization",
-      "Commercial Buildings"
-    ],
-    "services": [
-      "Infrastructure Contracting",
-      "Civil Engineering",
-      "Tunnel Excavation"
-    ],
-    "markets": [
-      "Sibiu",
-      "Bucharest",
-      "Timișoara",
-      "Pitești"
-    ],
-    "certifications": [
-      "ISO 9001",
-      "ISO 14001",
-      "ISO 45001"
-    ],
-    "is_featured": true,
-    "verification_level": "OFFICIAL_VERIFIED",
-    "verification_status": "VERIFIED",
-    "completeness_score": 93,
-    "projects_count": 12,
-    "active_projects_count": 4,
-    "completed_projects_count": 8,
-    "sources": [
-      {
-        "url": "https://porr.ro",
-        "title": "PORR Construct Romania Official Portal",
-        "type": "OFFICIAL",
-        "date": "2026-08-25",
-        "verified_at": "2026-08-28T10:00:00Z"
-      }
-    ],
-    "last_verified_at": "2026-08-28T10:00:00Z",
-    "image": "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1000&q=85",
-    "image_alt": "PORR Construct Romania Headquarters / Corporate Operations",
-    "logo_url": "https://porr-construct.ro/logo.png",
-    "image_verified": true,
-    "image_relevance": "COMPANY_SPECIFIC"
-  },
-  {
     "id": "comp-nusco-imobiliere",
     "name": "Nusco Imobiliere",
     "slug": "nusco-imobiliere",
@@ -11046,7 +10954,7 @@ export const realProjectsDataset: RealProject[] = [
     "investment_label": "€125.0M EUR",
     "surface_area_sqm": 450000,
     "contractor_name": "PORR Construct Romania",
-    "contractor_slug": "porr-construct",
+    "contractor_slug": "porr-construct-romania",
     "description": "13.17 km motorway section delivered ahead of schedule by PORR Construct, featuring 27 bridges and viaducts in Southern Transylvania.",
     "image": "https://images.unsplash.com/photo-1577223625816-7546f13df25d?auto=format&fit=crop&w=1200&q=85&pid=autostrada-a1-sibiu-boita",
     "is_featured": true,
