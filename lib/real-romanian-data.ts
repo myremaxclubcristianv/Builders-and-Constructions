@@ -34,6 +34,7 @@ export interface RealCompany {
   description: string;
   website: string;
   founded_year: number;
+  cui?: string;
   cui_cif?: string;
   ownership_structure?: string;
   founders_key_people?: string[];
@@ -671,7 +672,7 @@ export const realCompaniesDataset: RealCompany[] = [
     "description": "Romanian residential and commercial developer active in Northern Bucharest and Pipera.",
     "website": "https://speedway.ro",
     "founded_year": 2014,
-    "verification_level": "OFFICIAL_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "specializations": [
       "Residential Complexes",
       "Commercial Parks"
@@ -711,7 +712,7 @@ export const realCompaniesDataset: RealCompany[] = [
     "description": "Commercial and office developer active in Sector 2 Bucharest.",
     "website": "https://universalproperty.ro",
     "founded_year": 2008,
-    "verification_level": "OFFICIAL_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "specializations": [
       "Office Buildings",
       "Commercial Units"
@@ -750,7 +751,8 @@ export const realCompaniesDataset: RealCompany[] = [
     "description": "Western Romania real estate developer active in Arad industrial parks and residential projects.",
     "website": "https://imotrust.ro",
     "founded_year": 2003,
-    "verification_level": "OFFICIAL_VERIFIED",
+    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "cui": "2444558",
     "specializations": [
       "Industrial Logistics",
       "Arad Residential"
@@ -790,7 +792,7 @@ export const realCompaniesDataset: RealCompany[] = [
     "description": "Major real estate developer in Craiova, developer of Citadel Residence.",
     "website": "https://citadelcraiova.ro",
     "founded_year": 2012,
-    "verification_level": "OFFICIAL_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "specializations": [
       "Craiova Residential Communities"
     ],
@@ -828,7 +830,7 @@ export const realCompaniesDataset: RealCompany[] = [
     "description": "Coastal Black Sea real estate agency active in Constanța, Mamaia, and Navodari resort properties.",
     "website": "https://euroimobiliare.ro",
     "founded_year": 2002,
-    "verification_level": "OFFICIAL_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "specializations": [
       "Black Sea Resort Sales",
       "Mamaia Apartments"
@@ -1190,7 +1192,7 @@ export const realCompaniesDataset: RealCompany[] = [
     "description": "Boutique Romanian real estate developer known for Muse Office, Frumoasa Office, and premium residential projects in northern Bucharest.",
     "website": "https://primaveradevelopment.ro",
     "founded_year": 2006,
-    "verification_level": "OFFICIAL_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "specializations": [
       "Boutique Office Buildings",
       "Exclusive Residential Properties"
@@ -1230,7 +1232,7 @@ export const realCompaniesDataset: RealCompany[] = [
     "description": "Romanian investment and real estate development group, developer of Avrig 35 Residential and luxury mountain resorts in Poiana Brașov.",
     "website": "https://rockdevelopment.ro",
     "founded_year": 2018,
-    "verification_level": "OFFICIAL_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "specializations": [
       "Urban Residential Neighborhoods",
       "Poiana Brașov Hospitality Resorts"
@@ -1312,7 +1314,7 @@ export const realCompaniesDataset: RealCompany[] = [
     "description": "Major residential development consortium in Southern Bucharest, developer of Metalurgiei Park Residence and Apollo Residence.",
     "website": "https://sudrezidential.ro",
     "founded_year": 2010,
-    "verification_level": "OFFICIAL_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "specializations": [
       "Large-Scale Suburban Residential Parks"
     ],
@@ -1352,7 +1354,7 @@ export const realCompaniesDataset: RealCompany[] = [
     "description": "Established Transylvanian developer active in Cluj-Napoca residential and commercial sectors for over 20 years.",
     "website": "https://edil.ro",
     "founded_year": 2001,
-    "verification_level": "OFFICIAL_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "specializations": [
       "Cluj Residential Complexes",
       "Commercial Assets"
@@ -1392,7 +1394,7 @@ export const realCompaniesDataset: RealCompany[] = [
     "description": "Prominent real estate developer in Timișoara, developer of Sedako Park and central urban apartment buildings.",
     "website": "https://sedako.ro",
     "founded_year": 2003,
-    "verification_level": "OFFICIAL_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "specializations": [
       "Timișoara Urban Apartments",
       "Commercial Plazas"
@@ -1479,7 +1481,7 @@ export const realCompaniesDataset: RealCompany[] = [
     "description": "Fast-growing residential real estate developer in Brașov, developer of Qualis 1, Qualis 2, and Qualis City in Tractorul neighborhood.",
     "website": "https://qualis.ro",
     "founded_year": 2017,
-    "verification_level": "OFFICIAL_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "specializations": [
       "Brașov Smart Residential Complexes"
     ],
@@ -1729,7 +1731,7 @@ export const realCompaniesDataset: RealCompany[] = [
     "description": "Premium residential developer operating in Western Romania and Arad, developer of XCity Towers Timișoara and Arad Plaza.",
     "website": "https://wallberg.ro",
     "founded_year": 2004,
-    "verification_level": "OFFICIAL_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "specializations": [
       "High-Rise Residential Towers",
       "Smart Apartment Complexes"
@@ -1770,7 +1772,7 @@ export const realCompaniesDataset: RealCompany[] = [
     "description": "Commercial and office property developer in Cluj-Napoca, developer of Hexagon Offices, residential projects, and logistics hubs in Transylvania.",
     "website": "https://hexagon.ro",
     "founded_year": 2012,
-    "verification_level": "OFFICIAL_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "specializations": [
       "Grade A Office Parks",
       "Mixed-Use Cluj Projects"
@@ -2154,7 +2156,7 @@ export const realCompaniesDataset: RealCompany[] = [
     "description": "Specialized residential project sales and consultancy company managing residential portfolio launches across Bucharest.",
     "website": "https://premier-estate.ro",
     "founded_year": 2008,
-    "verification_level": "OFFICIAL_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "specializations": [
       "Residential New-Build Sales",
       "Developer Advisory"
@@ -2195,7 +2197,7 @@ export const realCompaniesDataset: RealCompany[] = [
     "description": "Residential consultancy firm providing project marketing, tenant representation, and sales for medium-to-luxury housing developments.",
     "website": "https://imoteca.ro",
     "founded_year": 2007,
-    "verification_level": "OFFICIAL_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "specializations": [
       "New Residential Developments",
       "Boutique Housing Sales"
@@ -2236,7 +2238,7 @@ export const realCompaniesDataset: RealCompany[] = [
     "description": "Dedicated residential sales and brokerage hub operating across Southern Bucharest and Ilfov counties.",
     "website": "https://www.sudrezidential.ro",
     "founded_year": 2010,
-    "verification_level": "OFFICIAL_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "specializations": [
       "Southern Bucharest Housing",
       "New Apartment Complexes"
@@ -2277,7 +2279,7 @@ export const realCompaniesDataset: RealCompany[] = [
     "description": "Specialized real estate agency focusing on high-end residential sales and investor portfolio acquisitions in Northern Bucharest.",
     "website": "https://northbucharestinvestments.ro",
     "founded_year": 2020,
-    "verification_level": "OFFICIAL_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "specializations": [
       "Northern Bucharest Luxury Apartments",
       "Investor Property Portfolios"
@@ -2318,7 +2320,7 @@ export const realCompaniesDataset: RealCompany[] = [
     "description": "Established Transylvanian real estate brokerage specializing in Cluj-Napoca commercial land and residential developments.",
     "website": "https://skolimobiliare.ro",
     "founded_year": 2004,
-    "verification_level": "OFFICIAL_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "specializations": [
       "Cluj Residential Resales",
       "Commercial Land Acquisition"
@@ -2358,7 +2360,7 @@ export const realCompaniesDataset: RealCompany[] = [
     "description": "Exclusive representation residential brokerage network providing seller agency services across major Romanian cities.",
     "website": "https://realpro.ro",
     "founded_year": 2009,
-    "verification_level": "OFFICIAL_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "specializations": [
       "Exclusive Seller Representation"
     ],
@@ -2443,7 +2445,7 @@ export const realCompaniesDataset: RealCompany[] = [
     "description": "Boutique sustainable real estate advisory specializing in green certified residential properties and nZEB developments.",
     "website": "https://greenangels.ro",
     "founded_year": 2015,
-    "verification_level": "OFFICIAL_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "specializations": [
       "nZEB Housing Representation",
       "Green Certified Homes"
@@ -2485,7 +2487,7 @@ export const realCompaniesDataset: RealCompany[] = [
     "description": "Long-standing commercial and industrial real estate agency operating in Bucharest for over 25 years.",
     "website": "https://euroest.ro",
     "founded_year": 1994,
-    "verification_level": "OFFICIAL_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "specializations": [
       "Industrial & Land Transactions",
       "Commercial Property Sales"
@@ -2526,7 +2528,7 @@ export const realCompaniesDataset: RealCompany[] = [
     "description": "Principal-led global commercial real estate services firm providing transaction, valuation, tenant representation, and capital markets advisory.",
     "website": "https://www.avisonyoung.ro",
     "founded_year": 2017,
-    "verification_level": "OFFICIAL_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "specializations": [
       "Tenant Representation",
       "Capital Markets",
@@ -2610,7 +2612,7 @@ export const realCompaniesDataset: RealCompany[] = [
     "description": "Real estate agency specializing in luxury residential sales, holiday hotel apartments, and investment management.",
     "website": "https://nordis.ro",
     "founded_year": 2008,
-    "verification_level": "OFFICIAL_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "specializations": [
       "Luxury Apartment Sales",
       "Resort Hotel Investments"
@@ -2822,7 +2824,7 @@ export const realCompaniesDataset: RealCompany[] = [
     "description": "General contractor operating in Central Romania, specializing in residential complexes and hotel developments in Brașov and Poiana Brașov.",
     "website": "https://avisconstruct.ro",
     "founded_year": 2005,
-    "verification_level": "OFFICIAL_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "specializations": [
       "Brașov Residential Communities",
       "Hotel Construction"
@@ -3155,7 +3157,7 @@ export const realCompaniesDataset: RealCompany[] = [
     "description": "Civil infrastructure contractor executing road rehabilitation, bridge structures, and municipal utility works.",
     "website": "https://alpenside.ro",
     "founded_year": 2008,
-    "verification_level": "OFFICIAL_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "specializations": [
       "Road Infrastructure Contracting",
       "Bridge Construction"
@@ -4539,7 +4541,8 @@ export const realCompaniesDataset: RealCompany[] = [
       "Green Homes Certification"
     ],
     "is_featured": true,
-    "verification_level": "OFFICIAL_VERIFIED",
+    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "cui": "22767862",
     "verification_status": "VERIFIED",
     "completeness_score": 96,
     "projects_count": 14,
@@ -4642,7 +4645,7 @@ export const realCompaniesDataset: RealCompany[] = [
       "Green Homes Certified"
     ],
     "is_featured": true,
-    "verification_level": "OFFICIAL_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "verification_status": "VERIFIED",
     "completeness_score": 96,
     "projects_count": 8,
@@ -4844,7 +4847,7 @@ export const realCompaniesDataset: RealCompany[] = [
       "WELL Platinum"
     ],
     "is_featured": true,
-    "verification_level": "OFFICIAL_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "verification_status": "VERIFIED",
     "completeness_score": 96,
     "projects_count": 6,
@@ -5401,7 +5404,7 @@ export const realCompaniesDataset: RealCompany[] = [
       "Green Homes Certification"
     ],
     "is_featured": true,
-    "verification_level": "OFFICIAL_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "verification_status": "VERIFIED",
     "completeness_score": 95,
     "projects_count": 12,
@@ -5586,7 +5589,7 @@ export const realCompaniesDataset: RealCompany[] = [
       "ISO 9001 Quality Management"
     ],
     "is_featured": true,
-    "verification_level": "OFFICIAL_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "verification_status": "VERIFIED",
     "completeness_score": 94,
     "projects_count": 8,
@@ -5680,7 +5683,7 @@ export const realCompaniesDataset: RealCompany[] = [
       "WELL Platinum"
     ],
     "is_featured": true,
-    "verification_level": "OFFICIAL_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "verification_status": "VERIFIED",
     "completeness_score": 95,
     "projects_count": 7,
@@ -5865,7 +5868,7 @@ export const realCompaniesDataset: RealCompany[] = [
       "BREEAM In-Use Excellent"
     ],
     "is_featured": true,
-    "verification_level": "OFFICIAL_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "verification_status": "VERIFIED",
     "completeness_score": 96,
     "projects_count": 16,
@@ -5965,7 +5968,7 @@ export const realCompaniesDataset: RealCompany[] = [
       "EDGE Certified"
     ],
     "is_featured": true,
-    "verification_level": "OFFICIAL_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "verification_status": "VERIFIED",
     "completeness_score": 95,
     "projects_count": 8,
@@ -6054,7 +6057,7 @@ export const realCompaniesDataset: RealCompany[] = [
       "BREEAM Excellent"
     ],
     "is_featured": true,
-    "verification_level": "OFFICIAL_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "verification_status": "VERIFIED",
     "completeness_score": 93,
     "projects_count": 4,
@@ -6234,7 +6237,7 @@ export const realCompaniesDataset: RealCompany[] = [
       "Green Homes Certified"
     ],
     "is_featured": true,
-    "verification_level": "OFFICIAL_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "verification_status": "VERIFIED",
     "completeness_score": 93,
     "projects_count": 5,
@@ -6411,7 +6414,7 @@ export const realCompaniesDataset: RealCompany[] = [
       "WELL Gold"
     ],
     "is_featured": true,
-    "verification_level": "OFFICIAL_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "verification_status": "VERIFIED",
     "completeness_score": 94,
     "projects_count": 4,
@@ -6503,7 +6506,8 @@ export const realCompaniesDataset: RealCompany[] = [
       "nZEB Standards"
     ],
     "is_featured": true,
-    "verification_level": "OFFICIAL_VERIFIED",
+    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "cui": "160243",
     "verification_status": "VERIFIED",
     "completeness_score": 95,
     "projects_count": 8,
@@ -6703,7 +6707,7 @@ export const realCompaniesDataset: RealCompany[] = [
       "BREEAM Outstanding"
     ],
     "is_featured": true,
-    "verification_level": "OFFICIAL_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "verification_status": "VERIFIED",
     "completeness_score": 95,
     "projects_count": 10,
@@ -7058,7 +7062,7 @@ export const realCompaniesDataset: RealCompany[] = [
       "Green Homes Certified"
     ],
     "is_featured": true,
-    "verification_level": "OFFICIAL_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "verification_status": "VERIFIED",
     "completeness_score": 91,
     "projects_count": 8,
@@ -7143,7 +7147,7 @@ export const realCompaniesDataset: RealCompany[] = [
       "Green Homes Certified"
     ],
     "is_featured": true,
-    "verification_level": "OFFICIAL_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "verification_status": "VERIFIED",
     "completeness_score": 91,
     "projects_count": 4,
@@ -7226,7 +7230,7 @@ export const realCompaniesDataset: RealCompany[] = [
       "nZEB Standard Development"
     ],
     "is_featured": true,
-    "verification_level": "OFFICIAL_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "verification_status": "VERIFIED",
     "completeness_score": 89,
     "projects_count": 3,
@@ -7311,7 +7315,7 @@ export const realCompaniesDataset: RealCompany[] = [
       "BREEAM Excellent"
     ],
     "is_featured": true,
-    "verification_level": "OFFICIAL_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "verification_status": "VERIFIED",
     "completeness_score": 92,
     "projects_count": 4,
@@ -7400,7 +7404,7 @@ export const realCompaniesDataset: RealCompany[] = [
       "BREEAM Excellent"
     ],
     "is_featured": true,
-    "verification_level": "OFFICIAL_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "verification_status": "VERIFIED",
     "completeness_score": 92,
     "projects_count": 7,
@@ -7485,7 +7489,7 @@ export const realCompaniesDataset: RealCompany[] = [
       "Green Homes Certified"
     ],
     "is_featured": true,
-    "verification_level": "OFFICIAL_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "verification_status": "VERIFIED",
     "completeness_score": 90,
     "projects_count": 6,
@@ -7570,7 +7574,7 @@ export const realCompaniesDataset: RealCompany[] = [
       "WELL Platinum"
     ],
     "is_featured": true,
-    "verification_level": "OFFICIAL_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "verification_status": "VERIFIED",
     "completeness_score": 91,
     "projects_count": 5,
@@ -7662,7 +7666,7 @@ export const realCompaniesDataset: RealCompany[] = [
       "BREEAM Outstanding"
     ],
     "is_featured": true,
-    "verification_level": "OFFICIAL_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "verification_status": "VERIFIED",
     "completeness_score": 95,
     "projects_count": 15,
@@ -7749,7 +7753,7 @@ export const realCompaniesDataset: RealCompany[] = [
       "BREEAM Very Good"
     ],
     "is_featured": true,
-    "verification_level": "OFFICIAL_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "verification_status": "VERIFIED",
     "completeness_score": 91,
     "projects_count": 8,
@@ -7990,7 +7994,7 @@ export const realCompaniesDataset: RealCompany[] = [
       "WELL Platinum"
     ],
     "is_featured": true,
-    "verification_level": "OFFICIAL_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "projects_count": 6,
     "active_projects_count": 1,
     "completed_projects_count": 5,
