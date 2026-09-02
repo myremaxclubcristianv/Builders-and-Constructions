@@ -618,6 +618,39 @@ export function SiteHeader() {
                   </Link>
                 </div>
               </div>
+
+              {/* ABOUT SECTION */}
+              <div>
+                <h4 className="text-[10px] font-mono uppercase tracking-widest text-[#C9A227] mb-3">
+                  ABOUT
+                </h4>
+                <div className="space-y-2">
+                  <Link
+                    href="/about/cristian-vaduva"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="p-3 bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl text-xs font-medium text-white hover:border-[#C9A227]/50 active:bg-[#111111] flex items-center justify-between min-h-[44px]"
+                  >
+                    <span>Cristian Văduva</span>
+                    <span className="text-xs text-[#C9A227]">→</span>
+                  </Link>
+                  <Link
+                    href="/about/aixluxury"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="p-3 bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl text-xs font-medium text-white hover:border-[#C9A227]/50 active:bg-[#111111] flex items-center justify-between min-h-[44px]"
+                  >
+                    <span>AiXLuxury</span>
+                    <span className="text-xs text-[#C9A227]">→</span>
+                  </Link>
+                  <Link
+                    href="/work-with-us"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="p-3 bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl text-xs font-medium text-white hover:border-[#C9A227]/50 active:bg-[#111111] flex items-center justify-between min-h-[44px]"
+                  >
+                    <span>Work With Us</span>
+                    <span className="text-xs text-[#C9A227]">→</span>
+                  </Link>
+                </div>
+              </div>
             </div>
           </div>
 
