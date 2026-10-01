@@ -1,59 +1,78 @@
-import Link from 'next/link';
+import Link from "next/link";
 
 export function SiteFooter() {
   return (
     <footer className="bg-[#050505] border-t border-[#1A1D1B] pt-12 pb-24 lg:pb-12 text-[#A0A0A0]">
       <div className="max-w-[1440px] mx-auto px-4 md:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 pb-12 border-b border-[#1A1D1B]">
-          {/* Column 1: Brand & Independent Platform Disclosure */}
-          <div className="space-y-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 pb-12 border-b border-[#1A1D1B]">
+          {/* Column 1: Brand & Platform Mission */}
+          <div className="space-y-3 sm:col-span-2 lg:col-span-1">
             <div className="flex flex-col">
               <span className="font-extrabold tracking-tight text-lg text-white">CONSTRUCTIONS</span>
               <span className="text-[10px] font-mono tracking-wider text-[#C9A227] uppercase">by AiXLuxury</span>
             </div>
             <p className="text-xs leading-relaxed text-[#888888]">
-              Independent construction-market intelligence platform for Romania&apos;s evolving built environment documenting verified developers, contractors, engineers, and architectural practices.
+              Construction Market Intelligence & Factually Verified Materials Platform for Romania&apos;s evolving built environment.
             </p>
-            <p className="text-[10px] leading-relaxed text-[#666666] pt-1">
-              CONSTRUCTIONS is an independent information platform. Inclusion does not imply representation or endorsement of indexed entities.
+            <p className="text-[10px] leading-relaxed text-[#666666] pt-1 font-mono">
+              Eurocodes, NE 012-1:2022, P100-1/2013, CR 6-2013 and Legea 10/1995 verified data framework.
             </p>
           </div>
 
-          {/* Column 2: Intelligence & Media */}
+          {/* Column 2: Construction Knowledge Base */}
           <div>
-            <h4 className="text-[10px] font-mono uppercase tracking-widest text-[#C9A227] mb-4">Intelligence & Media</h4>
+            <h4 className="text-[10px] font-mono uppercase tracking-widest text-[#C9A227] mb-4">Knowledge & Materials</h4>
             <ul className="space-y-2 text-xs">
+              <li><Link href="/knowledge" className="hover:text-white transition-colors font-semibold text-white">Knowledge Hub</Link></li>
+              <li><Link href="/knowledge/materials" className="hover:text-white transition-colors">Materials Catalog (10 Families)</Link></li>
+              <li><Link href="/knowledge/concrete" className="hover:text-white transition-colors">Concrete & Cement Engineering</Link></li>
+              <li><Link href="/knowledge/systems" className="hover:text-white transition-colors">Structural Systems & P100-1</Link></li>
+              <li><Link href="/knowledge/processes" className="hover:text-white transition-colors">15-Stage Execution Guide</Link></li>
+              <li><Link href="/knowledge/glossary" className="hover:text-white transition-colors">Construction Glossary</Link></li>
+              <li><Link href="/knowledge/standards" className="hover:text-white transition-colors">Standards & Eurocodes</Link></li>
+              <li><Link href="/knowledge/compare" className="hover:text-white transition-colors">Material Comparisons</Link></li>
+            </ul>
+          </div>
+
+          {/* Column 3: Market Discovery */}
+          <div>
+            <h4 className="text-[10px] font-mono uppercase tracking-widest text-[#C9A227] mb-4">Market Discovery</h4>
+            <ul className="space-y-2 text-xs">
+              <li><Link href="/developers" className="hover:text-white transition-colors">Real Estate Developers</Link></li>
               <li><Link href="/projects" className="hover:text-white transition-colors">Development Projects</Link></li>
-              <li><Link href="/companies" className="hover:text-white transition-colors">Corporate Companies</Link></li>
+              <li><Link href="/contractors" className="hover:text-white transition-colors">Contractors & Builders</Link></li>
+              <li><Link href="/architects" className="hover:text-white transition-colors">Architects & Planners</Link></li>
+              <li><Link href="/engineers" className="hover:text-white transition-colors">Engineering Consultants</Link></li>
+              <li><Link href="/agencies" className="hover:text-white transition-colors">Real Estate Agencies</Link></li>
               <li><Link href="/cities" className="hover:text-white transition-colors">Regional Locations</Link></li>
+            </ul>
+          </div>
+
+          {/* Column 4: Intelligence & Research */}
+          <div>
+            <h4 className="text-[10px] font-mono uppercase tracking-widest text-[#C9A227] mb-4">Intelligence & Research</h4>
+            <ul className="space-y-2 text-xs">
+              <li><Link href="/intelligence" className="hover:text-white transition-colors">Intelligence Desk</Link></li>
+              <li><Link href="/signals" className="hover:text-white transition-colors">Live Construction Signals</Link></li>
+              <li><Link href="/changes" className="hover:text-white transition-colors">Documented Changes</Link></li>
+              <li><Link href="/compare" className="hover:text-white transition-colors">Entity Comparison</Link></li>
+              <li><Link href="/watchlist" className="hover:text-white transition-colors">Market Watchlist</Link></li>
+              <li><Link href="/research-request" className="hover:text-white transition-colors">Research Request Desk</Link></li>
+              <li><Link href="/methodology" className="hover:text-white transition-colors">Provenance Methodology</Link></li>
               <li><Link href="/video" className="hover:text-[#C9A227] transition-colors font-semibold text-white">Video Desk & Shorts</Link></li>
-              <li><Link href="/rankings" className="hover:text-white transition-colors">Rankings & Leaders</Link></li>
-              <li><Link href="/coverage" className="hover:text-white transition-colors">Data Coverage Matrix</Link></li>
-              <li><Link href="/search" className="hover:text-white transition-colors">Global Search</Link></li>
             </ul>
           </div>
 
-          {/* Column 3: Institutional Research */}
+          {/* Column 5: Governance & Profiles */}
           <div>
-            <h4 className="text-[10px] font-mono uppercase tracking-widest text-[#C9A227] mb-4">Institutional Research</h4>
+            <h4 className="text-[10px] font-mono uppercase tracking-widest text-[#C9A227] mb-4">Governance & About</h4>
             <ul className="space-y-2 text-xs">
-              <li><Link href="/research-request" className="hover:text-white transition-colors">Request Institutional Research</Link></li>
-              <li><Link href="/methodology" className="hover:text-white transition-colors">Data Methodology</Link></li>
-              <li><Link href="/report-error" className="hover:text-white transition-colors">Request Profile Correction</Link></li>
-              <li><Link href="/alerts" className="hover:text-white transition-colors">Market Alerts Terminal</Link></li>
-              <li><Link href="/decisions" className="hover:text-white transition-colors">Institutional Decisions</Link></li>
-              <li><Link href="/actions" className="hover:text-white transition-colors">Private Action Queue</Link></li>
-            </ul>
-          </div>
-
-          {/* Column 4: Governance & Legal */}
-          <div>
-            <h4 className="text-[10px] font-mono uppercase tracking-widest text-[#C9A227] mb-4">Governance & Legal</h4>
-            <ul className="space-y-2 text-xs">
+              <li><Link href="/about/cristian-vaduva" className="hover:text-white transition-colors">Cristian Văduva</Link></li>
+              <li><Link href="/about/aixluxury" className="hover:text-white transition-colors">AiXLuxury Platform</Link></li>
+              <li><Link href="/work-with-us" className="hover:text-white transition-colors">Work With CONSTRUCTIONS</Link></li>
               <li><Link href="/terms" className="hover:text-white transition-colors">Terms & Conditions</Link></li>
               <li><Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link></li>
               <li><Link href="/gdpr" className="hover:text-white transition-colors">GDPR & Data Rights</Link></li>
-              <li><Link href="/work-with-us" className="hover:text-white transition-colors">Work With CONSTRUCTIONS</Link></li>
               <li className="pt-2">
                 <a href="https://aixluxury.com" target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 text-[11px] hover:text-white transition-colors">
                   <span>aixluxury.com</span>
@@ -64,16 +83,13 @@ export function SiteFooter() {
           </div>
         </div>
 
-        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between text-[11px] text-[#888888] gap-4">
+        {/* Bottom Legal Copyright Bar */}
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-[#666666]">
           <p>© {new Date().getFullYear()} CONSTRUCTIONS by AiXLuxury. All rights reserved.</p>
-          <div className="flex gap-4">
-            <Link href="/methodology" className="hover:text-[#C9A227] transition-colors">Data Methodology</Link>
-            <span>·</span>
-            <Link href="/report-error" className="hover:text-[#C9A227] transition-colors">Request Correction</Link>
-            <span>·</span>
-            <Link href="/terms" className="hover:text-[#C9A227] transition-colors">Terms</Link>
-            <span>·</span>
-            <Link href="/privacy" className="hover:text-[#C9A227] transition-colors">Privacy</Link>
+          <div className="flex items-center gap-4 text-[11px]">
+            <span>BUCHAREST, ROMANIA</span>
+            <span>•</span>
+            <span className="text-[#C9A227]">TIER 1 PROVENANCE DATA</span>
           </div>
         </div>
       </div>

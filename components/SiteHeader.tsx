@@ -1,8 +1,8 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import React, { useState, useEffect, useRef } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export function SiteHeader() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -19,8 +19,8 @@ export function SiteHeader() {
         setScrolled(false);
       }
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   useEffect(() => {
@@ -30,9 +30,9 @@ export function SiteHeader() {
 
   useEffect(() => {
     if (mobileMenuOpen) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = '';
+      document.body.style.overflow = "";
     }
   }, [mobileMenuOpen]);
 
@@ -43,20 +43,20 @@ export function SiteHeader() {
         setActiveDropdown(null);
       }
     };
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
   // Keyboard accessibility: Close on Escape
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
+      if (e.key === "Escape") {
         setActiveDropdown(null);
         setMobileMenuOpen(false);
       }
     };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
 
   const closeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -86,8 +86,8 @@ export function SiteHeader() {
         ref={headerRef}
         className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 pt-[env(safe-area-inset-top)] ${
           scrolled
-            ? 'bg-[#050505]/95 backdrop-blur-md border-b border-[#1A1D1B] py-3'
-            : 'bg-gradient-to-b from-[#050505]/90 via-[#050505]/60 to-transparent py-4'
+            ? "bg-[#050505]/95 backdrop-blur-md border-b border-[#1A1D1B] py-3"
+            : "bg-gradient-to-b from-[#050505]/90 via-[#050505]/60 to-transparent py-4"
         }`}
       >
         <div className="max-w-[1440px] mx-auto px-4 md:px-8 flex items-center justify-between">
@@ -108,30 +108,30 @@ export function SiteHeader() {
             {/* DISCOVER DROPDOWN */}
             <div
               className="relative py-2"
-              onMouseEnter={() => handleMouseEnter('discover')}
+              onMouseEnter={() => handleMouseEnter("discover")}
               onMouseLeave={handleMouseLeave}
             >
               <button
-                onClick={() => toggleDropdown('discover')}
-                aria-expanded={activeDropdown === 'discover'}
+                onClick={() => toggleDropdown("discover")}
+                aria-expanded={activeDropdown === "discover"}
                 aria-haspopup="true"
                 className={`flex items-center gap-1 hover:text-[#C9A227] transition-colors cursor-pointer py-1 ${
-                  pathname.startsWith('/developers') ||
-                  pathname.startsWith('/projects') ||
-                  pathname.startsWith('/contractors') ||
-                  pathname.startsWith('/architects') ||
-                  pathname.startsWith('/engineers') ||
-                  pathname.startsWith('/agencies') ||
-                  pathname.startsWith('/cities') ||
-                  pathname.startsWith('/companies')
-                    ? 'text-[#C9A227] font-bold border-b border-[#C9A227] pb-0.5'
-                    : ''
+                  pathname.startsWith("/developers") ||
+                  pathname.startsWith("/projects") ||
+                  pathname.startsWith("/contractors") ||
+                  pathname.startsWith("/architects") ||
+                  pathname.startsWith("/engineers") ||
+                  pathname.startsWith("/agencies") ||
+                  pathname.startsWith("/cities") ||
+                  pathname.startsWith("/companies")
+                    ? "text-[#C9A227] font-bold border-b border-[#C9A227] pb-0.5"
+                    : ""
                 }`}
               >
                 <span>DISCOVER</span>
                 <svg
                   className={`w-3.5 h-3.5 transition-transform duration-200 ${
-                    activeDropdown === 'discover' ? 'rotate-180 text-[#C9A227]' : ''
+                    activeDropdown === "discover" ? "rotate-180 text-[#C9A227]" : ""
                   }`}
                   fill="none"
                   viewBox="0 0 24 24"
@@ -141,10 +141,10 @@ export function SiteHeader() {
                 </svg>
               </button>
 
-              {activeDropdown === 'discover' && (
+              {activeDropdown === "discover" && (
                 <div
                   className="absolute left-0 top-full pt-1 w-72 z-50"
-                  onMouseEnter={() => handleMouseEnter('discover')}
+                  onMouseEnter={() => handleMouseEnter("discover")}
                   onMouseLeave={handleMouseLeave}
                 >
                   <div className="bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl shadow-2xl p-4 space-y-2 animate-fadeIn">
@@ -207,33 +207,29 @@ export function SiteHeader() {
               )}
             </div>
 
-            {/* INTELLIGENCE DROPDOWN */}
+            {/* KNOWLEDGE DROPDOWN (NEW) */}
             <div
               className="relative py-2"
-              onMouseEnter={() => handleMouseEnter('intelligence')}
+              onMouseEnter={() => handleMouseEnter("knowledge")}
               onMouseLeave={handleMouseLeave}
             >
               <button
-                onClick={() => toggleDropdown('intelligence')}
-                aria-expanded={activeDropdown === 'intelligence'}
+                onClick={() => toggleDropdown("knowledge")}
+                aria-expanded={activeDropdown === "knowledge"}
                 aria-haspopup="true"
                 className={`flex items-center gap-1 hover:text-[#C9A227] transition-colors cursor-pointer py-1 ${
-                  pathname === '/intelligence' ||
-                  pathname === '/market' ||
-                  pathname === '/changes' ||
-                  pathname === '/search' ||
-                  pathname === '/watchlist' ||
-                  pathname === '/network' ||
-                  pathname === '/coverage' ||
-                  pathname === '/compare'
-                    ? 'text-[#C9A227] font-bold border-b border-[#C9A227] pb-0.5'
-                    : ''
+                  pathname.startsWith("/knowledge")
+                    ? "text-[#C9A227] font-bold border-b border-[#C9A227] pb-0.5"
+                    : ""
                 }`}
               >
-                <span>INTELLIGENCE</span>
+                <span>KNOWLEDGE</span>
+                <span className="px-1.5 py-0.2 text-[9px] bg-[#C9A227]/20 text-[#C9A227] rounded font-mono font-bold">
+                  NEW
+                </span>
                 <svg
                   className={`w-3.5 h-3.5 transition-transform duration-200 ${
-                    activeDropdown === 'intelligence' ? 'rotate-180 text-[#C9A227]' : ''
+                    activeDropdown === "knowledge" ? "rotate-180 text-[#C9A227]" : ""
                   }`}
                   fill="none"
                   viewBox="0 0 24 24"
@@ -243,28 +239,136 @@ export function SiteHeader() {
                 </svg>
               </button>
 
-              {activeDropdown === 'intelligence' && (
+              {activeDropdown === "knowledge" && (
                 <div
-                  className="absolute left-0 top-full pt-1 w-72 z-50"
-                  onMouseEnter={() => handleMouseEnter('intelligence')}
+                  className="absolute left-0 top-full pt-1 w-80 z-50"
+                  onMouseEnter={() => handleMouseEnter("knowledge")}
                   onMouseLeave={handleMouseLeave}
                 >
                   <div className="bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl shadow-2xl p-4 space-y-2 animate-fadeIn">
                     <span className="text-[10px] font-mono uppercase tracking-widest text-[#C9A227] block mb-2">
-                      ANALYTICAL TERMINALS
+                      TECHNICAL KNOWLEDGE & MATERIALS
+                    </span>
+                    <div className="space-y-1 text-xs">
+                      <Link
+                        href="/knowledge"
+                        className="block p-2 hover:bg-[#151515] rounded text-white hover:text-[#C9A227] transition-colors font-bold flex items-center justify-between"
+                      >
+                        <span>Knowledge Hub Overview</span>
+                        <span className="text-[10px] font-mono text-[#C9A227]">INDEX</span>
+                      </Link>
+                      <Link
+                        href="/knowledge/materials"
+                        className="block p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors flex items-center justify-between"
+                      >
+                        <span>Construction Materials Catalog</span>
+                        <span className="text-[10px] font-mono text-[#888888]">10 FAMILIES</span>
+                      </Link>
+                      <Link
+                        href="/knowledge/concrete"
+                        className="block p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors flex items-center justify-between"
+                      >
+                        <span>Concrete & Cement Engineering</span>
+                        <span className="text-[10px] font-mono text-[#10B981]">SR EN 206</span>
+                      </Link>
+                      <Link
+                        href="/knowledge/systems"
+                        className="block p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors flex items-center justify-between"
+                      >
+                        <span>Structural Systems & P100-1</span>
+                        <span className="text-[10px] font-mono text-[#888888]">EUROCODES</span>
+                      </Link>
+                      <Link
+                        href="/knowledge/processes"
+                        className="block p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors flex items-center justify-between"
+                      >
+                        <span>15-Stage Execution Lifecycle</span>
+                        <span className="text-[10px] font-mono text-[#888888]">PVLA / CARTE</span>
+                      </Link>
+                      <Link
+                        href="/knowledge/glossary"
+                        className="block p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors flex items-center justify-between"
+                      >
+                        <span>Technical Glossary (POT, CUT, U)</span>
+                        <span className="text-[10px] font-mono text-[#888888]">50+ TERMS</span>
+                      </Link>
+                      <Link
+                        href="/knowledge/standards"
+                        className="block p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors flex items-center justify-between"
+                      >
+                        <span>Standards & Normatives Registry</span>
+                        <span className="text-[10px] font-mono text-[#888888]">TIER 1 / 2</span>
+                      </Link>
+                      <Link
+                        href="/knowledge/compare"
+                        className="block p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors flex items-center justify-between border-t border-[#1A1D1B] pt-2"
+                      >
+                        <span>Material Comparison Matrix</span>
+                        <span className="text-[10px] font-mono text-[#C9A227]">WORKSTATION</span>
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* INTELLIGENCE DROPDOWN */}
+            <div
+              className="relative py-2"
+              onMouseEnter={() => handleMouseEnter("intelligence")}
+              onMouseLeave={handleMouseLeave}
+            >
+              <button
+                onClick={() => toggleDropdown("intelligence")}
+                aria-expanded={activeDropdown === "intelligence"}
+                aria-haspopup="true"
+                className={`flex items-center gap-1 hover:text-[#C9A227] transition-colors cursor-pointer py-1 ${
+                  pathname.startsWith("/intelligence") ||
+                  pathname.startsWith("/signals") ||
+                  pathname.startsWith("/changes") ||
+                  pathname.startsWith("/compare") ||
+                  pathname.startsWith("/network") ||
+                  pathname.startsWith("/coverage") ||
+                  pathname.startsWith("/watchlist")
+                    ? "text-[#C9A227] font-bold border-b border-[#C9A227] pb-0.5"
+                    : ""
+                }`}
+              >
+                <span>INTELLIGENCE</span>
+                <svg
+                  className={`w-3.5 h-3.5 transition-transform duration-200 ${
+                    activeDropdown === "intelligence" ? "rotate-180 text-[#C9A227]" : ""
+                  }`}
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+
+              {activeDropdown === "intelligence" && (
+                <div
+                  className="absolute left-0 top-full pt-1 w-72 z-50"
+                  onMouseEnter={() => handleMouseEnter("intelligence")}
+                  onMouseLeave={handleMouseLeave}
+                >
+                  <div className="bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl shadow-2xl p-4 space-y-2 animate-fadeIn">
+                    <span className="text-[10px] font-mono uppercase tracking-widest text-[#C9A227] block mb-2">
+                      MARKET RADAR & ANALYTICS
                     </span>
                     <div className="space-y-1 text-xs">
                       <Link
                         href="/intelligence"
-                        className="block p-2 hover:bg-[#151515] rounded text-[#C9A227] hover:text-[#C9A227] transition-colors font-bold"
+                        className="block p-2 hover:bg-[#151515] rounded text-white hover:text-[#C9A227] transition-colors font-bold"
                       >
-                        Market Intelligence Command Center
+                        Market Intelligence Desk
                       </Link>
                       <Link
-                        href="/market"
+                        href="/signals"
                         className="block p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors"
                       >
-                        Market Dashboard
+                        Live Construction Signals
                       </Link>
                       <Link
                         href="/changes"
@@ -311,25 +415,25 @@ export function SiteHeader() {
             {/* RESEARCH DROPDOWN */}
             <div
               className="relative py-2"
-              onMouseEnter={() => handleMouseEnter('research')}
+              onMouseEnter={() => handleMouseEnter("research")}
               onMouseLeave={handleMouseLeave}
             >
               <button
-                onClick={() => toggleDropdown('research')}
-                aria-expanded={activeDropdown === 'research'}
+                onClick={() => toggleDropdown("research")}
+                aria-expanded={activeDropdown === "research"}
                 aria-haspopup="true"
                 className={`flex items-center gap-1 hover:text-[#C9A227] transition-colors cursor-pointer py-1 ${
-                  pathname === '/research-request' ||
-                  pathname === '/methodology' ||
-                  pathname === '/report-error'
-                    ? 'text-[#C9A227] font-bold border-b border-[#C9A227] pb-0.5'
-                    : ''
+                  pathname === "/research-request" ||
+                  pathname === "/methodology" ||
+                  pathname === "/report-error"
+                    ? "text-[#C9A227] font-bold border-b border-[#C9A227] pb-0.5"
+                    : ""
                 }`}
               >
                 <span>RESEARCH</span>
                 <svg
                   className={`w-3.5 h-3.5 transition-transform duration-200 ${
-                    activeDropdown === 'research' ? 'rotate-180 text-[#C9A227]' : ''
+                    activeDropdown === "research" ? "rotate-180 text-[#C9A227]" : ""
                   }`}
                   fill="none"
                   viewBox="0 0 24 24"
@@ -339,10 +443,10 @@ export function SiteHeader() {
                 </svg>
               </button>
 
-              {activeDropdown === 'research' && (
+              {activeDropdown === "research" && (
                 <div
                   className="absolute left-0 top-full pt-1 w-72 z-50"
-                  onMouseEnter={() => handleMouseEnter('research')}
+                  onMouseEnter={() => handleMouseEnter("research")}
                   onMouseLeave={handleMouseLeave}
                 >
                   <div className="bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl shadow-2xl p-4 space-y-2 animate-fadeIn">
@@ -378,7 +482,7 @@ export function SiteHeader() {
             <Link
               href="/video"
               className={`hover:text-[#C9A227] transition-colors py-1 ${
-                pathname === '/video' ? 'text-[#C9A227] font-bold border-b border-[#C9A227] pb-0.5' : ''
+                pathname === "/video" ? "text-[#C9A227] font-bold border-b border-[#C9A227] pb-0.5" : ""
               }`}
             >
               MEDIA
@@ -387,25 +491,25 @@ export function SiteHeader() {
             {/* ABOUT DROPDOWN */}
             <div
               className="relative py-2"
-              onMouseEnter={() => handleMouseEnter('about')}
+              onMouseEnter={() => handleMouseEnter("about")}
               onMouseLeave={handleMouseLeave}
             >
               <button
-                onClick={() => toggleDropdown('about')}
-                aria-expanded={activeDropdown === 'about'}
+                onClick={() => toggleDropdown("about")}
+                aria-expanded={activeDropdown === "about"}
                 aria-haspopup="true"
                 className={`flex items-center gap-1 hover:text-[#C9A227] transition-colors cursor-pointer py-1 ${
-                  pathname === '/about/cristian-vaduva' ||
-                  pathname === '/about/aixluxury' ||
-                  pathname === '/work-with-us'
-                    ? 'text-[#C9A227] font-bold border-b border-[#C9A227] pb-0.5'
-                    : ''
+                  pathname === "/about/cristian-vaduva" ||
+                  pathname === "/about/aixluxury" ||
+                  pathname === "/work-with-us"
+                    ? "text-[#C9A227] font-bold border-b border-[#C9A227] pb-0.5"
+                    : ""
                 }`}
               >
                 <span>ABOUT</span>
                 <svg
                   className={`w-3.5 h-3.5 transition-transform duration-200 ${
-                    activeDropdown === 'about' ? 'rotate-180 text-[#C9A227]' : ''
+                    activeDropdown === "about" ? "rotate-180 text-[#C9A227]" : ""
                   }`}
                   fill="none"
                   viewBox="0 0 24 24"
@@ -415,10 +519,10 @@ export function SiteHeader() {
                 </svg>
               </button>
 
-              {activeDropdown === 'about' && (
+              {activeDropdown === "about" && (
                 <div
                   className="absolute left-0 top-full pt-1 w-72 z-50"
-                  onMouseEnter={() => handleMouseEnter('about')}
+                  onMouseEnter={() => handleMouseEnter("about")}
                   onMouseLeave={handleMouseLeave}
                 >
                   <div className="bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl shadow-2xl p-4 space-y-2 animate-fadeIn">
@@ -451,31 +555,33 @@ export function SiteHeader() {
             </div>
           </nav>
 
-          {/* Desktop Right CTA */}
-          <div className="hidden lg:flex items-center gap-4">
+          {/* Action CTAs: Search & Watchlist */}
+          <div className="hidden lg:flex items-center gap-3">
             <Link
               href="/search"
-              aria-label="Search Database"
+              aria-label="Search"
               className="p-2 text-[#888888] hover:text-[#C9A227] transition-colors"
             >
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
               </svg>
             </Link>
+
             <Link
-              href="/research-request"
-              className="px-4 py-2 border border-[#C9A227]/50 text-[#C9A227] hover:bg-[#C9A227] hover:text-[#050505] transition-all rounded-lg text-xs font-mono font-bold tracking-wider uppercase active:scale-95"
+              href="/watchlist"
+              className="px-3 py-1.5 bg-[#111111] hover:bg-[#1A1A1A] border border-[#1A1D1B] hover:border-[#C9A227]/40 text-[#C5C5C5] hover:text-[#C9A227] text-xs font-mono rounded-lg transition-all flex items-center gap-1.5"
             >
-              REQUEST RESEARCH
+              <span>★</span>
+              <span>WATCHLIST</span>
             </Link>
           </div>
 
-          {/* Mobile Right Actions */}
-          <div className="flex lg:hidden items-center gap-3">
+          {/* Mobile Menu Toggle Button (≥44px target) */}
+          <div className="flex items-center gap-2 lg:hidden">
             <Link
               href="/search"
               aria-label="Search"
-              className="w-11 h-11 flex items-center justify-center rounded-lg bg-[#111111] border border-[#1A1D1B] text-[#C9A227] active:scale-95 transition-transform"
+              className="w-11 h-11 flex items-center justify-center text-[#C5C5C5] active:text-[#C9A227] transition-colors"
             >
               <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -484,53 +590,138 @@ export function SiteHeader() {
 
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              aria-label="Toggle navigation drawer"
-              className="w-11 h-11 flex items-center justify-center rounded-lg bg-[#111111] border border-[#1A1D1B] text-white active:scale-95 transition-transform"
+              aria-label="Toggle mobile menu"
+              className="w-11 h-11 flex items-center justify-center rounded-lg bg-[#111111] border border-[#1A1D1B] text-[#C9A227] active:scale-95 transition-transform"
             >
-              {mobileMenuOpen ? (
-                <svg className="w-6 h-6 text-[#C9A227]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                {mobileMenuOpen ? (
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              ) : (
-                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                ) : (
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-              )}
+                )}
+              </svg>
             </button>
           </div>
         </div>
       </header>
 
-      {/* Full-Screen Mobile Drawer */}
+      {/* Mobile Drawer (100% Mobile Parity with all sections) */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 z-50 bg-[#050505] flex flex-col justify-between p-6 pt-[calc(1.5rem+env(safe-area-inset-top))] overflow-y-auto animate-fadeIn">
-          <div>
-            <div className="flex items-center justify-between pb-6 border-b border-[#1A1D1B]">
-              <Link href="/" onClick={() => setMobileMenuOpen(false)}>
-                <span className="font-extrabold tracking-tight text-xl text-white">CONSTRUCTIONS</span>
-                <span className="block text-[10px] font-mono text-[#A0A0A0]">by AiXLuxury</span>
+        <div className="fixed inset-0 z-50 lg:hidden flex">
+          {/* Backdrop */}
+          <div
+            className="fixed inset-0 bg-black/80 backdrop-blur-sm animate-fadeIn"
+            onClick={() => setMobileMenuOpen(false)}
+          />
+
+          {/* Drawer Panel */}
+          <div className="relative w-full max-w-[340px] sm:max-w-[380px] bg-[#070807] border-r border-[#1A1D1B] h-full flex flex-col z-10 overflow-y-auto animate-slideRight">
+            {/* Header in Drawer */}
+            <div className="p-4 border-b border-[#1A1D1B] flex items-center justify-between sticky top-0 bg-[#070807]/95 backdrop-blur z-20">
+              <Link href="/" onClick={() => setMobileMenuOpen(false)} className="flex flex-col">
+                <span className="font-extrabold text-base text-white">CONSTRUCTIONS</span>
+                <span className="text-[9px] font-mono text-[#C9A227]">by AiXLuxury</span>
               </Link>
               <button
                 onClick={() => setMobileMenuOpen(false)}
-                className="w-11 h-11 flex items-center justify-center rounded-lg bg-[#111111] border border-[#1A1D1B] text-[#C9A227]"
+                className="w-11 h-11 flex items-center justify-center rounded-lg bg-[#111111] border border-[#1A1D1B] text-[#C9A227] active:scale-95"
               >
-                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
             </div>
 
-            <div className="py-6 space-y-6">
-              {/* DISCOVER SECTION */}
-              <div>
-                <h4 className="text-[10px] font-mono uppercase tracking-widest text-[#C9A227] mb-3">
+            {/* Scrollable Navigation List */}
+            <div className="p-4 space-y-6 pb-28">
+              {/* 1. CONSTRUCTION KNOWLEDGE BASE (NEW) */}
+              <div className="space-y-2">
+                <div className="flex items-center justify-between">
+                  <h4 className="text-[10px] font-mono uppercase tracking-widest text-[#C9A227]">
+                    CONSTRUCTION KNOWLEDGE BASE
+                  </h4>
+                  <span className="text-[9px] font-mono bg-[#C9A227]/20 text-[#C9A227] px-1.5 py-0.5 rounded">
+                    EXPANDED
+                  </span>
+                </div>
+                <div className="space-y-1.5">
+                  <Link
+                    href="/knowledge"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="p-3 bg-[#0E0F0E] border border-[#C9A227]/40 rounded-xl text-xs font-bold text-[#C9A227] flex items-center justify-between min-h-[44px]"
+                  >
+                    <span>Knowledge Hub Main</span>
+                    <span>→</span>
+                  </Link>
+                  <Link
+                    href="/knowledge/materials"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="p-3 bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl text-xs font-medium text-white flex items-center justify-between min-h-[44px]"
+                  >
+                    <span>Materials Catalog (10 Families)</span>
+                    <span className="text-[10px] font-mono text-[#888888]">SPECS</span>
+                  </Link>
+                  <Link
+                    href="/knowledge/concrete"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="p-3 bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl text-xs font-medium text-white flex items-center justify-between min-h-[44px]"
+                  >
+                    <span>Concrete & Cement Technology</span>
+                    <span className="text-[10px] font-mono text-[#10B981]">SR EN 206</span>
+                  </Link>
+                  <Link
+                    href="/knowledge/systems"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="p-3 bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl text-xs font-medium text-white flex items-center justify-between min-h-[44px]"
+                  >
+                    <span>Structural Systems & P100-1</span>
+                    <span className="text-[10px] font-mono text-[#888888]">SEISMIC</span>
+                  </Link>
+                  <Link
+                    href="/knowledge/processes"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="p-3 bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl text-xs font-medium text-white flex items-center justify-between min-h-[44px]"
+                  >
+                    <span>15-Stage Execution Lifecycle</span>
+                    <span className="text-[10px] font-mono text-[#888888]">PVLA</span>
+                  </Link>
+                  <Link
+                    href="/knowledge/glossary"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="p-3 bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl text-xs font-medium text-white flex items-center justify-between min-h-[44px]"
+                  >
+                    <span>Glossary (POT, CUT, U-value)</span>
+                    <span className="text-[10px] font-mono text-[#888888]">TERMS</span>
+                  </Link>
+                  <Link
+                    href="/knowledge/standards"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="p-3 bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl text-xs font-medium text-white flex items-center justify-between min-h-[44px]"
+                  >
+                    <span>Standards & Eurocodes Registry</span>
+                    <span className="text-[10px] font-mono text-[#888888]">NORMS</span>
+                  </Link>
+                  <Link
+                    href="/knowledge/compare"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="p-3 bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl text-xs font-medium text-white flex items-center justify-between min-h-[44px]"
+                  >
+                    <span>Material Comparison Matrix</span>
+                    <span className="text-[10px] font-mono text-[#C9A227]">MATRIX</span>
+                  </Link>
+                </div>
+              </div>
+
+              {/* 2. DISCOVER SECTION */}
+              <div className="space-y-2">
+                <h4 className="text-[10px] font-mono uppercase tracking-widest text-[#C9A227]">
                   DISCOVER MARKET TAXONOMY
                 </h4>
                 <div className="grid grid-cols-2 gap-2">
                   <Link
                     href="/developers"
                     onClick={() => setMobileMenuOpen(false)}
-                    className="p-3 bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl text-xs font-medium text-white hover:border-[#C9A227]/50 active:bg-[#111111] flex items-center justify-between min-h-[44px]"
+                    className="p-3 bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl text-xs font-medium text-white flex items-center justify-between min-h-[44px]"
                   >
                     <span>Developers</span>
                     <span className="text-[10px] font-mono text-[#C9A227]">50</span>
@@ -538,7 +729,7 @@ export function SiteHeader() {
                   <Link
                     href="/projects"
                     onClick={() => setMobileMenuOpen(false)}
-                    className="p-3 bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl text-xs font-medium text-white hover:border-[#C9A227]/50 active:bg-[#111111] flex items-center justify-between min-h-[44px]"
+                    className="p-3 bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl text-xs font-medium text-white flex items-center justify-between min-h-[44px]"
                   >
                     <span>Projects</span>
                     <span className="text-[10px] font-mono text-[#C9A227]">76</span>
@@ -546,7 +737,7 @@ export function SiteHeader() {
                   <Link
                     href="/contractors"
                     onClick={() => setMobileMenuOpen(false)}
-                    className="p-3 bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl text-xs font-medium text-white hover:border-[#C9A227]/50 active:bg-[#111111] flex items-center justify-between min-h-[44px]"
+                    className="p-3 bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl text-xs font-medium text-white flex items-center justify-between min-h-[44px]"
                   >
                     <span>Contractors</span>
                     <span className="text-[10px] font-mono text-[#C9A227]">30</span>
@@ -554,7 +745,7 @@ export function SiteHeader() {
                   <Link
                     href="/architects"
                     onClick={() => setMobileMenuOpen(false)}
-                    className="p-3 bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl text-xs font-medium text-white hover:border-[#C9A227]/50 active:bg-[#111111] flex items-center justify-between min-h-[44px]"
+                    className="p-3 bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl text-xs font-medium text-white flex items-center justify-between min-h-[44px]"
                   >
                     <span>Architects</span>
                     <span className="text-[10px] font-mono text-[#C9A227]">21</span>
@@ -562,7 +753,7 @@ export function SiteHeader() {
                   <Link
                     href="/engineers"
                     onClick={() => setMobileMenuOpen(false)}
-                    className="p-3 bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl text-xs font-medium text-white hover:border-[#C9A227]/50 active:bg-[#111111] flex items-center justify-between min-h-[44px]"
+                    className="p-3 bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl text-xs font-medium text-white flex items-center justify-between min-h-[44px]"
                   >
                     <span>Engineers</span>
                     <span className="text-[10px] font-mono text-[#C9A227]">25</span>
@@ -570,81 +761,105 @@ export function SiteHeader() {
                   <Link
                     href="/agencies"
                     onClick={() => setMobileMenuOpen(false)}
-                    className="p-3 bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl text-xs font-medium text-white hover:border-[#C9A227]/50 active:bg-[#111111] flex items-center justify-between min-h-[44px]"
+                    className="p-3 bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl text-xs font-medium text-white flex items-center justify-between min-h-[44px]"
                   >
                     <span>Agencies</span>
                     <span className="text-[10px] font-mono text-[#C9A227]">20</span>
                   </Link>
                 </div>
+                <Link
+                  href="/cities"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="p-3 bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl text-xs font-medium text-white flex items-center justify-between min-h-[44px] block"
+                >
+                  <span>Geographic Locations & Cities</span>
+                  <span className="text-[10px] font-mono text-[#C9A227]">36 REGIONS</span>
+                </Link>
               </div>
 
-              {/* INTELLIGENCE SECTION */}
-              <div>
-                <h4 className="text-[10px] font-mono uppercase tracking-widest text-[#C9A227] mb-3">
+              {/* 3. INTELLIGENCE SECTION */}
+              <div className="space-y-2">
+                <h4 className="text-[10px] font-mono uppercase tracking-widest text-[#C9A227]">
                   INTELLIGENCE & RESEARCH
                 </h4>
-                <div className="space-y-2">
+                <div className="space-y-1.5">
                   <Link
                     href="/intelligence"
                     onClick={() => setMobileMenuOpen(false)}
-                    className="p-3 bg-[#0B0B0B] border border-[#C9A227]/40 rounded-xl text-xs font-semibold text-[#C9A227] hover:border-[#C9A227] active:bg-[#111111] flex items-center justify-between min-h-[44px]"
+                    className="p-3 bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl text-xs font-medium text-white flex items-center justify-between min-h-[44px]"
                   >
                     <span>Market Intelligence Command Center</span>
                     <span className="text-xs text-[#C9A227]">→</span>
                   </Link>
                   <Link
-                    href="/search"
+                    href="/signals"
                     onClick={() => setMobileMenuOpen(false)}
-                    className="p-3 bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl text-xs font-medium text-white hover:border-[#C9A227]/50 active:bg-[#111111] flex items-center justify-between min-h-[44px]"
+                    className="p-3 bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl text-xs font-medium text-white flex items-center justify-between min-h-[44px]"
                   >
-                    <span>Institutional Search Terminal</span>
+                    <span>Live Signals Radar</span>
                     <span className="text-xs text-[#C9A227]">→</span>
                   </Link>
                   <Link
-                    href="/network"
+                    href="/changes"
                     onClick={() => setMobileMenuOpen(false)}
-                    className="p-3 bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl text-xs font-medium text-white hover:border-[#C9A227]/50 active:bg-[#111111] flex items-center justify-between min-h-[44px]"
+                    className="p-3 bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl text-xs font-medium text-white flex items-center justify-between min-h-[44px]"
                   >
-                    <span>Discovery Network Graph</span>
+                    <span>Documented Market Changes</span>
                     <span className="text-xs text-[#C9A227]">→</span>
                   </Link>
                   <Link
-                    href="/video"
+                    href="/compare"
                     onClick={() => setMobileMenuOpen(false)}
-                    className="p-3 bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl text-xs font-medium text-white hover:border-[#C9A227]/50 active:bg-[#111111] flex items-center justify-between min-h-[44px]"
+                    className="p-3 bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl text-xs font-medium text-white flex items-center justify-between min-h-[44px]"
                   >
-                    <span>Video Desk & Shorts</span>
+                    <span>Entity Comparison Workstation</span>
+                    <span className="text-xs text-[#C9A227]">→</span>
+                  </Link>
+                  <Link
+                    href="/watchlist"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="p-3 bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl text-xs font-medium text-[#C9A227] flex items-center justify-between min-h-[44px]"
+                  >
+                    <span>★ My Watchlist</span>
                     <span className="text-xs text-[#C9A227]">→</span>
                   </Link>
                 </div>
               </div>
 
-              {/* ABOUT SECTION */}
-              <div>
-                <h4 className="text-[10px] font-mono uppercase tracking-widest text-[#C9A227] mb-3">
-                  ABOUT
+              {/* 4. RESEARCH & PROFILES */}
+              <div className="space-y-2">
+                <h4 className="text-[10px] font-mono uppercase tracking-widest text-[#C9A227]">
+                  RESEARCH & INSTITUTIONAL
                 </h4>
-                <div className="space-y-2">
+                <div className="space-y-1.5">
+                  <Link
+                    href="/research-request"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="p-3 bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl text-xs font-medium text-white flex items-center justify-between min-h-[44px]"
+                  >
+                    <span>Research Request Desk</span>
+                    <span className="text-xs text-[#C9A227]">→</span>
+                  </Link>
                   <Link
                     href="/about/cristian-vaduva"
                     onClick={() => setMobileMenuOpen(false)}
-                    className="p-3 bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl text-xs font-medium text-white hover:border-[#C9A227]/50 active:bg-[#111111] flex items-center justify-between min-h-[44px]"
+                    className="p-3 bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl text-xs font-medium text-white flex items-center justify-between min-h-[44px]"
                   >
-                    <span>Cristian Văduva</span>
+                    <span>About Cristian Văduva</span>
                     <span className="text-xs text-[#C9A227]">→</span>
                   </Link>
                   <Link
                     href="/about/aixluxury"
                     onClick={() => setMobileMenuOpen(false)}
-                    className="p-3 bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl text-xs font-medium text-white hover:border-[#C9A227]/50 active:bg-[#111111] flex items-center justify-between min-h-[44px]"
+                    className="p-3 bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl text-xs font-medium text-white flex items-center justify-between min-h-[44px]"
                   >
-                    <span>AiXLuxury</span>
+                    <span>About AiXLuxury</span>
                     <span className="text-xs text-[#C9A227]">→</span>
                   </Link>
                   <Link
                     href="/work-with-us"
                     onClick={() => setMobileMenuOpen(false)}
-                    className="p-3 bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl text-xs font-medium text-white hover:border-[#C9A227]/50 active:bg-[#111111] flex items-center justify-between min-h-[44px]"
+                    className="p-3 bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl text-xs font-medium text-white flex items-center justify-between min-h-[44px]"
                   >
                     <span>Work With Us</span>
                     <span className="text-xs text-[#C9A227]">→</span>
@@ -653,29 +868,16 @@ export function SiteHeader() {
               </div>
             </div>
           </div>
-
-          <div className="pt-4 border-t border-[#1A1D1B] space-y-3 pb-[calc(1.5rem+env(safe-area-inset-bottom))]">
-            <Link
-              href="/research-request"
-              onClick={() => setMobileMenuOpen(false)}
-              className="block w-full py-3 text-center bg-[#C9A227] text-[#050505] font-semibold font-mono text-xs uppercase tracking-wider rounded-xl active:scale-98 transition-transform min-h-[44px] flex items-center justify-center"
-            >
-              REQUEST RESEARCH
-            </Link>
-            <p className="text-[10px] font-mono text-[#888888] text-center">
-              Independent construction & real estate market intelligence · Documented Public Records
-            </p>
-          </div>
         </div>
       )}
 
-      {/* Persistent Mobile Bottom Navigation Bar */}
-      <div className="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-[#0B0B0B]/95 backdrop-blur-lg border-t border-[#1C1F1D] px-2 py-1.5 pb-[calc(0.375rem+env(safe-area-inset-bottom))]">
-        <div className="grid grid-cols-5 gap-1 text-center">
+      {/* Mobile Fixed 5-Button Bottom Nav Bar (≥48px touch targets, safe area bottom) */}
+      <div className="fixed bottom-0 left-0 right-0 z-30 lg:hidden bg-[#070807]/95 backdrop-blur-lg border-t border-[#1A1D1B] px-3 py-1 pb-[calc(0.25rem+env(safe-area-inset-bottom))]">
+        <div className="grid grid-cols-5 gap-1 max-w-md mx-auto">
           <Link
             href="/"
             className={`flex flex-col items-center justify-center py-1.5 rounded-lg transition-colors min-h-[48px] ${
-              pathname === '/' ? 'text-[#C9A227] font-semibold' : 'text-[#888888] hover:text-white'
+              pathname === "/" ? "text-[#C9A227] font-semibold" : "text-[#888888] active:text-white"
             }`}
           >
             <svg className="w-5 h-5 mb-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -685,21 +887,9 @@ export function SiteHeader() {
           </Link>
 
           <Link
-            href="/developers"
-            className={`flex flex-col items-center justify-center py-1.5 rounded-lg transition-colors min-h-[48px] ${
-              pathname.startsWith('/developers') ? 'text-[#C9A227] font-semibold' : 'text-[#888888] hover:text-white'
-            }`}
-          >
-            <svg className="w-5 h-5 mb-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5m0 0h4m-4 0V11m0 0h4m-4 0H7" />
-            </svg>
-            <span className="text-[9px] font-medium tracking-tight">Devs</span>
-          </Link>
-
-          <Link
             href="/projects"
             className={`flex flex-col items-center justify-center py-1.5 rounded-lg transition-colors min-h-[48px] ${
-              pathname.startsWith('/projects') ? 'text-[#C9A227] font-semibold' : 'text-[#888888] hover:text-white'
+              pathname.startsWith("/projects") ? "text-[#C9A227] font-semibold" : "text-[#888888] active:text-white"
             }`}
           >
             <svg className="w-5 h-5 mb-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -709,9 +899,21 @@ export function SiteHeader() {
           </Link>
 
           <Link
+            href="/knowledge"
+            className={`flex flex-col items-center justify-center py-1.5 rounded-lg transition-colors min-h-[48px] ${
+              pathname.startsWith("/knowledge") ? "text-[#C9A227] font-semibold" : "text-[#888888] active:text-white"
+            }`}
+          >
+            <svg className="w-5 h-5 mb-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+            </svg>
+            <span className="text-[9px] font-medium tracking-tight">Knowledge</span>
+          </Link>
+
+          <Link
             href="/search"
             className={`flex flex-col items-center justify-center py-1.5 rounded-lg transition-colors min-h-[48px] ${
-              pathname === '/search' ? 'text-[#C9A227] font-semibold' : 'text-[#888888] hover:text-white'
+              pathname === "/search" ? "text-[#C9A227] font-semibold" : "text-[#888888] active:text-white"
             }`}
           >
             <svg className="w-5 h-5 mb-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -722,7 +924,8 @@ export function SiteHeader() {
 
           <button
             onClick={() => setMobileMenuOpen(true)}
-            className="flex flex-col items-center justify-center py-1.5 rounded-lg text-[#888888] hover:text-white transition-colors min-h-[48px]"
+            aria-label="Open navigation menu"
+            className="flex flex-col items-center justify-center py-1.5 rounded-lg text-[#888888] active:text-white transition-colors min-h-[48px]"
           >
             <svg className="w-5 h-5 mb-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
