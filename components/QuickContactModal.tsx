@@ -40,8 +40,23 @@ export function QuickContactModal() {
 
   const modalRef = useRef<HTMLDivElement>(null);
   const firstInputRef = useRef<HTMLInputElement>(null);
+  const prevIsOpenRef = useRef(false);
   const hasTrackedStartRef = useRef(false);
   const isSubmittedRef = useRef(false);
+
+  // Keep form values in ref to prevent handleClose recreation on keystrokes
+  const formValuesRef = useRef({
+    fullName: '',
+    phone: '',
+    email: '',
+    companyName: '',
+    serviceInterest: 'Servicii de calitate în construcții',
+    message: ''
+  });
+
+  useEffect(() => {
+    formValuesRef.current = { fullName, phone, email, companyName, serviceInterest, message };
+  }, [fullName, phone, email, companyName, serviceInterest, message]);
 
   // Global event listener to open modal from anywhere on site
   useEffect(() => {
@@ -63,39 +78,53 @@ export function QuickContactModal() {
     return () => window.removeEventListener('open-quick-contact', handleOpenEvent);
   }, [serviceInterest]);
 
-  // Track abandonment if user closes modal after filling out fields without submitting
+  // Stable close handler that tracks abandonment without triggering rerender loops
   const handleClose = useCallback(() => {
     if (!isSubmittedRef.current && !successLeadId) {
+      const vals = formValuesRef.current;
       const completed: string[] = [];
-      if (fullName.trim()) completed.push('Name');
-      if (phone.trim()) completed.push('Phone');
-      if (email.trim()) completed.push('Email');
-      if (companyName.trim()) completed.push('Company');
-      if (serviceInterest) completed.push('Interest');
-      if (message.trim()) completed.push('Message');
+      if (vals.fullName.trim()) completed.push('Name');
+      if (vals.phone.trim()) completed.push('Phone');
+      if (vals.email.trim()) completed.push('Email');
+      if (vals.companyName.trim()) completed.push('Company');
+      if (vals.serviceInterest) completed.push('Interest');
+      if (vals.message.trim()) completed.push('Message');
 
       if (completed.length > 0) {
         trackFormAbandoned('quick_contact_modal', completed);
       }
     }
     setIsOpen(false);
-  }, [fullName, phone, email, companyName, serviceInterest, message, successLeadId]);
+  }, [successLeadId]);
 
-  // Keyboard accessibility: Escape to close
+  // Focus Name field ONCE on modal open transition only
   useEffect(() => {
+    if (isOpen && !prevIsOpenRef.current) {
+      const timer = setTimeout(() => {
+        firstInputRef.current?.focus();
+      }, 50);
+      prevIsOpenRef.current = true;
+      return () => clearTimeout(timer);
+    } else if (!isOpen) {
+      prevIsOpenRef.current = false;
+    }
+  }, [isOpen]);
+
+  // Keyboard accessibility: Escape to close & Body scroll lock
+  useEffect(() => {
+    if (!isOpen) {
+      document.body.style.overflow = '';
+      return;
+    }
+
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && isOpen) {
+      if (e.key === 'Escape') {
         handleClose();
       }
     };
 
-    if (isOpen) {
-      window.addEventListener('keydown', handleKeyDown);
-      document.body.style.overflow = 'hidden';
-      setTimeout(() => firstInputRef.current?.focus(), 50);
-    } else {
-      document.body.style.overflow = '';
-    }
+    window.addEventListener('keydown', handleKeyDown);
+    document.body.style.overflow = 'hidden';
 
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
@@ -283,6 +312,8 @@ export function QuickContactModal() {
                 </label>
                 <input
                   type="tel"
+                  inputMode="tel"
+                  autoComplete="tel"
                   value={phone}
                   onChange={e => setPhone(e.target.value)}
                   placeholder="+40 7..."
@@ -296,6 +327,8 @@ export function QuickContactModal() {
                 </label>
                 <input
                   type="email"
+                  inputMode="email"
+                  autoComplete="email"
                   value={email}
                   onChange={e => setEmail(e.target.value)}
                   placeholder="email@companie.ro"

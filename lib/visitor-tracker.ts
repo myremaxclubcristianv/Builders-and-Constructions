@@ -178,17 +178,17 @@ function sendTelemetryPayload(payload: Record<string, any>): void {
 
   try {
     const body = JSON.stringify(payload);
-    if (typeof navigator !== "undefined" && navigator.sendBeacon) {
-      const blob = new Blob([body], { type: "application/json" });
-      navigator.sendBeacon(TELEMETRY_ENDPOINT, blob);
-    } else {
-      fetch(TELEMETRY_ENDPOINT, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body,
-        keepalive: true
-      }).catch(() => {});
-    }
+    fetch(TELEMETRY_ENDPOINT, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body,
+      keepalive: true
+    }).catch(() => {
+      if (typeof navigator !== "undefined" && navigator.sendBeacon) {
+        const blob = new Blob([body], { type: "application/json" });
+        navigator.sendBeacon(TELEMETRY_ENDPOINT, blob);
+      }
+    });
   } catch {
     // Non-blocking telemetry failure
   }

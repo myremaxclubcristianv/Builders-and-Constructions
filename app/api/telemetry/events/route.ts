@@ -28,7 +28,17 @@ export async function POST(request: Request) {
       return NextResponse.json({ ok: false, error: "Payload too large." }, { status: 413 });
     }
 
-    const body = await request.json().catch(() => null);
+    let body: any = null;
+    try {
+      body = await request.json();
+    } catch {
+      try {
+        const text = await request.text();
+        if (text) body = JSON.parse(text);
+      } catch {
+        body = null;
+      }
+    }
     if (!body || typeof body !== "object") {
       return NextResponse.json({ ok: false, error: "Invalid JSON payload." }, { status: 400 });
     }
