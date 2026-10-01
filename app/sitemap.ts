@@ -1,11 +1,26 @@
 import { MetadataRoute } from 'next';
 import { realCompaniesDataset, realProjectsDataset, realLocationsDataset } from '@/lib/real-romanian-data';
+import { OFFICIAL_SERVICES } from '@/lib/services-config';
+import { constructionMaterialsDataset } from '@/lib/knowledge-data';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://constructions.cristianvaduva.com';
 
   const staticRoutes = [
     '',
+    '/contact',
+    '/services',
+    '/knowledge',
+    '/knowledge/materials',
+    '/knowledge/concrete',
+    '/knowledge/systems',
+    '/knowledge/infrastructure',
+    '/knowledge/engineering',
+    '/knowledge/processes',
+    '/knowledge/standards',
+    '/knowledge/glossary',
+    '/knowledge/compare',
+    '/knowledge/sources',
     '/intelligence',
     '/market',
     '/changes',
@@ -40,7 +55,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: `${baseUrl}${route}`,
     lastModified: new Date(),
     changeFrequency: 'weekly' as const,
-    priority: route === '' ? 1.0 : 0.8
+    priority: route === '' ? 1.0 : route === '/contact' || route === '/services' ? 0.9 : 0.8
+  }));
+
+  const serviceRoutes = OFFICIAL_SERVICES.map(s => ({
+    url: `${baseUrl}/services/${s.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'weekly' as const,
+    priority: 0.85
+  }));
+
+  const knowledgeMaterialRoutes = constructionMaterialsDataset.map(m => ({
+    url: `${baseUrl}/knowledge/materials/${m.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'weekly' as const,
+    priority: 0.75
   }));
 
   const companyRoutes = realCompaniesDataset.map(c => ({
@@ -64,5 +93,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6
   }));
 
-  return [...staticRoutes, ...companyRoutes, ...projectRoutes, ...cityRoutes];
+  return [
+    ...staticRoutes,
+    ...serviceRoutes,
+    ...knowledgeMaterialRoutes,
+    ...companyRoutes,
+    ...projectRoutes,
+    ...cityRoutes
+  ];
 }

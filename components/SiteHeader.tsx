@@ -326,6 +326,164 @@ export function SiteHeader() {
               )}
             </div>
 
+            
+            {/* SERVICES DROPDOWN (NEW) */}
+            <div
+              className="relative py-2"
+              onMouseEnter={() => handleMouseEnter("services")}
+              onMouseLeave={handleMouseLeave}
+            >
+              <button
+                onClick={() => toggleDropdown("services")}
+                aria-expanded={activeDropdown === "services"}
+                aria-haspopup="true"
+                className={`flex items-center gap-1 hover:text-[#C9A227] transition-colors cursor-pointer py-1 ${
+                  pathname.startsWith("/services") || pathname.startsWith("/contact")
+                    ? "text-[#C9A227] font-bold border-b border-[#C9A227] pb-0.5"
+                    : ""
+                }`}
+              >
+                <span>SERVICII</span>
+                <span className="px-1.5 py-0.2 text-[9px] bg-[#C9A227]/20 text-[#C9A227] rounded font-mono font-bold">
+                  13
+                </span>
+                <svg
+                  className={`w-3.5 h-3.5 transition-transform duration-200 ${
+                    activeDropdown === "services" ? "rotate-180 text-[#C9A227]" : ""
+                  }`}
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+
+              {activeDropdown === "services" && (
+                <div
+                  className="absolute left-0 top-full pt-1 w-96 z-50"
+                  onMouseEnter={() => handleMouseEnter("services")}
+                  onMouseLeave={handleMouseLeave}
+                >
+                  <div className="bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl shadow-2xl p-4 space-y-3 animate-fadeIn">
+                    <div className="flex items-center justify-between pb-2 border-b border-[#1A1D1B]">
+                      <span className="text-[10px] font-mono uppercase tracking-widest text-[#C9A227] font-bold">
+                        13 DIVIZII OFICIALE
+                      </span>
+                      <Link
+                        href="/contact"
+                        className="text-[10px] font-mono text-[#C9A227] hover:underline"
+                      >
+                        Formular Ce cauți? →
+                      </Link>
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-1 text-xs">
+                      <Link
+                        href="/services/calitate-constructii"
+                        className="p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors flex items-center gap-1.5"
+                      >
+                        <span>🛡️</span>
+                        <span className="truncate">Calitate Construcții</span>
+                      </Link>
+                      <Link
+                        href="/services/controlul-calitatii"
+                        className="p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors flex items-center gap-1.5"
+                      >
+                        <span>🔍</span>
+                        <span className="truncate">Controlul Calității</span>
+                      </Link>
+                      <Link
+                        href="/services/manager-calitate"
+                        className="p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors flex items-center gap-1.5"
+                      >
+                        <span>👔</span>
+                        <span className="truncate">Manager Calitate</span>
+                      </Link>
+                      <Link
+                        href="/services/cartea-tehnica"
+                        className="p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors flex items-center gap-1.5"
+                      >
+                        <span>📚</span>
+                        <span className="truncate">Cartea Tehnică</span>
+                      </Link>
+                      <Link
+                        href="/services/ssm"
+                        className="p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors flex items-center gap-1.5"
+                      >
+                        <span>⛑️</span>
+                        <span className="truncate">Inspector SSM</span>
+                      </Link>
+                      <Link
+                        href="/services/proiecte"
+                        className="p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors flex items-center gap-1.5"
+                      >
+                        <span>📐</span>
+                        <span className="truncate">Proiecte PT/DDE</span>
+                      </Link>
+                      <Link
+                        href="/services/arhitecti"
+                        className="p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors flex items-center gap-1.5"
+                      >
+                        <span>🏛️</span>
+                        <span className="truncate">Arhitecți & PUZ</span>
+                      </Link>
+                      <Link
+                        href="/services/publicitate"
+                        className="p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors flex items-center gap-1.5"
+                      >
+                        <span>📢</span>
+                        <span className="truncate">Publicitate</span>
+                      </Link>
+                      <Link
+                        href="/services/inchirieri-utilaje"
+                        className="p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors flex items-center gap-1.5"
+                      >
+                        <span>🚜</span>
+                        <span className="truncate">Închirieri Utilaje</span>
+                      </Link>
+                      <Link
+                        href="/services/asigurari"
+                        className="p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors flex items-center gap-1.5"
+                      >
+                        <span>📑</span>
+                        <span className="truncate">Intermediere Asigurări</span>
+                      </Link>
+                      <Link
+                        href="/services/credite"
+                        className="p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors flex items-center gap-1.5"
+                      >
+                        <span>💳</span>
+                        <span className="truncate">Credite & Finanțare</span>
+                      </Link>
+                      <Link
+                        href="/services/vanzari-real-estate"
+                        className="p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors flex items-center gap-1.5"
+                      >
+                        <span>🏢</span>
+                        <span className="truncate">Vânzări Real Estate</span>
+                      </Link>
+                    </div>
+
+                    <div className="pt-2 border-t border-[#1A1D1B] flex items-center justify-between">
+                      <Link
+                        href="/services/imobiliare"
+                        className="text-xs text-[#C5C5C5] hover:text-[#C9A227] flex items-center gap-1"
+                      >
+                        <span>🎯</span> <span>Cauți proprietate?</span>
+                      </Link>
+                      <Link
+                        href="/services"
+                        className="text-[11px] font-mono text-[#C9A227] font-bold hover:underline"
+                      >
+                        Catalog Servicii →
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+
             {/* INTELLIGENCE DROPDOWN */}
             <div
               className="relative py-2"
@@ -648,6 +806,95 @@ export function SiteHeader() {
 
             {/* Scrollable Navigation List */}
             <div className="p-4 space-y-6 pb-28">
+
+              {/* 0. OFFICIAL SERVICES (13 DIVISIONS) */}
+              <div className="space-y-2">
+                <div className="flex items-center justify-between">
+                  <h4 className="text-[10px] font-mono uppercase tracking-widest text-[#C9A227]">
+                    SERVICII OFICIALE ÎN CONSTRUCȚII
+                  </h4>
+                  <span className="text-[9px] font-mono bg-[#C9A227]/20 text-[#C9A227] px-1.5 py-0.5 rounded font-bold">
+                    13 DIVIZII
+                  </span>
+                </div>
+                <div className="space-y-1.5">
+                  <Link
+                    href="/contact"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="p-3 bg-[#C9A227] text-black rounded-xl text-xs font-mono font-bold flex items-center justify-between min-h-[44px]"
+                  >
+                    <span>🎯 Ce cauți? (Lansează Solicitare)</span>
+                    <span>→</span>
+                  </Link>
+                  <Link
+                    href="/services"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="p-3 bg-[#0E0F0E] border border-[#C9A227]/40 rounded-xl text-xs font-bold text-[#C9A227] flex items-center justify-between min-h-[44px]"
+                  >
+                    <span>Catalog Complet Servicii</span>
+                    <span className="text-[10px] font-mono text-[#888888]">INDEX</span>
+                  </Link>
+                  <div className="grid grid-cols-2 gap-1.5 pt-1">
+                    <Link
+                      href="/services/calitate-constructii"
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="p-2.5 bg-[#0B0B0B] border border-[#1A1D1B] rounded-lg text-[11px] text-[#C5C5C5] hover:text-[#C9A227] flex items-center gap-1 min-h-[44px]"
+                    >
+                      <span>🛡️</span> <span className="truncate">Calitate Constr.</span>
+                    </Link>
+                    <Link
+                      href="/services/controlul-calitatii"
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="p-2.5 bg-[#0B0B0B] border border-[#1A1D1B] rounded-lg text-[11px] text-[#C5C5C5] hover:text-[#C9A227] flex items-center gap-1 min-h-[44px]"
+                    >
+                      <span>🔍</span> <span className="truncate">Control Calitate</span>
+                    </Link>
+                    <Link
+                      href="/services/manager-calitate"
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="p-2.5 bg-[#0B0B0B] border border-[#1A1D1B] rounded-lg text-[11px] text-[#C5C5C5] hover:text-[#C9A227] flex items-center gap-1 min-h-[44px]"
+                    >
+                      <span>👔</span> <span className="truncate">Manager Calitate</span>
+                    </Link>
+                    <Link
+                      href="/services/cartea-tehnica"
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="p-2.5 bg-[#0B0B0B] border border-[#1A1D1B] rounded-lg text-[11px] text-[#C5C5C5] hover:text-[#C9A227] flex items-center gap-1 min-h-[44px]"
+                    >
+                      <span>📚</span> <span className="truncate">Cartea Tehnică</span>
+                    </Link>
+                    <Link
+                      href="/services/ssm"
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="p-2.5 bg-[#0B0B0B] border border-[#1A1D1B] rounded-lg text-[11px] text-[#C5C5C5] hover:text-[#C9A227] flex items-center gap-1 min-h-[44px]"
+                    >
+                      <span>⛑️</span> <span className="truncate">Inspector SSM</span>
+                    </Link>
+                    <Link
+                      href="/services/proiecte"
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="p-2.5 bg-[#0B0B0B] border border-[#1A1D1B] rounded-lg text-[11px] text-[#C5C5C5] hover:text-[#C9A227] flex items-center gap-1 min-h-[44px]"
+                    >
+                      <span>📐</span> <span className="truncate">Proiecte PT</span>
+                    </Link>
+                    <Link
+                      href="/services/inchirieri-utilaje"
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="p-2.5 bg-[#0B0B0B] border border-[#1A1D1B] rounded-lg text-[11px] text-[#C5C5C5] hover:text-[#C9A227] flex items-center gap-1 min-h-[44px]"
+                    >
+                      <span>🚜</span> <span className="truncate">Utilaje Grele</span>
+                    </Link>
+                    <Link
+                      href="/services/asigurari"
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="p-2.5 bg-[#0B0B0B] border border-[#1A1D1B] rounded-lg text-[11px] text-[#C5C5C5] hover:text-[#C9A227] flex items-center gap-1 min-h-[44px]"
+                    >
+                      <span>📑</span> <span className="truncate">Asigurări CAR</span>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+
               {/* 1. CONSTRUCTION KNOWLEDGE BASE (NEW) */}
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
