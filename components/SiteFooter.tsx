@@ -21,16 +21,17 @@ export function SiteFooter() {
 
           {/* Column 2: Construction Knowledge Base */}
           <div>
-            <h4 className="text-[10px] font-mono uppercase tracking-widest text-[#C9A227] mb-4">Knowledge & Materials</h4>
+                        <h4 className="text-[10px] font-mono uppercase tracking-widest text-[#C9A227] mb-4">Knowledge & Materials</h4>
             <ul className="space-y-2 text-xs">
               <li><Link href="/knowledge" className="hover:text-white transition-colors font-semibold text-white">Knowledge Hub</Link></li>
-              <li><Link href="/knowledge/materials" className="hover:text-white transition-colors">Materials Catalog (10 Families)</Link></li>
-              <li><Link href="/knowledge/concrete" className="hover:text-white transition-colors">Concrete & Cement Engineering</Link></li>
+              <li><Link href="/knowledge/materials" className="hover:text-white transition-colors">Materials & Products</Link></li>
+              <li><Link href="/knowledge/concrete" className="hover:text-white transition-colors">Concrete & Cement Matrix</Link></li>
               <li><Link href="/knowledge/systems" className="hover:text-white transition-colors">Structural Systems & P100-1</Link></li>
-              <li><Link href="/knowledge/processes" className="hover:text-white transition-colors">15-Stage Execution Guide</Link></li>
+              <li><Link href="/knowledge/infrastructure" className="hover:text-white transition-colors">Civil Infrastructure</Link></li>
+              <li><Link href="/knowledge/engineering" className="hover:text-white transition-colors">Building Physics & Fire</Link></li>
+              <li><Link href="/knowledge/standards" className="hover:text-white transition-colors">Eurocodes & CPR 2024</Link></li>
               <li><Link href="/knowledge/glossary" className="hover:text-white transition-colors">Construction Glossary</Link></li>
-              <li><Link href="/knowledge/standards" className="hover:text-white transition-colors">Standards & Eurocodes</Link></li>
-              <li><Link href="/knowledge/compare" className="hover:text-white transition-colors">Material Comparisons</Link></li>
+              <li><Link href="/knowledge/sources" className="hover:text-white transition-colors">Official Sources Registry</Link></li>
             </ul>
           </div>
 

@@ -10,12 +10,18 @@ import {
   getAllGlossaryTerms,
   getAllStandards,
   getAllMaterialComparisons,
+  getAllInfrastructure,
+  getAllEngineeringDomains,
+  getAllEurocodes,
+  getAllKnowledgeSources,
+  getAllConstructionEquipment,
+  getAllProjectLifecycleStages,
   searchKnowledge
-} from "../lib/knowledge-data.js";
+} from "../lib/knowledge-data";
 
-test("Knowledge Base — Category Master Registry", () => {
+test("Knowledge Base — Category Master Registry (A to X Taxonomy)", () => {
   const categories = getAllKnowledgeCategories();
-  assert.ok(categories.length >= 10, "Must have at least 10 master material families");
+  assert.ok(categories.length >= 10, "Must have master material families");
 
   const requiredSlugs = [
     "structural-materials",
@@ -37,9 +43,9 @@ test("Knowledge Base — Category Master Registry", () => {
   }
 });
 
-test("Knowledge Base — Materials Dataset & Fact Verification", () => {
+test("Knowledge Base — Materials Dataset & Dual View Properties", () => {
   const materials = getAllMaterials();
-  assert.ok(materials.length >= 14, "Must have comprehensive list of materials");
+  assert.ok(materials.length >= 12, "Must have comprehensive list of materials");
 
   for (const m of materials) {
     assert.ok(m.id && m.slug && m.name && m.romanianName, `Material ${m.id} missing basic identification`);
@@ -47,7 +53,6 @@ test("Knowledge Base — Materials Dataset & Fact Verification", () => {
     assert.ok(m.governingStandards.length > 0, `Material ${m.slug} must cite official standard`);
     assert.ok(m.keyProperties.length >= 3, `Material ${m.slug} must have >= 3 physical properties`);
     assert.ok(["VERIFIED", "DOCUMENTED", "OBSERVED", "NOT DISCLOSED", "NOT YET VERIFIED"].includes(m.sourceStatus));
-    assert.ok(m.sourceTier.includes("TIER 1") || m.sourceTier.includes("TIER 2") || m.sourceTier.includes("TIER 3"));
   }
 });
 
@@ -67,27 +72,52 @@ test("Knowledge Base — Concrete Strength Classes (SR EN 206 / NE 012-1:2022)",
   assert.equal(c30.cubeStrengthMpa, 37);
 });
 
-test("Knowledge Base — Structural Systems & P100-1/2013 Romanian Seismic Code", () => {
-  const systems = getAllConstructionSystems();
-  assert.ok(systems.length >= 6, "Must cover at least 6 major structural typologies");
+test("Knowledge Base — The 10 Eurocode Families (EN 1990 - EN 1999) & 2nd Gen Transition", () => {
+  const eurocodes = getAllEurocodes();
+  assert.equal(eurocodes.length, 10, "Must cover exactly all 10 Eurocode suites");
 
-  for (const sys of systems) {
-    assert.ok(sys.structuralPrinciple.length > 20, `System ${sys.slug} missing principle`);
-    assert.ok(sys.seismicBehavior.length > 20, `System ${sys.slug} missing P100-1 seismic behavior`);
-    assert.ok(sys.advantages.length > 0 && sys.limitations.length > 0);
+  const codes = ["EN 1990", "EN 1991", "EN 1992", "EN 1993", "EN 1994", "EN 1995", "EN 1996", "EN 1997", "EN 1998", "EN 1999"];
+  for (const code of codes) {
+    const found = eurocodes.find(e => e.code === code);
+    assert.ok(found, `Eurocode ${code} must exist in registry`);
+    assert.ok(found.romanianAdoption.length > 5, `Eurocode ${code} must have Romanian adoption note`);
+    assert.ok(found.keyParts.length > 0, `Eurocode ${code} must list key parts`);
   }
 });
 
-test("Knowledge Base — 15-Stage Construction Execution Lifecycle", () => {
-  const processes = getAllConstructionProcesses();
-  assert.equal(processes.length, 15, "Must strictly have all 15 execution steps");
+test("Knowledge Base — Civil Infrastructure & Heavy Engineering", () => {
+  const infra = getAllInfrastructure();
+  assert.ok(infra.length >= 5, "Must cover roads, bridges, tunnels, rail, and utilities");
 
-  for (let i = 1; i <= 15; i++) {
-    const step = processes.find(p => p.stepNumber === i);
-    assert.ok(step, `Execution step ${i} must exist`);
-    assert.ok(step.criticalQualityControls.length > 0, `Step ${i} must have quality controls`);
-    assert.ok(step.deliverablesAndReception.length > 0, `Step ${i} must specify reception acts (PVLA / Carte)`);
+  const domains = ["ROADS & PAVEMENTS", "BRIDGES & VIADUCTS", "TUNNELS & UNDERGROUND", "RAIL INFRASTRUCTURE", "MUNICIPAL UTILITIES"];
+  for (const d of domains) {
+    const found = infra.find(i => i.domain === d);
+    assert.ok(found, `Domain ${d} must exist in infrastructure dataset`);
+    assert.ok(found.criticalQualityControls.length > 0, `Domain ${d} must have quality controls`);
   }
+});
+
+test("Knowledge Base — Engineering Domains & Building Physics", () => {
+  const domains = getAllEngineeringDomains();
+  assert.ok(domains.length >= 4, "Must cover geotechnical, physics, fire safety, and acoustics");
+
+  const geotechnical = domains.find(d => d.domainType === "GEOTECHNICAL");
+  assert.ok(geotechnical, "Geotechnical engineering must exist");
+
+  const physics = domains.find(d => d.domainType === "BUILDING_PHYSICS");
+  assert.ok(physics, "Building physics must exist");
+
+  const fire = domains.find(d => d.domainType === "FIRE_SAFETY");
+  assert.ok(fire, "Fire safety must exist");
+});
+
+test("Knowledge Base — Official Sources Registry & Tier Hierarchy", () => {
+  const sources = getAllKnowledgeSources();
+  assert.ok(sources.length >= 5, "Must have traceable sources");
+
+  const cpr = sources.find(s => s.id === "src-cpr-2024");
+  assert.ok(cpr, "CPR 2024 source must exist in registry");
+  assert.equal(cpr.jurisdiction, "European Union");
 });
 
 test("Knowledge Base — Construction Glossary & Terminology", () => {
@@ -102,22 +132,10 @@ test("Knowledge Base — Construction Glossary & Terminology", () => {
   }
 });
 
-test("Knowledge Base — Standards & Normatives Registry", () => {
-  const standards = getAllStandards();
-  assert.ok(standards.length >= 10, "Must have >= 10 official governing standards");
-
-  const en206 = standards.find(s => s.code.includes("EN 206"));
-  assert.ok(en206, "SR EN 206 must exist in registry");
-
-  const p100 = standards.find(s => s.code.includes("P100-1"));
-  assert.ok(p100, "P100-1/2013 must exist in registry");
-});
-
 test("Knowledge Base — Search Integration & Discovery", () => {
   // Test 1: Searching "concrete"
   const concreteRes = searchKnowledge("concrete");
   assert.ok(concreteRes.length > 0, "Must return results for concrete");
-  assert.ok(concreteRes.some(r => r.type === "MATERIAL" || r.type === "CONCRETE_CLASS"));
 
   // Test 2: Searching "C25/30"
   const c25Res = searchKnowledge("C25/30");

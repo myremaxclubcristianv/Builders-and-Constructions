@@ -1,4 +1,7 @@
-import Link from "next/link";
+const fs = require('fs');
+const path = require('path');
+
+const materialSlugPage = `import Link from "next/link";
 import { notFound } from "next/navigation";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -17,10 +20,10 @@ export async function generateMetadata(props: { params: Promise<{ slug: string }
   if (!material) return { title: "Material Not Found | CONSTRUCTIONS" };
 
   return {
-    title: `${material.name} (${material.romanianName}) - Construction Material Intelligence | CONSTRUCTIONS`,
-    description: `Technical properties, European Eurocodes and Romanian standards (${material.governingStandards.join(", ")}), advantages and applications for ${material.name}.`,
+    title: \`\${material.name} (\${material.romanianName}) - Construction Material Intelligence | CONSTRUCTIONS\`,
+    description: \`Technical properties, European Eurocodes and Romanian standards (\${material.governingStandards.join(", ")}), advantages and applications for \${material.name}.\`,
     alternates: {
-      canonical: `https://constructions.cristianvaduva.com/knowledge/materials/${material.slug}`,
+      canonical: \`https://constructions.cristianvaduva.com/knowledge/materials/\${material.slug}\`,
     },
   };
 }
@@ -34,7 +37,7 @@ export default async function MaterialDetailPage(props: { params: Promise<{ slug
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "TechArticle",
-    "headline": `${material.name} - Technical Material Intelligence Dossier`,
+    "headline": \`\${material.name} - Technical Material Intelligence Dossier\`,
     "description": material.summary,
     "inLanguage": "en-US",
     "author": {
@@ -275,3 +278,7 @@ export default async function MaterialDetailPage(props: { params: Promise<{ slug
     </div>
   );
 }
+`;
+
+fs.writeFileSync(path.join(process.cwd(), "app/knowledge/materials/[slug]/page.tsx"), materialSlugPage);
+console.log("Updated materials/[slug]/page.tsx with dual view");

@@ -261,14 +261,14 @@ export function SiteHeader() {
                         href="/knowledge/materials"
                         className="block p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors flex items-center justify-between"
                       >
-                        <span>Construction Materials Catalog</span>
-                        <span className="text-[10px] font-mono text-[#888888]">10 FAMILIES</span>
+                        <span>Materials & Products Catalog</span>
+                        <span className="text-[10px] font-mono text-[#888888]">12 FAMILIES</span>
                       </Link>
                       <Link
                         href="/knowledge/concrete"
                         className="block p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors flex items-center justify-between"
                       >
-                        <span>Concrete & Cement Engineering</span>
+                        <span>Concrete & Cement Intelligence</span>
                         <span className="text-[10px] font-mono text-[#10B981]">SR EN 206</span>
                       </Link>
                       <Link
@@ -276,35 +276,49 @@ export function SiteHeader() {
                         className="block p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors flex items-center justify-between"
                       >
                         <span>Structural Systems & P100-1</span>
-                        <span className="text-[10px] font-mono text-[#888888]">EUROCODES</span>
+                        <span className="text-[10px] font-mono text-[#888888]">SEISMIC</span>
+                      </Link>
+                      <Link
+                        href="/knowledge/infrastructure"
+                        className="block p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors flex items-center justify-between"
+                      >
+                        <span>Civil Infrastructure & Roads</span>
+                        <span className="text-[10px] font-mono text-[#888888]">HIGHWAYS</span>
+                      </Link>
+                      <Link
+                        href="/knowledge/engineering"
+                        className="block p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors flex items-center justify-between"
+                      >
+                        <span>Building Physics & Fire</span>
+                        <span className="text-[10px] font-mono text-[#888888]">PHYSICS</span>
                       </Link>
                       <Link
                         href="/knowledge/processes"
                         className="block p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors flex items-center justify-between"
                       >
-                        <span>15-Stage Execution Lifecycle</span>
-                        <span className="text-[10px] font-mono text-[#888888]">PVLA / CARTE</span>
-                      </Link>
-                      <Link
-                        href="/knowledge/glossary"
-                        className="block p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors flex items-center justify-between"
-                      >
-                        <span>Technical Glossary (POT, CUT, U)</span>
-                        <span className="text-[10px] font-mono text-[#888888]">50+ TERMS</span>
+                        <span>15-Stage Execution Guide</span>
+                        <span className="text-[10px] font-mono text-[#888888]">PVLA</span>
                       </Link>
                       <Link
                         href="/knowledge/standards"
                         className="block p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors flex items-center justify-between"
                       >
-                        <span>Standards & Normatives Registry</span>
-                        <span className="text-[10px] font-mono text-[#888888]">TIER 1 / 2</span>
+                        <span>Eurocodes & CPR 2024</span>
+                        <span className="text-[10px] font-mono text-[#888888]">REGISTRY</span>
+                      </Link>
+                      <Link
+                        href="/knowledge/glossary"
+                        className="block p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors flex items-center justify-between"
+                      >
+                        <span>Technical Glossary (POT, CUT)</span>
+                        <span className="text-[10px] font-mono text-[#888888]">TERMS</span>
                       </Link>
                       <Link
                         href="/knowledge/compare"
                         className="block p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors flex items-center justify-between border-t border-[#1A1D1B] pt-2"
                       >
                         <span>Material Comparison Matrix</span>
-                        <span className="text-[10px] font-mono text-[#C9A227]">WORKSTATION</span>
+                        <span className="text-[10px] font-mono text-[#C9A227]">MATRIX</span>
                       </Link>
                     </div>
                   </div>
@@ -658,7 +672,7 @@ export function SiteHeader() {
                     onClick={() => setMobileMenuOpen(false)}
                     className="p-3 bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl text-xs font-medium text-white flex items-center justify-between min-h-[44px]"
                   >
-                    <span>Materials Catalog (10 Families)</span>
+                    <span>Materials Catalog (12 Families)</span>
                     <span className="text-[10px] font-mono text-[#888888]">SPECS</span>
                   </Link>
                   <Link
@@ -666,7 +680,7 @@ export function SiteHeader() {
                     onClick={() => setMobileMenuOpen(false)}
                     className="p-3 bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl text-xs font-medium text-white flex items-center justify-between min-h-[44px]"
                   >
-                    <span>Concrete & Cement Technology</span>
+                    <span>Concrete & Cement Intelligence</span>
                     <span className="text-[10px] font-mono text-[#10B981]">SR EN 206</span>
                   </Link>
                   <Link
@@ -678,6 +692,22 @@ export function SiteHeader() {
                     <span className="text-[10px] font-mono text-[#888888]">SEISMIC</span>
                   </Link>
                   <Link
+                    href="/knowledge/infrastructure"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="p-3 bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl text-xs font-medium text-white flex items-center justify-between min-h-[44px]"
+                  >
+                    <span>Civil Infrastructure & Roads</span>
+                    <span className="text-[10px] font-mono text-[#888888]">HIGHWAYS</span>
+                  </Link>
+                  <Link
+                    href="/knowledge/engineering"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="p-3 bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl text-xs font-medium text-white flex items-center justify-between min-h-[44px]"
+                  >
+                    <span>Building Physics & Fire Safety</span>
+                    <span className="text-[10px] font-mono text-[#888888]">PHYSICS</span>
+                  </Link>
+                  <Link
                     href="/knowledge/processes"
                     onClick={() => setMobileMenuOpen(false)}
                     className="p-3 bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl text-xs font-medium text-white flex items-center justify-between min-h-[44px]"
@@ -686,20 +716,20 @@ export function SiteHeader() {
                     <span className="text-[10px] font-mono text-[#888888]">PVLA</span>
                   </Link>
                   <Link
+                    href="/knowledge/standards"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="p-3 bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl text-xs font-medium text-white flex items-center justify-between min-h-[44px]"
+                  >
+                    <span>Eurocodes (EN 1990-1999) & CPR</span>
+                    <span className="text-[10px] font-mono text-[#888888]">NORMS</span>
+                  </Link>
+                  <Link
                     href="/knowledge/glossary"
                     onClick={() => setMobileMenuOpen(false)}
                     className="p-3 bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl text-xs font-medium text-white flex items-center justify-between min-h-[44px]"
                   >
                     <span>Glossary (POT, CUT, U-value)</span>
                     <span className="text-[10px] font-mono text-[#888888]">TERMS</span>
-                  </Link>
-                  <Link
-                    href="/knowledge/standards"
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="p-3 bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl text-xs font-medium text-white flex items-center justify-between min-h-[44px]"
-                  >
-                    <span>Standards & Eurocodes Registry</span>
-                    <span className="text-[10px] font-mono text-[#888888]">NORMS</span>
                   </Link>
                   <Link
                     href="/knowledge/compare"
