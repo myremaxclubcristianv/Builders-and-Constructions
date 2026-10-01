@@ -3,6 +3,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { LiveRollingTicker } from "@/components/LiveRollingTicker";
+import { QuickContactModal } from "@/components/QuickContactModal";
 
 export function SiteHeader() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -90,7 +92,8 @@ export function SiteHeader() {
             : "bg-gradient-to-b from-[#050505]/90 via-[#050505]/60 to-transparent py-4"
         }`}
       >
-        <div className="max-w-[1440px] mx-auto px-4 md:px-8 flex items-center justify-between">
+        <LiveRollingTicker />
+        <div className="max-w-[1440px] mx-auto px-4 md:px-8 py-2.5 flex items-center justify-between">
           {/* Brand Logo */}
           <Link href="/" className="flex flex-col group shrink-0">
             <div className="flex items-center gap-2">
@@ -746,10 +749,45 @@ export function SiteHeader() {
               <span>★</span>
               <span>WATCHLIST</span>
             </Link>
+            {/* Quick Always-On Contact Trigger */}
+            <button
+              onClick={() => {
+                if (typeof window !== "undefined") {
+                  window.dispatchEvent(new CustomEvent("open-quick-contact", { detail: { interest: "general-contact" } }));
+                }
+              }}
+              className="px-3 py-1.5 bg-[#141715] hover:bg-[#1C1F1D] border border-[#C9A227]/40 hover:border-[#C9A227] text-[#C9A227] text-xs font-mono font-medium rounded-lg transition-all flex items-center gap-1.5 cursor-pointer shadow-sm"
+              title="Deschide formularul de contact rapid"
+            >
+              <span>💬</span>
+              <span>Contact</span>
+            </button>
+
+            {/* Main Intake CTA */}
+            <Link
+              href="/contact"
+              className="px-3.5 py-1.5 bg-[#C9A227] hover:bg-[#d8b135] text-black text-xs font-mono font-bold rounded-lg transition-all flex items-center gap-1 shadow-sm"
+            >
+              <span>Ce cauți?</span>
+              <span>→</span>
+            </Link>
           </div>
 
           {/* Mobile Menu Toggle Button (≥44px target) */}
           <div className="flex items-center gap-2 lg:hidden">
+            <button
+              onClick={() => {
+                if (typeof window !== "undefined") {
+                  window.dispatchEvent(new CustomEvent("open-quick-contact", { detail: { interest: "general-contact" } }));
+                }
+              }}
+              aria-label="Deschide contact"
+              className="w-10 h-10 flex items-center justify-center rounded-lg bg-[#141715] border border-[#C9A227]/40 text-[#C9A227] active:scale-95 transition-transform"
+            >
+              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+              </svg>
+            </button>
             <Link
               href="/search"
               aria-label="Search"
@@ -776,6 +814,9 @@ export function SiteHeader() {
           </div>
         </div>
       </header>
+
+      {/* Always-On Quick Contact Modal */}
+      <QuickContactModal />
 
       {/* Mobile Drawer (100% Mobile Parity with all sections) */}
       {mobileMenuOpen && (

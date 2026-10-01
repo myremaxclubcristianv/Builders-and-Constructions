@@ -420,3 +420,31 @@ button, input, select, textarea { font: inherit; }
   }
 }
 
+
+/* Live Rolling Marquee Ticker */
+@keyframes rollingTicker {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animate-rolling-ticker {
+  display: inline-flex;
+  white-space: nowrap;
+  animation: rollingTicker 38s linear infinite;
+  will-change: transform;
+}
+
+.animate-rolling-ticker:hover {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-rolling-ticker {
+    animation: none !important;
+    transform: none !important;
+  }
+}
