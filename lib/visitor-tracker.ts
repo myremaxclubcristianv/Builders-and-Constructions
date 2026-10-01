@@ -1,35 +1,52 @@
 /**
- * Client-Side Visitor Intelligence Tracker
- * CONSTRUCTIONS by AiXLuxury
- *
- * Lightweight, non-intrusive client telemetry engine with automatic session management,
- * entity detection, search tracking, CTA instrumentation, and reliable beacon flush.
+ * CONSTRUCTIONS by AiXLuxury — Client-Side Visitor Tracking & Telemetry Hub
+ * 
+ * Provides lightweight, non-blocking telemetry tracking for:
+ * 1. Initial Landing / New vs Returning Visitors
+ * 2. Route & Pageview transitions
+ * 3. Commercial Service Interest
+ * 4. Project & Company Dossier Interest
+ * 5. High-Intent Behavioral Thresholds
+ * 6. Form Started & Form Abandonment (strictly zero PII)
+ * 7. On-site searches and commercial CTA interactions
  */
 
+export interface VisitorSessionState {
+  sessionId: string;
+  visitorId: string;
+  isReturning: boolean;
+  sessionNumber: number;
+  sessionStartTime: number;
+  lastActivityTime: number;
+  navigationPath: string[];
+  servicePagesViewed: string[];
+  entitiesViewed: string[];
+  searchesPerformed: string[];
+  actionsPerformed: string[];
+  hasVisitedEntityDossier: boolean;
+}
+
 const STORAGE_KEYS = {
-  VISITOR_ID: "cv_vid",
-  VISIT_COUNT: "cv_vcount",
-  FIRST_SEEN: "cv_fseen",
-  SESSION_ID: "cv_sid",
-  SESSION_START: "cv_sstart",
-  LAST_ACTIVE: "cv_lactive",
-  NAV_PATH: "cv_npath",
-  ENTITIES: "cv_ent",
-  SEARCHES: "cv_srch",
-  ACTIONS: "cv_act"
+  VISITOR_ID: "c_vid_v2",
+  SESSION_ID: "c_sid_v2",
+  SESSION_START: "c_sstart_v2",
+  SESSION_COUNT: "c_scnt_v2",
+  NAV_PATH: "c_navpath_v2",
+  SERVICES_PATH: "c_servpath_v2",
+  ENTITIES: "c_ent_v2",
+  SEARCHES: "c_srch_v2",
+  ACTIONS: "c_act_v2"
 };
 
-const SESSION_TIMEOUT_MS = 30 * 60 * 1000; // 30 minutes
+const TELEMETRY_ENDPOINT = "/api/telemetry/events";
 
-function generateUUID(): string {
-  if (typeof crypto !== "undefined" && typeof crypto.randomUUID === "function") {
-    return crypto.randomUUID();
+function generateSecureId(prefix = "VIS"): string {
+  const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+  let result = prefix + "-";
+  for (let i = 0; i < 6; i++) {
+    result += chars.charAt(Math.floor(Math.random() * chars.length));
   }
-  return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) {
-    const r = (Math.random() * 16) | 0;
-    const v = c === "x" ? r : (r & 0x3) | 0x8;
-    return v.toString(16);
-  });
+  return result;
 }
 
 function safeGetStorage(storage: Storage, key: string): string | null {
@@ -44,145 +61,144 @@ function safeSetStorage(storage: Storage, key: string, value: string): void {
   try {
     storage.setItem(key, value);
   } catch {
-    // Ignore storage quota/security errors
+    // Ignore storage quota errors
   }
 }
 
-export interface ClientSessionState {
-  visitorId: string;
-  sessionId: string;
-  isReturning: boolean;
-  sessionNumber: number;
-  sessionStartTime: number;
-  navigationPath: string[];
-  entitiesViewed: string[];
-  searchesPerformed: string[];
-  actionsPerformed: string[];
-}
-
-let cachedSession: ClientSessionState | null = null;
+let cachedSession: VisitorSessionState | null = null;
 let lastPageStartTime = Date.now();
 let lastPath = "";
 
-export function getOrCreateSession(): ClientSessionState {
+/**
+ * Resolves or initializes the current persistent visitor and session identifiers.
+ */
+export function getOrCreateSession(): VisitorSessionState {
   if (typeof window === "undefined") {
     return {
-      visitorId: "server",
-      sessionId: "server",
+      sessionId: "server_session",
+      visitorId: "server_visitor",
       isReturning: false,
       sessionNumber: 1,
       sessionStartTime: Date.now(),
+      lastActivityTime: Date.now(),
       navigationPath: [],
+      servicePagesViewed: [],
       entitiesViewed: [],
       searchesPerformed: [],
-      actionsPerformed: []
+      actionsPerformed: [],
+      hasVisitedEntityDossier: false
     };
   }
 
   if (cachedSession) {
-    return cachedSession!;
+    cachedSession.lastActivityTime = Date.now();
+    return cachedSession;
   }
 
-  const now = Date.now();
-
-  // 1. Visitor identification
+  // 1. Visitor ID (Persistent across sessions via localStorage)
   let visitorId = safeGetStorage(localStorage, STORAGE_KEYS.VISITOR_ID);
-  let visitCount = parseInt(safeGetStorage(localStorage, STORAGE_KEYS.VISIT_COUNT) || "0", 10);
-  let isReturning = false;
+  let isReturning = true;
 
   if (!visitorId) {
-    visitorId = generateUUID();
+    visitorId = generateSecureId("VIS");
     safeSetStorage(localStorage, STORAGE_KEYS.VISITOR_ID, visitorId);
-    safeSetStorage(localStorage, STORAGE_KEYS.FIRST_SEEN, new Date().toISOString());
-    visitCount = 1;
-    safeSetStorage(localStorage, STORAGE_KEYS.VISIT_COUNT, "1");
-  } else {
-    isReturning = true;
+    isReturning = false;
   }
 
-  // 2. Session identification
-  let sessionId = safeGetStorage(sessionStorage, STORAGE_KEYS.SESSION_ID) || generateUUID();
-  const lastActive = parseInt(safeGetStorage(sessionStorage, STORAGE_KEYS.LAST_ACTIVE) || "0", 10);
+  // 2. Session Count
+  let sessionCount = parseInt(safeGetStorage(localStorage, STORAGE_KEYS.SESSION_COUNT) || "0", 10);
+
+  // 3. Session ID (Per-tab/browser session via sessionStorage)
+  let sessionId = safeGetStorage(sessionStorage, STORAGE_KEYS.SESSION_ID);
   let sessionStartTime = parseInt(safeGetStorage(sessionStorage, STORAGE_KEYS.SESSION_START) || "0", 10);
 
-  const isSessionExpired = !sessionId || now - lastActive > SESSION_TIMEOUT_MS;
-
-  if (isSessionExpired) {
-    sessionId = generateUUID();
-    sessionStartTime = now;
-    visitCount += 1;
-    safeSetStorage(localStorage, STORAGE_KEYS.VISIT_COUNT, String(visitCount));
+  if (!sessionId) {
+    sessionId = generateSecureId("SES");
+    sessionStartTime = Date.now();
+    sessionCount += 1;
     safeSetStorage(sessionStorage, STORAGE_KEYS.SESSION_ID, sessionId);
-    safeSetStorage(sessionStorage, STORAGE_KEYS.SESSION_START, String(sessionStartTime));
-    safeSetStorage(sessionStorage, STORAGE_KEYS.NAV_PATH, JSON.stringify([]));
-    safeSetStorage(sessionStorage, STORAGE_KEYS.ENTITIES, JSON.stringify([]));
-    safeSetStorage(sessionStorage, STORAGE_KEYS.SEARCHES, JSON.stringify([]));
-    safeSetStorage(sessionStorage, STORAGE_KEYS.ACTIONS, JSON.stringify([]));
+    safeSetStorage(sessionStorage, STORAGE_KEYS.SESSION_START, sessionStartTime.toString());
+    safeSetStorage(localStorage, STORAGE_KEYS.SESSION_COUNT, sessionCount.toString());
   }
 
-  safeSetStorage(sessionStorage, STORAGE_KEYS.LAST_ACTIVE, String(now));
-
-  let navPath: string[] = [];
-  let entities: string[] = [];
-  let searches: string[] = [];
-  let actions: string[] = [];
-
+  // 4. Memory / Navigation State
+  let navigationPath: string[] = [];
   try {
-    navPath = JSON.parse(safeGetStorage(sessionStorage, STORAGE_KEYS.NAV_PATH) || "[]");
-    entities = JSON.parse(safeGetStorage(sessionStorage, STORAGE_KEYS.ENTITIES) || "[]");
-    searches = JSON.parse(safeGetStorage(sessionStorage, STORAGE_KEYS.SEARCHES) || "[]");
-    actions = JSON.parse(safeGetStorage(sessionStorage, STORAGE_KEYS.ACTIONS) || "[]");
-  } catch {
-    // Reset if corrupted
-  }
+    const raw = safeGetStorage(sessionStorage, STORAGE_KEYS.NAV_PATH);
+    if (raw) navigationPath = JSON.parse(raw);
+  } catch {}
+
+  let servicePagesViewed: string[] = [];
+  try {
+    const raw = safeGetStorage(sessionStorage, STORAGE_KEYS.SERVICES_PATH);
+    if (raw) servicePagesViewed = JSON.parse(raw);
+  } catch {}
+
+  let entitiesViewed: string[] = [];
+  try {
+    const raw = safeGetStorage(sessionStorage, STORAGE_KEYS.ENTITIES);
+    if (raw) entitiesViewed = JSON.parse(raw);
+  } catch {}
+
+  let searchesPerformed: string[] = [];
+  try {
+    const raw = safeGetStorage(sessionStorage, STORAGE_KEYS.SEARCHES);
+    if (raw) searchesPerformed = JSON.parse(raw);
+  } catch {}
+
+  let actionsPerformed: string[] = [];
+  try {
+    const raw = safeGetStorage(sessionStorage, STORAGE_KEYS.ACTIONS);
+    if (raw) actionsPerformed = JSON.parse(raw);
+  } catch {}
 
   cachedSession = {
-    visitorId,
     sessionId,
-    isReturning,
-    sessionNumber: visitCount,
-    sessionStartTime,
-    navigationPath: navPath,
-    entitiesViewed: entities,
-    searchesPerformed: searches,
-    actionsPerformed: actions
+    visitorId,
+    isReturning: isReturning || sessionCount > 1,
+    sessionNumber: Math.max(1, sessionCount),
+    sessionStartTime: sessionStartTime || Date.now(),
+    lastActivityTime: Date.now(),
+    navigationPath,
+    servicePagesViewed,
+    entitiesViewed,
+    searchesPerformed,
+    actionsPerformed,
+    hasVisitedEntityDossier: entitiesViewed.length > 0
   };
 
   return cachedSession;
 }
 
-function sendTelemetryPayload(payload: Record<string, unknown>): void {
+/**
+ * Sends telemetry payload asynchronously without blocking the UI.
+ */
+function sendTelemetryPayload(payload: Record<string, any>): void {
   if (typeof window === "undefined") return;
 
-  const jsonStr = JSON.stringify(payload);
-
-  if (typeof navigator !== "undefined" && typeof navigator.sendBeacon === "function") {
-    try {
-      const blob = new Blob([jsonStr], { type: "application/json" });
-      const sent = navigator.sendBeacon("/api/telemetry/events", blob);
-      if (sent) return;
-    } catch {
-      // Fallback to fetch
-    }
-  }
-
   try {
-    fetch("/api/telemetry/events", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: jsonStr,
-      keepalive: true
-    }).catch(() => {});
+    const body = JSON.stringify(payload);
+    if (typeof navigator !== "undefined" && navigator.sendBeacon) {
+      const blob = new Blob([body], { type: "application/json" });
+      navigator.sendBeacon(TELEMETRY_ENDPOINT, blob);
+    } else {
+      fetch(TELEMETRY_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body,
+        keepalive: true
+      }).catch(() => {});
+    }
   } catch {
-    // Non-blocking
+    // Non-blocking telemetry failure
   }
 }
 
 /**
- * Extracts entity info from the pathname.
+ * Extracts entity information from URL pathname.
  */
 export function extractEntityFromPath(pathname: string): {
-  entityType?: "COMPANY" | "PROJECT" | "CITY";
+  entityType?: "COMPANY" | "PROJECT" | "CITY" | "SERVICE";
   entitySlug?: string;
   entityName?: string;
 } {
@@ -191,14 +207,7 @@ export function extractEntityFromPath(pathname: string): {
     const section = parts[0].toLowerCase();
     const slug = parts[1];
 
-    if (
-      section === "companies" ||
-      section === "developers" ||
-      section === "contractors" ||
-      section === "architects" ||
-      section === "engineers" ||
-      section === "agencies"
-    ) {
+    if (section === "companies") {
       const formattedName = slug
         .split("-")
         .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
@@ -221,6 +230,14 @@ export function extractEntityFromPath(pathname: string): {
         .join(" ");
       return { entityType: "CITY", entitySlug: slug, entityName: formattedName };
     }
+
+    if (section === "services") {
+      const formattedName = slug
+        .split("-")
+        .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+        .join(" ");
+      return { entityType: "SERVICE", entitySlug: slug, entityName: formattedName };
+    }
   }
   return {};
 }
@@ -234,6 +251,7 @@ export function trackPageView(pathname: string, searchParamsString = ""): void {
   const session = getOrCreateSession();
   const now = Date.now();
   const timeSpentOnPrevPage = lastPath ? Math.max(1, Math.round((now - lastPageStartTime) / 1000)) : 0;
+  const previousPath = lastPath || "/";
   lastPageStartTime = now;
   lastPath = pathname;
 
@@ -245,9 +263,19 @@ export function trackPageView(pathname: string, searchParamsString = ""): void {
 
   // Check for entity
   const entity = extractEntityFromPath(pathname);
-  if (entity.entityName && !session.entitiesViewed.includes(entity.entityName)) {
-    session.entitiesViewed.push(entity.entityName);
-    safeSetStorage(sessionStorage, STORAGE_KEYS.ENTITIES, JSON.stringify(session.entitiesViewed));
+  if (entity.entityName && (entity.entityType === "COMPANY" || entity.entityType === "PROJECT")) {
+    session.hasVisitedEntityDossier = true;
+    if (!session.entitiesViewed.includes(entity.entityName)) {
+      session.entitiesViewed.push(entity.entityName);
+      safeSetStorage(sessionStorage, STORAGE_KEYS.ENTITIES, JSON.stringify(session.entitiesViewed));
+    }
+  }
+
+  // Check for service
+  const isServicePage = pathname.startsWith("/services/") && pathname.length > "/services/".length;
+  if (isServicePage && !session.servicePagesViewed.includes(pathname)) {
+    session.servicePagesViewed.push(pathname);
+    safeSetStorage(sessionStorage, STORAGE_KEYS.SERVICES_PATH, JSON.stringify(session.servicePagesViewed));
   }
 
   const durationSeconds = Math.max(0, Math.round((now - session.sessionStartTime) / 1000));
@@ -256,8 +284,10 @@ export function trackPageView(pathname: string, searchParamsString = ""): void {
   let eventType = "PAGE_VIEW";
   if (isFirstPage) {
     eventType = session.isReturning ? "RETURNING_VISITOR" : "NEW_VISITOR";
-  } else if (entity.entityType) {
-    eventType = "ENTITY_VIEW";
+  } else if (isServicePage) {
+    eventType = "SERVICE_INTEREST";
+  } else if (entity.entityType === "COMPANY" || entity.entityType === "PROJECT") {
+    eventType = "PROJECT_COMPANY_INTEREST";
   }
 
   const searchParamsObj: Record<string, string> = {};
@@ -275,10 +305,12 @@ export function trackPageView(pathname: string, searchParamsString = ""): void {
     sessionNumber: session.sessionNumber,
     eventType,
     path: pathname,
+    previousPath,
     pageTitle: typeof document !== "undefined" ? document.title : "",
     entityType: entity.entityType,
     entityName: entity.entityName,
     entitySlug: entity.entitySlug,
+    serviceName: isServicePage ? (entity.entityName || pathname.replace("/services/", "")) : undefined,
     referrer: typeof document !== "undefined" ? document.referrer : "",
     searchParams: searchParamsObj,
     viewport: typeof window !== "undefined" ? `${window.innerWidth} × ${window.innerHeight}` : undefined,
@@ -292,6 +324,110 @@ export function trackPageView(pathname: string, searchParamsString = ""): void {
     pagesCount: session.navigationPath.length,
     durationSeconds,
     timeSpentSeconds: timeSpentOnPrevPage,
+    occurredAt: new Date().toISOString()
+  };
+
+  sendTelemetryPayload(payload);
+
+  // HIGH INTENT EVALUATION (Documented observable thresholds)
+  // Threshold 1: Visited 3 or more distinct commercial service pages
+  if (session.servicePagesViewed.length >= 3) {
+    trackHighIntent(`${session.servicePagesViewed.length} service pages researched`);
+  }
+  // Threshold 2: Opened a commercial service page AFTER doing research on company/project dossiers
+  else if (isServicePage && session.hasVisitedEntityDossier) {
+    trackHighIntent("Commercial service opened after company/project dossier research");
+  }
+}
+
+/**
+ * Tracks when a contact form is opened / started.
+ */
+export function trackFormStarted(formName: string, interest = "General contact"): void {
+  if (typeof window === "undefined") return;
+
+  const session = getOrCreateSession();
+  const now = Date.now();
+  const durationSeconds = Math.max(0, Math.round((now - session.sessionStartTime) / 1000));
+
+  const payload = {
+    sessionId: session.sessionId,
+    visitorId: session.visitorId,
+    isReturning: session.isReturning,
+    sessionNumber: session.sessionNumber,
+    eventType: "FORM_STARTED",
+    path: window.location.pathname,
+    actionName: formName,
+    actionDetails: interest,
+    viewport: `${window.innerWidth} × ${window.innerHeight}`,
+    language: navigator.language,
+    timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+    navigationPath: session.navigationPath,
+    pagesCount: session.navigationPath.length,
+    durationSeconds,
+    occurredAt: new Date().toISOString()
+  };
+
+  sendTelemetryPayload(payload);
+}
+
+/**
+ * Tracks when a user started filling out a form but abandoned it before submission.
+ * IMPORTANT: strictly zero PII, only field names (e.g. "Name, Phone, Interest").
+ */
+export function trackFormAbandoned(formName: string, fieldsCompleted: string[]): void {
+  if (typeof window === "undefined" || !fieldsCompleted || fieldsCompleted.length === 0) return;
+
+  const session = getOrCreateSession();
+  const now = Date.now();
+  const durationSeconds = Math.max(0, Math.round((now - session.sessionStartTime) / 1000));
+
+  const payload = {
+    sessionId: session.sessionId,
+    visitorId: session.visitorId,
+    isReturning: session.isReturning,
+    sessionNumber: session.sessionNumber,
+    eventType: "FORM_ABANDONED",
+    path: window.location.pathname,
+    actionName: formName,
+    actionDetails: fieldsCompleted.join(", "),
+    viewport: `${window.innerWidth} × ${window.innerHeight}`,
+    language: navigator.language,
+    timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+    navigationPath: session.navigationPath,
+    pagesCount: session.navigationPath.length,
+    durationSeconds,
+    occurredAt: new Date().toISOString()
+  };
+
+  sendTelemetryPayload(payload);
+}
+
+/**
+ * Tracks observable high-intent visitor threshold events.
+ */
+export function trackHighIntent(intentReason: string): void {
+  if (typeof window === "undefined") return;
+
+  const session = getOrCreateSession();
+  const now = Date.now();
+  const durationSeconds = Math.max(0, Math.round((now - session.sessionStartTime) / 1000));
+
+  const payload = {
+    sessionId: session.sessionId,
+    visitorId: session.visitorId,
+    isReturning: session.isReturning,
+    sessionNumber: session.sessionNumber,
+    eventType: "HIGH_INTENT",
+    path: window.location.pathname,
+    intentReason,
+    actionDetails: intentReason,
+    viewport: `${window.innerWidth} × ${window.innerHeight}`,
+    language: navigator.language,
+    timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+    navigationPath: session.navigationPath,
+    pagesCount: session.navigationPath.length,
+    durationSeconds,
     occurredAt: new Date().toISOString()
   };
 

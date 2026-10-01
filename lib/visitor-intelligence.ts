@@ -1,59 +1,47 @@
 /**
- * Core Visitor Intelligence Server Engine
- * CONSTRUCTIONS by AiXLuxury
- *
- * Coordinates event enrichment, session state tracking, database persistence,
- * intelligent noise throttling, and Telegram operational notification dispatch.
+ * CONSTRUCTIONS by AiXLuxury — Visitor Intelligence Core Processing Engine
+ * 
+ * Ingests client-side telemetry events, extracts headers, enriches with geodata,
+ * performs intelligent throttling & deduplication, and formats / dispatches
+ * operational notifications to Telegram and Supabase.
  */
 
-import crypto from "crypto";
-import { getServiceClient } from "./supabase";
-import { sendTelegramNotification } from "./telegram";
+import { parseUserAgent, parseSourceAttribution, parseVercelGeoHeaders, classifyRoute } from "./visitor-parser";
 import {
-  classifyPageType,
-  extractLocationFromHeaders,
-  parseAcquisitionSource,
-  parseUserAgent,
-  ParsedLocation,
-  ParsedSource,
-  ParsedUserAgent
-} from "./visitor-parser";
-import {
-  formatEntityViewMessage,
-  formatHighValueActivityMessage,
+  VisitorEventData,
   formatNewVisitorMessage,
-  formatReturningVisitorMessage,
-  formatSessionSummaryMessage,
-  formatSiteSearchMessage,
-  VisitorEventData
+  formatPageViewMessage,
+  formatServiceInterestMessage,
+  formatProjectCompanyInterestMessage,
+  formatHighIntentVisitorMessage,
+  formatFormStartedMessage,
+  formatFormAbandonedMessage
 } from "./telegram-visitor-formatter";
+import { sendTelegramNotification } from "./telegram";
+import { getServiceClient } from "./supabase";
 
-export interface IncomingVisitorEvent {
+export interface RawTelemetryEvent {
   sessionId: string;
   visitorId: string;
   isReturning?: boolean;
   sessionNumber?: number;
-  eventType:
-    | "NEW_VISITOR"
-    | "RETURNING_VISITOR"
-    | "PAGE_VIEW"
-    | "ENTITY_VIEW"
-    | "SEARCH"
-    | "INTERACTION"
-    | "HIGH_VALUE"
-    | "SESSION_SUMMARY";
+  eventType: string; // NEW_VISITOR, RETURNING_VISITOR, PAGE_VIEW, SERVICE_INTEREST, PROJECT_COMPANY_INTEREST, HIGH_INTENT, FORM_STARTED, FORM_ABANDONED, SEARCH, HIGH_VALUE, SESSION_SUMMARY
   path: string;
+  previousPath?: string;
   pageTitle?: string;
-  pageType?: string;
-  entityType?: "COMPANY" | "PROJECT" | "CITY" | "SIGNAL" | string;
+  entityType?: string;
   entityName?: string;
   entitySlug?: string;
-  entityMetadata?: Record<string, unknown>;
+  serviceName?: string;
+  entityMetadata?: Record<string, any>;
+  referrer?: string;
+  searchParams?: Record<string, string>;
   searchQuery?: string;
   searchResultsCount?: number;
   searchSelectedResult?: string;
   actionName?: string;
   actionDetails?: string;
+  intentReason?: string;
   leadData?: {
     name?: string;
     email?: string;
@@ -70,8 +58,6 @@ export interface IncomingVisitorEvent {
   durationSeconds?: number;
   timeSpentSeconds?: number;
   scrollDepthPercent?: number;
-  referrer?: string;
-  searchParams?: Record<string, string>;
   viewport?: string;
   screen?: string;
   language?: string;
@@ -79,77 +65,76 @@ export interface IncomingVisitorEvent {
   occurredAt?: string;
 }
 
-// In-memory session alert state to prevent duplicate notifications
-interface SessionNotificationCache {
-  notifiedLanding?: boolean;
+export interface ProcessingResult {
+  success: boolean;
+  telegramSent: boolean;
+  error?: string;
+}
+
+// In-Memory Session Cache for Throttling / Deduplication
+interface SessionAlertState {
+  notifiedLanding: boolean;
+  notifiedPages: Set<string>;
+  notifiedServices: Set<string>;
   notifiedEntities: Set<string>;
   notifiedSearches: Set<string>;
-  notifiedHighValue: Set<string>;
-  summarySent?: boolean;
+  notifiedHighIntent: Set<string>;
+  notifiedFormStarted: boolean;
+  notifiedFormAbandoned: boolean;
+  summarySent: boolean;
   lastEventTime: number;
 }
 
-const sessionCache = new Map<string, SessionNotificationCache>();
+const sessionAlertCache = new Map<string, SessionAlertState>();
 
-// Cleanup stale session cache every 15 minutes
-const cleanupTimer = setInterval(() => {
+// Periodic cache cleanup (sessions older than 2 hours)
+setInterval(() => {
   const now = Date.now();
-  const maxAge = 2 * 60 * 60 * 1000; // 2 hours
-  for (const [sid, state] of sessionCache.entries()) {
-    if (now - state.lastEventTime > maxAge) {
-      sessionCache.delete(sid);
+  const twoHoursAgo = now - 2 * 60 * 60 * 1000;
+  for (const [sid, state] of sessionAlertCache.entries()) {
+    if (state.lastEventTime < twoHoursAgo) {
+      sessionAlertCache.delete(sid);
     }
   }
-}, 15 * 60 * 1000);
-if (typeof cleanupTimer.unref === 'function') cleanupTimer.unref();
+}, 30 * 60 * 1000);
 
-function getSessionState(sessionId: string): SessionNotificationCache {
-  let state = sessionCache.get(sessionId);
+function getSessionAlertState(sessionId: string): SessionAlertState {
+  let state = sessionAlertCache.get(sessionId);
   if (!state) {
     state = {
+      notifiedLanding: false,
+      notifiedPages: new Set<string>(),
+      notifiedServices: new Set<string>(),
       notifiedEntities: new Set<string>(),
       notifiedSearches: new Set<string>(),
-      notifiedHighValue: new Set<string>(),
+      notifiedHighIntent: new Set<string>(),
+      notifiedFormStarted: false,
+      notifiedFormAbandoned: false,
+      summarySent: false,
       lastEventTime: Date.now()
     };
-    sessionCache.set(sessionId, state);
+    sessionAlertCache.set(sessionId, state);
   }
   state.lastEventTime = Date.now();
   return state;
 }
 
-function hashIp(ip: string): string {
-  if (!ip) return "anonymous";
-  const salt = process.env.TELEMETRY_SALT || "constructions-aixluxury-privacy";
-  return crypto.createHash("sha256").update(ip + salt).digest("hex").substring(0, 16);
-}
-
 /**
- * Main entry point for processing and recording visitor events.
+ * Main ingestion handler for visitor events.
  */
-export async function processVisitorIntelligenceEvent(
-  rawEvent: IncomingVisitorEvent,
-  headers: Headers | Record<string, string | string[] | undefined>,
-  clientIp: string
-): Promise<{ success: boolean; telegramSent: boolean; error?: string }> {
+export async function processVisitorEvent(
+  rawEvent: RawTelemetryEvent,
+  headers: Headers
+): Promise<ProcessingResult> {
   try {
-    const rawUa = typeof (headers as Headers).get === "function"
-      ? (headers as Headers).get("user-agent")
-      : (headers as Record<string, string | string[] | undefined>)["user-agent"];
-    const uaString = typeof rawUa === "string" ? rawUa : Array.isArray(rawUa) ? rawUa[0] : "";
+    const userAgent = parseUserAgent(headers.get("user-agent"));
+    const source = parseSourceAttribution(rawEvent.referrer, rawEvent.searchParams);
+    const location = parseVercelGeoHeaders(headers);
+    const pageType = classifyRoute(rawEvent.path);
+    const ip = headers.get("x-real-ip") || headers.get("x-forwarded-for") || "";
+    const ipHash = ip ? Buffer.from(ip).toString("base64").substring(0, 16) : null;
 
-    const userAgent: ParsedUserAgent = parseUserAgent(uaString);
-    const source: ParsedSource = parseAcquisitionSource(rawEvent.referrer, rawEvent.searchParams);
-    const location: ParsedLocation = extractLocationFromHeaders(headers);
-
-    // Fallback timezone from client if header unavailable
-    if (!location.timezone && rawEvent.timezone) {
-      location.timezone = rawEvent.timezone;
-    }
-
-    const pageType = rawEvent.pageType || classifyPageType(rawEvent.path);
-    const ipHash = hashIp(clientIp);
-    const sessionState = getSessionState(rawEvent.sessionId);
+    const sessionState = getSessionAlertState(rawEvent.sessionId);
 
     const eventData: VisitorEventData = {
       sessionId: rawEvent.sessionId,
@@ -157,19 +142,20 @@ export async function processVisitorIntelligenceEvent(
       isReturning: rawEvent.isReturning,
       sessionNumber: rawEvent.sessionNumber,
       occurredAt: rawEvent.occurredAt || new Date().toISOString(),
-      timezone: location.timezone || rawEvent.timezone || "Europe/Bucharest",
       path: rawEvent.path,
+      previousPath: rawEvent.previousPath,
       pageTitle: rawEvent.pageTitle,
       pageType,
       entityType: rawEvent.entityType,
       entityName: rawEvent.entityName,
       entitySlug: rawEvent.entitySlug,
-      entityMetadata: rawEvent.entityMetadata,
+      serviceName: rawEvent.serviceName,
       searchQuery: rawEvent.searchQuery,
       searchResultsCount: rawEvent.searchResultsCount,
       searchSelectedResult: rawEvent.searchSelectedResult,
       actionName: rawEvent.actionName,
       actionDetails: rawEvent.actionDetails,
+      intentReason: rawEvent.intentReason,
       leadData: rawEvent.leadData,
       navigationPath: rawEvent.navigationPath,
       entitiesViewed: rawEvent.entitiesViewed,
@@ -185,14 +171,15 @@ export async function processVisitorIntelligenceEvent(
       location
     };
 
-    // 1. Intelligent Telegram Alert Decision
+    // 1. Intelligent Telegram Alert Decision & Throttling
     let telegramText: string | null = null;
     let shouldNotify = false;
 
-    // We do NOT send Telegram alerts for automated bots / crawlers
+    // Do NOT send Telegram alerts for automated bots / crawlers
     if (!userAgent.isBot) {
       switch (rawEvent.eventType) {
         case "NEW_VISITOR":
+        case "RETURNING_VISITOR":
           if (!sessionState.notifiedLanding) {
             sessionState.notifiedLanding = true;
             telegramText = formatNewVisitorMessage(eventData);
@@ -200,66 +187,71 @@ export async function processVisitorIntelligenceEvent(
           }
           break;
 
-        case "RETURNING_VISITOR":
-          if (!sessionState.notifiedLanding) {
-            sessionState.notifiedLanding = true;
-            telegramText = formatReturningVisitorMessage(eventData);
-            shouldNotify = true;
+        case "SERVICE_INTEREST":
+          {
+            const serviceKey = rawEvent.path || rawEvent.serviceName || "service";
+            if (!sessionState.notifiedServices.has(serviceKey)) {
+              sessionState.notifiedServices.add(serviceKey);
+              telegramText = formatServiceInterestMessage(eventData);
+              shouldNotify = true;
+            }
           }
           break;
 
+        case "PROJECT_COMPANY_INTEREST":
         case "ENTITY_VIEW":
-          if (rawEvent.entityName) {
-            const entityKey = `${rawEvent.entityType || "ENTITY"}:${rawEvent.entitySlug || rawEvent.entityName}`;
+          {
+            const entityKey = `${rawEvent.entityType || "ENTITY"}:${rawEvent.entitySlug || rawEvent.entityName || rawEvent.path}`;
             if (!sessionState.notifiedEntities.has(entityKey)) {
               sessionState.notifiedEntities.add(entityKey);
-              telegramText = formatEntityViewMessage(eventData);
+              telegramText = formatProjectCompanyInterestMessage(eventData);
               shouldNotify = true;
             }
           }
           break;
 
-        case "SEARCH":
-          if (rawEvent.searchQuery && rawEvent.searchQuery.trim().length >= 2) {
-            const queryNorm = rawEvent.searchQuery.trim().toLowerCase();
-            if (!sessionState.notifiedSearches.has(queryNorm)) {
-              sessionState.notifiedSearches.add(queryNorm);
-              telegramText = formatSiteSearchMessage(eventData);
+        case "HIGH_INTENT":
+          {
+            const intentKey = rawEvent.intentReason || rawEvent.actionDetails || rawEvent.path;
+            if (!sessionState.notifiedHighIntent.has(intentKey)) {
+              sessionState.notifiedHighIntent.add(intentKey);
+              telegramText = formatHighIntentVisitorMessage(eventData);
               shouldNotify = true;
             }
           }
           break;
 
-        case "HIGH_VALUE":
-          const actionKey = `${rawEvent.actionName || "ACTION"}:${rawEvent.path}`;
-          if (!sessionState.notifiedHighValue.has(actionKey)) {
-            sessionState.notifiedHighValue.add(actionKey);
-            telegramText = formatHighValueActivityMessage(eventData);
+        case "FORM_STARTED":
+          if (!sessionState.notifiedFormStarted) {
+            sessionState.notifiedFormStarted = true;
+            telegramText = formatFormStartedMessage(eventData);
             shouldNotify = true;
           }
           break;
 
-        case "SESSION_SUMMARY":
-          if (!sessionState.summarySent) {
-            const totalPages = rawEvent.pagesCount || (rawEvent.navigationPath ? rawEvent.navigationPath.length : 1);
-            const totalActions = rawEvent.actionsPerformed ? rawEvent.actionsPerformed.length : 0;
-            // Only send summary if visitor engaged beyond a trivial 1-second single pageview
-            if (totalPages >= 2 || totalActions >= 1 || (rawEvent.durationSeconds && rawEvent.durationSeconds >= 15)) {
-              sessionState.summarySent = true;
-              telegramText = formatSessionSummaryMessage(eventData);
-              shouldNotify = true;
-            }
+        case "FORM_ABANDONED":
+          if (!sessionState.notifiedFormAbandoned) {
+            sessionState.notifiedFormAbandoned = true;
+            telegramText = formatFormAbandonedMessage(eventData);
+            shouldNotify = true;
           }
           break;
 
         case "PAGE_VIEW":
-          // If this is the very first event in a session and landing wasn't sent yet
+          // If first event and landing was not notified
           if (!sessionState.notifiedLanding) {
             sessionState.notifiedLanding = true;
-            telegramText = rawEvent.isReturning
-              ? formatReturningVisitorMessage(eventData)
-              : formatNewVisitorMessage(eventData);
+            telegramText = formatNewVisitorMessage(eventData);
             shouldNotify = true;
+          } else {
+            // Deduplicate same-page refreshes
+            const pathKey = rawEvent.path;
+            if (!sessionState.notifiedPages.has(pathKey)) {
+              sessionState.notifiedPages.add(pathKey);
+              // Notify only if page is not a simple repeat
+              telegramText = formatPageViewMessage(eventData);
+              shouldNotify = true;
+            }
           }
           break;
       }
@@ -268,13 +260,20 @@ export async function processVisitorIntelligenceEvent(
     let telegramSent = false;
     if (shouldNotify && telegramText) {
       telegramSent = await sendTelegramNotification(telegramText);
+      if (!telegramSent) {
+        console.error("[TELEGRAM_NOTIFICATION_FAILED]", {
+          eventType: rawEvent.eventType,
+          sessionId: rawEvent.sessionId,
+          path: rawEvent.path,
+          timestamp: new Date().toISOString()
+        });
+      }
     }
 
     // 2. Persist to Supabase if configured (Asynchronous, Non-blocking)
     const client = getServiceClient();
     if (client) {
       try {
-        // Upsert Session
         await client.from("visitor_sessions").upsert(
           {
             id: rawEvent.sessionId,
@@ -313,7 +312,6 @@ export async function processVisitorIntelligenceEvent(
           { onConflict: "id" }
         );
 
-        // Insert Event
         await client.from("visitor_events").insert({
           session_id: rawEvent.sessionId,
           visitor_id: rawEvent.visitorId,
@@ -355,7 +353,6 @@ export async function processVisitorIntelligenceEvent(
           telegram_notified: telegramSent
         });
       } catch (dbErr) {
-        // Non-blocking database failure
         console.warn("[Visitor Intelligence DB Exception]", dbErr);
       }
     }
@@ -366,3 +363,8 @@ export async function processVisitorIntelligenceEvent(
     return { success: false, telegramSent: false, error: err?.message || "Unknown error" };
   }
 }
+
+export type IncomingVisitorEvent = RawTelemetryEvent;
+export const processVisitorIntelligenceEvent = async (rawEvent: RawTelemetryEvent, headers: Headers, _clientIp?: string) => {
+  return processVisitorEvent(rawEvent, headers);
+};

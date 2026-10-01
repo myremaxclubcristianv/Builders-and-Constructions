@@ -1,25 +1,23 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
-import { getOrCreateSession, trackHighValueActivity } from '@/lib/visitor-tracker';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
+import { getOrCreateSession, trackHighValueActivity, trackFormStarted, trackFormAbandoned } from '@/lib/visitor-tracker';
 
 const INTEREST_OPTIONS = [
-  { value: 'general-contact', label: 'Contact General / Discuție Proiect' },
-  { value: 'Construcții', label: 'Construcții' },
-  { value: 'Calitatea construcțiilor', label: 'Calitatea construcțiilor' },
+  { value: 'Servicii de calitate în construcții', label: 'Servicii de calitate în construcții' },
   { value: 'Controlul calității', label: 'Controlul calității' },
   { value: 'Manager calitate', label: 'Manager calitate' },
   { value: 'Cartea Tehnică a Construcției', label: 'Cartea Tehnică a Construcției' },
-  { value: 'SSM', label: 'SSM (Securitate și Sănătate în Muncă)' },
+  { value: 'Inspector SSM', label: 'Inspector SSM' },
   { value: 'Proiecte', label: 'Proiecte' },
-  { value: 'Arhitectură', label: 'Arhitectură' },
+  { value: 'Arhitecți', label: 'Arhitecți' },
   { value: 'Publicitate', label: 'Publicitate' },
   { value: 'Închirieri utilaje', label: 'Închirieri utilaje' },
-  { value: 'Asigurări', label: 'Asigurări' },
+  { value: 'Intermediere asigurări', label: 'Intermediere asigurări' },
   { value: 'Credite / finanțare', label: 'Credite / finanțare' },
   { value: 'Vânzări real estate', label: 'Vânzări real estate' },
   { value: 'Imobiliare', label: 'Imobiliare' },
-  { value: 'Altceva', label: 'Altceva' }
+  { value: 'Altă solicitare', label: 'Altă solicitare' }
 ];
 
 export function QuickContactModal() {
@@ -28,10 +26,11 @@ export function QuickContactModal() {
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
   const [companyName, setCompanyName] = useState('');
-  const [serviceInterest, setServiceInterest] = useState('general-contact');
+  const [companyRole, setCompanyRole] = useState('');
+  const [serviceInterest, setServiceInterest] = useState('Servicii de calitate în construcții');
   const [message, setMessage] = useState('');
   const [preferredContact, setPreferredContact] = useState('Telefon');
-  const [urgency, setUrgency] = useState<'Normal' | 'Important' | 'Urgent'>('Important');
+  const [urgency, setUrgency] = useState<'Normal' | 'Urgent' | 'Foarte urgent'>('Normal');
   const [consent, setConsent] = useState(true);
   const [honeypot, setHoneypot] = useState('');
 
@@ -41,6 +40,8 @@ export function QuickContactModal() {
 
   const modalRef = useRef<HTMLDivElement>(null);
   const firstInputRef = useRef<HTMLInputElement>(null);
+  const hasTrackedStartRef = useRef(false);
+  const isSubmittedRef = useRef(false);
 
   // Global event listener to open modal from anywhere on site
   useEffect(() => {
@@ -51,91 +52,101 @@ export function QuickContactModal() {
       setIsOpen(true);
       setSuccessLeadId(null);
       setSubmitError(null);
+      isSubmittedRef.current = false;
+      if (!hasTrackedStartRef.current) {
+        trackFormStarted('quick_contact_modal', e.detail?.interest || serviceInterest);
+        hasTrackedStartRef.current = true;
+      }
     };
 
     window.addEventListener('open-quick-contact', handleOpenEvent);
     return () => window.removeEventListener('open-quick-contact', handleOpenEvent);
-  }, []);
+  }, [serviceInterest]);
+
+  // Track abandonment if user closes modal after filling out fields without submitting
+  const handleClose = useCallback(() => {
+    if (!isSubmittedRef.current && !successLeadId) {
+      const completed: string[] = [];
+      if (fullName.trim()) completed.push('Name');
+      if (phone.trim()) completed.push('Phone');
+      if (email.trim()) completed.push('Email');
+      if (companyName.trim()) completed.push('Company');
+      if (serviceInterest) completed.push('Interest');
+      if (message.trim()) completed.push('Message');
+
+      if (completed.length > 0) {
+        trackFormAbandoned('quick_contact_modal', completed);
+      }
+    }
+    setIsOpen(false);
+  }, [fullName, phone, email, companyName, serviceInterest, message, successLeadId]);
 
   // Keyboard accessibility: Escape to close
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape' && isOpen) {
-        setIsOpen(false);
+        handleClose();
       }
     };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [isOpen]);
 
-  // Focus lock and body scroll lock
-  useEffect(() => {
     if (isOpen) {
+      window.addEventListener('keydown', handleKeyDown);
       document.body.style.overflow = 'hidden';
-      setTimeout(() => {
-        firstInputRef.current?.focus();
-      }, 50);
+      setTimeout(() => firstInputRef.current?.focus(), 50);
     } else {
       document.body.style.overflow = '';
     }
-  }, [isOpen]);
 
-  const handleClose = () => {
-    setIsOpen(false);
-  };
-
-  const handleReset = () => {
-    setFullName('');
-    setPhone('');
-    setEmail('');
-    setCompanyName('');
-    setMessage('');
-    setSuccessLeadId(null);
-    setSubmitError(null);
-    setIsOpen(false);
-  };
-
-  const hasValidContact = fullName.trim().length >= 2 && (email.trim().length > 3 || phone.trim().length >= 6) && consent;
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = '';
+    };
+  }, [isOpen, handleClose]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!hasValidContact) {
-      setSubmitError('Te rugăm să completezi numele, cel puțin un mod de contact valid (telefon sau email) și acordul GDPR.');
+    if (honeypot) return; // Silent anti-bot discard
+
+    if (!fullName.trim() || (!phone.trim() && !email.trim())) {
+      setSubmitError('Te rugăm să completezi numele și cel puțin un număr de telefon sau o adresă de email.');
+      return;
+    }
+
+    if (!consent) {
+      setSubmitError('Este necesar acordul GDPR pentru a transmite solicitarea.');
       return;
     }
 
     setIsSubmitting(true);
     setSubmitError(null);
 
-    try {
-      const session = getOrCreateSession();
-      const interestLabel = INTEREST_OPTIONS.find(o => o.value === serviceInterest)?.label || serviceInterest;
+    const session = getOrCreateSession();
 
+    try {
       const payload = {
-        role: 'Solicitare Generală / Contact',
         serviceId: 'general-contact',
-        serviceName: interestLabel,
+        serviceName: serviceInterest,
+        role: companyRole || 'Nespecificat',
+        fullName: fullName.trim(),
+        phone: phone.trim(),
+        email: email.trim(),
         isCompany: Boolean(companyName.trim()),
         companyName: companyName.trim() || undefined,
-        isProjectRelated: 'no' as const,
-        serviceSpecificData: {
-          tip_solicitare: 'Contact Rapid / Always-On Desk',
-          interes_selectat: interestLabel,
-          canal_contact: preferredContact
-        },
-        message: message.trim() || undefined,
-        urgency,
-        fullName: fullName.trim(),
-        email: email.trim(),
-        phone: phone.trim() || undefined,
+        companyRole: companyRole.trim() || undefined,
+        message: message.trim(),
         preferredContact,
-        consent,
+        urgency,
+        consentGranted: consent,
         source: 'always_on_contact_modal',
-        landingPath: typeof window !== 'undefined' ? window.location.pathname : '/contact',
-        referrer: typeof document !== 'undefined' ? document.referrer : undefined,
+        landingPath: typeof window !== 'undefined' ? window.location.pathname : '/',
+        referrer: typeof document !== 'undefined' ? document.referrer : '',
         visitorId: session.visitorId,
         sessionId: session.sessionId,
-        website_hp: honeypot
+        deviceCategory: session.navigationPath.length > 0 ? 'Web' : 'Desktop',
+        serviceSpecificData: {
+          interestCategory: serviceInterest,
+          companyRole: companyRole.trim() || 'N/A'
+        }
       };
 
       const res = await fetch('/api/intake', {
@@ -146,93 +157,99 @@ export function QuickContactModal() {
 
       const data = await res.json();
 
-      if (!res.ok || !data.ok) {
-        throw new Error(data.error || 'A apărut o eroare la salvarea solicitării.');
+      if (res.ok && data.ok) {
+        isSubmittedRef.current = true;
+        setSuccessLeadId(data.leadId);
+        trackHighValueActivity('General Contact Submission', serviceInterest, {
+          name: fullName,
+          email,
+          phone,
+          company: companyName,
+          requestType: serviceInterest
+        });
+      } else {
+        setSubmitError(data.error || 'Nu am putut trimite solicitarea. Te rugăm să încerci din nou.');
       }
-
-      const leadId = data.leadId || 'LEAD-CONFIRMED';
-      setSuccessLeadId(leadId);
-
-      // Track telemetry
-      trackHighValueActivity('General Contact Submitted: ' + interestLabel, 'always_on_contact', {
-        name: fullName,
-        email,
-        company: companyName,
-        phone,
-        message,
-        requestType: interestLabel
-      });
-    } catch (err) {
-      setSubmitError('Nu am putut trimite solicitarea. Te rugăm să reîncerci.');
+    } catch {
+      setSubmitError('Nu am putut trimite solicitarea. Te rugăm să verifici conexiunea la internet și să încerci din nou.');
     } finally {
       setIsSubmitting(false);
     }
   };
 
+  const hasValidContact = fullName.trim().length > 0 && (phone.trim().length > 0 || email.trim().length > 0) && consent;
+
   if (!isOpen) return null;
 
   return (
     <div
+      className="fixed inset-0 z-[9999] flex items-center justify-center p-3 sm:p-4 bg-black/80 backdrop-blur-sm overflow-y-auto"
       role="dialog"
       aria-modal="true"
       aria-labelledby="quick-contact-title"
-      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/80 backdrop-blur-sm animate-fadeIn"
       onClick={(e) => {
         if (e.target === e.currentTarget) handleClose();
       }}
     >
       <div
         ref={modalRef}
-        className="w-full max-w-lg bg-[#0B0D0C] border border-[#1A1D1B] rounded-2xl shadow-2xl p-5 sm:p-7 max-h-[92vh] overflow-y-auto relative animate-fadeIn"
+        className="w-full max-w-lg bg-[#0F1210] border border-[#232825] rounded-xl shadow-2xl p-4 sm:p-6 text-white relative my-auto animate-in fade-in zoom-in-95 duration-150"
       >
-        {/* Header with Close Button */}
-        <div className="flex items-start justify-between border-b border-[#1A1D1B] pb-4 mb-4">
+        {/* Header */}
+        <div className="flex items-start justify-between border-b border-[#1A1D1B] pb-3 mb-4">
           <div>
-            <span className="text-[10px] font-mono uppercase tracking-widest text-[#C9A227] font-bold block mb-1">
-              CONSTRUCTIONS BY AIXLUXURY • CONTACT DESK
-            </span>
-            <h2 id="quick-contact-title" className="text-xl sm:text-2xl font-bold text-white tracking-tight">
-              {successLeadId ? 'Mesaj trimis.' : 'Spune-ne cu ce te putem ajuta.'}
+            <div className="flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-[#C9A227] animate-pulse" />
+              <span className="text-[10px] font-mono tracking-widest text-[#C9A227] uppercase font-bold">
+                Direct Contact Desk
+              </span>
+            </div>
+            <h2 id="quick-contact-title" className="text-base sm:text-lg font-bold text-white tracking-tight mt-0.5">
+              Spune-ne cu ce te putem ajuta
             </h2>
-            <p className="text-xs text-[#A0A0A0] mt-1">
-              {successLeadId
-                ? 'Solicitarea ta a fost transmisă. Revenim către tine cât mai curând.'
-                : 'Trimite-ne câteva detalii și revenim către tine.'}
+            <p className="text-xs text-[#888888] mt-0.5">
+              Trimite-ne câteva detalii și revenim către tine în cel mai scurt timp.
             </p>
           </div>
           <button
+            type="button"
             onClick={handleClose}
-            aria-label="Close contact modal"
-            className="w-9 h-9 rounded-lg bg-[#111412] border border-[#1A1D1B] text-[#A0A0A0] hover:text-white flex items-center justify-center text-sm transition-colors shrink-0"
+            className="text-[#666666] hover:text-white p-1 rounded-lg hover:bg-white/5 transition-colors"
+            aria-label="Închide fereastra"
           >
-            ✕
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
           </button>
         </div>
 
-        {/* Success State (Section 9) */}
         {successLeadId ? (
+          /* Success State */
           <div className="py-6 text-center space-y-4">
-            <div className="w-14 h-14 rounded-full bg-[#C9A227]/10 border border-[#C9A227] flex items-center justify-center mx-auto text-xl text-[#C9A227]">
+            <div className="w-12 h-12 rounded-full bg-[#C9A227]/20 text-[#C9A227] flex items-center justify-center mx-auto text-xl border border-[#C9A227]/40">
               ✓
             </div>
-            <div className="p-4 bg-[#111412] border border-[#1A1D1B] rounded-xl inline-block font-mono text-xs text-[#C5C5C5]">
-              <span className="text-[#888888] block text-[10px] uppercase">Request ID</span>
-              <span className="text-base font-bold text-[#C9A227] tracking-wider">{successLeadId}</span>
+            <div>
+              <h3 className="text-base font-bold text-white">Mesaj trimis cu succes</h3>
+              <p className="text-xs text-[#888888] mt-1 max-w-sm mx-auto">
+                Am primit detaliile tale. Un reprezentant tehnic te va contacta în cel mai scurt timp.
+              </p>
+              <div className="mt-3 inline-block px-3 py-1 bg-[#1A1D1B] rounded border border-[#2A2E2C] text-[11px] font-mono text-[#C9A227]">
+                ID Înregistrare: LEAD-{successLeadId.replace(/^LEAD-/, '')}
+              </div>
             </div>
-            <div className="pt-2 flex justify-center gap-3">
-              <button
-                type="button"
-                onClick={handleReset}
-                className="px-6 py-2.5 bg-[#C9A227] hover:bg-[#d8b135] text-black font-bold text-xs font-mono rounded-lg transition-all"
-              >
-                Închide
-              </button>
-            </div>
+            <button
+              type="button"
+              onClick={handleClose}
+              className="px-6 py-2.5 bg-[#C9A227] hover:bg-[#d8b135] text-black font-bold text-xs font-mono uppercase tracking-wider rounded-lg transition-colors"
+            >
+              Închide
+            </button>
           </div>
         ) : (
-          /* Form Body (Section 4) */
-          <form onSubmit={handleSubmit} noValidate className="space-y-4">
-            {/* Honeypot */}
+          /* Form State */
+          <form onSubmit={handleSubmit} className="space-y-3.5">
+            {/* Honeypot field */}
             <input
               type="text"
               name="website_hp"
@@ -246,7 +263,7 @@ export function QuickContactModal() {
 
             <div>
               <label className="block text-[11px] font-mono text-[#C5C5C5] mb-1 font-semibold">
-                Nume și prenume <span className="text-[#C9A227]">*</span>
+                Nume complet <span className="text-[#C9A227]">*</span>
               </label>
               <input
                 ref={firstInputRef}
@@ -303,20 +320,33 @@ export function QuickContactModal() {
 
               <div>
                 <label className="block text-[11px] font-mono text-[#C5C5C5] mb-1 font-semibold">
-                  Ce te interesează?
+                  Rol / poziție (opțional)
                 </label>
-                <select
-                  value={serviceInterest}
-                  onChange={e => setServiceInterest(e.target.value)}
-                  className="w-full bg-[#070908] border border-[#1A1D1B] focus:border-[#C9A227] rounded-lg px-3 py-2 text-xs text-white outline-none"
-                >
-                  {INTEREST_OPTIONS.map(opt => (
-                    <option key={opt.value} value={opt.value}>
-                      {opt.label}
-                    </option>
-                  ))}
-                </select>
+                <input
+                  type="text"
+                  value={companyRole}
+                  onChange={e => setCompanyRole(e.target.value)}
+                  placeholder="ex: Administrator, Inginer, Manager"
+                  className="w-full bg-[#070908] border border-[#1A1D1B] focus:border-[#C9A227] rounded-lg px-3 py-2 text-xs text-white placeholder-[#555555] outline-none"
+                />
               </div>
+            </div>
+
+            <div>
+              <label className="block text-[11px] font-mono text-[#C5C5C5] mb-1 font-semibold">
+                Ce te interesează?
+              </label>
+              <select
+                value={serviceInterest}
+                onChange={e => setServiceInterest(e.target.value)}
+                className="w-full bg-[#070908] border border-[#1A1D1B] focus:border-[#C9A227] rounded-lg px-3 py-2 text-xs text-white outline-none"
+              >
+                {INTEREST_OPTIONS.map(opt => (
+                  <option key={opt.value} value={opt.value}>
+                    {opt.label}
+                  </option>
+                ))}
+              </select>
             </div>
 
             <div>
@@ -346,7 +376,6 @@ export function QuickContactModal() {
                   <option value="WhatsApp">WhatsApp</option>
                   <option value="Email">Email</option>
                   <option value="Telegram">Telegram</option>
-                  <option value="Nu contează">Nu contează</option>
                 </select>
               </div>
 
@@ -360,8 +389,8 @@ export function QuickContactModal() {
                   className="w-full bg-[#070908] border border-[#1A1D1B] rounded px-2.5 py-1.5 text-xs text-white outline-none"
                 >
                   <option value="Normal">Normal</option>
-                  <option value="Important">Important</option>
-                  <option value="Urgent">⚡ Urgent</option>
+                  <option value="Urgent">Urgent</option>
+                  <option value="Foarte urgent">⚡ Foarte urgent</option>
                 </select>
               </div>
             </div>
@@ -381,7 +410,7 @@ export function QuickContactModal() {
               </label>
             </div>
 
-            {/* Error State (Section 10) */}
+            {/* Error State */}
             {submitError && (
               <div className="p-3 bg-red-950/50 border border-red-500/40 rounded-lg text-[11px] text-red-200 font-mono" role="alert">
                 {submitError}

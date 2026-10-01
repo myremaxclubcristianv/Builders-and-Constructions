@@ -481,3 +481,8 @@ export function extractLocationFromHeaders(
     isAvailable
   };
 }
+
+// Backward compatibility & semantic aliases
+export const parseSourceAttribution = parseAcquisitionSource;
+export const parseVercelGeoHeaders = extractLocationFromHeaders;
+export const classifyRoute = classifyPageType;
