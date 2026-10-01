@@ -10,6 +10,7 @@ import { DossierNav } from '@/components/DossierNav';
 import { ProjectStageLifecycle } from '@/components/ProjectStageLifecycle';
 import { LeadForm } from '@/components/LeadForm';
 import { BookmarkButton } from '@/components/BookmarkButton';
+import { safeJsonLdStringify } from '@/lib/sanitize';
 
 export async function generateMetadata({
   params,
@@ -116,25 +117,54 @@ export default async function ProjectProfile({
 
   const heroUrl = p.image || 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=85';
 
-  // Schema.org Place / Building JSON-LD
+  // Schema.org Place / Building & BreadcrumbList JSON-LD
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'Place',
-    name: p.name,
-    description: p.description,
-    url: `https://constructions.cristianvaduva.com/projects/${p.slug}`,
-    address: {
-      '@type': 'PostalAddress',
-      addressLocality: p.location || 'Romania',
-      addressCountry: 'RO'
-    }
+    '@graph': [
+      {
+        '@type': 'Place',
+        '@id': `https://constructions.cristianvaduva.com/projects/${p.slug}#place`,
+        name: p.name,
+        description: p.description,
+        url: `https://constructions.cristianvaduva.com/projects/${p.slug}`,
+        address: {
+          '@type': 'PostalAddress',
+          addressLocality: p.location || 'Romania',
+          addressCountry: 'RO'
+        }
+      },
+      {
+        '@type': 'BreadcrumbList',
+        '@id': `https://constructions.cristianvaduva.com/projects/${p.slug}#breadcrumb`,
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Home',
+            item: 'https://constructions.cristianvaduva.com'
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: 'Projects',
+            item: 'https://constructions.cristianvaduva.com/projects'
+          },
+          {
+            '@type': 'ListItem',
+            position: 3,
+            name: p.name,
+            item: `https://constructions.cristianvaduva.com/projects/${p.slug}`
+          }
+        ]
+      }
+    ]
   };
 
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: safeJsonLdStringify(jsonLd) }}
       />
       <SiteHeader />
       <main style={{ background: '#0c0e0c', color: '#fff', minHeight: '100vh' }}>
@@ -374,16 +404,40 @@ export default async function ProjectProfile({
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 16 }}>
             <div style={{ padding: 20, background: '#141715', border: '1px solid #262927', borderRadius: 6 }}>
-              <div style={{ fontSize: 10, color: '#888', fontWeight: 700 }}>GROSS SURFACE AREA</div>
+              <div style={{ fontSize: 10, color: '#888', fontWeight: 700 }}>
+                {p.infrastructure_length_km
+                  ? 'INFRASTRUCTURE LENGTH'
+                  : p.span_length_m
+                  ? 'MAIN SPAN / STRUCTURE LENGTH'
+                  : 'GROSS SURFACE AREA'}
+              </div>
               <div style={{ fontSize: 22, fontWeight: 800, color: '#fff', marginTop: 4 }}>
-                {p.surface_area_sqm || p.surface_area ? `${(p.surface_area_sqm || p.surface_area).toLocaleString()} m²` : 'NOT DISCLOSED'}
+                {p.infrastructure_length_km
+                  ? `${p.infrastructure_length_km} km`
+                  : p.span_length_m
+                  ? `${p.span_length_m.toLocaleString()} m`
+                  : p.surface_area_sqm || p.surface_area
+                  ? `${(p.surface_area_sqm || p.surface_area).toLocaleString()} m²`
+                  : 'NOT DISCLOSED'}
               </div>
             </div>
 
             <div style={{ padding: 20, background: '#141715', border: '1px solid #262927', borderRadius: 6 }}>
-              <div style={{ fontSize: 10, color: '#888', fontWeight: 700 }}>UNITS / CAPACITY</div>
+              <div style={{ fontSize: 10, color: '#888', fontWeight: 700 }}>
+                {p.capacity_seats
+                  ? 'SEATING CAPACITY'
+                  : p.infrastructure_length_km
+                  ? 'INFRASTRUCTURE CLASSIFICATION'
+                  : 'UNITS / CAPACITY'}
+              </div>
               <div style={{ fontSize: 22, fontWeight: 800, color: '#38bdf8', marginTop: 4 }}>
-                {p.unit_count ? `${p.unit_count} Units` : 'NOT DISCLOSED'}
+                {p.capacity_seats
+                  ? `${p.capacity_seats.toLocaleString()} Seats`
+                  : p.unit_count
+                  ? `${p.unit_count.toLocaleString()} Units`
+                  : p.infrastructure_length_km
+                  ? (p.project_type || 'Civil Infrastructure')
+                  : 'NOT DISCLOSED'}
               </div>
             </div>
 
@@ -523,7 +577,9 @@ export default async function ProjectProfile({
               p.sources.map((s: any, idx: number) => (
                 <div key={idx} style={{ padding: 16, background: '#141715', border: '1px solid #262927', borderRadius: 6, display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 12 }}>
                   <div>
-                    <div style={{ fontSize: 11, fontWeight: 800, color: '#c7a675' }}>{s.type || 'OFFICIAL RECORD'}</div>
+                    <div style={{ fontSize: 11, fontWeight: 800, color: '#c7a675' }}>
+                      {s.type === 'OFFICIAL' ? 'OFFICIAL SOURCE' : s.type === 'PUBLIC_RECORD' ? 'PUBLIC RECORD' : s.type || 'DOCUMENTED SOURCE'}
+                    </div>
                     <div style={{ fontSize: 14, fontWeight: 700, color: '#fff', marginTop: 2 }}>{s.title}</div>
                   </div>
                   {s.url && (

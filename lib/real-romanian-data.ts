@@ -103,6 +103,9 @@ export interface RealProject {
   investment_label?: string;
   verification_status?: string;
   provenance_type?: string;
+  infrastructure_length_km?: number;
+  capacity_seats?: number;
+  span_length_m?: number;
   surface_area_sqm?: number;
   built_area_sqm?: number;
   gross_surface_area_sqm?: number;
@@ -351,7 +354,7 @@ export const realCompaniesDataset: RealCompany[] = [
     "description": "Hydrotechnical and dam engineering design institute in Romania with over 60 years of history in major water infrastructure.",
     "website": "https://aquaproiect.ro",
     "founded_year": 1962,
-    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "specializations": [
       "Dam & Hydrotechnical Engineering",
       "Flood Protection Systems"
@@ -751,7 +754,7 @@ export const realCompaniesDataset: RealCompany[] = [
     "description": "Western Romania real estate developer active in Arad industrial parks and residential projects.",
     "website": "https://imotrust.ro",
     "founded_year": 2003,
-    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "verification_level": "OFFICIAL_MARKET_DISCLOSURE",
     "cui": "2444558",
     "specializations": [
       "Industrial Logistics",
@@ -870,7 +873,7 @@ export const realCompaniesDataset: RealCompany[] = [
     "description": "Major national real estate franchise network founded in Cluj-Napoca with over 40 offices across Romania.",
     "website": "https://www.blitz.ro",
     "founded_year": 2010,
-    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "specializations": [
       "National Franchise Brokerage",
       "Cluj Real Estate"
@@ -910,7 +913,7 @@ export const realCompaniesDataset: RealCompany[] = [
     "description": "Austrian general contracting and hotel development group listed on Vienna Stock Exchange.",
     "website": "https://www.ubm-development.com",
     "founded_year": 2008,
-    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "specializations": [
       "Hotel Construction",
       "Timber Office Buildings"
@@ -952,7 +955,7 @@ export const realCompaniesDataset: RealCompany[] = [
     "description": "Facility management and post-construction technical maintenance subsidiary of Bog'Art Group.",
     "website": "https://bogart.ro",
     "founded_year": 2011,
-    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "specializations": [
       "Commercial Facility Management",
       "Technical Building Maintenance"
@@ -1896,7 +1899,7 @@ export const realCompaniesDataset: RealCompany[] = [
     "description": "Leading real estate advisory firm in Romania, exclusive sales agent for major residential developments across Bucharest and major regional hubs.",
     "website": "https://svn.ro",
     "founded_year": 2019,
-    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "specializations": [
       "Residential Project Sales",
       "Property Management",
@@ -1941,7 +1944,7 @@ export const realCompaniesDataset: RealCompany[] = [
     "description": "International Associate of Savills in Romania, providing transaction management, capital markets advisory, and luxury residential brokerage.",
     "website": "https://crosspoint.com.ro",
     "founded_year": 2005,
-    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "specializations": [
       "Capital Markets Advisory",
       "Commercial Leasing",
@@ -1983,7 +1986,7 @@ export const realCompaniesDataset: RealCompany[] = [
     "description": "Global commercial real estate consultancy advising institutional investors, office developers, and international occupiers in Romania.",
     "website": "https://knightfrank.ro",
     "founded_year": 2009,
-    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "specializations": [
       "Office Agency",
       "Industrial & Logistics",
@@ -2026,7 +2029,7 @@ export const realCompaniesDataset: RealCompany[] = [
     "description": "Exclusive affiliate of Cushman & Wakefield in Romania, leading commercial real estate services firm providing asset services, valuation, and research.",
     "website": "https://cwechinox.com",
     "founded_year": 1993,
-    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "specializations": [
       "Retail Leasing",
       "Office Agency",
@@ -2070,7 +2073,7 @@ export const realCompaniesDataset: RealCompany[] = [
     "description": "Leading diversified professional services and investment management company advising real estate occupiers and owners in Romania for over 25 years.",
     "website": "https://www.colliers.com/ro-ro",
     "founded_year": 1996,
-    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "specializations": [
       "Land Agency",
       "ESG Advisory",
@@ -2114,7 +2117,7 @@ export const realCompaniesDataset: RealCompany[] = [
     "description": "Fortune 500 professional services firm specializing in real estate and investment management active in the Romanian commercial property market.",
     "website": "https://www.jll.ro",
     "founded_year": 2007,
-    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "specializations": [
       "Corporate Solutions",
       "Capital Markets",
@@ -2401,7 +2404,7 @@ export const realCompaniesDataset: RealCompany[] = [
     "description": "Flexible workplace operator member of IWG Group, operating over 15 business flex-work centers across Bucharest, Cluj-Napoca, Timișoara, and Iași.",
     "website": "https://www.regus.com/ro-ro",
     "founded_year": 1999,
-    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "specializations": [
       "Flexible Workspace Leasing",
       "Co-Working Hubs",
@@ -2572,7 +2575,7 @@ export const realCompaniesDataset: RealCompany[] = [
     "description": "Largest real estate franchise brokerage network in Romania with over 60 offices and 1,000 real estate agents operating across major Romanian cities.",
     "website": "https://www.remax.ro",
     "founded_year": 2006,
-    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "specializations": [
       "National Franchise Brokerage Network",
       "Residential Resales & New Builds"
@@ -2654,7 +2657,7 @@ export const realCompaniesDataset: RealCompany[] = [
     "description": "Major general contractor active in residential high-rises, utility networks, and public infrastructure works.",
     "website": "https://terragaz.ro",
     "founded_year": 1998,
-    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "specializations": [
       "High-Rise Structural Contracting",
       "Civic Infrastructure"
@@ -2696,7 +2699,7 @@ export const realCompaniesDataset: RealCompany[] = [
     "description": "Industrial general contractor specializing in logistics distribution centers, factory plants, and retail big-box stores.",
     "website": "https://nessproiect.ro",
     "founded_year": 2010,
-    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "specializations": [
       "Industrial Warehouse Contracting",
       "Commercial Retail Big-Box"
@@ -2739,7 +2742,7 @@ export const realCompaniesDataset: RealCompany[] = [
     "description": "International general contractor delivering industrial, commercial, and residential turnkey developments across Romania and Turkey.",
     "website": "https://synergyconstruct.ro",
     "founded_year": 2001,
-    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "specializations": [
       "Industrial Plants",
       "Shopping Malls",
@@ -2782,7 +2785,7 @@ export const realCompaniesDataset: RealCompany[] = [
     "description": "Subsidiary of Danya Cebus Ltd., major general contractor responsible for AFI Cotroceni, AFI Tech Park, and UP-site towers in Bucharest.",
     "website": "https://danyacebus.ro",
     "founded_year": 2007,
-    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "specializations": [
       "High-Rise Residential & Office",
       "Mega Shopping Malls"
@@ -2864,7 +2867,7 @@ export const realCompaniesDataset: RealCompany[] = [
     "description": "Long-established construction group in Sibiu county, active in civic buildings, heritage restorations, and residential complexes for over 70 years.",
     "website": "https://constructiisa.ro",
     "founded_year": 1950,
-    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "specializations": [
       "Heritage Restorations",
       "Sibiu Civic Buildings",
@@ -2907,7 +2910,7 @@ export const realCompaniesDataset: RealCompany[] = [
     "description": "Specialized civil engineering and environmental infrastructure company executing water treatment plants and environmental protection works.",
     "website": "https://cominco.ro",
     "founded_year": 1991,
-    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "specializations": [
       "Water Treatment Infrastructure",
       "Industrial Civil Engineering"
@@ -2948,7 +2951,7 @@ export const realCompaniesDataset: RealCompany[] = [
     "description": "Infrastructure construction group member of E-INFRA, executing energy grids, telecom networks, and civil engineering projects across Romania.",
     "website": "https://electrogrup.ro",
     "founded_year": 1997,
-    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "specializations": [
       "Energy Infrastructure",
       "Telecom Networks",
@@ -2991,7 +2994,7 @@ export const realCompaniesDataset: RealCompany[] = [
     "description": "Specialized geotechnical foundation contractor executing deep diaphragm walls, micro-piles, and soil stabilization for high-rises and infrastructure.",
     "website": "https://terratest.ro",
     "founded_year": 2006,
-    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "specializations": [
       "Deep Diaphragm Retaining Walls",
       "Driven Piles & Anchors"
@@ -3032,7 +3035,7 @@ export const realCompaniesDataset: RealCompany[] = [
     "description": "World leader in geotechnical solutions, executing soil improvement, deep bored piles, and ground engineering across Romania.",
     "website": "https://www.keller-geotehnica.ro",
     "founded_year": 2005,
-    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "specializations": [
       "Deep Bored Piling",
       "Vibro Displacement Columns",
@@ -3075,7 +3078,7 @@ export const realCompaniesDataset: RealCompany[] = [
     "description": "Geotechnical foundation and civil contracting firm involved in major Bucharest office towers, bridges, and infrastructure works.",
     "website": "https://octagon.com.ro",
     "founded_year": 2005,
-    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "specializations": [
       "Deep Foundation Execution",
       "Civil Structural Engineering"
@@ -3116,7 +3119,7 @@ export const realCompaniesDataset: RealCompany[] = [
     "description": "Prefabricated concrete element manufacturing and erection company belonging to Construcții Erbașu group.",
     "website": "https://erbasu.ro",
     "founded_year": 2012,
-    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "specializations": [
       "Precast Structural Elements",
       "Industrial Building Assembly"
@@ -3363,7 +3366,7 @@ export const realCompaniesDataset: RealCompany[] = [
     "description": "Renowned architecture practice specializing in hospital and healthcare infrastructure, educational facilities, and public masterplanning.",
     "website": "https://archipelago.ro",
     "founded_year": 2008,
-    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "specializations": [
       "Healthcare & Hospital Architecture",
       "Public Educational Campus Design"
@@ -3405,7 +3408,7 @@ export const realCompaniesDataset: RealCompany[] = [
     "description": "Award-winning Bucharest architectural studio recognized for residential communities, educational buildings, and urban infill projects.",
     "website": "https://graphicstudio.ro",
     "founded_year": 1998,
-    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "specializations": [
       "Urban Infill Residential Design",
       "School & University Campus Design"
@@ -3446,7 +3449,7 @@ export const realCompaniesDataset: RealCompany[] = [
     "description": "Global multidisciplinary architecture, engineering, and construction firm operating in Bucharest for over 15 years, designing Bridge office park and industrial hubs.",
     "website": "https://epsteinglobal.com",
     "founded_year": 2006,
-    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "specializations": [
       "Grade A Office Towers",
       "Industrial Distribution Parks"
@@ -3569,7 +3572,7 @@ export const realCompaniesDataset: RealCompany[] = [
     "description": "Distinguished Romanian architectural practice specializing in masterplanning, residential urban communities, and public space design.",
     "website": "https://syaa.ro",
     "founded_year": 2006,
-    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "specializations": [
       "Urban Masterplanning",
       "Residential Community Architecture"
@@ -3611,7 +3614,7 @@ export const realCompaniesDataset: RealCompany[] = [
     "description": "Iconic Romanian architecture office led by Prof. Arh. Dorin Ștefan, designer of Opera Center, Palas Campus Iași, and Taiwan Tower competition winner.",
     "website": "https://dsba.ro",
     "founded_year": 1990,
-    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "specializations": [
       "Iconic Institutional Architecture",
       "Urban Landmark Design"
@@ -3815,7 +3818,7 @@ export const realCompaniesDataset: RealCompany[] = [
     "description": "One of Romania's largest architecture practices, formed by the merger of 4 established offices, lead architect for Marmorosch Hotel, One Floreasca City, and Iulius Town.",
     "website": "https://cumulus.ro",
     "founded_year": 2017,
-    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "specializations": [
       "Large-Scale Mixed-Use Urban Developments",
       "Heritage Hotel Restorations",
@@ -3904,7 +3907,7 @@ export const realCompaniesDataset: RealCompany[] = [
     "description": "Structural engineering design office specializing in high-rise residential towers, complex foundation systems, and seismic resistance design.",
     "website": "https://popaer.ro",
     "founded_year": 2009,
-    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "specializations": [
       "Seismic High-Rise Structural Design",
       "Post-Tensioned Concrete Slab Systems"
@@ -3987,7 +3990,7 @@ export const realCompaniesDataset: RealCompany[] = [
     "description": "MEP (Mechanical, Electrical, Plumbing) engineering design consultancy for Grade A office buildings, shopping malls, and green hospitals.",
     "website": "https://vitalengineering.ro",
     "founded_year": 2005,
-    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "specializations": [
       "HVAC & Energy Efficiency Systems",
       "BMS & Smart Building Electrical Design"
@@ -4029,7 +4032,7 @@ export const realCompaniesDataset: RealCompany[] = [
     "description": "Multidisciplinary engineering consultancy member of TPF Group, providing site supervision, civil engineering, and environmental consultancy.",
     "website": "https://tpf.ro",
     "founded_year": 2010,
-    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "specializations": [
       "FIDIC Site Supervision",
       "Civil Transport Engineering",
@@ -4073,7 +4076,7 @@ export const realCompaniesDataset: RealCompany[] = [
     "description": "Global consulting and engineering firm operating in Romania for over 25 years, supervising motorways, rail networks, and major municipal projects.",
     "website": "https://www.egis-group.com",
     "founded_year": 1996,
-    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "specializations": [
       "Motorway Supervision",
       "Rail & Tunnel Engineering",
@@ -4116,7 +4119,7 @@ export const realCompaniesDataset: RealCompany[] = [
     "description": "Engineering and technical services consultancy member of Jacobs Solutions, delivering water resources, environmental engineering, and airport transport infrastructure.",
     "website": "https://www.jacobs.com",
     "founded_year": 2002,
-    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "specializations": [
       "Water & Environmental Engineering",
       "Airport & Logistics Infrastructure"
@@ -4156,7 +4159,7 @@ export const realCompaniesDataset: RealCompany[] = [
     "description": "Premier Romanian road and bridge transport infrastructure engineering design practice responsible for designing major expressways, motorways, and regional airports.",
     "website": "https://searchcorp.ro",
     "founded_year": 1991,
-    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "specializations": [
       "Motorway Feasibility & Technical Design",
       "Airport Runway & Terminal Design"
@@ -4197,7 +4200,7 @@ export const realCompaniesDataset: RealCompany[] = [
     "description": "Specialized structural engineering design office for heritage restoration, complex foundation underpin, and historic masonry reinforcement.",
     "website": "https://saidel.ro",
     "founded_year": 2001,
-    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "specializations": [
       "Historic Structure Seismic Retrofitting",
       "Underpinning & Foundation Consolidation"
@@ -4239,7 +4242,7 @@ export const realCompaniesDataset: RealCompany[] = [
     "description": "Leading Romanian transport infrastructure engineering design firm active in motorway design (A1, A3, A7), railway modernization, and major bridges.",
     "website": "https://consitrans.ro",
     "founded_year": 1991,
-    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "specializations": [
       "Motorway Technical Design",
       "Railway Network Modernization Design"
@@ -4541,7 +4544,7 @@ export const realCompaniesDataset: RealCompany[] = [
       "Green Homes Certification"
     ],
     "is_featured": true,
-    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "verification_level": "OFFICIAL_MARKET_DISCLOSURE",
     "cui": "22767862",
     "verification_status": "VERIFIED",
     "completeness_score": 96,
@@ -6506,7 +6509,7 @@ export const realCompaniesDataset: RealCompany[] = [
       "nZEB Standards"
     ],
     "is_featured": true,
-    "verification_level": "OFFICIAL_REGISTRY_VERIFIED",
+    "verification_level": "OFFICIAL_MARKET_DISCLOSURE",
     "cui": "160243",
     "verification_status": "VERIFIED",
     "completeness_score": 95,
@@ -8203,7 +8206,7 @@ export const realProjectsDataset: RealProject[] = [
     "current_stage": "structure",
     "current_progress_percent": 72,
     "investment_eur": 350000000,
-    "surface_area_sqm": 3000000,
+    "infrastructure_length_km": 30.35,
     "floors": "N/A Highway",
     "description": "30km motorway section including 12 major bridges and viaducts crossing Trans-Carpathian infrastructure corridor.",
     "image": "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1200&q=85&pid=a1-highway-sibiu-pitesti",
@@ -9233,7 +9236,7 @@ export const realProjectsDataset: RealProject[] = [
     "estimated_completion": "2026-11-30",
     "investment_eur": 180000000,
     "investment_label": "€180.0M EUR",
-    "surface_area_sqm": 16800,
+    "infrastructure_length_km": 16.8,
     "contractor_name": "Strabag Romania",
     "contractor_slug": "strabag-romania",
     "description": "16.8 km motorway section of Autostrada A3 Transilvania featuring complex cut-and-cover viaducts and landslide stabilization retaining structures.",
@@ -9402,7 +9405,7 @@ export const realProjectsDataset: RealProject[] = [
     "estimated_completion": "2027-12-31",
     "investment_eur": 250000000,
     "investment_label": "€250.0M EUR",
-    "surface_area_sqm": 6600,
+    "infrastructure_length_km": 6.6,
     "engineering_name": "Metroul SA",
     "engineering_slug": "metroul-sa",
     "contractor_name": "Aktor Romania",
@@ -9519,7 +9522,8 @@ export const realProjectsDataset: RealProject[] = [
     "actual_delivery": "2024-07-15",
     "investment_eur": 500000000,
     "investment_label": "€500.0M EUR",
-    "surface_area_sqm": 1974,
+    "span_length_m": 1974,
+    "infrastructure_length_km": 21.5,
     "description": "21.5 km of high-capacity express road connections and viaducts linking the Brăila Golden Gate suspension bridge to Măcin and Tulcea.",
     "image": "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=85&pid=podul-braila-connectors",
     "is_featured": true,
@@ -9572,6 +9576,7 @@ export const realProjectsDataset: RealProject[] = [
     "investment_eur": 45000000,
     "investment_label": "€45.0M EUR",
     "surface_area_sqm": 43000,
+    "capacity_seats": 30201,
     "architect_name": "Dico și Țigănaș",
     "architect_slug": "dico-si-tiganas",
     "contractor_name": "CON-A Operations",
@@ -9782,7 +9787,7 @@ export const realProjectsDataset: RealProject[] = [
     "estimated_completion": "2026-12-31",
     "investment_eur": 330000000,
     "investment_label": "€330.0M EUR",
-    "surface_area_sqm": 450000,
+    "infrastructure_length_km": 9.86,
     "contractor_name": "PORR Construct Romania",
     "contractor_slug": "porr-construct-romania",
     "description": "9.86 km complex motorway section including Romania's first major twin-bore motorway tunnel (Tunelul Momaia, 1.3 km length) built through the Carpathian foothills.",
@@ -9990,7 +9995,7 @@ export const realProjectsDataset: RealProject[] = [
     "actual_delivery": "2020-09-15",
     "investment_eur": 670000000,
     "investment_label": "€670.0M EUR",
-    "surface_area_sqm": 140000,
+    "infrastructure_length_km": 6.9,
     "architect_name": "NOT DISCLOSED",
     "architect_slug": null,
     "engineering_name": "Metroul SA",
@@ -10245,6 +10250,7 @@ export const realProjectsDataset: RealProject[] = [
     "actual_delivery": "2020-12-13",
     "investment_eur": 85000000,
     "investment_label": "€85.0M EUR",
+    "infrastructure_length_km": 2.95,
     "contractor_name": "Arcada Company",
     "contractor_slug": "arcada-company",
     "description": "19 km modernized express rail link including a 1.5 km elevated railway viaduct over DN1 highway directly connecting Bucharest North Station to Henri Coandă International Airport.",
@@ -10297,7 +10303,8 @@ export const realProjectsDataset: RealProject[] = [
     "actual_delivery": "2023-07-06",
     "investment_eur": 500000000,
     "investment_label": "€500.0M EUR",
-    "surface_area_sqm": 197400,
+    "span_length_m": 1974,
+    "infrastructure_length_km": 1.974,
     "contractor_name": "Webuild / Astaldi Romania",
     "contractor_slug": "webuild-romania",
     "description": "Third-largest suspension bridge in Europe (1,974m length, 112m towers) connecting Brăila with Tulcea and Dobrogea across the Danube.",
@@ -10430,7 +10437,7 @@ export const realProjectsDataset: RealProject[] = [
   },
   {
     "id": "proj-autostrada-a7-umb",
-    "name": "Autostrada A7 Moldovei (Buzău - Focșani - Bacău)",
+    "name": "Autostrada A7 Moldovei (Buzău - Focșani - Bacău - Pașcani / UMB Lots)",
     "slug": "autostrada-a7-moldovei-umb",
     "developer_name": "CNAIR (National Road Infrastructure Administration)",
     "developer_slug": null,
@@ -10451,32 +10458,32 @@ export const realProjectsDataset: RealProject[] = [
     "estimated_completion": "2026-06-30",
     "investment_eur": 1800000000,
     "investment_label": "€1800.0M EUR",
-    "surface_area_sqm": 12000000,
+    "infrastructure_length_km": 255.7,
     "contractor_name": "Spedition UMB / UMB Group",
     "contractor_slug": "spedition-umb",
-    "description": "Flagship Romanian transport infrastructure project comprising 10 lots of Autostrada A7 Moldovei constructed by UMB Group under PNRR financing.",
+    "description": "Strategic Romanian transport infrastructure project comprising all 10 contiguous PNRR lots (255.7 km) of Autostrada A7 Moldovei between Buzău and Pașcani awarded to UMB Group (Buzău-Focșani 82.44 km, Focșani-Bacău 95.90 km, Bacău-Pașcani 77.39 km).",
     "image": "https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1200&q=85&pid=autostrada-a7-moldovei-umb",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 96,
     "sources": [
       {
-        "url": "https://cnadnr.ro",
-        "title": "CNAIR Official Procurement Portal",
+        "url": "https://cnadnr.ro/ro/proiecte/autostrada-a7",
+        "title": "CNAIR PNRR Contract Register — A7 Buzău-Pașcani 10 Lots (Contracts 92/68903-4, 92/9906-7, 92/10002-4, 92/1458-60)",
         "type": "OFFICIAL",
         "date": "2026-08-25",
         "verified_at": "2026-08-28T10:00:00Z"
       },
       {
         "url": "https://umbgrup.ro",
-        "title": "UMB Group Official Project Disclosure",
+        "title": "UMB Group Official Project Execution Dossier",
         "type": "OFFICIAL",
         "date": "2026-08-25",
         "verified_at": "2026-08-28T10:00:00Z"
       }
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
-    "image_alt": "Autostrada A7 Moldovei (Buzău - Focșani - Bacău) verified development photograph",
+    "image_alt": "Autostrada A7 Moldovei (Buzău - Focșani - Bacău - Pașcani / UMB Lots) verified development photograph",
     "image_source_name": "Official Disclosure",
     "image_verified": true,
     "image_relevance": "PROJECT_SPECIFIC"
@@ -10956,7 +10963,7 @@ export const realProjectsDataset: RealProject[] = [
     "actual_delivery": "2022-12-15",
     "investment_eur": 125000000,
     "investment_label": "€125.0M EUR",
-    "surface_area_sqm": 450000,
+    "infrastructure_length_km": 13.17,
     "contractor_name": "PORR Construct Romania",
     "contractor_slug": "porr-construct-romania",
     "description": "13.17 km motorway section delivered ahead of schedule by PORR Construct, featuring 27 bridges and viaducts in Southern Transylvania.",
@@ -11508,7 +11515,7 @@ export const realProjectsDataset: RealProject[] = [
     "investment_eur": 95000000,
     "investment_label": "€95.0M EUR",
     "surface_area_sqm": 82000,
-    "unit_count": 31254,
+    "capacity_seats": 31254,
     "contractor_name": "Construcții Erbașu",
     "contractor_slug": "constructii-erbasu",
     "description": "UEFA Category 4 modern sports arena with 31,254 all-seater capacity, integrated museum, hotel accommodations, and underground parking.",
@@ -11652,7 +11659,8 @@ export const realProjectsDataset: RealProject[] = [
     "current_progress_percent": 100,
     "actual_delivery": "2023-07-06",
     "investment_eur": 500000000,
-    "surface_area_sqm": 1974,
+    "span_length_m": 1974,
+    "infrastructure_length_km": 1.974,
     "contractor_name": "Webuild Romania (Astaldi)",
     "contractor_slug": "webuild-romania",
     "description": "The Golden Gate of Romania: 3rd longest suspension bridge in Europe (1,974 m total length with 1,120 m main span) connecting Dobrogea to Moldavia.",

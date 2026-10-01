@@ -17,7 +17,7 @@ export const OFFICIAL_CHANNEL_ID = 'UCN2nPu7isc_06exwPOHYC1Q';
 export const OFFICIAL_CHANNEL_HANDLE = '@CristianVaduvaCV';
 export const OFFICIAL_CHANNEL_NAME = 'Cristian Văduva';
 
-export const REAL_CONSTRUCTIONS_VIDEOS: ConstructionVideo[] = [
+export const REAL_ROMANIAN_VIDEOS: ConstructionVideo[] = [
   {
     id: 'NxgTHvORaiE',
     title: 'Not every property deserves your attention. We surface the ones that do. Designed for Better Decisions',
@@ -42,20 +42,6 @@ export const REAL_CONSTRUCTIONS_VIDEOS: ConstructionVideo[] = [
     isShort: true,
     embedUrl: 'https://www.youtube-nocookie.com/embed/x0NwU7EU7e0',
     youtubeUrl: 'https://www.youtube.com/shorts/x0NwU7EU7e0',
-    category: 'CONSTRUCTION_PROGRESS',
-    channelId: OFFICIAL_CHANNEL_ID,
-    channelTitle: OFFICIAL_CHANNEL_NAME
-  },
-  {
-    id: 'qUXVPi9sN84',
-    title: 'A sanctuary born from the landscape and heritage of the UAE is ready to be witnessed',
-    description: 'A sanctuary born from the landscape and heritage of the UAE is ready to be witnessed. On September 18, Reportage invites you to the unveiling of a new chapter.',
-    thumbnailUrl: 'https://i.ytimg.com/vi/qUXVPi9sN84/hqdefault.jpg',
-    publishedAt: '2026-08-24',
-    duration: '0:59',
-    isShort: true,
-    embedUrl: 'https://www.youtube-nocookie.com/embed/qUXVPi9sN84',
-    youtubeUrl: 'https://www.youtube.com/shorts/qUXVPi9sN84',
     category: 'CONSTRUCTION_PROGRESS',
     channelId: OFFICIAL_CHANNEL_ID,
     channelTitle: OFFICIAL_CHANNEL_NAME
@@ -132,6 +118,25 @@ export const REAL_CONSTRUCTIONS_VIDEOS: ConstructionVideo[] = [
   }
 ];
 
+export const INTERNATIONAL_EDITORIAL_VIDEOS: ConstructionVideo[] = [
+  {
+    id: 'qUXVPi9sN84',
+    title: 'A sanctuary born from the landscape and heritage of the UAE is ready to be witnessed',
+    description: 'A sanctuary born from the landscape and heritage of the UAE is ready to be witnessed. On September 18, Reportage invites you to the unveiling of a new chapter.',
+    thumbnailUrl: 'https://i.ytimg.com/vi/qUXVPi9sN84/hqdefault.jpg',
+    publishedAt: '2026-08-24',
+    duration: '0:59',
+    isShort: true,
+    embedUrl: 'https://www.youtube-nocookie.com/embed/qUXVPi9sN84',
+    youtubeUrl: 'https://www.youtube.com/shorts/qUXVPi9sN84',
+    category: 'CONSTRUCTION_PROGRESS',
+    channelId: OFFICIAL_CHANNEL_ID,
+    channelTitle: OFFICIAL_CHANNEL_NAME
+  }
+];
+
+export const REAL_CONSTRUCTIONS_VIDEOS = REAL_ROMANIAN_VIDEOS;
+
 export async function getVerifiedVideos(): Promise<ConstructionVideo[]> {
   const apiKey = process.env.YOUTUBE_API_KEY;
   const channelId = process.env.YOUTUBE_CHANNEL_ID || OFFICIAL_CHANNEL_ID;
@@ -141,15 +146,19 @@ export async function getVerifiedVideos(): Promise<ConstructionVideo[]> {
       const res = await fetch(
         `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${channelId}&part=snippet,id&order=date&maxResults=25`,
         { next: { revalidate: 3600 } }
-      );
-      if (res.ok) {
-        const data = await res.json();
+      ).catch(() => null);
+      if (res && res.ok) {
+        const data = await res.json().catch(() => null);
         if (Array.isArray(data.items) && data.items.length > 0) {
           const verifiedItems = data.items
             .filter((item: any) => {
               // STRICT SOURCE LOCK: Must match official channel ID
               const returnedChannelId = item.snippet?.channelId;
-              return !returnedChannelId || returnedChannelId === OFFICIAL_CHANNEL_ID;
+              const title = (item.snippet?.title || '').toLowerCase();
+              const desc = (item.snippet?.description || '').toLowerCase();
+              // Filter out UAE / foreign non-Romanian content from Romanian market intelligence
+              const isForeign = title.includes('uae') || title.includes('abu dhabi') || title.includes('yas island') || desc.includes('uae');
+              return (!returnedChannelId || returnedChannelId === OFFICIAL_CHANNEL_ID) && !isForeign;
             })
             .map((item: any) => {
               const videoId = item.id?.videoId || item.id;
@@ -181,6 +190,6 @@ export async function getVerifiedVideos(): Promise<ConstructionVideo[]> {
     }
   }
 
-  // Fallback ONLY to verified official channel items
-  return REAL_CONSTRUCTIONS_VIDEOS;
+  // Fallback ONLY to verified official Romanian channel items
+  return REAL_ROMANIAN_VIDEOS;
 }

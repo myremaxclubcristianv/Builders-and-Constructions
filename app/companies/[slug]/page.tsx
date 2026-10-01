@@ -10,6 +10,7 @@ import { LeadForm } from '@/components/LeadForm';
 import { DossierNav } from '@/components/DossierNav';
 import { FinancialTrendChart } from '@/components/FinancialTrendChart';
 import { BookmarkButton } from '@/components/BookmarkButton';
+import { safeJsonLdStringify } from '@/lib/sanitize';
 
 export async function generateMetadata({
   params,
@@ -215,28 +216,57 @@ export default async function CompanyProfile({
 
   const companyAge = c.founded_year ? 2026 - c.founded_year : null;
 
-  // Schema.org Organization JSON-LD
+  // Schema.org Organization & BreadcrumbList JSON-LD
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'Organization',
-    name: c.name,
-    url: `https://constructions.cristianvaduva.com/companies/${c.slug}`,
-    description: c.description,
-    image: imgRes.url || undefined,
-    address: {
-      '@type': 'PostalAddress',
-      addressLocality: c.location || 'Romania',
-      addressCountry: 'RO'
-    },
-    foundingDate: c.founded_year ? `${c.founded_year}` : undefined,
-    taxID: c.cui_cif || undefined
+    '@graph': [
+      {
+        '@type': 'Organization',
+        '@id': `https://constructions.cristianvaduva.com/companies/${c.slug}#organization`,
+        name: c.name,
+        url: `https://constructions.cristianvaduva.com/companies/${c.slug}`,
+        description: c.description,
+        image: imgRes.url || undefined,
+        address: {
+          '@type': 'PostalAddress',
+          addressLocality: c.location || 'Romania',
+          addressCountry: 'RO'
+        },
+        foundingDate: c.founded_year ? `${c.founded_year}` : undefined,
+        taxID: c.cui_cif || undefined
+      },
+      {
+        '@type': 'BreadcrumbList',
+        '@id': `https://constructions.cristianvaduva.com/companies/${c.slug}#breadcrumb`,
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Home',
+            item: 'https://constructions.cristianvaduva.com'
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: 'Companies',
+            item: 'https://constructions.cristianvaduva.com/companies'
+          },
+          {
+            '@type': 'ListItem',
+            position: 3,
+            name: c.name,
+            item: `https://constructions.cristianvaduva.com/companies/${c.slug}`
+          }
+        ]
+      }
+    ]
   };
 
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: safeJsonLdStringify(jsonLd) }}
       />
       <SiteHeader />
       <main style={{ background: '#0c0e0c', color: '#fff', minHeight: '100vh' }}>
@@ -252,7 +282,7 @@ export default async function CompanyProfile({
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 12, marginBottom: 16 }}>
               <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
                 <span className="eyebrow" style={{ color: '#c7a675', margin: 0 }}>
-                  PUBLIC RECORD CORPORATE DOSSIER
+                  VERIFIED CORPORATE DOSSIER
                 </span>
                 <span style={{ fontSize: 10, fontWeight: 800, border: '1px solid #86efac', color: '#86efac', padding: '2px 8px', borderRadius: 2 }}>
                   {c.verification_level || 'OFFICIAL_REGISTRY_VERIFIED'}
@@ -732,7 +762,7 @@ export default async function CompanyProfile({
 
           <div style={{ padding: 24, background: '#141715', border: '1px solid #262927', borderRadius: 6, display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 16 }}>
             <div>
-              <div style={{ fontSize: 11, fontWeight: 800, color: '#c7a675' }}>PUBLIC RECORD DATA DISCLOSURE</div>
+              <div style={{ fontSize: 11, fontWeight: 800, color: '#c7a675' }}>DOCUMENTED DATA DISCLOSURE</div>
               <div style={{ fontSize: 14, color: '#ccc', marginTop: 4, maxWidth: 540, lineHeight: 1.6 }}>
                 Company information is compiled from publicly available records (ONRC, ANAF, Ministry of Finance) and official corporate releases. Entities may request an update or correction where applicable.
               </div>

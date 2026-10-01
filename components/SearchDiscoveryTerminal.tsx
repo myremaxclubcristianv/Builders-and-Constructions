@@ -1,6 +1,7 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
+import { trackSiteSearch } from '@/lib/visitor-tracker';
 import Link from 'next/link';
 
 interface Company {
@@ -176,6 +177,14 @@ export function SearchDiscoveryTerminal({
   }, [locations]);
 
   const totalResults = matchingCompanies.length + matchingProjects.length + matchingSignals.length;
+
+  useEffect(() => {
+    if (!query || query.trim().length < 2) return;
+    const timer = setTimeout(() => {
+      trackSiteSearch(query.trim(), totalResults);
+    }, 800);
+    return () => clearTimeout(timer);
+  }, [query, totalResults]);
 
   return (
     <div className="space-y-8">

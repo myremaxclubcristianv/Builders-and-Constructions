@@ -1,11 +1,43 @@
 import { NextResponse } from 'next/server';
 import { getServiceClient } from '@/lib/supabase';
+import { checkRateLimit } from '@/lib/rate-limit';
+
+const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export async function POST(request: Request) {
   try {
+    const rateLimit = checkRateLimit(request, 'claims', { maxRequests: 5, windowMs: 10 * 60 * 1000 });
+    if (!rateLimit.allowed) {
+      return NextResponse.json(
+        { error: 'Too many requests. Please try again later.' },
+        {
+          status: 429,
+          headers: {
+            'Retry-After': String(rateLimit.retryAfterSeconds)
+          }
+        }
+      );
+    }
+
     const body = await request.json().catch(() => null);
-    if (!body?.name || !body?.email || !body?.companySlug) {
-      return NextResponse.json({ error: 'Please complete the required fields.' }, { status: 400 });
+    if (
+      !body ||
+      typeof body.name !== 'string' ||
+      body.name.trim().length === 0 ||
+      body.name.length > 200 ||
+      typeof body.email !== 'string' ||
+      body.email.length > 200 ||
+      !emailPattern.test(body.email) ||
+      typeof body.companySlug !== 'string' ||
+      body.companySlug.trim().length === 0 ||
+      body.companySlug.length > 200 ||
+      (body.phone !== undefined && (typeof body.phone !== 'string' || body.phone.length > 50)) ||
+      (body.role !== undefined && (typeof body.role !== 'string' || body.role.length > 100)) ||
+      (body.website !== undefined && (typeof body.website !== 'string' || body.website.length > 300)) ||
+      (body.message !== undefined && (typeof body.message !== 'string' || body.message.length > 5000)) ||
+      (body.company !== undefined && (typeof body.company !== 'string' || body.company.length > 300))
+    ) {
+      return NextResponse.json({ error: 'Please provide valid claim details including name, valid business email, and company.' }, { status: 400 });
     }
 
     const client = getServiceClient();

@@ -27,7 +27,7 @@ export default async function SignalsPage() {
               VERIFIED MARKET SIGNALS
             </h1>
             <p className="text-sm md:text-base text-[#A0A0A0] max-w-2xl leading-relaxed">
-              Real-time audit stream documenting structural milestones, official regulatory filings, pre-leasing thresholds, and corporate financial disclosures across Romania.
+              Evidence-backed intelligence stream documenting structural milestones, official regulatory filings, pre-leasing thresholds, and corporate financial disclosures across Romania. Latest verified update: 24 Aug 2026.
             </p>
           </div>
         </section>

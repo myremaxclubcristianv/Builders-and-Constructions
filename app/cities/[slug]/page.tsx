@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { SiteHeader } from '@/components/SiteHeader';
 import { SiteFooter } from '@/components/SiteFooter';
 import { realLocationsDataset, realProjectsDataset, realCompaniesDataset } from '@/lib/real-romanian-data';
+import { safeJsonLdStringify } from '@/lib/sanitize';
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
@@ -27,8 +28,53 @@ export default async function CityDetailPage({ params }: { params: Promise<{ slu
   const developerSlugs = Array.from(new Set(cityProjects.map(p => p.developer_slug)));
   const cityDevelopers = realCompaniesDataset.filter(c => developerSlugs.includes(c.slug));
 
+  const cityJsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'AdministrativeArea',
+        '@id': `https://constructions.cristianvaduva.com/cities/${loc.slug}#area`,
+        name: loc.name,
+        description: `Verified construction and real estate market intelligence for ${loc.name}, ${loc.county}, Romania.`,
+        url: `https://constructions.cristianvaduva.com/cities/${loc.slug}`,
+        containedInPlace: {
+          '@type': 'Country',
+          name: 'Romania'
+        }
+      },
+      {
+        '@type': 'BreadcrumbList',
+        '@id': `https://constructions.cristianvaduva.com/cities/${loc.slug}#breadcrumb`,
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Home',
+            item: 'https://constructions.cristianvaduva.com'
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: 'Cities',
+            item: 'https://constructions.cristianvaduva.com/cities'
+          },
+          {
+            '@type': 'ListItem',
+            position: 3,
+            name: loc.name,
+            item: `https://constructions.cristianvaduva.com/cities/${loc.slug}`
+          }
+        ]
+      }
+    ]
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: safeJsonLdStringify(cityJsonLd) }}
+      />
       <main>
         <div className="hero" style={{ paddingBottom: 50 }}>
           <SiteHeader />
@@ -86,7 +132,9 @@ export default async function CityDetailPage({ params }: { params: Promise<{ slu
                   <p>{p.developer_name}</p>
                   <div className="card-meta">
                     <span>{p.project_type}</span>
-                    {p.unit_count && <span>{p.unit_count} Units</span>}
+                    {p.infrastructure_length_km && <span>{p.infrastructure_length_km} km</span>}
+                    {p.capacity_seats && <span>{p.capacity_seats.toLocaleString()} Seats</span>}
+                    {p.unit_count && !p.capacity_seats && <span>{p.unit_count} Units</span>}
                   </div>
                 </Link>
               ))}

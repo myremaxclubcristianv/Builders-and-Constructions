@@ -8,6 +8,7 @@ import {
   realLocationsDataset
 } from '@/lib/real-romanian-data';
 import { getIndustryHubData } from '@/lib/data';
+import { safeJsonLdStringify } from '@/lib/sanitize';
 
 export const metadata: Metadata = {
   title: 'Market Intelligence Command Center · CONSTRUCTIONS by AiXLuxury',
@@ -205,7 +206,7 @@ export default async function IntelligencePage() {
     <div className="bg-[#050505] text-[#F3F1EB] min-h-screen">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: safeJsonLdStringify(jsonLd) }}
       />
       <SiteHeader />
 
@@ -475,7 +476,7 @@ export default async function IntelligencePage() {
           <div className="max-w-[1440px] mx-auto px-4 md:px-8 space-y-6">
             <div className="flex items-center justify-between text-xs font-mono text-[#888888]">
               <span className="text-white font-bold uppercase tracking-wider">
-                5. VERIFIED MARKET SIGNALS STREAM
+                5. VERIFIED MARKET SIGNALS STREAM · LATEST: 24 AUG 2026
               </span>
               <Link href="/signals" className="text-[#38bdf8] hover:underline">
                 OPEN FULL SIGNALS FEED →

@@ -5,6 +5,7 @@ import { adminLogAuditEvent } from '@/lib/admin-data';
 
 export async function GET(request: Request) {
   try {
+    await requireAdmin('admin', 'sales', 'editor');
     const { searchParams } = new URL(request.url);
     const companyId = searchParams.get('companyId');
 
@@ -23,8 +24,8 @@ export async function GET(request: Request) {
 
     if (error) return NextResponse.json({ error: error.message }, { status: 500 });
     return NextResponse.json(data || []);
-  } catch (err: any) {
-    return NextResponse.json({ error: err.message || 'Error fetching decision makers' }, { status: 500 });
+  } catch {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 }
 

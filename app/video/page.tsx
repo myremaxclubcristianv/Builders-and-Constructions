@@ -2,6 +2,7 @@ import { SiteHeader } from '@/components/SiteHeader';
 import { SiteFooter } from '@/components/SiteFooter';
 import { getVerifiedVideos } from '@/lib/video-data';
 import { VideoCard } from '@/components/VideoCard';
+import { safeJsonLdStringify } from '@/lib/sanitize';
 import Link from 'next/link';
 
 export const metadata = {
@@ -38,7 +39,7 @@ export default async function VideoDeskPage() {
     <div className="bg-[#050505] text-[#F3F1EB] min-h-screen">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(videoJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: safeJsonLdStringify(videoJsonLd) }}
       />
       <SiteHeader />
 

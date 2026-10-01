@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 import { Manrope, DM_Mono, Playfair_Display } from 'next/font/google';
+import { Suspense } from 'react';
+import { VisitorIntelligenceProvider } from '@/components/VisitorIntelligenceProvider';
 import './globals.css';
 
 const manrope = Manrope({
@@ -53,7 +55,12 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${manrope.variable} ${dmMono.variable} ${playfair.variable}`}>
-      <body>{children}</body>
+      <body>
+        <Suspense fallback={null}>
+          <VisitorIntelligenceProvider />
+        </Suspense>
+        {children}
+      </body>
     </html>
   );
 }

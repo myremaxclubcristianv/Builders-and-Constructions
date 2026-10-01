@@ -6,6 +6,7 @@ import { getPublishedCompanies, getPublishedProjects, getIndustryHubData } from 
 import { CompanyIntelligencePreview } from '@/components/CompanyIntelligencePreview';
 import { REAL_CONSTRUCTIONS_VIDEOS } from '@/lib/video-data';
 import { VideoCard } from '@/components/VideoCard';
+import { safeJsonLdStringify } from '@/lib/sanitize';
 
 import { realCompaniesDataset, realProjectsDataset } from '@/lib/real-romanian-data';
 
@@ -33,8 +34,37 @@ export default async function Home() {
     .sort((a, b) => (b.surface_area || 0) - (a.surface_area || 0))
     .slice(0, 4);
 
+  const homepageJsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'WebSite',
+        '@id': 'https://constructions.cristianvaduva.com/#website',
+        url: 'https://constructions.cristianvaduva.com',
+        name: 'CONSTRUCTIONS by AiXLuxury',
+        description: 'Construction & Real Estate Intelligence for Romania',
+        inLanguage: 'en-US'
+      },
+      {
+        '@type': 'Organization',
+        '@id': 'https://constructions.cristianvaduva.com/#organization',
+        name: 'CONSTRUCTIONS by AiXLuxury',
+        url: 'https://constructions.cristianvaduva.com',
+        description: 'Independent Romanian construction and real-estate market intelligence platform documenting developers, general contractors, structural engineers, and architectural practices.',
+        areaServed: {
+          '@type': 'Country',
+          name: 'Romania'
+        }
+      }
+    ]
+  };
+
   return (
     <div className="bg-[#050505] text-[#F3F1EB] min-h-screen selection:bg-[#C9A227] selection:text-[#050505]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: safeJsonLdStringify(homepageJsonLd) }}
+      />
       <SiteHeader />
 
       <main className="pt-20">
@@ -251,7 +281,7 @@ export default async function Home() {
                 </h2>
               </div>
               <Link href="/projects" className="text-xs font-mono text-[#C9A227] hover:text-[#E4C58F] uppercase tracking-wider flex items-center gap-1">
-                <span>View all 53 projects</span>
+                <span>View all {projectCount} projects</span>
                 <span>→</span>
               </Link>
             </div>
@@ -279,7 +309,7 @@ export default async function Home() {
                         {p.status}
                       </span>
                       <span className="px-2 py-1 bg-[#C9A227]/20 border border-[#C9A227]/40 rounded-md text-[9px] font-mono text-[#C9A227] uppercase tracking-wider font-semibold">
-                        OFFICIAL RECORD
+                        VERIFIED DOSSIER
                       </span>
                     </div>
                   </div>
@@ -328,7 +358,7 @@ export default async function Home() {
                 </div>
                 <div>
                   <h3 className="text-base font-bold text-white group-hover:text-[#C9A227] transition-colors">Projects</h3>
-                  <p className="text-xs text-[#888888] mt-0.5">53 Verified Projects</p>
+                  <p className="text-xs text-[#888888] mt-0.5">{projectCount} Verified Projects</p>
                 </div>
               </Link>
 
@@ -342,7 +372,7 @@ export default async function Home() {
                 </div>
                 <div>
                   <h3 className="text-base font-bold text-white group-hover:text-[#C9A227] transition-colors">Companies</h3>
-                  <p className="text-xs text-[#888888] mt-0.5">40 Verified Profiles</p>
+                  <p className="text-xs text-[#888888] mt-0.5">{realCompaniesDataset.length} Verified Profiles</p>
                 </div>
               </Link>
 
@@ -390,7 +420,7 @@ export default async function Home() {
                 </h2>
               </div>
               <Link href="/companies" className="text-xs font-mono text-[#C9A227] hover:text-[#E4C58F] uppercase tracking-wider flex items-center gap-1">
-                <span>View all 40 companies</span>
+                <span>View all {realCompaniesDataset.length} companies</span>
                 <span>→</span>
               </Link>
             </div>
@@ -405,7 +435,7 @@ export default async function Home() {
                     <div className="flex items-center justify-between">
                       <span className="text-[10px] font-mono text-[#888888]">0{idx + 1} · {c.type}</span>
                       <span className="px-2 py-0.5 bg-[#C9A227]/10 text-[#C9A227] border border-[#C9A227]/30 rounded text-[9px] font-mono uppercase">
-                        PUBLIC RECORD
+                        VERIFIED PROFILE
                       </span>
                     </div>
 
@@ -453,7 +483,7 @@ export default async function Home() {
           <div className="max-w-[1440px] mx-auto px-4 md:px-8">
             <div className="mb-8">
               <span className="text-[10px] font-mono uppercase tracking-widest text-[#C9A227] block mb-1">
-                Market Activity Stream
+                Market Activity Stream · Latest Verified Signal: 24 Aug 2026
               </span>
               <h2 className="text-2xl md:text-4xl font-extrabold text-white tracking-tight">
                 VERIFIED MARKET SIGNALS

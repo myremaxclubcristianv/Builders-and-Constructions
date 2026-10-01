@@ -4,6 +4,7 @@ import { getServiceClient } from '@/lib/supabase';
 
 export async function GET(request: Request) {
   try {
+    await requireAdmin('admin', 'editor', 'sales');
     const { searchParams } = new URL(request.url);
     const entityType = searchParams.get('entityType');
     const entityId = searchParams.get('entityId');
@@ -24,8 +25,8 @@ export async function GET(request: Request) {
 
     if (error) return NextResponse.json({ error: error.message }, { status: 500 });
     return NextResponse.json(data || []);
-  } catch (err: any) {
-    return NextResponse.json({ error: err.message || 'Error fetching sources' }, { status: 500 });
+  } catch {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 }
 

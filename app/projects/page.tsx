@@ -187,7 +187,11 @@ export default async function Projects({
 
                     <div className="p-5 pt-3 border-t border-[#1A1D1B] flex items-center justify-between text-xs font-mono text-[#888888]">
                       <span>
-                        AREA: {p.surface_area ? `${p.surface_area.toLocaleString()} m²` : 'Not Disclosed'}
+                        {p.infrastructure_length_km
+                          ? `LENGTH: ${p.infrastructure_length_km} km`
+                          : p.span_length_m
+                          ? `SPAN: ${p.span_length_m.toLocaleString()} m`
+                          : `AREA: ${p.surface_area ? `${p.surface_area.toLocaleString()} m²` : 'Not Disclosed'}`}
                       </span>
                       <Link href={`/projects/${p.slug}`} className="text-[#C9A227] font-semibold hover:text-[#E4C58F]">
                         DOSSIER →

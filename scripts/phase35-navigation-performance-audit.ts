@@ -54,10 +54,10 @@ async function runPhase35Audit() {
   const layoutContent = fs.readFileSync(layoutPath, 'utf-8');
 
   const hasCssImport = globalsCssContent.includes('@import url');
-  const hasPreconnect = layoutContent.includes('rel="preconnect"') && layoutContent.includes('fonts.googleapis.com');
+  const hasFontOptimization = layoutContent.includes('next/font/google') || (layoutContent.includes('rel="preconnect"') && layoutContent.includes('fonts.googleapis.com'));
 
-  if (!hasCssImport && hasPreconnect) {
-    console.log('  ✓ Render-blocking CSS @import removed; Google Fonts preconnect & async loading implemented.');
+  if (!hasCssImport && hasFontOptimization) {
+    console.log('  ✓ Render-blocking CSS @import removed; Next.js font optimization active.');
   } else {
     console.error('  ❌ Render-blocking CSS optimization audit failed!');
     failures++;

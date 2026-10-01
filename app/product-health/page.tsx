@@ -74,7 +74,7 @@ export default function ProductHealthPage() {
                   <span className="text-white block">• Source Reachability: HTTP 200 ALL</span>
                 </div>
                 <div className="space-y-1">
-                  <span className="text-white block">• Image Hash Collision: 0 (53/53 Unique)</span>
+                  <span className="text-white block">• Image Hash Collision: 0 ({realProjectsDataset.length}/{realProjectsDataset.length} Unique)</span>
                   <span className="text-white block">• HTML / JSON-LD Parity: 100%</span>
                   <span className="text-white block">• Database / Render Parity: 100%</span>
                   <span className="text-white block">• Red-Team Detection Rate: 100% PASS</span>

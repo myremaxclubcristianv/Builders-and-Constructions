@@ -65,31 +65,31 @@ test('PHASE 50B-C: FORENSIC EVIDENCE MATRIX AUDIT SUITE', async (t) => {
     });
   });
 
-  await t.test('12. All populated CUI values (BVB listed) have OFFICIAL_REGISTRY_VERIFIED level', () => {
+  await t.test('12. All populated CUI values (BVB listed) have OFFICIAL_MARKET_DISCLOSURE level', () => {
     const populatedCuis = developers.filter(d => d.cui !== undefined);
     assert.equal(populatedCuis.length, 3);
     
     const bvbSlugs = ['one-united-properties', 'impact-developer-contractor', 'imotrust-arad'];
     populatedCuis.forEach(d => {
       assert.ok(bvbSlugs.includes(d.slug));
-      assert.equal(d.verification_level, 'OFFICIAL_REGISTRY_VERIFIED');
+      assert.equal(d.verification_level, 'OFFICIAL_MARKET_DISCLOSURE');
       assert.ok(d.cui && d.cui.length > 0);
     });
   });
 
-  await t.test('13. No OFFICIAL_REGISTRY_VERIFIED developer lacks Tier 1 BVB/Regulatory proof', () => {
-    const registryVerified = developers.filter(d => d.verification_level === 'OFFICIAL_REGISTRY_VERIFIED');
-    assert.equal(registryVerified.length, 3);
+  await t.test('13. No OFFICIAL_MARKET_DISCLOSURE developer lacks Tier 1 BVB/Regulatory proof', () => {
+    const marketVerified = developers.filter(d => d.verification_level === 'OFFICIAL_MARKET_DISCLOSURE');
+    assert.equal(marketVerified.length, 3);
     
-    registryVerified.forEach(d => {
+    marketVerified.forEach(d => {
       const isBvb = ['one-united-properties', 'impact-developer-contractor', 'imotrust-arad'].includes(d.slug);
       assert.ok(isBvb);
     });
   });
 
-  await t.test('14. All 48 developers have an explicit verification level (OFFICIAL_CORPORATE_VERIFIED or OFFICIAL_REGISTRY_VERIFIED)', () => {
+  await t.test('14. All 48 developers have an explicit verification level (OFFICIAL_CORPORATE_VERIFIED or OFFICIAL_MARKET_DISCLOSURE)', () => {
     developers.forEach(d => {
-      assert.ok(['OFFICIAL_CORPORATE_VERIFIED', 'OFFICIAL_REGISTRY_VERIFIED'].includes(d.verification_level));
+      assert.ok(['OFFICIAL_CORPORATE_VERIFIED', 'OFFICIAL_MARKET_DISCLOSURE'].includes(d.verification_level));
     });
   });
 

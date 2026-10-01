@@ -1,5 +1,6 @@
 'use client';
 import { FormEvent, useState } from 'react';
+import { trackHighValueActivity } from '@/lib/visitor-tracker';
 
 type LeadKind = 'work' | 'promote' | 'project';
 
@@ -19,17 +20,21 @@ export function LeadForm({
     event.preventDefault();
     setState('sending');
     const form = new FormData(event.currentTarget);
+    const leadData = {
+      name: String(form.get('name') || ''),
+      company: String(form.get('company') || company || ''),
+      email: String(form.get('email') || ''),
+      phone: String(form.get('phone') || ''),
+      requestType: String(form.get('requestType') || ''),
+      message: String(form.get('message') || '')
+    };
+
     try {
       const response = await fetch('/api/inquiries', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          name: form.get('name'),
-          company: form.get('company'),
-          email: form.get('email'),
-          phone: form.get('phone'),
-          requestType: form.get('requestType'),
-          message: form.get('message'),
+          ...leadData,
           source,
           leadType: 'research_request'
         })
@@ -42,6 +47,9 @@ export function LeadForm({
       }
       setMessage(data.message || 'Request received. The CONSTRUCTIONS research team will review it.');
       setState('sent');
+
+      // Telemetry: record high-value form conversion
+      trackHighValueActivity('Research Request Submitted', leadData.requestType || source, leadData);
     } catch {
       setMessage("We couldn't submit the request right now. Please try again shortly.");
       setState('error');

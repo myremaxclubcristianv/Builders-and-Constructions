@@ -3,6 +3,7 @@ import { SiteHeader } from '@/components/SiteHeader';
 import { SiteFooter } from '@/components/SiteFooter';
 import { MarketChangesTerminal, DocumentedChangeItem } from '@/components/MarketChangesTerminal';
 import { realLocationsDataset } from '@/lib/real-romanian-data';
+import { safeJsonLdStringify } from '@/lib/sanitize';
 
 export const metadata: Metadata = {
   title: 'Recent Documented Market Changes · CONSTRUCTIONS by AiXLuxury',
@@ -158,7 +159,7 @@ export default function ChangesPage() {
     <div className="bg-[#050505] text-[#F3F1EB] min-h-screen">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(changesJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: safeJsonLdStringify(changesJsonLd) }}
       />
       <SiteHeader />
 

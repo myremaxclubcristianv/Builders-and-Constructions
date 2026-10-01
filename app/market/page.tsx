@@ -3,10 +3,11 @@ import { SiteHeader } from '@/components/SiteHeader';
 import { SiteFooter } from '@/components/SiteFooter';
 import { getIndustryHubData } from '@/lib/data';
 import { realCompaniesDataset, realProjectsDataset, realLocationsDataset } from '@/lib/real-romanian-data';
+import { safeJsonLdStringify } from '@/lib/sanitize';
 
 export const metadata = {
   title: 'Market Intelligence Dashboard — Romanian Construction & Real Estate Terminal',
-  description: 'Audited market intelligence overview documenting 146 market entities, 76 development projects, 36 regional hubs, and verified market signals in Romania.',
+  description: 'Audited market intelligence overview documenting 143 market entities, 76 development projects, 36 regional hubs, and verified market signals in Romania.',
   alternates: {
     canonical: 'https://constructions.cristianvaduva.com/market'
   }
@@ -55,7 +56,7 @@ export default async function MarketDashboardPage() {
     <div className="bg-[#050505] text-[#F3F1EB] min-h-screen">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(marketJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: safeJsonLdStringify(marketJsonLd) }}
       />
       <SiteHeader />
 
@@ -223,7 +224,7 @@ export default async function MarketDashboardPage() {
             <div className="space-y-4 pt-4">
               <div className="flex items-center justify-between border-b border-[#1A1D1B] pb-3">
                 <span className="text-xs font-mono text-[#86efac] uppercase tracking-widest font-bold">
-                  RECENT VERIFIED MARKET SIGNALS ({marketActivity.length})
+                  RECENT VERIFIED MARKET SIGNALS ({marketActivity.length}) · LATEST: 24 AUG 2026
                 </span>
                 <Link href="/signals" className="text-xs font-mono text-[#86efac] hover:underline font-bold">
                   FULL SIGNAL FEED →

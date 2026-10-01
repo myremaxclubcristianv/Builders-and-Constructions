@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { requireAdmin } from '@/lib/admin-auth';
 import { getServiceClient } from '@/lib/supabase';
 
 const VALID_STAGES = [
@@ -14,6 +15,7 @@ const VALID_STAGES = [
 
 export async function POST(request: Request) {
   try {
+    await requireAdmin('admin', 'editor');
     const body = await request.json();
     const { slug, stage } = body;
 
@@ -56,10 +58,10 @@ export async function POST(request: Request) {
       databaseSynced: true,
       data
     });
-  } catch (err: any) {
+  } catch {
     return NextResponse.json(
-      { error: err?.message || 'Unable to update project stage.', databaseSynced: false },
-      { status: 500 }
+      { error: 'Unauthorized', databaseSynced: false },
+      { status: 401 }
     );
   }
 }

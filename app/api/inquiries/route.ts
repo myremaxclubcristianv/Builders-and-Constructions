@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
 import { getServiceClient } from '@/lib/supabase';
 import { sendTelegramNotification } from '@/lib/telegram';
+import { executeOperationalPipeline } from '@/lib/operational-pipeline';
+import { checkRateLimit } from '@/lib/rate-limit';
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const validSources = [
@@ -24,6 +26,19 @@ const validSources = [
 
 export async function POST(request: Request) {
   try {
+    const rateLimit = checkRateLimit(request, 'inquiries', { maxRequests: 5, windowMs: 10 * 60 * 1000 });
+    if (!rateLimit.allowed) {
+      return NextResponse.json(
+        { ok: false, error: 'Too many requests. Please try again later.' },
+        {
+          status: 429,
+          headers: {
+            'Retry-After': String(rateLimit.retryAfterSeconds)
+          }
+        }
+      );
+    }
+
     const body = await request.json().catch(() => null);
     if (
       !body ||
@@ -114,6 +129,30 @@ export async function POST(request: Request) {
       } catch (dbErr) {
         console.error('[Inquiry DB Exception]', dbErr);
       }
+    }
+
+    // 3. Operational Intelligence Pipeline Execution
+    try {
+      await executeOperationalPipeline({
+        sourceName: `Public Inquiry: ${body.name}`,
+        sourceType: 'FORM_SUBMISSION',
+        sourceUrl: `https://constructions.cristianvaduva.com/${source}`,
+        triggerType: 'WEBHOOK',
+        entityNameCandidate: body.company || body.name,
+        eventType: 'COMMERCIAL_INQUIRY',
+        evidenceText: `Verified public commercial inquiry from ${body.email}`,
+        commercialRelevance: 'CRITICAL',
+        rawPayload: {
+          name: body.name,
+          email: body.email,
+          company: body.company,
+          message: body.message,
+          source,
+          submittedAt: timestamp
+        }
+      });
+    } catch (pipeErr) {
+      console.error('[Operational Pipeline Exception]', pipeErr);
     }
 
     // 3. Operational Delivery Check: Telegram is REQUIRED for operational success

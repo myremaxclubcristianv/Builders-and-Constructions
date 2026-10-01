@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { SiteHeader } from '@/components/SiteHeader';
 import { SiteFooter } from '@/components/SiteFooter';
 import { realCompaniesDataset } from '@/lib/real-romanian-data';
+import { safeJsonLdStringify } from '@/lib/sanitize';
 
 export const metadata: Metadata = {
   title: 'Architecture & Urban Planning Studios | CONSTRUCTIONS by AiXLuxury',
@@ -28,7 +29,7 @@ export default function ArchitectsPage() {
     <div className="bg-[#050505] text-[#F3F1EB] min-h-screen">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: safeJsonLdStringify(jsonLd) }}
       />
       <SiteHeader />
 

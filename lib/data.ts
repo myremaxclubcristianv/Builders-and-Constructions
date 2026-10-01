@@ -24,6 +24,9 @@ export type Project = {
   estimated_investment?: number;
   surface_area?: number | null;
   unit_count?: number | null;
+  infrastructure_length_km?: number | null;
+  capacity_seats?: number | null;
+  span_length_m?: number | null;
   developer?: string;
   developer_slug?: string | null;
   developer_type?: string;
@@ -251,6 +254,9 @@ export const mappedRealProjects: Project[] = realProjectsDataset.map(p => ({
   estimated_investment: p.investment_eur,
   surface_area: p.surface_area_sqm,
   unit_count: p.unit_count,
+  infrastructure_length_km: p.infrastructure_length_km,
+  capacity_seats: p.capacity_seats,
+  span_length_m: p.span_length_m,
   developer: p.developer_name,
   developer_slug: p.developer_slug,
   image: p.image,
@@ -336,9 +342,7 @@ export async function getPublishedCompanies(): Promise<Company[]> {
 
 export async function getCompanyBySlug(slug: string, preview = false): Promise<any> {
   const realComp = mappedRealCompanies.find(c => c.slug === slug);
-  const client = getServiceClient();
-
-  if (!client) {
+  if (realComp) {
     if (!realComp) return null;
     const companyProjects = mappedRealProjects.filter(p => p.developer_slug === slug || p.contractor_slug === slug || p.architect_slug === slug || p.engineering_slug === slug);
     const builtProjects: ConnectedProject[] = companyProjects.filter(p => p.status === 'Completed').map(p => ({
@@ -415,6 +419,8 @@ export async function getCompanyBySlug(slug: string, preview = false): Promise<a
   }
 
   // Supabase fallback query if available
+  const client = getServiceClient();
+  if (!client) return null;
   let query = client.from('companies').select('*, locations(name,county)').eq('slug', slug);
   if (!preview) query = query.not('published_at', 'is', null);
 

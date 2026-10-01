@@ -211,7 +211,7 @@ export function SignalsFeed({ signals }: SignalsFeedProps) {
           SHOWING {filteredSignals.length} VERIFIED MARKET SIGNALS
         </span>
         <span className="text-[#C9A227]">
-          VERIFICATION: VERIFIED / DOCUMENTED
+          VERIFICATION: VERIFIED / DOCUMENTED · LATEST VERIFIED: 24 AUG 2026
         </span>
       </div>
 
@@ -249,7 +249,7 @@ export function SignalsFeed({ signals }: SignalsFeedProps) {
                   <span className="px-2 py-0.5 bg-[#C9A227]/10 border border-[#C9A227]/30 text-[#C9A227] rounded text-[10px] uppercase font-bold">
                     {act.signal_type.replaceAll('_', ' ')}
                   </span>
-                  <span className="text-xs text-[#888888]">{act.event_date}</span>
+                  <span className="text-xs text-[#888888]">EVENT: {act.event_date}</span>
                   <span className="px-2 py-0.5 bg-[#22c55e]/10 text-[#22c55e] border border-[#22c55e]/30 rounded text-[9px] font-bold uppercase">
                     {act.verification_state || 'VERIFIED'}
                   </span>

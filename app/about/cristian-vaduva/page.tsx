@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { SiteHeader } from '@/components/SiteHeader';
 import { SiteFooter } from '@/components/SiteFooter';
+import { safeJsonLdStringify } from '@/lib/sanitize';
 
 export const metadata = {
   title: 'Cristian Văduva — Institutional Profile & Luxury Real Estate Expert',
@@ -34,7 +35,7 @@ export default function CristianVaduvaProfilePage() {
     <div className="bg-[#050505] text-[#F3F1EB] min-h-screen">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: safeJsonLdStringify(personJsonLd) }}
       />
       <SiteHeader />
 
