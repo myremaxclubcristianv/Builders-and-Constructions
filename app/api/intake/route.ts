@@ -18,15 +18,20 @@ function generateLeadId(): string {
 export async function POST(req: NextRequest) {
   try {
     // 1. Rate Limiting Check (Defensive Security)
-    const rateLimit = checkRateLimit(req, "intake_submission", {
+    const rateLimit = await checkRateLimit(req, "intake_submission", {
       maxRequests: 10,
-      windowMs: 60 * 1000
+      windowMs: 60 * 1000,
+      failClosed: true
     });
 
     if (!rateLimit.allowed) {
+      const status = rateLimit.status || 429;
+      const error = status === 503
+        ? "Serviciul este temporar indisponibil. Te rugăm să încerci din nou mai târziu."
+        : "Prea multe solicitări. Te rugăm să aștepți câteva momente.";
       return NextResponse.json(
-        { ok: false, error: "Prea multe solicitări. Te rugăm să aștepți câteva momente." },
-        { status: 429, headers: { "Retry-After": String(rateLimit.retryAfterSeconds) } }
+        { ok: false, error },
+        { status, headers: { "Retry-After": String(rateLimit.retryAfterSeconds) } }
       );
     }
 

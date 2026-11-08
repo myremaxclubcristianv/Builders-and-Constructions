@@ -6,17 +6,28 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: '*',
       allow: '/',
       disallow: [
+        '/api',
         '/api/',
+        '/admin',
         '/admin/',
-        '/commercial',
-        '/product-health',
         '/workspace',
-        '/accounts',
+        '/workspace/',
         '/command',
+        '/command/',
         '/dealflow',
+        '/dealflow/',
+        '/commercial',
+        '/commercial/',
+        '/product-health',
+        '/product-health/',
+        '/accounts',
+        '/accounts/',
         '/outreach',
+        '/outreach/',
         '/actions',
-        '/decisions'
+        '/actions/',
+        '/decisions',
+        '/decisions/'
       ]
     },
     sitemap: 'https://constructions.cristianvaduva.com/sitemap.xml'

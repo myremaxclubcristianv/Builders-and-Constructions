@@ -39,10 +39,10 @@ export default async function ServiceDossierPage(props: { params: Promise<{ slug
   return (
     <>
       <SiteHeader />
-      <main className="shell pt-28 pb-20">
+      <main className="shell pt-36 sm:pt-40 pb-20">
         {/* Breadcrumb */}
         <div className="flex items-center gap-2 text-xs font-mono text-[#888888] mb-6">
-          <Link href="/" className="hover:text-white transition-colors">Home</Link>
+          <Link href="/" className="hover:text-white transition-colors">Acasă</Link>
           <span>/</span>
           <Link href="/services" className="hover:text-white transition-colors">Servicii</Link>
           <span>/</span>

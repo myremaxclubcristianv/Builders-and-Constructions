@@ -36,31 +36,31 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   metadataBase: new URL('https://constructions.cristianvaduva.com'),
   title: {
-    default: 'CONSTRUCTIONS by AiXLuxury',
-    template: '%s | CONSTRUCTIONS by AiXLuxury'
+    default: 'CONSTRUCTIONS by AiXLuxury · Inteligență în Construcții & Real Estate România',
+    template: '%s'
   },
-  description: 'Construction intelligence for Romania\'s evolving built environment. Structured intelligence on verified developers, construction companies, engineers, and architectural practices.',
+  description: 'Platformă independentă de inteligență, transparență și analiză faptică în construcții și real estate din România. Dosare structurate pentru dezvoltatori, antreprenori generali, ingineri și proiecte majore.',
   alternates: {
     canonical: 'https://constructions.cristianvaduva.com'
   },
   openGraph: {
     type: 'website',
     siteName: 'CONSTRUCTIONS by AiXLuxury',
-    locale: 'en_US',
+    locale: 'ro_RO',
     url: 'https://constructions.cristianvaduva.com',
     images: [
       {
         url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'CONSTRUCTIONS by AiXLuxury — Romanian Construction & Real Estate Intelligence'
+        alt: 'CONSTRUCTIONS by AiXLuxury — Inteligență în Construcții & Real Estate România'
       }
     ]
   },
   twitter: {
     card: 'summary_large_image',
     title: 'CONSTRUCTIONS by AiXLuxury',
-    description: 'Construction intelligence for Romania\'s evolving built environment. Structured intelligence on verified developers, construction companies, engineers, and architectural practices.',
+    description: 'Platformă independentă de inteligență, transparență și analiză faptică în construcții și real estate din România.',
     images: ['/og-image.jpg']
   },
   robots: {

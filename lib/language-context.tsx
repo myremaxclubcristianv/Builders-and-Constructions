@@ -102,14 +102,9 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     setMounted(true);
     try {
-      const saved = localStorage.getItem('aix_lang') as Language;
-      if (saved === 'ro' || saved === 'en') {
-        setLanguageState(saved);
-        document.documentElement.lang = saved;
-      } else {
-        setLanguageState('ro');
-        document.documentElement.lang = 'ro';
-      }
+      setLanguageState('ro');
+      document.documentElement.lang = 'ro';
+      localStorage.setItem('aix_lang', 'ro');
     } catch {
       // localStorage unavailable fallback
     }

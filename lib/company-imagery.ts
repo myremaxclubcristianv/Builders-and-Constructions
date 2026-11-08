@@ -15,33 +15,42 @@ export interface CompanyImageResolution {
 }
 
 export function resolveCompanyImage(company: any, connectedProjects: any[] = []): CompanyImageResolution {
+  const isGenuineVerifiedImage = (url?: string, isVerified?: boolean) => {
+    if (!url || typeof url !== 'string' || !url.startsWith('http')) return false;
+    // Reject Unsplash and known generic stock repositories
+    if (url.includes('unsplash.com') || url.includes('stock') || url.includes('shutterstock') || url.includes('getty')) {
+      return false;
+    }
+    return isVerified !== false;
+  };
+
   if (!company) {
     return {
       url: null,
       status: 'NOT_DISCLOSED_FALLBACK',
       sourceTier: 'F',
-      sourceTitle: 'N/A — No Verified Public Image Available',
-      caption: 'IMAGE STATUS: NOT DISCLOSED IN PUBLIC BASELINE',
+      sourceTitle: 'N/A — Fără imagine publică verificată',
+      caption: 'STATUT VIZUAL: FOTOGRAFIE INDISPONIBILĂ ÎN SURSE OFICIALE (NOT DISCLOSED)',
       isFallback: true
     };
   }
 
-  // Priority 1: Official Corporate Source Image
-  if (company.image && typeof company.image === 'string' && company.image.startsWith('http')) {
+  // Priority 1: Official Corporate Source Image (strictly non-stock)
+  if (isGenuineVerifiedImage(company.image, company.image_verified)) {
     return {
       url: company.image,
       status: 'VERIFIED_CORPORATE_IMAGE',
       sourceTier: 'B',
-      sourceTitle: company.image_source || 'Official Company Media / Corporate Headquarters',
+      sourceTitle: company.image_source || 'Fotografie Oficială Companie / Sediu Central',
       sourceUrl: company.website || undefined,
-      caption: company.image_alt || `${company.name} Corporate Headquarters`,
+      caption: company.image_alt || `Sediu Central — ${company.name}`,
       isFallback: false
     };
   }
 
-  // Priority 2: Official Verified Project Source Image
+  // Priority 2: Official Verified Project Source Image (strictly non-stock)
   const projectWithImage = connectedProjects.find(
-    p => p && p.image && typeof p.image === 'string' && p.image.startsWith('http')
+    p => p && isGenuineVerifiedImage(p.image, p.image_verified)
   );
 
   if (projectWithImage) {
@@ -49,20 +58,20 @@ export function resolveCompanyImage(company: any, connectedProjects: any[] = [])
       url: projectWithImage.image,
       status: 'VERIFIED_PROJECT_IMAGE',
       sourceTier: 'B',
-      sourceTitle: `Official Verified Project Source — ${projectWithImage.name}`,
+      sourceTitle: `Sursă Oficială Proiect Verificat — ${projectWithImage.name}`,
       sourceUrl: projectWithImage.evidence_url || `/projects/${projectWithImage.slug}`,
-      caption: `Official Verified Development — ${projectWithImage.name} (${projectWithImage.location || 'Romania'})`,
+      caption: `Proiect Verificat — ${projectWithImage.name} (${projectWithImage.location || 'România'})`,
       isFallback: false
     };
   }
 
-  // Priority 4: Neutral Fallback (No generic stock photos pretending to be corporate headquarters)
+  // Priority 3: Neutral Fallback (No generic stock photos pretending to be corporate headquarters)
   return {
     url: null,
     status: 'NOT_DISCLOSED_FALLBACK',
     sourceTier: 'F',
-    sourceTitle: 'N/A — No Verified Public Corporate Image Available',
-    caption: 'IMAGE STATUS: NOT DISCLOSED IN PUBLIC BASELINE',
+    sourceTitle: 'N/A — Fără imagine publică verificată a companiei',
+    caption: 'STATUT VIZUAL: FOTOGRAFIE INDISPONIBILĂ ÎN SURSE OFICIALE (NOT DISCLOSED)',
     isFallback: true
   };
 }

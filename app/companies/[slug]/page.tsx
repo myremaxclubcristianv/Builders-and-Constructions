@@ -26,30 +26,30 @@ export async function generateMetadata({
   const data = await getCompanyBySlug(slug, isPreview);
 
   if (!data?.company) {
-    return { title: 'Company Intelligence Dossier Not Found' };
+    return { title: 'Dosar Companie Negăsit | CONSTRUCTIONS by AiXLuxury' };
   }
 
   const c = data.company;
   const isIndexable = c.published_at && !isPreview;
 
   return {
-    title: `${c.name} — Corporate Dossier | CONSTRUCTIONS by AiXLuxury`,
-    description: c.description || `Public record corporate dossier, active development portfolio, financial disclosures, and market network for ${c.name} in ${c.location || 'Romania'}.`,
+    title: `${c.name} — Dosar Corporativ | CONSTRUCTIONS by AiXLuxury`,
+    description: c.description || `Dosar corporativ din registre publice, portofoliu de dezvoltare, situații financiare și rețeaua din piață pentru ${c.name} (${c.location || 'România'}).`,
     alternates: {
       canonical: `https://constructions.cristianvaduva.com/companies/${c.slug}`
     },
     openGraph: {
-      title: `${c.name} — Corporate Dossier | CONSTRUCTIONS by AiXLuxury`,
-      description: c.description || `Public record corporate dossier for ${c.name}.`,
+      title: `${c.name} — Dosar Corporativ | CONSTRUCTIONS by AiXLuxury`,
+      description: c.description || `Dosar corporativ din registre publice pentru ${c.name}.`,
       url: `https://constructions.cristianvaduva.com/companies/${c.slug}`,
       siteName: 'CONSTRUCTIONS by AiXLuxury',
-      locale: 'en_US',
+      locale: 'ro_RO',
       type: 'website'
     },
     twitter: {
       card: 'summary_large_image',
       title: `${c.name} | CONSTRUCTIONS by AiXLuxury`,
-      description: c.description || `Corporate dossier for ${c.name}.`
+      description: c.description || `Dosar corporativ pentru ${c.name}.`
     },
     robots: {
       index: Boolean(isIndexable),
@@ -198,22 +198,23 @@ export default async function CompanyProfile({
   ).slice(0, 3);
 
   const navTabs = [
-    { id: 'profile', label: 'EXECUTIVE PROFILE' },
-    { id: 'history', label: 'COMPANY HISTORY' },
-    { id: 'financials', label: 'FINANCIAL HISTORY' },
-    { id: 'trend', label: 'FINANCIAL TREND' },
-    { id: 'structure', label: 'OWNERSHIP & STRUCTURE' },
-    { id: 'people', label: 'MANAGEMENT' },
-    { id: 'portfolio', label: 'PORTFOLIO' },
-    { id: 'pipeline', label: 'ACTIVE PIPELINE' },
-    { id: 'future', label: 'FORWARD PIPELINE' },
-    { id: 'market', label: 'MARKET POSITION' },
-    { id: 'footprint', label: 'GEOGRAPHIC FOOTPRINT' },
-    { id: 'graph', label: 'RELATIONSHIP GRAPH' },
-    { id: 'competitive', label: 'COMPARABLE ENTITIES' },
-    { id: 'contracts', label: 'CONTRACTS' },
-    { id: 'sources', label: 'SOURCES & PROVENANCE' },
-    { id: 'quality', label: 'DATA DISCLOSURE' }
+    { id: 'profile', label: 'PROFIL EXECUTIV' },
+    { id: 'history', label: 'ISTORIC COMPANIE' },
+    ...(financials.length > 0 ? [
+      { id: 'financials', label: 'SITUAȚII FINANCIARE' },
+      { id: 'trend', label: 'EVOLUȚIE FINANCIARĂ' }
+    ] : []),
+    { id: 'structure', label: 'STRUCTURĂ ACȚIONARIAT' },
+    ...(c.founders_key_people && c.founders_key_people.length > 0 ? [{ id: 'people', label: 'CONDUCERE' }] : []),
+    { id: 'portfolio', label: 'PORTOFOLIU PROIECTE' },
+    ...(activeProjects.length > 0 ? [{ id: 'pipeline', label: 'PROIECTE ACTIVE' }] : []),
+    { id: 'market', label: 'POZIȚIONARE DE PIAȚĂ' },
+    { id: 'footprint', label: 'ACOPERIRE GEOGRAFICĂ' },
+    { id: 'graph', label: 'REȚEA DE RELAȚII' },
+    ...(comparableCompanies.length > 0 ? [{ id: 'competitive', label: 'COMPANII COMPARABILE' }] : []),
+    { id: 'contracts', label: 'CONTRACTE' },
+    { id: 'sources', label: 'SURSE & PROVENIENȚĂ' },
+    { id: 'quality', label: 'NOTĂ METODOLOGICĂ' }
   ];
 
   const companyAge = c.founded_year ? 2026 - c.founded_year : null;
@@ -231,7 +232,7 @@ export default async function CompanyProfile({
         image: imgRes.url || undefined,
         address: {
           '@type': 'PostalAddress',
-          addressLocality: c.location || 'Romania',
+          addressLocality: c.location || 'România',
           addressCountry: 'RO'
         },
         foundingDate: c.founded_year ? `${c.founded_year}` : undefined,
@@ -244,13 +245,13 @@ export default async function CompanyProfile({
           {
             '@type': 'ListItem',
             position: 1,
-            name: 'Home',
+            name: 'Acasă',
             item: 'https://constructions.cristianvaduva.com'
           },
           {
             '@type': 'ListItem',
             position: 2,
-            name: 'Companies',
+            name: 'Companii',
             item: 'https://constructions.cristianvaduva.com/companies'
           },
           {
@@ -291,13 +292,13 @@ export default async function CompanyProfile({
                 </span>
               </div>
               <div style={{ display: 'flex', gap: 8, alignItems: 'center', flexWrap: 'wrap' }}>
-                <BookmarkButton id={c.slug} name={c.name} type="company" slug={c.slug} subtext={`${(c.type || 'developer').replaceAll('_', ' ')} · ${c.location || 'Romania'}`} />
+                <BookmarkButton id={c.slug} name={c.name} type="company" slug={c.slug} subtext={`${c.type || 'developer'} · ${c.location || 'România'}`} />
                 <Link href={`/compare?c1=${c.slug}`} className="btn-secondary" style={{ padding: '6px 14px', fontSize: 11, display: 'inline-flex', alignItems: 'center', gap: 4 }}>
                   <ScaleIcon className="w-3.5 h-3.5 text-[#c7a675]" />
-                  <span>COMPARE ENTITY</span>
+                  <span>COMPARĂ ENTITATEA</span>
                 </Link>
                 <Link href={`/report-error?entity=${encodeURIComponent(c.name)}&type=Company`} className="btn" style={{ padding: '6px 14px', fontSize: 11 }}>
-                  REQUEST CORRECTION →
+                  RAPORTEAZĂ CORECȚIE →
                 </Link>
               </div>
             </div>
@@ -308,22 +309,32 @@ export default async function CompanyProfile({
                   {c.name.toUpperCase()}
                 </h1>
                 <p style={{ fontSize: '1.1rem', color: '#d4d2c8', lineHeight: 1.6, margin: '0 0 20px 0' }}>
-                  <strong style={{ color: '#c7a675', textTransform: 'capitalize' }}>{(c.type || 'developer').replaceAll('_', ' ')}</strong>
+                  <strong style={{ color: '#c7a675', textTransform: 'capitalize' }}>
+                    {c.type === 'developer'
+                      ? 'Dezvoltator Imobiliar'
+                      : c.type === 'general_contractor'
+                      ? 'Antreprenor General'
+                      : c.type === 'architecture'
+                      ? 'Birou de Arhitectură'
+                      : c.type === 'engineering' || c.type === 'structural_engineering'
+                      ? 'Inginerie & Structură'
+                      : (c.type || 'Companie').replaceAll('_', ' ')}
+                  </strong>
                   {c.location ? ` · ${c.location}` : ''}
-                  {companyAge ? ` · ${companyAge} Years in Market (Est. ${c.founded_year})` : ''}
+                  {companyAge ? ` · ${companyAge} Ani de Activitate (Fondată în ${c.founded_year})` : ''}
                   <br />
                   {c.description}
                 </p>
                 <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', fontSize: 12, color: '#aaa9a1' }}>
-                  <div>CUI/CIF: <strong style={{ color: c.cui_cif ? '#86efac' : '#aaa' }}>{c.cui_cif || 'NOT DISCLOSED'}</strong></div>
-                  <div>SOURCES: <strong style={{ color: '#38bdf8' }}>{sourcesList.length} LEDGER ({primarySourceCount} PRIMARY, {secondarySourceCount} SECONDARY)</strong></div>
-                  <div>LAST VERIFIED: <strong style={{ color: '#fff' }}>2026-08-31</strong></div>
+                  <div>CUI/CIF: <strong style={{ color: c.cui_cif ? '#86efac' : '#aaa' }}>{c.cui_cif || 'Nedivulgat în surse publice'}</strong></div>
+                  <div>SURSE: <strong style={{ color: '#38bdf8' }}>{sourcesList.length} ÎNREGISTRĂRI ({primarySourceCount} PRIMARE, {secondarySourceCount} SECUNDARE)</strong></div>
+                  <div>ULTIMA VERIFICARE: <strong style={{ color: '#fff' }}>2026-08-31</strong></div>
                 </div>
               </div>
 
               {/* Hero Image Container */}
               <div style={{ height: 260, borderRadius: 6, overflow: 'hidden', border: '1px solid #262927', position: 'relative', background: '#141715', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
-                {imgRes.url ? (
+                {imgRes.url && !imgRes.isFallback ? (
                   <>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src={imgRes.url} alt={c.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
@@ -333,7 +344,7 @@ export default async function CompanyProfile({
                         <span>{imgRes.caption}</span>
                       </span>
                       <span style={{ fontSize: 9, background: '#1c221e', border: '1px solid #c7a675', color: '#c7a675', padding: '2px 6px', borderRadius: 2, fontWeight: 800, whiteSpace: 'nowrap' }}>
-                        {imgRes.status === 'VERIFIED_CORPORATE_IMAGE' ? 'VERIFIED CORPORATE MEDIA' : 'VERIFIED PROJECT MEDIA'}
+                        {imgRes.status === 'VERIFIED_CORPORATE_IMAGE' ? 'FOTOGRAFIE CORPORATIVĂ VERIFICATĂ' : 'FOTOGRAFIE PROIECT VERIFICAT'}
                       </span>
                     </div>
                   </>
@@ -343,10 +354,10 @@ export default async function CompanyProfile({
                       <BuildingIcon className="w-9 h-9 text-[#666]" />
                     </div>
                     <div style={{ fontSize: 11, fontWeight: 800, color: '#c7a675', border: '1px solid #262927', padding: '4px 10px', borderRadius: 4, display: 'inline-block', letterSpacing: '0.05em' }}>
-                      IMAGE STATUS: NOT DISCLOSED IN PUBLIC BASELINE
+                      STATUT VIZUAL: FOTOGRAFIE INDISPONIBILĂ ÎN SURSE OFICIALE
                     </div>
-                    <div style={{ fontSize: 11, color: '#666', marginTop: 8 }}>
-                      No verified entity-specific corporate image publicly filed. Stock media is never substituted.
+                    <div style={{ fontSize: 11, color: '#888', marginTop: 8, maxWidth: 500 }}>
+                      Nicio fotografie oficială a companiei nu a fost depusă în registrele publice consultate. Politica editorială CONSTRUCTIONS interzice substituirea fotografiilor reale cu imagini generice de stoc.
                     </div>
                   </div>
                 )}
@@ -356,14 +367,14 @@ export default async function CompanyProfile({
             {/* COMPACT BUSINESS-SAFE DISCLOSURE BOX */}
             <div style={{ marginTop: 24, padding: 16, background: '#111412', border: '1px solid #242926', borderRadius: 6, fontSize: 12, color: '#a0a0a0', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 12 }}>
               <div>
-                <strong style={{ color: '#fff' }}>Independent Platform Disclosure:</strong> CONSTRUCTIONS is an independent information and research platform. Inclusion of an entity does not imply representation, endorsement, partnership, or commercial relationship with that entity.
+                <strong style={{ color: '#fff' }}>Notă de Independență a Platformei:</strong> CONSTRUCTIONS este o platformă independentă de cercetare și monitorizare a pieței. Includerea unei entități nu reprezintă o asociere comercială, reprezentare exclusivă sau recomandare de investiții.
               </div>
               <div style={{ display: 'flex', gap: 16, alignItems: 'center', flexWrap: 'wrap' }}>
                 <Link href="/methodology" style={{ color: '#aaa', fontWeight: 600, textDecoration: 'underline', whiteSpace: 'nowrap' }}>
-                  How We Verify →
+                  Metodologia Noastră →
                 </Link>
                 <Link href={`/report-error?company=${encodeURIComponent(c.name)}`} style={{ color: '#c7a675', fontWeight: 700, textDecoration: 'none', whiteSpace: 'nowrap' }}>
-                  Request Profile Update →
+                  Solicită Actualizare Profil →
                 </Link>
               </div>
             </div>
@@ -377,17 +388,17 @@ export default async function CompanyProfile({
         <section id="profile" className="section shell" style={{ paddingTop: 40 }}>
           <div className="section-head">
             <div>
-              <div className="eyebrow" style={{ color: '#c7a675' }}>SECTION A</div>
-              <h2>EXECUTIVE PROFILE & SUMMARY</h2>
+              <div className="eyebrow" style={{ color: '#c7a675' }}>SECȚIUNEA A</div>
+              <h2>PROFIL EXECUTIV &amp; PREZENTARE GENERALĂ</h2>
             </div>
           </div>
 
           <div style={{ padding: 24, background: '#141715', border: '1px solid #262927', borderRadius: 6, fontSize: 14, lineHeight: 1.7, color: '#d4d2c8', marginBottom: 20 }}>
-            <h4 style={{ color: '#c7a675', margin: '0 0 8px 0', textTransform: 'uppercase', fontSize: 12 }}>CORPORATE OVERVIEW</h4>
+            <h4 style={{ color: '#c7a675', margin: '0 0 8px 0', textTransform: 'uppercase', fontSize: 12 }}>SINTEZĂ CORPORATIVĂ</h4>
             <p style={{ margin: 0 }}>
-              {c.name} is a confirmed <strong>{(c.type || 'developer').replaceAll('_', ' ')}</strong> entity operating out of <strong>{c.location || 'Romania'}</strong>.
-              The entity controls a tracked portfolio of <strong>{connectedProjects.length} projects</strong> with an aggregate investment allocation of <strong>{knownPortfolioValueEur > 0 ? `€${(knownPortfolioValueEur / 1000000).toFixed(1)}M EUR` : 'NOT DISCLOSED'}</strong>.
-              Legal registration identifier (CUI/CIF): <strong>{c.cui_cif || 'NOT DISCLOSED'}</strong>.
+              {c.name} este o entitate activă din categoria <strong>{(c.type || 'companie').replaceAll('_', ' ')}</strong>, cu sediul raportat în <strong>{c.location || 'România'}</strong>.
+              Entitatea este asociată în eșantionul verificat cu <strong>{connectedProjects.length} proiecte</strong>, cu o valoare cumulată documentată de <strong>{knownPortfolioValueEur > 0 ? `€${(knownPortfolioValueEur / 1000000).toFixed(1)}M EUR` : 'Nedivulgat în depuneri publice'}</strong>.
+              Identificator fiscal (CUI/CIF): <strong>{c.cui_cif || 'Nedivulgat în surse publice'}</strong>.
             </p>
           </div>
         </section>
@@ -396,8 +407,8 @@ export default async function CompanyProfile({
         <section id="history" className="section shell">
           <div className="section-head">
             <div>
-              <div className="eyebrow" style={{ color: '#c7a675' }}>SECTION B</div>
-              <h2>COMPANY HISTORY & TIMELINE</h2>
+              <div className="eyebrow" style={{ color: '#c7a675' }}>SECȚIUNEA B</div>
+              <h2>ISTORIC &amp; ETAPE DE DEZVOLTARE</h2>
             </div>
           </div>
 
@@ -406,14 +417,14 @@ export default async function CompanyProfile({
               <div style={{ padding: 16, background: '#141715', border: '1px solid #262927', borderRadius: 6, display: 'flex', gap: 16, alignItems: 'center' }}>
                 <div style={{ fontSize: 16, fontWeight: 800, color: '#c7a675', width: 60 }}>{c.founded_year}</div>
                 <div>
-                  <div style={{ fontSize: 14, fontWeight: 700, color: '#fff' }}>Official Corporate Establishment</div>
-                  <div style={{ fontSize: 12, color: '#aaa9a1', marginTop: 2 }}>Significance: Founded in {c.location || 'Romania'} as a specialized {(c.type || 'developer').replaceAll('_', ' ')}.</div>
-                  <div style={{ fontSize: 10, color: '#888', marginTop: 4 }}>Source: Trade Register / Corporate Filing</div>
+                  <div style={{ fontSize: 14, fontWeight: 700, color: '#fff' }}>Înființare Oficială Entitate</div>
+                  <div style={{ fontSize: 12, color: '#aaa9a1', marginTop: 2 }}>Fondată în {c.location || 'România'} ca entitate specializată în domeniul construcțiilor și imobiliarelor.</div>
+                  <div style={{ fontSize: 10, color: '#888', marginTop: 4 }}>Sursă: Registrul Comerțului / Situații Financiare Oficiale</div>
                 </div>
               </div>
             )}
-            <div style={{ padding: 14, background: '#0f1210', border: '1px border-dashed #222', borderRadius: 4, color: '#888', fontSize: 12 }}>
-              Additional historical disclosures: <strong style={{ color: '#aaa' }}>Historical timeline disclosure unavailable for unindexed historical periods</strong>.
+            <div style={{ padding: 14, background: '#0f1210', border: '1px dashed #262927', borderRadius: 4, color: '#888', fontSize: 12 }}>
+              Date istorice suplimentare: <strong style={{ color: '#aaa' }}>Cronologia detaliată a evenimentelor corporative este disponibilă prin audit la cerere</strong>.
             </div>
           </div>
         </section>
@@ -422,8 +433,8 @@ export default async function CompanyProfile({
         <section id="financials" className="section shell">
           <div className="section-head">
             <div>
-              <div className="eyebrow" style={{ color: '#c7a675' }}>SECTION C</div>
-              <h2>FINANCIAL DISCLOSURES</h2>
+              <div className="eyebrow" style={{ color: '#c7a675' }}>SECȚIUNEA C</div>
+              <h2>SITUAȚII FINANCIARE &amp; BILANȚ</h2>
             </div>
           </div>
 
@@ -432,13 +443,13 @@ export default async function CompanyProfile({
               <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 13, textAlign: 'left' }}>
                 <thead>
                   <tr style={{ background: '#141715', borderBottom: '2px solid #262927', color: '#c7a675', fontSize: 11, letterSpacing: '0.05em' }}>
-                    <th style={{ padding: 12 }}>YEAR</th>
-                    <th style={{ padding: 12 }}>REVENUE (EUR)</th>
-                    <th style={{ padding: 12 }}>REVENUE (RON)</th>
-                    <th style={{ padding: 12 }}>NET PROFIT (EUR)</th>
-                    <th style={{ padding: 12 }}>EMPLOYEES</th>
+                    <th style={{ padding: 12 }}>AN</th>
+                    <th style={{ padding: 12 }}>CIFRĂ AFACERI (EUR)</th>
+                    <th style={{ padding: 12 }}>CIFRĂ AFACERI (RON)</th>
+                    <th style={{ padding: 12 }}>PROFIT NET (EUR)</th>
+                    <th style={{ padding: 12 }}>ANGAJAȚI</th>
                     <th style={{ padding: 12 }}>STATUS</th>
-                    <th style={{ padding: 12 }}>SOURCE</th>
+                    <th style={{ padding: 12 }}>SURSĂ</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -446,21 +457,21 @@ export default async function CompanyProfile({
                     <tr key={f.year} style={{ borderBottom: '1px solid #1f2320' }}>
                       <td style={{ padding: 12, fontWeight: 800, color: '#fff' }}>{f.year}</td>
                       <td style={{ padding: 12, color: f.revenue_eur ? '#86efac' : '#888', fontWeight: 700 }}>
-                        {f.revenue_eur ? `€${(f.revenue_eur / 1000000).toFixed(2)}M` : 'NOT DISCLOSED'}
+                        {f.revenue_eur ? `€${(f.revenue_eur / 1000000).toFixed(2)}M` : 'Nedivulgat'}
                       </td>
                       <td style={{ padding: 12, color: '#ccc' }}>
-                        {f.revenue_ron ? `${(f.revenue_ron / 1000000).toFixed(1)}M RON` : 'NOT DISCLOSED'}
+                        {f.revenue_ron ? `${(f.revenue_ron / 1000000).toFixed(1)}M RON` : 'Nedivulgat'}
                       </td>
                       <td style={{ padding: 12, color: f.net_profit_eur ? '#fff' : '#888' }}>
-                        {f.net_profit_eur ? `€${(f.net_profit_eur / 1000000).toFixed(2)}M` : 'NOT DISCLOSED'}
+                        {f.net_profit_eur ? `€${(f.net_profit_eur / 1000000).toFixed(2)}M` : 'Nedivulgat'}
                       </td>
-                      <td style={{ padding: 12, color: '#ccc' }}>{f.employees || f.employees_count || 'NOT DISCLOSED'}</td>
+                      <td style={{ padding: 12, color: '#ccc' }}>{f.employees || f.employees_count || 'Nedivulgat'}</td>
                       <td style={{ padding: 12 }}>
                         <span style={{ fontSize: 10, background: '#1c221e', border: '1px solid #38bdf8', color: '#38bdf8', padding: '2px 6px', borderRadius: 2, fontWeight: 700 }}>
-                          {f.status || 'REPORTED'}
+                          {f.status || 'RAPORTAT'}
                         </span>
                       </td>
-                      <td style={{ padding: 12, fontSize: 11, color: '#888' }}>{f.source_title || f.source || 'Ministry of Finance Annual Disclosures'}</td>
+                      <td style={{ padding: 12, fontSize: 11, color: '#888' }}>{f.source_title || f.source || 'Ministerul Finanțelor / Rapoarte Anuale'}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -468,59 +479,63 @@ export default async function CompanyProfile({
             </div>
           ) : (
             <div style={{ padding: 20, background: '#141715', border: '1px solid #262927', borderRadius: 6, color: '#888', fontSize: 13 }}>
-              Financial statements for this entity are currently <strong>NOT DISCLOSED</strong>.
+              Datele financiare pentru această entitate nu sunt divulgate în depunerile publice consultate. Informațiile pot fi solicitate echipei noastre de cercetare.
             </div>
           )}
         </section>
 
         {/* SECTION D — FINANCIAL TREND ANALYSIS */}
-        <section id="trend" className="section shell">
-          <div className="section-head">
-            <div>
-              <div className="eyebrow" style={{ color: '#c7a675' }}>SECTION D</div>
-              <h2>FINANCIAL TREND ANALYSIS</h2>
-            </div>
-          </div>
-
-          <div style={{ padding: 20, background: '#141715', border: '1px solid #262927', borderRadius: 6, marginBottom: 20, display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 16 }}>
-            <div>
-              <div style={{ fontSize: 11, color: '#888', fontWeight: 700 }}>DERIVED TREND CLASSIFICATION</div>
-              <div style={{ fontSize: 20, fontWeight: 800, color: revenueGrowthTrend === 'GROWING' ? '#86efac' : '#c7a675', marginTop: 4 }}>
-                {revenueGrowthTrend}
+        {financials.length > 0 && (
+          <section id="trend" className="section shell">
+            <div className="section-head">
+              <div>
+                <div className="eyebrow" style={{ color: '#c7a675' }}>SECȚIUNEA D</div>
+                <h2>EVOLUȚIE &amp; TENDINȚĂ FINANCIARĂ</h2>
               </div>
             </div>
-            <div style={{ fontSize: 11, color: '#aaa' }}>
-              Calculated programmatically from verified reporting periods (2023 → 2025).
-            </div>
-          </div>
 
-          <FinancialTrendChart timeline={financials} />
-        </section>
+            <div style={{ padding: 20, background: '#141715', border: '1px solid #262927', borderRadius: 6, marginBottom: 20, display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 16 }}>
+              <div>
+                <div style={{ fontSize: 11, color: '#888', fontWeight: 700 }}>CLASIFICARE TENDINȚĂ DERIVATĂ</div>
+                <div style={{ fontSize: 20, fontWeight: 800, color: revenueGrowthTrend === 'GROWING' ? '#86efac' : '#c7a675', marginTop: 4 }}>
+                  {revenueGrowthTrend === 'GROWING' ? 'CREȘTERE' : revenueGrowthTrend === 'DECLINING' ? 'SCĂDERE' : 'STABIL'}
+                </div>
+              </div>
+              <div style={{ fontSize: 11, color: '#aaa' }}>
+                Calculat algoritmic din perioadele financiare raportate ({financials[financials.length - 1]?.year} → {financials[0]?.year}).
+              </div>
+            </div>
+
+            <FinancialTrendChart timeline={financials} />
+          </section>
+        )}
 
         {/* SECTION E — OWNERSHIP & CORPORATE STRUCTURE */}
         <section id="structure" className="section shell">
           <div className="section-head">
             <div>
-              <div className="eyebrow" style={{ color: '#c7a675' }}>SECTION E</div>
-              <h2>OWNERSHIP & CORPORATE STRUCTURE</h2>
+              <div className="eyebrow" style={{ color: '#c7a675' }}>SECȚIUNEA E</div>
+              <h2>STRUCTURĂ JURIDICĂ &amp; ACȚIONARIAT</h2>
             </div>
           </div>
 
           <div style={{ padding: 24, background: '#141715', border: '1px solid #262927', borderRadius: 6 }}>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 16 }}>
               <div>
-                <div style={{ fontSize: 10, color: '#888', fontWeight: 700 }}>LEGAL STRUCTURE</div>
-                <div style={{ fontSize: 14, fontWeight: 700, color: '#fff', marginTop: 4 }}>{c.ownership_structure || 'PRIVATELY HELD CO.'}</div>
+                <div style={{ fontSize: 10, color: '#888', fontWeight: 700 }}>FORMA JURIDICĂ</div>
+                <div style={{ fontSize: 14, fontWeight: 700, color: '#fff', marginTop: 4 }}>{c.ownership_structure || 'Societate Comercială Privată'}</div>
               </div>
               <div>
-                <div style={{ fontSize: 10, color: '#888', fontWeight: 700 }}>LISTED STATUS</div>
+                <div style={{ fontSize: 10, color: '#888', fontWeight: 700 }}>STATUT PE PIAȚĂ DE CAPITAL</div>
                 <div style={{ fontSize: 14, fontWeight: 700, color: c.slug === 'one-united-properties' ? '#86efac' : '#ccc', marginTop: 4 }}>
-                  {c.slug === 'one-united-properties' ? 'PUBLICLY TRADED (BVB: ONE)' : 'PRIVATELY HELD'}
+                  {c.slug === 'one-united-properties' ? 'TRANZACȚIONATĂ BVB (SIMBOL: ONE)' : 'SOCIETATE PRIVATĂ NECOTATĂ'}
                 </div>
               </div>
               <div>
-                <div style={{ fontSize: 10, color: '#888', fontWeight: 700 }}>PARENT GROUP / HOLDING</div>
-                <div style={{ fontSize: 14, fontWeight: 700, color: '#fff', marginTop: 4 }}>{c.name} Group</div>
+                <div style={{ fontSize: 10, color: '#888', fontWeight: 700 }}>GRUP / HOLDING-MAMĂ</div>
+                <div style={{ fontSize: 14, fontWeight: 700, color: '#fff', marginTop: 4 }}>
+                  {c.parent_group || 'Companie Independentă / Nedivulgat'}
+                </div>
               </div>
             </div>
           </div>
@@ -530,8 +545,8 @@ export default async function CompanyProfile({
         <section id="people" className="section shell">
           <div className="section-head">
             <div>
-              <div className="eyebrow" style={{ color: '#c7a675' }}>SECTION F</div>
-              <h2>MANAGEMENT & KEY PEOPLE</h2>
+              <div className="eyebrow" style={{ color: '#c7a675' }}>SECȚIUNEA F</div>
+              <h2>ECHIPA DE CONDUCERE &amp; PERSOANE CHEIE</h2>
             </div>
           </div>
 
@@ -544,14 +559,14 @@ export default async function CompanyProfile({
                       <UserIcon className="w-3.5 h-3.5 text-[#c7a675] shrink-0" />
                       <span>{person}</span>
                     </div>
-                    <div style={{ fontSize: 11, color: '#c7a675', marginTop: 2 }}>Executive / Key Person</div>
-                    <div style={{ fontSize: 10, color: '#888', marginTop: 4 }}>Public Register Disclosure</div>
+                    <div style={{ fontSize: 11, color: '#c7a675', marginTop: 2 }}>Conducere / Persoană Cheie</div>
+                    <div style={{ fontSize: 10, color: '#888', marginTop: 4 }}>Sursă: Registrul Public</div>
                   </div>
                 ))}
               </div>
             ) : (
-              <div style={{ color: '#aaa9a1', fontSize: 13 }}>
-                Key executive leadership disclosures: <strong style={{ color: '#888' }}>NOT DISCLOSED</strong>
+              <div style={{ color: '#888', fontSize: 13 }}>
+                Datele privind conducerea executivă nu sunt divulgate în depunerile publice consultate. Informațiile pot fi solicitate echipei noastre de cercetare.
               </div>
             )}
           </div>
@@ -561,13 +576,13 @@ export default async function CompanyProfile({
         <section id="portfolio" className="section shell">
           <div className="section-head">
             <div>
-              <div className="eyebrow" style={{ color: '#c7a675' }}>SECTION G</div>
-              <h2>{portfolioMeta.sectionTitle} ({connectedProjects.length})</h2>
+              <div className="eyebrow" style={{ color: '#c7a675' }}>SECȚIUNEA G</div>
+              <h2>PORTOFOLIU DE PROIECTE ({connectedProjects.length})</h2>
               <div style={{ fontSize: 12, color: '#aaa9a1', marginTop: 4 }}>
                 <span style={{ background: '#1c221e', border: '1px solid #c7a675', color: '#c7a675', padding: '2px 8px', borderRadius: 2, fontSize: 10, fontWeight: 800, marginRight: 8 }}>
-                  {portfolioMeta.roleBadgeLabel}
+                  ROL VERIFICAT
                 </span>
-                {portfolioMeta.roleDescription}
+                Proiecte asociate cu această entitate în eșantionul documentat.
               </div>
             </div>
           </div>
@@ -575,12 +590,12 @@ export default async function CompanyProfile({
           {connectedProjects.length > 0 ? (
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: 20 }}>
               {connectedProjects.map(p => (
-                <ProjectCard key={p.id} project={p} role={c.type === 'developer' ? 'DEVELOPER — VERIFIED' : `${(c.type || 'ROLE').replaceAll('_', ' ')} — VERIFIED`} />
+                <ProjectCard key={p.id} project={p} role={c.type === 'developer' ? 'DEZVOLTATOR' : `${(c.type || 'ROL').replaceAll('_', ' ')}`} />
               ))}
             </div>
           ) : (
             <div style={{ padding: 20, background: '#141715', border: '1px solid #262927', borderRadius: 6, color: '#888', fontSize: 13 }}>
-              0 VERIFIED PROJECTS IN PUBLIC BASELINE FOR THIS ENTITY.
+              Niciun proiect din portofoliul acestei companii nu este în prezent indexat în eșantionul verificat.
             </div>
           )}
         </section>
@@ -589,20 +604,20 @@ export default async function CompanyProfile({
         <section id="pipeline" className="section shell">
           <div className="section-head">
             <div>
-              <div className="eyebrow" style={{ color: '#38bdf8' }}>SECTION H</div>
-              <h2>CURRENT DEVELOPMENT PIPELINE ({activeProjects.length})</h2>
+              <div className="eyebrow" style={{ color: '#38bdf8' }}>SECȚIUNEA H</div>
+              <h2>ȘANTIERE ACTIVE ÎN DERULARE ({activeProjects.length})</h2>
             </div>
           </div>
 
           {activeProjects.length > 0 ? (
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: 20 }}>
               {activeProjects.map(p => (
-                <ProjectCard key={p.id} project={p} role="ACTIVE SITE" />
+                <ProjectCard key={p.id} project={p} role="ȘANTIER ACTIV" />
               ))}
             </div>
           ) : (
             <div style={{ padding: 20, background: '#141715', border: '1px solid #262927', borderRadius: 6, color: '#888', fontSize: 13 }}>
-              No ongoing active sites logged.
+              Niciun șantier activ documentat în eșantionul curent.
             </div>
           )}
         </section>
@@ -611,13 +626,16 @@ export default async function CompanyProfile({
         <section id="future" className="section shell">
           <div className="section-head">
             <div>
-              <div className="eyebrow" style={{ color: '#c7a675' }}>SECTION I</div>
-              <h2>FORWARD PIPELINE & OUTLOOK</h2>
+              <div className="eyebrow" style={{ color: '#c7a675' }}>SECȚIUNEA I</div>
+              <h2>PIPELINE VIITOR &amp; PERSPECTIVE</h2>
             </div>
           </div>
 
           <div style={{ padding: 20, background: '#141715', border: '1px solid #262927', borderRadius: 6, color: '#aaa9a1', fontSize: 13 }}>
-            Future expansion pipeline status: <strong style={{ color: '#888' }}>No verified future pipeline publicly disclosed beyond active sites</strong>.
+            Perspective de extindere viitoare:{' '}
+            <strong style={{ color: '#888' }}>
+              Nicio investiție viitoare confirmată oficial dincolo de șantierele active indexate.
+            </strong>
           </div>
         </section>
 
@@ -625,20 +643,22 @@ export default async function CompanyProfile({
         <section id="market" className="section shell">
           <div className="section-head">
             <div>
-              <div className="eyebrow" style={{ color: '#c7a675' }}>SECTION J</div>
-              <h2>MARKET POSITION & SECTOR EXPOSURE</h2>
+              <div className="eyebrow" style={{ color: '#c7a675' }}>SECȚIUNEA J</div>
+              <h2>POZIȚIONARE DE PIAȚĂ &amp; SPECIALIZARE</h2>
             </div>
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 16 }}>
             <div style={{ padding: 16, background: '#141715', border: '1px solid #262927', borderRadius: 6 }}>
-              <div style={{ fontSize: 10, color: '#888', fontWeight: 700 }}>ACTIVE SITES EXPOSURE</div>
-              <div style={{ fontSize: 18, fontWeight: 800, color: '#fff', marginTop: 4 }}>Top Tier Regional Exposure</div>
+              <div style={{ fontSize: 10, color: '#888', fontWeight: 700 }}>ȘANTIERE ACTIVE ÎN EȘANTION</div>
+              <div style={{ fontSize: 18, fontWeight: 800, color: '#fff', marginTop: 4 }}>
+                {activeProjects.length > 0 ? `${activeProjects.length} ${activeProjects.length === 1 ? 'Șantier Activ' : 'Șantiere Active'}` : 'Fără șantiere active indexate'}
+              </div>
             </div>
             <div style={{ padding: 16, background: '#141715', border: '1px solid #262927', borderRadius: 6 }}>
-              <div style={{ fontSize: 10, color: '#888', fontWeight: 700 }}>PRIMARY SECTOR FOCUS</div>
+              <div style={{ fontSize: 10, color: '#888', fontWeight: 700 }}>SPECIALIZARE PRINCIPALĂ</div>
               <div style={{ fontSize: 18, fontWeight: 800, color: '#c7a675', marginTop: 4, textTransform: 'capitalize' }}>
-                {(c.specializations && c.specializations[0]) || (c.type || 'Development').replaceAll('_', ' ')}
+                {(c.specializations && c.specializations[0]) || (c.type || 'Dezvoltare').replaceAll('_', ' ')}
               </div>
             </div>
           </div>
@@ -648,15 +668,15 @@ export default async function CompanyProfile({
         <section id="footprint" className="section shell">
           <div className="section-head">
             <div>
-              <div className="eyebrow" style={{ color: '#c7a675' }}>SECTION K</div>
-              <h2>GEOGRAPHIC FOOTPRINT</h2>
+              <div className="eyebrow" style={{ color: '#c7a675' }}>SECȚIUNEA K</div>
+              <h2>ACOPERIRE GEOGRAFICĂ &amp; POLI REGIONALI</h2>
             </div>
           </div>
 
           <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
-            <Link href="/cities/bucharest" style={{ padding: '8px 16px', background: '#141715', border: '1px solid #262927', borderRadius: 4, color: '#fff', textDecoration: 'none', fontSize: 13, fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: 4 }}>
+            <Link href="/map" style={{ padding: '8px 16px', background: '#141715', border: '1px solid #262927', borderRadius: 4, color: '#fff', textDecoration: 'none', fontSize: 13, fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: 4 }}>
               <LocationPinIcon className="w-3.5 h-3.5 text-[#c7a675]" />
-              <span>{c.location || 'Bucharest'}</span>
+              <span>{c.location || 'România'}</span>
             </Link>
           </div>
         </section>
@@ -665,8 +685,8 @@ export default async function CompanyProfile({
         <section id="graph" className="section shell">
           <div className="section-head">
             <div>
-              <div className="eyebrow" style={{ color: '#c7a675' }}>SECTION L</div>
-              <h2>BUSINESS RELATIONSHIP GRAPH</h2>
+              <div className="eyebrow" style={{ color: '#c7a675' }}>SECȚIUNEA L</div>
+              <h2>REȚEAUA DE PARTENERIATE &amp; CONTRACTE</h2>
             </div>
           </div>
 
@@ -682,14 +702,14 @@ export default async function CompanyProfile({
                       <span>{p.name}</span>
                     </Link>
                     <span style={{ color: '#666' }}>➔</span>
-                    <span>GC: <strong style={{ color: p.contractor_name ? '#38bdf8' : '#666' }}>{p.contractor_name || 'NOT DISCLOSED'}</strong></span>
+                    <span>Constructor: <strong style={{ color: p.contractor_name ? '#38bdf8' : '#666' }}>{p.contractor_name || 'Nedivulgat'}</strong></span>
                     <span style={{ color: '#666' }}>➔</span>
-                    <span>ARCHITECT: <strong style={{ color: p.architect_name ? '#86efac' : '#666' }}>{p.architect_name || 'NOT DISCLOSED'}</strong></span>
+                    <span>Arhitect: <strong style={{ color: p.architect_name ? '#86efac' : '#666' }}>{p.architect_name || 'Nedivulgat'}</strong></span>
                   </div>
                 ))}
               </div>
             ) : (
-              <div style={{ color: '#888', fontSize: 13 }}>Graph node data NOT DISCLOSED.</div>
+              <div style={{ color: '#888', fontSize: 13 }}>Noduri de rețea nedivulgate pentru această entitate.</div>
             )}
           </div>
         </section>
@@ -698,8 +718,8 @@ export default async function CompanyProfile({
         <section id="competitive" className="section shell">
           <div className="section-head">
             <div>
-              <div className="eyebrow" style={{ color: '#c7a675' }}>SECTION M</div>
-              <h2>COMPARABLE ENTITIES IN MARKET</h2>
+              <div className="eyebrow" style={{ color: '#c7a675' }}>SECȚIUNEA M</div>
+              <h2>COMPANII COMPARABILE DIN PIAȚĂ</h2>
             </div>
           </div>
 
@@ -707,7 +727,7 @@ export default async function CompanyProfile({
             {comparableCompanies.map(other => (
               <div key={other.id} style={{ padding: 16, background: '#141715', border: '1px solid #262927', borderRadius: 6, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
                 <div>
-                  <div style={{ fontSize: 10, color: '#c7a675', fontWeight: 800 }}>SAME SECTOR</div>
+                  <div style={{ fontSize: 10, color: '#c7a675', fontWeight: 800 }}>ACELAȘI DOMENIU</div>
                   <h4 style={{ fontSize: 16, margin: '6px 0 4px 0' }}>
                     <Link href={`/companies/${other.slug}`} style={{ color: '#fff', textDecoration: 'none' }}>
                       {other.name}
@@ -717,7 +737,7 @@ export default async function CompanyProfile({
                 </div>
                 <div style={{ marginTop: 16 }}>
                   <Link href={`/compare?c1=${c.slug}&c2=${other.slug}`} style={{ fontSize: 11, color: '#38bdf8', fontWeight: 700, textDecoration: 'none' }}>
-                    COMPARE BOTH ENTITIES →
+                    COMPARĂ CELE DOUĂ ENTITĂȚI →
                   </Link>
                 </div>
               </div>
@@ -729,13 +749,16 @@ export default async function CompanyProfile({
         <section id="contracts" className="section shell">
           <div className="section-head">
             <div>
-              <div className="eyebrow" style={{ color: '#c7a675' }}>SECTION N</div>
-              <h2>PUBLIC & PRIVATE CONTRACT INTELLIGENCE</h2>
+              <div className="eyebrow" style={{ color: '#c7a675' }}>SECȚIUNEA N</div>
+              <h2>DATE CONTRACTUALE &amp; ACHIZIȚII</h2>
             </div>
           </div>
 
           <div style={{ padding: 20, background: '#141715', border: '1px solid #262927', borderRadius: 6, color: '#aaa9a1', fontSize: 13 }}>
-            Contract awards & procurement filings: <strong style={{ color: '#888' }}>Tracked via official BVB / SEAP / Ministry of Finance statements</strong>.
+            Achiziții și contracte monitorizate:{' '}
+            <strong style={{ color: '#888' }}>
+              Indexate conform declarațiilor oficiale din raportările corporative, BVB și SEAP.
+            </strong>
           </div>
         </section>
 
@@ -743,8 +766,8 @@ export default async function CompanyProfile({
         <section id="sources" className="section shell">
           <div className="section-head">
             <div>
-              <div className="eyebrow" style={{ color: '#c7a675' }}>SECTION O</div>
-              <h2>PRIMARY SOURCES & PROVENANCE</h2>
+              <div className="eyebrow" style={{ color: '#c7a675' }}>SECȚIUNEA O</div>
+              <h2>SURSE PRIMARE &amp; PROVENIENȚĂ</h2>
             </div>
           </div>
 
@@ -753,18 +776,18 @@ export default async function CompanyProfile({
               c.sources.map((s: any, idx: number) => (
                 <div key={idx} style={{ padding: 16, background: '#141715', border: '1px solid #262927', borderRadius: 6, display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 12 }}>
                   <div>
-                    <div style={{ fontSize: 11, fontWeight: 800, color: '#c7a675' }}>{s.type || 'OFFICIAL DISCLOSURE'}</div>
+                    <div style={{ fontSize: 11, fontWeight: 800, color: '#c7a675' }}>{s.type || 'SURSĂ DOCUMENTATĂ'}</div>
                     <div style={{ fontSize: 14, fontWeight: 700, color: '#fff', marginTop: 2 }}>{s.title}</div>
                   </div>
                   {s.url && (
                     <a href={s.url} target="_blank" rel="noreferrer" style={{ fontSize: 12, color: '#38bdf8', textDecoration: 'none', fontWeight: 700 }}>
-                      VERIFY CITATION ↗
+                      VERIFICĂ REFERINȚA ↗
                     </a>
                   )}
                 </div>
               ))
             ) : (
-              <div style={{ color: '#888', fontSize: 13 }}>Primary source citations logged in terminal.</div>
+              <div style={{ color: '#888', fontSize: 13 }}>Date documentate conform depunerilor publice oficiale.</div>
             )}
           </div>
         </section>
@@ -773,20 +796,20 @@ export default async function CompanyProfile({
         <section id="quality" className="section shell" style={{ paddingBottom: 60 }}>
           <div className="section-head">
             <div>
-              <div className="eyebrow" style={{ color: '#c7a675' }}>SECTION P</div>
-              <h2>DATA DISCLOSURE & CORRECTION DESK</h2>
+              <div className="eyebrow" style={{ color: '#c7a675' }}>SECȚIUNEA P</div>
+              <h2>TRANSPARENȚĂ DATE &amp; PROCEDURĂ CORECȚII</h2>
             </div>
           </div>
 
           <div style={{ padding: 24, background: '#141715', border: '1px solid #262927', borderRadius: 6, display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 16 }}>
             <div>
-              <div style={{ fontSize: 11, fontWeight: 800, color: '#c7a675' }}>DOCUMENTED DATA DISCLOSURE</div>
+              <div style={{ fontSize: 11, fontWeight: 800, color: '#c7a675' }}>NOTĂ METODOLOGICĂ ASUPRA DATELOR</div>
               <div style={{ fontSize: 14, color: '#ccc', marginTop: 4, maxWidth: 540, lineHeight: 1.6 }}>
-                Company information is compiled from publicly available records (ONRC, ANAF, Ministry of Finance) and official corporate releases. Entities may request an update or correction where applicable.
+                Informațiile din acest profil sunt agregate exclusiv din surse publice oficiale (ONRC, ANAF, Ministerul Finanțelor, rapoarte corporative anuale auditate). Entitățile menționate pot solicita oricând corectarea sau actualizarea datelor.
               </div>
             </div>
             <Link href={`/report-error?company=${encodeURIComponent(c.name)}`} style={{ fontSize: 11, background: '#1c221e', border: '1px solid #c7a675', color: '#c7a675', padding: '10px 18px', borderRadius: 4, fontWeight: 800, textDecoration: 'none' }}>
-              REQUEST PROFILE CORRECTION →
+              SOLICITĂ CORECȚIE PROFIL →
             </Link>
           </div>
         </section>
@@ -794,22 +817,22 @@ export default async function CompanyProfile({
         {/* INVENT / RESEARCH INTAKE SECTION */}
         <section className="conversion">
           <div className="shell">
-            <div className="eyebrow" style={{ color: '#25221b' }}>Independent Intelligence & Research Intake</div>
-            <h2>NEED ADDITIONAL INFORMATION?</h2>
+            <div className="eyebrow" style={{ color: '#25221b' }}>Cercetare Independentă de Piață</div>
+            <h2>SOLICITĂ CERCETARE DETALIATĂ ASUPRA ACESTEI COMPANII</h2>
             <p style={{ color: '#25221b', marginBottom: 20, maxWidth: 580, lineHeight: 1.6 }}>
-              CONSTRUCTIONS provides independently researched market information. Request additional research, clarification, or factual review through the CONSTRUCTIONS research team.
+              CONSTRUCTIONS oferă cercetare analitică independentă de piață. Pentru audit de portofoliu, istoric financiar sau verificări factual-probatorii, contactează echipa analitică.
             </p>
 
             <div style={{ padding: 16, background: 'rgba(5, 5, 5, 0.05)', border: '1px solid rgba(5, 5, 5, 0.15)', borderRadius: 6, marginBottom: 24, fontSize: 11, color: '#333', lineHeight: 1.5, maxWidth: 680 }}>
-              <strong>INDEPENDENT PLATFORM DISCLOSURE:</strong> CONSTRUCTIONS is an independent information and research platform. Inclusion of an entity does not imply representation, endorsement, partnership, or commercial relationship with that entity. Requests submitted through CONSTRUCTIONS are handled by the CONSTRUCTIONS research team and are not automatically forwarded to the profiled entity.
+              <strong>NOTĂ DE INDEPENDENȚĂ:</strong> CONSTRUCTIONS este o platformă independentă de informare și analiză. Includerea unei companii nu constituie reprezentare, mandat comercial sau susținere. Toate solicitările sunt analizate exclusiv de echipa noastră analitică.
             </div>
 
             <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
               <Link href={`/research-request?category=COMPANY&subject=${encodeURIComponent(c.name)}`} className="btn fill font-mono text-xs">
-                REQUEST INSTITUTIONAL RESEARCH →
+                SOLICITĂ AUDIT DE PIAȚĂ →
               </Link>
               <Link href={`/report-error?company=${encodeURIComponent(c.name)}`} style={{ fontSize: 11, border: '1px solid #111', color: '#111', padding: '12px 20px', borderRadius: 4, fontWeight: 800, textDecoration: 'none', display: 'inline-flex', alignItems: 'center' }}>
-                REQUEST PROFILE CORRECTION
+                SOLICITĂ ACTUALIZARE PROFIL
               </Link>
             </div>
           </div>

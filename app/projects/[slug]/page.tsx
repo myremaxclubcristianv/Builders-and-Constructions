@@ -26,30 +26,30 @@ export async function generateMetadata({
   const data = await getProjectBySlug(slug, isPreview);
 
   if (!data?.project) {
-    return { title: 'Project Intelligence Dossier Not Found' };
+    return { title: 'Dosar Proiect Negăsit | CONSTRUCTIONS by AiXLuxury' };
   }
 
   const p = data.project;
   const isIndexable = p.published_at && !isPreview;
 
   return {
-    title: `${p.name} — Project Dossier | CONSTRUCTIONS by AiXLuxury`,
-    description: p.description || `Development dossier, construction lifecycle stage, specifications, and project team for ${p.name} in ${p.location || 'Romania'}.`,
+    title: `${p.name} — Dosar Proiect | CONSTRUCTIONS by AiXLuxury`,
+    description: p.description || `Dosar executiv, stadiu de execuție, specificații tehnice și echipa de dezvoltare pentru ${p.name} (${p.location || 'România'}).`,
     alternates: {
       canonical: `https://constructions.cristianvaduva.com/projects/${p.slug}`
     },
     openGraph: {
-      title: `${p.name} — Project Dossier | CONSTRUCTIONS by AiXLuxury`,
-      description: p.description || `Development dossier for ${p.name}.`,
+      title: `${p.name} — Dosar Proiect | CONSTRUCTIONS by AiXLuxury`,
+      description: p.description || `Dosar de cercetare de piață pentru ${p.name}.`,
       url: `https://constructions.cristianvaduva.com/projects/${p.slug}`,
       siteName: 'CONSTRUCTIONS by AiXLuxury',
-      locale: 'en_US',
+      locale: 'ro_RO',
       type: 'website'
     },
     twitter: {
       card: 'summary_large_image',
       title: `${p.name} | CONSTRUCTIONS by AiXLuxury`,
-      description: p.description || `Development dossier for ${p.name}.`
+      description: p.description || `Dosar proiect pentru ${p.name}.`
     },
     robots: {
       index: Boolean(isIndexable),
@@ -103,20 +103,18 @@ export default async function ProjectProfile({
   const secondarySourceCount = sourcesList.length - primarySourceCount;
 
   const navTabs = [
-    { id: 'profile', label: 'EXECUTIVE PROFILE' },
-    { id: 'timeline', label: 'PROJECT HISTORY' },
-    { id: 'team', label: 'DEVELOPMENT TEAM' },
-    { id: 'financials', label: 'FINANCIAL PROFILE' },
-    { id: 'specs', label: 'PHYSICAL METRICS' },
-    { id: 'lifecycle', label: 'STAGE LIFECYCLE' },
-    { id: 'future', label: 'WHAT HAPPENS NEXT' },
-    { id: 'risk', label: 'STATUS & RISK' },
-    { id: 'location', label: 'LOCATION INTELLIGENCE' },
-    { id: 'context', label: 'COMPETITIVE CONTEXT' },
-    { id: 'sources', label: 'SOURCES & PROVENANCE' }
+    { id: 'profile', label: 'PROFIL EXECUTIV' },
+    { id: 'timeline', label: 'CRONOLOGIE PROIECT' },
+    { id: 'team', label: 'ECHIPA DE DEZVOLTARE' },
+    { id: 'financials', label: 'PROFIL FINANCIAR' },
+    { id: 'specs', label: 'METRICI FIZICE' },
+    { id: 'lifecycle', label: 'CICLU DE VIAȚĂ' },
+    { id: 'future', label: 'ETAPE VIITOARE' },
+    { id: 'risk', label: 'STATUS & EVALUARE' },
+    { id: 'location', label: 'LOCALIZARE GEOGRAFICĂ' },
+    { id: 'context', label: 'CONTEXT DE PIAȚĂ' },
+    { id: 'sources', label: 'SURSE & PROVENIENȚĂ' }
   ];
-
-  const heroUrl = p.image || 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=85';
 
   // Schema.org Place / Building & BreadcrumbList JSON-LD
   const jsonLd = {
@@ -130,7 +128,7 @@ export default async function ProjectProfile({
         url: `https://constructions.cristianvaduva.com/projects/${p.slug}`,
         address: {
           '@type': 'PostalAddress',
-          addressLocality: p.location || 'Romania',
+          addressLocality: p.location || 'România',
           addressCountry: 'RO'
         }
       },
@@ -141,13 +139,13 @@ export default async function ProjectProfile({
           {
             '@type': 'ListItem',
             position: 1,
-            name: 'Home',
+            name: 'Acasă',
             item: 'https://constructions.cristianvaduva.com'
           },
           {
             '@type': 'ListItem',
             position: 2,
-            name: 'Projects',
+            name: 'Proiecte',
             item: 'https://constructions.cristianvaduva.com/projects'
           },
           {
@@ -181,31 +179,31 @@ export default async function ProjectProfile({
             style={{
               position: 'absolute',
               inset: 0,
-              background: `linear-gradient(0deg, rgba(12,14,12,0.95) 0%, rgba(12,14,12,0.4) 60%, rgba(12,14,12,0.7) 100%), url('${heroUrl}') center/cover`
+              background: 'radial-gradient(ellipse at top, #151a16 0%, #0c0e0c 100%)'
             }}
           />
           <div className="shell hero-content" style={{ position: 'relative', zIndex: 2, paddingBottom: 40, width: '100%' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 12, marginBottom: 12 }}>
               <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
                 <span className="eyebrow" style={{ color: '#c7a675', margin: 0 }}>
-                  PROJECT DOSSIER
+                  DOSAR PROIECT
                 </span>
                 <span style={{ fontSize: 10, fontWeight: 800, border: '1px solid #38bdf8', color: '#38bdf8', padding: '2px 8px', borderRadius: 2 }}>
-                  {p.status_display || p.status || 'UNDER CONSTRUCTION'}
+                  {p.status_display || p.status || 'ÎN EXECUȚIE'}
                 </span>
               </div>
               <div style={{ display: 'flex', gap: 8, alignItems: 'center', flexWrap: 'wrap' }}>
-                <BookmarkButton id={p.slug} name={p.name} type="project" slug={p.slug} subtext={`${p.project_type || 'Development'} · ${p.location || 'Romania'}`} />
+                <BookmarkButton id={p.slug} name={p.name} type="project" slug={p.slug} subtext={`${p.project_type || 'Dezvoltare'} · ${p.location || 'România'}`} />
                 <Link href={`/compare?p1=${p.slug}`} className="btn-secondary" style={{ padding: '6px 14px', fontSize: 11, display: 'inline-flex', alignItems: 'center', gap: 4 }}>
                   <ScaleIcon className="w-3.5 h-3.5 text-[#c7a675]" />
-                  <span>COMPARE PROJECT</span>
+                  <span>COMPARĂ PROIECTUL</span>
                 </Link>
                 <Link href={`/report-error?entity=${encodeURIComponent(p.name)}&type=Project`} className="btn-secondary" style={{ padding: '6px 14px', fontSize: 11, display: 'inline-flex', alignItems: 'center', gap: 4, color: '#C9A227', borderColor: '#C9A227' }}>
                   <span>✎ RAPORTEAZĂ CORECȚIE</span>
                 </Link>
                 <Link href="/pipeline" className="btn" style={{ padding: '6px 14px', fontSize: 11, display: 'inline-flex', alignItems: 'center', gap: 4 }}>
                   <ChartBarIcon className="w-3.5 h-3.5 text-[#fff]" />
-                  <span>OPEN IN PIPELINE →</span>
+                  <span>VEZI ÎN PIPELINE →</span>
                 </Link>
               </div>
             </div>
@@ -217,13 +215,13 @@ export default async function ProjectProfile({
             <p style={{ fontSize: '1.2rem', color: '#d8d6ce', maxWidth: 800, margin: 0, display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: 6 }}>
               <span className="inline-flex items-center gap-1">
                 <LocationPinIcon className="w-4 h-4 text-[#c7a675] shrink-0" />
-                <span>{p.location || 'Romania'}</span>
+                <span>{p.location || 'România'}</span>
               </span>
               <span>·</span>
-              <strong style={{ color: '#c7a675' }}>{p.project_type || 'Development'}</strong>
+              <strong style={{ color: '#c7a675' }}>{p.project_type || 'Dezvoltare'}</strong>
               {p.developer_name && (
                 <span>
-                  {' '}· Developer:{' '}
+                  {' '}· Dezvoltator:{' '}
                   {devComp ? (
                     <Link href={`/companies/${devComp.slug}`} style={{ color: '#c7a675', fontWeight: 800, textDecoration: 'none' }}>
                       {p.developer_name}
@@ -233,19 +231,21 @@ export default async function ProjectProfile({
                   )}
                 </span>
               )}
-            </p>            {/* HERO IMAGE CONTAINER */}
+            </p>
+
+            {/* HERO IMAGE CONTAINER */}
             <div style={{ marginTop: 24, height: 320, borderRadius: 6, overflow: 'hidden', border: '1px solid #262927', position: 'relative', background: '#141715', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
-              {p.image && typeof p.image === 'string' && p.image.startsWith('http') ? (
+              {p.image && typeof p.image === 'string' && p.image.startsWith('http') && !p.image.includes('unsplash.com') && !p.image.includes('stock') && p.image_verified ? (
                 <>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={p.image} alt={p.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                   <div style={{ position: 'absolute', bottom: 0, insetInline: 0, padding: 12, background: 'linear-gradient(0deg, rgba(0,0,0,0.9), transparent)', fontSize: 11, color: '#ccc', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                     <span style={{ display: 'inline-flex', alignItems: 'center', gap: 4 }}>
                       <CraneIcon className="w-3.5 h-3.5 text-[#38bdf8]" />
-                      <span>{p.name} — Official Site Image</span>
+                      <span>{p.name} — Fotografie Oficială Proiect</span>
                     </span>
                     <span style={{ fontSize: 9, background: '#1c221e', border: '1px solid #38bdf8', color: '#38bdf8', padding: '2px 6px', borderRadius: 2, fontWeight: 800 }}>
-                      VERIFIED SITE MEDIA
+                      MEDIA VERIFICATĂ
                     </span>
                   </div>
                 </>
@@ -255,10 +255,10 @@ export default async function ProjectProfile({
                     <CraneIcon className="w-9 h-9 text-[#666]" />
                   </div>
                   <div style={{ fontSize: 11, fontWeight: 800, color: '#c7a675', border: '1px solid #262927', padding: '4px 10px', borderRadius: 4, display: 'inline-block', letterSpacing: '0.05em' }}>
-                    IMAGE STATUS: NOT DISCLOSED IN PUBLIC BASELINE
+                    STATUT VIZUAL: FOTOGRAFIE INDISPONIBILĂ ÎN SURSE OFICIALE
                   </div>
-                  <div style={{ fontSize: 11, color: '#666', marginTop: 8 }}>
-                    No verified site photograph publicly disclosed for this development. Stock media is never substituted.
+                  <div style={{ fontSize: 11, color: '#888', marginTop: 8, maxWidth: 520 }}>
+                    Nicio fotografie oficială de șantier confirmată în depunerile publice pentru acest proiect. Politica editorială CONSTRUCTIONS interzice substituirea fotografiilor reale cu imagini generice de stoc.
                   </div>
                 </div>
               )}
@@ -267,14 +267,14 @@ export default async function ProjectProfile({
             {/* COMPACT BUSINESS-SAFE DISCLOSURE BOX */}
             <div style={{ marginTop: 24, padding: 16, background: '#111412', border: '1px solid #242926', borderRadius: 6, fontSize: 12, color: '#a0a0a0', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 12 }}>
               <div>
-                <strong style={{ color: '#fff' }}>Independent Platform Disclosure:</strong> CONSTRUCTIONS is an independent information and research platform. Inclusion of an entity does not imply representation, endorsement, partnership, or commercial relationship with that entity.
+                <strong style={{ color: '#fff' }}>Notă de Independență a Platformei:</strong> CONSTRUCTIONS este o platformă independentă de cercetare și monitorizare a pieței. Includerea unei entități nu reprezintă o asociere comercială, reprezentare exclusivă sau recomandare de investiții.
               </div>
               <div style={{ display: 'flex', gap: 16, alignItems: 'center', flexWrap: 'wrap' }}>
                 <Link href="/methodology" style={{ color: '#aaa', fontWeight: 600, textDecoration: 'underline', whiteSpace: 'nowrap' }}>
-                  How We Verify →
+                  Metodologia Noastră →
                 </Link>
                 <Link href={`/report-error?project=${encodeURIComponent(p.name)}`} style={{ color: '#c7a675', fontWeight: 700, textDecoration: 'none', whiteSpace: 'nowrap' }}>
-                  Request Profile Update →
+                  Solicită Actualizare Profil →
                 </Link>
               </div>
             </div>
@@ -288,13 +288,13 @@ export default async function ProjectProfile({
         <section id="profile" className="section shell" style={{ paddingTop: 40 }}>
           <div className="section-head">
             <div>
-              <div className="eyebrow" style={{ color: '#c7a675' }}>SECTION 1</div>
-              <h2>PROJECT EXECUTIVE PROFILE</h2>
+              <div className="eyebrow" style={{ color: '#c7a675' }}>SECȚIUNEA 1</div>
+              <h2>PROFIL EXECUTIV PROIECT</h2>
             </div>
           </div>
 
           <div style={{ padding: 24, background: '#141715', border: '1px solid #262927', borderRadius: 6, fontSize: 15, lineHeight: 1.7, color: '#d4d2c8' }}>
-            {p.description || `Verified Romanian real-estate & civil infrastructure development project.`}
+            {p.description || `Proiect documentat din surse publice și rapoarte corporative oficiale din piața construcțiilor din România.`}
           </div>
         </section>
 
@@ -302,18 +302,26 @@ export default async function ProjectProfile({
         <section id="timeline" className="section shell">
           <div className="section-head">
             <div>
-              <div className="eyebrow" style={{ color: '#c7a675' }}>SECTION 2</div>
-              <h2>PROJECT HISTORY TIMELINE</h2>
+              <div className="eyebrow" style={{ color: '#c7a675' }}>SECȚIUNEA 2</div>
+              <h2>CRONOLOGIE &amp; ETAPE DE EXECUȚIE</h2>
             </div>
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: 12, maxWidth: 840 }}>
             <div style={{ padding: 16, background: '#141715', border: '1px solid #262927', borderRadius: 6, display: 'flex', gap: 16, alignItems: 'center' }}>
-              <div style={{ fontSize: 14, fontWeight: 800, color: '#c7a675', width: 90 }}>MILESTONE</div>
+              <div style={{ fontSize: 13, fontWeight: 800, color: '#c7a675', width: 110 }}>STADIU CURENT</div>
               <div>
-                <div style={{ fontSize: 14, fontWeight: 700, color: '#fff' }}>Development Announcement & Permitting</div>
-                <div style={{ fontSize: 12, color: '#aaa9a1', marginTop: 2 }}>Project verified under current stage: {p.status_display || p.status}.</div>
-                <div style={{ fontSize: 10, color: '#888', marginTop: 4 }}>Source: Official Developer Disclosure / Public Records</div>
+                <div style={{ fontSize: 14, fontWeight: 700, color: '#fff' }}>
+                  {p.status_display || (p.status === 'completed' ? 'Proiect Livrat' : 'În Curs de Execuție')}
+                </div>
+                <div style={{ fontSize: 12, color: '#aaa9a1', marginTop: 2 }}>
+                  {p.estimated_completion
+                    ? `Orizont estimat de finalizare: ${p.estimated_completion}`
+                    : 'Stadiu verificat conform raportărilor publice.'}
+                </div>
+                <div style={{ fontSize: 10, color: '#888', marginTop: 4 }}>
+                  Sursă: Rapoarte Oficiale ale Dezvoltatorului / Registre Tehnice
+                </div>
               </div>
             </div>
           </div>
@@ -323,14 +331,14 @@ export default async function ProjectProfile({
         <section id="team" className="section shell">
           <div className="section-head">
             <div>
-              <div className="eyebrow" style={{ color: '#c7a675' }}>SECTION 3</div>
-              <h2>DEVELOPMENT TEAM NETWORK</h2>
+              <div className="eyebrow" style={{ color: '#c7a675' }}>SECȚIUNEA 3</div>
+              <h2>REȚEAUA ECHIPEI DE PROIECT</h2>
             </div>
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 16 }}>
             <div style={{ padding: 20, background: '#141715', border: '1px solid #262927', borderRadius: 6 }}>
-              <div style={{ fontSize: 10, color: '#888', fontWeight: 700 }}>DEVELOPER</div>
+              <div style={{ fontSize: 10, color: '#888', fontWeight: 700 }}>DEZVOLTATOR</div>
               <div style={{ fontSize: 16, fontWeight: 800, color: '#c7a675', marginTop: 6 }}>
                 {devComp ? (
                   <Link href={`/companies/${devComp.slug}`} style={{ color: '#c7a675', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 4 }}>
@@ -338,14 +346,14 @@ export default async function ProjectProfile({
                     <span>{devComp.name} →</span>
                   </Link>
                 ) : (
-                  p.developer_name || 'NOT DISCLOSED'
+                  p.developer_name || 'Nedivulgat în surse publice'
                 )}
               </div>
-              <div style={{ fontSize: 11, color: '#aaa', marginTop: 4 }}>Real-estate developer & investor</div>
+              <div style={{ fontSize: 11, color: '#aaa', marginTop: 4 }}>Dezvoltator &amp; investitor imobiliar</div>
             </div>
 
             <div style={{ padding: 20, background: '#141715', border: '1px solid #262927', borderRadius: 6 }}>
-              <div style={{ fontSize: 10, color: '#888', fontWeight: 700 }}>GENERAL CONTRACTOR</div>
+              <div style={{ fontSize: 10, color: '#888', fontWeight: 700 }}>ANTREPRENOR GENERAL</div>
               <div style={{ fontSize: 16, fontWeight: 800, color: '#38bdf8', marginTop: 6 }}>
                 {gcComp ? (
                   <Link href={`/companies/${gcComp.slug}`} style={{ color: '#38bdf8', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 4 }}>
@@ -353,14 +361,14 @@ export default async function ProjectProfile({
                     <span>{gcComp.name} →</span>
                   </Link>
                 ) : (
-                  p.contractor_name || 'NOT DISCLOSED'
+                  p.contractor_name || 'Nedivulgat în surse publice'
                 )}
               </div>
-              <div style={{ fontSize: 11, color: '#aaa', marginTop: 4 }}>Main civil contractor</div>
+              <div style={{ fontSize: 11, color: '#aaa', marginTop: 4 }}>Constructor general / Antrepriză</div>
             </div>
 
             <div style={{ padding: 20, background: '#141715', border: '1px solid #262927', borderRadius: 6 }}>
-              <div style={{ fontSize: 10, color: '#888', fontWeight: 700 }}>ARCHITECT PRACTICE</div>
+              <div style={{ fontSize: 10, color: '#888', fontWeight: 700 }}>BIROU DE ARHITECTURĂ</div>
               <div style={{ fontSize: 16, fontWeight: 800, color: '#86efac', marginTop: 6 }}>
                 {archComp ? (
                   <Link href={`/companies/${archComp.slug}`} style={{ color: '#86efac', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 4 }}>
@@ -368,14 +376,14 @@ export default async function ProjectProfile({
                     <span>{archComp.name} →</span>
                   </Link>
                 ) : (
-                  p.architect_name || 'NOT DISCLOSED'
+                  p.architect_name || 'Nedivulgat în surse publice'
                 )}
               </div>
-              <div style={{ fontSize: 11, color: '#aaa', marginTop: 4 }}>Lead architectural design studio</div>
+              <div style={{ fontSize: 11, color: '#aaa', marginTop: 4 }}>Birou de proiectare de arhitectură</div>
             </div>
 
             <div style={{ padding: 20, background: '#141715', border: '1px solid #262927', borderRadius: 6 }}>
-              <div style={{ fontSize: 10, color: '#888', fontWeight: 700 }}>STRUCTURAL ENGINEER</div>
+              <div style={{ fontSize: 10, color: '#888', fontWeight: 700 }}>INGINERIE STRUCTURALĂ</div>
               <div style={{ fontSize: 16, fontWeight: 800, color: '#e879f9', marginTop: 6 }}>
                 {engComp ? (
                   <Link href={`/companies/${engComp.slug}`} style={{ color: '#e879f9', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 4 }}>
@@ -383,10 +391,10 @@ export default async function ProjectProfile({
                     <span>{engComp.name} →</span>
                   </Link>
                 ) : (
-                  p.engineering_name || 'NOT DISCLOSED'
+                  p.engineering_name || 'Nedivulgat în surse publice'
                 )}
               </div>
-              <div style={{ fontSize: 11, color: '#aaa', marginTop: 4 }}>Structural engineering practice</div>
+              <div style={{ fontSize: 11, color: '#aaa', marginTop: 4 }}>Birou proiectare de rezistență / MEP</div>
             </div>
           </div>
         </section>
@@ -395,117 +403,133 @@ export default async function ProjectProfile({
         <section id="financials" className="section shell">
           <div className="section-head">
             <div>
-              <div className="eyebrow" style={{ color: '#c7a675' }}>SECTION 4</div>
-              <h2>PROJECT FINANCIAL PROFILE</h2>
+              <div className="eyebrow" style={{ color: '#c7a675' }}>SECȚIUNEA 4</div>
+              <h2>PROFIL FINANCIAR &amp; INVESTIȚII</h2>
             </div>
           </div>
 
           <div style={{ padding: 24, background: '#141715', border: '1px solid #262927', borderRadius: 6, display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 16 }}>
             <div>
-              <div style={{ fontSize: 11, fontWeight: 800, color: '#c7a675' }}>ANNOUNCED CAPITAL INVESTMENT</div>
+              <div style={{ fontSize: 11, fontWeight: 800, color: '#c7a675' }}>INVESTIȚIE DE CAPITAL ANUNȚATĂ</div>
               <div style={{ fontSize: 32, fontWeight: 800, color: '#fff', marginTop: 4 }}>
                 {p.investment_eur && p.investment_eur > 0
                   ? `€${(p.investment_eur / 1000000).toFixed(1)}M EUR`
                   : p.investment_label?.toUpperCase().includes('ANNOUNCED')
-                  ? 'ANNOUNCED — AMOUNT NOT DISCLOSED'
-                  : p.investment_label || 'NOT DISCLOSED'}
+                  ? 'ANUNȚAT — VALOARE NEDIVULGATĂ'
+                  : p.investment_label || 'Nedivulgat în raportări publice'}
               </div>
-              <div style={{ fontSize: 12, color: '#aaa', marginTop: 4 }}>Verified investment allocation</div>
+              <div style={{ fontSize: 12, color: '#aaa', marginTop: 4 }}>Alocare financiară declarată în surse oficiale</div>
             </div>
             <span style={{ fontSize: 11, background: '#1c221e', border: '1px solid #86efac', color: '#86efac', padding: '4px 12px', borderRadius: 2, fontWeight: 800 }}>
-              ANNOUNCED INVESTMENT
+              CAPEX ANUNȚAT
             </span>
           </div>
         </section>
 
-        {/* SECTION 5: PHYSICAL SPECS */}
+        {/* SECTION 5: PHYSICAL SPECS — DIFFERENTIATED BY TYPOLOGY */}
         <section id="specs" className="section shell">
           <div className="section-head">
             <div>
-              <div className="eyebrow" style={{ color: '#c7a675' }}>SECTION 5</div>
-              <h2>PHYSICAL SPECIFICATIONS & SCALE</h2>
+              <div className="eyebrow" style={{ color: '#c7a675' }}>SECȚIUNEA 5</div>
+              <h2>SPECIFICAȚII TEHNICE &amp; ANVERGURĂ</h2>
             </div>
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 16 }}>
-            <div style={{ padding: 20, background: '#141715', border: '1px solid #262927', borderRadius: 6 }}>
-              <div style={{ fontSize: 10, color: '#888', fontWeight: 700 }}>
-                {p.infrastructure_length_km
-                  ? 'INFRASTRUCTURE LENGTH'
-                  : p.span_length_m
-                  ? 'MAIN SPAN / STRUCTURE LENGTH'
-                  : 'GROSS SURFACE AREA'}
-              </div>
-              <div style={{ fontSize: 22, fontWeight: 800, color: '#fff', marginTop: 4 }}>
-                {p.infrastructure_length_km
-                  ? `${p.infrastructure_length_km} km`
-                  : p.span_length_m
-                  ? `${p.span_length_m.toLocaleString()} m`
-                  : p.surface_area_sqm || p.surface_area
-                  ? `${(p.surface_area_sqm || p.surface_area).toLocaleString()} m²`
-                  : 'NOT DISCLOSED'}
-              </div>
-            </div>
-
-            {p.land_area_ha && (
+            {/* Core Surface Area / Infrastructure Length */}
+            {p.infrastructure_length_km ? (
               <div style={{ padding: 20, background: '#141715', border: '1px solid #262927', borderRadius: 6 }}>
-                <div style={{ fontSize: 10, color: '#888', fontWeight: 700 }}>LAND PLOT AREA</div>
-                <div style={{ fontSize: 22, fontWeight: 800, color: '#c7a675', marginTop: 4 }}>
-                  {p.land_area_ha} ha
+                <div style={{ fontSize: 10, color: '#888', fontWeight: 700 }}>LUNGIME INFRASTRUCTURĂ</div>
+                <div style={{ fontSize: 22, fontWeight: 800, color: '#fff', marginTop: 4 }}>
+                  {p.infrastructure_length_km} km
                 </div>
               </div>
-            )}
+            ) : p.span_length_m ? (
+              <div style={{ padding: 20, background: '#141715', border: '1px solid #262927', borderRadius: 6 }}>
+                <div style={{ fontSize: 10, color: '#888', fontWeight: 700 }}>DESCHIDERE CENTRALĂ / LUNGIME</div>
+                <div style={{ fontSize: 22, fontWeight: 800, color: '#fff', marginTop: 4 }}>
+                  {p.span_length_m.toLocaleString('ro-RO')} m
+                </div>
+              </div>
+            ) : (p.surface_area_sqm || p.surface_area) ? (
+              <div style={{ padding: 20, background: '#141715', border: '1px solid #262927', borderRadius: 6 }}>
+                <div style={{ fontSize: 10, color: '#888', fontWeight: 700 }}>
+                  {p.project_type?.toLowerCase().includes('office') || p.project_type?.toLowerCase().includes('birouri')
+                    ? 'SUPRAFAȚĂ ÎNCHIRIABILĂ (GLA)'
+                    : p.project_type?.toLowerCase().includes('residential') || p.project_type?.toLowerCase().includes('rezidențial')
+                    ? 'SUPRAFAȚĂ CONSTRUITĂ DESFĂȘURATĂ'
+                    : 'SUPRAFAȚĂ TOTALĂ'}
+                </div>
+                <div style={{ fontSize: 22, fontWeight: 800, color: '#fff', marginTop: 4 }}>
+                  {(p.surface_area_sqm || p.surface_area).toLocaleString('ro-RO')} m²
+                </div>
+              </div>
+            ) : null}
 
+            {/* Industrial & Logistics Specifics */}
             {p.operational_gla_sqm && (
               <div style={{ padding: 20, background: '#141715', border: '1px solid #262927', borderRadius: 6 }}>
-                <div style={{ fontSize: 10, color: '#888', fontWeight: 700 }}>OPERATIONAL BUILT GLA</div>
+                <div style={{ fontSize: 10, color: '#888', fontWeight: 700 }}>GLA OPERAȚIONAL CONSTRUIT</div>
                 <div style={{ fontSize: 22, fontWeight: 800, color: '#38bdf8', marginTop: 4 }}>
-                  {p.operational_gla_sqm.toLocaleString()} m²
+                  {p.operational_gla_sqm.toLocaleString('ro-RO')} m²
                 </div>
               </div>
             )}
 
             {p.masterplan_gla_sqm && (
               <div style={{ padding: 20, background: '#141715', border: '1px solid #262927', borderRadius: 6 }}>
-                <div style={{ fontSize: 10, color: '#888', fontWeight: 700 }}>MASTERPLAN CAPACITY GLA</div>
+                <div style={{ fontSize: 10, color: '#888', fontWeight: 700 }}>CAPACITATE TOTALĂ MASTERPLAN</div>
                 <div style={{ fontSize: 22, fontWeight: 800, color: '#86efac', marginTop: 4 }}>
-                  {p.masterplan_gla_sqm.toLocaleString()} m²
+                  {p.masterplan_gla_sqm.toLocaleString('ro-RO')} m²
                 </div>
               </div>
             )}
 
-            <div style={{ padding: 20, background: '#141715', border: '1px solid #262927', borderRadius: 6 }}>
-              <div style={{ fontSize: 10, color: '#888', fontWeight: 700 }}>
-                {p.capacity_seats
-                  ? 'SEATING CAPACITY'
-                  : p.infrastructure_length_km
-                  ? 'INFRASTRUCTURE CLASSIFICATION'
-                  : 'UNITS / CAPACITY'}
+            {p.land_area_ha && (
+              <div style={{ padding: 20, background: '#141715', border: '1px solid #262927', borderRadius: 6 }}>
+                <div style={{ fontSize: 10, color: '#888', fontWeight: 700 }}>SUPRAFAȚĂ TEREN</div>
+                <div style={{ fontSize: 22, fontWeight: 800, color: '#c7a675', marginTop: 4 }}>
+                  {p.land_area_ha} ha
+                </div>
               </div>
-              <div style={{ fontSize: 22, fontWeight: 800, color: '#38bdf8', marginTop: 4 }}>
-                {p.capacity_seats
-                  ? `${p.capacity_seats.toLocaleString()} Seats`
-                  : p.unit_count
-                  ? `${p.unit_count.toLocaleString()} Units`
-                  : p.infrastructure_length_km
-                  ? (p.project_type || 'Civil Infrastructure')
-                  : 'NOT DISCLOSED'}
-              </div>
-            </div>
+            )}
 
-            <div style={{ padding: 20, background: '#141715', border: '1px solid #262927', borderRadius: 6 }}>
-              <div style={{ fontSize: 10, color: '#888', fontWeight: 700 }}>FLOORS / ELEVATION</div>
-              <div style={{ fontSize: 22, fontWeight: 800, color: '#86efac', marginTop: 4 }}>
-                {p.floors ? `${p.floors} Floors` : p.height_m ? `${p.height_m} meters` : 'NOT DISCLOSED'}
+            {/* Residential / Arena Units & Capacity */}
+            {p.unit_count ? (
+              <div style={{ padding: 20, background: '#141715', border: '1px solid #262927', borderRadius: 6 }}>
+                <div style={{ fontSize: 10, color: '#888', fontWeight: 700 }}>UNITĂȚI LOCATIVE</div>
+                <div style={{ fontSize: 22, fontWeight: 800, color: '#38bdf8', marginTop: 4 }}>
+                  {p.unit_count.toLocaleString('ro-RO')} Apartamente
+                </div>
               </div>
-            </div>
+            ) : p.capacity_seats ? (
+              <div style={{ padding: 20, background: '#141715', border: '1px solid #262927', borderRadius: 6 }}>
+                <div style={{ fontSize: 10, color: '#888', fontWeight: 700 }}>CAPACITATE SPECTATORI</div>
+                <div style={{ fontSize: 22, fontWeight: 800, color: '#38bdf8', marginTop: 4 }}>
+                  {p.capacity_seats.toLocaleString('ro-RO')} Locuri
+                </div>
+              </div>
+            ) : null}
 
-            <div style={{ padding: 20, background: '#141715', border: '1px solid #262927', borderRadius: 6 }}>
-              <div style={{ fontSize: 10, color: '#888', fontWeight: 700 }}>PARKING BAYS</div>
-              <div style={{ fontSize: 22, fontWeight: 800, color: '#c7a675', marginTop: 4 }}>
-                {p.parking_spaces ? `${p.parking_spaces} Bays` : 'NOT DISCLOSED'}
+            {/* Floors / Height */}
+            {(p.floors || p.height_m) && (
+              <div style={{ padding: 20, background: '#141715', border: '1px solid #262927', borderRadius: 6 }}>
+                <div style={{ fontSize: 10, color: '#888', fontWeight: 700 }}>REGIM DE ÎNĂLȚIME</div>
+                <div style={{ fontSize: 22, fontWeight: 800, color: '#86efac', marginTop: 4 }}>
+                  {p.floors ? `${p.floors}` : `${p.height_m} m`}
+                </div>
               </div>
-            </div>
+            )}
+
+            {/* Parking bays */}
+            {p.parking_spaces ? (
+              <div style={{ padding: 20, background: '#141715', border: '1px solid #262927', borderRadius: 6 }}>
+                <div style={{ fontSize: 10, color: '#888', fontWeight: 700 }}>LOCURI DE PARCARE</div>
+                <div style={{ fontSize: 22, fontWeight: 800, color: '#c7a675', marginTop: 4 }}>
+                  {p.parking_spaces.toLocaleString('ro-RO')} Locuri
+                </div>
+              </div>
+            ) : null}
           </div>
         </section>
 
@@ -513,25 +537,32 @@ export default async function ProjectProfile({
         <section id="lifecycle" className="section shell">
           <div className="section-head">
             <div>
-              <div className="eyebrow" style={{ color: '#38bdf8' }}>SECTION 6</div>
-              <h2>CONSTRUCTION STAGE LIFECYCLE</h2>
+              <div className="eyebrow" style={{ color: '#38bdf8' }}>SECȚIUNEA 6</div>
+              <h2>CICLU DE VIAȚĂ &amp; STADIU FIZIC</h2>
             </div>
           </div>
 
-          <ProjectStageLifecycle currentStage={p.current_stage || p.status} progressPercent={p.current_progress_percent || 65} statusDisplay={p.status_display || p.status} />
+          <ProjectStageLifecycle
+            currentStage={p.current_stage || p.status}
+            progressPercent={p.current_progress_percent}
+            statusDisplay={p.status_display || p.status}
+          />
         </section>
 
         {/* SECTION 7: WHAT HAPPENS NEXT */}
         <section id="future" className="section shell">
           <div className="section-head">
             <div>
-              <div className="eyebrow" style={{ color: '#c7a675' }}>SECTION 7</div>
-              <h2>WHAT HAPPENS NEXT / FORWARD MILESTONES</h2>
+              <div className="eyebrow" style={{ color: '#c7a675' }}>SECȚIUNEA 7</div>
+              <h2>ETAPE VIITOARE &amp; ORIZONT DE LIVRARE</h2>
             </div>
           </div>
 
           <div style={{ padding: 20, background: '#141715', border: '1px solid #262927', borderRadius: 6, color: '#aaa9a1', fontSize: 13 }}>
-            Future phase milestone target: <strong style={{ color: '#888' }}>{p.estimated_completion ? `Est. Delivery ${p.estimated_completion}` : 'No verified future milestone publicly disclosed.'}</strong>
+            Orizont de finalizare / livrare raportat:{' '}
+            <strong style={{ color: '#fff' }}>
+              {p.estimated_completion ? p.estimated_completion : 'Termen viitor nedivulgat în documentația publică.'}
+            </strong>
           </div>
         </section>
 
@@ -539,20 +570,20 @@ export default async function ProjectProfile({
         <section id="risk" className="section shell">
           <div className="section-head">
             <div>
-              <div className="eyebrow" style={{ color: '#c7a675' }}>SECTION 8</div>
-              <h2>PROJECT STATUS & RISK ASSESSMENT</h2>
+              <div className="eyebrow" style={{ color: '#c7a675' }}>SECȚIUNEA 8</div>
+              <h2>STATUS &amp; EVALUARE DE ETAPĂ</h2>
             </div>
           </div>
 
           <div style={{ padding: 20, background: '#141715', border: '1px solid #262927', borderRadius: 6, display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 16 }}>
             <div>
-              <div style={{ fontSize: 11, fontWeight: 800, color: '#c7a675' }}>STATUS CLASSIFICATION</div>
-              <div style={{ fontSize: 20, fontWeight: 800, color: '#86efac', marginTop: 4 }}>
-                ON TRACK / UNDER CONSTRUCTION
+              <div style={{ fontSize: 11, fontWeight: 800, color: '#c7a675' }}>CLASIFICARE STATUT</div>
+              <div style={{ fontSize: 18, fontWeight: 800, color: p.status === 'completed' || p.status === 'delivered' ? '#86efac' : '#38bdf8', marginTop: 4 }}>
+                {p.status_display || (p.status === 'completed' || p.status === 'delivered' ? 'LIVRAT / OPERAȚIONAL' : 'ÎN CURS DE EXECUȚIE')}
               </div>
             </div>
-            <span style={{ fontSize: 10, background: '#1c221e', border: '1px solid #38bdf8', color: '#38bdf8', padding: '4px 10px', borderRadius: 2, fontWeight: 800 }}>
-              VERIFIED ACTIVE SITE
+            <span style={{ fontSize: 10, background: '#1c221e', border: p.status === 'completed' || p.status === 'delivered' ? '1px solid #86efac' : '1px solid #38bdf8', color: p.status === 'completed' || p.status === 'delivered' ? '#86efac' : '#38bdf8', padding: '4px 10px', borderRadius: 2, fontWeight: 800 }}>
+              {p.status === 'completed' || p.status === 'delivered' ? 'PROIECT FINALIZAT' : 'ȘANTIER ÎNREGISTRAT'}
             </span>
           </div>
         </section>
@@ -561,8 +592,8 @@ export default async function ProjectProfile({
         <section id="location" className="section shell">
           <div className="section-head">
             <div>
-              <div className="eyebrow" style={{ color: '#c7a675' }}>SECTION 9</div>
-              <h2>LOCATION INTELLIGENCE</h2>
+              <div className="eyebrow" style={{ color: '#c7a675' }}>SECȚIUNEA 9</div>
+              <h2>LOCALIZARE GEOGRAFICĂ</h2>
             </div>
           </div>
 
@@ -570,14 +601,14 @@ export default async function ProjectProfile({
             <div>
               <div style={{ fontSize: 14, fontWeight: 800, color: '#fff', display: 'flex', alignItems: 'center', gap: 4 }}>
                 <LocationPinIcon className="w-4 h-4 text-[#c7a675] shrink-0" />
-                <span>{p.location || 'Romania'}</span>
+                <span>{p.location || 'România'}</span>
               </div>
               <div style={{ fontSize: 12, color: '#aaa', marginTop: 2 }}>
-                County: {p.county || 'București'} · Locality: {p.locality || p.location || 'Bucharest'}
+                Județ: {p.county || 'București / Ilfov'} · Localitate: {p.locality || p.location || 'București'}
               </div>
             </div>
-            <Link href="/cities/bucharest" className="btn-secondary" style={{ fontSize: 11 }}>
-              EXPLORE CITY DOSSIER →
+            <Link href="/map" className="btn-secondary" style={{ fontSize: 11 }}>
+              VEZI PE HARTA NAȚIONALĂ →
             </Link>
           </div>
         </section>
@@ -586,15 +617,15 @@ export default async function ProjectProfile({
         <section id="context" className="section shell">
           <div className="section-head">
             <div>
-              <div className="eyebrow" style={{ color: '#c7a675' }}>SECTION 10</div>
-              <h2>COMPETITIVE CONTEXT & COMPARABLES</h2>
+              <div className="eyebrow" style={{ color: '#c7a675' }}>SECȚIUNEA 10</div>
+              <h2>CONTEXT DE PIAȚĂ &amp; PROIECTE COMPARABILE</h2>
             </div>
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: 20 }}>
             {sameDeveloperProjects.slice(0, 2).map(other => (
               <div key={other.id} style={{ padding: 16, background: '#141715', border: '1px solid #262927', borderRadius: 6 }}>
-                <div style={{ fontSize: 10, color: '#c7a675', fontWeight: 800 }}>SAME DEVELOPER</div>
+                <div style={{ fontSize: 10, color: '#c7a675', fontWeight: 800 }}>ACELAȘI DEZVOLTATOR</div>
                 <h4 style={{ fontSize: 15, margin: '6px 0 4px 0' }}>
                   <Link href={`/projects/${other.slug}`} style={{ color: '#fff', textDecoration: 'none' }}>
                     {other.name}
@@ -606,7 +637,7 @@ export default async function ProjectProfile({
 
             {sameCityProjects.slice(0, 2).map(other => (
               <div key={other.id} style={{ padding: 16, background: '#141715', border: '1px solid #262927', borderRadius: 6 }}>
-                <div style={{ fontSize: 10, color: '#38bdf8', fontWeight: 800 }}>SAME CITY</div>
+                <div style={{ fontSize: 10, color: '#38bdf8', fontWeight: 800 }}>ACELAȘI ORAȘ</div>
                 <h4 style={{ fontSize: 15, margin: '6px 0 4px 0' }}>
                   <Link href={`/projects/${other.slug}`} style={{ color: '#fff', textDecoration: 'none' }}>
                     {other.name}
@@ -622,8 +653,8 @@ export default async function ProjectProfile({
         <section id="sources" className="section shell" style={{ paddingBottom: 60 }}>
           <div className="section-head">
             <div>
-              <div className="eyebrow" style={{ color: '#c7a675' }}>SECTION 11</div>
-              <h2>PRIMARY SOURCES & PROVENANCE</h2>
+              <div className="eyebrow" style={{ color: '#c7a675' }}>SECȚIUNEA 11</div>
+              <h2>SURSE PRIMARE &amp; PROVENIENȚĂ</h2>
             </div>
           </div>
 
@@ -633,19 +664,19 @@ export default async function ProjectProfile({
                 <div key={idx} style={{ padding: 16, background: '#141715', border: '1px solid #262927', borderRadius: 6, display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 12 }}>
                   <div>
                     <div style={{ fontSize: 11, fontWeight: 800, color: '#c7a675' }}>
-                      {s.type === 'OFFICIAL' ? 'OFFICIAL SOURCE' : s.type === 'PUBLIC_RECORD' ? 'PUBLIC RECORD' : s.type || 'DOCUMENTED SOURCE'}
+                      {s.type === 'OFFICIAL' ? 'SURSĂ OFICIALĂ' : s.type === 'PUBLIC_RECORD' ? 'REGISTRU PUBLIC' : s.type || 'SURSĂ DOCUMENTATĂ'}
                     </div>
                     <div style={{ fontSize: 14, fontWeight: 700, color: '#fff', marginTop: 2 }}>{s.title}</div>
                   </div>
                   {s.url && (
                     <a href={s.url} target="_blank" rel="noreferrer" style={{ fontSize: 12, color: '#38bdf8', textDecoration: 'none', fontWeight: 700 }}>
-                      VERIFY CITATION ↗
+                      VERIFICĂ REFERINȚA ↗
                     </a>
                   )}
                 </div>
               ))
             ) : (
-              <div style={{ color: '#888', fontSize: 13 }}>Primary source citations logged in terminal.</div>
+              <div style={{ color: '#888', fontSize: 13 }}>Date documentate conform registrelor tehnice publice.</div>
             )}
           </div>
         </section>
@@ -653,22 +684,22 @@ export default async function ProjectProfile({
         {/* RESEARCH INTAKE SECTION */}
         <section className="conversion">
           <div className="shell">
-            <div className="eyebrow" style={{ color: '#25221b' }}>Independent Intelligence & Due Diligence</div>
-            <h2>NEED ADDITIONAL PROJECT DUE DILIGENCE?</h2>
+            <div className="eyebrow" style={{ color: '#25221b' }}>Cercetare Independentă de Piață &amp; Due Diligence</div>
+            <h2>SOLICITĂ CERCETARE SUPLIMENTARĂ PENTRU ACEST PROIECT</h2>
             <p style={{ color: '#25221b', marginBottom: 20, maxWidth: 580, lineHeight: 1.6 }}>
-              CONSTRUCTIONS provides independently researched market information. Request additional due diligence, physical spec verification, or site research through the CONSTRUCTIONS research team.
+              CONSTRUCTIONS oferă analize structurate independente. Dacă ai nevoie de verificare fizică de șantier, audit tehnic sau date extinse, contactează echipa noastră de cercetare.
             </p>
 
             <div style={{ padding: 16, background: 'rgba(5, 5, 5, 0.05)', border: '1px solid rgba(5, 5, 5, 0.15)', borderRadius: 6, marginBottom: 24, fontSize: 11, color: '#333', lineHeight: 1.5, maxWidth: 680 }}>
-              <strong>INDEPENDENT PLATFORM DISCLOSURE:</strong> CONSTRUCTIONS is an independent information and research platform. Inclusion of an entity does not imply representation, endorsement, partnership, or commercial relationship with that entity. Requests submitted through CONSTRUCTIONS are handled by the CONSTRUCTIONS research team and are not automatically forwarded to the profiled entity.
+              <strong>NOTĂ DE INDEPENDENȚĂ:</strong> CONSTRUCTIONS este o platformă independentă de informare și cercetare. Includerea unei entități nu implică afiliere, mandat comercial sau susținere. Solicitările trimise sunt gestionate exclusiv de echipa analitică CONSTRUCTIONS.
             </div>
 
             <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
               <Link href={`/research-request?category=PROJECT&subject=${encodeURIComponent(p.name)}`} className="btn fill font-mono text-xs">
-                REQUEST INSTITUTIONAL RESEARCH →
+                SOLICITĂ AUDIT DE PIAȚĂ →
               </Link>
               <Link href={`/report-error?project=${encodeURIComponent(p.name)}`} style={{ fontSize: 11, border: '1px solid #111', color: '#111', padding: '12px 20px', borderRadius: 4, fontWeight: 800, textDecoration: 'none', display: 'inline-flex', alignItems: 'center' }}>
-                REQUEST PROFILE CORRECTION
+                SOLICITĂ ACTUALIZARE PROFIL
               </Link>
             </div>
           </div>

@@ -40,9 +40,9 @@ export default function ServicesPage() {
   return (
     <>
       <SiteHeader />
-      <main className="shell pt-28 pb-20">
+      <main className="shell pt-36 sm:pt-40 pb-20">
         <section className="page-hero mb-12">
-          <div className="eyebrow">OFFICIAL SERVICE DIVISIONS</div>
+          <div className="eyebrow">DIVIZII OFICIALE DE SERVICII</div>
           <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight mt-2 mb-4 text-white">
             SERVICII OFICIALE CONSTRUCȚII
           </h1>

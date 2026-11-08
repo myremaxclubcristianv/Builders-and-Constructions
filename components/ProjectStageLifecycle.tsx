@@ -3,14 +3,14 @@
 import React from 'react';
 
 const STAGES = [
-  { id: 'planning', label: 'Planning' },
-  { id: 'permits', label: 'Permits' },
-  { id: 'foundation', label: 'Foundation' },
-  { id: 'structure', label: 'Structure' },
-  { id: 'facade', label: 'Facade' },
-  { id: 'mep', label: 'MEP' },
-  { id: 'finishing', label: 'Finishing' },
-  { id: 'delivered', label: 'Delivered' }
+  { id: 'planning', label: 'Planificare' },
+  { id: 'permits', label: 'Autorizare' },
+  { id: 'foundation', label: 'Fundație' },
+  { id: 'structure', label: 'Structură' },
+  { id: 'facade', label: 'Fațadă' },
+  { id: 'mep', label: 'Instalații' },
+  { id: 'finishing', label: 'Finisaje' },
+  { id: 'delivered', label: 'Livrat' }
 ];
 
 export function ProjectStageLifecycle({
@@ -38,14 +38,16 @@ export function ProjectStageLifecycle({
     >
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16, flexWrap: 'wrap', gap: 8 }}>
         <div style={{ fontSize: 11, fontWeight: 800, color: '#c7a675', letterSpacing: '0.08em' }}>
-          CONSTRUCTION LIFECYCLE STAGE INTELLIGENCE
+          ETAPELE CICLULUI DE VIAȚĂ AL PROIECTULUI
         </div>
         <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
           <span style={{ fontSize: 11, color: '#888' }}>
-            STATUS: <strong style={{ color: '#fff' }}>{statusDisplay || 'ACTIVE'}</strong>
+            STATUS: <strong style={{ color: '#fff' }}>{statusDisplay || 'ACTIV'}</strong>
           </span>
           <span style={{ fontSize: 11, background: '#1c221e', border: '1px solid #38bdf8', color: '#38bdf8', padding: '2px 8px', borderRadius: 2, fontWeight: 800 }}>
-            {progressPercent !== undefined ? `${progressPercent}% COMPLETED` : `${Math.round(((activeIdx + 1) / STAGES.length) * 100)}% TRACKED`}
+            {progressPercent !== undefined && progressPercent > 0
+              ? `PROGRES RAPORTAT: ${progressPercent}%`
+              : `ETAPĂ CURENTĂ: ${STAGES[activeIdx]?.label.toUpperCase()}`}
           </span>
         </div>
       </div>

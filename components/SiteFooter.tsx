@@ -12,70 +12,70 @@ export function SiteFooter() {
               <span className="text-[10px] font-mono tracking-wider text-[#C9A227] uppercase">by AiXLuxury</span>
             </div>
             <p className="text-xs leading-relaxed text-[#888888]">
-              Construction Market Intelligence & Factually Verified Materials Platform for Romania&apos;s evolving built environment.
+              Platformă independentă de cercetare tehnică și date verificate faptic pentru piața construcțiilor și dezvoltării imobiliare din România.
             </p>
             <p className="text-[10px] leading-relaxed text-[#666666] pt-1 font-mono">
-              Eurocodes, NE 012-1:2022, P100-1/2013, CR 6-2013 and Legea 10/1995 verified data framework.
+              Conformitate Eurocode, NE 012-1:2022, P100-1/2013, CR 6-2013 și Legea 10/1995 privind calitatea în construcții.
             </p>
           </div>
 
-          {/* Column 2: Construction Knowledge Base */}
+          {/* Column 2: Bază Normativă & Materiale */}
           <div>
-                        <h4 className="text-[10px] font-mono uppercase tracking-widest text-[#C9A227] mb-4">Knowledge & Materials</h4>
+            <h4 className="text-[10px] font-mono uppercase tracking-widest text-[#C9A227] mb-4">Normative & Materiale</h4>
             <ul className="space-y-2 text-xs">
-              <li><Link href="/knowledge" className="hover:text-white transition-colors font-semibold text-white">Knowledge Hub</Link></li>
-              <li><Link href="/knowledge/materials" className="hover:text-white transition-colors">Materials & Products</Link></li>
-              <li><Link href="/knowledge/concrete" className="hover:text-white transition-colors">Concrete & Cement Matrix</Link></li>
-              <li><Link href="/knowledge/systems" className="hover:text-white transition-colors">Structural Systems & P100-1</Link></li>
-              <li><Link href="/knowledge/infrastructure" className="hover:text-white transition-colors">Civil Infrastructure</Link></li>
-              <li><Link href="/knowledge/engineering" className="hover:text-white transition-colors">Building Physics & Fire</Link></li>
-              <li><Link href="/knowledge/standards" className="hover:text-white transition-colors">Eurocodes & CPR 2024</Link></li>
-              <li><Link href="/knowledge/glossary" className="hover:text-white transition-colors">Construction Glossary</Link></li>
-              <li><Link href="/knowledge/sources" className="hover:text-white transition-colors">Official Sources Registry</Link></li>
+              <li><Link href="/knowledge" className="hover:text-white transition-colors font-semibold text-white">Hub Normative & Ghiduri</Link></li>
+              <li><Link href="/knowledge/materials" className="hover:text-white transition-colors">Materiale & Produse</Link></li>
+              <li><Link href="/knowledge/concrete" className="hover:text-white transition-colors">Beton & Matrice Ciment</Link></li>
+              <li><Link href="/knowledge/systems" className="hover:text-white transition-colors">Sisteme Structurale & P100-1</Link></li>
+              <li><Link href="/knowledge/infrastructure" className="hover:text-white transition-colors">Infrastructură Civilă</Link></li>
+              <li><Link href="/knowledge/engineering" className="hover:text-white transition-colors">Fizica Construcțiilor & ISU</Link></li>
+              <li><Link href="/knowledge/standards" className="hover:text-white transition-colors">Eurocoduri & CPR 2024</Link></li>
+              <li><Link href="/knowledge/glossary" className="hover:text-white transition-colors">Glosar Tehnic Construcții</Link></li>
+              <li><Link href="/knowledge/sources" className="hover:text-white transition-colors">Registrul Surselor Oficiale</Link></li>
             </ul>
           </div>
 
-          {/* Column 3: Market Discovery */}
+          {/* Column 3: Director Național */}
           <div>
-            <h4 className="text-[10px] font-mono uppercase tracking-widest text-[#C9A227] mb-4">Market Discovery</h4>
+            <h4 className="text-[10px] font-mono uppercase tracking-widest text-[#C9A227] mb-4">Director Național</h4>
             <ul className="space-y-2 text-xs">
-              <li><Link href="/developers" className="hover:text-white transition-colors">Real Estate Developers</Link></li>
-              <li><Link href="/projects" className="hover:text-white transition-colors">Development Projects</Link></li>
-              <li><Link href="/contractors" className="hover:text-white transition-colors">Contractors & Builders</Link></li>
-              <li><Link href="/architects" className="hover:text-white transition-colors">Architects & Planners</Link></li>
-              <li><Link href="/engineers" className="hover:text-white transition-colors">Engineering Consultants</Link></li>
-              <li><Link href="/agencies" className="hover:text-white transition-colors">Real Estate Agencies</Link></li>
-              <li><Link href="/cities" className="hover:text-white transition-colors">Regional Locations</Link></li>
+              <li><Link href="/developers" className="hover:text-white transition-colors">Dezvoltatori Imobiliari</Link></li>
+              <li><Link href="/projects" className="hover:text-white transition-colors">Proiecte & Șantiere</Link></li>
+              <li><Link href="/contractors" className="hover:text-white transition-colors">Antreprenori Generali</Link></li>
+              <li><Link href="/architects" className="hover:text-white transition-colors">Birouri de Arhitectură</Link></li>
+              <li><Link href="/engineers" className="hover:text-white transition-colors">Inginerie & Structuri</Link></li>
+              <li><Link href="/agencies" className="hover:text-white transition-colors">Consultanță Imobiliară</Link></li>
+              <li><Link href="/map" className="hover:text-white transition-colors">Harta Națională Interactivă</Link></li>
             </ul>
           </div>
 
-          {/* Column 4: Intelligence & Research */}
+          {/* Column 4: Cercetare & Intelligence */}
           <div>
-            <h4 className="text-[10px] font-mono uppercase tracking-widest text-[#C9A227] mb-4">Intelligence & Research</h4>
+            <h4 className="text-[10px] font-mono uppercase tracking-widest text-[#C9A227] mb-4">Intelligence & Analiză</h4>
             <ul className="space-y-2 text-xs">
-              <li><Link href="/intelligence" className="hover:text-white transition-colors">Intelligence Desk</Link></li>
-              <li><Link href="/signals" className="hover:text-white transition-colors">Live Construction Signals</Link></li>
-              <li><Link href="/changes" className="hover:text-white transition-colors">Documented Changes</Link></li>
-              <li><Link href="/compare" className="hover:text-white transition-colors">Entity Comparison</Link></li>
-              <li><Link href="/watchlist" className="hover:text-white transition-colors">Market Watchlist</Link></li>
-              <li><Link href="/research-request" className="hover:text-white transition-colors">Research Request Desk</Link></li>
-              <li><Link href="/methodology" className="hover:text-white transition-colors">Provenance Methodology</Link></li>
-              <li><Link href="/video" className="hover:text-[#C9A227] transition-colors font-semibold text-white">Video Desk & Shorts</Link></li>
+              <li><Link href="/intelligence" className="hover:text-white transition-colors">Birou de Intelligence</Link></li>
+              <li><Link href="/signals" className="hover:text-white transition-colors">Semnale de Piață Verificate</Link></li>
+              <li><Link href="/rankings" className="hover:text-white transition-colors">Clasamente pe Eșantion</Link></li>
+              <li><Link href="/sample-report" className="hover:text-white transition-colors">Raport Mostră de Piață</Link></li>
+              <li><Link href="/compare" className="hover:text-white transition-colors">Comparare Proiecte</Link></li>
+              <li><Link href="/watchlist" className="hover:text-white transition-colors">Monitorizare Portofoliu</Link></li>
+              <li><Link href="/methodology" className="hover:text-white transition-colors">Metodologia Surselor</Link></li>
+              <li><Link href="/video" className="hover:text-[#C9A227] transition-colors font-semibold text-white">Studio Video & Rapoarte</Link></li>
             </ul>
           </div>
 
-          {/* Column 5: Governance & Profiles */}
+          {/* Column 5: Guvernanță & Transparență */}
           <div>
-            <h4 className="text-[10px] font-mono uppercase tracking-widest text-[#C9A227] mb-4">Governance & About</h4>
+            <h4 className="text-[10px] font-mono uppercase tracking-widest text-[#C9A227] mb-4">Guvernanță & Despre</h4>
             <ul className="space-y-2 text-xs">
               <li><Link href="/about/cristian-vaduva" className="hover:text-white transition-colors">Cristian Văduva</Link></li>
-              <li><Link href="/about/aixluxury" className="hover:text-white transition-colors">AiXLuxury Platform</Link></li>
-              <li><Link href="/work-with-us" className="hover:text-white transition-colors">Work With CONSTRUCTIONS</Link></li>
-              <li><Link href="/terms" className="hover:text-white transition-colors">Terms & Conditions</Link></li>
-              <li><Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link></li>
-              <li><Link href="/cookies" className="hover:text-white transition-colors">Cookie Policy</Link></li>
-              <li><Link href="/gdpr" className="hover:text-white transition-colors">GDPR & Data Rights</Link></li>
-              <li><Link href="/accessibility" className="hover:text-white transition-colors">Accessibility Statement</Link></li>
+              <li><Link href="/about/aixluxury" className="hover:text-white transition-colors">Platforma AiXLuxury</Link></li>
+              <li><Link href="/work-with-us" className="hover:text-white transition-colors">Colaborare Instituțională</Link></li>
+              <li><Link href="/terms" className="hover:text-white transition-colors">Termeni & Condiții</Link></li>
+              <li><Link href="/privacy" className="hover:text-white transition-colors">Politica de Confidențialitate</Link></li>
+              <li><Link href="/cookies" className="hover:text-white transition-colors">Politica de Cookie-uri</Link></li>
+              <li><Link href="/gdpr" className="hover:text-white transition-colors">Drepturi Date & GDPR</Link></li>
+              <li><Link href="/accessibility" className="hover:text-white transition-colors">Declarație de Accesibilitate</Link></li>
               <li className="pt-2">
                 <a href="https://aixluxury.com" target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 text-[11px] hover:text-white transition-colors">
                   <span>aixluxury.com</span>
@@ -86,13 +86,20 @@ export function SiteFooter() {
           </div>
         </div>
 
+        {/* Independence & Non-Financial Advice Disclaimer */}
+        <div className="py-6 border-b border-[#1A1D1B] text-[11px] font-mono text-[#777777] leading-relaxed space-y-2">
+          <p>
+            <strong className="text-[#A0A0A0]">DECLARAȚIE DE INDEPENDENȚĂ & CARACTER INFORMATIV:</strong> CONSTRUCTIONS by AiXLuxury este o platformă exclusiv informativă de cercetare editorială și intelligence pe date publice. Informațiile, clasamentele și dosarele publicate nu reprezintă recomandări de investiții, oferte financiare, intermedieri sau garanții contractuale. Cristian Văduva și entitățile afiliate (inclusiv serviciile specializate HomeFind în imobiliare și What If Insurance în asigurări) își desfășoară activitățile comerciale în mod distinct și transparent. Indexarea, ranking-urile și clasificările probatorii din CONSTRUCTIONS sunt guvernate strict de metodologia bazată pe dovezi verificabile (ONRC, ANAF, ANCPI, BVB, autorizații de construire) și nu pot fi influențate sau achiziționate comercial.
+          </p>
+        </div>
+
         {/* Bottom Legal Copyright Bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-[#666666]">
-          <p>© {new Date().getFullYear()} CONSTRUCTIONS by AiXLuxury. All rights reserved.</p>
+        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-[#666666]">
+          <p>© {new Date().getFullYear()} CONSTRUCTIONS by AiXLuxury. Toate drepturile rezervate.</p>
           <div className="flex items-center gap-4 text-[11px]">
-            <span>BUCHAREST, ROMANIA</span>
+            <span>BUCUREȘTI, ROMÂNIA</span>
             <span>•</span>
-            <span className="text-[#C9A227]">TIER 1 PROVENANCE DATA</span>
+            <span className="text-[#C9A227]">DATE DE NIVEL 1 DIN SURSE STATUTARE</span>
           </div>
         </div>
       </div>

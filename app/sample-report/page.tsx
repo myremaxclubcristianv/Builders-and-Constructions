@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { SiteHeader } from '@/components/SiteHeader';
 import { SiteFooter } from '@/components/SiteFooter';
-import { realProjectsDataset, realCompaniesDataset } from '@/lib/real-romanian-data';
+import { realProjectsDataset, realCompaniesDataset, getCanonicalCapexSummary } from '@/lib/real-romanian-data';
 
 export const metadata = {
   title: 'Raport Mostră de Piață Q3/Q4 2026 · CONSTRUCTIONS by AiXLuxury',
@@ -14,9 +14,7 @@ export const metadata = {
 export default function SampleReportPage() {
   const activeProjects = realProjectsDataset.filter(p => p.status === 'under_construction');
   const deliveredProjects = realProjectsDataset.filter(p => p.status === 'completed');
-
-  const totalCapex = realProjectsDataset.reduce((sum, p) => sum + (p.investment_eur || 0), 0);
-  const activeCapex = activeProjects.reduce((sum, p) => sum + (p.investment_eur || 0), 0);
+  const capex = getCanonicalCapexSummary();
 
   const topDevelopers = [
     { name: 'One United Properties', ticker: 'BVB: ONE', capex: '€650M+', projects: 'One Lake Club, One High District, One Floreasca Towers', status: 'VERIFICAT BVB' },
@@ -61,20 +59,51 @@ export default function SampleReportPage() {
 
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-4 border-t border-[#1A1D1B] text-xs">
               <div>
-                <span className="text-[#777] block text-[10px] uppercase">CAPEX TOTAL MONITORIZAT</span>
-                <span className="text-xl font-bold text-[#C9A227]">€{(totalCapex / 1_000_000_000).toFixed(2)} MLD. EUR</span>
+                <span className="text-[#777] block text-[10px] uppercase">CAPEX NET RECONCILIAT</span>
+                <span className="text-xl font-bold text-[#C9A227]">{capex.netReconciledCapexLabel}</span>
+                <span className="text-[9px] text-[#22c55e] block mt-0.5">Deduplicat faptic · n=76 proiecte</span>
               </div>
               <div>
-                <span className="text-[#777] block text-[10px] uppercase">ȘANTIERE ÎN EXECUȚIE</span>
-                <span className="text-xl font-bold text-white">{activeProjects.length} Obiective</span>
+                <span className="text-[#777] block text-[10px] uppercase">INFRASTRUCTURĂ PUBLICĂ NETĂ</span>
+                <span className="text-xl font-bold text-[#38bdf8]">€{(capex.publicInfrastructureNetEur / 1_000_000_000).toFixed(2)} MLD. EUR</span>
+                <span className="text-[9px] text-[#666] block mt-0.5">Contracte SEAP / CNAIR / CFR</span>
               </div>
               <div>
-                <span className="text-[#777] block text-[10px] uppercase">PROIECTE LIVRATE VERIFICATE</span>
-                <span className="text-xl font-bold text-[#22c55e]">{deliveredProjects.length} Proiecte</span>
+                <span className="text-[#777] block text-[10px] uppercase">REAL ESTATE PRIVAT NET</span>
+                <span className="text-xl font-bold text-[#22c55e]">€{(capex.privateRealEstateNetEur / 1_000_000_000).toFixed(2)} MLD. EUR</span>
+                <span className="text-[9px] text-[#666] block mt-0.5">Rezidențial, Birouri, Logistică</span>
               </div>
               <div>
-                <span className="text-[#777] block text-[10px] uppercase">COMPANII INDEXATE</span>
-                <span className="text-xl font-bold text-white">{realCompaniesDataset.length} Entități</span>
+                <span className="text-[#777] block text-[10px] uppercase">CAPEX BRUT INDEXAT</span>
+                <span className="text-xl font-bold text-white">{capex.grossCapexLabel}</span>
+                <span className="text-[9px] text-[#eab308] block mt-0.5">-€{(capex.overlaps.totalOverlapsEur / 1_000_000_000).toFixed(2)} MLD suprapuneri</span>
+              </div>
+            </div>
+
+            {/* Metodologie CAPEX & Reconciliere Suprapuneri */}
+            <div className="p-4 bg-[#141715] border border-[#1A1D1B] rounded-xl text-[11px] text-[#AAA] space-y-3">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[#1A1D1B] pb-2">
+                <span className="text-[#C9A227] font-bold uppercase text-[10px]">
+                  RECONCILIEREA CAPEX ȘI ELIMINAREA DUBLĂRILOR (TOTAL NET: €10,86 MLD. EUR)
+                </span>
+                <span className="text-[10px] text-[#888] font-mono">AUDIT DE INTEGRITATE DOCUMENTARĂ</span>
+              </div>
+              <p>
+                Totalul brut indexat de <strong>11,95 miliarde EUR</strong> conține valoarea cumulată a tuturor dosarelor de proiect. În urma auditului de rigoare, au fost identificate și excluse din totalul net trei suprapuneri documentare în valoare de <strong>1,09 miliarde EUR</strong>:
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 font-mono text-[10px]">
+                <div className="p-2.5 bg-[#0C0E0D] border border-[#ef4444]/30 rounded space-y-1">
+                  <span className="text-[#ef4444] font-bold block">1. Podul Brăila Duplicat (-€500M)</span>
+                  <span className="text-[#888] block">Înregistrare duplicat de portofoliu constructor (Webuild) a aceluiași pod suspendat de 1.974m.</span>
+                </div>
+                <div className="p-2.5 bg-[#0C0E0D] border border-[#ef4444]/30 rounded space-y-1">
+                  <span className="text-[#ef4444] font-bold block">2. Brăila Connectors (-€500M)</span>
+                  <span className="text-[#888] block">Drumurile de legătură (21,5 km) au fost finanțate în contractul global CNAIR de €500M al podului.</span>
+                </div>
+                <div className="p-2.5 bg-[#0C0E0D] border border-[#eab308]/30 rounded space-y-1">
+                  <span className="text-[#eab308] font-bold block">3. Silk District Faza 1 (-€90M)</span>
+                  <span className="text-[#888] block">Investiția de €90M livrată în faza 1 este inclusă în masterplanul total anunțat de €200M.</span>
+                </div>
               </div>
             </div>
           </div>
@@ -167,20 +196,20 @@ export default function SampleReportPage() {
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
               <div className="p-3 bg-[#141715] rounded-lg border border-[#22c55e]/30">
-                <span className="text-[#22c55e] font-bold block mb-1">VERIFICAT FAPTIC (100%)</span>
-                <span className="text-[#888] text-[11px]">Date probate prin documente depuse la BVB, ONRC, cărți funciare ANCPI sau autorizații de construire emise de primării.</span>
+                <span className="text-[#22c55e] font-bold block mb-1">VERIFICAT FAPTIC (VERIFIED)</span>
+                <span className="text-[#888] text-[11px]">Date probate indubitabil prin registre de stat: depuneri BVB, rapoarte financiare ONRC/ANAF, extrase ANCPI sau autorizații de construire emise de primării.</span>
               </div>
               <div className="p-3 bg-[#141715] rounded-lg border border-[#C9A227]/30">
-                <span className="text-[#C9A227] font-bold block mb-1">RAPORTAT OFICIAL (85-95%)</span>
-                <span className="text-[#888] text-[11px]">Informații publicate pe portalurile oficiale ale companiilor sau declarații de presă semnate de conducerea executivă.</span>
+                <span className="text-[#C9A227] font-bold block mb-1">RAPORTAT OFICIAL (REPORTED)</span>
+                <span className="text-[#888] text-[11px]">Informații publicate pe portalurile oficiale ale companiilor sau declarații de presă semnate de conducerea executivă, înainte de auditul terț.</span>
               </div>
               <div className="p-3 bg-[#141715] rounded-lg border border-[#38bdf8]/30">
-                <span className="text-[#38bdf8] font-bold block mb-1">ESTIMAT DE PIAȚĂ (60-80%)</span>
-                <span className="text-[#888] text-[11px]">Modele economice de cost bazate pe indicatorii standard pe metru pătrat construit conform NE 012 și Eurocode.</span>
+                <span className="text-[#38bdf8] font-bold block mb-1">ESTIMAT DE PIAȚĂ (ESTIMATED)</span>
+                <span className="text-[#888] text-[11px]">Proiecții tehnice de cost calculate pe baza suprafețelor desfășurate și a costului mediu de execuție din normativele tehnice. Fără certitudine juridică.</span>
               </div>
-              <div className="p-3 bg-[#141715] rounded-lg border border-[#ef4444]/30">
-                <span className="text-[#ef4444] font-bold block mb-1">NEDIVULGAT / CONFIDENȚIAL</span>
-                <span className="text-[#888] text-[11px]">Câmpuri pentru care nu există documente publice confirmate; nu se inventează valori de umplutură.</span>
+              <div className="p-3 bg-[#141715] rounded-lg border border-[#888]/30">
+                <span className="text-[#888] font-bold block mb-1">NEDIVULGAT / CONFIDENȚIAL (NOT DISCLOSED)</span>
+                <span className="text-[#888] text-[11px]">Câmpuri pentru care nu există documente publice confirmate; nu se inventează valori și nu se extrapolează speculativ.</span>
               </div>
             </div>
           </section>

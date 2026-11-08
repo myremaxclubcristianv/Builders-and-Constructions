@@ -201,7 +201,7 @@ export function SiteHeader() {
                     : ""
                 }`}
               >
-                <span>DISCOVER</span>
+                <span>CATALOG</span>
                 <svg
                   className={`w-3 h-3 transition-transform duration-200 ${
                     activeDropdown === "discover" ? "rotate-180 text-[#C9A227]" : ""
@@ -222,7 +222,7 @@ export function SiteHeader() {
                 >
                   <div className="bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl shadow-2xl p-4 space-y-2 animate-fadeIn">
                     <span className="text-[10px] font-mono uppercase tracking-widest text-[#C9A227] block mb-2">
-                      MARKET ENTITIES & PROJECTS
+                      ENTITĂȚI & PROIECTE DIN PIAȚĂ
                     </span>
                     <div className="space-y-1 text-xs">
                       <Link
@@ -296,8 +296,8 @@ export function SiteHeader() {
                     : ""
                 }`}
               >
-                <span>KNOWLEDGE</span>
-                <span className="w-1.5 h-1.5 rounded-full bg-[#C9A227] inline-block animate-pulse" title="Updated Knowledge Hub" />
+                <span>NORMATIVE</span>
+                <span className="w-1.5 h-1.5 rounded-full bg-[#C9A227] inline-block animate-pulse" title="Centru Actualizat Normative" />
                 <svg
                   className={`w-3 h-3 transition-transform duration-200 ${
                     activeDropdown === "knowledge" ? "rotate-180 text-[#C9A227]" : ""
@@ -318,7 +318,7 @@ export function SiteHeader() {
                 >
                   <div className="bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl shadow-2xl p-4 space-y-2 animate-fadeIn">
                     <span className="text-[10px] font-mono uppercase tracking-widest text-[#C9A227] block mb-2">
-                      TECHNICAL KNOWLEDGE & MATERIALS
+                      CUNOȘTINȚE TEHNICE & MATERIALE
                     </span>
                     <div className="space-y-1 text-xs">
                       <Link
@@ -577,7 +577,7 @@ export function SiteHeader() {
                     : ""
                 }`}
               >
-                <span>INTELLIGENCE</span>
+                <span>INTELIGENȚĂ</span>
                 <svg
                   className={`w-3 h-3 transition-transform duration-200 ${
                     activeDropdown === "intelligence" ? "rotate-180 text-[#C9A227]" : ""
@@ -598,56 +598,56 @@ export function SiteHeader() {
                 >
                   <div className="bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl shadow-2xl p-4 space-y-2 animate-fadeIn">
                     <span className="text-[10px] font-mono uppercase tracking-widest text-[#C9A227] block mb-2">
-                      MARKET RADAR & ANALYTICS
+                      RADAR DE PIAȚĂ & ANALIZĂ
                     </span>
                     <div className="space-y-1 text-xs">
                       <Link
                         href="/intelligence"
                         className="block p-2 hover:bg-[#151515] rounded text-white hover:text-[#C9A227] transition-colors font-bold"
                       >
-                        Market Intelligence Desk
+                        Birou Inteligență Piață
                       </Link>
                       <Link
                         href="/signals"
                         className="block p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors"
                       >
-                        Live Construction Signals
+                        Semnale Verificate din Piață
                       </Link>
                       <Link
                         href="/changes"
                         className="block p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors"
                       >
-                        Recent Documented Changes
+                        Modificări Recente Documentate
                       </Link>
                       <Link
                         href="/search"
                         className="block p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors"
                       >
-                        Institutional Search
+                        Căutare Instituțională
                       </Link>
                       <Link
                         href="/compare"
                         className="block p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors"
                       >
-                        Entity Comparison
+                        Comparare Entități
                       </Link>
                       <Link
                         href="/network"
                         className="block p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors"
                       >
-                        Discovery Network Graph
+                        Grafic Relațional de Rețea
                       </Link>
                       <Link
                         href="/coverage"
                         className="block p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors"
                       >
-                        Coverage Matrix
+                        Matrice de Acoperire
                       </Link>
                       <Link
                         href="/watchlist"
                         className="block p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors"
                       >
-                        Market Watchlist & Monitoring
+                        Monitorizare & Watchlist
                       </Link>
                     </div>
                   </div>
@@ -673,7 +673,7 @@ export function SiteHeader() {
                     : ""
                 }`}
               >
-                <span>RESEARCH</span>
+                <span>CERCETARE</span>
                 <svg
                   className={`w-3 h-3 transition-transform duration-200 ${
                     activeDropdown === "research" ? "rotate-180 text-[#C9A227]" : ""
@@ -694,26 +694,26 @@ export function SiteHeader() {
                 >
                   <div className="bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl shadow-2xl p-4 space-y-2 animate-fadeIn">
                     <span className="text-[10px] font-mono uppercase tracking-widest text-[#C9A227] block mb-2">
-                      RESEARCH SERVICES
+                      SERVICII DE CERCETARE
                     </span>
                     <div className="space-y-1 text-xs">
                       <Link
                         href="/research-request"
                         className="block p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors"
                       >
-                        Research Request Desk
+                        Birou Solicitare Cercetare
                       </Link>
                       <Link
                         href="/methodology"
                         className="block p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors"
                       >
-                        Provenance Methodology
+                        Metodologia de Verificare
                       </Link>
                       <Link
                         href="/report-error"
                         className="block p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors"
                       >
-                        Request Profile Correction
+                        Raportează Eroare Profil
                       </Link>
                     </div>
                   </div>
@@ -749,7 +749,7 @@ export function SiteHeader() {
                     : ""
                 }`}
               >
-                <span>ABOUT</span>
+                <span>DESPRE</span>
                 <svg
                   className={`w-3 h-3 transition-transform duration-200 ${
                     activeDropdown === "about" ? "rotate-180 text-[#C9A227]" : ""
@@ -770,7 +770,7 @@ export function SiteHeader() {
                 >
                   <div className="bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl shadow-2xl p-4 space-y-2 animate-fadeIn">
                     <span className="text-[10px] font-mono uppercase tracking-widest text-[#C9A227] block mb-2">
-                      INSTITUTIONAL PROFILES
+                      PROFILE INSTITUȚIONALE
                     </span>
                     <div className="space-y-1 text-xs">
                       <Link
@@ -783,13 +783,13 @@ export function SiteHeader() {
                         href="/about/aixluxury"
                         className="block p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors font-bold"
                       >
-                        AiXLuxury Platform
+                        Platforma AiXLuxury
                       </Link>
                       <Link
                         href="/work-with-us"
                         className="block p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors border-t border-[#1A1D1B] pt-2 mt-1"
                       >
-                        Work With Us
+                        Parteneriate &amp; Colaborare
                       </Link>
                     </div>
                   </div>
@@ -811,25 +811,13 @@ export function SiteHeader() {
               </svg>
             </Link>
 
-            {/* Language Switcher */}
-            <button
-              onClick={toggleLanguage}
-              aria-label="Toggle Romanian or English language"
-              className="h-8 px-2.5 bg-[#111111] hover:bg-[#1A1A1A] border border-[#1A1D1B] hover:border-[#C9A227]/40 text-[11px] font-mono rounded-lg transition-all flex items-center gap-1 cursor-pointer"
-              title={language === 'ro' ? 'Comută în Engleză / Switch to English' : 'Comută în Română / Switch to Romanian'}
-            >
-              <span className={language === 'ro' ? 'text-[#C9A227] font-bold' : 'text-[#888888]'}>RO</span>
-              <span className="text-[#444444]">/</span>
-              <span className={language === 'en' ? 'text-[#C9A227] font-bold' : 'text-[#888888]'}>EN</span>
-            </button>
-
             {/* Watchlist */}
             <Link
               href="/watchlist"
               className="h-8 px-2.5 2xl:px-3 bg-[#111111] hover:bg-[#1A1A1A] border border-[#1A1D1B] hover:border-[#C9A227]/40 text-[#C5C5C5] hover:text-[#C9A227] text-[11px] font-mono rounded-lg transition-all flex items-center gap-1.5"
             >
               <StarIcon className="w-3.5 h-3.5 text-[#C9A227] shrink-0" />
-              <span className="hidden 2xl:inline">{t('nav.watchlist', 'WATCHLIST')}</span>
+              <span className="hidden 2xl:inline">MONITORIZARE</span>
             </Link>
 
             {/* Quick Always-On Contact Trigger (visible on large desktops, floating button on laptops) */}
@@ -840,12 +828,12 @@ export function SiteHeader() {
                 }
               }}
               className="h-8 px-2.5 2xl:px-3 bg-[#141715] hover:bg-[#1C1F1D] border border-[#C9A227]/40 hover:border-[#C9A227] text-[#C9A227] text-[11px] font-mono font-medium rounded-lg transition-all hidden 2xl:flex items-center gap-1.5 cursor-pointer shadow-sm"
-              title="Open Quick Contact Desk"
+              title="Deschide biroul de contact rapid"
             >
               <svg className="w-3.5 h-3.5 text-[#C9A227]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
               </svg>
-              <span>{t('action.contact', 'Contact')}</span>
+              <span>Contact</span>
             </button>
 
             {/* Main Intake CTA */}
@@ -853,7 +841,7 @@ export function SiteHeader() {
               href="/contact"
               className="h-8 px-3.5 bg-[#C9A227] hover:bg-[#d8b135] text-black text-[11px] font-mono font-bold rounded-lg transition-all flex items-center gap-1 shadow-sm shrink-0 whitespace-nowrap"
             >
-              <span>{language === 'ro' ? 'Solicitare' : 'Inquiry'}</span>
+              <span>Solicitare</span>
               <span>→</span>
             </Link>
           </div>
@@ -863,24 +851,13 @@ export function SiteHeader() {
             {/* Search (Tablet >=640px; on mobile phones <640px, Search is in the bottom bar and drawer) */}
             <Link
               href="/search"
-              aria-label="Search"
+              aria-label="Căutare"
               className="w-9 h-9 sm:w-10 sm:h-10 hidden sm:flex items-center justify-center rounded-lg bg-[#111111] border border-[#1A1D1B] text-[#888888] hover:text-[#C9A227] active:scale-95 transition-transform"
             >
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
               </svg>
             </Link>
-
-            {/* Language Switcher */}
-            <button
-              onClick={toggleLanguage}
-              aria-label="Toggle language"
-              className="h-9 sm:h-10 px-2 sm:px-2.5 flex items-center justify-center rounded-lg bg-[#141715] border border-[#1A1D1B] text-xs font-mono text-[#F3F1EB] active:scale-95 transition-transform cursor-pointer"
-            >
-              <span className={language === 'ro' ? 'text-[#C9A227] font-bold' : 'text-[#888888]'}>RO</span>
-              <span className="text-[#444444] mx-0.5">/</span>
-              <span className={language === 'en' ? 'text-[#C9A227] font-bold' : 'text-[#888888]'}>EN</span>
-            </button>
 
             {/* Quick Contact Desk Trigger */}
             <button
@@ -917,7 +894,7 @@ export function SiteHeader() {
 
       {/* Always-On Quick Contact Modal */}
       <QuickContactModal />
-      <AlwaysOnFloatingContact />
+      <AlwaysOnFloatingContact visible={visible} />
 
       {/* Mobile Drawer (100% Mobile Parity with all sections) */}
       {mobileMenuOpen && (
@@ -953,7 +930,7 @@ export function SiteHeader() {
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
                   <h4 className="text-[10px] font-mono uppercase tracking-widest text-[#C9A227]">
-                    OFFICIAL CONSTRUCTION DIVISIONS
+                    DIVIZII OFICIALE CONSTRUCȚII
                   </h4>
                   <span className="text-[9px] font-mono bg-[#C9A227]/20 text-[#C9A227] px-1.5 py-0.5 rounded font-bold">
                     13 DIVIZII
@@ -965,7 +942,7 @@ export function SiteHeader() {
                     onClick={() => setMobileMenuOpen(false)}
                     className="p-3 bg-[#C9A227] text-black rounded-xl text-xs font-mono font-bold flex items-center justify-between min-h-[44px]"
                   >
-                    <span>Launch Project Inquiry</span>
+                    <span>Lansează o Solicitare</span>
                     <span>→</span>
                   </Link>
                   <Link
@@ -973,7 +950,7 @@ export function SiteHeader() {
                     onClick={() => setMobileMenuOpen(false)}
                     className="p-3 bg-[#0E0F0E] border border-[#C9A227]/40 rounded-xl text-xs font-bold text-[#C9A227] flex items-center justify-between min-h-[44px]"
                   >
-                    <span>Complete Services Catalog</span>
+                    <span>Catalogul Complet de Servicii</span>
                     <span className="text-[10px] font-mono text-[#888888]">INDEX</span>
                   </Link>
                   <div className="grid grid-cols-2 gap-1.5 pt-1">
@@ -982,56 +959,56 @@ export function SiteHeader() {
                       onClick={() => setMobileMenuOpen(false)}
                       className="p-2.5 bg-[#0B0B0B] border border-[#1A1D1B] rounded-lg text-[11px] text-[#C5C5C5] hover:text-[#C9A227] flex items-center gap-1 min-h-[44px]"
                     >
-                      <ShieldIcon className="w-3.5 h-3.5 text-[#C9A227] shrink-0" /> <span className="truncate">Quality Assurance</span>
+                      <ShieldIcon className="w-3.5 h-3.5 text-[#C9A227] shrink-0" /> <span className="truncate">Asigurarea Calității</span>
                     </Link>
                     <Link
                       href="/services/controlul-calitatii"
                       onClick={() => setMobileMenuOpen(false)}
                       className="p-2.5 bg-[#0B0B0B] border border-[#1A1D1B] rounded-lg text-[11px] text-[#C5C5C5] hover:text-[#C9A227] flex items-center gap-1 min-h-[44px]"
                     >
-                      <SearchIcon className="w-3.5 h-3.5 text-[#C9A227] shrink-0" /> <span className="truncate">Quality Control</span>
+                      <SearchIcon className="w-3.5 h-3.5 text-[#C9A227] shrink-0" /> <span className="truncate">Controlul Calității</span>
                     </Link>
                     <Link
                       href="/services/manager-calitate"
                       onClick={() => setMobileMenuOpen(false)}
                       className="p-2.5 bg-[#0B0B0B] border border-[#1A1D1B] rounded-lg text-[11px] text-[#C5C5C5] hover:text-[#C9A227] flex items-center gap-1 min-h-[44px]"
                     >
-                      <BriefcaseIcon className="w-3.5 h-3.5 text-[#C9A227] shrink-0" /> <span className="truncate">Quality Manager</span>
+                      <BriefcaseIcon className="w-3.5 h-3.5 text-[#C9A227] shrink-0" /> <span className="truncate">Managementul Calității</span>
                     </Link>
                     <Link
                       href="/services/cartea-tehnica"
                       onClick={() => setMobileMenuOpen(false)}
                       className="p-2.5 bg-[#0B0B0B] border border-[#1A1D1B] rounded-lg text-[11px] text-[#C5C5C5] hover:text-[#C9A227] flex items-center gap-1 min-h-[44px]"
                     >
-                      <BookIcon className="w-3.5 h-3.5 text-[#C9A227] shrink-0" /> <span className="truncate">Technical Book</span>
+                      <BookIcon className="w-3.5 h-3.5 text-[#C9A227] shrink-0" /> <span className="truncate">Cartea Tehnică</span>
                     </Link>
                     <Link
                       href="/services/ssm"
                       onClick={() => setMobileMenuOpen(false)}
                       className="p-2.5 bg-[#0B0B0B] border border-[#1A1D1B] rounded-lg text-[11px] text-[#C5C5C5] hover:text-[#C9A227] flex items-center gap-1 min-h-[44px]"
                     >
-                      <HardHatIcon className="w-3.5 h-3.5 text-[#C9A227] shrink-0" /> <span className="truncate">Safety / SSM</span>
+                      <HardHatIcon className="w-3.5 h-3.5 text-[#C9A227] shrink-0" /> <span className="truncate">Securitate SSM</span>
                     </Link>
                     <Link
                       href="/services/proiecte"
                       onClick={() => setMobileMenuOpen(false)}
                       className="p-2.5 bg-[#0B0B0B] border border-[#1A1D1B] rounded-lg text-[11px] text-[#C5C5C5] hover:text-[#C9A227] flex items-center gap-1 min-h-[44px]"
                     >
-                      <RulerIcon className="w-3.5 h-3.5 text-[#C9A227] shrink-0" /> <span className="truncate">Technical Design</span>
+                      <RulerIcon className="w-3.5 h-3.5 text-[#C9A227] shrink-0" /> <span className="truncate">Proiectare Tehnică</span>
                     </Link>
                     <Link
                       href="/services/inchirieri-utilaje"
                       onClick={() => setMobileMenuOpen(false)}
                       className="p-2.5 bg-[#0B0B0B] border border-[#1A1D1B] rounded-lg text-[11px] text-[#C5C5C5] hover:text-[#C9A227] flex items-center gap-1 min-h-[44px]"
                     >
-                      <TruckIcon className="w-3.5 h-3.5 text-[#C9A227] shrink-0" /> <span className="truncate">Heavy Equipment</span>
+                      <TruckIcon className="w-3.5 h-3.5 text-[#C9A227] shrink-0" /> <span className="truncate">Utilaje Grele</span>
                     </Link>
                     <Link
                       href="/services/asigurari"
                       onClick={() => setMobileMenuOpen(false)}
                       className="p-2.5 bg-[#0B0B0B] border border-[#1A1D1B] rounded-lg text-[11px] text-[#C5C5C5] hover:text-[#C9A227] flex items-center gap-1 min-h-[44px]"
                     >
-                      <DocumentCheckIcon className="w-3.5 h-3.5 text-[#C9A227] shrink-0" /> <span className="truncate">CAR Insurance</span>
+                      <DocumentCheckIcon className="w-3.5 h-3.5 text-[#C9A227] shrink-0" /> <span className="truncate">Asigurări CAR</span>
                     </Link>
                   </div>
                 </div>
@@ -1041,10 +1018,10 @@ export function SiteHeader() {
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
                   <h4 className="text-[10px] font-mono uppercase tracking-widest text-[#C9A227]">
-                    CONSTRUCTION KNOWLEDGE BASE
+                    BAZĂ DE CUNOȘTINȚE TEHNICE
                   </h4>
                   <span className="text-[9px] font-mono bg-[#C9A227]/20 text-[#C9A227] px-1.5 py-0.5 rounded">
-                    EXPANDED
+                    NORMATIVE
                   </span>
                 </div>
                 <div className="space-y-1.5">
@@ -1053,7 +1030,7 @@ export function SiteHeader() {
                     onClick={() => setMobileMenuOpen(false)}
                     className="p-3 bg-[#0E0F0E] border border-[#C9A227]/40 rounded-xl text-xs font-bold text-[#C9A227] flex items-center justify-between min-h-[44px]"
                   >
-                    <span>Knowledge Hub Main</span>
+                    <span>Centrul Principal de Normative</span>
                     <span>→</span>
                   </Link>
                   <Link
@@ -1061,7 +1038,7 @@ export function SiteHeader() {
                     onClick={() => setMobileMenuOpen(false)}
                     className="p-3 bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl text-xs font-medium text-white flex items-center justify-between min-h-[44px]"
                   >
-                    <span>Materials Catalog (12 Families)</span>
+                    <span>Catalog Materiale (12 Familii)</span>
                     <span className="text-[10px] font-mono text-[#888888]">SPECS</span>
                   </Link>
                   <Link
@@ -1069,7 +1046,7 @@ export function SiteHeader() {
                     onClick={() => setMobileMenuOpen(false)}
                     className="p-3 bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl text-xs font-medium text-white flex items-center justify-between min-h-[44px]"
                   >
-                    <span>Concrete & Cement Intelligence</span>
+                    <span>Ghid Beton &amp; Ciment</span>
                     <span className="text-[10px] font-mono text-[#10B981]">SR EN 206</span>
                   </Link>
                   <Link
@@ -1077,7 +1054,7 @@ export function SiteHeader() {
                     onClick={() => setMobileMenuOpen(false)}
                     className="p-3 bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl text-xs font-medium text-white flex items-center justify-between min-h-[44px]"
                   >
-                    <span>Structural Systems & P100-1</span>
+                    <span>Sisteme Structurale &amp; P100-1</span>
                     <span className="text-[10px] font-mono text-[#888888]">SEISMIC</span>
                   </Link>
                   <Link
@@ -1085,23 +1062,23 @@ export function SiteHeader() {
                     onClick={() => setMobileMenuOpen(false)}
                     className="p-3 bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl text-xs font-medium text-white flex items-center justify-between min-h-[44px]"
                   >
-                    <span>Civil Infrastructure & Roads</span>
-                    <span className="text-[10px] font-mono text-[#888888]">HIGHWAYS</span>
+                    <span>Infrastructură Civilă &amp; Drumuri</span>
+                    <span className="text-[10px] font-mono text-[#888888]">DRUMURI</span>
                   </Link>
                   <Link
                     href="/knowledge/engineering"
                     onClick={() => setMobileMenuOpen(false)}
                     className="p-3 bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl text-xs font-medium text-white flex items-center justify-between min-h-[44px]"
                   >
-                    <span>Building Physics & Fire Safety</span>
-                    <span className="text-[10px] font-mono text-[#888888]">PHYSICS</span>
+                    <span>Fizica Construcțiilor &amp; Securitate Incendiu</span>
+                    <span className="text-[10px] font-mono text-[#888888]">FIZICĂ</span>
                   </Link>
                   <Link
                     href="/knowledge/processes"
                     onClick={() => setMobileMenuOpen(false)}
                     className="p-3 bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl text-xs font-medium text-white flex items-center justify-between min-h-[44px]"
                   >
-                    <span>15-Stage Execution Lifecycle</span>
+                    <span>Ciclul de Execuție în 15 Etape</span>
                     <span className="text-[10px] font-mono text-[#888888]">PVLA</span>
                   </Link>
                   <Link
@@ -1109,24 +1086,24 @@ export function SiteHeader() {
                     onClick={() => setMobileMenuOpen(false)}
                     className="p-3 bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl text-xs font-medium text-white flex items-center justify-between min-h-[44px]"
                   >
-                    <span>Eurocodes (EN 1990-1999) & CPR</span>
-                    <span className="text-[10px] font-mono text-[#888888]">NORMS</span>
+                    <span>Eurocoduri (EN 1990-1999) &amp; CPR</span>
+                    <span className="text-[10px] font-mono text-[#888888]">NORME</span>
                   </Link>
                   <Link
                     href="/knowledge/glossary"
                     onClick={() => setMobileMenuOpen(false)}
                     className="p-3 bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl text-xs font-medium text-white flex items-center justify-between min-h-[44px]"
                   >
-                    <span>Glossary (POT, CUT, U-value)</span>
-                    <span className="text-[10px] font-mono text-[#888888]">TERMS</span>
+                    <span>Glosar Tehnic (POT, CUT, Coeficienți)</span>
+                    <span className="text-[10px] font-mono text-[#888888]">TERMENI</span>
                   </Link>
                   <Link
                     href="/knowledge/compare"
                     onClick={() => setMobileMenuOpen(false)}
                     className="p-3 bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl text-xs font-medium text-white flex items-center justify-between min-h-[44px]"
                   >
-                    <span>Material Comparison Matrix</span>
-                    <span className="text-[10px] font-mono text-[#C9A227]">MATRIX</span>
+                    <span>Matrice Comparativă Materiale</span>
+                    <span className="text-[10px] font-mono text-[#C9A227]">MATRICE</span>
                   </Link>
                 </div>
               </div>
@@ -1134,7 +1111,7 @@ export function SiteHeader() {
               {/* 2. DISCOVER SECTION */}
               <div className="space-y-2">
                 <h4 className="text-[10px] font-mono uppercase tracking-widest text-[#C9A227]">
-                  DISCOVER MARKET TAXONOMY
+                  CATALOG ENTITĂȚI &amp; PIAȚĂ
                 </h4>
                 <div className="grid grid-cols-2 gap-2">
                   <Link
@@ -1142,7 +1119,7 @@ export function SiteHeader() {
                     onClick={() => setMobileMenuOpen(false)}
                     className="p-3 bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl text-xs font-medium text-white flex items-center justify-between min-h-[44px]"
                   >
-                    <span>Developers</span>
+                    <span>Dezvoltatori</span>
                     <span className="text-[10px] font-mono text-[#C9A227]">50</span>
                   </Link>
                   <Link
@@ -1150,7 +1127,7 @@ export function SiteHeader() {
                     onClick={() => setMobileMenuOpen(false)}
                     className="p-3 bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl text-xs font-medium text-white flex items-center justify-between min-h-[44px]"
                   >
-                    <span>Projects</span>
+                    <span>Proiecte</span>
                     <span className="text-[10px] font-mono text-[#C9A227]">76</span>
                   </Link>
                   <Link
@@ -1158,7 +1135,7 @@ export function SiteHeader() {
                     onClick={() => setMobileMenuOpen(false)}
                     className="p-3 bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl text-xs font-medium text-white flex items-center justify-between min-h-[44px]"
                   >
-                    <span>Contractors</span>
+                    <span>Constructori</span>
                     <span className="text-[10px] font-mono text-[#C9A227]">30</span>
                   </Link>
                   <Link
@@ -1166,7 +1143,7 @@ export function SiteHeader() {
                     onClick={() => setMobileMenuOpen(false)}
                     className="p-3 bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl text-xs font-medium text-white flex items-center justify-between min-h-[44px]"
                   >
-                    <span>Architects</span>
+                    <span>Arhitecți</span>
                     <span className="text-[10px] font-mono text-[#C9A227]">21</span>
                   </Link>
                   <Link
@@ -1174,7 +1151,7 @@ export function SiteHeader() {
                     onClick={() => setMobileMenuOpen(false)}
                     className="p-3 bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl text-xs font-medium text-white flex items-center justify-between min-h-[44px]"
                   >
-                    <span>Engineers</span>
+                    <span>Ingineri</span>
                     <span className="text-[10px] font-mono text-[#C9A227]">25</span>
                   </Link>
                   <Link
@@ -1182,7 +1159,7 @@ export function SiteHeader() {
                     onClick={() => setMobileMenuOpen(false)}
                     className="p-3 bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl text-xs font-medium text-white flex items-center justify-between min-h-[44px]"
                   >
-                    <span>Agencies</span>
+                    <span>Agenții Imobiliare</span>
                     <span className="text-[10px] font-mono text-[#C9A227]">20</span>
                   </Link>
                 </div>
@@ -1191,15 +1168,15 @@ export function SiteHeader() {
                   onClick={() => setMobileMenuOpen(false)}
                   className="p-3 bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl text-xs font-medium text-white flex items-center justify-between min-h-[44px] block"
                 >
-                  <span>Geographic Locations & Cities</span>
-                  <span className="text-[10px] font-mono text-[#C9A227]">36 REGIONS</span>
+                  <span>Acoperire Geografică &amp; Orașe</span>
+                  <span className="text-[10px] font-mono text-[#C9A227]">36 REGIUNI</span>
                 </Link>
               </div>
 
               {/* 3. INTELLIGENCE SECTION */}
               <div className="space-y-2">
                 <h4 className="text-[10px] font-mono uppercase tracking-widest text-[#C9A227]">
-                  INTELLIGENCE & RESEARCH
+                  INTELIGENȚĂ &amp; ANALIZĂ PIAȚĂ
                 </h4>
                 <div className="space-y-1.5">
                   <Link
@@ -1207,7 +1184,7 @@ export function SiteHeader() {
                     onClick={() => setMobileMenuOpen(false)}
                     className="p-3 bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl text-xs font-medium text-white flex items-center justify-between min-h-[44px]"
                   >
-                    <span>Market Intelligence Command Center</span>
+                    <span>Centru de Comandă Inteligență</span>
                     <span className="text-xs text-[#C9A227]">→</span>
                   </Link>
                   <Link
@@ -1215,7 +1192,7 @@ export function SiteHeader() {
                     onClick={() => setMobileMenuOpen(false)}
                     className="p-3 bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl text-xs font-medium text-white flex items-center justify-between min-h-[44px]"
                   >
-                    <span>Live Signals Radar</span>
+                    <span>Semnale Verificate din Piață</span>
                     <span className="text-xs text-[#C9A227]">→</span>
                   </Link>
                   <Link
@@ -1223,7 +1200,7 @@ export function SiteHeader() {
                     onClick={() => setMobileMenuOpen(false)}
                     className="p-3 bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl text-xs font-medium text-white flex items-center justify-between min-h-[44px]"
                   >
-                    <span>Documented Market Changes</span>
+                    <span>Modificări Recente Documentate</span>
                     <span className="text-xs text-[#C9A227]">→</span>
                   </Link>
                   <Link
@@ -1231,7 +1208,7 @@ export function SiteHeader() {
                     onClick={() => setMobileMenuOpen(false)}
                     className="p-3 bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl text-xs font-medium text-white flex items-center justify-between min-h-[44px]"
                   >
-                    <span>Entity Comparison Workstation</span>
+                    <span>Stație de Comparare Entități</span>
                     <span className="text-xs text-[#C9A227]">→</span>
                   </Link>
                   <Link
@@ -1239,7 +1216,7 @@ export function SiteHeader() {
                     onClick={() => setMobileMenuOpen(false)}
                     className="p-3 bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl text-xs font-medium text-[#C9A227] flex items-center justify-between min-h-[44px]"
                   >
-                    <span className="flex items-center gap-1.5"><StarIcon className="w-3.5 h-3.5 text-[#C9A227]" /><span>My Watchlist</span></span>
+                    <span className="flex items-center gap-1.5"><StarIcon className="w-3.5 h-3.5 text-[#C9A227]" /><span>Monitorizare &amp; Watchlist</span></span>
                     <span className="text-xs text-[#C9A227]">→</span>
                   </Link>
                 </div>
@@ -1248,7 +1225,7 @@ export function SiteHeader() {
               {/* 4. RESEARCH & PROFILES */}
               <div className="space-y-2">
                 <h4 className="text-[10px] font-mono uppercase tracking-widest text-[#C9A227]">
-                  RESEARCH & INSTITUTIONAL
+                  CERCETARE &amp; INSTITUȚIONAL
                 </h4>
                 <div className="space-y-1.5">
                   <Link
@@ -1256,7 +1233,7 @@ export function SiteHeader() {
                     onClick={() => setMobileMenuOpen(false)}
                     className="p-3 bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl text-xs font-medium text-white flex items-center justify-between min-h-[44px]"
                   >
-                    <span>Research Request Desk</span>
+                    <span>Birou Solicitare Cercetare</span>
                     <span className="text-xs text-[#C9A227]">→</span>
                   </Link>
                   <Link
@@ -1264,7 +1241,7 @@ export function SiteHeader() {
                     onClick={() => setMobileMenuOpen(false)}
                     className="p-3 bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl text-xs font-medium text-white flex items-center justify-between min-h-[44px]"
                   >
-                    <span>About Cristian Văduva</span>
+                    <span>Despre Cristian Văduva</span>
                     <span className="text-xs text-[#C9A227]">→</span>
                   </Link>
                   <Link
@@ -1272,7 +1249,7 @@ export function SiteHeader() {
                     onClick={() => setMobileMenuOpen(false)}
                     className="p-3 bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl text-xs font-medium text-white flex items-center justify-between min-h-[44px]"
                   >
-                    <span>About AiXLuxury</span>
+                    <span>Despre Platforma AiXLuxury</span>
                     <span className="text-xs text-[#C9A227]">→</span>
                   </Link>
                   <Link
@@ -1280,7 +1257,7 @@ export function SiteHeader() {
                     onClick={() => setMobileMenuOpen(false)}
                     className="p-3 bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl text-xs font-medium text-white flex items-center justify-between min-h-[44px]"
                   >
-                    <span>Work With Us</span>
+                    <span>Parteneriate &amp; Colaborare</span>
                     <span className="text-xs text-[#C9A227]">→</span>
                   </Link>
                 </div>
@@ -1302,7 +1279,7 @@ export function SiteHeader() {
             <svg className="w-5 h-5 mb-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
             </svg>
-            <span className="text-[9px] font-medium tracking-tight">Home</span>
+            <span className="text-[9px] font-medium tracking-tight">Acasă</span>
           </Link>
 
           <Link
@@ -1314,7 +1291,7 @@ export function SiteHeader() {
             <svg className="w-5 h-5 mb-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5m0 0h4m-4 0V11m0 0h4m-4 0H7" />
             </svg>
-            <span className="text-[9px] font-medium tracking-tight">Projects</span>
+            <span className="text-[9px] font-medium tracking-tight">Proiecte</span>
           </Link>
 
           <Link
@@ -1326,7 +1303,7 @@ export function SiteHeader() {
             <svg className="w-5 h-5 mb-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
             </svg>
-            <span className="text-[9px] font-medium tracking-tight">Knowledge</span>
+            <span className="text-[9px] font-medium tracking-tight">Normative</span>
           </Link>
 
           <Link
@@ -1338,18 +1315,18 @@ export function SiteHeader() {
             <svg className="w-5 h-5 mb-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
-            <span className="text-[9px] font-medium tracking-tight">Search</span>
+            <span className="text-[9px] font-medium tracking-tight">Căutare</span>
           </Link>
 
           <button
             onClick={() => setMobileMenuOpen(true)}
-            aria-label="Open navigation menu"
+            aria-label="Deschide meniul de navigare"
             className="flex flex-col items-center justify-center py-1.5 rounded-lg text-[#888888] active:text-white transition-colors min-h-[48px]"
           >
             <svg className="w-5 h-5 mb-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
             </svg>
-            <span className="text-[9px] font-medium tracking-tight">Menu</span>
+            <span className="text-[9px] font-medium tracking-tight">Meniu</span>
           </button>
         </div>
       </div>

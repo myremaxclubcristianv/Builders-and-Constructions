@@ -24,6 +24,7 @@ export default async function CityDetailPage({ params }: { params: Promise<{ slu
   const activeProjects = cityProjects.filter(p => p.status === 'under_construction');
   const completedProjects = cityProjects.filter(p => p.status === 'completed');
   const upcomingProjects = cityProjects.filter(p => p.status === 'upcoming');
+  const partiallyDeliveredProjects = cityProjects.filter(p => p.status === 'partially_delivered');
 
   const developerSlugs = Array.from(new Set(cityProjects.map(p => p.developer_slug)));
   const cityDevelopers = realCompaniesDataset.filter(c => developerSlugs.includes(c.slug));
@@ -96,6 +97,12 @@ export default async function CityDetailPage({ params }: { params: Promise<{ slu
                 <span style={{ fontSize: 11, color: '#888', fontWeight: 700 }}>DELIVERED</span>
                 <div style={{ fontSize: 24, fontWeight: 800, color: '#fff' }}>{completedProjects.length}</div>
               </div>
+              {partiallyDeliveredProjects.length > 0 && (
+                <div style={{ background: '#141715', padding: '12px 20px', border: '1px solid #262927', borderRadius: 4 }}>
+                  <span style={{ fontSize: 11, color: '#888', fontWeight: 700 }}>PHASED DELIVERY</span>
+                  <div style={{ fontSize: 24, fontWeight: 800, color: '#93c5fd' }}>{partiallyDeliveredProjects.length}</div>
+                </div>
+              )}
               <div style={{ background: '#141715', padding: '12px 20px', border: '1px solid #262927', borderRadius: 4 }}>
                 <span style={{ fontSize: 11, color: '#888', fontWeight: 700 }}>ACTIVE DEVELOPERS</span>
                 <div style={{ fontSize: 24, fontWeight: 800, color: '#fff' }}>{cityDevelopers.length}</div>
@@ -201,6 +208,36 @@ export default async function CityDetailPage({ params }: { params: Promise<{ slu
                   <div className="card-meta">
                     <span>{p.project_type}</span>
                     {p.actual_delivery && <span>Delivered {p.actual_delivery}</span>}
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* Partially Delivered / Phased Projects */}
+        {partiallyDeliveredProjects.length > 0 && (
+          <section className="section shell" style={{ borderTop: '1px solid var(--line)', paddingTop: 48 }}>
+            <div className="section-head">
+              <div>
+                <div className="eyebrow" style={{ color: '#93c5fd' }}>Phased Delivery</div>
+                <h2>PARTIALLY DELIVERED IN {loc.name.toUpperCase()}</h2>
+              </div>
+            </div>
+            <div className="project-grid">
+              {partiallyDeliveredProjects.map(p => (
+                <Link
+                  href={`/projects/${p.slug}`}
+                  className="project-card"
+                  key={p.slug}
+                  style={{ '--bg': `url('${p.image}')` } as React.CSSProperties}
+                >
+                  <span className="tag" style={{ background: '#2563eb', color: '#fff' }}>Partially Delivered</span>
+                  <h3>{p.name}</h3>
+                  <p>{p.developer_name}</p>
+                  <div className="card-meta">
+                    <span>{p.project_type}</span>
+                    {p.current_progress_percent && <span>{p.current_progress_percent}% Progress</span>}
                   </div>
                 </Link>
               ))}

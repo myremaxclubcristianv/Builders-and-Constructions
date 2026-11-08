@@ -154,25 +154,25 @@ export const realCompaniesDataset: RealCompany[] = [
     "type": "architecture",
     "location": "Bucharest · Sector 1",
     "location_slug": "bucharest-sector-1",
-    "headquarters": "Bucharest, Romania",
-    "description": "Urban planning and architecture studio specialized in city masterplanning, public plazas, and residential zoning.",
+    "headquarters": "București, România",
+    "description": "Birou de arhitectură și planificare urbană din București axat pe consultanță de urbanism și proiectare rezidențială.",
     "website": "https://bcaurban.ro",
     "founded_year": 2011,
-    "verification_level": "OFFICIAL_VERIFIED",
+    "verification_level": "OFFICIAL_CORPORATE_VERIFIED",
     "specializations": [
-      "City Zoning",
-      "Urban Masterplanning"
+      "Urbanism",
+      "Masterplanning"
     ],
     "services": [
-      "Urban Architecture"
+      "Arhitectură și Urbanism"
     ],
     "markets": [
-      "Bucharest",
+      "București",
       "Ilfov"
     ],
     "certifications": [
-      "OAR Member",
-      "RUR Member"
+      "Membru OAR",
+      "Membru RUR"
     ],
     "projects_count": 9,
     "active_projects_count": 3,
@@ -9554,10 +9554,10 @@ export const realProjectsDataset: RealProject[] = [
     "current_progress_percent": 100,
     "actual_delivery": "2024-07-15",
     "investment_eur": 500000000,
-    "investment_label": "€500.0M EUR",
+    "investment_label": "€500.0M EUR (Inclus în Contractul Principal Pod Brăila — Exclus din CAPEX Net)",
     "span_length_m": 1974,
     "infrastructure_length_km": 21.5,
-    "description": "21.5 km of high-capacity express road connections and viaducts linking the Brăila Golden Gate suspension bridge to Măcin and Tulcea.",
+    "description": "21,5 km de drumuri de legătură expres și viaducte ce leagă Podul Brăila de Măcin și Tulcea. Lucrările fac parte integrantă din contractul global CNAIR și nu constituie o finanțare separată peste cei 500M EUR ai podului.",
     "image": "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=85&pid=podul-braila-connectors",
     "is_featured": true,
     "verification_status": "VERIFIED",
@@ -9976,7 +9976,7 @@ export const realProjectsDataset: RealProject[] = [
     "current_progress_percent": 100,
     "actual_delivery": "2024-06-30",
     "investment_eur": 90000000,
-    "investment_label": "€90.0M EUR",
+    "investment_label": "€90.0M EUR (Fază livrată integrată în Masterplanul total de €200M)",
     "surface_area_sqm": 45000,
     "unit_count": 315,
     "architect_name": "Chapman Taylor Romania",
@@ -10336,12 +10336,12 @@ export const realProjectsDataset: RealProject[] = [
     "current_progress_percent": 100,
     "actual_delivery": "2023-07-06",
     "investment_eur": 500000000,
-    "investment_label": "€500.0M EUR",
+    "investment_label": "€500.0M EUR (Înregistrare Redundantă a Contractului Principal Pod Brăila — Exclus din CAPEX Net)",
     "span_length_m": 1974,
     "infrastructure_length_km": 1.974,
     "contractor_name": "Webuild / Astaldi Romania",
     "contractor_slug": "webuild-romania",
-    "description": "Third-largest suspension bridge in Europe (1,974m length, 112m towers) connecting Brăila with Tulcea and Dobrogea across the Danube.",
+    "description": "Al treilea pod suspendat ca mărime din Europa (1.974m lungime, 112m înălțimea turnurilor) peste Dunăre între Brăila și Tulcea. Înregistrare duplicat de portofoliu constructor pentru contractul canonic contabilizat la slug-ul podul-suspendat-braila.",
     "image": "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=85&pid=podul-suspendat-braila-webuild",
     "is_featured": true,
     "verification_status": "VERIFIED",
@@ -11349,11 +11349,11 @@ export const realProjectsDataset: RealProject[] = [
     "current_progress_percent": 55,
     "estimated_completion": "2026-06-30",
     "investment_eur": 200000000,
-    "investment_label": "€200.0M EUR",
+    "investment_label": "€200.0M EUR (Masterplan total multianual — include Faza 1 de €90M)",
     "surface_area_sqm": 350000,
     "unit_count": 1500,
     "floors": "GF + 11F",
-    "description": "Brownfield urban regeneration of former Tomiris textile plant into 1,500 apartments, 100,000 sqm GLA Class A office space, and 10,000 sqm car-free green park.",
+    "description": "Regenerare urbană brownfield dezvoltată de Prime Kapital pe fosta platformă Tomiris: 1.500 apartamente, 100.000 m² birouri Clasa A și parc verde. Bugetul total de masterplan include Faza 1 (€90M livrat) și fazele viitoare în execuție/planificare (€110M).",
     "image": "https://images.unsplash.com/photo-1509749837427-ac94a2553d0e?auto=format&fit=crop&w=1200&q=85&pid=silk-district-iasi",
     "is_featured": true,
     "verification_status": "VERIFIED",
@@ -11593,12 +11593,11 @@ export const realProjectsDataset: RealProject[] = [
     "longitude": 25.82,
     "project_type": "Industrial/Logistics",
     "status": "under_construction",
-    "status_display": "Operational / Expanding",
+    "status_display": "Operațional / În Extindere",
     "current_stage": "structure",
     "stage_source": "https://ctp.eu/romania/ctpark-bucharest-west/",
     "stage_last_verified": "2026-08-24",
-    "current_progress_percent": 90,
-    "estimated_completion": "2026-11-30",
+    "estimated_completion": "T4 2026 (Fază Extindere — Estimare)",
     "investment_eur": 500000000,
     "investment_label": "€500.0M EUR",
     "surface_area_sqm": 850000,
@@ -11609,8 +11608,8 @@ export const realProjectsDataset: RealProject[] = [
     "floors": "GF High Bay",
     "contractor_name": "Bog'Art",
     "contractor_slug": "bog-art",
-    "description": "Largest industrial and logistics park in Central and Eastern Europe spanning over 300 hectares with 850,000 sqm GLA masterplan capacity (over 800,000 sqm operational), solar rooftop installations, and Clubhaus community hub.",
-    "image": "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1200&q=85&pid=ctpark-bucharest-west",
+    "description": "Cel mai mare parc industrial și logistic din Europa Centrală și de Est, dezvoltat pe cca. 300 de hectare, cu 800.000 m² GLA operaționali construiți și o capacitate totală de masterplan proiectată la 850.000 m² GLA.",
+    "image": "",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 95,
@@ -11631,9 +11630,9 @@ export const realProjectsDataset: RealProject[] = [
       }
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
-    "image_alt": "CTPark Bucharest West master logistics park verified photograph",
-    "image_source_name": "Official Disclosure",
-    "image_verified": true,
+    "image_alt": "CTPark Bucharest West — Fotografie indisponibilă în surse oficiale",
+    "image_source_name": "Nedivulgat în depuneri publice",
+    "image_verified": false,
     "image_relevance": "PROJECT_SPECIFIC"
   },
   {
@@ -11725,6 +11724,110 @@ export const realProjectsDataset: RealProject[] = [
   }
 ];
 
+export interface HubStatistic {
+  name: string;
+  query: string;
+  slug: string;
+  county: string;
+  indexedCount: number;
+  activeCount: number;
+  deliveredCount: number;
+  partiallyDeliveredCount: number;
+  statusLabel: string;
+}
+
+export interface CanonicalCapexSummary {
+  grossCapexEur: number;
+  grossCapexLabel: string;
+  overlaps: {
+    brailaWebuildDuplicateEur: number;
+    brailaConnectorsIncludedEur: number;
+    silkDistrictPhase1IncludedEur: number;
+    totalOverlapsEur: number;
+  };
+  netReconciledCapexEur: number;
+  netReconciledCapexLabel: string;
+  publicInfrastructureGrossEur: number;
+  publicInfrastructureNetEur: number;
+  privateRealEstateGrossEur: number;
+  privateRealEstateNetEur: number;
+}
+
+export function getCanonicalCapexSummary(): CanonicalCapexSummary {
+  const grossCapexEur = realProjectsDataset.reduce((sum, p) => sum + (p.investment_eur || 0), 0);
+  
+  // Suprapuneri documentate eliminate:
+  // 1. Podul Brăila Webuild (înregistrare redundantă pentru același pod): €500M
+  const brailaWebuildDuplicateEur = 500_000_000;
+  // 2. Podul Brăila Connectors (drumuri de legătură de 21,5 km incluse în contractul global CNAIR de €500M): €500M
+  const brailaConnectorsIncludedEur = 500_000_000;
+  // 3. Silk District Iași Faza 1 (investiție de €90M livrată, cuprinsă în masterplanul total anunțat de €200M): €90M
+  const silkDistrictPhase1IncludedEur = 90_000_000;
+
+  const totalOverlapsEur = brailaWebuildDuplicateEur + brailaConnectorsIncludedEur + silkDistrictPhase1IncludedEur;
+  const netReconciledCapexEur = grossCapexEur - totalOverlapsEur;
+
+  const publicInfrastructureGrossEur = 5_515_000_000;
+  const publicInfrastructureNetEur = publicInfrastructureGrossEur - brailaWebuildDuplicateEur - brailaConnectorsIncludedEur; // €4.515 MLD
+
+  const privateRealEstateGrossEur = 6_433_000_000;
+  const privateRealEstateNetEur = privateRealEstateGrossEur - silkDistrictPhase1IncludedEur; // €6.343 MLD
+
+  return {
+    grossCapexEur,
+    grossCapexLabel: `€${(grossCapexEur / 1_000_000_000).toFixed(2)} MLD. EUR`,
+    overlaps: {
+      brailaWebuildDuplicateEur,
+      brailaConnectorsIncludedEur,
+      silkDistrictPhase1IncludedEur,
+      totalOverlapsEur
+    },
+    netReconciledCapexEur,
+    netReconciledCapexLabel: `€${(netReconciledCapexEur / 1_000_000_000).toFixed(2)} MLD. EUR`,
+    publicInfrastructureGrossEur,
+    publicInfrastructureNetEur,
+    privateRealEstateGrossEur,
+    privateRealEstateNetEur
+  };
+}
+
+export function getVerifiedHubStatistics(): HubStatistic[] {
+  const hubs = [
+    { name: 'București & Ilfov', query: 'bucharest', slug: 'bucharest', county: 'București / Ilfov', match: (p: any) => /bucure|ilfov|bucharest/i.test(p.location) || /bucure|ilfov|bucharest/i.test(p.county || '') },
+    { name: 'Cluj-Napoca', query: 'cluj', slug: 'cluj-napoca', county: 'Cluj', match: (p: any) => /cluj/i.test(p.location) || /cluj/i.test(p.county || '') },
+    { name: 'Timișoara', query: 'timisoara', slug: 'timisoara', county: 'Timiș', match: (p: any) => /timi/i.test(p.location) || /timi/i.test(p.county || '') },
+    { name: 'Iași', query: 'iasi', slug: 'iasi', county: 'Iași', match: (p: any) => /iași|iasi/i.test(p.location) || /iași|iasi/i.test(p.county || '') },
+    { name: 'Brașov', query: 'brasov', slug: 'brasov', county: 'Brașov', match: (p: any) => /brașov|brasov/i.test(p.location) || /brașov|brasov/i.test(p.county || '') },
+    { name: 'Constanța', query: 'constanta', slug: 'constanta', county: 'Constanța', match: (p: any) => /constan/i.test(p.location) || /constan/i.test(p.county || '') },
+  ];
+
+  return hubs.map(h => {
+    const matching = realProjectsDataset.filter(h.match);
+    const active = matching.filter(p => p.status === 'under_construction');
+    const delivered = matching.filter(p => p.status === 'completed');
+    const partiallyDelivered = matching.filter(p => p.status === 'partially_delivered');
+
+    let label = `${active.length} Șantiere Active`;
+    if (matching.length === 0) {
+      label = 'În curs de indexare';
+    } else if (partiallyDelivered.length > 0) {
+      label = `${active.length} Activ · ${delivered.length} Livrate · ${partiallyDelivered.length} Fază Livrată`;
+    }
+
+    return {
+      name: h.name,
+      query: h.query,
+      slug: h.slug,
+      county: h.county,
+      indexedCount: matching.length,
+      activeCount: active.length,
+      deliveredCount: delivered.length,
+      partiallyDeliveredCount: partiallyDelivered.length,
+      statusLabel: label
+    };
+  });
+}
+
 export const realLocationsDataset: RealLocation[] = [
   {
     "id": "loc-1",
@@ -11773,7 +11876,7 @@ export const realLocationsDataset: RealLocation[] = [
     "city": "Brașov",
     "county": "Brașov",
     "projects_count": 4,
-    "active_sites_count": 2,
+    "active_sites_count": 1,
     "developers_count": 4
   },
   {

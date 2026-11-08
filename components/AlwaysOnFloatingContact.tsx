@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-export function AlwaysOnFloatingContact() {
+export function AlwaysOnFloatingContact({ visible = true }: { visible?: boolean }) {
   const handleOpenContact = () => {
     if (typeof window !== 'undefined') {
       window.dispatchEvent(
@@ -15,12 +15,16 @@ export function AlwaysOnFloatingContact() {
 
   return (
     <aside
-      aria-label="Always-on contact assistance"
-      className="fixed bottom-[calc(4.75rem+env(safe-area-inset-bottom))] lg:bottom-[calc(1.75rem+env(safe-area-inset-bottom))] right-[calc(1rem+env(safe-area-inset-right))] z-40 print:hidden"
+      aria-label="Asistență contact rapid"
+      className={`fixed bottom-[calc(4.75rem+env(safe-area-inset-bottom))] lg:bottom-[calc(1.75rem+env(safe-area-inset-bottom))] right-[calc(1rem+env(safe-area-inset-right))] z-40 print:hidden transition-all duration-300 ease-out motion-reduce:transition-none ${
+        visible
+          ? 'translate-y-0 opacity-100 pointer-events-auto'
+          : 'translate-y-16 opacity-0 pointer-events-none'
+      }`}
     >
       <button
         onClick={handleOpenContact}
-        aria-label="Open contact desk"
+        aria-label="Deschide biroul de contact rapid"
         className="group relative flex items-center gap-2.5 px-3.5 py-2.5 sm:px-4 sm:py-3 bg-[#0E100F]/95 hover:bg-[#151816] text-white border border-[#C9A227]/50 hover:border-[#C9A227] rounded-full shadow-[0_8px_30px_rgb(0,0,0,0.6)] backdrop-blur-md transition-all duration-300 hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-[#C9A227] focus:ring-offset-2 focus:ring-offset-[#050505] cursor-pointer"
       >
         <span className="relative flex h-2.5 w-2.5">

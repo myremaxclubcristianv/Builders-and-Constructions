@@ -8,11 +8,15 @@ const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 export async function POST(request: NextRequest) {
   try {
     // 1. Rate limiting
-    const rateLimit = checkRateLimit(request, 'newsletter_subscribe', { maxRequests: 5, windowMs: 10 * 60 * 1000, failClosed: true });
+    const rateLimit = await checkRateLimit(request, 'newsletter_subscribe', { maxRequests: 5, windowMs: 10 * 60 * 1000, failClosed: true });
     if (!rateLimit.allowed) {
+      const status = rateLimit.status || 429;
+      const error = status === 503
+        ? 'Subscription service temporarily unavailable. Please try again later.'
+        : 'Too many requests. Please try again shortly.';
       return NextResponse.json(
-        { ok: false, error: 'Too many requests. Please try again shortly.' },
-        { status: 429, headers: { 'Retry-After': String(rateLimit.retryAfterSeconds) } }
+        { ok: false, error },
+        { status, headers: { 'Retry-After': String(rateLimit.retryAfterSeconds) } }
       );
     }
 

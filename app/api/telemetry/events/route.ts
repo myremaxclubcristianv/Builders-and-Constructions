@@ -7,16 +7,18 @@ const MAX_PAYLOAD_BYTES = 64 * 1024; // 64 KB
 export async function POST(request: Request) {
   try {
     // 1. Rate Limiting Protection (120 telemetry pings / minute per client IP)
-    const rateLimit = checkRateLimit(request, "telemetry_events", {
+    const rateLimit = await checkRateLimit(request, "telemetry_events", {
       maxRequests: 120,
-      windowMs: 60 * 1000
+      windowMs: 60 * 1000,
+      failClosed: false
     });
 
     if (!rateLimit.allowed) {
+      const status = rateLimit.status || 429;
       return NextResponse.json(
-        { ok: false, error: "Rate limit exceeded." },
+        { ok: false, error: status === 503 ? "Service temporarily unavailable." : "Rate limit exceeded." },
         {
-          status: 429,
+          status,
           headers: { "Retry-After": String(rateLimit.retryAfterSeconds) }
         }
       );

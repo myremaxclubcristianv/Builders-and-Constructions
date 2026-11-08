@@ -67,7 +67,7 @@ export function middleware(request: NextRequest) {
     style-src 'self' 'unsafe-inline';
     img-src 'self' data: blob: https://images.unsplash.com https://i.ytimg.com;
     font-src 'self' data:;
-    connect-src 'self' https://*.supabase.co https://api.telegram.org;
+    connect-src 'self' https://*.supabase.co;
     frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com;
     frame-ancestors 'self';
     object-src 'none';

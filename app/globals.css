@@ -25,6 +25,11 @@ body { margin: 0; background: var(--ink); color: var(--paper); font-family: Manr
 a { text-decoration: none; color: inherit; }
 button, input, select, textarea { font: inherit; }
 
+/* Ensure anchor navigation stops cleanly below fixed header (~116px) */
+[id], section[id], h1, h2, h3, h4 {
+  scroll-margin-top: 130px;
+}
+
 .shell { max-width: 1440px; margin: 0 auto; padding: 0 38px; }
 .eyebrow { font: 500 10px 'DM Mono', monospace; letter-spacing: .18em; color: var(--accent); text-transform: uppercase; }
 .rule { height: 1px; background: var(--line); }

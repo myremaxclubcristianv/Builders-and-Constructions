@@ -26,12 +26,16 @@ const validSources = [
 
 export async function POST(request: Request) {
   try {
-    const rateLimit = checkRateLimit(request, 'inquiries', { maxRequests: 5, windowMs: 10 * 60 * 1000 });
+    const rateLimit = await checkRateLimit(request, 'inquiries', { maxRequests: 5, windowMs: 10 * 60 * 1000, failClosed: true });
     if (!rateLimit.allowed) {
+      const status = rateLimit.status || 429;
+      const error = status === 503
+        ? 'Service temporarily unavailable. Please try again later.'
+        : 'Too many requests. Please try again later.';
       return NextResponse.json(
-        { ok: false, error: 'Too many requests. Please try again later.' },
+        { ok: false, error },
         {
-          status: 429,
+          status,
           headers: {
             'Retry-After': String(rateLimit.retryAfterSeconds)
           }

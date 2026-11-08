@@ -2,10 +2,10 @@ import test, { describe } from 'node:test';
 import assert from 'node:assert';
 import fs from 'node:fs';
 import path from 'node:path';
-import { realProjectsDataset, realCompaniesDataset } from '../lib/real-romanian-data.ts';
-import { checkAuthLockout, recordAuthFailure, clearAuthFailures, getClientIp, checkRateLimit } from '../lib/rate-limit.ts';
-import { DICTIONARY } from '../lib/language-context.tsx';
-import { TECHNICAL_STANDARDS } from '../components/TechnicalCrossReference.tsx';
+import { realProjectsDataset, realCompaniesDataset } from '../lib/real-romanian-data';
+import { checkAuthLockout, recordAuthFailure, clearAuthFailures, getClientIp, checkRateLimit } from '../lib/rate-limit';
+import { DICTIONARY } from '../lib/language-context';
+import { TECHNICAL_STANDARDS } from '../components/TechnicalCrossReference';
 
 describe('PHASE 55: COMPLETE MASTER SYSTEM VERIFICATION SUITE', () => {
 

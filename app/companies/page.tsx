@@ -1,43 +1,55 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { SiteHeader } from '@/components/SiteHeader';
 import { SiteFooter } from '@/components/SiteFooter';
 import { getPublishedCompanies } from '@/lib/data';
 import { CompanyIntelligencePreview } from '@/components/CompanyIntelligencePreview';
 
-export const metadata = {
-  title: 'Companies Directory & Market Intelligence',
-  description: 'Explore verified construction companies, developers, contractors and architectural practices across Romania.'
+export const metadata: Metadata = {
+  title: 'Catalog Companii & Dosare Corporative Construcții · CONSTRUCTIONS by AiXLuxury',
+  description: 'Descoperă companiile de construcții, dezvoltatorii imobiliari, antreprenorii generali și birourile de proiectare verificate din România cu date ONRC/ANAF.',
+  alternates: {
+    canonical: 'https://constructions.cristianvaduva.com/companies'
+  },
+  openGraph: {
+    title: 'Catalog Companii & Dosare Corporative Construcții · CONSTRUCTIONS by AiXLuxury',
+    description: 'Descoperă companiile de construcții, dezvoltatorii imobiliari, antreprenorii generali și birourile de proiectare verificate din România cu date ONRC/ANAF.',
+    url: 'https://constructions.cristianvaduva.com/companies',
+    siteName: 'CONSTRUCTIONS by AiXLuxury',
+    locale: 'ro_RO',
+    type: 'website'
+  }
 };
 
 const COMPANY_TYPES = [
-  { value: '', label: 'All Company Types' },
-  { value: 'developer', label: 'Developer' },
-  { value: 'construction_company', label: 'Construction Company' },
-  { value: 'general_contractor', label: 'General Contractor' },
-  { value: 'engineering', label: 'Engineering' },
-  { value: 'architecture', label: 'Architecture' },
-  { value: 'project_management', label: 'Project Management' },
-  { value: 'specialized_contractor', label: 'Specialist Contractor' },
-  { value: 'infrastructure', label: 'Infrastructure' }
+  { value: '', label: 'Toate Tipurile' },
+  { value: 'developer', label: 'Dezvoltator Imobiliar' },
+  { value: 'construction_company', label: 'Companie de Construcții' },
+  { value: 'general_contractor', label: 'Antreprenor General' },
+  { value: 'engineering', label: 'Inginerie & Proiectare' },
+  { value: 'architecture', label: 'Arhitectură & Urbanism' },
+  { value: 'project_management', label: 'Management de Proiect' },
+  { value: 'specialized_contractor', label: 'Subantreprenor Specializat' },
+  { value: 'infrastructure', label: 'Infrastructură' }
 ];
 
 const LOCATIONS = [
-  { value: '', label: 'All Locations' },
-  { value: 'Bucharest', label: 'Bucharest' },
+  { value: '', label: 'Toate Județele / Orașele' },
+  { value: 'Bucharest', label: 'București' },
+  { value: 'Ilfov', label: 'Ilfov' },
   { value: 'Cluj', label: 'Cluj' },
   { value: 'Timiș', label: 'Timiș' },
   { value: 'Iași', label: 'Iași' },
   { value: 'Brașov', label: 'Brașov' },
-  { value: 'Constanța', label: 'Constanța' },
-  { value: 'Ilfov', label: 'Ilfov' }
+  { value: 'Constanța', label: 'Constanța' }
 ];
 
 const FRESHNESS_OPTIONS = [
-  { value: '', label: 'All Signal Freshness' },
-  { value: 'FRESH', label: 'Fresh (< 14 days)' },
-  { value: 'RECENT', label: 'Recent (< 45 days)' },
-  { value: 'AGING', label: 'Aging (< 90 days)' },
-  { value: 'STALE', label: 'Stale (>= 90 days)' }
+  { value: '', label: 'Toate Nivelurile de Actualizare' },
+  { value: 'FRESH', label: 'Recent (< 14 zile)' },
+  { value: 'RECENT', label: 'Înregistrat (< 45 zile)' },
+  { value: 'AGING', label: 'Arhivă (< 90 zile)' },
+  { value: 'STALE', label: 'Arhivă Istorică (>= 90 zile)' }
 ];
 
 export default async function Companies({
@@ -60,18 +72,18 @@ export default async function Companies({
     <div className="bg-[#050505] text-[#F3F1EB] min-h-screen">
       <SiteHeader />
 
-      <main className="pt-20">
+      <main className="pt-24">
         {/* Page Hero */}
         <section className="py-10 md:py-16 border-b border-[#1A1D1B] bg-[#0B0B0B]">
           <div className="max-w-[1440px] mx-auto px-4 md:px-8 space-y-3">
             <span className="text-[10px] font-mono uppercase tracking-widest text-[#C9A227] block">
-              Verified Corporate Intelligence
+              Intelligence Corporativ · Înregistrări Verificate
             </span>
             <h1 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
-              COMPANIES DIRECTORY ({filtered.length})
+              CATALOG COMPANII ({filtered.length})
             </h1>
             <p className="text-sm md:text-base text-[#A0A0A0] max-w-2xl leading-relaxed">
-              Discover verified Romanian developers, general contractors, structural engineers, and architectural practices with ONRC/ANAF primary-source records.
+              Descoperiți dezvoltatori, constructori generali, ingineri de structură și birouri de arhitectură din România, cu dosare documentate din registre oficiale.
             </p>
           </div>
         </section>
@@ -84,7 +96,7 @@ export default async function Companies({
                 name="q"
                 defaultValue={q}
                 className="flex-1 min-w-[200px] h-11 px-4 bg-[#111111] border border-[#1A1D1B] rounded-lg text-sm text-white placeholder-[#666666] focus:outline-none focus:border-[#C9A227]/50"
-                placeholder="Search company name, CUI, specialism..."
+                placeholder="Caută după denumire companie, CUI, specializare..."
               />
               <select
                 name="type"
@@ -124,14 +136,14 @@ export default async function Companies({
                   type="submit"
                   className="flex-1 sm:flex-none h-11 px-5 bg-[#C9A227] text-[#050505] font-mono text-xs font-bold uppercase tracking-wider rounded-lg hover:bg-[#E4C58F] active:scale-95 transition-all"
                 >
-                  Filter
+                  Filtrează
                 </button>
                 {(type || location || freshness || q) && (
                   <Link
                     href="/companies"
                     className="h-11 px-4 flex items-center justify-center border border-[#1A1D1B] text-xs font-mono text-[#888888] hover:text-white rounded-lg"
                   >
-                    Reset
+                    Resetează
                   </Link>
                 )}
               </div>
@@ -164,7 +176,11 @@ export default async function Companies({
                                 : 'bg-[#111111] text-[#888888] border-[#1A1D1B]'
                             }`}
                           >
-                            {c.signal_freshness}
+                            {c.signal_freshness === 'FRESH'
+                              ? 'ACTIVITATE RECENTĂ'
+                              : c.signal_freshness === 'RECENT'
+                              ? 'ACTUALIZAT'
+                              : 'ARHIVĂ'}
                           </span>
                         )}
                       </div>
@@ -195,19 +211,19 @@ export default async function Companies({
 
                       <div className="grid grid-cols-2 gap-3 p-3 bg-[#0B0B0B] border border-[#1A1D1B] rounded-lg text-xs font-mono">
                         <div>
-                          <span className="text-[9px] text-[#666666] uppercase block">ACTIVE PROJECTS</span>
+                          <span className="text-[9px] text-[#666666] uppercase block">PROIECTE ACTIVE</span>
                           <span className="text-white font-bold text-sm">
                             {c.active_projects_count !== null && c.active_projects_count !== undefined
                               ? c.active_projects_count
-                              : 'Not Disclosed'}
+                              : 'Nedivulgat'}
                           </span>
                         </div>
                         <div>
-                          <span className="text-[9px] text-[#666666] uppercase block">MARKET SIGNALS</span>
+                          <span className="text-[9px] text-[#666666] uppercase block">SEMNALE DE PIAȚĂ</span>
                           <span className="text-[#C9A227] font-bold text-sm">
                             {c.market_signals_count !== null && c.market_signals_count !== undefined
                               ? c.market_signals_count
-                              : 'Not Disclosed'}
+                              : 'Nedivulgat'}
                           </span>
                         </div>
                       </div>
@@ -219,7 +235,7 @@ export default async function Companies({
                         href={`/companies/${c.slug}`}
                         className="font-mono text-xs font-semibold text-[#C9A227] hover:text-[#E4C58F] tracking-wider"
                       >
-                        OPEN DOSSIER →
+                        DESCHIDE DOSAR →
                       </Link>
                     </div>
                   </div>
@@ -227,12 +243,12 @@ export default async function Companies({
               </div>
             ) : (
               <div className="py-20 text-center space-y-4">
-                <p className="text-base text-[#A0A0A0]">No verified companies match your current filter parameters.</p>
+                <p className="text-base text-[#A0A0A0]">Nicio companie verificată nu corespunde filtrelor selectate.</p>
                 <Link
                   href="/companies"
                   className="inline-block px-5 py-2.5 bg-[#C9A227] text-[#050505] font-mono text-xs font-bold uppercase tracking-wider rounded-lg"
                 >
-                  Reset Company Filters
+                  Resetează Filtrele
                 </Link>
               </div>
             )}

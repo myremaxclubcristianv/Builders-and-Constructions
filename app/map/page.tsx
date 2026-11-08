@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { SiteHeader } from '@/components/SiteHeader';
 import { SiteFooter } from '@/components/SiteFooter';
-import { realProjectsDataset, realLocationsDataset } from '@/lib/real-romanian-data';
+import { realProjectsDataset, getVerifiedHubStatistics } from '@/lib/real-romanian-data';
 import { NationalConstructionMap } from '@/components/NationalConstructionMap';
 
 export const metadata = {
@@ -15,6 +15,7 @@ export const metadata = {
 export default function ConstructionMapPage() {
   const activeUnderConstruction = realProjectsDataset.filter(p => p.status === 'under_construction');
   const completedProjects = realProjectsDataset.filter(p => p.status === 'completed');
+  const verifiedHubs = getVerifiedHubStatistics();
 
   return (
     <div className="bg-[#050505] text-[#F3F1EB] min-h-screen">
@@ -62,28 +63,23 @@ export default function ConstructionMapPage() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                {realLocationsDataset.slice(0, 12).map(loc => {
-                  const count = realProjectsDataset.filter(p => p.location.toLowerCase().includes(loc.name.toLowerCase()) || p.location.toLowerCase().includes(loc.city.toLowerCase())).length;
-                  const active = realProjectsDataset.filter(p => (p.location.toLowerCase().includes(loc.name.toLowerCase()) || p.location.toLowerCase().includes(loc.city.toLowerCase())) && p.status === 'under_construction').length;
-
-                  return (
-                    <Link
-                      key={loc.slug}
-                      href={`/cities/${loc.slug}`}
-                      className="p-4 bg-[#050505] border border-[#1A1D1B] rounded-xl hover:border-[#C9A227]/50 transition-all flex items-center justify-between group"
-                    >
-                      <div>
-                        <h3 className="text-sm font-bold text-white group-hover:text-[#C9A227] transition-colors">{loc.name}</h3>
-                        <p className="text-[11px] text-[#666666] font-mono">{loc.county} County</p>
-                      </div>
-                      <div className="text-right font-mono">
-                        <span className="text-sm font-extrabold text-[#C9A227] block">{count} Proiecte</span>
-                        <span className="text-[10px] text-[#22c55e] block">{active} Active</span>
-                      </div>
-                    </Link>
-                  );
-                })}
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                {verifiedHubs.map(hub => (
+                  <Link
+                    key={hub.slug}
+                    href={`/projects?q=${encodeURIComponent(hub.query)}`}
+                    className="p-4 bg-[#050505] border border-[#1A1D1B] rounded-xl hover:border-[#C9A227]/50 transition-all flex items-center justify-between group"
+                  >
+                    <div>
+                      <h3 className="text-sm font-bold text-white group-hover:text-[#C9A227] transition-colors">{hub.name}</h3>
+                      <p className="text-[11px] text-[#666666] font-mono">{hub.county}</p>
+                    </div>
+                    <div className="text-right font-mono">
+                      <span className="text-sm font-extrabold text-[#C9A227] block">{hub.indexedCount} Proiecte</span>
+                      <span className="text-[10px] text-[#22c55e] block">{hub.activeCount} Active</span>
+                    </div>
+                  </Link>
+                ))}
               </div>
             </div>
           </div>

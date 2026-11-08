@@ -9,7 +9,7 @@ import { VideoCard } from '@/components/VideoCard';
 import { safeJsonLdStringify } from '@/lib/sanitize';
 import { NewsletterSubscription } from '@/components/NewsletterSubscription';
 
-import { realCompaniesDataset, realProjectsDataset } from '@/lib/real-romanian-data';
+import { realCompaniesDataset, realProjectsDataset, getVerifiedHubStatistics } from '@/lib/real-romanian-data';
 
 export default async function Home() {
   const [companyList, projectList, industryData] = await Promise.all([
@@ -29,6 +29,7 @@ export default async function Home() {
   const engineerCount = realCompaniesDataset.filter(c => c.type === 'engineering' || c.type === 'structural_engineering' || c.type === 'mep').length;
   const agencyCount = realCompaniesDataset.filter(c => c.type === 'real_estate_agency').length;
   const projectCount = realProjectsDataset.length;
+  const verifiedHubStats = getVerifiedHubStatistics();
 
   const topProjectsByArea = [...projectList]
     .filter(p => p.surface_area)
@@ -43,15 +44,15 @@ export default async function Home() {
         '@id': 'https://constructions.cristianvaduva.com/#website',
         url: 'https://constructions.cristianvaduva.com',
         name: 'CONSTRUCTIONS by AiXLuxury',
-        description: 'Construction & Real Estate Intelligence for Romania',
-        inLanguage: 'en-US'
+        description: 'Platformă independentă de cercetare și inteligență de piață pentru sectorul construcțiilor din România.',
+        inLanguage: 'ro-RO'
       },
       {
         '@type': 'Organization',
         '@id': 'https://constructions.cristianvaduva.com/#organization',
         name: 'CONSTRUCTIONS by AiXLuxury',
         url: 'https://constructions.cristianvaduva.com',
-        description: 'Independent Romanian construction and real-estate market intelligence platform documenting developers, general contractors, structural engineers, and architectural practices.',
+        description: 'Platformă independentă de cercetare de piață pentru dezvoltatori, antreprenori generali, ingineri proiectanți și birouri de arhitectură din România.',
         areaServed: {
           '@type': 'Country',
           name: 'Romania'
@@ -77,18 +78,18 @@ export default async function Home() {
             <div className="max-w-3xl space-y-6 animate-fadeIn">
               <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#111111] border border-[#C9A227]/30 rounded-full text-[10px] font-mono tracking-widest text-[#C9A227] uppercase">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#C9A227] animate-pulse" />
-                Construction & Real Estate Intelligence for Romania
+                Inteligență în Construcții &amp; Real Estate pentru România
               </div>
 
               <h1 className="text-3xl sm:text-5xl md:text-7xl font-extrabold tracking-tight text-white leading-[1.05]">
-                CONSTRUCTION <br />
+                INTELIGENȚĂ ÎN CONSTRUCȚII <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-[#F3F1EB] to-[#C9A227]">
-                  INTELLIGENCE
-                </span> FOR ROMANIA
+                  PENTRU ROMÂNIA
+                </span>
               </h1>
 
               <p className="text-sm md:text-base text-[#D4D2C8] leading-relaxed max-w-2xl font-normal">
-                Platformă independentă de analiză și transparență în construcții dedicată cumpărătorilor, investitorilor instituționali, antreprenorilor generali și furnizorilor de materiale din România. Curated depth over unsupported market-wide claims.
+                Platformă independentă de analiză și transparență în construcții dedicată cumpărătorilor, investitorilor instituționali, antreprenorilor generali și furnizorilor de materiale din România. Rigoare documentară și verificare faptică, fără date speculative sau afirmații comerciale neacoperite.
               </p>
 
               <div className="flex flex-wrap items-center gap-3 pt-2">
@@ -96,19 +97,19 @@ export default async function Home() {
                   href="/projects"
                   className="px-6 py-3.5 bg-[#C9A227] text-[#050505] font-mono text-xs font-bold uppercase tracking-wider rounded-lg hover:bg-[#E4C58F] active:scale-95 transition-all text-center min-w-[140px]"
                 >
-                  Explore Projects ({projectCount})
+                  Explorează Proiecte ({projectCount})
                 </Link>
                 <Link
                   href="/companies"
                   className="px-6 py-3.5 bg-[#111111] border border-[#1A1D1B] text-white font-mono text-xs font-semibold uppercase tracking-wider rounded-lg hover:border-[#C9A227]/50 active:scale-95 transition-all text-center min-w-[140px]"
                 >
-                  Verify a Company ({companyList.length})
+                  Verifică o Companie ({companyList.length})
                 </Link>
                 <Link
                   href="/methodology"
                   className="px-4 py-3.5 text-[#C9A227] hover:text-[#E4C58F] font-mono text-xs font-medium uppercase tracking-wider transition-colors flex items-center gap-1"
                 >
-                  <span>How We Verify</span>
+                  <span>Metodologia Noastră</span>
                   <span>→</span>
                 </Link>
               </div>
@@ -175,10 +176,10 @@ export default async function Home() {
           <div className="max-w-[1440px] mx-auto px-4 md:px-8 space-y-4">
             <div className="flex items-center justify-between">
               <span className="text-[10px] font-mono uppercase tracking-widest text-[#C9A227]">
-                THE CONSTRUCTION & REAL ESTATE MARKET
+                PIAȚA DE CONSTRUCȚII &amp; REAL ESTATE
               </span>
               <span className="text-[10px] font-mono text-[#888888]">
-                {realCompaniesDataset.length} VERIFIED ENTITIES INDEXED
+                {realCompaniesDataset.length} ENTITĂȚI VERIFICATE INDEXATE
               </span>
             </div>
 
@@ -187,10 +188,10 @@ export default async function Home() {
                 href="/developers"
                 className="p-4 bg-[#111111] border border-[#1A1D1B] rounded-xl flex flex-col justify-between hover:border-[#C9A227]/50 transition-all group"
               >
-                <span className="text-[10px] font-mono text-[#888888] uppercase tracking-wider group-hover:text-[#C9A227]">DEVELOPERS</span>
+                <span className="text-[10px] font-mono text-[#888888] uppercase tracking-wider group-hover:text-[#C9A227]">DEZVOLTATORI</span>
                 <div className="flex items-baseline gap-2 mt-2">
                   <span className="text-2xl sm:text-3xl font-extrabold text-white font-mono">{devCount}</span>
-                  <span className="text-[10px] font-mono text-[#C9A227]">DEV →</span>
+                  <span className="text-[10px] font-mono text-[#C9A227]">DEZV →</span>
                 </div>
               </Link>
 
@@ -198,10 +199,10 @@ export default async function Home() {
                 href="/contractors"
                 className="p-4 bg-[#111111] border border-[#1A1D1B] rounded-xl flex flex-col justify-between hover:border-[#C9A227]/50 transition-all group"
               >
-                <span className="text-[10px] font-mono text-[#888888] uppercase tracking-wider group-hover:text-[#C9A227]">CONTRACTORS</span>
+                <span className="text-[10px] font-mono text-[#888888] uppercase tracking-wider group-hover:text-[#C9A227]">CONSTRUCTORI</span>
                 <div className="flex items-baseline gap-2 mt-2">
                   <span className="text-2xl sm:text-3xl font-extrabold text-white font-mono">{contractorCount}</span>
-                  <span className="text-[10px] font-mono text-[#C9A227]">BUILD →</span>
+                  <span className="text-[10px] font-mono text-[#C9A227]">CONSTR →</span>
                 </div>
               </Link>
 
@@ -209,10 +210,10 @@ export default async function Home() {
                 href="/architects"
                 className="p-4 bg-[#111111] border border-[#1A1D1B] rounded-xl flex flex-col justify-between hover:border-[#C9A227]/50 transition-all group"
               >
-                <span className="text-[10px] font-mono text-[#888888] uppercase tracking-wider group-hover:text-[#C9A227]">ARCHITECTS</span>
+                <span className="text-[10px] font-mono text-[#888888] uppercase tracking-wider group-hover:text-[#C9A227]">ARHITECȚI</span>
                 <div className="flex items-baseline gap-2 mt-2">
                   <span className="text-2xl sm:text-3xl font-extrabold text-white font-mono">{architectCount}</span>
-                  <span className="text-[10px] font-mono text-[#C9A227]">DESIGN →</span>
+                  <span className="text-[10px] font-mono text-[#C9A227]">PROIECT →</span>
                 </div>
               </Link>
 
@@ -220,10 +221,10 @@ export default async function Home() {
                 href="/engineers"
                 className="p-4 bg-[#111111] border border-[#1A1D1B] rounded-xl flex flex-col justify-between hover:border-[#C9A227]/50 transition-all group"
               >
-                <span className="text-[10px] font-mono text-[#888888] uppercase tracking-wider group-hover:text-[#C9A227]">ENGINEERS</span>
+                <span className="text-[10px] font-mono text-[#888888] uppercase tracking-wider group-hover:text-[#C9A227]">INGINERI</span>
                 <div className="flex items-baseline gap-2 mt-2">
                   <span className="text-2xl sm:text-3xl font-extrabold text-white font-mono">{engineerCount}</span>
-                  <span className="text-[10px] font-mono text-[#C9A227]">CONSULT →</span>
+                  <span className="text-[10px] font-mono text-[#C9A227]">ING →</span>
                 </div>
               </Link>
 
@@ -231,10 +232,10 @@ export default async function Home() {
                 href="/agencies"
                 className="p-4 bg-[#111111] border border-[#1A1D1B] rounded-xl flex flex-col justify-between hover:border-[#C9A227]/50 transition-all group"
               >
-                <span className="text-[10px] font-mono text-[#888888] uppercase tracking-wider group-hover:text-[#C9A227]">AGENCIES</span>
+                <span className="text-[10px] font-mono text-[#888888] uppercase tracking-wider group-hover:text-[#C9A227]">AGENȚII</span>
                 <div className="flex items-baseline gap-2 mt-2">
                   <span className="text-2xl sm:text-3xl font-extrabold text-white font-mono">{agencyCount}</span>
-                  <span className="text-[10px] font-mono text-[#C9A227]">ADVISORY →</span>
+                  <span className="text-[10px] font-mono text-[#C9A227]">CONSULT →</span>
                 </div>
               </Link>
 
@@ -242,10 +243,10 @@ export default async function Home() {
                 href="/projects"
                 className="p-4 bg-[#111111] border border-[#1A1D1B] rounded-xl flex flex-col justify-between hover:border-[#C9A227]/50 transition-all group"
               >
-                <span className="text-[10px] font-mono text-[#888888] uppercase tracking-wider group-hover:text-[#C9A227]">PROJECTS</span>
+                <span className="text-[10px] font-mono text-[#888888] uppercase tracking-wider group-hover:text-[#C9A227]">PROIECTE</span>
                 <div className="flex items-baseline gap-2 mt-2">
                   <span className="text-2xl sm:text-3xl font-extrabold text-white font-mono">{projectCount}</span>
-                  <span className="text-[10px] font-mono text-[#C9A227]">SITES →</span>
+                  <span className="text-[10px] font-mono text-[#C9A227]">ȘANTIERE →</span>
                 </div>
               </Link>
             </div>
@@ -258,14 +259,14 @@ export default async function Home() {
             <div className="flex items-center justify-between border-b border-[#1A1D1B] pb-3">
               <div>
                 <span className="text-[10px] font-mono uppercase tracking-widest text-[#C9A227] block">
-                  Market Dashboard
+                  Panou de Piață
                 </span>
                 <h2 className="text-lg md:text-2xl font-bold text-white tracking-tight mt-0.5">
-                  DOCUMENTED MARKET METRICS
+                  METRICI DE PIAȚĂ DOCUMENTATE
                 </h2>
               </div>
               <Link href="/rankings" className="text-xs font-mono text-[#C9A227] hover:underline">
-                Full Rankings →
+                Clasament Complet →
               </Link>
             </div>
 
@@ -273,7 +274,7 @@ export default async function Home() {
               {/* Top Projects by Surface Area */}
               <div className="p-5 bg-[#111111] border border-[#1A1D1B] rounded-xl space-y-3">
                 <span className="text-[10px] font-mono uppercase text-[#888888] tracking-widest block">
-                  LARGEST DOCUMENTED PROJECTS (BUILT AREA SQM)
+                  CELE MAI MARI PROIECTE INDEXATE (SUPRAFAȚĂ CONSTRUITĂ)
                 </span>
                 <div className="space-y-2">
                   {topProjectsByArea.map((p, idx) => (
@@ -286,7 +287,7 @@ export default async function Home() {
                       </div>
                       <div className="text-right shrink-0">
                         <span className="font-mono font-bold text-[#F3F1EB]">
-                          {p.surface_area ? `${p.surface_area.toLocaleString()} m²` : 'NOT DISCLOSED'}
+                          {p.surface_area ? `${p.surface_area.toLocaleString()} m²` : 'NEDIVULGAT OFICIAL'}
                         </span>
                         <span className="block text-[9px] font-mono text-[#888888]">{p.location}</span>
                       </div>
@@ -298,25 +299,19 @@ export default async function Home() {
               {/* Active Regional Hubs */}
               <div className="p-5 bg-[#111111] border border-[#1A1D1B] rounded-xl space-y-3">
                 <span className="text-[10px] font-mono uppercase text-[#888888] tracking-widest block">
-                  ACTIVE REGIONAL DEVELOPMENT HUBS
+                  POLI REGIONALI DE DEZVOLTARE ACTIVI
                 </span>
                 <div className="grid grid-cols-2 gap-2.5">
-                  <Link href="/cities/bucharest" className="p-3 bg-[#0B0B0B] border border-[#1A1D1B] rounded-lg hover:border-[#C9A227]/50 transition-all flex flex-col justify-between">
-                    <span className="text-xs font-bold text-white">Bucharest</span>
-                    <span className="text-[10px] font-mono text-[#C9A227] mt-1">28 INDEXED PROJECTS →</span>
-                  </Link>
-                  <Link href="/cities/cluj-napoca" className="p-3 bg-[#0B0B0B] border border-[#1A1D1B] rounded-lg hover:border-[#C9A227]/50 transition-all flex flex-col justify-between">
-                    <span className="text-xs font-bold text-white">Cluj-Napoca</span>
-                    <span className="text-[10px] font-mono text-[#C9A227] mt-1">6 INDEXED PROJECTS →</span>
-                  </Link>
-                  <Link href="/cities/timisoara" className="p-3 bg-[#0B0B0B] border border-[#1A1D1B] rounded-lg hover:border-[#C9A227]/50 transition-all flex flex-col justify-between">
-                    <span className="text-xs font-bold text-white">Timișoara</span>
-                    <span className="text-[10px] font-mono text-[#C9A227] mt-1">5 INDEXED PROJECTS →</span>
-                  </Link>
-                  <Link href="/cities/iasi" className="p-3 bg-[#0B0B0B] border border-[#1A1D1B] rounded-lg hover:border-[#C9A227]/50 transition-all flex flex-col justify-between">
-                    <span className="text-xs font-bold text-white">Iași</span>
-                    <span className="text-[10px] font-mono text-[#C9A227] mt-1">4 INDEXED PROJECTS →</span>
-                  </Link>
+                  {verifiedHubStats.slice(0, 4).map(hub => (
+                    <Link
+                      key={hub.slug}
+                      href={`/cities/${hub.slug}`}
+                      className="p-3 bg-[#0B0B0B] border border-[#1A1D1B] rounded-lg hover:border-[#C9A227]/50 transition-all flex flex-col justify-between"
+                    >
+                      <span className="text-xs font-bold text-white">{hub.name}</span>
+                      <span className="text-[10px] font-mono text-[#C9A227] mt-1">{hub.indexedCount} PROIECTE INDEXATE →</span>
+                    </Link>
+                  ))}
                 </div>
               </div>
             </div>
@@ -329,14 +324,14 @@ export default async function Home() {
             <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
               <div>
                 <span className="text-[10px] font-mono uppercase tracking-widest text-[#C9A227] block mb-1">
-                  Project Dossiers
+                  Dosare de Proiect
                 </span>
                 <h2 className="text-2xl md:text-4xl font-extrabold text-white tracking-tight">
-                  FEATURED CONSTRUCTION DOSSIERS
+                  DOSARE DE CONSTRUCȚII REPREZENTATIVE
                 </h2>
               </div>
               <Link href="/projects" className="text-xs font-mono text-[#C9A227] hover:text-[#E4C58F] uppercase tracking-wider flex items-center gap-1">
-                <span>View all {projectCount} projects</span>
+                <span>Vezi toate cele {projectCount} proiecte</span>
                 <span>→</span>
               </Link>
             </div>
@@ -364,7 +359,7 @@ export default async function Home() {
                         {p.status}
                       </span>
                       <span className="px-2 py-1 bg-[#C9A227]/20 border border-[#C9A227]/40 rounded-md text-[9px] font-mono text-[#C9A227] uppercase tracking-wider font-semibold">
-                        VERIFIED DOSSIER
+                        DOSAR VERIFICAT
                       </span>
                     </div>
                   </div>
@@ -380,8 +375,8 @@ export default async function Home() {
                     </div>
 
                     <div className="pt-3 border-t border-[#1A1D1B] flex items-center justify-between text-[11px] font-mono text-[#888888]">
-                      <span>{p.developer || 'Developer Disclosed'}</span>
-                      <span className="text-[#C9A227]">DOSSIER →</span>
+                      <span>{p.developer || 'Dezvoltator Divulgat'}</span>
+                      <span className="text-[#C9A227]">DOSAR →</span>
                     </div>
                   </div>
                 </Link>
@@ -395,10 +390,10 @@ export default async function Home() {
           <div className="max-w-[1440px] mx-auto px-4 md:px-8">
             <div className="mb-8">
               <span className="text-[10px] font-mono uppercase tracking-widest text-[#C9A227] block mb-1">
-                Navigation Directory
+                Director de Navigare
               </span>
               <h2 className="text-2xl md:text-4xl font-extrabold text-white tracking-tight">
-                EXPLORE MARKET INTELLIGENCE
+                EXPLOREAZĂ INTELIGENȚA DE PIAȚĂ
               </h2>
             </div>
 
@@ -408,12 +403,12 @@ export default async function Home() {
                 className="p-5 bg-[#111111] border border-[#1A1D1B] rounded-xl hover:border-[#C9A227]/50 transition-all group flex flex-col justify-between h-36"
               >
                 <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-mono text-[#C9A227]">01 / DOSSIERS</span>
+                  <span className="text-[10px] font-mono text-[#C9A227]">01 / DOSARE</span>
                   <span className="text-xs text-[#888888] group-hover:text-[#C9A227] transition-colors">→</span>
                 </div>
                 <div>
-                  <h3 className="text-base font-bold text-white group-hover:text-[#C9A227] transition-colors">Projects</h3>
-                  <p className="text-xs text-[#888888] mt-0.5">{projectCount} Verified Projects</p>
+                  <h3 className="text-base font-bold text-white group-hover:text-[#C9A227] transition-colors">Proiecte</h3>
+                  <p className="text-xs text-[#888888] mt-0.5">{projectCount} Proiecte Indexate</p>
                 </div>
               </Link>
 
@@ -422,12 +417,12 @@ export default async function Home() {
                 className="p-5 bg-[#111111] border border-[#1A1D1B] rounded-xl hover:border-[#C9A227]/50 transition-all group flex flex-col justify-between h-36"
               >
                 <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-mono text-[#C9A227]">02 / CORPORATE</span>
+                  <span className="text-[10px] font-mono text-[#C9A227]">02 / COMPANII</span>
                   <span className="text-xs text-[#888888] group-hover:text-[#C9A227] transition-colors">→</span>
                 </div>
                 <div>
-                  <h3 className="text-base font-bold text-white group-hover:text-[#C9A227] transition-colors">Companies</h3>
-                  <p className="text-xs text-[#888888] mt-0.5">{realCompaniesDataset.length} Verified Profiles</p>
+                  <h3 className="text-base font-bold text-white group-hover:text-[#C9A227] transition-colors">Companii</h3>
+                  <p className="text-xs text-[#888888] mt-0.5">{realCompaniesDataset.length} Profiluri Documentate</p>
                 </div>
               </Link>
 
@@ -436,12 +431,12 @@ export default async function Home() {
                 className="p-5 bg-[#111111] border border-[#1A1D1B] rounded-xl hover:border-[#C9A227]/50 transition-all group flex flex-col justify-between h-36"
               >
                 <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-mono text-[#C9A227]">03 / GEOGRAPHIC</span>
+                  <span className="text-[10px] font-mono text-[#C9A227]">03 / GEOGRAFIE</span>
                   <span className="text-xs text-[#888888] group-hover:text-[#C9A227] transition-colors">→</span>
                 </div>
                 <div>
-                  <h3 className="text-base font-bold text-white group-hover:text-[#C9A227] transition-colors">Locations</h3>
-                  <p className="text-xs text-[#888888] mt-0.5">36 Cities & Hubs</p>
+                  <h3 className="text-base font-bold text-white group-hover:text-[#C9A227] transition-colors">Poli Regionali</h3>
+                  <p className="text-xs text-[#888888] mt-0.5">{verifiedHubStats.length} Centre Urbane Active</p>
                 </div>
               </Link>
 
@@ -450,12 +445,12 @@ export default async function Home() {
                 className="p-5 bg-[#111111] border border-[#1A1D1B] rounded-xl hover:border-[#C9A227]/50 transition-all group flex flex-col justify-between h-36"
               >
                 <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-mono text-[#C9A227]">04 / LEADERSHIP</span>
+                  <span className="text-[10px] font-mono text-[#C9A227]">04 / CLASAMENTE</span>
                   <span className="text-xs text-[#888888] group-hover:text-[#C9A227] transition-colors">→</span>
                 </div>
                 <div>
-                  <h3 className="text-base font-bold text-white group-hover:text-[#C9A227] transition-colors">Rankings</h3>
-                  <p className="text-xs text-[#888888] mt-0.5">Industry Leaders</p>
+                  <h3 className="text-base font-bold text-white group-hover:text-[#C9A227] transition-colors">Clasamente Eșantion</h3>
+                  <p className="text-xs text-[#888888] mt-0.5">Lideri din Eșantionul Verificat</p>
                 </div>
               </Link>
             </div>
@@ -468,14 +463,14 @@ export default async function Home() {
             <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
               <div>
                 <span className="text-[10px] font-mono uppercase tracking-widest text-[#C9A227] block mb-1">
-                  Executive Dossiers
+                  Dosare Executive
                 </span>
                 <h2 className="text-2xl md:text-4xl font-extrabold text-white tracking-tight">
-                  INDEXED INDUSTRY PLAYERS
+                  COMPANII &amp; ENTITĂȚI INDEXATE
                 </h2>
               </div>
               <Link href="/companies" className="text-xs font-mono text-[#C9A227] hover:text-[#E4C58F] uppercase tracking-wider flex items-center gap-1">
-                <span>View all {realCompaniesDataset.length} companies</span>
+                <span>Vezi toate cele {realCompaniesDataset.length} companii</span>
                 <span>→</span>
               </Link>
             </div>
@@ -490,7 +485,7 @@ export default async function Home() {
                     <div className="flex items-center justify-between">
                       <span className="text-[10px] font-mono text-[#888888]">0{idx + 1} · {c.type}</span>
                       <span className="px-2 py-0.5 bg-[#C9A227]/10 text-[#C9A227] border border-[#C9A227]/30 rounded text-[9px] font-mono uppercase">
-                        VERIFIED PROFILE
+                        PROFIL DOCUMENTAT
                       </span>
                     </div>
 
@@ -524,7 +519,7 @@ export default async function Home() {
                       href={`/companies/${c.slug}`}
                       className="font-mono text-xs font-semibold text-[#C9A227] hover:text-[#E4C58F] tracking-wider"
                     >
-                      DOSSIER →
+                      DOSAR EXECUTIV →
                     </Link>
                   </div>
                 </div>
@@ -539,10 +534,10 @@ export default async function Home() {
             <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-[#1A1D1B] pb-4">
               <div>
                 <span className="text-[10px] font-mono uppercase tracking-widest text-[#C9A227] block mb-1">
-                  National Geographic Intelligence
+                  Inteligență Geografică Națională
                 </span>
                 <h2 className="text-xl md:text-3xl font-extrabold text-white tracking-tight">
-                  CONSTRUCTION HUBS & SITE DENSITY
+                  POLI DE CONSTRUCȚII &amp; DENSITATE ȘANTIERE
                 </h2>
               </div>
               <Link
@@ -555,14 +550,7 @@ export default async function Home() {
             </div>
 
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
-              {[
-                { name: 'București & Ilfov', query: 'bucharest', count: 42, active: 28 },
-                { name: 'Cluj-Napoca', query: 'cluj', count: 9, active: 5 },
-                { name: 'Timișoara', query: 'timisoara', count: 8, active: 4 },
-                { name: 'Iași', query: 'iasi', count: 5, active: 3 },
-                { name: 'Brașov', query: 'brasov', count: 4, active: 2 },
-                { name: 'Constanța', query: 'constanta', count: 4, active: 2 }
-              ].map(hub => (
+              {verifiedHubStats.map(hub => (
                 <Link
                   key={hub.name}
                   href={`/projects?q=${hub.query}`}
@@ -572,10 +560,10 @@ export default async function Home() {
                     {hub.name}
                   </span>
                   <div className="text-2xl font-bold font-mono text-white mt-1">
-                    {hub.count}
+                    {hub.indexedCount}
                   </div>
                   <div className="text-[10px] font-mono text-[#22c55e] mt-0.5">
-                    {hub.active} Active Sites
+                    {hub.activeCount} {hub.activeCount === 1 ? 'Șantier Activ' : 'Șantiere Active'}
                   </div>
                 </Link>
               ))}
@@ -588,10 +576,10 @@ export default async function Home() {
           <div className="max-w-[1440px] mx-auto px-4 md:px-8">
             <div className="mb-8">
               <span className="text-[10px] font-mono uppercase tracking-widest text-[#C9A227] block mb-1">
-                Verified Market Archive · Last Logged Signal: 24 Aug 2026
+                Arhivă Documentară Verificată · Ultimul Semnal Înregistrat: 24 August 2026
               </span>
               <h2 className="text-2xl md:text-4xl font-extrabold text-white tracking-tight">
-                VERIFIED MARKET SIGNALS
+                SEMNALE DE PIAȚĂ VERIFICATE
               </h2>
             </div>
 
@@ -626,10 +614,10 @@ export default async function Home() {
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
               <div>
                 <span className="text-[10px] font-mono uppercase tracking-widest text-[#C9A227] block mb-1">
-                  Editorial Media Desk · Conținut de Opinie & Documentar Șantier
+                  Studio Editorial Media · Conținut de Opinie &amp; Documentar Șantier
                 </span>
                 <h2 className="text-2xl md:text-4xl font-extrabold text-white tracking-tight">
-                  FROM THE CONSTRUCTIONS DESK
+                  PERSPECTIVE EDITORIALE CONSTRUCTIONS
                 </h2>
                 <p className="text-xs text-[#888888] mt-1 max-w-2xl">
                   Perspective video, analize de piață și vizite pe șantier realizate de echipa editorială. Conținut analitic distinct de registrele primare oficiale.
@@ -639,7 +627,7 @@ export default async function Home() {
                 href="/video"
                 className="text-xs font-mono text-[#C9A227] hover:text-[#E4C58F] uppercase tracking-wider flex items-center gap-1"
               >
-                <span>VIEW ALL VIDEO DESK</span>
+                <span>TOATE MATERIALELE VIDEO</span>
                 <span>→</span>
               </Link>
             </div>
@@ -663,32 +651,32 @@ export default async function Home() {
         <section className="py-16 md:py-24 bg-gradient-to-br from-[#111111] via-[#0B0B0B] to-[#050505]">
           <div className="max-w-[1440px] mx-auto px-4 md:px-8 text-center space-y-6">
             <span className="text-[10px] font-mono uppercase tracking-widest text-[#C9A227]">
-              PARTNERSHIP & INTEGRATION
+              PARTENERIATE &amp; INTEGRARE
             </span>
             <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight max-w-3xl mx-auto leading-tight">
-              PARTNER WITH CONSTRUCTIONS
+              COLABORARE CU PLATFORMA CONSTRUCTIONS
             </h2>
             <p className="text-sm md:text-base text-[#A0A0A0] max-w-xl mx-auto">
-              Explore corporate partnership solutions, intelligence subscriptions, sample institutional reports, and verified project presentation capabilities for Romania&apos;s construction market.
+              Explorează soluțiile de parteneriat corporativ, cercetare de piață, rapoarte instituționale și prezentare verificată a proiectelor pentru sectorul construcțiilor din România.
             </p>
             <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
               <Link
                 href="/work-with-us"
                 className="px-6 py-3.5 bg-[#C9A227] text-[#050505] font-mono text-xs font-bold uppercase tracking-wider rounded-lg hover:bg-[#E4C58F] active:scale-95 transition-all"
               >
-                Partner With Us
+                Inițiază Parteneriat
               </Link>
               <Link
                 href="/sample-report"
                 className="px-6 py-3.5 bg-[#141715] border border-[#C9A227]/40 text-[#C9A227] font-mono text-xs font-semibold uppercase tracking-wider rounded-lg hover:border-[#C9A227] active:scale-95 transition-all"
               >
-                Sample Market Report →
+                Raport Demonstrativ de Piață →
               </Link>
               <Link
                 href="/report-error"
                 className="px-6 py-3.5 bg-[#111111] border border-[#1A1D1B] text-white font-mono text-xs font-semibold uppercase tracking-wider rounded-lg hover:border-[#C9A227]/50 active:scale-95 transition-all"
               >
-                Request Profile Update
+                Solicită Actualizare Profil
               </Link>
             </div>
           </div>
