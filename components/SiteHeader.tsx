@@ -149,30 +149,35 @@ export function SiteHeader() {
       {/* Top Header Bar */}
       <header
         ref={headerRef}
-        className={`fixed top-0 left-0 right-0 z-40 transition-transform duration-300 ease-out pt-[env(safe-area-inset-top)] ${
+        className={`fixed top-0 left-0 right-0 z-40 w-full transition-transform duration-300 ease-out pt-[env(safe-area-inset-top)] ${
           visible ? "translate-y-0" : "-translate-y-full"
         } ${
           scrolled
             ? "bg-[#050505]/95 backdrop-blur-md border-b border-[#1A1D1B] py-2"
-            : "bg-gradient-to-b from-[#050505]/95 via-[#050505]/80 to-transparent py-3"
+            : "bg-gradient-to-b from-[#050505]/95 via-[#050505]/85 to-transparent py-2.5 sm:py-3"
         }`}
       >
         <LiveRollingTicker />
-        <div className="max-w-[1440px] mx-auto px-4 md:px-8 py-2.5 flex items-center justify-between">
-          {/* Brand Logo */}
-          <Link href="/" className="flex flex-col group shrink-0">
-            <div className="flex items-center gap-2">
-              <span className="font-extrabold tracking-tight text-lg md:text-xl text-white group-hover:text-[#C9A227] transition-colors">
-                CONSTRUCTIONS
+        <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-2 flex items-center justify-between gap-3 lg:gap-4">
+          {/* Brand Logo & Identity */}
+          <Link href="/" className="flex items-center gap-2.5 sm:gap-3 group shrink-0 select-none">
+            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#1E221F] via-[#141715] to-[#0A0C0B] border border-[#C9A227]/40 flex items-center justify-center shadow-sm group-hover:border-[#C9A227] transition-all shrink-0">
+              <span className="text-[#C9A227] font-extrabold text-sm tracking-wider font-mono">C</span>
+            </div>
+            <div className="flex flex-col">
+              <div className="flex items-center gap-1.5 leading-none">
+                <span className="font-extrabold tracking-tight text-base sm:text-lg text-white group-hover:text-[#C9A227] transition-colors">
+                  CONSTRUCTIONS
+                </span>
+              </div>
+              <span className="text-[9px] font-mono tracking-widest text-[#A0A0A0] uppercase mt-0.5 group-hover:text-[#C9A227]/80 transition-colors">
+                by AiXLuxury
               </span>
             </div>
-            <span className="text-[10px] font-mono tracking-wider text-[#A0A0A0] uppercase">
-              by AiXLuxury
-            </span>
           </Link>
 
-          {/* Desktop Mega Navigation */}
-          <nav className="hidden lg:flex items-center gap-6 text-xs tracking-wider uppercase font-medium text-[#C5C5C5]">
+          {/* Desktop Mega Navigation (>=1280px) */}
+          <nav className="hidden xl:flex items-center gap-3.5 2xl:gap-5 text-[11px] 2xl:text-xs tracking-wider uppercase font-medium text-[#C5C5C5]">
             {/* DISCOVER DROPDOWN */}
             <div
               className="relative py-2"
@@ -198,7 +203,7 @@ export function SiteHeader() {
               >
                 <span>DISCOVER</span>
                 <svg
-                  className={`w-3.5 h-3.5 transition-transform duration-200 ${
+                  className={`w-3 h-3 transition-transform duration-200 ${
                     activeDropdown === "discover" ? "rotate-180 text-[#C9A227]" : ""
                   }`}
                   fill="none"
@@ -292,11 +297,9 @@ export function SiteHeader() {
                 }`}
               >
                 <span>KNOWLEDGE</span>
-                <span className="px-1.5 py-0.2 text-[9px] bg-[#C9A227]/20 text-[#C9A227] rounded font-mono font-bold">
-                  NEW
-                </span>
+                <span className="w-1.5 h-1.5 rounded-full bg-[#C9A227] inline-block animate-pulse" title="Updated Knowledge Hub" />
                 <svg
-                  className={`w-3.5 h-3.5 transition-transform duration-200 ${
+                  className={`w-3 h-3 transition-transform duration-200 ${
                     activeDropdown === "knowledge" ? "rotate-180 text-[#C9A227]" : ""
                   }`}
                   fill="none"
@@ -412,11 +415,11 @@ export function SiteHeader() {
                 }`}
               >
                 <span>SERVICES</span>
-                <span className="px-1.5 py-0.2 text-[9px] bg-[#C9A227]/20 text-[#C9A227] rounded font-mono font-bold">
+                <span className="text-[9px] font-mono text-[#C9A227] bg-[#C9A227]/15 px-1 py-0.2 rounded font-bold">
                   13
                 </span>
                 <svg
-                  className={`w-3.5 h-3.5 transition-transform duration-200 ${
+                  className={`w-3 h-3 transition-transform duration-200 ${
                     activeDropdown === "services" ? "rotate-180 text-[#C9A227]" : ""
                   }`}
                   fill="none"
@@ -576,7 +579,7 @@ export function SiteHeader() {
               >
                 <span>INTELLIGENCE</span>
                 <svg
-                  className={`w-3.5 h-3.5 transition-transform duration-200 ${
+                  className={`w-3 h-3 transition-transform duration-200 ${
                     activeDropdown === "intelligence" ? "rotate-180 text-[#C9A227]" : ""
                   }`}
                   fill="none"
@@ -672,7 +675,7 @@ export function SiteHeader() {
               >
                 <span>RESEARCH</span>
                 <svg
-                  className={`w-3.5 h-3.5 transition-transform duration-200 ${
+                  className={`w-3 h-3 transition-transform duration-200 ${
                     activeDropdown === "research" ? "rotate-180 text-[#C9A227]" : ""
                   }`}
                   fill="none"
@@ -748,7 +751,7 @@ export function SiteHeader() {
               >
                 <span>ABOUT</span>
                 <svg
-                  className={`w-3.5 h-3.5 transition-transform duration-200 ${
+                  className={`w-3 h-3 transition-transform duration-200 ${
                     activeDropdown === "about" ? "rotate-180 text-[#C9A227]" : ""
                   }`}
                   fill="none"
@@ -761,7 +764,7 @@ export function SiteHeader() {
 
               {activeDropdown === "about" && (
                 <div
-                  className="absolute left-0 top-full pt-1 w-72 z-50"
+                  className="absolute right-0 top-full pt-1.5 w-72 z-50"
                   onMouseEnter={() => handleMouseEnter("about")}
                   onMouseLeave={handleMouseLeave}
                 >
@@ -795,12 +798,73 @@ export function SiteHeader() {
             </div>
           </nav>
 
-          {/* Action CTAs: Search & Watchlist */}
-          <div className="hidden lg:flex items-center gap-3">
+          {/* Desktop Action CTAs (>=1280px) */}
+          <div className="hidden xl:flex items-center gap-2 2xl:gap-2.5 shrink-0">
+            {/* Search */}
             <Link
               href="/search"
               aria-label="Search"
-              className="p-2 text-[#888888] hover:text-[#C9A227] transition-colors"
+              className="w-8 h-8 rounded-lg bg-[#111111] hover:bg-[#1A1A1A] border border-[#1A1D1B] hover:border-[#C9A227]/40 flex items-center justify-center text-[#888888] hover:text-[#C9A227] transition-all"
+            >
+              <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+            </Link>
+
+            {/* Language Switcher */}
+            <button
+              onClick={toggleLanguage}
+              aria-label="Toggle Romanian or English language"
+              className="h-8 px-2.5 bg-[#111111] hover:bg-[#1A1A1A] border border-[#1A1D1B] hover:border-[#C9A227]/40 text-[11px] font-mono rounded-lg transition-all flex items-center gap-1 cursor-pointer"
+              title={language === 'ro' ? 'Comută în Engleză / Switch to English' : 'Comută în Română / Switch to Romanian'}
+            >
+              <span className={language === 'ro' ? 'text-[#C9A227] font-bold' : 'text-[#888888]'}>RO</span>
+              <span className="text-[#444444]">/</span>
+              <span className={language === 'en' ? 'text-[#C9A227] font-bold' : 'text-[#888888]'}>EN</span>
+            </button>
+
+            {/* Watchlist */}
+            <Link
+              href="/watchlist"
+              className="h-8 px-2.5 2xl:px-3 bg-[#111111] hover:bg-[#1A1A1A] border border-[#1A1D1B] hover:border-[#C9A227]/40 text-[#C5C5C5] hover:text-[#C9A227] text-[11px] font-mono rounded-lg transition-all flex items-center gap-1.5"
+            >
+              <StarIcon className="w-3.5 h-3.5 text-[#C9A227] shrink-0" />
+              <span className="hidden 2xl:inline">{t('nav.watchlist', 'WATCHLIST')}</span>
+            </Link>
+
+            {/* Quick Always-On Contact Trigger (visible on large desktops, floating button on laptops) */}
+            <button
+              onClick={() => {
+                if (typeof window !== "undefined") {
+                  window.dispatchEvent(new CustomEvent("open-quick-contact", { detail: { interest: "general-contact" } }));
+                }
+              }}
+              className="h-8 px-2.5 2xl:px-3 bg-[#141715] hover:bg-[#1C1F1D] border border-[#C9A227]/40 hover:border-[#C9A227] text-[#C9A227] text-[11px] font-mono font-medium rounded-lg transition-all hidden 2xl:flex items-center gap-1.5 cursor-pointer shadow-sm"
+              title="Open Quick Contact Desk"
+            >
+              <svg className="w-3.5 h-3.5 text-[#C9A227]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+              </svg>
+              <span>{t('action.contact', 'Contact')}</span>
+            </button>
+
+            {/* Main Intake CTA */}
+            <Link
+              href="/contact"
+              className="h-8 px-3.5 bg-[#C9A227] hover:bg-[#d8b135] text-black text-[11px] font-mono font-bold rounded-lg transition-all flex items-center gap-1 shadow-sm shrink-0 whitespace-nowrap"
+            >
+              <span>{language === 'ro' ? 'Solicitare' : 'Inquiry'}</span>
+              <span>→</span>
+            </Link>
+          </div>
+
+          {/* Mobile & Tablet Controls (<1280px) */}
+          <div className="flex items-center gap-1 sm:gap-2 xl:hidden shrink-0">
+            {/* Search (Tablet >=640px; on mobile phones <640px, Search is in the bottom bar and drawer) */}
+            <Link
+              href="/search"
+              aria-label="Search"
+              className="w-9 h-9 sm:w-10 sm:h-10 hidden sm:flex items-center justify-center rounded-lg bg-[#111111] border border-[#1A1D1B] text-[#888888] hover:text-[#C9A227] active:scale-95 transition-transform"
             >
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -810,57 +874,15 @@ export function SiteHeader() {
             {/* Language Switcher */}
             <button
               onClick={toggleLanguage}
-              aria-label="Toggle Romanian or English language"
-              className="px-2.5 py-1.5 bg-[#111111] hover:bg-[#1A1A1A] border border-[#1A1D1B] hover:border-[#C9A227]/40 text-xs font-mono rounded-lg transition-all flex items-center gap-1 cursor-pointer"
-              title={language === 'ro' ? 'Comută în Engleză / Switch to English' : 'Comută în Română / Switch to Romanian'}
-            >
-              <span className={language === 'ro' ? 'text-[#C9A227] font-bold' : 'text-[#888888]'}>RO</span>
-              <span className="text-[#444444]">/</span>
-              <span className={language === 'en' ? 'text-[#C9A227] font-bold' : 'text-[#888888]'}>EN</span>
-            </button>
-
-            <Link
-              href="/watchlist"
-              className="px-3 py-1.5 bg-[#111111] hover:bg-[#1A1A1A] border border-[#1A1D1B] hover:border-[#C9A227]/40 text-[#C5C5C5] hover:text-[#C9A227] text-xs font-mono rounded-lg transition-all flex items-center gap-1.5"
-            >
-              <StarIcon className="w-3.5 h-3.5 text-[#C9A227]" />
-              <span>{t('nav.watchlist', 'WATCHLIST')}</span>
-            </Link>
-            {/* Quick Always-On Contact Trigger */}
-            <button
-              onClick={() => {
-                if (typeof window !== "undefined") {
-                  window.dispatchEvent(new CustomEvent("open-quick-contact", { detail: { interest: "general-contact" } }));
-                }
-              }}
-              className="px-3 py-1.5 bg-[#141715] hover:bg-[#1C1F1D] border border-[#C9A227]/40 hover:border-[#C9A227] text-[#C9A227] text-xs font-mono font-medium rounded-lg transition-all flex items-center gap-1.5 cursor-pointer shadow-sm"
-              title="Open Quick Contact Desk"
-            >
-              <svg className="w-3.5 h-3.5 text-[#C9A227]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>
-              <span>{t('action.contact', 'Contact')}</span>
-            </button>
-
-            {/* Main Intake CTA */}
-            <Link
-              href="/contact"
-              className="px-3.5 py-1.5 bg-[#C9A227] hover:bg-[#d8b135] text-black text-xs font-mono font-bold rounded-lg transition-all flex items-center gap-1 shadow-sm"
-            >
-              <span>{language === 'ro' ? 'Solicitare' : 'Inquiry'}</span>
-              <span>→</span>
-            </Link>
-          </div>
-
-          {/* Mobile Menu Toggle Button (≥44px target) */}
-          <div className="flex items-center gap-2 lg:hidden">
-            <button
-              onClick={toggleLanguage}
               aria-label="Toggle language"
-              className="h-10 px-2 flex items-center justify-center rounded-lg bg-[#141715] border border-[#1A1D1B] text-xs font-mono text-[#F3F1EB]"
+              className="h-9 sm:h-10 px-2 sm:px-2.5 flex items-center justify-center rounded-lg bg-[#141715] border border-[#1A1D1B] text-xs font-mono text-[#F3F1EB] active:scale-95 transition-transform cursor-pointer"
             >
               <span className={language === 'ro' ? 'text-[#C9A227] font-bold' : 'text-[#888888]'}>RO</span>
               <span className="text-[#444444] mx-0.5">/</span>
               <span className={language === 'en' ? 'text-[#C9A227] font-bold' : 'text-[#888888]'}>EN</span>
             </button>
+
+            {/* Quick Contact Desk Trigger */}
             <button
               onClick={() => {
                 if (typeof window !== "undefined") {
@@ -868,20 +890,20 @@ export function SiteHeader() {
                 }
               }}
               aria-label="Open Contact Desk"
-              className="w-10 h-10 flex items-center justify-center rounded-lg bg-[#141715] border border-[#C9A227]/40 text-[#C9A227] active:scale-95 transition-transform"
+              className="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center rounded-lg bg-[#141715] border border-[#C9A227]/40 text-[#C9A227] active:scale-95 transition-transform cursor-pointer"
             >
-              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
               </svg>
             </button>
-            
 
+            {/* Mobile Drawer Toggle (>=44px touch target) */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label="Toggle mobile menu"
-              className="w-11 h-11 flex items-center justify-center rounded-lg bg-[#111111] border border-[#1A1D1B] text-[#C9A227] active:scale-95 transition-transform"
+              className="w-10 h-10 sm:w-11 sm:h-11 flex items-center justify-center rounded-lg bg-[#111111] border border-[#1A1D1B] text-[#C9A227] active:scale-95 transition-transform cursor-pointer"
             >
-              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 {mobileMenuOpen ? (
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 ) : (
@@ -899,7 +921,7 @@ export function SiteHeader() {
 
       {/* Mobile Drawer (100% Mobile Parity with all sections) */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 z-50 lg:hidden flex">
+        <div className="fixed inset-0 z-50 xl:hidden flex">
           {/* Backdrop */}
           <div
             className="fixed inset-0 bg-black/80 backdrop-blur-sm animate-fadeIn"
@@ -1269,7 +1291,7 @@ export function SiteHeader() {
       )}
 
       {/* Mobile Fixed 5-Button Bottom Nav Bar (≥48px touch targets, safe area bottom) */}
-      <div className="fixed bottom-0 left-0 right-0 z-30 lg:hidden bg-[#070807]/95 backdrop-blur-lg border-t border-[#1A1D1B] px-3 py-1 pb-[calc(0.25rem+env(safe-area-inset-bottom))]">
+      <div className="fixed bottom-0 left-0 right-0 z-30 md:hidden bg-[#070807]/95 backdrop-blur-lg border-t border-[#1A1D1B] px-3 py-1 pb-[calc(0.25rem+env(safe-area-inset-bottom))]">
         <div className="grid grid-cols-5 gap-1 max-w-md mx-auto">
           <Link
             href="/"
