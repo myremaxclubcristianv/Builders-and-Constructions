@@ -4,13 +4,17 @@ import { useState, useMemo } from 'react';
 import Link from 'next/link';
 import { BuildingIcon, CraneIcon, LocationPinIcon, SearchIcon } from '@/components/icons/NavIcons';
 
-interface SignalItem {
+export interface SignalItem {
   id: string;
   title: string;
   signal_type: string;
   event_date: string;
+  publication_date?: string;
+  data_period?: string;
   summary: string;
   source_url?: string;
+  source_name?: string;
+  evidence_classification?: string;
   verification_state?: string;
   commercial_relevance?: string;
   why_it_matters?: string;
@@ -19,6 +23,9 @@ interface SignalItem {
   project_name?: string;
   project_slug?: string;
   location?: string;
+  city?: string;
+  last_verified_at?: string;
+  cadence?: string;
 }
 
 interface SignalsFeedProps {
@@ -46,22 +53,24 @@ export function SignalsFeed({ signals }: SignalsFeedProps) {
   const [sortOrder, setSortOrder] = useState<'NEWEST' | 'OLDEST'>('NEWEST');
 
   const categories = [
-    { label: 'ALL SIGNALS', key: 'ALL' },
-    { label: 'DEVELOPERS', key: 'DEVELOPER' },
-    { label: 'CONTRACTORS', key: 'CONTRACTOR' },
-    { label: 'PROJECTS', key: 'PROJECT' },
-    { label: 'INFRASTRUCTURE', key: 'INFRASTRUCTURE' },
-    { label: 'INVESTMENT', key: 'INVESTMENT' },
-    { label: 'CORPORATE', key: 'OFFICIAL_DISCLOSURE' },
-    { label: 'PLANNING', key: 'PLANNING_PERMIT' },
-    { label: 'CONSTRUCTION', key: 'CONSTRUCTION_MILESTONE' }
+    { label: 'TOATE SEMNALELE', key: 'ALL' },
+    { label: 'DEZVOLTATORI', key: 'DEVELOPER' },
+    { label: 'CONSTRUCTORI', key: 'CONTRACTOR' },
+    { label: 'PROIECTE', key: 'PROJECT' },
+    { label: 'INFRASTRUCTURĂ', key: 'INFRASTRUCTURE' },
+    { label: 'INVESTIȚII', key: 'INVESTMENT' },
+    { label: 'RAPOARTE CORPORATE', key: 'OFFICIAL_DISCLOSURE' },
+    { label: 'AUTORIZAȚII & PUZ', key: 'PLANNING_PERMIT' },
+    { label: 'EXECUȚIE & ȘANTIER', key: 'CONSTRUCTION_MILESTONE' }
   ];
 
   // Extract unique cities and signal types
   const availableCities = useMemo(() => {
     const set = new Set<string>();
     signals.forEach(s => {
-      if (s.location) {
+      if (s.city) {
+        set.add(s.city);
+      } else if (s.location) {
         const parts = s.location.split('·')[0].trim();
         if (parts) set.add(parts);
       }
@@ -81,14 +90,14 @@ export function SignalsFeed({ signals }: SignalsFeedProps) {
     const list = signals.filter(sig => {
       // Category Filter
       if (activeCategory !== 'ALL') {
-        if (activeCategory === 'DEVELOPER' && (!sig.company_name || sig.signal_type.includes('INFRASTRUCTURE'))) return false;
-        if (activeCategory === 'CONTRACTOR' && !(sig.summary.toLowerCase().includes('contractor') || sig.summary.toLowerCase().includes('construct') || sig.signal_type === 'CONSTRUCTION_MILESTONE')) return false;
+        if (activeCategory === 'DEVELOPER' && (!sig.company_name || sig.signal_type.includes('INFRASTRUCTURĂ'))) return false;
+        if (activeCategory === 'CONTRACTOR' && !(sig.summary.toLowerCase().includes('contractor') || sig.summary.toLowerCase().includes('construct') || sig.signal_type.includes('STRUCTUR') || sig.signal_type.includes('EXECUȚIE'))) return false;
         if (activeCategory === 'PROJECT' && !sig.project_name) return false;
-        if (activeCategory === 'INFRASTRUCTURE' && sig.signal_type !== 'INFRASTRUCTURE' && !sig.summary.toLowerCase().includes('motorway') && !sig.summary.toLowerCase().includes('highway')) return false;
-        if (activeCategory === 'INVESTMENT' && sig.signal_type !== 'INVESTMENT' && sig.signal_type !== 'LEASING') return false;
-        if (activeCategory === 'OFFICIAL_DISCLOSURE' && sig.signal_type !== 'OFFICIAL_DISCLOSURE') return false;
-        if (activeCategory === 'PLANNING_PERMIT' && sig.signal_type !== 'PLANNING_PERMIT' && sig.signal_type !== 'PLANNING') return false;
-        if (activeCategory === 'CONSTRUCTION_MILESTONE' && sig.signal_type !== 'CONSTRUCTION_MILESTONE') return false;
+        if (activeCategory === 'INFRASTRUCTURE' && !sig.signal_type.includes('INFRASTRUCTURĂ') && !sig.summary.toLowerCase().includes('centur') && !sig.summary.toLowerCase().includes('autostrad')) return false;
+        if (activeCategory === 'INVESTMENT' && !sig.signal_type.includes('INVESTIȚ') && !sig.signal_type.includes('PREÎNCHIRIERE') && !sig.signal_type.includes('DEZVOLTARE')) return false;
+        if (activeCategory === 'OFFICIAL_DISCLOSURE' && !sig.evidence_classification?.includes('SURSĂ OFICIALĂ') && !sig.evidence_classification?.includes('CORPORATE')) return false;
+        if (activeCategory === 'PLANNING_PERMIT' && !sig.signal_type.includes('AUTORIZAȚ') && !sig.signal_type.includes('PUZ')) return false;
+        if (activeCategory === 'CONSTRUCTION_MILESTONE' && !sig.signal_type.includes('STRUCTUR') && !sig.signal_type.includes('ȘANTIER') && !sig.signal_type.includes('EXECUȚIE')) return false;
       }
 
       // Signal Type Filter
@@ -98,7 +107,8 @@ export function SignalsFeed({ signals }: SignalsFeedProps) {
 
       // City Filter
       if (cityFilter !== 'ALL') {
-        if (!normalizeDiacritics(sig.location || '').includes(normalizeDiacritics(cityFilter))) return false;
+        const loc = sig.city || sig.location || '';
+        if (!normalizeDiacritics(loc).includes(normalizeDiacritics(cityFilter))) return false;
       }
 
       // Diacritic-insensitive Search Query
@@ -133,15 +143,15 @@ export function SignalsFeed({ signals }: SignalsFeedProps) {
   return (
     <div className="space-y-6">
       {/* Category Tabs */}
-      <div className="flex items-center gap-2 overflow-x-auto pb-2 border-b border-[#1A1D1B] scrollbar-none">
+      <div className="flex items-center gap-2 overflow-x-auto pb-2 border-b border-slate-200 scrollbar-none">
         {categories.map(cat => (
           <button
             key={cat.key}
             onClick={() => setActiveCategory(cat.key)}
-            className={`px-3 py-1.5 rounded-lg text-xs font-mono font-semibold uppercase tracking-wider shrink-0 transition-all ${
+            className={`px-3.5 py-2 rounded-lg text-xs font-mono font-semibold uppercase tracking-wider shrink-0 transition-all ${
               activeCategory === cat.key
-                ? 'bg-[#C9A227] text-[#050505]'
-                : 'bg-[#111111] text-[#A0A0A0] hover:text-white border border-[#1A1D1B]'
+                ? 'bg-[#b45309] text-white shadow-sm'
+                : 'bg-white text-slate-600 hover:text-slate-900 border border-slate-200 hover:border-slate-300'
             }`}
           >
             {cat.label}
@@ -150,28 +160,28 @@ export function SignalsFeed({ signals }: SignalsFeedProps) {
       </div>
 
       {/* Advanced Filter Toolbar */}
-      <div className="p-4 bg-[#111111] border border-[#1A1D1B] rounded-2xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 font-mono text-xs">
+      <div className="p-4 bg-slate-50 border border-slate-200 rounded-2xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 font-mono text-xs">
         {/* Search */}
         <div>
-          <label className="text-[#888888] block mb-1 font-bold">SEARCH SIGNALS</label>
+          <label className="text-slate-500 block mb-1 font-bold">CAUTĂ SEMNALE</label>
           <input
             type="text"
             value={searchQuery}
             onChange={e => setSearchQuery(e.target.value)}
-            placeholder="Entity, project, keyword..."
-            className="w-full bg-[#050505] border border-[#1A1D1B] rounded-lg px-3 py-2 text-white focus:border-[#C9A227] outline-none"
+            placeholder="Companie, proiect, cuvânt-cheie..."
+            className="w-full bg-white border border-slate-200 rounded-lg px-3 py-2 text-slate-900 focus:border-[#b45309] focus:ring-1 focus:ring-[#b45309] outline-none"
           />
         </div>
 
         {/* City Filter */}
         <div>
-          <label className="text-[#888888] block mb-1 font-bold">CITY / HUB</label>
+          <label className="text-slate-500 block mb-1 font-bold">ORAȘ / POL REGIONAL</label>
           <select
             value={cityFilter}
             onChange={e => setCityFilter(e.target.value)}
-            className="w-full bg-[#050505] border border-[#1A1D1B] rounded-lg px-3 py-2 text-white focus:border-[#C9A227] outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-3 py-2 text-slate-900 focus:border-[#b45309] focus:ring-1 focus:ring-[#b45309] outline-none"
           >
-            <option value="ALL">All Cities ({availableCities.length})</option>
+            <option value="ALL">Toate Orașele ({availableCities.length})</option>
             {availableCities.map(c => (
               <option key={c} value={c}>{c}</option>
             ))}
@@ -180,13 +190,13 @@ export function SignalsFeed({ signals }: SignalsFeedProps) {
 
         {/* Signal Type Filter */}
         <div>
-          <label className="text-[#888888] block mb-1 font-bold">SIGNAL TYPE</label>
+          <label className="text-slate-500 block mb-1 font-bold">TIP DE SEMNAL</label>
           <select
             value={signalTypeFilter}
             onChange={e => setSignalTypeFilter(e.target.value)}
-            className="w-full bg-[#050505] border border-[#1A1D1B] rounded-lg px-3 py-2 text-white focus:border-[#C9A227] outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-3 py-2 text-slate-900 focus:border-[#b45309] focus:ring-1 focus:ring-[#b45309] outline-none"
           >
-            <option value="ALL">All Signal Types</option>
+            <option value="ALL">Toate Tipurile</option>
             {availableSignalTypes.map(st => (
               <option key={st} value={st}>{st.replaceAll('_', ' ')}</option>
             ))}
@@ -195,37 +205,37 @@ export function SignalsFeed({ signals }: SignalsFeedProps) {
 
         {/* Sort Order */}
         <div>
-          <label className="text-[#888888] block mb-1 font-bold">DATE ORDER</label>
+          <label className="text-slate-500 block mb-1 font-bold">ORDONARE DATĂ</label>
           <select
             value={sortOrder}
             onChange={e => setSortOrder(e.target.value as 'NEWEST' | 'OLDEST')}
-            className="w-full bg-[#050505] border border-[#1A1D1B] rounded-lg px-3 py-2 text-white focus:border-[#C9A227] outline-none"
+            className="w-full bg-white border border-slate-200 rounded-lg px-3 py-2 text-slate-900 focus:border-[#b45309] focus:ring-1 focus:ring-[#b45309] outline-none"
           >
-            <option value="NEWEST">Newest First</option>
-            <option value="OLDEST">Oldest First</option>
+            <option value="NEWEST">Cele mai recente mai întâi</option>
+            <option value="OLDEST">Cele mai vechi mai întâi</option>
           </select>
         </div>
       </div>
 
-      <div className="flex items-center justify-between text-xs font-mono text-[#888888]">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs font-mono text-slate-500">
         <span>
-          SHOWING {filteredSignals.length} VERIFIED MARKET SIGNALS
+          AFIȘARE: {filteredSignals.length} SEMNALE DE PIAȚĂ DOCUMENTATE
         </span>
-        <span className="text-[#C9A227]">
-          VERIFICATION: VERIFIED / DOCUMENTED · LATEST VERIFIED: 24 AUG 2026
+        <span className="text-[#b45309] font-medium">
+          DOCUMENTE &amp; SURSE VERIFICATE · ULTIMA ACTUALIZARE: 8 NOIEMBRIE 2026
         </span>
       </div>
 
       {/* Signal Stream */}
       <div className="space-y-4">
         {filteredSignals.length === 0 ? (
-          <div className="p-12 text-center bg-[#111111] border border-[#1A1D1B] rounded-2xl text-xs font-mono space-y-3">
+          <div className="p-12 text-center bg-slate-50 border border-slate-200 rounded-2xl text-xs font-mono space-y-3">
             <div className="flex justify-center">
-              <SearchIcon className="w-8 h-8 text-[#C9A227] opacity-80" />
+              <SearchIcon className="w-8 h-8 text-[#b45309] opacity-80" />
             </div>
-            <div className="text-sm font-bold text-white uppercase">NO VERIFIED RESULTS</div>
-            <p className="text-xs text-[#888888] max-w-md mx-auto font-sans leading-relaxed">
-              No verified market signals matched your filter criteria. Reset the category or search terms to view all documented signals.
+            <div className="text-sm font-bold text-slate-900 uppercase">NICIUN SEMNAL GĂSIT</div>
+            <p className="text-xs text-slate-600 max-w-md mx-auto font-sans leading-relaxed">
+              Niciun semnal de piață verificat nu corespunde filtrelor selectate. Resetați filtrele pentru a vizualiza întregul flux documentar.
             </p>
             <div className="pt-2">
               <button
@@ -235,9 +245,9 @@ export function SignalsFeed({ signals }: SignalsFeedProps) {
                   setCityFilter('ALL');
                   setSearchQuery('');
                 }}
-                className="px-4 py-2 bg-[#C9A227] text-[#050505] font-mono text-xs font-bold rounded-lg hover:bg-[#E4C58F]"
+                className="px-4 py-2 bg-[#b45309] text-white font-mono text-xs font-bold rounded-lg hover:bg-[#92400e] transition-colors"
               >
-                RESET ALL SIGNAL FILTERS →
+                RESETEAZĂ TOATE FILTRELE →
               </button>
             </div>
           </div>
@@ -245,49 +255,61 @@ export function SignalsFeed({ signals }: SignalsFeedProps) {
           filteredSignals.map(act => (
             <div
               key={act.id}
-              className="p-5 bg-[#111111] border border-[#1A1D1B] rounded-2xl flex flex-col md:flex-row md:items-center justify-between gap-4 hover:border-[#C9A227]/40 transition-all"
+              className="p-6 bg-white border border-slate-200 rounded-2xl shadow-sm flex flex-col md:flex-row md:items-start justify-between gap-4 hover:border-amber-400 hover:shadow-md transition-all"
             >
-              <div className="space-y-2 flex-1">
+              <div className="space-y-3 flex-1">
                 <div className="flex items-center gap-2 flex-wrap font-mono">
-                  <span className="px-2 py-0.5 bg-[#C9A227]/10 border border-[#C9A227]/30 text-[#C9A227] rounded text-[10px] uppercase font-bold">
+                  <span className="px-2.5 py-0.5 bg-amber-50 border border-amber-200 text-[#b45309] rounded-md text-[10px] uppercase font-bold">
                     {act.signal_type.replaceAll('_', ' ')}
                   </span>
-                  <span className="text-xs text-[#888888]">EVENT: {act.event_date}</span>
-                  <span className="px-2 py-0.5 bg-[#22c55e]/10 text-[#22c55e] border border-[#22c55e]/30 rounded text-[9px] font-bold uppercase">
-                    {act.verification_state || 'VERIFIED'}
+                  <span className="text-xs text-slate-500 font-medium">
+                    DATĂ: {act.event_date}
                   </span>
+                  {act.cadence && (
+                    <span className="px-2 py-0.5 bg-slate-100 text-slate-700 border border-slate-200 rounded text-[9px] font-bold uppercase">
+                      {act.cadence}
+                    </span>
+                  )}
+                  {act.evidence_classification && (
+                    <span className="px-2 py-0.5 bg-blue-50 text-blue-700 border border-blue-200 rounded text-[9px] font-bold uppercase">
+                      {act.evidence_classification}
+                    </span>
+                  )}
                 </div>
 
-                <h2 className="text-lg font-bold text-white tracking-tight">
+                <h2 className="text-lg font-bold text-slate-900 tracking-tight leading-snug">
                   {act.title}
                 </h2>
 
-                <p className="text-xs text-[#A0A0A0] leading-relaxed font-sans">
+                <p className="text-sm text-slate-600 leading-relaxed font-sans">
                   {act.summary}
                 </p>
 
                 {act.why_it_matters && (
-                  <p className="text-[11px] text-[#C9A227]/90 font-mono italic pt-0.5">
-                    💡 Intelligence Significance: {act.why_it_matters}
-                  </p>
+                  <div className="p-3 bg-amber-50/60 border border-amber-100 rounded-xl text-xs text-amber-900 font-sans leading-relaxed">
+                    <span className="font-bold text-[#b45309] font-mono block text-[11px] mb-0.5 uppercase tracking-wide">
+                      💡 Relevanță pentru Piață
+                    </span>
+                    {act.why_it_matters}
+                  </div>
                 )}
 
-                <div className="flex flex-wrap items-center gap-4 pt-1 text-xs font-mono text-[#888888]">
+                <div className="flex flex-wrap items-center gap-4 pt-1 text-xs font-mono text-slate-500">
                   {act.company_slug && (
-                    <Link href={`/companies/${act.company_slug}`} className="text-[#C9A227] hover:underline flex items-center gap-1">
-                      <BuildingIcon className="w-3.5 h-3.5 text-[#C9A227] shrink-0" />
+                    <Link href={`/companies/${act.company_slug}`} className="text-[#b45309] font-medium hover:underline flex items-center gap-1.5">
+                      <BuildingIcon className="w-3.5 h-3.5 text-[#b45309] shrink-0" />
                       <span>{act.company_name}</span>
                     </Link>
                   )}
                   {act.project_slug && (
-                    <Link href={`/projects/${act.project_slug}`} className="text-[#38bdf8] hover:underline flex items-center gap-1">
-                      <CraneIcon className="w-3.5 h-3.5 text-[#38bdf8] shrink-0" />
+                    <Link href={`/projects/${act.project_slug}`} className="text-blue-600 font-medium hover:underline flex items-center gap-1.5">
+                      <CraneIcon className="w-3.5 h-3.5 text-blue-600 shrink-0" />
                       <span>{act.project_name}</span>
                     </Link>
                   )}
                   {act.location && (
-                    <span className="flex items-center gap-1">
-                      <LocationPinIcon className="w-3.5 h-3.5 text-[#888888] shrink-0" />
+                    <span className="flex items-center gap-1.5">
+                      <LocationPinIcon className="w-3.5 h-3.5 text-slate-400 shrink-0" />
                       <span>{act.location}</span>
                     </span>
                   )}
@@ -295,14 +317,22 @@ export function SignalsFeed({ signals }: SignalsFeedProps) {
               </div>
 
               {act.source_url && (
-                <a
-                  href={act.source_url}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="px-4 py-2 bg-[#050505] border border-[#1A1D1B] text-xs font-mono text-[#C9A227] rounded-lg hover:border-[#C9A227]/50 shrink-0 self-start md:self-center font-bold"
-                >
-                  PRIMARY CITATION ↗
-                </a>
+                <div className="shrink-0 self-start md:self-start pt-1">
+                  <a
+                    href={act.source_url}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-1 px-3.5 py-2 bg-slate-50 border border-slate-200 text-xs font-mono text-slate-700 rounded-lg hover:border-amber-400 hover:text-[#b45309] hover:bg-amber-50/40 transition-all font-semibold"
+                  >
+                    <span>Sursă Directă</span>
+                    <span className="text-[10px]">↗</span>
+                  </a>
+                  {act.source_name && (
+                    <span className="block text-[10px] font-mono text-slate-400 mt-1 max-w-[150px] truncate">
+                      {act.source_name}
+                    </span>
+                  )}
+                </div>
               )}
             </div>
           ))
@@ -310,8 +340,8 @@ export function SignalsFeed({ signals }: SignalsFeedProps) {
       </div>
 
       {/* Independent Platform Disclosure */}
-      <div className="p-4 bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl text-[11px] font-mono text-[#777777] leading-relaxed">
-        <strong className="text-[#A0A0A0]">INDEPENDENT INTELLIGENCE DISCLOSURE:</strong> CONSTRUCTIONS is an independent information and market-research platform. Signals are compiled exclusively from official regulatory filings, verified corporate press releases, primary registry data, and authenticated industry sources.
+      <div className="p-5 bg-slate-50 border border-slate-200 rounded-2xl text-xs font-mono text-slate-500 leading-relaxed">
+        <strong className="text-slate-800">DECLARAȚIE DE INDEPENDENȚĂ EDITORIALĂ:</strong> CONSTRUCTIONS by AiXLuxury este o platformă independentă de intelligence și analiză de piață. Semnalele sunt compilate exclusiv din autorizații oficiale de construire, comunicate corporative verificate, date din registre publice și surse de presă economică documentate. Nu sunt incluse date speculative sau afirmații comerciale neconfirmate.
       </div>
     </div>
   );

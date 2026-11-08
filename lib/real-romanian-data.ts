@@ -53,6 +53,10 @@ export interface RealCompany {
   last_verified_at: string;
   image?: string;
   image_status?: string;
+  image_type?: string;
+  image_badge?: string;
+  image_source_name?: string;
+  image_source_url?: string;
   image_alt?: string;
   logo_url?: string;
   image_relevance?: string;
@@ -123,6 +127,9 @@ export interface RealProject {
   description: string;
   image: string;
   image_status?: string;
+  image_type?: string;
+  image_badge?: string;
+  image_source_url?: string;
   image_alt?: string;
   image_source_name?: string;
   image_relevance?: string;
@@ -186,7 +193,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "arch-arteks-design",
@@ -226,7 +239,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "arch-pro-concept-iasi",
@@ -266,7 +285,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "arch-art-grup-brasov",
@@ -306,7 +331,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "eng-expert-proiect-suceava",
@@ -346,7 +377,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "eng-aquaproiect-romania",
@@ -386,7 +423,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "eng-proexrom-iasi",
@@ -426,7 +469,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "eng-teratest-cluj",
@@ -466,7 +515,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "eng-alistar-security-engineering",
@@ -506,7 +561,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "eng-utopian-engineering-brasov",
@@ -545,7 +606,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "eng-geo-proiect-constanta",
@@ -585,7 +652,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "eng-stratif-structural-engineering",
@@ -625,7 +698,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "comp-nordis-group-developer",
@@ -667,7 +746,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "comp-speedway-developments",
@@ -707,7 +792,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "comp-universal-property-romania",
@@ -746,7 +837,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "comp-imotrust-arad",
@@ -787,7 +884,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "comp-citadel-development-craiova",
@@ -825,7 +928,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "agency-euro-imobiliare-constanta",
@@ -865,7 +974,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "agency-blitz-imobiliare-cluj",
@@ -905,7 +1020,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "https://www.blitz.ro/img/bgi/logo_blitz_1200x600.jpg",
+    "image_type": "OFFICIAL_PHOTO",
+    "image_status": "VERIFIED_OFFICIAL",
+    "image_source_name": "BLITZ Imobiliare Portal Oficial",
+    "image_badge": "Fotografie oficială",
+    "image_verified": true
   },
   {
     "id": "comp-ubm-development-romania",
@@ -947,7 +1068,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "comp-bogart-building-management",
@@ -987,7 +1114,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "arch-studio-10-arhitectura",
@@ -1026,7 +1159,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "eng-saidel-consulting-engineers",
@@ -1065,7 +1204,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "comp-granvia-romania",
@@ -1106,7 +1251,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "comp-cordia-romania",
@@ -1146,7 +1297,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "comp-atenor-romania",
@@ -1187,7 +1344,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "comp-primavera-development",
@@ -1227,7 +1390,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "comp-rock-development-holding",
@@ -1268,7 +1437,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "comp-liebrecht-wood-romania",
@@ -1309,7 +1484,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "comp-sud-rezidential-development",
@@ -1349,7 +1530,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "comp-edil-constructii-cluj",
@@ -1389,7 +1576,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "comp-sedako-group-timisoara",
@@ -1429,7 +1622,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "comp-iulius-real-estate-iasi",
@@ -1476,7 +1675,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "https://iuliustown.ro/img/9561banner-general.jpg",
+    "image_type": "OFFICIAL_PHOTO",
+    "image_status": "VERIFIED_OFFICIAL",
+    "image_source_name": "Iulius Group Corporate Media",
+    "image_badge": "Fotografie oficială",
+    "image_verified": true
   },
   {
     "id": "comp-qualis-properties-brasov",
@@ -1515,7 +1720,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "comp-prima-development-oradea",
@@ -1556,7 +1767,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "comp-alinso-group-pwp",
@@ -1597,7 +1814,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "comp-vgp-parks-romania",
@@ -1641,7 +1864,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "comp-element-industrial-eli-parks",
@@ -1683,7 +1912,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "comp-anchor-group",
@@ -1726,7 +1961,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "comp-wallberg-building",
@@ -1767,7 +2008,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "comp-hexagon-cluj",
@@ -1807,7 +2054,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "comp-genesis-property",
@@ -1849,7 +2102,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "comp-plaza-centers-romania",
@@ -1891,7 +2150,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "agency-svn-romania",
@@ -1936,7 +2201,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "agency-crosspoint-real-estate",
@@ -1978,7 +2249,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "https://crosspoint.com.ro/og-default.jpg",
+    "image_type": "OFFICIAL_PHOTO",
+    "image_status": "VERIFIED_OFFICIAL",
+    "image_source_name": "Crosspoint Real Estate Portal Oficial",
+    "image_badge": "Fotografie oficială",
+    "image_verified": true
   },
   {
     "id": "agency-knight-frank-romania",
@@ -2021,7 +2298,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "agency-cushman-wakefield-echinox",
@@ -2065,7 +2348,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "agency-colliers-romania",
@@ -2109,7 +2398,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "agency-jll-romania",
@@ -2151,7 +2446,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "agency-premier-estate-management",
@@ -2192,7 +2493,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "agency-imoteca-real-estate-experts",
@@ -2233,7 +2540,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "agency-sud-rezidential-real-estate",
@@ -2274,7 +2587,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "agency-north-bucharest-investments",
@@ -2315,7 +2634,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "agency-skol-imobiliare-cluj",
@@ -2355,7 +2680,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "agency-realpro-romania",
@@ -2396,7 +2727,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "agency-regus-romania-iwg",
@@ -2440,7 +2777,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "agency-green-angels-real-estate",
@@ -2482,7 +2825,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "agency-euroest-imobiliare",
@@ -2523,7 +2872,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "agency-avison-young-romania",
@@ -2567,7 +2922,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "agency-remax-romania",
@@ -2607,7 +2968,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "agency-nordis-real-estate",
@@ -2649,7 +3016,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "comp-terra-gaz-construct",
@@ -2691,7 +3064,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "comp-ness-proiect-europe",
@@ -2734,7 +3113,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "comp-synergy-construct",
@@ -2777,7 +3162,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "comp-danya-cebus-romania",
@@ -2819,7 +3210,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "comp-avis-construction",
@@ -2859,7 +3256,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "comp-constructii-sa-sibiu",
@@ -2902,7 +3305,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "comp-cominco-sa",
@@ -2943,7 +3352,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "comp-electrogrup-cluj",
@@ -2986,7 +3401,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "comp-terratest-geotehnic",
@@ -3027,7 +3448,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "comp-keller-geotehnica",
@@ -3070,7 +3497,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "comp-octagon-contracting",
@@ -3111,7 +3544,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "comp-erbasu-edilkonstrukt",
@@ -3152,7 +3591,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "comp-alpenside-construction",
@@ -3192,7 +3637,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "comp-axa-construction",
@@ -3232,7 +3683,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "comp-smb-steel-structure",
@@ -3274,7 +3731,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "comp-synergy-invest",
@@ -3316,7 +3779,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "comp-ubor-construct",
@@ -3358,7 +3827,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "arch-archipelago-architecture",
@@ -3400,7 +3875,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "arch-graphic-studio-architecture",
@@ -3441,7 +3922,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "arch-epstein-architecture",
@@ -3483,7 +3970,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "arch-sqm-architecture-studio",
@@ -3523,7 +4016,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "arch-architype-studio",
@@ -3564,7 +4063,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "arch-syaa-architecture",
@@ -3606,7 +4111,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "arch-dsba-dorin-stefan",
@@ -3649,7 +4160,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "arch-x-architecture-engineering",
@@ -3689,7 +4206,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "arch-subrina-architecture-cluj",
@@ -3730,7 +4253,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "arch-quadra-design-studio",
@@ -3770,7 +4299,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "arch-k-ideas-architecture",
@@ -3810,7 +4345,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "arch-cumulus-architecture",
@@ -3856,7 +4397,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "https://www.marmorosch.com/wp-content/uploads/2022/11/01-marmorosch-lounge-highlight-visuals.jpg",
+    "image_type": "OFFICIAL_PHOTO",
+    "image_status": "VERIFIED_OFFICIAL",
+    "image_source_name": "Cumulus Architecture Portofoliu Marmorosch",
+    "image_badge": "Fotografie oficială",
+    "image_verified": true
   },
   {
     "id": "arch-plan31-architecture",
@@ -3899,7 +4446,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "eng-popaer-structural-engineering",
@@ -3941,7 +4494,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "eng-blueprint-structural-engineering",
@@ -3982,7 +4541,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "eng-vital-engineering-mep",
@@ -4024,7 +4589,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "eng-tpf-inginerie-romania",
@@ -4068,7 +4639,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "eng-egis-romania",
@@ -4111,7 +4688,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "eng-halcrow-romania-jacobs",
@@ -4151,7 +4734,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "eng-search-corporation",
@@ -4192,7 +4781,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "eng-saidel-engineering",
@@ -4234,7 +4829,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "eng-consitrans-engineering",
@@ -4275,7 +4876,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "eng-multinv-mep-engineering",
@@ -4317,7 +4924,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "eng-proing-soft-engineering",
@@ -4358,7 +4971,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "eng-mc-general-construct-engineering",
@@ -4399,7 +5018,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "eng-k-ideas-structural-engineering",
@@ -4440,7 +5065,13 @@ export const realCompaniesDataset: RealCompany[] = [
         "type": "OFFICIAL",
         "verified_at": "2026-08-25T00:00:00Z"
       }
-    ]
+    ],
+    "image": "",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false
   },
   {
     "id": "comp-one-united",
@@ -4581,12 +5212,15 @@ export const realCompaniesDataset: RealCompany[] = [
       }
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
-    "image": "",
-    "image_status": "NOT_DISCLOSED",
+    "image": "https://cdn.one.ro/img/library/1/0/1/10105/image-10105-src.jpg",
+    "image_status": "VERIFIED_OFFICIAL",
     "image_alt": "One United Properties Headquarters / Corporate Operations",
     "logo_url": "https://one-united-properties.ro/logo.png",
     "image_verified": true,
-    "image_relevance": "COMPANY_SPECIFIC"
+    "image_relevance": "COMPANY_SPECIFIC",
+    "image_type": "OFFICIAL_PHOTO",
+    "image_source_name": "One United Properties Corporate HQ & Portfolio",
+    "image_badge": "Fotografie oficială"
   },
   {
     "id": "comp-akcent-development",
@@ -4670,11 +5304,15 @@ export const realCompaniesDataset: RealCompany[] = [
       }
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
-    "image": "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1000&q=85",
+    "image": "https://static.wixstatic.com/media/a22994_462de059d97641a79831a46209d38241~mv2.png/v1/fit/w_2500,h_1330,al_c/a22994_462de059d97641a79831a46209d38241~mv2.png",
     "image_alt": "Akcent Development Headquarters / Corporate Operations",
     "logo_url": "https://akcent-development.ro/logo.png",
     "image_verified": true,
-    "image_relevance": "COMPANY_SPECIFIC"
+    "image_relevance": "COMPANY_SPECIFIC",
+    "image_type": "OFFICIAL_RENDER",
+    "image_status": "VERIFIED_OFFICIAL",
+    "image_source_name": "Akcent Development Corporate Media",
+    "image_badge": "Randare oficială"
   },
   {
     "id": "comp-erbasu",
@@ -4783,11 +5421,15 @@ export const realCompaniesDataset: RealCompany[] = [
       }
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
-    "image": "https://images.unsplash.com/photo-1541888946425-d0fbb186a5b3?auto=format&fit=crop&w=1000&q=85",
+    "image": "https://www.erbasu.ro/wp-content/uploads/2025/01/Portofoliu-Constructii-Erbasu.png",
     "image_alt": "Construcții Erbașu Headquarters / Corporate Operations",
     "logo_url": "https://constructii-erbasu.ro/logo.png",
     "image_verified": true,
-    "image_relevance": "COMPANY_SPECIFIC"
+    "image_relevance": "COMPANY_SPECIFIC",
+    "image_status": "VERIFIED_OFFICIAL",
+    "image_type": "OFFICIAL_PHOTO",
+    "image_badge": "Fotografie oficială",
+    "image_source_name": "Construcții Erbașu Corporate Media"
   },
   {
     "id": "comp-skanska-romania",
@@ -4872,12 +5514,15 @@ export const realCompaniesDataset: RealCompany[] = [
       }
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
-    "image": "",
-    "image_status": "NOT_DISCLOSED",
+    "image": "https://edit.skanska.com/siteassets/skanska-in-romania/equilibrium/eq_2.jpg",
+    "image_status": "VERIFIED_OFFICIAL",
     "image_alt": "Skanska Romania Headquarters / Corporate Operations",
     "logo_url": "https://skanska-romania.ro/logo.png",
     "image_verified": true,
-    "image_relevance": "COMPANY_SPECIFIC"
+    "image_relevance": "COMPANY_SPECIFIC",
+    "image_type": "OFFICIAL_PHOTO",
+    "image_source_name": "Skanska Romania Media Asset",
+    "image_badge": "Fotografie oficială"
   },
   {
     "id": "comp-cpa-structural-engineering",
@@ -4963,11 +5608,15 @@ export const realCompaniesDataset: RealCompany[] = [
       }
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
-    "image": "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1000&q=85",
+    "image": "",
     "image_alt": "CPA Structural Engineering Headquarters / Corporate Operations",
     "logo_url": "https://cpa-structural-engineering.ro/logo.png",
-    "image_verified": true,
-    "image_relevance": "COMPANY_SPECIFIC"
+    "image_verified": false,
+    "image_relevance": "COMPANY_SPECIFIC",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A"
   },
   {
     "id": "comp-popp-and-associates",
@@ -5056,11 +5705,15 @@ export const realCompaniesDataset: RealCompany[] = [
       }
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
-    "image": "https://images.unsplash.com/photo-1577495508048-b635879837f1?auto=format&fit=crop&w=1000&q=85",
+    "image": "",
     "image_alt": "Popp & Asociații Headquarters / Corporate Operations",
     "logo_url": "https://popp-si-asociatii.ro/logo.png",
-    "image_verified": true,
-    "image_relevance": "COMPANY_SPECIFIC"
+    "image_verified": false,
+    "image_relevance": "COMPANY_SPECIFIC",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A"
   },
   {
     "id": "comp-westfourth-architecture",
@@ -5148,11 +5801,15 @@ export const realCompaniesDataset: RealCompany[] = [
       }
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
-    "image": "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1000&q=85",
+    "image": "",
     "image_alt": "Westfourth Architecture Headquarters / Corporate Operations",
     "logo_url": "https://westfourth-architecture.ro/logo.png",
-    "image_verified": true,
-    "image_relevance": "COMPANY_SPECIFIC"
+    "image_verified": false,
+    "image_relevance": "COMPANY_SPECIFIC",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A"
   },
   {
     "id": "comp-dico-si-tiganas",
@@ -5240,11 +5897,15 @@ export const realCompaniesDataset: RealCompany[] = [
       }
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
-    "image": "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=1000&q=85",
+    "image": "",
     "image_alt": "Dico și Țigănaș Headquarters / Corporate Operations",
     "logo_url": "https://dico-si-tiganas.ro/logo.png",
-    "image_verified": true,
-    "image_relevance": "COMPANY_SPECIFIC"
+    "image_verified": false,
+    "image_relevance": "COMPANY_SPECIFIC",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A"
   },
   {
     "id": "comp-concelex",
@@ -5335,11 +5996,15 @@ export const realCompaniesDataset: RealCompany[] = [
       }
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
-    "image": "https://images.unsplash.com/photo-1587351021759-3e566b6af7cc?auto=format&fit=crop&w=1000&q=85",
+    "image": "https://concelex.ro/wp-content/uploads/2026/05/clx-share.jpg",
     "image_alt": "Concelex Headquarters / Corporate Operations",
     "logo_url": "https://concelex.ro/logo.png",
     "image_verified": true,
-    "image_relevance": "COMPANY_SPECIFIC"
+    "image_relevance": "COMPANY_SPECIFIC",
+    "image_status": "VERIFIED_OFFICIAL",
+    "image_type": "OFFICIAL_PHOTO",
+    "image_badge": "Fotografie oficială",
+    "image_source_name": "Concelex Corporate Asset Portal"
   },
   {
     "id": "comp-prime-kapital",
@@ -5430,11 +6095,15 @@ export const realCompaniesDataset: RealCompany[] = [
       }
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
-    "image": "https://images.unsplash.com/photo-1567684014761-b65e2e59b9eb?auto=format&fit=crop&w=1000&q=85",
+    "image": "",
     "image_alt": "Prime Kapital Headquarters / Corporate Operations",
     "logo_url": "https://prime-kapital.ro/logo.png",
-    "image_verified": true,
-    "image_relevance": "COMPANY_SPECIFIC"
+    "image_verified": false,
+    "image_relevance": "COMPANY_SPECIFIC",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A"
   },
   {
     "id": "comp-porr-construct",
@@ -5526,11 +6195,15 @@ export const realCompaniesDataset: RealCompany[] = [
       }
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
-    "image": "https://images.unsplash.com/photo-1590486803833-1c5dc8ddd4c8?auto=format&fit=crop&w=1000&q=85",
+    "image": "",
     "image_alt": "PORR Construct Romania Headquarters / Corporate Operations",
     "logo_url": "https://porr-construct-romania.ro/logo.png",
-    "image_verified": true,
-    "image_relevance": "COMPANY_SPECIFIC"
+    "image_verified": false,
+    "image_relevance": "COMPANY_SPECIFIC",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A"
   },
   {
     "id": "comp-metropolitan-residence",
@@ -5615,11 +6288,15 @@ export const realCompaniesDataset: RealCompany[] = [
       }
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
-    "image": "https://images.unsplash.com/photo-1574362848149-11496d93a7c7?auto=format&fit=crop&w=1000&q=85",
+    "image": "",
     "image_alt": "Metropolitan Residence Headquarters / Corporate Operations",
     "logo_url": "https://metropolitan-residence.ro/logo.png",
-    "image_verified": true,
-    "image_relevance": "COMPANY_SPECIFIC"
+    "image_verified": false,
+    "image_relevance": "COMPANY_SPECIFIC",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A"
   },
   {
     "id": "comp-speedwell",
@@ -5709,11 +6386,15 @@ export const realCompaniesDataset: RealCompany[] = [
       }
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
-    "image": "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1000&q=85",
+    "image": "https://www.speedwell.be/wp-content/uploads/2025/02/Record-Park-Residential-1_1800x900.jpg",
     "image_alt": "Speedwell Headquarters / Corporate Operations",
     "logo_url": "https://speedwell.ro/logo.png",
     "image_verified": true,
-    "image_relevance": "COMPANY_SPECIFIC"
+    "image_relevance": "COMPANY_SPECIFIC",
+    "image_status": "VERIFIED_OFFICIAL",
+    "image_type": "OFFICIAL_PHOTO",
+    "image_badge": "Fotografie oficială",
+    "image_source_name": "Speedwell Real Estate Development Corporate Portfolio"
   },
   {
     "id": "comp-metroul-sa",
@@ -5799,11 +6480,15 @@ export const realCompaniesDataset: RealCompany[] = [
       }
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
-    "image": "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1000&q=85",
+    "image": "",
     "image_alt": "Metroul SA Headquarters / Corporate Operations",
     "logo_url": "https://metroul-sa.ro/logo.png",
-    "image_verified": true,
-    "image_relevance": "COMPANY_SPECIFIC"
+    "image_verified": false,
+    "image_relevance": "COMPANY_SPECIFIC",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A"
   },
   {
     "id": "comp-nepi-rockcastle",
@@ -5901,11 +6586,15 @@ export const realCompaniesDataset: RealCompany[] = [
       }
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
-    "image": "https://images.unsplash.com/photo-1567449303078-57ad995bd301?auto=format&fit=crop&w=1000&q=85",
+    "image": "",
     "image_alt": "NEPI Rockcastle Headquarters / Corporate Operations",
     "logo_url": "https://nepi-rockcastle.ro/logo.png",
-    "image_verified": true,
-    "image_relevance": "COMPANY_SPECIFIC"
+    "image_verified": false,
+    "image_relevance": "COMPANY_SPECIFIC",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A"
   },
   {
     "id": "comp-iulius-group",
@@ -5994,11 +6683,15 @@ export const realCompaniesDataset: RealCompany[] = [
       }
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
-    "image": "https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=1000&q=85",
+    "image": "",
     "image_alt": "Iulius Group Headquarters / Corporate Operations",
     "logo_url": "https://iulius-group.ro/logo.png",
-    "image_verified": true,
-    "image_relevance": "COMPANY_SPECIFIC"
+    "image_verified": false,
+    "image_relevance": "COMPANY_SPECIFIC",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A"
   },
   {
     "id": "comp-forty-management",
@@ -6083,11 +6776,15 @@ export const realCompaniesDataset: RealCompany[] = [
       }
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
-    "image": "https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=1000&q=85",
+    "image": "",
     "image_alt": "Forty Management Headquarters / Corporate Operations",
     "logo_url": "https://forty-management.ro/logo.png",
-    "image_verified": true,
-    "image_relevance": "COMPANY_SPECIFIC"
+    "image_verified": false,
+    "image_relevance": "COMPANY_SPECIFIC",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A"
   },
   {
     "id": "comp-arcada-company",
@@ -6175,11 +6872,15 @@ export const realCompaniesDataset: RealCompany[] = [
       }
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
-    "image": "https://images.unsplash.com/photo-1474487548417-781cb71495f3?auto=format&fit=crop&w=1000&q=85",
+    "image": "",
     "image_alt": "Arcada Company Headquarters / Corporate Operations",
     "logo_url": "https://arcada-company.ro/logo.png",
-    "image_verified": true,
-    "image_relevance": "COMPANY_SPECIFIC"
+    "image_verified": false,
+    "image_relevance": "COMPANY_SPECIFIC",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A"
   },
   {
     "id": "comp-hils-development",
@@ -6263,11 +6964,15 @@ export const realCompaniesDataset: RealCompany[] = [
       }
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
-    "image": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=85",
+    "image": "https://hils.ro/wp-content/uploads/2024/09/HILS_Aeriana_Seara_f2-1_cover-1024x427.png",
     "image_alt": "HILS Development Headquarters / Corporate Operations",
     "logo_url": "https://hils-development.ro/logo.png",
     "image_verified": true,
-    "image_relevance": "COMPANY_SPECIFIC"
+    "image_relevance": "COMPANY_SPECIFIC",
+    "image_type": "OFFICIAL_PHOTO",
+    "image_status": "VERIFIED_OFFICIAL",
+    "image_source_name": "HILS Development Corporate Portfolio",
+    "image_badge": "Fotografie oficială"
   },
   {
     "id": "comp-webuild-romania",
@@ -6352,11 +7057,15 @@ export const realCompaniesDataset: RealCompany[] = [
       }
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
-    "image": "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1000&q=85",
+    "image": "",
     "image_alt": "Webuild / Astaldi Romania Headquarters / Corporate Operations",
     "logo_url": "https://webuild-romania.ro/logo.png",
-    "image_verified": true,
-    "image_relevance": "COMPANY_SPECIFIC"
+    "image_verified": false,
+    "image_relevance": "COMPANY_SPECIFIC",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A"
   },
   {
     "id": "comp-vastint-romania",
@@ -6440,11 +7149,15 @@ export const realCompaniesDataset: RealCompany[] = [
       }
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
-    "image": "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1000&q=85",
+    "image": "https://tnsquare.ro/wp-content/uploads/2024/03/timpuri-noi-square-faza-2.webp",
     "image_alt": "Vastint Romania Headquarters / Corporate Operations",
     "logo_url": "https://vastint-romania.ro/logo.png",
     "image_verified": true,
-    "image_relevance": "COMPANY_SPECIFIC"
+    "image_relevance": "COMPANY_SPECIFIC",
+    "image_type": "OFFICIAL_RENDER",
+    "image_status": "VERIFIED_OFFICIAL",
+    "image_source_name": "Vastint Romania Portfolio Asset",
+    "image_badge": "Randare oficială"
   },
   {
     "id": "comp-impact-developer",
@@ -6540,11 +7253,15 @@ export const realCompaniesDataset: RealCompany[] = [
       }
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
-    "image": "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=1000&q=85",
+    "image": "https://www.greenfieldresidence.ro/baneasa/wp-content/uploads/2024/12/de-ce-greenfield-baneasa-4-1400x538c.jpg",
     "image_alt": "Impact Developer & Contractor Headquarters / Corporate Operations",
     "logo_url": "https://impact-developer-contractor.ro/logo.png",
     "image_verified": true,
-    "image_relevance": "COMPANY_SPECIFIC"
+    "image_relevance": "COMPANY_SPECIFIC",
+    "image_type": "OFFICIAL_PHOTO",
+    "image_status": "VERIFIED_OFFICIAL",
+    "image_source_name": "Impact Developer & Contractor BVB Listed Asset",
+    "image_badge": "Fotografie oficială"
   },
   {
     "id": "comp-spedition-umb",
@@ -6642,11 +7359,15 @@ export const realCompaniesDataset: RealCompany[] = [
       }
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
-    "image": "https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=1000&q=85",
+    "image": "",
     "image_alt": "Spedition UMB / UMB Group Headquarters / Corporate Operations",
     "logo_url": "https://spedition-umb.ro/logo.png",
-    "image_verified": true,
-    "image_relevance": "COMPANY_SPECIFIC"
+    "image_verified": false,
+    "image_relevance": "COMPANY_SPECIFIC",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A"
   },
   {
     "id": "comp-globalworth",
@@ -6733,11 +7454,15 @@ export const realCompaniesDataset: RealCompany[] = [
       }
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
-    "image": "https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1000&q=85",
+    "image": "",
     "image_alt": "Globalworth Real Estate Headquarters / Corporate Operations",
     "logo_url": "https://globalworth.ro/logo.png",
-    "image_verified": true,
-    "image_relevance": "COMPANY_SPECIFIC"
+    "image_verified": false,
+    "image_relevance": "COMPANY_SPECIFIC",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A"
   },
   {
     "id": "comp-kesz-construct",
@@ -6822,11 +7547,14 @@ export const realCompaniesDataset: RealCompany[] = [
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
     "image": "",
-    "image_status": "NOT_DISCLOSED",
+    "image_status": "NOT_FOUND",
     "image_alt": "KÉSZ Construct Romania Headquarters / Corporate Operations",
     "logo_url": "https://kesz-construct-romania.ro/logo.png",
-    "image_verified": true,
-    "image_relevance": "COMPANY_SPECIFIC"
+    "image_verified": false,
+    "image_relevance": "COMPANY_SPECIFIC",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A"
   },
   {
     "id": "comp-strabag-romania",
@@ -6914,11 +7642,15 @@ export const realCompaniesDataset: RealCompany[] = [
       }
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
-    "image": "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1000&q=85",
+    "image": "",
     "image_alt": "Strabag Romania Headquarters / Corporate Operations",
     "logo_url": "https://strabag-romania.ro/logo.png",
-    "image_verified": true,
-    "image_relevance": "COMPANY_SPECIFIC"
+    "image_verified": false,
+    "image_relevance": "COMPANY_SPECIFIC",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A"
   },
   {
     "id": "comp-con-a",
@@ -7002,11 +7734,15 @@ export const realCompaniesDataset: RealCompany[] = [
       }
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
-    "image": "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1000&q=85",
+    "image": "",
     "image_alt": "Con-A Operations Headquarters / Corporate Operations",
     "logo_url": "https://con-a.ro/logo.png",
-    "image_verified": true,
-    "image_relevance": "COMPANY_SPECIFIC"
+    "image_verified": false,
+    "image_relevance": "COMPANY_SPECIFIC",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A"
   },
   {
     "id": "comp-maurer-imobiliare",
@@ -7089,11 +7825,15 @@ export const realCompaniesDataset: RealCompany[] = [
       }
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
-    "image": "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1000&q=85",
+    "image": "",
     "image_alt": "Maurer Imobiliare Headquarters / Corporate Operations",
     "logo_url": "https://maurer-imobiliare.ro/logo.png",
-    "image_verified": true,
-    "image_relevance": "COMPANY_SPECIFIC"
+    "image_verified": false,
+    "image_relevance": "COMPANY_SPECIFIC",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A"
   },
   {
     "id": "comp-nusco-imobiliere",
@@ -7174,11 +7914,15 @@ export const realCompaniesDataset: RealCompany[] = [
       }
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
-    "image": "https://images.unsplash.com/photo-1600573472592-401b489a3cdc?auto=format&fit=crop&w=1000&q=85",
+    "image": "",
     "image_alt": "Nusco Imobiliere Headquarters / Corporate Operations",
     "logo_url": "https://nusco-imobiliere.ro/logo.png",
-    "image_verified": true,
-    "image_relevance": "COMPANY_SPECIFIC"
+    "image_verified": false,
+    "image_relevance": "COMPANY_SPECIFIC",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A"
   },
   {
     "id": "comp-redport-capital",
@@ -7257,11 +8001,15 @@ export const realCompaniesDataset: RealCompany[] = [
       }
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
-    "image": "https://images.unsplash.com/photo-1554469384-e58fac16e23a?auto=format&fit=crop&w=1000&q=85",
+    "image": "",
     "image_alt": "Redport Capital Headquarters / Corporate Operations",
     "logo_url": "https://redport-capital.ro/logo.png",
-    "image_verified": true,
-    "image_relevance": "COMPANY_SPECIFIC"
+    "image_verified": false,
+    "image_relevance": "COMPANY_SPECIFIC",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A"
   },
   {
     "id": "comp-river-development",
@@ -7342,11 +8090,15 @@ export const realCompaniesDataset: RealCompany[] = [
       }
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
-    "image": "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1000&q=85",
+    "image": "https://semaparc.ro/wp-content/uploads/About-Sema-Parc-1@2x.jpg",
     "image_alt": "River Development Headquarters / Corporate Operations",
     "logo_url": "https://river-development.ro/logo.png",
     "image_verified": true,
-    "image_relevance": "COMPANY_SPECIFIC"
+    "image_relevance": "COMPANY_SPECIFIC",
+    "image_status": "VERIFIED_OFFICIAL",
+    "image_type": "OFFICIAL_PHOTO",
+    "image_badge": "Fotografie oficială",
+    "image_source_name": "River Development / Sema Parc Corporate Media"
   },
   {
     "id": "comp-afi-europe",
@@ -7431,11 +8183,15 @@ export const realCompaniesDataset: RealCompany[] = [
       }
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
-    "image": "https://images.unsplash.com/photo-1519817650390-64a93db51149?auto=format&fit=crop&w=1000&q=85",
+    "image": "",
     "image_alt": "AFI Europe Romania Headquarters / Corporate Operations",
     "logo_url": "https://afi-europe-romania.ro/logo.png",
-    "image_verified": true,
-    "image_relevance": "COMPANY_SPECIFIC"
+    "image_verified": false,
+    "image_relevance": "COMPANY_SPECIFIC",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A"
   },
   {
     "id": "comp-hagag",
@@ -7516,11 +8272,15 @@ export const realCompaniesDataset: RealCompany[] = [
       }
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
-    "image": "https://images.unsplash.com/photo-1515165562839-978bbcf18277?auto=format&fit=crop&w=1000&q=85",
+    "image": "",
     "image_alt": "Hagag Development Europe Headquarters / Corporate Operations",
     "logo_url": "https://hagag-development-europe.ro/logo.png",
-    "image_verified": true,
-    "image_relevance": "COMPANY_SPECIFIC"
+    "image_verified": false,
+    "image_relevance": "COMPANY_SPECIFIC",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A"
   },
   {
     "id": "comp-forte-partners",
@@ -7601,11 +8361,15 @@ export const realCompaniesDataset: RealCompany[] = [
       }
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
-    "image": "https://images.unsplash.com/photo-1577223625816-7546f13df25d?auto=format&fit=crop&w=1000&q=85",
+    "image": "https://cdn.prod.website-files.com/68214ec31a7da210dcbf14e0/6973671923f8a69c394da853_12%20-%20FTP_UCT_014_IMG_8819_vladpatru.jpg",
     "image_alt": "Forte Partners Headquarters / Corporate Operations",
     "logo_url": "https://forte-partners.ro/logo.png",
     "image_verified": true,
-    "image_relevance": "COMPANY_SPECIFIC"
+    "image_relevance": "COMPANY_SPECIFIC",
+    "image_type": "OFFICIAL_PHOTO",
+    "image_status": "VERIFIED_OFFICIAL",
+    "image_source_name": "Forte Partners Corporate Asset",
+    "image_badge": "Fotografie oficială"
   },
   {
     "id": "comp-ctp-romania",
@@ -7693,11 +8457,15 @@ export const realCompaniesDataset: RealCompany[] = [
       }
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
-    "image": "https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?auto=format&fit=crop&w=1000&q=85",
+    "image": "https://ctp.eu/wp-content/uploads/2024/01/CTPark-Bucharest-West_7.jpg",
     "image_alt": "CTP Romania Headquarters / Corporate Operations",
     "logo_url": "https://ctp-romania.ro/logo.png",
     "image_verified": true,
-    "image_relevance": "COMPANY_SPECIFIC"
+    "image_relevance": "COMPANY_SPECIFIC",
+    "image_type": "OFFICIAL_PHOTO",
+    "image_status": "VERIFIED_OFFICIAL",
+    "image_source_name": "CTP N.V. Corporate Asset",
+    "image_badge": "Fotografie oficială"
   },
   {
     "id": "comp-wdp-romania",
@@ -7780,11 +8548,15 @@ export const realCompaniesDataset: RealCompany[] = [
       }
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
-    "image": "https://images.unsplash.com/photo-1513584684374-8bab748fbf90?auto=format&fit=crop&w=1000&q=85",
+    "image": "",
     "image_alt": "WDP Romania Headquarters / Corporate Operations",
     "logo_url": "https://wdp-romania.ro/logo.png",
-    "image_verified": true,
-    "image_relevance": "COMPANY_SPECIFIC"
+    "image_verified": false,
+    "image_relevance": "COMPANY_SPECIFIC",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A"
   },
   {
     "id": "comp-west-group",
@@ -7868,11 +8640,15 @@ export const realCompaniesDataset: RealCompany[] = [
       }
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
-    "image": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1000&q=85",
+    "image": "",
     "image_alt": "West Group Architecture Headquarters / Corporate Operations",
     "logo_url": "https://west-group-architecture.ro/logo.png",
-    "image_verified": true,
-    "image_relevance": "COMPANY_SPECIFIC"
+    "image_verified": false,
+    "image_relevance": "COMPANY_SPECIFIC",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A"
   },
   {
     "id": "comp-bogart",
@@ -7969,11 +8745,15 @@ export const realCompaniesDataset: RealCompany[] = [
       }
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
-    "image": "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1000&q=85",
+    "image": "",
     "image_alt": "Bog'Art Headquarters / Corporate Operations",
     "logo_url": "https://bog-art.ro/logo.png",
-    "image_verified": true,
-    "image_relevance": "COMPANY_SPECIFIC"
+    "image_verified": false,
+    "image_relevance": "COMPANY_SPECIFIC",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A"
   },
   {
     "id": "comp-portland-trust",
@@ -8018,11 +8798,15 @@ export const realCompaniesDataset: RealCompany[] = [
       }
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
-    "image": "https://images.unsplash.com/photo-1477959858617-67f30ac4ce78?auto=format&fit=crop&w=1000&q=85",
+    "image": "https://www.portlandtrust.ro/storage/projects/listing/j8-office-park.jpg",
     "image_alt": "Portland Trust Headquarters / Corporate Operations",
     "logo_url": "https://portland-trust.ro/logo.png",
     "image_verified": true,
-    "image_relevance": "COMPANY_SPECIFIC"
+    "image_relevance": "COMPANY_SPECIFIC",
+    "image_status": "VERIFIED_OFFICIAL",
+    "image_type": "OFFICIAL_PHOTO",
+    "image_badge": "Fotografie oficială",
+    "image_source_name": "Portland Trust Corporate Asset"
   }
 ];
 
@@ -8055,7 +8839,7 @@ export const realProjectsDataset: RealProject[] = [
     "unit_count": 712,
     "floors": "11F",
     "description": "Luxury 5-star hotel and apartment resort development on Mamaia Nord beach incorporating 712 rooms and apartments, SPA center, and private beach.",
-    "image": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=85&pid=nordis-mamaia-resort",
+    "image": "",
     "is_featured": true,
     "last_verified_at": "2026-08-25T00:00:00Z",
     "sources": [
@@ -8066,7 +8850,13 @@ export const realProjectsDataset: RealProject[] = [
         "verified_at": "2026-08-25T00:00:00Z"
       }
     ],
-    "investment_label": "€100.0M EUR"
+    "investment_label": "€100.0M EUR",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false,
+    "provenance_type": "NOT_FOUND"
   },
   {
     "id": "proj-ctpark-cluj-logistics",
@@ -8096,7 +8886,7 @@ export const realProjectsDataset: RealProject[] = [
     "floors": "1F",
     "description": "80,000 sqm BREEAM Very Good Class A logistics distribution park near Cluj-Napoca International Airport.",
     "image": "",
-    "image_status": "NOT_DISCLOSED",
+    "image_status": "NOT_FOUND",
     "is_featured": false,
     "last_verified_at": "2026-08-25T00:00:00Z",
     "sources": [
@@ -8107,7 +8897,12 @@ export const realProjectsDataset: RealProject[] = [
         "verified_at": "2026-08-25T00:00:00Z"
       }
     ],
-    "investment_label": "€45.0M EUR"
+    "investment_label": "€45.0M EUR",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false,
+    "provenance_type": "NOT_FOUND"
   },
   {
     "id": "proj-speedwell-riverside-arad-site",
@@ -8138,7 +8933,7 @@ export const realProjectsDataset: RealProject[] = [
     "floors": "8F",
     "description": "Riverside urban regeneration project in Arad delivering 200 residential units and 10,000 sqm commercial space.",
     "image": "",
-    "image_status": "NOT_DISCLOSED",
+    "image_status": "NOT_FOUND",
     "is_featured": false,
     "last_verified_at": "2026-08-25T00:00:00Z",
     "sources": [
@@ -8149,7 +8944,12 @@ export const realProjectsDataset: RealProject[] = [
         "verified_at": "2026-08-25T00:00:00Z"
       }
     ],
-    "investment_label": "€40.0M EUR"
+    "investment_label": "€40.0M EUR",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false,
+    "provenance_type": "NOT_FOUND"
   },
   {
     "id": "proj-citadel-residence-craiova",
@@ -8180,7 +8980,7 @@ export const realProjectsDataset: RealProject[] = [
     "floors": "10F",
     "description": "420-apartment modern residential community in Craiova with subterranean parking and landscaped gardens.",
     "image": "",
-    "image_status": "NOT_DISCLOSED",
+    "image_status": "NOT_FOUND",
     "is_featured": false,
     "last_verified_at": "2026-08-25T00:00:00Z",
     "sources": [
@@ -8191,7 +8991,12 @@ export const realProjectsDataset: RealProject[] = [
         "verified_at": "2026-08-25T00:00:00Z"
       }
     ],
-    "investment_label": "€28.0M EUR"
+    "investment_label": "€28.0M EUR",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false,
+    "provenance_type": "NOT_FOUND"
   },
   {
     "id": "proj-a1-highway-sibiu-pitesti",
@@ -8221,7 +9026,7 @@ export const realProjectsDataset: RealProject[] = [
     "floors": "N/A Highway",
     "description": "30km motorway section including 12 major bridges and viaducts crossing Trans-Carpathian infrastructure corridor.",
     "image": "",
-    "image_status": "NOT_DISCLOSED",
+    "image_status": "NOT_FOUND",
     "is_featured": true,
     "last_verified_at": "2026-08-25T00:00:00Z",
     "sources": [
@@ -8232,7 +9037,12 @@ export const realProjectsDataset: RealProject[] = [
         "verified_at": "2026-08-25T00:00:00Z"
       }
     ],
-    "investment_label": "€350.0M EUR"
+    "investment_label": "€350.0M EUR",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false,
+    "provenance_type": "NOT_FOUND"
   },
   {
     "id": "proj-afi-tech-park-2",
@@ -8262,7 +9072,7 @@ export const realProjectsDataset: RealProject[] = [
     "floors": "8F",
     "description": "Phase 2 of AFI Tech Park office campus delivering 22,000 sqm of LEED Platinum office space in Sector 5.",
     "image": "",
-    "image_status": "NOT_DISCLOSED",
+    "image_status": "NOT_FOUND",
     "is_featured": false,
     "last_verified_at": "2026-08-25T00:00:00Z",
     "sources": [
@@ -8273,7 +9083,12 @@ export const realProjectsDataset: RealProject[] = [
         "verified_at": "2026-08-25T00:00:00Z"
       }
     ],
-    "investment_label": "€37.0M EUR"
+    "investment_label": "€37.0M EUR",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false,
+    "provenance_type": "NOT_FOUND"
   },
   {
     "id": "proj-hils-brauner-residential",
@@ -8304,7 +9119,7 @@ export const realProjectsDataset: RealProject[] = [
     "floors": "11F",
     "description": "Substantial residential development of 1,250 smart apartments across 8 blocks in Sector 3 Pallady corridor.",
     "image": "",
-    "image_status": "NOT_DISCLOSED",
+    "image_status": "NOT_FOUND",
     "is_featured": false,
     "last_verified_at": "2026-08-25T00:00:00Z",
     "sources": [
@@ -8315,7 +9130,12 @@ export const realProjectsDataset: RealProject[] = [
         "verified_at": "2026-08-25T00:00:00Z"
       }
     ],
-    "investment_label": "€70.0M EUR"
+    "investment_label": "€70.0M EUR",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false,
+    "provenance_type": "NOT_FOUND"
   },
   {
     "id": "proj-sedako-park-timisoara-site",
@@ -8358,7 +9178,12 @@ export const realProjectsDataset: RealProject[] = [
         "verified_at": "2026-08-25T00:00:00Z"
       }
     ],
-    "investment_label": "€24.0M EUR"
+    "investment_label": "€24.0M EUR",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false,
+    "provenance_type": "NOT_FOUND"
   },
   {
     "id": "proj-edil-park-cluj-site",
@@ -8389,7 +9214,7 @@ export const realProjectsDataset: RealProject[] = [
     "floors": "10F",
     "description": "450-apartment residential development in Cluj-Napoca near Vivo Shopping Center.",
     "image": "",
-    "image_status": "NOT_DISCLOSED",
+    "image_status": "NOT_FOUND",
     "is_featured": false,
     "last_verified_at": "2026-08-25T00:00:00Z",
     "sources": [
@@ -8400,7 +9225,12 @@ export const realProjectsDataset: RealProject[] = [
         "verified_at": "2026-08-25T00:00:00Z"
       }
     ],
-    "investment_label": "€30.0M EUR"
+    "investment_label": "€30.0M EUR",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false,
+    "provenance_type": "NOT_FOUND"
   },
   {
     "id": "proj-avrig-35-residential",
@@ -8431,7 +9261,7 @@ export const realProjectsDataset: RealProject[] = [
     "floors": "10F",
     "description": "Modern urban residential building in Obor area offering 210 smart apartments and subterranean parking.",
     "image": "",
-    "image_status": "NOT_DISCLOSED",
+    "image_status": "NOT_FOUND",
     "is_featured": false,
     "last_verified_at": "2026-08-25T00:00:00Z",
     "sources": [
@@ -8442,7 +9272,12 @@ export const realProjectsDataset: RealProject[] = [
         "verified_at": "2026-08-25T00:00:00Z"
       }
     ],
-    "investment_label": "€20.0M EUR"
+    "investment_label": "€20.0M EUR",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false,
+    "provenance_type": "NOT_FOUND"
   },
   {
     "id": "proj-militari-shopping-expansion",
@@ -8472,7 +9307,7 @@ export const realProjectsDataset: RealProject[] = [
     "floors": "1F",
     "description": "55,000 sqm retail park expansion anchored by major international hypermarket and DIY retailers.",
     "image": "",
-    "image_status": "NOT_DISCLOSED",
+    "image_status": "NOT_FOUND",
     "is_featured": false,
     "last_verified_at": "2026-08-25T00:00:00Z",
     "sources": [
@@ -8483,7 +9318,12 @@ export const realProjectsDataset: RealProject[] = [
         "verified_at": "2026-08-25T00:00:00Z"
       }
     ],
-    "investment_label": "€35.0M EUR"
+    "investment_label": "€35.0M EUR",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false,
+    "provenance_type": "NOT_FOUND"
   },
   {
     "id": "proj-anchor-plaza-office",
@@ -8513,7 +9353,7 @@ export const realProjectsDataset: RealProject[] = [
     "floors": "12F",
     "description": "25,000 sqm Grade A office tower adjacent to Plaza Romania shopping center.",
     "image": "",
-    "image_status": "NOT_DISCLOSED",
+    "image_status": "NOT_FOUND",
     "is_featured": false,
     "last_verified_at": "2026-08-25T00:00:00Z",
     "sources": [
@@ -8524,7 +9364,12 @@ export const realProjectsDataset: RealProject[] = [
         "verified_at": "2026-08-25T00:00:00Z"
       }
     ],
-    "investment_label": "€32.0M EUR"
+    "investment_label": "€32.0M EUR",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false,
+    "provenance_type": "NOT_FOUND"
   },
   {
     "id": "proj-incity-residences-bucharest",
@@ -8555,7 +9400,7 @@ export const realProjectsDataset: RealProject[] = [
     "floors": "17F",
     "description": "4-building high-rise residential complex of 500 luxury apartments in central Bucharest Vitan area.",
     "image": "",
-    "image_status": "NOT_DISCLOSED",
+    "image_status": "NOT_FOUND",
     "is_featured": false,
     "last_verified_at": "2026-08-25T00:00:00Z",
     "sources": [
@@ -8566,7 +9411,12 @@ export const realProjectsDataset: RealProject[] = [
         "verified_at": "2026-08-25T00:00:00Z"
       }
     ],
-    "investment_label": "€55.0M EUR"
+    "investment_label": "€55.0M EUR",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false,
+    "provenance_type": "NOT_FOUND"
   },
   {
     "id": "proj-boemia-apartments-bucharest",
@@ -8596,8 +9446,8 @@ export const realProjectsDataset: RealProject[] = [
     "unit_count": 75,
     "floors": "6F",
     "description": "Boutique residential building of 75 high-end apartments near Tineretului Park in central Bucharest.",
-    "image": "",
-    "image_status": "NOT_DISCLOSED",
+    "image": "https://www.primadevelopment.ro/wp-content/uploads/2023/06/MRS_003_IMG_5085_vladpatru16075-scaled-1.jpg",
+    "image_status": "VERIFIED_OFFICIAL",
     "is_featured": false,
     "last_verified_at": "2026-08-25T00:00:00Z",
     "sources": [
@@ -8608,7 +9458,12 @@ export const realProjectsDataset: RealProject[] = [
         "verified_at": "2026-08-25T00:00:00Z"
       }
     ],
-    "investment_label": "€15.0M EUR"
+    "investment_label": "€15.0M EUR",
+    "image_type": "OFFICIAL_PHOTO",
+    "image_source_name": "Prima Development Group Official Asset",
+    "image_badge": "Fotografie oficială",
+    "image_verified": true,
+    "provenance_type": "OFFICIAL_PHOTO"
   },
   {
     "id": "proj-eli-park-bacau-logistics",
@@ -8638,7 +9493,7 @@ export const realProjectsDataset: RealProject[] = [
     "floors": "1F",
     "description": "30,000 sqm Class A logistics warehouse along A7 Moldavia Motorway corridor.",
     "image": "",
-    "image_status": "NOT_DISCLOSED",
+    "image_status": "NOT_FOUND",
     "is_featured": false,
     "last_verified_at": "2026-08-25T00:00:00Z",
     "sources": [
@@ -8649,7 +9504,12 @@ export const realProjectsDataset: RealProject[] = [
         "verified_at": "2026-08-25T00:00:00Z"
       }
     ],
-    "investment_label": "€20.0M EUR"
+    "investment_label": "€20.0M EUR",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false,
+    "provenance_type": "NOT_FOUND"
   },
   {
     "id": "proj-dacia-one-bucharest",
@@ -8691,7 +9551,12 @@ export const realProjectsDataset: RealProject[] = [
         "verified_at": "2026-08-25T00:00:00Z"
       }
     ],
-    "investment_label": "€50.0M EUR"
+    "investment_label": "€50.0M EUR",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false,
+    "provenance_type": "NOT_FOUND"
   },
   {
     "id": "proj-expo-bucharest-office",
@@ -8721,7 +9586,7 @@ export const realProjectsDataset: RealProject[] = [
     "floors": "12F",
     "description": "Three-building Grade A office complex delivering 54,000 sqm of sustainable BREEAM Outstanding office space in Expoziției commercial hub.",
     "image": "",
-    "image_status": "NOT_DISCLOSED",
+    "image_status": "NOT_FOUND",
     "is_featured": false,
     "last_verified_at": "2026-08-25T00:00:00Z",
     "sources": [
@@ -8732,7 +9597,12 @@ export const realProjectsDataset: RealProject[] = [
         "verified_at": "2026-08-25T00:00:00Z"
       }
     ],
-    "investment_label": "€90.0M EUR"
+    "investment_label": "€90.0M EUR",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false,
+    "provenance_type": "NOT_FOUND"
   },
   {
     "id": "proj-yunity-park-bucharest",
@@ -8762,7 +9632,7 @@ export const realProjectsDataset: RealProject[] = [
     "floors": "7F",
     "description": "Transformation of Novo Park into YUNITY Park, featuring a 1,000 sqm outdoor amphitheatre, 2,000 sqm urban forest, and 75,000 sqm Grade A offices.",
     "image": "",
-    "image_status": "NOT_DISCLOSED",
+    "image_status": "NOT_FOUND",
     "is_featured": true,
     "last_verified_at": "2026-08-25T00:00:00Z",
     "sources": [
@@ -8773,7 +9643,12 @@ export const realProjectsDataset: RealProject[] = [
         "verified_at": "2026-08-25T00:00:00Z"
       }
     ],
-    "investment_label": "€50.0M EUR"
+    "investment_label": "€50.0M EUR",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false,
+    "provenance_type": "NOT_FOUND"
   },
   {
     "id": "proj-xcity-towers-timisoara",
@@ -8804,7 +9679,7 @@ export const realProjectsDataset: RealProject[] = [
     "floors": "15F",
     "description": "Major residential tower development of 1,000 smart apartments in 8 high-rise buildings in Northern Timișoara.",
     "image": "",
-    "image_status": "NOT_DISCLOSED",
+    "image_status": "NOT_FOUND",
     "is_featured": false,
     "last_verified_at": "2026-08-25T00:00:00Z",
     "sources": [
@@ -8815,7 +9690,12 @@ export const realProjectsDataset: RealProject[] = [
         "verified_at": "2026-08-25T00:00:00Z"
       }
     ],
-    "investment_label": "€60.0M EUR"
+    "investment_label": "€60.0M EUR",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false,
+    "provenance_type": "NOT_FOUND"
   },
   {
     "id": "proj-hexagon-offices-cluj",
@@ -8845,7 +9725,7 @@ export const realProjectsDataset: RealProject[] = [
     "floors": "8F",
     "description": "Class A commercial office building delivering 21,600 sqm of modern tech workspace with BREEAM Excellent certification.",
     "image": "",
-    "image_status": "NOT_DISCLOSED",
+    "image_status": "NOT_FOUND",
     "is_featured": false,
     "last_verified_at": "2026-08-25T00:00:00Z",
     "sources": [
@@ -8856,7 +9736,12 @@ export const realProjectsDataset: RealProject[] = [
         "verified_at": "2026-08-25T00:00:00Z"
       }
     ],
-    "investment_label": "€30.0M EUR"
+    "investment_label": "€30.0M EUR",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false,
+    "provenance_type": "NOT_FOUND"
   },
   {
     "id": "proj-fashion-house-pallady",
@@ -8886,7 +9771,7 @@ export const realProjectsDataset: RealProject[] = [
     "floors": "1F",
     "description": "Second Fashion House outlet shopping village in Bucharest offering 14,000 sqm of open-air retail arcades.",
     "image": "",
-    "image_status": "NOT_DISCLOSED",
+    "image_status": "NOT_FOUND",
     "is_featured": false,
     "last_verified_at": "2026-08-25T00:00:00Z",
     "sources": [
@@ -8897,7 +9782,12 @@ export const realProjectsDataset: RealProject[] = [
         "verified_at": "2026-08-25T00:00:00Z"
       }
     ],
-    "investment_label": "€25.0M EUR"
+    "investment_label": "€25.0M EUR",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false,
+    "provenance_type": "NOT_FOUND"
   },
   {
     "id": "proj-metalurgiei-park-residence",
@@ -8928,7 +9818,7 @@ export const realProjectsDataset: RealProject[] = [
     "floors": "8F",
     "description": "Masterplanned residential district in Sector 4 featuring over 3,000 new housing units, Tudor Arghezi park access, and retail plazas.",
     "image": "",
-    "image_status": "NOT_DISCLOSED",
+    "image_status": "NOT_FOUND",
     "is_featured": true,
     "last_verified_at": "2026-08-25T00:00:00Z",
     "sources": [
@@ -8939,7 +9829,12 @@ export const realProjectsDataset: RealProject[] = [
         "verified_at": "2026-08-25T00:00:00Z"
       }
     ],
-    "investment_label": "€150.0M EUR"
+    "investment_label": "€150.0M EUR",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false,
+    "provenance_type": "NOT_FOUND"
   },
   {
     "id": "proj-vgp-park-brasov",
@@ -8969,7 +9864,7 @@ export const realProjectsDataset: RealProject[] = [
     "floors": "1F",
     "description": "140,000 sqm Class A logistics and semi-industrial park serving automotive suppliers and logistics distribution networks near Brașov Airport.",
     "image": "",
-    "image_status": "NOT_DISCLOSED",
+    "image_status": "NOT_FOUND",
     "is_featured": false,
     "last_verified_at": "2026-08-25T00:00:00Z",
     "sources": [
@@ -8980,7 +9875,12 @@ export const realProjectsDataset: RealProject[] = [
         "verified_at": "2026-08-25T00:00:00Z"
       }
     ],
-    "investment_label": "€80.0M EUR"
+    "investment_label": "€80.0M EUR",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "image_source_name": "N/A",
+    "image_verified": false,
+    "provenance_type": "NOT_FOUND"
   },
   {
     "id": "proj-one-high-district",
@@ -9019,8 +9919,8 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "Bog'Art",
     "contractor_slug": "bog-art",
     "description": "High-rise residential development with 3 towers of 20 floors offering 786 apartments, commercial ground floor, and energy-efficient geo-exchange heat pumps.",
-    "image": "",
-    "image_status": "NOT_DISCLOSED",
+    "image": "https://cdn.one.ro/img/library/1/0/1/10134/image-10134-src.jpg",
+    "image_status": "VERIFIED_OFFICIAL",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 95,
@@ -9042,9 +9942,12 @@ export const realProjectsDataset: RealProject[] = [
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
     "image_alt": "One High District verified development photograph",
-    "image_source_name": "Official Disclosure",
+    "image_source_name": "One United Properties Official CDN",
     "image_verified": true,
-    "image_relevance": "PROJECT_SPECIFIC"
+    "image_relevance": "PROJECT_SPECIFIC",
+    "image_type": "OFFICIAL_RENDER",
+    "image_badge": "Randare oficială",
+    "provenance_type": "OFFICIAL_RENDER"
   },
   {
     "id": "proj-cloud-9-residence-bucharest",
@@ -9077,7 +9980,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "Bog'Art",
     "contractor_slug": "bog-art",
     "description": "Major 820-unit residential compound in Aviației office hub consisting of 4 blocks with 1,100 underground parking spaces.",
-    "image": "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=85&pid=cloud-9-residence-bucharest",
+    "image": "",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 96,
@@ -9092,9 +9995,13 @@ export const realProjectsDataset: RealProject[] = [
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
     "image_alt": "Cloud 9 Residence Bucharest verified development photograph",
-    "image_source_name": "Official Disclosure",
-    "image_verified": true,
-    "image_relevance": "PROJECT_SPECIFIC"
+    "image_source_name": "N/A",
+    "image_verified": false,
+    "image_relevance": "PROJECT_SPECIFIC",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "provenance_type": "NOT_FOUND"
   },
   {
     "id": "proj-ctpark-bucharest-west-phase-2",
@@ -9123,7 +10030,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "KÉSZ Construct Romania",
     "contractor_slug": "kesz-construct-romania",
     "description": "250,000 sqm warehouse expansion phase at CTPark Bucharest West (total park area 850,000 sqm GLA) hosting logistics hubs for IBEC and Quehenberger.",
-    "image": "https://images.unsplash.com/photo-1567684014761-b65e2e59b9eb?auto=format&fit=crop&w=1200&q=85&pid=ctpark-bucharest-west-phase-2",
+    "image": "https://ctp.eu/wp-content/uploads/2024/01/CTPark-Bucharest-West_1.jpg",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 96,
@@ -9138,9 +10045,13 @@ export const realProjectsDataset: RealProject[] = [
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
     "image_alt": "CTPark Bucharest West Phase 2 verified development photograph",
-    "image_source_name": "Official Disclosure",
+    "image_source_name": "CTP N.V. Corporate Media Library",
     "image_verified": true,
-    "image_relevance": "PROJECT_SPECIFIC"
+    "image_relevance": "PROJECT_SPECIFIC",
+    "image_type": "OFFICIAL_PHOTO",
+    "image_status": "VERIFIED_OFFICIAL",
+    "image_badge": "Fotografie oficială",
+    "provenance_type": "OFFICIAL_PHOTO"
   },
   {
     "id": "proj-equilibrium-tower-phase-1-skanska",
@@ -9175,7 +10086,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "Skanska Romania",
     "contractor_slug": "skanska-romania",
     "description": "20,800 sqm GLA 12-floor LEED Platinum Class A office tower in Floreasca office hub with 3,500 sqm green relaxation courtyard.",
-    "image": "https://images.unsplash.com/photo-1574362848149-11496d93a7c7?auto=format&fit=crop&w=1200&q=85&pid=equilibrium-tower-phase-1-skanska",
+    "image": "https://edit.skanska.com/siteassets/skanska-in-romania/equilibrium/eq_2.jpg",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 96,
@@ -9190,9 +10101,13 @@ export const realProjectsDataset: RealProject[] = [
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
     "image_alt": "Equilibrium Tower Phase 1 Skanska verified development photograph",
-    "image_source_name": "Official Disclosure",
+    "image_source_name": "Skanska Romania Corporate Asset Library",
     "image_verified": true,
-    "image_relevance": "PROJECT_SPECIFIC"
+    "image_relevance": "PROJECT_SPECIFIC",
+    "image_type": "OFFICIAL_PHOTO",
+    "image_status": "VERIFIED_OFFICIAL",
+    "image_badge": "Fotografie oficială",
+    "provenance_type": "OFFICIAL_PHOTO"
   },
   {
     "id": "proj-campus-6-phase-1-skanska",
@@ -9227,7 +10142,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "Skanska Romania",
     "contractor_slug": "skanska-romania",
     "description": "22,000 sqm GLA office building featuring rooftop running track and smart building technology, leased to Microsoft and NXP.",
-    "image": "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1200&q=85&pid=campus-6-phase-1-skanska",
+    "image": "https://edit.skanska.com/siteassets/skanska-in-romania/campus-6/campus6_23_jun2021-007_mobile.jpg",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 96,
@@ -9242,9 +10157,13 @@ export const realProjectsDataset: RealProject[] = [
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
     "image_alt": "Campus 6 Phase 1 Skanska verified development photograph",
-    "image_source_name": "Official Disclosure",
+    "image_source_name": "Skanska Romania Corporate Asset Library",
     "image_verified": true,
-    "image_relevance": "PROJECT_SPECIFIC"
+    "image_relevance": "PROJECT_SPECIFIC",
+    "image_type": "OFFICIAL_PHOTO",
+    "image_status": "VERIFIED_OFFICIAL",
+    "image_badge": "Fotografie oficială",
+    "provenance_type": "OFFICIAL_PHOTO"
   },
   {
     "id": "proj-autostrada-a3-nadaselu-mihaiesti",
@@ -9273,7 +10192,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "Strabag Romania",
     "contractor_slug": "strabag-romania",
     "description": "16.8 km motorway section of Autostrada A3 Transilvania featuring complex cut-and-cover viaducts and landslide stabilization retaining structures.",
-    "image": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=85&pid=autostrada-a3-nadaselu-mihaiesti",
+    "image": "",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 96,
@@ -9295,9 +10214,13 @@ export const realProjectsDataset: RealProject[] = [
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
     "image_alt": "Autostrada A3 Nădășelu - Mihăiești Lot verified development photograph",
-    "image_source_name": "Official Disclosure",
-    "image_verified": true,
-    "image_relevance": "PROJECT_SPECIFIC"
+    "image_source_name": "N/A",
+    "image_verified": false,
+    "image_relevance": "PROJECT_SPECIFIC",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "provenance_type": "NOT_FOUND"
   },
   {
     "id": "proj-metrou-m5-depoul-valea-ialomitei",
@@ -9329,7 +10252,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "Webuild / Astaldi Romania",
     "contractor_slug": "webuild-astaldi",
     "description": "Underground subway train depot and technical maintenance park serving Bucharest Metro Line 5 with capacity for 16 trainsets.",
-    "image": "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=85&pid=metrou-m5-depoul-valea-ialomitei",
+    "image": "",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 96,
@@ -9351,9 +10274,13 @@ export const realProjectsDataset: RealProject[] = [
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
     "image_alt": "Metrou M5 Depoul Valea Ialomiței verified development photograph",
-    "image_source_name": "Official Disclosure",
-    "image_verified": true,
-    "image_relevance": "PROJECT_SPECIFIC"
+    "image_source_name": "N/A",
+    "image_verified": false,
+    "image_relevance": "PROJECT_SPECIFIC",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "provenance_type": "NOT_FOUND"
   },
   {
     "id": "proj-sky-tower-bucharest",
@@ -9388,7 +10315,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "Strabag Romania",
     "contractor_slug": "strabag-romania",
     "description": "Tallest office building in Romania (137m height, 37 floors) certified LEED Gold, located in Floreasca commercial corridor.",
-    "image": "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=85&pid=sky-tower-bucharest",
+    "image": "https://www.skytower.ro/wp-content/uploads/2026/02/SkyTower_portrait.jpg",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 96,
@@ -9410,9 +10337,13 @@ export const realProjectsDataset: RealProject[] = [
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
     "image_alt": "Sky Tower Bucharest verified development photograph",
-    "image_source_name": "Official Disclosure",
+    "image_source_name": "SkyTower Bucharest Portal Oficial",
     "image_verified": true,
-    "image_relevance": "PROJECT_SPECIFIC"
+    "image_relevance": "PROJECT_SPECIFIC",
+    "image_type": "OFFICIAL_PHOTO",
+    "image_status": "VERIFIED_OFFICIAL",
+    "image_badge": "Fotografie oficială",
+    "provenance_type": "OFFICIAL_PHOTO"
   },
   {
     "id": "proj-metrou-m6-lot-1-tokyo",
@@ -9444,7 +10375,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "Aktor Romania",
     "contractor_slug": "aktor-romania",
     "description": "6.6 km underground TBM subway connection with 6 stations (Pajura, Washington, Paris, 1 Mai, Băneasa, Tokyo) linking Bucharest to Otopeni Airport.",
-    "image": "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1200&q=85&pid=metrou-m6-lot-1-tokyo",
+    "image": "",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 96,
@@ -9466,9 +10397,13 @@ export const realProjectsDataset: RealProject[] = [
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
     "image_alt": "Metrou M6 Lot 1 (1 Mai - Tokyo / Băneasa) verified development photograph",
-    "image_source_name": "Official Disclosure",
-    "image_verified": true,
-    "image_relevance": "PROJECT_SPECIFIC"
+    "image_source_name": "N/A",
+    "image_verified": false,
+    "image_relevance": "PROJECT_SPECIFIC",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "provenance_type": "NOT_FOUND"
   },
   {
     "id": "proj-ana-tower-bucharest",
@@ -9503,7 +10438,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "Bog'Art",
     "contractor_slug": "bog-art",
     "description": "Iconic 25-floor Class A office tower (110m height) in Expoziției commercial hub certified LEED Platinum.",
-    "image": "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1200&q=85&pid=ana-tower-bucharest",
+    "image": "https://anatower.ro/wp-content/uploads/HP-Classic-Studio-Uncode-min.jpg",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 96,
@@ -9525,9 +10460,13 @@ export const realProjectsDataset: RealProject[] = [
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
     "image_alt": "Ana Tower Bucharest verified development photograph",
-    "image_source_name": "Official Disclosure",
+    "image_source_name": "Ana Tower Offices Official Asset",
     "image_verified": true,
-    "image_relevance": "PROJECT_SPECIFIC"
+    "image_relevance": "PROJECT_SPECIFIC",
+    "image_type": "OFFICIAL_PHOTO",
+    "image_status": "VERIFIED_OFFICIAL",
+    "image_badge": "Fotografie oficială",
+    "provenance_type": "OFFICIAL_PHOTO"
   },
   {
     "id": "proj-podul-braila-connectors",
@@ -9558,7 +10497,7 @@ export const realProjectsDataset: RealProject[] = [
     "span_length_m": 1974,
     "infrastructure_length_km": 21.5,
     "description": "21,5 km de drumuri de legătură expres și viaducte ce leagă Podul Brăila de Măcin și Tulcea. Lucrările fac parte integrantă din contractul global CNAIR și nu constituie o finanțare separată peste cei 500M EUR ai podului.",
-    "image": "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=85&pid=podul-braila-connectors",
+    "image": "",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 96,
@@ -9580,9 +10519,13 @@ export const realProjectsDataset: RealProject[] = [
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
     "image_alt": "Podul Suspendat de la Brăila Phase 2 Connectors verified development photograph",
-    "image_source_name": "Official Disclosure",
-    "image_verified": true,
-    "image_relevance": "PROJECT_SPECIFIC"
+    "image_source_name": "N/A",
+    "image_verified": false,
+    "image_relevance": "PROJECT_SPECIFIC",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "provenance_type": "NOT_FOUND"
   },
   {
     "id": "proj-stadionul-cluj-arena",
@@ -9615,7 +10558,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "CON-A Operations",
     "contractor_slug": "con-a",
     "description": "30,201-seat UEFA Category 4 multi-purpose stadium in Cluj-Napoca featuring distinctive translucent roof architecture and Athletics tracks.",
-    "image": "https://images.unsplash.com/photo-1600573472592-401b489a3cdc?auto=format&fit=crop&w=1200&q=85&pid=stadionul-cluj-arena",
+    "image": "",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 96,
@@ -9637,9 +10580,13 @@ export const realProjectsDataset: RealProject[] = [
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
     "image_alt": "Stadionul Cluj Arena verified development photograph",
-    "image_source_name": "Official Disclosure",
-    "image_verified": true,
-    "image_relevance": "PROJECT_SPECIFIC"
+    "image_source_name": "N/A",
+    "image_verified": false,
+    "image_relevance": "PROJECT_SPECIFIC",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "provenance_type": "NOT_FOUND"
   },
   {
     "id": "proj-palas-campus-iasi",
@@ -9674,7 +10621,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "Con-A Operations",
     "contractor_slug": "con-a",
     "description": "Largest single Class A office building in Romania (60,000 sqm GLA) hosting tech multinationals Amazon, Microsoft, and Cognizant in Iași.",
-    "image": "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=1200&q=85&pid=palas-campus-iasi",
+    "image": "https://static.wixstatic.com/media/1956e5_072afc42111843358edcfe5c0a8cd856~mv2.jpg/v1/fit/w_2500,h_1330,al_c/1956e5_072afc42111843358edcfe5c0a8cd856~mv2.jpg",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 96,
@@ -9689,9 +10636,13 @@ export const realProjectsDataset: RealProject[] = [
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
     "image_alt": "Palas Campus Iași verified development photograph",
-    "image_source_name": "Official Disclosure",
+    "image_source_name": "Palas Campus Iași Portal Oficial",
     "image_verified": true,
-    "image_relevance": "PROJECT_SPECIFIC"
+    "image_relevance": "PROJECT_SPECIFIC",
+    "image_type": "OFFICIAL_PHOTO",
+    "image_status": "VERIFIED_OFFICIAL",
+    "image_badge": "Fotografie oficială",
+    "provenance_type": "OFFICIAL_PHOTO"
   },
   {
     "id": "proj-spitalul-pneumoftiziologie-brasov",
@@ -9721,7 +10672,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "Concelex",
     "contractor_slug": "concelex",
     "description": "Modern 280-bed regional pneumology medical center featuring 4 specialized operating blocks, outpatient units, and advanced medical gas systems.",
-    "image": "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1200&q=85&pid=spitalul-pneumoftiziologie-brasov",
+    "image": "",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 96,
@@ -9743,9 +10694,13 @@ export const realProjectsDataset: RealProject[] = [
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
     "image_alt": "Spitalul de Pneumoftiziologie Brașov verified development photograph",
-    "image_source_name": "Official Disclosure",
-    "image_verified": true,
-    "image_relevance": "PROJECT_SPECIFIC"
+    "image_source_name": "N/A",
+    "image_verified": false,
+    "image_relevance": "PROJECT_SPECIFIC",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "provenance_type": "NOT_FOUND"
   },
   {
     "id": "proj-marmura-residence-prime-kapital",
@@ -9778,7 +10733,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "Con-A Operations",
     "contractor_slug": "con-a",
     "description": "Transit-oriented residential urban regeneration project consisting of 5 buildings with 460 apartments directly located next to Jiului metro station.",
-    "image": "https://images.unsplash.com/photo-1512915922686-57c11dde9b6b?auto=format&fit=crop&w=1200&q=85&pid=marmura-residence-prime-kapital",
+    "image": "https://www.erbasu.ro/wp-content/uploads/2022/02/Marmura-Residence-21-scaled.jpg",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 95,
@@ -9793,9 +10748,13 @@ export const realProjectsDataset: RealProject[] = [
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
     "image_alt": "Marmura Residence Bucharest verified development photograph",
-    "image_source_name": "Official Disclosure",
+    "image_source_name": "Construcții Erbașu Portfolio — Marmura Residence",
     "image_verified": true,
-    "image_relevance": "PROJECT_SPECIFIC"
+    "image_relevance": "PROJECT_SPECIFIC",
+    "image_status": "VERIFIED_OFFICIAL",
+    "image_type": "OFFICIAL_PHOTO",
+    "image_badge": "Fotografie oficială",
+    "provenance_type": "OFFICIAL_PHOTO"
   },
   {
     "id": "proj-autostrada-a1-lot-4-porr",
@@ -9824,7 +10783,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "PORR Construct Romania",
     "contractor_slug": "porr-construct-romania",
     "description": "9.86 km complex motorway section including Romania's first major twin-bore motorway tunnel (Tunelul Momaia, 1.3 km length) built through the Carpathian foothills.",
-    "image": "https://images.unsplash.com/photo-1513584684374-8bab748fbf90?auto=format&fit=crop&w=1200&q=85&pid=autostrada-a1-lot-4-porr",
+    "image": "",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 96,
@@ -9846,9 +10805,13 @@ export const realProjectsDataset: RealProject[] = [
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
     "image_alt": "Autostrada A1 Sibiu - Pitești Lot 4 (Tigveni - Curtea de Argeș) verified development photograph",
-    "image_source_name": "Official Disclosure",
-    "image_verified": true,
-    "image_relevance": "PROJECT_SPECIFIC"
+    "image_source_name": "N/A",
+    "image_verified": false,
+    "image_relevance": "PROJECT_SPECIFIC",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "provenance_type": "NOT_FOUND"
   },
   {
     "id": "proj-metropolitan-viilor-residence",
@@ -9881,7 +10844,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "Construcții Erbașu",
     "contractor_slug": "constructii-erbasu",
     "description": "Modern residential complex comprising 520 units across 3 buildings near Carol Park, featuring underground parking and retail arcade.",
-    "image": "https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=1200&q=85&pid=metropolitan-viilor-residence",
+    "image": "",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 95,
@@ -9896,9 +10859,13 @@ export const realProjectsDataset: RealProject[] = [
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
     "image_alt": "Metropolitan Viilor Residence verified development photograph",
-    "image_source_name": "Official Disclosure",
-    "image_verified": true,
-    "image_relevance": "PROJECT_SPECIFIC"
+    "image_source_name": "N/A",
+    "image_verified": false,
+    "image_relevance": "PROJECT_SPECIFIC",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "provenance_type": "NOT_FOUND"
   },
   {
     "id": "proj-equilibrium-phase-2-skanska",
@@ -9934,7 +10901,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_slug": "bog-art",
     "description": "12-story Class A office tower adding 20,000 sqm GLA in Northern Bucharest, featuring LEED Platinum certification and 3,500 sqm urban green plaza.",
     "image": "",
-    "image_status": "NOT_DISCLOSED",
+    "image_status": "NOT_FOUND",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 96,
@@ -9949,9 +10916,12 @@ export const realProjectsDataset: RealProject[] = [
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
     "image_alt": "Equilibrium Phase 2 verified development photograph",
-    "image_source_name": "Official Disclosure",
-    "image_verified": true,
-    "image_relevance": "PROJECT_SPECIFIC"
+    "image_source_name": "N/A",
+    "image_verified": false,
+    "image_relevance": "PROJECT_SPECIFIC",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "provenance_type": "NOT_FOUND"
   },
   {
     "id": "proj-silk-district-iasi-phase-1",
@@ -9986,7 +10956,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "Con-A Operations",
     "contractor_slug": "con-a",
     "description": "First phase of major urban regeneration in Iași delivering 315 BREEAM-certified apartments and 20,000 sqm Class A office space.",
-    "image": "https://images.unsplash.com/photo-1554469384-e58fac16e23a?auto=format&fit=crop&w=1200&q=85&pid=silk-district-iasi-phase-1",
+    "image": "",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 95,
@@ -10001,9 +10971,13 @@ export const realProjectsDataset: RealProject[] = [
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
     "image_alt": "Silk District Iași Phase 1 verified development photograph",
-    "image_source_name": "Official Disclosure",
-    "image_verified": true,
-    "image_relevance": "PROJECT_SPECIFIC"
+    "image_source_name": "N/A",
+    "image_verified": false,
+    "image_relevance": "PROJECT_SPECIFIC",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "provenance_type": "NOT_FOUND"
   },
   {
     "id": "proj-metrou-m5-raul-doamnei-eroilor",
@@ -10037,7 +11011,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "Webuild Romania",
     "contractor_slug": "webuild-romania",
     "description": "6.9 km major underground subway line featuring 10 stations and 1 depot, connecting Drumul Taberei neighborhood directly to central Eroilor interchange.",
-    "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=85&pid=metrou-m5-raul-doamnei-eroilor",
+    "image": "",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 96,
@@ -10059,9 +11033,13 @@ export const realProjectsDataset: RealProject[] = [
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
     "image_alt": "Metrou M5 Râul Doamnei - Eroilor verified development photograph",
-    "image_source_name": "Official Disclosure",
-    "image_verified": true,
-    "image_relevance": "PROJECT_SPECIFIC"
+    "image_source_name": "N/A",
+    "image_verified": false,
+    "image_relevance": "PROJECT_SPECIFIC",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "provenance_type": "NOT_FOUND"
   },
   {
     "id": "proj-afi-park-brasov",
@@ -10094,7 +11072,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "Construcții Erbașu",
     "contractor_slug": "constructii-erbasu",
     "description": "Premier regional mixed-use complex in Brașov combining a 45,000 sqm GLA shopping mall and 25,000 sqm Class A office towers in the Civic Center.",
-    "image": "https://images.unsplash.com/photo-1577495508048-b635879837f1?auto=format&fit=crop&w=1200&q=85&pid=afi-park-brasov",
+    "image": "",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 95,
@@ -10109,9 +11087,13 @@ export const realProjectsDataset: RealProject[] = [
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
     "image_alt": "AFI Park Brașov verified development photograph",
-    "image_source_name": "Official Disclosure",
-    "image_verified": true,
-    "image_relevance": "PROJECT_SPECIFIC"
+    "image_source_name": "N/A",
+    "image_verified": false,
+    "image_relevance": "PROJECT_SPECIFIC",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "provenance_type": "NOT_FOUND"
   },
   {
     "id": "proj-iulius-town-timisoara",
@@ -10144,7 +11126,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "Con-A Operations",
     "contractor_slug": "con-a",
     "description": "Largest urban mixed-use complex in Western Romania combining 102,000 sqm Class A offices across 4 UBC towers, 120,000 sqm retail, 5-hectare park, and underground traffic tunnel.",
-    "image": "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1200&q=85&pid=iulius-town-timisoara",
+    "image": "https://iuliustown.ro/img/9561banner-general.jpg",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 96,
@@ -10159,9 +11141,13 @@ export const realProjectsDataset: RealProject[] = [
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
     "image_alt": "Iulius Town Timișoara verified development photograph",
-    "image_source_name": "Official Disclosure",
+    "image_source_name": "Iulius Town Timișoara Portal Oficial",
     "image_verified": true,
-    "image_relevance": "PROJECT_SPECIFIC"
+    "image_relevance": "PROJECT_SPECIFIC",
+    "image_type": "OFFICIAL_PHOTO",
+    "image_status": "VERIFIED_OFFICIAL",
+    "image_badge": "Fotografie oficială",
+    "provenance_type": "OFFICIAL_PHOTO"
   },
   {
     "id": "proj-promenada-extension-nepi",
@@ -10192,7 +11178,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "STRABAG Romania",
     "contractor_slug": "strabag-romania",
     "description": "Major €280M underground and high-rise expansion of Promenada Mall adding 60,000 sqm GLA of premium retail, restaurants, 7 underground parking levels, and Class A office space.",
-    "image": "https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=1200&q=85&pid=promenada-mall-extension-nepi",
+    "image": "",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 95,
@@ -10207,9 +11193,13 @@ export const realProjectsDataset: RealProject[] = [
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
     "image_alt": "Promenada Mall Extension Bucharest verified development photograph",
-    "image_source_name": "Official Disclosure",
-    "image_verified": true,
-    "image_relevance": "PROJECT_SPECIFIC"
+    "image_source_name": "N/A",
+    "image_verified": false,
+    "image_relevance": "PROJECT_SPECIFIC",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "provenance_type": "NOT_FOUND"
   },
   {
     "id": "proj-central-district-lagoon-city",
@@ -10242,7 +11232,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "Construcții Erbașu",
     "contractor_slug": "constructii-erbasu",
     "description": "First urban resort in CEE featuring a 10,000 sqm artificial turquoise lagoon with Crystal Lagoons technology, Radisson Collection 5-star hotel, and 400 apartments.",
-    "image": "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1200&q=85&pid=central-district-lagoon-city",
+    "image": "",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 95,
@@ -10257,9 +11247,13 @@ export const realProjectsDataset: RealProject[] = [
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
     "image_alt": "Central District Lagoon City verified development photograph",
-    "image_source_name": "Official Disclosure",
-    "image_verified": true,
-    "image_relevance": "PROJECT_SPECIFIC"
+    "image_source_name": "N/A",
+    "image_verified": false,
+    "image_relevance": "PROJECT_SPECIFIC",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "provenance_type": "NOT_FOUND"
   },
   {
     "id": "proj-calea-ferata-otopeni-arcada",
@@ -10288,7 +11282,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "Arcada Company",
     "contractor_slug": "arcada-company",
     "description": "19 km modernized express rail link including a 1.5 km elevated railway viaduct over DN1 highway directly connecting Bucharest North Station to Henri Coandă International Airport.",
-    "image": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=85&pid=legatura-feroviara-otopeni-arcada",
+    "image": "",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 96,
@@ -10310,9 +11304,13 @@ export const realProjectsDataset: RealProject[] = [
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
     "image_alt": "Legătura Feroviară Gara de Nord - Aeroportul Otopeni verified development photograph",
-    "image_source_name": "Official Disclosure",
-    "image_verified": true,
-    "image_relevance": "PROJECT_SPECIFIC"
+    "image_source_name": "N/A",
+    "image_verified": false,
+    "image_relevance": "PROJECT_SPECIFIC",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "provenance_type": "NOT_FOUND"
   },
   {
     "id": "proj-podul-braila-webuild",
@@ -10342,7 +11340,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "Webuild / Astaldi Romania",
     "contractor_slug": "webuild-romania",
     "description": "Al treilea pod suspendat ca mărime din Europa (1.974m lungime, 112m înălțimea turnurilor) peste Dunăre între Brăila și Tulcea. Înregistrare duplicat de portofoliu constructor pentru contractul canonic contabilizat la slug-ul podul-suspendat-braila.",
-    "image": "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=85&pid=podul-suspendat-braila-webuild",
+    "image": "",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 96,
@@ -10364,9 +11362,13 @@ export const realProjectsDataset: RealProject[] = [
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
     "image_alt": "Podul Suspendat peste Dunăre de la Brăila verified development photograph",
-    "image_source_name": "Official Disclosure",
-    "image_verified": true,
-    "image_relevance": "PROJECT_SPECIFIC"
+    "image_source_name": "N/A",
+    "image_verified": false,
+    "image_relevance": "PROJECT_SPECIFIC",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "provenance_type": "NOT_FOUND"
   },
   {
     "id": "proj-hils-pallady",
@@ -10398,7 +11400,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "Construcții Erbașu",
     "contractor_slug": "constructii-erbasu",
     "description": "Major residential complex of 1,900 apartments in Eastern Bucharest near Anghel Saligny metro station, complete with commercial plaza and clinic.",
-    "image": "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1200&q=85&pid=hils-pallady-apartments",
+    "image": "https://hils.ro/wp-content/uploads/2024/09/HILS_Aeriana_Seara_f2-1_cover-1024x427.png",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 95,
@@ -10413,9 +11415,13 @@ export const realProjectsDataset: RealProject[] = [
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
     "image_alt": "HILS Pallady Apartments verified development photograph",
-    "image_source_name": "Official Disclosure",
+    "image_source_name": "HILS Development Official Media",
     "image_verified": true,
-    "image_relevance": "PROJECT_SPECIFIC"
+    "image_relevance": "PROJECT_SPECIFIC",
+    "image_type": "OFFICIAL_PHOTO",
+    "image_status": "VERIFIED_OFFICIAL",
+    "image_badge": "Fotografie oficială",
+    "provenance_type": "OFFICIAL_PHOTO"
   },
   {
     "id": "proj-timpuri-noi-square-2",
@@ -10451,7 +11457,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_slug": "porr-construct-romania",
     "description": "Phase 2 extension adding 60,000 sqm of Class A office and retail space to the Timpuri Noi urban regeneration hub along Dâmbovița river.",
     "image": "",
-    "image_status": "NOT_DISCLOSED",
+    "image_status": "NOT_FOUND",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 95,
@@ -10466,9 +11472,12 @@ export const realProjectsDataset: RealProject[] = [
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
     "image_alt": "Timpuri Noi Square Phase 2 verified development photograph",
-    "image_source_name": "Official Disclosure",
-    "image_verified": true,
-    "image_relevance": "PROJECT_SPECIFIC"
+    "image_source_name": "N/A",
+    "image_verified": false,
+    "image_relevance": "PROJECT_SPECIFIC",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "provenance_type": "NOT_FOUND"
   },
   {
     "id": "proj-autostrada-a7-umb",
@@ -10497,7 +11506,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "Spedition UMB / UMB Group",
     "contractor_slug": "spedition-umb",
     "description": "Strategic Romanian transport infrastructure project comprising all 10 contiguous PNRR lots (255.7 km) of Autostrada A7 Moldovei between Buzău and Pașcani awarded to UMB Group (Buzău-Focșani 82.44 km, Focșani-Bacău 95.90 km, Bacău-Pașcani 77.39 km).",
-    "image": "https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1200&q=85&pid=autostrada-a7-moldovei-umb",
+    "image": "",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 96,
@@ -10519,9 +11528,13 @@ export const realProjectsDataset: RealProject[] = [
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
     "image_alt": "Autostrada A7 Moldovei (Buzău - Focșani - Bacău - Pașcani / UMB Lots) verified development photograph",
-    "image_source_name": "Official Disclosure",
-    "image_verified": true,
-    "image_relevance": "PROJECT_SPECIFIC"
+    "image_source_name": "N/A",
+    "image_verified": false,
+    "image_relevance": "PROJECT_SPECIFIC",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "provenance_type": "NOT_FOUND"
   },
   {
     "id": "proj-greenfield-baneasa-residence",
@@ -10554,7 +11567,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "Construcții Erbașu",
     "contractor_slug": "constructii-erbasu",
     "description": "Delivered initial residential phase of Greenfield Băneasa comprising 1,500 apartments across Blue, Yellow, and Topaz quarters adjacent to Băneasa forest (60 ha total masterplan).",
-    "image": "https://images.unsplash.com/photo-1541888946425-d0fbb186a5b3?auto=format&fit=crop&w=1200&q=85&pid=greenfield-baneasa-residence",
+    "image": "",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 95,
@@ -10569,9 +11582,13 @@ export const realProjectsDataset: RealProject[] = [
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
     "image_alt": "Greenfield Băneasa Residence verified development photograph",
-    "image_source_name": "Official Disclosure",
-    "image_verified": true,
-    "image_relevance": "PROJECT_SPECIFIC"
+    "image_source_name": "N/A",
+    "image_verified": false,
+    "image_relevance": "PROJECT_SPECIFIC",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "provenance_type": "NOT_FOUND"
   },
   {
     "id": "proj-globalworth-campus",
@@ -10604,7 +11621,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "Bog'Art",
     "contractor_slug": "bog-art",
     "description": "Flagship 3-building office campus (88,000 sqm GLA) housing Amazon, Mindspace, and Deutsche Bank, featuring BREEAM Outstanding rating.",
-    "image": "https://images.unsplash.com/photo-1590486803833-1c5dc8ddd4c8?auto=format&fit=crop&w=1200&q=85&pid=globalworth-campus-pipera",
+    "image": "https://www.globalworth.com/wp-content/uploads/2020/11/20211108-GW-www-RO-asset-square-GW-Tower-min.jpg",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 96,
@@ -10619,9 +11636,13 @@ export const realProjectsDataset: RealProject[] = [
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
     "image_alt": "Globalworth Campus verified development photograph",
-    "image_source_name": "Official Disclosure",
+    "image_source_name": "Globalworth Real Estate Portfolio",
     "image_verified": true,
-    "image_relevance": "PROJECT_SPECIFIC"
+    "image_relevance": "PROJECT_SPECIFIC",
+    "image_type": "OFFICIAL_PHOTO",
+    "image_status": "VERIFIED_OFFICIAL",
+    "image_badge": "Fotografie oficială",
+    "provenance_type": "OFFICIAL_PHOTO"
   },
   {
     "id": "proj-one-lake-district",
@@ -10656,7 +11677,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "Bog'Art",
     "contractor_slug": "bog-art",
     "description": "Major lakefront urban regeneration development along Lake Plumbuita with over 2,000 apartments, commercial space, educational facilities, and waterfront promenade.",
-    "image": "https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=1200&q=85&pid=one-lake-district",
+    "image": "",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 93,
@@ -10678,9 +11699,13 @@ export const realProjectsDataset: RealProject[] = [
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
     "image_alt": "One Lake District verified development photograph",
-    "image_source_name": "Official Disclosure",
-    "image_verified": true,
-    "image_relevance": "PROJECT_SPECIFIC"
+    "image_source_name": "N/A",
+    "image_verified": false,
+    "image_relevance": "PROJECT_SPECIFIC",
+    "image_type": "NOT_FOUND",
+    "image_status": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "provenance_type": "NOT_FOUND"
   },
   {
     "id": "proj-record-park",
@@ -10712,7 +11737,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "KESZ Construct Romania",
     "contractor_slug": "kesz-construct-romania",
     "description": "Award-winning mixed-use development combining 236 apartments, 12,000 sqm Class A office space, sports facility with pool, and restored historical mill building.",
-    "image": "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=1200&q=85&pid=record-park-cluj",
+    "image": "https://www.speedwell.be/wp-content/uploads/2025/02/Record-Park-Residential-1_1800x900.jpg",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 94,
@@ -10727,9 +11752,13 @@ export const realProjectsDataset: RealProject[] = [
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
     "image_alt": "Record Park Cluj verified development photograph",
-    "image_source_name": "Official Disclosure",
+    "image_source_name": "Speedwell Real Estate Development Official Asset",
     "image_verified": true,
-    "image_relevance": "PROJECT_SPECIFIC"
+    "image_relevance": "PROJECT_SPECIFIC",
+    "image_status": "VERIFIED_OFFICIAL",
+    "image_type": "OFFICIAL_PHOTO",
+    "image_badge": "Fotografie oficială",
+    "provenance_type": "OFFICIAL_PHOTO"
   },
   {
     "id": "proj-akcent-city",
@@ -10761,7 +11790,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "Concelex",
     "contractor_slug": "concelex",
     "description": "Residential community of 720 apartments in Bucureștii Noi near Jiului metro station, equipped with solar panels and energy-efficient heating.",
-    "image": "https://images.unsplash.com/photo-1477959858617-67f30ac4ce78?auto=format&fit=crop&w=1200&q=85&pid=akcent-city-bucurestii-noi",
+    "image": "https://static.wixstatic.com/media/a22994_462de059d97641a79831a46209d38241~mv2.png/v1/fit/w_2500,h_1330,al_c/a22994_462de059d97641a79831a46209d38241~mv2.png",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 93,
@@ -10776,9 +11805,13 @@ export const realProjectsDataset: RealProject[] = [
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
     "image_alt": "Akcent City Bucureștii Noi verified development photograph",
-    "image_source_name": "Official Disclosure",
+    "image_source_name": "Akcent Development Official Portal",
     "image_verified": true,
-    "image_relevance": "PROJECT_SPECIFIC"
+    "image_relevance": "PROJECT_SPECIFIC",
+    "image_type": "OFFICIAL_RENDER",
+    "image_status": "VERIFIED_OFFICIAL",
+    "image_badge": "Randare oficială",
+    "provenance_type": "OFFICIAL_RENDER"
   },
   {
     "id": "proj-maurer-brasov",
@@ -10811,7 +11844,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_slug": "con-a",
     "description": "Flagship masterplanned neighborhood in Brașov Tractorul with 3,500+ delivered apartments, commercial center, and community sports facilities.",
     "image": "",
-    "image_status": "NOT_DISCLOSED",
+    "image_status": "NOT_FOUND",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 94,
@@ -10826,9 +11859,12 @@ export const realProjectsDataset: RealProject[] = [
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
     "image_alt": "Maurer Residence Brașov verified development photograph",
-    "image_source_name": "Official Disclosure",
-    "image_verified": true,
-    "image_relevance": "PROJECT_SPECIFIC"
+    "image_source_name": "N/A",
+    "image_verified": false,
+    "image_relevance": "PROJECT_SPECIFIC",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "provenance_type": "NOT_FOUND"
   },
   {
     "id": "proj-nusco-city",
@@ -10860,7 +11896,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "Concelex",
     "contractor_slug": "concelex",
     "description": "Major residential city-within-a-city development in Pipera North featuring 828 green apartments, 4,000 sqm private park, and educational facilities.",
-    "image": "https://images.unsplash.com/photo-1515165562839-978bbcf18277?auto=format&fit=crop&w=1200&q=85&pid=nusco-city-pipera",
+    "image": "",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 93,
@@ -10875,9 +11911,13 @@ export const realProjectsDataset: RealProject[] = [
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
     "image_alt": "Nusco City Phase 2 verified development photograph",
-    "image_source_name": "Official Disclosure",
-    "image_verified": true,
-    "image_relevance": "PROJECT_SPECIFIC"
+    "image_source_name": "N/A",
+    "image_verified": false,
+    "image_relevance": "PROJECT_SPECIFIC",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "provenance_type": "NOT_FOUND"
   },
   {
     "id": "proj-sema-parc",
@@ -10908,7 +11948,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "Bog'Art",
     "contractor_slug": "bog-art",
     "description": "41-hectare urban masterplan along Dâmbovița river combining Class A office buildings, retail plaza, and residential units connected to Petrache Poenaru metro station.",
-    "image": "https://images.unsplash.com/photo-1519817650390-64a93db51149?auto=format&fit=crop&w=1200&q=85&pid=sema-parc-bucharest",
+    "image": "https://semaparc.ro/wp-content/uploads/About-Sema-Parc-1@2x.jpg",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 94,
@@ -10923,9 +11963,13 @@ export const realProjectsDataset: RealProject[] = [
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
     "image_alt": "Sema Parc Phase 3 verified development photograph",
-    "image_source_name": "Official Disclosure",
+    "image_source_name": "River Development / Sema Parc Official Portal",
     "image_verified": true,
-    "image_relevance": "PROJECT_SPECIFIC"
+    "image_relevance": "PROJECT_SPECIFIC",
+    "image_status": "VERIFIED_OFFICIAL",
+    "image_type": "OFFICIAL_PHOTO",
+    "image_badge": "Fotografie oficială",
+    "provenance_type": "OFFICIAL_PHOTO"
   },
   {
     "id": "proj-infinity-nord",
@@ -10957,7 +12001,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "Concelex",
     "contractor_slug": "concelex",
     "description": "Large-scale residential community with 1,250 apartments, commercial promenade, and green courtyards near Străulești lake.",
-    "image": "https://images.unsplash.com/photo-1474487548417-781cb71495f3?auto=format&fit=crop&w=1200&q=85&pid=infinity-nord-straulesti",
+    "image": "",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 90,
@@ -10972,9 +12016,13 @@ export const realProjectsDataset: RealProject[] = [
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
     "image_alt": "Infinity Nord verified development photograph",
-    "image_source_name": "Official Disclosure",
-    "image_verified": true,
-    "image_relevance": "PROJECT_SPECIFIC"
+    "image_source_name": "N/A",
+    "image_verified": false,
+    "image_relevance": "PROJECT_SPECIFIC",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "provenance_type": "NOT_FOUND"
   },
   {
     "id": "proj-autostrada-a1-sibiu",
@@ -11004,7 +12052,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "PORR Construct Romania",
     "contractor_slug": "porr-construct-romania",
     "description": "13.17 km motorway section delivered ahead of schedule by PORR Construct, featuring 27 bridges and viaducts in Southern Transylvania.",
-    "image": "https://images.unsplash.com/photo-1577223625816-7546f13df25d?auto=format&fit=crop&w=1200&q=85&pid=autostrada-a1-sibiu-boita",
+    "image": "",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 96,
@@ -11019,9 +12067,13 @@ export const realProjectsDataset: RealProject[] = [
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
     "image_alt": "Autostrada A1 Sibiu-Pitești Lot 1 verified development photograph",
-    "image_source_name": "Official Disclosure",
-    "image_verified": true,
-    "image_relevance": "PROJECT_SPECIFIC"
+    "image_source_name": "N/A",
+    "image_verified": false,
+    "image_relevance": "PROJECT_SPECIFIC",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "provenance_type": "NOT_FOUND"
   },
   {
     "id": "proj-one-cotroceni-park",
@@ -11057,7 +12109,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "Bog'Art",
     "contractor_slug": "bog-art",
     "description": "Flagship mixed-use urban regeneration park directly connected to Academiei metro station, featuring 80,000 sqm Class A office space and 868 luxury apartments.",
-    "image": "https://images.unsplash.com/photo-1587351021759-3e566b6af7cc?auto=format&fit=crop&w=1200&q=85&pid=one-cotroceni-park",
+    "image": "https://cdn.one.ro/img/library/1/0/1/10133/image-10133-src.jpg",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 96,
@@ -11079,9 +12131,13 @@ export const realProjectsDataset: RealProject[] = [
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
     "image_alt": "One Cotroceni Park verified development photograph",
-    "image_source_name": "Official Disclosure",
+    "image_source_name": "One United Properties Official CDN",
     "image_verified": true,
-    "image_relevance": "PROJECT_SPECIFIC"
+    "image_relevance": "PROJECT_SPECIFIC",
+    "image_type": "OFFICIAL_PHOTO",
+    "image_status": "VERIFIED_OFFICIAL",
+    "image_badge": "Fotografie oficială",
+    "provenance_type": "OFFICIAL_PHOTO"
   },
   {
     "id": "proj-timpuri-noi-square-phase-1",
@@ -11113,7 +12169,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "Bog'Art",
     "contractor_slug": "bog-art",
     "description": "Delivered first phase of Timpuri Noi Square comprising 53,000 sqm GLA Class A office and retail plaza across three certified green buildings (TN1, TN2, TN3) along the Dâmbovița river.",
-    "image": "https://images.unsplash.com/photo-1567449303078-57ad995bd301?auto=format&fit=crop&w=1200&q=85&pid=timpuri-noi-square",
+    "image": "https://tnsquare.ro/wp-content/uploads/2024/03/timpuri-noi-square-faza-2.webp",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 98,
@@ -11128,9 +12184,13 @@ export const realProjectsDataset: RealProject[] = [
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
     "image_alt": "Timpuri Noi Square Phase 1 delivered office development",
-    "image_source_name": "Official Disclosure",
+    "image_source_name": "Timpuri Noi Square Vastint Portal Oficial",
     "image_verified": true,
-    "image_relevance": "PROJECT_SPECIFIC"
+    "image_relevance": "PROJECT_SPECIFIC",
+    "image_type": "OFFICIAL_RENDER",
+    "image_status": "VERIFIED_OFFICIAL",
+    "image_badge": "Randare oficială",
+    "provenance_type": "OFFICIAL_RENDER"
   },
   {
     "id": "proj-afi-tech-park",
@@ -11161,7 +12221,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "DENTON Construction",
     "contractor_slug": "denton-construction",
     "description": "Modern 56,000 sqm Class A office campus located opposite Vulcan Value Centre, certified LEED Platinum.",
-    "image": "https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?auto=format&fit=crop&w=1200&q=85&pid=afi-tech-park",
+    "image": "",
     "is_featured": false,
     "verification_status": "VERIFIED",
     "completeness_score": 92,
@@ -11176,9 +12236,13 @@ export const realProjectsDataset: RealProject[] = [
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
     "image_alt": "AFI Tech Park verified development photograph",
-    "image_source_name": "Official Disclosure",
-    "image_verified": true,
-    "image_relevance": "PROJECT_SPECIFIC"
+    "image_source_name": "N/A",
+    "image_verified": false,
+    "image_relevance": "PROJECT_SPECIFIC",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "provenance_type": "NOT_FOUND"
   },
   {
     "id": "proj-u-center",
@@ -11209,7 +12273,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "Bog'Art",
     "contractor_slug": "bog-art",
     "description": "LEED Platinum & WELL Platinum certified office park near Tineretului park, fully powered by green electricity.",
-    "image": "https://images.unsplash.com/photo-1541971875076-8f970d573be6?auto=format&fit=crop&w=1200&q=85&pid=u-center-bucharest",
+    "image": "https://cdn.prod.website-files.com/68214ec31a7da210dcbf14e0/6973671923f8a69c394da853_12%20-%20FTP_UCT_014_IMG_8819_vladpatru.jpg",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 94,
@@ -11224,9 +12288,13 @@ export const realProjectsDataset: RealProject[] = [
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
     "image_alt": "U Center Phase 2 verified development photograph",
-    "image_source_name": "Official Disclosure",
+    "image_source_name": "Forte Partners U-Center CDN",
     "image_verified": true,
-    "image_relevance": "PROJECT_SPECIFIC"
+    "image_relevance": "PROJECT_SPECIFIC",
+    "image_type": "OFFICIAL_PHOTO",
+    "image_status": "VERIFIED_OFFICIAL",
+    "image_badge": "Fotografie oficială",
+    "provenance_type": "OFFICIAL_PHOTO"
   },
   {
     "id": "proj-h-pipera-lake",
@@ -11258,7 +12326,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "Concelex",
     "contractor_slug": "concelex",
     "description": "Large residential project on the shore of Pipera lake featuring 1,350 modern apartments spread across 17 residential blocks.",
-    "image": "https://images.unsplash.com/photo-1541888946425-d0fbb186a5b3&v=2?auto=format&fit=crop&w=1200&q=85&pid=h-pipera-lake",
+    "image": "",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 92,
@@ -11273,9 +12341,13 @@ export const realProjectsDataset: RealProject[] = [
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
     "image_alt": "H Pipera Lake verified development photograph",
-    "image_source_name": "Official Disclosure",
-    "image_verified": true,
-    "image_relevance": "PROJECT_SPECIFIC"
+    "image_source_name": "N/A",
+    "image_verified": false,
+    "image_relevance": "PROJECT_SPECIFIC",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "provenance_type": "NOT_FOUND"
   },
   {
     "id": "proj-promenada-craiova",
@@ -11307,7 +12379,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "Construcții Erbașu",
     "contractor_slug": "constructii-erbasu",
     "description": "Largest retail investment in Oltenia region, featuring 80,000 sqm GLA shopping mall, retail park, and drive-through hypermarket.",
-    "image": "https://images.unsplash.com/photo-1517581177682-a085bb7ffb15?auto=format&fit=crop&w=1200&q=85&pid=promenada-craiova",
+    "image": "",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 95,
@@ -11322,9 +12394,13 @@ export const realProjectsDataset: RealProject[] = [
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
     "image_alt": "Promenada Craiova verified development photograph",
-    "image_source_name": "Official Disclosure",
-    "image_verified": true,
-    "image_relevance": "PROJECT_SPECIFIC"
+    "image_source_name": "N/A",
+    "image_verified": false,
+    "image_relevance": "PROJECT_SPECIFIC",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "provenance_type": "NOT_FOUND"
   },
   {
     "id": "proj-silk-district",
@@ -11354,7 +12430,7 @@ export const realProjectsDataset: RealProject[] = [
     "unit_count": 1500,
     "floors": "GF + 11F",
     "description": "Regenerare urbană brownfield dezvoltată de Prime Kapital pe fosta platformă Tomiris: 1.500 apartamente, 100.000 m² birouri Clasa A și parc verde. Bugetul total de masterplan include Faza 1 (€90M livrat) și fazele viitoare în execuție/planificare (€110M).",
-    "image": "https://images.unsplash.com/photo-1509749837427-ac94a2553d0e?auto=format&fit=crop&w=1200&q=85&pid=silk-district-iasi",
+    "image": "https://silkdistrict.ro/wp-content/uploads/2024/11/Silk-1-Full-scaled.jpg",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 91,
@@ -11376,9 +12452,13 @@ export const realProjectsDataset: RealProject[] = [
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
     "image_alt": "Silk District Iași verified development photograph",
-    "image_source_name": "Official Disclosure",
+    "image_source_name": "Silk District Official Portal",
     "image_verified": true,
-    "image_relevance": "PROJECT_SPECIFIC"
+    "image_relevance": "PROJECT_SPECIFIC",
+    "image_type": "OFFICIAL_RENDER",
+    "image_status": "VERIFIED_OFFICIAL",
+    "image_badge": "Randare oficială",
+    "provenance_type": "OFFICIAL_RENDER"
   },
   {
     "id": "proj-paltim-timisoara",
@@ -11410,7 +12490,7 @@ export const realProjectsDataset: RealProject[] = [
     "engineering_name": "Popp & Asociații",
     "engineering_slug": "popp-si-asociatii",
     "description": "Urban regeneration project on Bega riverbank featuring 236 apartments, 15,000 sqm office space, retail spaces, and refurbished industrial hat factory building.",
-    "image": "https://images.unsplash.com/photo-1516214104703-d870798883c5?auto=format&fit=crop&w=1200&q=85&pid=paltim-timisoara",
+    "image": "https://www.speedwell.be/wp-content/uploads/2025/02/Paltim-render.jpg",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 90,
@@ -11425,9 +12505,13 @@ export const realProjectsDataset: RealProject[] = [
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
     "image_alt": "Paltim Timișoara verified development photograph",
-    "image_source_name": "Official Disclosure",
+    "image_source_name": "Speedwell Real Estate Development Official Asset",
     "image_verified": true,
-    "image_relevance": "PROJECT_SPECIFIC"
+    "image_relevance": "PROJECT_SPECIFIC",
+    "image_status": "VERIFIED_OFFICIAL",
+    "image_type": "OFFICIAL_RENDER",
+    "image_badge": "Randare oficială",
+    "provenance_type": "OFFICIAL_RENDER"
   },
   {
     "id": "proj-greenfield-baneasa",
@@ -11460,7 +12544,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "Concelex",
     "contractor_slug": "concelex",
     "description": "Under construction residential expansion phase at Greenfield Băneasa (Teilor quarter) adding 1,200 apartments, Greenfield Plaza community center, and wellness club (60 ha total masterplan).",
-    "image": "https://images.unsplash.com/photo-1519999482648-25049ddd37b1?auto=format&fit=crop&w=1200&q=85&pid=greenfield-baneasa",
+    "image": "https://www.greenfieldresidence.ro/baneasa/wp-content/uploads/2024/12/de-ce-greenfield-baneasa-4-1400x538c.jpg",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 93,
@@ -11475,9 +12559,13 @@ export const realProjectsDataset: RealProject[] = [
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
     "image_alt": "Greenfield Băneasa verified development photograph",
-    "image_source_name": "Official Disclosure",
+    "image_source_name": "Impact Developer & Contractor Official Media",
     "image_verified": true,
-    "image_relevance": "PROJECT_SPECIFIC"
+    "image_relevance": "PROJECT_SPECIFIC",
+    "image_type": "OFFICIAL_PHOTO",
+    "image_status": "VERIFIED_OFFICIAL",
+    "image_badge": "Fotografie oficială",
+    "provenance_type": "OFFICIAL_PHOTO"
   },
   {
     "id": "proj-j8-office-park",
@@ -11510,7 +12598,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "Bog'Art",
     "contractor_slug": "bog-art",
     "description": "BREEAM Outstanding and WELL Health-Safety office campus anchored by Ubisoft Bucharest Headquarters, featuring HEPA air filtration and 100% renewable energy.",
-    "image": "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=1200&q=85&pid=j8-office-park",
+    "image": "https://www.portlandtrust.ro/storage/projects/listing/j8-office-park.jpg",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 95,
@@ -11525,9 +12613,13 @@ export const realProjectsDataset: RealProject[] = [
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
     "image_alt": "J8 Office Park verified development photograph",
-    "image_source_name": "Official Disclosure",
+    "image_source_name": "Portland Trust Corporate Portfolio",
     "image_verified": true,
-    "image_relevance": "PROJECT_SPECIFIC"
+    "image_relevance": "PROJECT_SPECIFIC",
+    "image_status": "VERIFIED_OFFICIAL",
+    "image_type": "OFFICIAL_PHOTO",
+    "image_badge": "Fotografie oficială",
+    "provenance_type": "OFFICIAL_PHOTO"
   },
   {
     "id": "proj-stadionul-steaua",
@@ -11558,7 +12650,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "Construcții Erbașu",
     "contractor_slug": "constructii-erbasu",
     "description": "UEFA Category 4 modern sports arena with 31,254 all-seater capacity, integrated museum, hotel accommodations, and underground parking.",
-    "image": "https://images.unsplash.com/photo-1577223625816-7546f13df25d&v=2?auto=format&fit=crop&w=1200&q=85&pid=stadionul-steaua-ghencea",
+    "image": "https://www.erbasu.ro/wp-content/uploads/2021/06/CP-33223.jpg",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 96,
@@ -11573,9 +12665,13 @@ export const realProjectsDataset: RealProject[] = [
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
     "image_alt": "Stadionul Steaua București verified development photograph",
-    "image_source_name": "Official Disclosure",
+    "image_source_name": "Construcții Erbașu Media Portfolio — Stadionul Steaua",
     "image_verified": true,
-    "image_relevance": "PROJECT_SPECIFIC"
+    "image_relevance": "PROJECT_SPECIFIC",
+    "image_type": "OFFICIAL_PHOTO",
+    "image_status": "VERIFIED_OFFICIAL",
+    "image_badge": "Fotografie oficială",
+    "provenance_type": "OFFICIAL_PHOTO"
   },
   {
     "id": "proj-ctpark-bucharest-west",
@@ -11609,7 +12705,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "Bog'Art",
     "contractor_slug": "bog-art",
     "description": "Cel mai mare parc industrial și logistic din Europa Centrală și de Est, dezvoltat pe cca. 300 de hectare, cu 800.000 m² GLA operaționali construiți și o capacitate totală de masterplan proiectată la 850.000 m² GLA.",
-    "image": "",
+    "image": "https://ctp.eu/wp-content/uploads/2024/01/CTPark-Bucharest-West_7.jpg",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 95,
@@ -11631,9 +12727,13 @@ export const realProjectsDataset: RealProject[] = [
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
     "image_alt": "CTPark Bucharest West — Fotografie indisponibilă în surse oficiale",
-    "image_source_name": "Nedivulgat în depuneri publice",
-    "image_verified": false,
-    "image_relevance": "PROJECT_SPECIFIC"
+    "image_source_name": "CTP N.V. Corporate Media Library",
+    "image_verified": true,
+    "image_relevance": "PROJECT_SPECIFIC",
+    "image_type": "OFFICIAL_PHOTO",
+    "image_status": "VERIFIED_OFFICIAL",
+    "image_badge": "Fotografie oficială",
+    "provenance_type": "OFFICIAL_PHOTO"
   },
   {
     "id": "proj-h-eliade-towers",
@@ -11663,7 +12763,7 @@ export const realProjectsDataset: RealProject[] = [
     "unit_count": 250,
     "floors": "2B + GF + 10F",
     "description": "Luxury high-end residential complex overlooking Floreasca Lake, featuring concierge services, subterranean parking, and high-performance glass facades.",
-    "image": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1200&q=85&pid=h-eliade-towers",
+    "image": "",
     "is_featured": false,
     "verification_status": "VERIFIED",
     "sources": [
@@ -11677,9 +12777,13 @@ export const realProjectsDataset: RealProject[] = [
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
     "image_alt": "H Eliade Towers verified development photograph",
-    "image_source_name": "Official Disclosure",
-    "image_verified": true,
-    "image_relevance": "PROJECT_SPECIFIC"
+    "image_source_name": "N/A",
+    "image_verified": false,
+    "image_relevance": "PROJECT_SPECIFIC",
+    "image_status": "NOT_FOUND",
+    "image_type": "NOT_FOUND",
+    "image_badge": "Imagine indisponibilă în surse verificabile",
+    "provenance_type": "NOT_FOUND"
   },
   {
     "id": "proj-podul-braila",
@@ -11705,7 +12809,7 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "Webuild Romania (Astaldi)",
     "contractor_slug": "webuild-romania",
     "description": "The Golden Gate of Romania: 3rd longest suspension bridge in Europe (1,974 m total length with 1,120 m main span) connecting Dobrogea to Moldavia.",
-    "image": "https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a&v=2?auto=format&fit=crop&w=1200&q=85&pid=podul-suspendat-braila",
+    "image": "https://media.webuildgroup.com/sites/default/files/2024-02/Bridge_over_Danube_River_in_Braila_DJI_0313.jpg",
     "is_featured": true,
     "sources": [
       {
@@ -11717,10 +12821,14 @@ export const realProjectsDataset: RealProject[] = [
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
     "image_alt": "Podul Suspendat peste Dunăre de la Brăila verified development photograph",
-    "image_source_name": "Official Disclosure",
+    "image_source_name": "Webuild Group Media Asset",
     "image_verified": true,
     "image_relevance": "PROJECT_SPECIFIC",
-    "investment_label": "€500.0M EUR"
+    "investment_label": "€500.0M EUR",
+    "image_type": "OFFICIAL_PHOTO",
+    "image_status": "VERIFIED_OFFICIAL",
+    "image_badge": "Fotografie oficială",
+    "provenance_type": "OFFICIAL_PHOTO"
   }
 ];
 

@@ -7,8 +7,8 @@ import { safeJsonLdStringify } from '@/lib/sanitize';
 import { LocationPinIcon, CogIcon } from '@/components/icons/NavIcons';
 
 export const metadata: Metadata = {
-  title: 'Engineering Consultants & Specialists | CONSTRUCTIONS by AiXLuxury',
-  description: 'Verified public-source directory of structural engineering consultants, MEP system designers, civil engineering supervisors, and environmental engineering specialists in Romania.',
+  title: 'Consultanți în Inginerie & Proiectare Structurală · CONSTRUCTIONS by AiXLuxury',
+  description: 'Catalog verificat din surse publice al consultanților de inginerie structurală, proiectanților de instalații MEP, experților tehnici și proiectanților civili din România.',
   alternates: {
     canonical: 'https://constructions.cristianvaduva.com/engineers'
   }
@@ -22,14 +22,14 @@ export default function EngineersPage() {
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
-    name: 'Engineering Consultants Directory',
-    description: 'Verified directory of engineering consultancies and structural specialists in Romania.',
+    name: 'Director Inginerie & Consultanță România',
+    description: 'Catalog verificat de companii de inginerie și proiectare structurală din România.',
     url: 'https://constructions.cristianvaduva.com/engineers',
     numberOfItems: engineers.length
   };
 
   return (
-    <div className="bg-[#050505] text-[#F3F1EB] min-h-screen">
+    <div className="bg-white text-slate-900 min-h-screen selection:bg-amber-100 selection:text-amber-950">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: safeJsonLdStringify(jsonLd) }}
@@ -37,18 +37,18 @@ export default function EngineersPage() {
       <SiteHeader />
 
       <main className="pt-24 pb-20">
-        <section className="border-b border-[#1A1D1B] bg-[#0B0B0B] py-12 md:py-16">
+        <section className="border-b border-slate-200 bg-slate-50/70 py-12 md:py-16">
           <div className="max-w-[1440px] mx-auto px-4 md:px-8 space-y-4">
-            <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#C9A227]">
-              <span>MARKET TAXONOMY</span>
+            <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-amber-800 font-bold">
+              <span>TAXONOMIE DE PIAȚĂ</span>
               <span>·</span>
-              <span className="text-white font-bold">{engineers.length} VERIFIED ENGINEERING CONSULTANTS</span>
+              <span className="text-slate-900 font-bold">{engineers.length} SPECIALIȘTI VERIFICAȚI</span>
             </div>
-            <h1 className="text-3xl md:text-5xl font-extrabold text-white tracking-tight">
-              ENGINEERING CONSULTANTS & SPECIALISTS
+            <h1 className="text-3xl md:text-5xl font-extrabold text-slate-950 tracking-tight">
+              INGINERIE STRUCTURALĂ &amp; INSTALAȚII MEP
             </h1>
-            <p className="text-sm md:text-base text-[#A0A0A0] max-w-3xl leading-relaxed font-mono">
-              Verified public-source intelligence covering structural engineering design firms, MEP (mechanical, electrical, plumbing) system designers, seismic auditors, and transportation infrastructure consultants.
+            <p className="text-sm md:text-base text-slate-600 max-w-3xl leading-relaxed font-sans">
+              Director independent ce acoperă firme de proiectare structurală, rezistență, instalații sanitare, termice și electrice (MEP), verificatori atestați și experți în inginerie seismică din România.
             </p>
           </div>
         </section>
@@ -58,63 +58,51 @@ export default function EngineersPage() {
             {engineers.map(eng => (
               <div
                 key={eng.id}
-                className="bg-[#0B0B0B] border border-[#1A1D1B] hover:border-[#C9A227]/50 transition-all rounded-xl p-6 flex flex-col justify-between space-y-4 group"
+                className="bg-white border border-slate-200 hover:border-amber-500 hover:shadow-lg transition-all rounded-2xl p-6 flex flex-col justify-between space-y-4 group"
               >
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">
-                    <span className="px-2.5 py-0.5 bg-[#eab308]/10 text-[#eab308] border border-[#eab308]/30 text-[10px] font-mono font-bold uppercase rounded">
-                      {eng.type.replaceAll('_', ' ')}
+                    <span className="px-2.5 py-1 bg-amber-50 text-amber-800 border border-amber-200 text-[10px] font-mono font-bold uppercase rounded-md shadow-xs">
+                      INGINERIE &amp; STRUCTURĂ
                     </span>
-                    <span className="text-[10px] font-mono text-[#888888]">
-                      Founded {eng.founded_year || 'N/A'}
+                    <span className="text-[10px] font-mono text-slate-500">
+                      Fondat în {eng.founded_year || 'N/A'}
                     </span>
                   </div>
 
-                  <h2 className="text-lg font-bold text-white group-hover:text-[#C9A227] transition-colors leading-snug">
+                  <h2 className="text-xl font-bold text-slate-900 group-hover:text-amber-800 transition-colors leading-snug">
                     <Link href={`/companies/${eng.slug}`}>
                       {eng.name}
                     </Link>
                   </h2>
 
-                  <p className="text-xs text-[#A0A0A0] font-sans line-clamp-3 leading-relaxed">
+                  <p className="text-xs text-slate-600 line-clamp-3 leading-relaxed">
                     {eng.description}
                   </p>
 
-                  <div className="pt-2 text-[11px] font-mono text-[#888888] space-y-1">
+                  <div className="pt-2 text-xs font-mono text-slate-500 space-y-1.5">
                     <div className="flex items-center gap-1.5">
-                      <LocationPinIcon className="w-3.5 h-3.5 text-[#c7a675] shrink-0" />
-                      <span className="text-[#C5C5C5]">{eng.location}</span>
+                      <LocationPinIcon className="w-3.5 h-3.5 text-amber-700 shrink-0" />
+                      <span className="text-slate-700">{eng.location}</span>
                     </div>
                     <div className="flex items-center gap-1.5">
-                      <CogIcon className="w-3.5 h-3.5 text-[#888888] shrink-0" />
-                      <span>Specializations: <span className="text-[#C5C5C5]">{eng.specializations?.slice(0, 2).join(', ') || 'Engineering Design'}</span></span>
+                      <CogIcon className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+                      <span>Proiecte Verificate: <span className="text-slate-900 font-bold">{eng.projects_count}</span></span>
                     </div>
                   </div>
                 </div>
 
-                <div className="pt-4 border-t border-[#1A1D1B] flex items-center justify-between">
-                  <span className="text-[10px] font-mono text-[#666666]">
-                    VERIFIED SOURCE
-                  </span>
+                <div className="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-mono">
+                  <span className="text-slate-400">{(eng as any).market_tier || 'INGINER'}</span>
                   <Link
                     href={`/companies/${eng.slug}`}
-                    className="text-xs font-mono font-bold text-[#C9A227] hover:underline flex items-center gap-1"
+                    className="text-amber-800 font-bold hover:text-amber-950"
                   >
-                    <span>VIEW DOSSIER</span>
-                    <span>→</span>
+                    DESCHIDE DOSAR →
                   </Link>
                 </div>
               </div>
             ))}
-          </div>
-        </section>
-
-        <section className="max-w-[1440px] mx-auto px-4 md:px-8 mt-16 pt-8 border-t border-[#1A1D1B]">
-          <div className="p-6 bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl text-xs font-mono space-y-2">
-            <span className="text-[#C9A227] uppercase font-bold block">INDEPENDENT PLATFORM DISCLOSURE</span>
-            <p className="text-[#A0A0A0] leading-relaxed">
-              CONSTRUCTIONS is an independent information and research platform. Inclusion of an engineering consultancy does not imply representation, endorsement, partnership, or commercial relationship with that entity.
-            </p>
           </div>
         </section>
       </main>

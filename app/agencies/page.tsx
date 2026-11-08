@@ -7,8 +7,8 @@ import { safeJsonLdStringify } from '@/lib/sanitize';
 import { LocationPinIcon, BriefcaseIcon } from '@/components/icons/NavIcons';
 
 export const metadata: Metadata = {
-  title: 'Real Estate Agencies & Brokerages Directory | CONSTRUCTIONS by AiXLuxury',
-  description: 'Verified public-source directory of real estate agencies, commercial brokerages, capital markets advisory firms, and property consultants in Romania.',
+  title: 'Director Agenții Imobiliare & Consultanță · CONSTRUCTIONS by AiXLuxury',
+  description: 'Catalog verificat din surse publice al agențiilor imobiliare, brokerajului comercial, consultanților de investiții și reprezentanților de vânzări din România.',
   alternates: {
     canonical: 'https://constructions.cristianvaduva.com/agencies'
   }
@@ -20,14 +20,14 @@ export default function AgenciesPage() {
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
-    name: 'Real Estate Agencies Directory',
-    description: 'Verified directory of real estate agencies and brokerages in Romania.',
+    name: 'Director Agenții Imobiliare România',
+    description: 'Catalog verificat de agenții imobiliare și brokeraj din România.',
     url: 'https://constructions.cristianvaduva.com/agencies',
     numberOfItems: agencies.length
   };
 
   return (
-    <div className="bg-[#050505] text-[#F3F1EB] min-h-screen">
+    <div className="bg-white text-slate-900 min-h-screen selection:bg-amber-100 selection:text-amber-950">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: safeJsonLdStringify(jsonLd) }}
@@ -35,18 +35,18 @@ export default function AgenciesPage() {
       <SiteHeader />
 
       <main className="pt-24 pb-20">
-        <section className="border-b border-[#1A1D1B] bg-[#0B0B0B] py-12 md:py-16">
+        <section className="border-b border-slate-200 bg-slate-50/70 py-12 md:py-16">
           <div className="max-w-[1440px] mx-auto px-4 md:px-8 space-y-4">
-            <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#C9A227]">
-              <span>MARKET TAXONOMY</span>
+            <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-amber-800 font-bold">
+              <span>TAXONOMIE DE PIAȚĂ</span>
               <span>·</span>
-              <span className="text-white font-bold">{agencies.length} VERIFIED AGENCIES</span>
+              <span className="text-slate-900 font-bold">{agencies.length} AGENȚII VERIFICATE</span>
             </div>
-            <h1 className="text-3xl md:text-5xl font-extrabold text-white tracking-tight">
-              REAL ESTATE AGENCIES & BROKERAGES
+            <h1 className="text-3xl md:text-5xl font-extrabold text-slate-950 tracking-tight">
+              AGENȚII IMOBILIARE &amp; BROKERAJ
             </h1>
-            <p className="text-sm md:text-base text-[#A0A0A0] max-w-3xl leading-relaxed font-mono">
-              Independent market intelligence covering commercial real estate consultancies, new development sales advisors, residential brokerages, and capital market specialists.
+            <p className="text-sm md:text-base text-slate-600 max-w-3xl leading-relaxed font-sans">
+              Director de piață ce documentează companiile de consultanță imobiliară comercială, reprezentanții exclusivi de vânzări pentru ansambluri rezidențiale și specialiștii în piețe de capital din România.
             </p>
           </div>
         </section>
@@ -56,63 +56,51 @@ export default function AgenciesPage() {
             {agencies.map(agency => (
               <div
                 key={agency.id}
-                className="bg-[#0B0B0B] border border-[#1A1D1B] hover:border-[#C9A227]/50 transition-all rounded-xl p-6 flex flex-col justify-between space-y-4 group"
+                className="bg-white border border-slate-200 hover:border-amber-500 hover:shadow-lg transition-all rounded-2xl p-6 flex flex-col justify-between space-y-4 group"
               >
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">
-                    <span className="px-2.5 py-0.5 bg-[#38bdf8]/10 text-[#38bdf8] border border-[#38bdf8]/30 text-[10px] font-mono font-bold uppercase rounded">
-                      REAL ESTATE AGENCY
+                    <span className="px-2.5 py-1 bg-amber-50 text-amber-800 border border-amber-200 text-[10px] font-mono font-bold uppercase rounded-md shadow-xs">
+                      AGENȚIE IMOBILIARĂ
                     </span>
-                    <span className="text-[10px] font-mono text-[#888888]">
-                      Founded {agency.founded_year || 'N/A'}
+                    <span className="text-[10px] font-mono text-slate-500">
+                      Fondată în {agency.founded_year || 'N/A'}
                     </span>
                   </div>
 
-                  <h2 className="text-lg font-bold text-white group-hover:text-[#C9A227] transition-colors leading-snug">
+                  <h2 className="text-xl font-bold text-slate-900 group-hover:text-amber-800 transition-colors leading-snug">
                     <Link href={`/companies/${agency.slug}`}>
                       {agency.name}
                     </Link>
                   </h2>
 
-                  <p className="text-xs text-[#A0A0A0] font-sans line-clamp-3 leading-relaxed">
+                  <p className="text-xs text-slate-600 line-clamp-3 leading-relaxed">
                     {agency.description}
                   </p>
 
-                  <div className="pt-2 text-[11px] font-mono text-[#888888] space-y-1">
+                  <div className="pt-2 text-xs font-mono text-slate-500 space-y-1.5">
                     <div className="flex items-center gap-1.5">
-                      <LocationPinIcon className="w-3.5 h-3.5 text-[#c7a675] shrink-0" />
-                      <span className="text-[#C5C5C5]">{agency.location}</span>
+                      <LocationPinIcon className="w-3.5 h-3.5 text-amber-700 shrink-0" />
+                      <span className="text-slate-700">{agency.location}</span>
                     </div>
                     <div className="flex items-center gap-1.5">
-                      <BriefcaseIcon className="w-3.5 h-3.5 text-[#888888] shrink-0" />
-                      <span>Specializations: <span className="text-[#C5C5C5]">{agency.specializations?.slice(0, 2).join(', ') || 'Real Estate Advisory'}</span></span>
+                      <BriefcaseIcon className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+                      <span>Proiecte Reprezentate: <span className="text-slate-900 font-bold">{agency.projects_count}</span></span>
                     </div>
                   </div>
                 </div>
 
-                <div className="pt-4 border-t border-[#1A1D1B] flex items-center justify-between">
-                  <span className="text-[10px] font-mono text-[#666666]">
-                    VERIFIED SOURCE
-                  </span>
+                <div className="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-mono">
+                  <span className="text-slate-400">{(agency as any).market_tier || 'AGENȚIE IMOBILIARĂ'}</span>
                   <Link
                     href={`/companies/${agency.slug}`}
-                    className="text-xs font-mono font-bold text-[#C9A227] hover:underline flex items-center gap-1"
+                    className="text-amber-800 font-bold hover:text-amber-950"
                   >
-                    <span>VIEW DOSSIER</span>
-                    <span>→</span>
+                    DESCHIDE DOSAR →
                   </Link>
                 </div>
               </div>
             ))}
-          </div>
-        </section>
-
-        <section className="max-w-[1440px] mx-auto px-4 md:px-8 mt-16 pt-8 border-t border-[#1A1D1B]">
-          <div className="p-6 bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl text-xs font-mono space-y-2">
-            <span className="text-[#C9A227] uppercase font-bold block">INDEPENDENT PLATFORM DISCLOSURE</span>
-            <p className="text-[#A0A0A0] leading-relaxed">
-              CONSTRUCTIONS is an independent information and research platform. Inclusion of a real estate agency does not imply representation, endorsement, partnership, or commercial relationship with that entity.
-            </p>
           </div>
         </section>
       </main>

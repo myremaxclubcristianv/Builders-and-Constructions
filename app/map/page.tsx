@@ -18,47 +18,47 @@ export default function ConstructionMapPage() {
   const verifiedHubs = getVerifiedHubStatistics();
 
   return (
-    <div className="bg-[#050505] text-[#F3F1EB] min-h-screen">
+    <div className="bg-white text-slate-900 min-h-screen selection:bg-amber-100 selection:text-amber-950">
       <SiteHeader />
 
-      <main className="pt-20">
+      <main className="pt-24">
         {/* Map Hero */}
-        <section className="py-10 md:py-16 border-b border-[#1A1D1B] bg-[#0B0B0B]">
+        <section className="py-12 md:py-16 border-b border-slate-200 bg-slate-50/70">
           <div className="max-w-[1440px] mx-auto px-4 md:px-8 space-y-3">
-            <span className="text-[10px] font-mono uppercase tracking-widest text-[#C9A227] block font-bold">
-              INTELIGENȚĂ GEOGRAFICĂ & DENSITATE URBANĂ
+            <span className="text-[11px] font-mono uppercase tracking-wider text-amber-800 block font-bold">
+              INTELIGENȚĂ GEOGRAFICĂ &amp; DENSITATE URBANĂ
             </span>
-            <h1 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
+            <h1 className="text-3xl sm:text-5xl font-extrabold text-slate-950 tracking-tight">
               HARTA NAȚIONALĂ A CONSTRUCȚIILOR DIN ROMÂNIA
             </h1>
-            <p className="text-sm md:text-base text-[#A0A0A0] max-w-3xl leading-relaxed">
+            <p className="text-sm md:text-base text-slate-600 max-w-3xl leading-relaxed">
               Distribuția spațială a șantierelor verificate faptic, amprentei dezvoltatorilor activi și densității dezvoltării imobiliare din București, Ilfov, Cluj-Napoca, Timișoara, Iași, Brașov, Constanța și polii regionali de investiții.
             </p>
           </div>
         </section>
 
         {/* Interactive Map Core Experience */}
-        <section className="py-8 md:py-12 border-b border-[#1A1D1B]">
+        <section className="py-8 md:py-12 border-b border-slate-200 bg-white">
           <div className="max-w-[1440px] mx-auto px-4 md:px-8">
             <NationalConstructionMap />
           </div>
         </section>
 
         {/* Map Hub Distribution */}
-        <section className="py-10 md:py-16 border-b border-[#1A1D1B]">
+        <section className="py-12 md:py-16 bg-slate-50/60">
           <div className="max-w-[1440px] mx-auto px-4 md:px-8">
-            <div className="p-6 bg-[#111111] border border-[#1A1D1B] rounded-2xl space-y-6">
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#1A1D1B] pb-4">
+            <div className="p-8 bg-white border border-slate-200 rounded-2xl space-y-6 shadow-xs">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 pb-4">
                 <div>
-                  <span className="text-[10px] font-mono text-[#C9A227] uppercase tracking-wider block">POLI REGIONALI</span>
-                  <h2 className="text-xl font-bold text-white mt-0.5">DISTRIBUȚIE GEOGRAFICĂ PE ORAȘE</h2>
+                  <span className="text-[10px] font-mono text-amber-800 uppercase tracking-wider font-bold block">POLI REGIONALI</span>
+                  <h2 className="text-2xl font-bold text-slate-950 mt-1">DISTRIBUȚIE GEOGRAFICĂ PE ORAȘE</h2>
                 </div>
                 <div className="flex items-center gap-4 text-xs font-mono">
-                  <span className="flex items-center gap-2 text-white">
-                    <span className="w-2.5 h-2.5 rounded-full bg-[#C9A227]" /> Active ({activeUnderConstruction.length})
+                  <span className="flex items-center gap-2 text-slate-700 font-semibold">
+                    <span className="w-2.5 h-2.5 rounded-full bg-amber-600" /> Active ({activeUnderConstruction.length})
                   </span>
-                  <span className="flex items-center gap-2 text-white">
-                    <span className="w-2.5 h-2.5 rounded-full bg-[#22c55e]" /> Livrate ({completedProjects.length})
+                  <span className="flex items-center gap-2 text-slate-700 font-semibold">
+                    <span className="w-2.5 h-2.5 rounded-full bg-emerald-600" /> Livrate ({completedProjects.length})
                   </span>
                 </div>
               </div>
@@ -68,15 +68,15 @@ export default function ConstructionMapPage() {
                   <Link
                     key={hub.slug}
                     href={`/projects?q=${encodeURIComponent(hub.query)}`}
-                    className="p-4 bg-[#050505] border border-[#1A1D1B] rounded-xl hover:border-[#C9A227]/50 transition-all flex items-center justify-between group"
+                    className="p-5 bg-slate-50 border border-slate-200 rounded-xl hover:border-amber-500 hover:shadow-xs transition-all flex items-center justify-between group"
                   >
                     <div>
-                      <h3 className="text-sm font-bold text-white group-hover:text-[#C9A227] transition-colors">{hub.name}</h3>
-                      <p className="text-[11px] text-[#666666] font-mono">{hub.county}</p>
+                      <h3 className="text-base font-bold text-slate-900 group-hover:text-amber-800 transition-colors">{hub.name}</h3>
+                      <p className="text-[11px] text-slate-500 font-mono mt-0.5">{hub.county}</p>
                     </div>
                     <div className="text-right font-mono">
-                      <span className="text-sm font-extrabold text-[#C9A227] block">{hub.indexedCount} Proiecte</span>
-                      <span className="text-[10px] text-[#22c55e] block">{hub.activeCount} Active</span>
+                      <span className="text-base font-extrabold text-amber-800 block">{hub.indexedCount} Proiecte</span>
+                      <span className="text-[11px] text-emerald-700 font-semibold block">{hub.activeCount} Active</span>
                     </div>
                   </Link>
                 ))}

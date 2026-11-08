@@ -7,8 +7,8 @@ import { safeJsonLdStringify } from '@/lib/sanitize';
 import { LocationPinIcon, RulerIcon } from '@/components/icons/NavIcons';
 
 export const metadata: Metadata = {
-  title: 'Architecture & Urban Planning Studios | CONSTRUCTIONS by AiXLuxury',
-  description: 'Verified public-source directory of architectural design studios, urban planners, interior architects, and masterplanning practices in Romania.',
+  title: 'Birouri de Arhitectură & Urbanism · CONSTRUCTIONS by AiXLuxury',
+  description: 'Catalog verificat din surse publice al birourilor de arhitectură, proiectanților generali, urbaniștilor și arhitecților de concept din România.',
   alternates: {
     canonical: 'https://constructions.cristianvaduva.com/architects'
   }
@@ -20,14 +20,14 @@ export default function ArchitectsPage() {
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
-    name: 'Architecture Studios Directory',
-    description: 'Verified directory of architectural practices and urban planners in Romania.',
+    name: 'Director Birouri de Arhitectură România',
+    description: 'Catalog verificat de birouri de arhitectură și urbanism din România.',
     url: 'https://constructions.cristianvaduva.com/architects',
     numberOfItems: architects.length
   };
 
   return (
-    <div className="bg-[#050505] text-[#F3F1EB] min-h-screen">
+    <div className="bg-white text-slate-900 min-h-screen selection:bg-amber-100 selection:text-amber-950">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: safeJsonLdStringify(jsonLd) }}
@@ -35,18 +35,18 @@ export default function ArchitectsPage() {
       <SiteHeader />
 
       <main className="pt-24 pb-20">
-        <section className="border-b border-[#1A1D1B] bg-[#0B0B0B] py-12 md:py-16">
+        <section className="border-b border-slate-200 bg-slate-50/70 py-12 md:py-16">
           <div className="max-w-[1440px] mx-auto px-4 md:px-8 space-y-4">
-            <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#C9A227]">
-              <span>MARKET TAXONOMY</span>
+            <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-amber-800 font-bold">
+              <span>TAXONOMIE DE PIAȚĂ</span>
               <span>·</span>
-              <span className="text-white font-bold">{architects.length} VERIFIED ARCHITECTURE STUDIOS</span>
+              <span className="text-slate-900 font-bold">{architects.length} BIROURI VERIFICATE</span>
             </div>
-            <h1 className="text-3xl md:text-5xl font-extrabold text-white tracking-tight">
-              ARCHITECTURE & URBAN PLANNING STUDIOS
+            <h1 className="text-3xl md:text-5xl font-extrabold text-slate-950 tracking-tight">
+              BIROURI DE ARHITECTURĂ &amp; URBANISM
             </h1>
-            <p className="text-sm md:text-base text-[#A0A0A0] max-w-3xl leading-relaxed font-mono">
-              Independent coverage of architectural practices, healthcare designers, urban masterplanners, heritage restoration architects, and nZEB sustainable design practices.
+            <p className="text-sm md:text-base text-slate-600 max-w-3xl leading-relaxed font-sans">
+              Acoperire independentă a practicilor de arhitectură, proiectanților generali de spitale și birouri, urbaniștilor și specialiștilor în restaurare și clădiri nZEB din România.
             </p>
           </div>
         </section>
@@ -56,63 +56,51 @@ export default function ArchitectsPage() {
             {architects.map(arch => (
               <div
                 key={arch.id}
-                className="bg-[#0B0B0B] border border-[#1A1D1B] hover:border-[#C9A227]/50 transition-all rounded-xl p-6 flex flex-col justify-between space-y-4 group"
+                className="bg-white border border-slate-200 hover:border-amber-500 hover:shadow-lg transition-all rounded-2xl p-6 flex flex-col justify-between space-y-4 group"
               >
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">
-                    <span className="px-2.5 py-0.5 bg-[#a855f7]/10 text-[#a855f7] border border-[#a855f7]/30 text-[10px] font-mono font-bold uppercase rounded">
-                      ARCHITECTURE
+                    <span className="px-2.5 py-1 bg-amber-50 text-amber-800 border border-amber-200 text-[10px] font-mono font-bold uppercase rounded-md shadow-xs">
+                      ARHITECTURĂ
                     </span>
-                    <span className="text-[10px] font-mono text-[#888888]">
-                      Founded {arch.founded_year || 'N/A'}
+                    <span className="text-[10px] font-mono text-slate-500">
+                      Fondat în {arch.founded_year || 'N/A'}
                     </span>
                   </div>
 
-                  <h2 className="text-lg font-bold text-white group-hover:text-[#C9A227] transition-colors leading-snug">
+                  <h2 className="text-xl font-bold text-slate-900 group-hover:text-amber-800 transition-colors leading-snug">
                     <Link href={`/companies/${arch.slug}`}>
                       {arch.name}
                     </Link>
                   </h2>
 
-                  <p className="text-xs text-[#A0A0A0] font-sans line-clamp-3 leading-relaxed">
+                  <p className="text-xs text-slate-600 line-clamp-3 leading-relaxed">
                     {arch.description}
                   </p>
 
-                  <div className="pt-2 text-[11px] font-mono text-[#888888] space-y-1">
+                  <div className="pt-2 text-xs font-mono text-slate-500 space-y-1.5">
                     <div className="flex items-center gap-1.5">
-                      <LocationPinIcon className="w-3.5 h-3.5 text-[#c7a675] shrink-0" />
-                      <span className="text-[#C5C5C5]">{arch.location}</span>
+                      <LocationPinIcon className="w-3.5 h-3.5 text-amber-700 shrink-0" />
+                      <span className="text-slate-700">{arch.location}</span>
                     </div>
                     <div className="flex items-center gap-1.5">
-                      <RulerIcon className="w-3.5 h-3.5 text-[#888888] shrink-0" />
-                      <span>Specializations: <span className="text-[#C5C5C5]">{arch.specializations?.slice(0, 2).join(', ') || 'Architectural Design'}</span></span>
+                      <RulerIcon className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+                      <span>Proiecte Documentate: <span className="text-slate-900 font-bold">{arch.projects_count}</span></span>
                     </div>
                   </div>
                 </div>
 
-                <div className="pt-4 border-t border-[#1A1D1B] flex items-center justify-between">
-                  <span className="text-[10px] font-mono text-[#666666]">
-                    VERIFIED SOURCE
-                  </span>
+                <div className="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-mono">
+                  <span className="text-slate-400">{(arch as any).market_tier || 'ARHITECT'}</span>
                   <Link
                     href={`/companies/${arch.slug}`}
-                    className="text-xs font-mono font-bold text-[#C9A227] hover:underline flex items-center gap-1"
+                    className="text-amber-800 font-bold hover:text-amber-950"
                   >
-                    <span>VIEW DOSSIER</span>
-                    <span>→</span>
+                    DESCHIDE DOSAR →
                   </Link>
                 </div>
               </div>
             ))}
-          </div>
-        </section>
-
-        <section className="max-w-[1440px] mx-auto px-4 md:px-8 mt-16 pt-8 border-t border-[#1A1D1B]">
-          <div className="p-6 bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl text-xs font-mono space-y-2">
-            <span className="text-[#C9A227] uppercase font-bold block">INDEPENDENT PLATFORM DISCLOSURE</span>
-            <p className="text-[#A0A0A0] leading-relaxed">
-              CONSTRUCTIONS is an independent information and research platform. Inclusion of an architectural studio does not imply representation, endorsement, partnership, or commercial relationship with that entity.
-            </p>
           </div>
         </section>
       </main>

@@ -12,6 +12,7 @@ import { LeadForm } from '@/components/LeadForm';
 import { BookmarkButton } from '@/components/BookmarkButton';
 import { safeJsonLdStringify } from '@/lib/sanitize';
 import { ScaleIcon, LocationPinIcon, BuildingIcon, RulerIcon, CogIcon, CraneIcon, ChartBarIcon } from '@/components/icons/NavIcons';
+import { resolveVisualProvenanceBadge } from '@/lib/company-imagery';
 
 export async function generateMetadata({
   params,
@@ -169,7 +170,7 @@ export default async function ProjectProfile({
       <main className="pt-24 md:pt-32" style={{ background: '#0c0e0c', color: '#fff', minHeight: '100vh' }}>
         {isPreviewAllowed && (
           <div style={{ background: '#c7a675', color: '#000', padding: '10px 24px', textAlign: 'center', fontWeight: 800, fontSize: 12, letterSpacing: '0.08em' }}>
-            ADMIN PREVIEW MODE — DRAFT RECORD (NOT VISIBLE ANONYMOUSLY)
+            MOD PREVIZUALIZARE ADMIN — DOSAR CIORNĂ (INVIZIBIL PUBLICULUI)
           </div>
         )}
 
@@ -234,35 +235,42 @@ export default async function ProjectProfile({
             </p>
 
             {/* HERO IMAGE CONTAINER */}
-            <div style={{ marginTop: 24, height: 320, borderRadius: 6, overflow: 'hidden', border: '1px solid #262927', position: 'relative', background: '#141715', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
-              {p.image && typeof p.image === 'string' && p.image.startsWith('http') && !p.image.includes('unsplash.com') && !p.image.includes('stock') && p.image_verified ? (
-                <>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={p.image} alt={p.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                  <div style={{ position: 'absolute', bottom: 0, insetInline: 0, padding: 12, background: 'linear-gradient(0deg, rgba(0,0,0,0.9), transparent)', fontSize: 11, color: '#ccc', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <span style={{ display: 'inline-flex', alignItems: 'center', gap: 4 }}>
-                      <CraneIcon className="w-3.5 h-3.5 text-[#38bdf8]" />
-                      <span>{p.name} — Fotografie Oficială Proiect</span>
-                    </span>
-                    <span style={{ fontSize: 9, background: '#1c221e', border: '1px solid #38bdf8', color: '#38bdf8', padding: '2px 6px', borderRadius: 2, fontWeight: 800 }}>
-                      MEDIA VERIFICATĂ
-                    </span>
-                  </div>
-                </>
-              ) : (
-                <div style={{ padding: 24, textAlign: 'center', color: '#888' }}>
-                  <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 8 }}>
-                    <CraneIcon className="w-9 h-9 text-[#666]" />
-                  </div>
-                  <div style={{ fontSize: 11, fontWeight: 800, color: '#c7a675', border: '1px solid #262927', padding: '4px 10px', borderRadius: 4, display: 'inline-block', letterSpacing: '0.05em' }}>
-                    STATUT VIZUAL: FOTOGRAFIE INDISPONIBILĂ ÎN SURSE OFICIALE
-                  </div>
-                  <div style={{ fontSize: 11, color: '#888', marginTop: 8, maxWidth: 520 }}>
-                    Nicio fotografie oficială de șantier confirmată în depunerile publice pentru acest proiect. Politica editorială CONSTRUCTIONS interzice substituirea fotografiilor reale cu imagini generice de stoc.
-                  </div>
+            {(() => {
+              const badge = resolveVisualProvenanceBadge(p);
+              const hasGenuineImage = Boolean(p.image && typeof p.image === 'string' && p.image.startsWith('http') && !p.image.includes('unsplash.com') && !p.image.includes('stock') && !badge.isNotFound);
+
+              return (
+                <div style={{ marginTop: 24, height: 320, borderRadius: 6, overflow: 'hidden', border: '1px solid #262927', position: 'relative', background: '#141715', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+                  {hasGenuineImage ? (
+                    <>
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={p.image} alt={p.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                      <div style={{ position: 'absolute', bottom: 0, insetInline: 0, padding: 12, background: 'linear-gradient(0deg, rgba(0,0,0,0.9), transparent)', fontSize: 11, color: '#ccc', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                        <span style={{ display: 'inline-flex', alignItems: 'center', gap: 4 }}>
+                          <CraneIcon className="w-3.5 h-3.5 text-[#38bdf8]" />
+                          <span>{p.name} — {badge.label}</span>
+                        </span>
+                        <span style={{ fontSize: 9, background: '#1c221e', border: '1px solid #c7a675', color: '#c7a675', padding: '2px 8px', borderRadius: 2, fontWeight: 800 }}>
+                          {badge.label.toUpperCase()}
+                        </span>
+                      </div>
+                    </>
+                  ) : (
+                    <div style={{ padding: 24, textAlign: 'center', color: '#888' }}>
+                      <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 8 }}>
+                        <CraneIcon className="w-9 h-9 text-[#666]" />
+                      </div>
+                      <div style={{ fontSize: 11, fontWeight: 800, color: '#c7a675', border: '1px solid #262927', padding: '4px 10px', borderRadius: 4, display: 'inline-block', letterSpacing: '0.05em' }}>
+                        STATUT VIZUAL: IMAGINE INDISPONIBILĂ ÎN SURSE VERIFICABILE
+                      </div>
+                      <div style={{ fontSize: 11, color: '#888', marginTop: 8, maxWidth: 520 }}>
+                        Nicio fotografie sau randare oficială confirmată în depunerile publice pentru acest proiect. Politica editorială CONSTRUCTIONS interzice substituirea fotografiilor reale cu imagini generice de stoc.
+                      </div>
+                    </div>
+                  )}
                 </div>
-              )}
-            </div>
+              );
+            })()}
 
             {/* COMPACT BUSINESS-SAFE DISCLOSURE BOX */}
             <div style={{ marginTop: 24, padding: 16, background: '#111412', border: '1px solid #242926', borderRadius: 6, fontSize: 12, color: '#a0a0a0', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 12 }}>

@@ -7,8 +7,8 @@ import { safeJsonLdStringify } from '@/lib/sanitize';
 import { LocationPinIcon, HardHatIcon } from '@/components/icons/NavIcons';
 
 export const metadata: Metadata = {
-  title: 'Construction Contractors Directory | CONSTRUCTIONS by AiXLuxury',
-  description: 'Verified public-source directory of general contractors, civil engineering builders, structural contractors, and specialized infrastructure companies in Romania.',
+  title: 'Director Antreprenori Generali & Constructori · CONSTRUCTIONS by AiXLuxury',
+  description: 'Catalog verificat din surse publice al antreprenorilor generali, constructorilor de infrastructură și companiilor de execuție din România.',
   alternates: {
     canonical: 'https://constructions.cristianvaduva.com/contractors'
   }
@@ -22,14 +22,14 @@ export default function ContractorsPage() {
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
-    name: 'Construction Contractors Directory',
-    description: 'Verified directory of general contractors and civil builders in Romania.',
+    name: 'Director Antreprenori Generali & Constructori România',
+    description: 'Catalog verificat de constructori și antreprenori generali din România.',
     url: 'https://constructions.cristianvaduva.com/contractors',
     numberOfItems: contractors.length
   };
 
   return (
-    <div className="bg-[#050505] text-[#F3F1EB] min-h-screen">
+    <div className="bg-white text-slate-900 min-h-screen selection:bg-amber-100 selection:text-amber-950">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: safeJsonLdStringify(jsonLd) }}
@@ -37,18 +37,18 @@ export default function ContractorsPage() {
       <SiteHeader />
 
       <main className="pt-24 pb-20">
-        <section className="border-b border-[#1A1D1B] bg-[#0B0B0B] py-12 md:py-16">
+        <section className="border-b border-slate-200 bg-slate-50/70 py-12 md:py-16">
           <div className="max-w-[1440px] mx-auto px-4 md:px-8 space-y-4">
-            <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#C9A227]">
-              <span>MARKET TAXONOMY</span>
+            <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-amber-800 font-bold">
+              <span>TAXONOMIE DE PIAȚĂ</span>
               <span>·</span>
-              <span className="text-white font-bold">{contractors.length} VERIFIED CONTRACTORS</span>
+              <span className="text-slate-900 font-bold">{contractors.length} CONSTRUCTORI VERIFICAȚI</span>
             </div>
-            <h1 className="text-3xl md:text-5xl font-extrabold text-white tracking-tight">
-              GENERAL & SPECIALIZED CONTRACTORS
+            <h1 className="text-3xl md:text-5xl font-extrabold text-slate-950 tracking-tight">
+              ANTREPRENORI GENERALI &amp; CONSTRUCTORI
             </h1>
-            <p className="text-sm md:text-base text-[#A0A0A0] max-w-3xl leading-relaxed font-mono">
-              Verified intelligence coverage of general construction contractors, structural builders, deep foundation specialists, industrial hall fabricators, and civil infrastructure builders.
+            <p className="text-sm md:text-base text-slate-600 max-w-3xl leading-relaxed font-sans">
+              Acoperire verificată a companiilor de antrepriză generală, constructorilor de structuri, fundații speciale, hale industriale și infrastructură de transport din România.
             </p>
           </div>
         </section>
@@ -58,63 +58,51 @@ export default function ContractorsPage() {
             {contractors.map(contractor => (
               <div
                 key={contractor.id}
-                className="bg-[#0B0B0B] border border-[#1A1D1B] hover:border-[#C9A227]/50 transition-all rounded-xl p-6 flex flex-col justify-between space-y-4 group"
+                className="bg-white border border-slate-200 hover:border-amber-500 hover:shadow-lg transition-all rounded-2xl p-6 flex flex-col justify-between space-y-4 group"
               >
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">
-                    <span className="px-2.5 py-0.5 bg-[#22c55e]/10 text-[#22c55e] border border-[#22c55e]/30 text-[10px] font-mono font-bold uppercase rounded">
-                      {contractor.type.replaceAll('_', ' ')}
+                    <span className="px-2.5 py-1 bg-amber-50 text-amber-800 border border-amber-200 text-[10px] font-mono font-bold uppercase rounded-md shadow-xs">
+                      {contractor.type === 'infrastructure' ? 'INFRASTRUCTURĂ' : 'CONSTRUCTOR'}
                     </span>
-                    <span className="text-[10px] font-mono text-[#888888]">
-                      Founded {contractor.founded_year || 'N/A'}
+                    <span className="text-[10px] font-mono text-slate-500">
+                      Fondat în {contractor.founded_year || 'N/A'}
                     </span>
                   </div>
 
-                  <h2 className="text-lg font-bold text-white group-hover:text-[#C9A227] transition-colors leading-snug">
+                  <h2 className="text-xl font-bold text-slate-900 group-hover:text-amber-800 transition-colors leading-snug">
                     <Link href={`/companies/${contractor.slug}`}>
                       {contractor.name}
                     </Link>
                   </h2>
 
-                  <p className="text-xs text-[#A0A0A0] font-sans line-clamp-3 leading-relaxed">
+                  <p className="text-xs text-slate-600 line-clamp-3 leading-relaxed">
                     {contractor.description}
                   </p>
 
-                  <div className="pt-2 text-[11px] font-mono text-[#888888] space-y-1">
+                  <div className="pt-2 text-xs font-mono text-slate-500 space-y-1.5">
                     <div className="flex items-center gap-1.5">
-                      <LocationPinIcon className="w-3.5 h-3.5 text-[#c7a675] shrink-0" />
-                      <span className="text-[#C5C5C5]">{contractor.location}</span>
+                      <LocationPinIcon className="w-3.5 h-3.5 text-amber-700 shrink-0" />
+                      <span className="text-slate-700">{contractor.location}</span>
                     </div>
                     <div className="flex items-center gap-1.5">
-                      <HardHatIcon className="w-3.5 h-3.5 text-[#888888] shrink-0" />
-                      <span>Specializations: <span className="text-[#C5C5C5]">{contractor.specializations?.slice(0, 2).join(', ') || 'General Contracting'}</span></span>
+                      <HardHatIcon className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+                      <span>Șantiere: <span className="text-slate-900 font-bold">{contractor.projects_count}</span> ({contractor.active_projects_count} Active)</span>
                     </div>
                   </div>
                 </div>
 
-                <div className="pt-4 border-t border-[#1A1D1B] flex items-center justify-between">
-                  <span className="text-[10px] font-mono text-[#666666]">
-                    VERIFIED SOURCE
-                  </span>
+                <div className="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-mono">
+                  <span className="text-slate-400">{(contractor as any).market_tier || 'CONSTRUCTOR'}</span>
                   <Link
                     href={`/companies/${contractor.slug}`}
-                    className="text-xs font-mono font-bold text-[#C9A227] hover:underline flex items-center gap-1"
+                    className="text-amber-800 font-bold hover:text-amber-950"
                   >
-                    <span>VIEW DOSSIER</span>
-                    <span>→</span>
+                    DESCHIDE DOSAR →
                   </Link>
                 </div>
               </div>
             ))}
-          </div>
-        </section>
-
-        <section className="max-w-[1440px] mx-auto px-4 md:px-8 mt-16 pt-8 border-t border-[#1A1D1B]">
-          <div className="p-6 bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl text-xs font-mono space-y-2">
-            <span className="text-[#C9A227] uppercase font-bold block">INDEPENDENT PLATFORM DISCLOSURE</span>
-            <p className="text-[#A0A0A0] leading-relaxed">
-              CONSTRUCTIONS is an independent information and research platform. Inclusion of a construction contractor does not imply representation, endorsement, partnership, or commercial relationship with that entity.
-            </p>
           </div>
         </section>
       </main>

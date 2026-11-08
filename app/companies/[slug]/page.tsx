@@ -87,7 +87,7 @@ function ProjectCard({ project, role }: { project: any; role?: string }) {
             <div style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', background: '#111412', color: '#666', padding: 12 }}>
               <CraneIcon className="w-6 h-6 text-[#666] mb-1" />
               <div style={{ fontSize: 9, fontWeight: 800, border: '1px solid #242926', color: '#888', padding: '2px 6px', borderRadius: 2 }}>
-                IMAGE STATUS: NOT DISCLOSED
+                STATUT VIZUAL: IMAGINE INDISPONIBILĂ ÎN SURSE VERIFICABILE
               </div>
             </div>
           )}
@@ -111,17 +111,17 @@ function ProjectCard({ project, role }: { project: any; role?: string }) {
             <span>{project.location || 'Romania'}</span>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8, fontSize: 11, color: '#b5b3aa' }}>
-            <div>STAGE: <strong style={{ color: '#fff' }}>{project.status_display || project.status || 'Active'}</strong></div>
-            <div>UNITS: <strong style={{ color: project.unit_count ? '#86efac' : '#888' }}>{project.unit_count || 'NOT DISCLOSED'}</strong></div>
-            <div>INVESTMENT: <strong style={{ color: '#c7a675' }}>{project.investment_label || (project.investment_eur ? `€${(project.investment_eur / 1000000).toFixed(1)}M` : 'NOT DISCLOSED')}</strong></div>
-            <div>SURFACE: <strong style={{ color: project.surface_area ? '#fff' : '#888' }}>{project.surface_area ? `${project.surface_area.toLocaleString()} sqm` : 'NOT DISCLOSED'}</strong></div>
+            <div>STADIU: <strong style={{ color: '#fff' }}>{project.status_display || project.status || 'În execuție'}</strong></div>
+            <div>UNITĂȚI: <strong style={{ color: project.unit_count ? '#86efac' : '#888' }}>{project.unit_count || 'NEDIVULGAT OFICIAL'}</strong></div>
+            <div>INVESTIȚIE: <strong style={{ color: '#c7a675' }}>{project.investment_label || (project.investment_eur ? `€${(project.investment_eur / 1000000).toFixed(1)}M` : 'NEDIVULGAT OFICIAL')}</strong></div>
+            <div>SUPRAFAȚĂ: <strong style={{ color: project.surface_area ? '#fff' : '#888' }}>{project.surface_area ? `${project.surface_area.toLocaleString()} m²` : 'NEDIVULGAT OFICIAL'}</strong></div>
           </div>
         </div>
       </div>
       <div style={{ padding: '12px 16px', borderTop: '1px solid #1a1e1c', background: '#0f1210', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <span style={{ fontSize: 10, color: '#888' }}>ID: {project.slug}</span>
         <Link href={`/projects/${project.slug}`} style={{ fontSize: 11, fontWeight: 800, color: '#c7a675', textDecoration: 'none' }}>
-          VIEW DOSSIER →
+          DESCHIDE DOSAR →
         </Link>
       </div>
     </div>
@@ -275,7 +275,7 @@ export default async function CompanyProfile({
       <main className="pt-24 md:pt-32" style={{ background: '#0c0e0c', color: '#fff', minHeight: '100vh' }}>
         {isPreviewAllowed && (
           <div style={{ background: '#c7a675', color: '#000', padding: '10px 24px', textAlign: 'center', fontWeight: 800, fontSize: 12, letterSpacing: '0.08em' }}>
-            ADMIN EXECUTIVE DOSSIER VIEW — CONFIDENTIAL COMMERCIAL INTELLIGENCE ENABLED
+            VIZUALIZARE DOSAR EXECUTIV ADMINISTRATOR — DATE CONFIDENȚIALE DE PIAȚĂ ACTIVE
           </div>
         )}
 
@@ -285,10 +285,10 @@ export default async function CompanyProfile({
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 12, marginBottom: 16 }}>
               <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
                 <span className="eyebrow" style={{ color: '#c7a675', margin: 0 }}>
-                  VERIFIED CORPORATE DOSSIER
+                  DOSAR CORPORATIV VERIFICAT
                 </span>
                 <span style={{ fontSize: 10, fontWeight: 800, border: '1px solid #86efac', color: '#86efac', padding: '2px 8px', borderRadius: 2 }}>
-                  {c.verification_level || 'OFFICIAL_REGISTRY_VERIFIED'}
+                  REGISTRU OFICIAL VERIFICAT
                 </span>
               </div>
               <div style={{ display: 'flex', gap: 8, alignItems: 'center', flexWrap: 'wrap' }}>
@@ -328,7 +328,7 @@ export default async function CompanyProfile({
                 <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', fontSize: 12, color: '#aaa9a1' }}>
                   <div>CUI/CIF: <strong style={{ color: c.cui_cif ? '#86efac' : '#aaa' }}>{c.cui_cif || 'Nedivulgat în surse publice'}</strong></div>
                   <div>SURSE: <strong style={{ color: '#38bdf8' }}>{sourcesList.length} ÎNREGISTRĂRI ({primarySourceCount} PRIMARE, {secondarySourceCount} SECUNDARE)</strong></div>
-                  <div>ULTIMA VERIFICARE: <strong style={{ color: '#fff' }}>2026-08-31</strong></div>
+                  <div>ULTIMA VERIFICARE: <strong style={{ color: '#fff' }}>8 NOIEMBRIE 2026</strong></div>
                 </div>
               </div>
 
@@ -344,7 +344,7 @@ export default async function CompanyProfile({
                         <span>{imgRes.caption}</span>
                       </span>
                       <span style={{ fontSize: 9, background: '#1c221e', border: '1px solid #c7a675', color: '#c7a675', padding: '2px 6px', borderRadius: 2, fontWeight: 800, whiteSpace: 'nowrap' }}>
-                        {imgRes.status === 'VERIFIED_CORPORATE_IMAGE' ? 'FOTOGRAFIE CORPORATIVĂ VERIFICATĂ' : 'FOTOGRAFIE PROIECT VERIFICAT'}
+                        {(imgRes.imageBadge || 'FOTOGRAFIE OFICIALĂ').toUpperCase()}
                       </span>
                     </div>
                   </>
@@ -354,7 +354,7 @@ export default async function CompanyProfile({
                       <BuildingIcon className="w-9 h-9 text-[#666]" />
                     </div>
                     <div style={{ fontSize: 11, fontWeight: 800, color: '#c7a675', border: '1px solid #262927', padding: '4px 10px', borderRadius: 4, display: 'inline-block', letterSpacing: '0.05em' }}>
-                      STATUT VIZUAL: FOTOGRAFIE INDISPONIBILĂ ÎN SURSE OFICIALE
+                      STATUT VIZUAL: IMAGINE INDISPONIBILĂ ÎN SURSE VERIFICABILE
                     </div>
                     <div style={{ fontSize: 11, color: '#888', marginTop: 8, maxWidth: 500 }}>
                       Nicio fotografie oficială a companiei nu a fost depusă în registrele publice consultate. Politica editorială CONSTRUCTIONS interzice substituirea fotografiilor reale cu imagini generice de stoc.

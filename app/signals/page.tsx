@@ -5,8 +5,8 @@ import { getIndustryHubData } from '@/lib/data';
 import { SignalsFeed } from '@/components/SignalsFeed';
 
 export const metadata = {
-  title: 'Market Signals & Activity Stream · CONSTRUCTIONS by AiXLuxury',
-  description: 'Chronological timeline of verified construction milestones, official disclosures, pre-leasing announcements, and financial filings in Romania.'
+  title: 'Semnale de Piață & Șantiere Active · CONSTRUCTIONS by AiXLuxury',
+  description: 'Cronologie documentată a etapelor de construcție, comunicatelor oficiale, gradului de preînchiriere și raportărilor din România.'
 };
 
 export default async function SignalsPage() {
@@ -14,25 +14,26 @@ export default async function SignalsPage() {
   const { marketActivity } = hubData;
 
   return (
-    <div className="bg-[#050505] text-[#F3F1EB] min-h-screen">
+    <div className="bg-white text-slate-900 min-h-screen">
       <SiteHeader />
 
       <main className="pt-20">
-        <section className="py-10 md:py-16 border-b border-[#1A1D1B] bg-[#0B0B0B]">
+        <section className="py-10 md:py-16 border-b border-slate-200 bg-slate-50/70">
           <div className="max-w-[1440px] mx-auto px-4 md:px-8 space-y-3">
-            <span className="text-[10px] font-mono uppercase tracking-widest text-[#C9A227] block">
-              Evidence-Backed Signal Stream
-            </span>
-            <h1 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
-              VERIFIED MARKET SIGNALS
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-amber-50 border border-amber-200 rounded-full text-[11px] font-mono tracking-widest text-[#b45309] uppercase">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#b45309] animate-pulse" />
+              Flux Documentar de Intelligence Imobiliar
+            </div>
+            <h1 className="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">
+              SEMNALE DE PIAȚĂ VERIFICATE
             </h1>
-            <p className="text-sm md:text-base text-[#A0A0A0] max-w-2xl leading-relaxed">
-              Evidence-backed intelligence stream documenting structural milestones, official regulatory filings, pre-leasing thresholds, and corporate financial disclosures across Romania. Latest verified update: 24 Aug 2026.
+            <p className="text-sm md:text-base text-slate-600 max-w-2xl leading-relaxed">
+              Evoluții de șantier, autorizații, etape structurale și raportări oficiale de piață din România. Ultima actualizare verificată: 8 Noiembrie 2026.
             </p>
           </div>
         </section>
 
-        <section className="py-10 md:py-16">
+        <section className="py-10 md:py-16 bg-white">
           <div className="max-w-[1440px] mx-auto px-4 md:px-8">
             <SignalsFeed signals={marketActivity} />
           </div>

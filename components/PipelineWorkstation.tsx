@@ -1,13 +1,25 @@
 'use client';
 
-/* eslint-disable @next/next/no-img-element */
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { RealProject } from '@/lib/real-romanian-data';
+import { resolveVisualProvenanceBadge } from '@/lib/company-imagery';
 
 interface PipelineWorkstationProps {
   initialProjects: RealProject[];
 }
+
+const STAGE_LABELS_RO: Record<string, string> = {
+  planning: 'Planificare',
+  permits: 'Autorizare',
+  foundation: 'Fundație',
+  structure: 'Structură',
+  facade: 'Fațadă',
+  mep: 'Instalații MEP',
+  finishing: 'Finisaje',
+  delivered: 'Finalizat'
+};
 
 export function PipelineWorkstation({ initialProjects }: PipelineWorkstationProps) {
   const [filterType, setFilterType] = useState<string>('ALL');
@@ -34,6 +46,7 @@ export function PipelineWorkstation({ initialProjects }: PipelineWorkstationProp
     ];
     const currentIndex = stages.indexOf(currentStage as any);
     const nextStage = stages[(currentIndex + 1) % stages.length];
+    const nextStageLabel = STAGE_LABELS_RO[nextStage] || nextStage;
 
     setLoadingSlugs(prev => ({ ...prev, [projectSlug]: true }));
     setStatusMessage(null);
@@ -55,9 +68,8 @@ export function PipelineWorkstation({ initialProjects }: PipelineWorkstationProp
         } catch {
           // ignore
         }
-        setStatusMessage({ text: `Database synchronized: ${projectSlug} advanced to ${nextStage.toUpperCase()}`, isError: false });
+        setStatusMessage({ text: `Bază de date sincronizată: ${projectSlug} avansat în stadiul ${nextStageLabel.toUpperCase()}`, isError: false });
       } else {
-        // Fallback to local session update if database credentials are not present in demo/preview
         const updated = { ...stageOverrides, [projectSlug]: nextStage };
         setStageOverrides(updated);
         try {
@@ -65,10 +77,9 @@ export function PipelineWorkstation({ initialProjects }: PipelineWorkstationProp
         } catch {
           // ignore
         }
-        setStatusMessage({ text: `Local session state updated to ${nextStage.toUpperCase()} (Database write pending credentials)`, isError: false });
+        setStatusMessage({ text: `Sesiune locală actualizată: stadiu ${nextStageLabel.toUpperCase()}`, isError: false });
       }
     } catch {
-      // Session fallback
       const updated = { ...stageOverrides, [projectSlug]: nextStage };
       setStageOverrides(updated);
       try {
@@ -76,7 +87,7 @@ export function PipelineWorkstation({ initialProjects }: PipelineWorkstationProp
       } catch {
         // ignore
       }
-      setStatusMessage({ text: `Local session state updated to ${nextStage.toUpperCase()}`, isError: false });
+      setStatusMessage({ text: `Sesiune locală actualizată: stadiu ${nextStageLabel.toUpperCase()}`, isError: false });
     } finally {
       setLoadingSlugs(prev => ({ ...prev, [projectSlug]: false }));
     }
@@ -94,214 +105,232 @@ export function PipelineWorkstation({ initialProjects }: PipelineWorkstationProp
   const activeUnderConstruction = initialProjects.filter(p => p.status === 'under_construction');
 
   return (
-    <div>
+    <div className="space-y-8">
       {/* Metrics Row */}
-      <div style={{ display: 'flex', gap: 16, marginBottom: 32, flexWrap: 'wrap' }}>
-        <div style={{ background: '#141715', padding: '12px 20px', border: '1px solid #262927', borderRadius: 4, flex: '1 1 200px' }}>
-          <span style={{ fontSize: 11, color: '#888', fontWeight: 700 }}>UNDER CONSTRUCTION</span>
-          <div style={{ fontSize: 24, fontWeight: 800, color: '#c7a675' }}>{activeUnderConstruction.length} Sites</div>
-        </div>
-        <div style={{ background: '#141715', padding: '12px 20px', border: '1px solid #262927', borderRadius: 4, flex: '1 1 200px' }}>
-          <span style={{ fontSize: 11, color: '#888', fontWeight: 700 }}>TRACKED UNITS PIPELINE</span>
-          <div style={{ fontSize: 24, fontWeight: 800, color: '#fff' }}>
-            {activeUnderConstruction.reduce((acc, p) => acc + (p.unit_count || 0), 0).toLocaleString()} Units
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div className="bg-slate-50 border border-slate-200/80 rounded-xl p-5 shadow-xs">
+          <span className="text-xs font-mono font-bold text-slate-500 uppercase tracking-wider block mb-1">
+            Șantiere în Execuție
+          </span>
+          <div className="text-3xl font-extrabold text-amber-700 tracking-tight">
+            {activeUnderConstruction.length}{' '}
+            <span className="text-base font-semibold text-slate-600">Șantiere Active</span>
           </div>
         </div>
-        <div style={{ background: '#141715', padding: '12px 20px', border: '1px solid #262927', borderRadius: 4, flex: '1 1 200px' }}>
-          <span style={{ fontSize: 11, color: '#888', fontWeight: 700 }}>GROSS SURFACE AREA</span>
-          <div style={{ fontSize: 24, fontWeight: 800, color: '#fff' }}>
-            {(activeUnderConstruction.reduce((acc, p) => acc + (p.surface_area_sqm || 0), 0) / 1000).toFixed(0)}k sqm
+
+        <div className="bg-slate-50 border border-slate-200/80 rounded-xl p-5 shadow-xs">
+          <span className="text-xs font-mono font-bold text-slate-500 uppercase tracking-wider block mb-1">
+            Unități în Pipeline
+          </span>
+          <div className="text-3xl font-extrabold text-slate-900 tracking-tight">
+            {activeUnderConstruction.reduce((acc, p) => acc + (p.unit_count || 0), 0).toLocaleString('ro-RO')}{' '}
+            <span className="text-base font-semibold text-slate-600">Unități</span>
+          </div>
+        </div>
+
+        <div className="bg-slate-50 border border-slate-200/80 rounded-xl p-5 shadow-xs">
+          <span className="text-xs font-mono font-bold text-slate-500 uppercase tracking-wider block mb-1">
+            Suprafață Desfășurată
+          </span>
+          <div className="text-3xl font-extrabold text-slate-900 tracking-tight">
+            {(activeUnderConstruction.reduce((acc, p) => acc + (p.surface_area_sqm || 0), 0) / 1000).toFixed(0)}k{' '}
+            <span className="text-base font-semibold text-slate-600">m² SCD</span>
           </div>
         </div>
       </div>
 
       {statusMessage && (
         <div
-          style={{
-            padding: '10px 16px',
-            marginBottom: 24,
-            borderRadius: 4,
-            background: statusMessage.isError ? 'rgba(239,68,68,0.15)' : 'rgba(134,239,172,0.15)',
-            border: `1px solid ${statusMessage.isError ? '#ef4444' : '#86efac'}`,
-            color: statusMessage.isError ? '#ef4444' : '#86efac',
-            fontSize: 12,
-            fontWeight: 700
-          }}
+          className={`p-3.5 rounded-lg border text-xs font-mono font-semibold ${
+            statusMessage.isError
+              ? 'bg-rose-50 border-rose-200 text-rose-700'
+              : 'bg-emerald-50 border-emerald-200 text-emerald-800'
+          }`}
         >
           {statusMessage.text}
         </div>
       )}
 
       {/* Interactive Filterbar */}
-      <div
-        style={{
-          display: 'flex',
-          gap: 12,
-          padding: 16,
-          background: '#141715',
-          border: '1px solid #262927',
-          borderRadius: 6,
-          marginBottom: 32,
-          flexWrap: 'wrap',
-          alignItems: 'center'
-        }}
-      >
+      <div className="p-4 bg-slate-50 border border-slate-200/80 rounded-xl shadow-xs flex flex-wrap items-center gap-3">
         <input
           value={searchQuery}
           onChange={e => setSearchQuery(e.target.value)}
-          placeholder="Filter by project name, developer, contractor..."
-          style={{
-            background: '#0e110f',
-            border: '1px solid #333',
-            color: '#fff',
-            padding: '8px 14px',
-            borderRadius: 4,
-            fontSize: 13,
-            flex: '1 1 220px'
-          }}
+          placeholder="Caută după nume proiect, oraș, dezvoltator, constructor..."
+          className="flex-1 min-w-[240px] h-10 px-3.5 bg-white border border-slate-300 rounded-lg text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-amber-600 focus:ring-1 focus:ring-amber-600"
         />
 
-        <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
+        <div className="flex flex-wrap items-center gap-1.5">
           <button
-            className={`btn ${filterType === 'ALL' ? 'fill' : ''}`}
+            type="button"
+            className={`px-3 py-2 rounded-lg text-xs font-mono font-semibold transition-all ${
+              filterType === 'ALL'
+                ? 'bg-slate-950 text-white shadow-xs'
+                : 'bg-white border border-slate-300 text-slate-700 hover:border-slate-400'
+            }`}
             onClick={() => setFilterType('ALL')}
-            style={{ fontSize: 11, padding: '6px 12px' }}
           >
-            All Types ({initialProjects.length})
+            Toate Tipurile ({initialProjects.length})
           </button>
           <button
-            className={`btn ${filterType === 'Residential' ? 'fill' : ''}`}
+            type="button"
+            className={`px-3 py-2 rounded-lg text-xs font-mono font-semibold transition-all ${
+              filterType === 'Residential'
+                ? 'bg-slate-950 text-white shadow-xs'
+                : 'bg-white border border-slate-300 text-slate-700 hover:border-slate-400'
+            }`}
             onClick={() => setFilterType('Residential')}
-            style={{ fontSize: 11, padding: '6px 12px' }}
           >
-            Residential
+            Rezidențial
           </button>
           <button
-            className={`btn ${filterType === 'Office' ? 'fill' : ''}`}
+            type="button"
+            className={`px-3 py-2 rounded-lg text-xs font-mono font-semibold transition-all ${
+              filterType === 'Office'
+                ? 'bg-slate-950 text-white shadow-xs'
+                : 'bg-white border border-slate-300 text-slate-700 hover:border-slate-400'
+            }`}
             onClick={() => setFilterType('Office')}
-            style={{ fontSize: 11, padding: '6px 12px' }}
           >
-            Office
+            Birouri
           </button>
           <button
-            className={`btn ${filterType === 'Mixed-use' ? 'fill' : ''}`}
+            type="button"
+            className={`px-3 py-2 rounded-lg text-xs font-mono font-semibold transition-all ${
+              filterType === 'Mixed-use'
+                ? 'bg-slate-950 text-white shadow-xs'
+                : 'bg-white border border-slate-300 text-slate-700 hover:border-slate-400'
+            }`}
             onClick={() => setFilterType('Mixed-use')}
-            style={{ fontSize: 11, padding: '6px 12px' }}
           >
-            Mixed-use
+            Multifuncțional
           </button>
           <button
-            className={`btn ${filterType === 'Industrial' ? 'fill' : ''}`}
+            type="button"
+            className={`px-3 py-2 rounded-lg text-xs font-mono font-semibold transition-all ${
+              filterType === 'Industrial'
+                ? 'bg-slate-950 text-white shadow-xs'
+                : 'bg-white border border-slate-300 text-slate-700 hover:border-slate-400'
+            }`}
             onClick={() => setFilterType('Industrial')}
-            style={{ fontSize: 11, padding: '6px 12px' }}
           >
-            Industrial & Logistics
+            Industrial & Logistică
           </button>
         </div>
       </div>
 
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20, flexWrap: 'wrap', gap: 12 }}>
-        <h2 style={{ fontSize: 20, fontWeight: 700, margin: 0, color: '#fff' }}>
-          VERIFIED CONSTRUCTION PROJECTS ({filteredProjects.length})
+      <div className="flex flex-wrap items-center justify-between gap-3 pt-2">
+        <h2 className="text-lg md:text-xl font-bold text-slate-950 uppercase tracking-tight">
+          Proiecte de Construcții Verificate ({filteredProjects.length})
         </h2>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-          <span style={{ fontSize: 10, color: '#86efac', background: 'rgba(134,239,172,0.1)', border: '1px solid #86efac', padding: '3px 8px', borderRadius: 3, fontWeight: 700 }}>
-            Server Stage Update API Active
+        <div className="flex items-center gap-3">
+          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-emerald-50 border border-emerald-200 text-emerald-800 rounded-md text-[10px] font-mono font-bold uppercase tracking-wider">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-600" />
+            API Sincronizare Activ
           </span>
-          <span style={{ fontSize: 12, color: '#888' }}>
-            Click &quot;Advance Stage ⚡&quot; to push updates to server
+          <span className="text-xs text-slate-500 hidden sm:inline">
+            Apasă „Avansează Faza ⚡” pentru actualizarea stadiului
           </span>
         </div>
       </div>
 
       {/* Grid of Projects */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: 24 }}>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {filteredProjects.map(p => {
           const currentStage = stageOverrides[p.slug] || p.current_stage;
           const isDelivered = currentStage === 'delivered' || p.status === 'completed';
           const isLoading = loadingSlugs[p.slug];
+          const hasGenuineImage = Boolean(p.image && !p.image.includes('unsplash.com'));
+          const provenance = resolveVisualProvenanceBadge(p);
+          const stageDisplay = STAGE_LABELS_RO[currentStage] || currentStage.toUpperCase();
 
           return (
             <div
               key={p.slug}
-              style={{
-                background: '#141715',
-                border: '1px solid #262927',
-                borderRadius: 6,
-                overflow: 'hidden',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'space-between'
-              }}
+              className="bg-white border border-slate-200 rounded-2xl overflow-hidden hover:border-amber-500 hover:shadow-lg transition-all flex flex-col justify-between"
             >
-              <div style={{ position: 'relative', height: 170, overflow: 'hidden' }}>
-                <img src={p.image} alt={p.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                <span
-                  style={{
-                    position: 'absolute',
-                    top: 12,
-                    right: 12,
-                    background: isDelivered ? '#22c55e' : '#c7a675',
-                    color: isDelivered ? '#fff' : '#000',
-                    fontSize: 10,
-                    fontWeight: 800,
-                    padding: '4px 10px',
-                    borderRadius: 3,
-                    textTransform: 'uppercase'
-                  }}
-                >
-                  STAGE: {currentStage.toUpperCase()}
-                </span>
-                <span
-                  style={{
-                    position: 'absolute',
-                    bottom: 12,
-                    left: 12,
-                    background: 'rgba(0,0,0,0.75)',
-                    color: '#fff',
-                    fontSize: 11,
-                    padding: '3px 8px',
-                    borderRadius: 3
-                  }}
-                >
-                  {p.location}
-                </span>
-              </div>
-
-              <div style={{ padding: 20, flexGrow: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-                <div>
-                  <div style={{ fontSize: 11, color: '#c7a675', fontWeight: 700 }}>{p.project_type.toUpperCase()}</div>
-                  <h3 style={{ fontSize: 18, fontWeight: 700, margin: '4px 0 8px', color: '#fff' }}>
-                    <Link href={`/projects/${p.slug}`} style={{ color: '#fff', textDecoration: 'none' }}>{p.name}</Link>
-                  </h3>
-                  <p style={{ fontSize: 13, color: '#aaa', lineHeight: 1.4, marginBottom: 16 }}>{p.description}</p>
-                </div>
-
-                <div style={{ borderTop: '1px solid #222523', paddingTop: 12, fontSize: 11, color: '#888' }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 4 }}>
-                    <span>Developer:</span>
-                    <strong style={{ color: '#fff' }}>{p.developer_name}</strong>
-                  </div>
-                  {p.contractor_name && (
-                    <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 8 }}>
-                      <span>Contractor:</span>
-                      <strong style={{ color: '#c7a675' }}>{p.contractor_name}</strong>
+              <div>
+                <div className="relative aspect-[16/10] overflow-hidden bg-slate-100">
+                  {hasGenuineImage && p.image ? (
+                    <Image
+                      src={p.image}
+                      alt={p.name}
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      className="object-cover"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex flex-col items-center justify-center p-6 bg-slate-100 text-center border-b border-slate-200">
+                      <svg className="w-10 h-10 text-slate-400 mb-2 stroke-[1.5]" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <rect x="3" y="3" width="18" height="18" rx="2" strokeDasharray="4 2" />
+                        <path d="M9 3v18M15 3v18M3 9h18M3 15h18" />
+                      </svg>
+                      <span className="text-[10px] font-mono uppercase tracking-wider text-slate-600 font-bold">
+                        DOSAR TEHNIC VERIFICAT
+                      </span>
                     </div>
                   )}
 
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 12 }}>
-                    <button
-                      onClick={() => handleStageAdvance(p.slug, currentStage)}
-                      disabled={isLoading}
-                      className="btn"
-                      style={{ fontSize: 10, padding: '4px 10px', borderColor: '#c7a675', color: '#c7a675', opacity: isLoading ? 0.5 : 1 }}
-                    >
-                      {isLoading ? 'Saving...' : 'Advance Stage ⚡'}
-                    </button>
-                    <Link href={`/projects/${p.slug}`} style={{ color: '#fff', fontSize: 11, fontWeight: 700, textDecoration: 'none' }}>
-                      DOSSIER →
-                    </Link>
+                  {/* Badges */}
+                  <div className="absolute top-3 left-3 flex flex-wrap items-center gap-1.5 z-10">
+                    <span className={`px-2.5 py-1 rounded-md text-[10px] font-mono font-bold uppercase tracking-wider shadow-xs ${
+                      isDelivered ? 'bg-emerald-600 text-white' : 'bg-amber-600 text-white'
+                    }`}>
+                      {stageDisplay}
+                    </span>
+                    <span className={`px-2 py-0.5 rounded-md text-[9px] font-mono uppercase tracking-wider font-bold shadow-xs ${provenance.badgeClass}`}>
+                      {provenance.label}
+                    </span>
                   </div>
+
+                  <span className="absolute bottom-3 left-3 z-10 px-2 py-1 bg-slate-950/80 backdrop-blur-xs text-white text-[11px] font-medium rounded-md shadow-xs">
+                    {p.location}
+                  </span>
+                </div>
+
+                <div className="p-5">
+                  <div className="text-[11px] font-mono font-bold text-amber-800 uppercase tracking-wider mb-1">
+                    {p.project_type}
+                  </div>
+                  <h3 className="text-lg font-bold text-slate-950 leading-snug mb-2">
+                    <Link href={`/projects/${p.slug}`} className="hover:text-amber-700 transition-colors">
+                      {p.name}
+                    </Link>
+                  </h3>
+                  <p className="text-xs text-slate-600 line-clamp-3 leading-relaxed mb-4">
+                    {p.description}
+                  </p>
+                </div>
+              </div>
+
+              <div className="px-5 pb-5 pt-3 border-t border-slate-100 bg-slate-50/50">
+                <div className="text-xs space-y-1.5 mb-4">
+                  <div className="flex justify-between items-center">
+                    <span className="text-slate-500 font-medium">Dezvoltator:</span>
+                    <strong className="text-slate-900 font-semibold truncate max-w-[180px]">{p.developer_name}</strong>
+                  </div>
+                  {p.contractor_name && (
+                    <div className="flex justify-between items-center">
+                      <span className="text-slate-500 font-medium">Constructor:</span>
+                      <strong className="text-amber-800 font-semibold truncate max-w-[180px]">{p.contractor_name}</strong>
+                    </div>
+                  )}
+                </div>
+
+                <div className="flex items-center justify-between gap-2 pt-2 border-t border-slate-200/60">
+                  <button
+                    onClick={() => handleStageAdvance(p.slug, currentStage)}
+                    disabled={isLoading}
+                    className="px-3 py-1.5 bg-white border border-amber-600/60 text-amber-800 hover:bg-amber-50 rounded-lg text-xs font-mono font-bold tracking-wide transition-all disabled:opacity-50"
+                  >
+                    {isLoading ? 'Salvare...' : 'Avansează Faza ⚡'}
+                  </button>
+                  <Link
+                    href={`/projects/${p.slug}`}
+                    className="text-xs font-mono font-bold text-slate-900 hover:text-amber-700 uppercase tracking-wider"
+                  >
+                    DESCHIDE DOSAR →
+                  </Link>
                 </div>
               </div>
             </div>
