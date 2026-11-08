@@ -4,6 +4,8 @@ import { SiteHeader } from '@/components/SiteHeader';
 import { SiteFooter } from '@/components/SiteFooter';
 import { OFFICIAL_SERVICES, getServiceBySlug } from '@/lib/services-config';
 import { IntelligentIntakeFlow } from '@/components/IntelligentIntakeFlow';
+import { ServiceIconRenderer } from '@/components/icons/ServiceIconRenderer';
+import { DocumentCheckIcon, ScaleIcon, TargetIcon } from '@/components/icons/NavIcons';
 
 export async function generateStaticParams() {
   return OFFICIAL_SERVICES.map(s => ({
@@ -51,7 +53,7 @@ export default async function ServiceDossierPage(props: { params: Promise<{ slug
         <section className="bg-[#0B0D0C] border border-[#1A1D1B] rounded-2xl p-6 sm:p-10 mb-12 shadow-2xl relative overflow-hidden">
           <div className="max-w-3xl">
             <div className="flex items-center gap-3 mb-4">
-              <span className="text-3xl">{service.icon}</span>
+              <ServiceIconRenderer slug={service.slug} className="w-8 h-8 text-[#C9A227]" />
               <span className="text-xs font-mono px-3 py-1 bg-[#111412] text-[#C9A227] rounded-full border border-[#C9A227]/30 font-bold">
                 {service.badge}
               </span>
@@ -90,7 +92,8 @@ export default async function ServiceDossierPage(props: { params: Promise<{ slug
           {/* Deliverables */}
           <div className="bg-[#0B0D0C] border border-[#1A1D1B] rounded-xl p-6 space-y-4">
             <h3 className="text-sm font-mono text-[#C9A227] uppercase tracking-wider font-bold flex items-center gap-2">
-              <span>📋</span> Livrabile & Rezultate
+              <DocumentCheckIcon className="w-4 h-4 text-[#C9A227]" />
+              <span>Livrabile &amp; Rezultate</span>
             </h3>
             <ul className="space-y-2.5 text-xs text-[#A0A0A0]">
               {service.deliverables.map((item, idx) => (
@@ -105,7 +108,8 @@ export default async function ServiceDossierPage(props: { params: Promise<{ slug
           {/* Applicable Standards */}
           <div className="bg-[#0B0D0C] border border-[#1A1D1B] rounded-xl p-6 space-y-4">
             <h3 className="text-sm font-mono text-[#C9A227] uppercase tracking-wider font-bold flex items-center gap-2">
-              <span>⚖️</span> Standarde & Cadru Legal
+              <ScaleIcon className="w-4 h-4 text-[#C9A227]" />
+              <span>Standarde &amp; Cadru Legal</span>
             </h3>
             <ul className="space-y-2.5 text-xs text-[#A0A0A0]">
               {service.applicableStandards.map((std, idx) => (
@@ -120,7 +124,8 @@ export default async function ServiceDossierPage(props: { params: Promise<{ slug
           {/* Target Audience */}
           <div className="bg-[#0B0D0C] border border-[#1A1D1B] rounded-xl p-6 space-y-4">
             <h3 className="text-sm font-mono text-[#C9A227] uppercase tracking-wider font-bold flex items-center gap-2">
-              <span>🎯</span> Cui se Adresează
+              <TargetIcon className="w-4 h-4 text-[#C9A227]" />
+              <span>Cui se Adresează</span>
             </h3>
             <ul className="space-y-2.5 text-xs text-[#A0A0A0]">
               {service.targetAudience.map((aud, idx) => (

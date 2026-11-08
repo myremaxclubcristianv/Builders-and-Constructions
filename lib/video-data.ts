@@ -34,7 +34,7 @@ export const REAL_ROMANIAN_VIDEOS: ConstructionVideo[] = [
   },
   {
     id: 'x0NwU7EU7e0',
-    title: '❌ Buying a property can cost you much more than you think. Not just the price tag. Cristian Vaduva',
+    title: 'Buying a property can cost you much more than you think. Not just the price tag. Cristian Vaduva',
     description: 'Buying a property can cost you much more than you think. Not just the price tag. Smart buyers don’t go into this alone. Cristian Văduva — Real Estate & Asset Protection.',
     thumbnailUrl: 'https://i.ytimg.com/vi/x0NwU7EU7e0/hqdefault.jpg',
     publishedAt: '2026-08-27',

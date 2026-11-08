@@ -2,11 +2,12 @@ import { SiteHeader } from '@/components/SiteHeader';
 import { SiteFooter } from '@/components/SiteFooter';
 import { searchIntelligenceGlobal, getIndustryHubData } from '@/lib/data';
 import { realCompaniesDataset, realProjectsDataset, realLocationsDataset } from '@/lib/real-romanian-data';
+import { OFFICIAL_SERVICES } from '@/lib/services-config';
 import { SearchDiscoveryTerminal } from '@/components/SearchDiscoveryTerminal';
 
 export const metadata = {
   title: 'Market Discovery Terminal — Romanian Construction & Real Estate Intelligence',
-  description: 'Search and filter 146 verified construction companies, 76 development projects, regional hubs, and market signals in Romania.'
+  description: 'Search and filter 143 verified construction companies, 76 development projects, 13 official services, regional hubs, and market signals in Romania.'
 };
 
 export default async function Search({
@@ -22,7 +23,7 @@ export default async function Search({
     <div className="bg-[#050505] text-[#F3F1EB] min-h-screen">
       <SiteHeader />
 
-      <main className="pt-20">
+      <main className="pt-24 md:pt-32">
         <section className="py-10 md:py-16 border-b border-[#1A1D1B] bg-[#0B0B0B]">
           <div className="max-w-[1440px] mx-auto px-4 md:px-8 space-y-3">
             <span className="text-[10px] font-mono uppercase tracking-widest text-[#C9A227] block font-bold">
@@ -32,7 +33,7 @@ export default async function Search({
               GLOBAL MARKET DISCOVERY TERMINAL
             </h1>
             <p className="text-sm md:text-base text-[#A0A0A0] max-w-2xl leading-relaxed">
-              Diacritic-insensitive search & dynamic filtering across 146 market entities, 76 verified construction projects, 36 regional hubs, and live market signals.
+              Diacritic-insensitive search &amp; dynamic filtering across verified developers, construction contractors, development projects, official services, regional hubs, and market signals.
             </p>
           </div>
         </section>
@@ -43,6 +44,7 @@ export default async function Search({
               initialQuery={q.trim()}
               companies={realCompaniesDataset}
               projects={realProjectsDataset}
+              services={OFFICIAL_SERVICES}
               signals={marketActivity}
               locations={realLocationsDataset}
             />

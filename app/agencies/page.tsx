@@ -4,6 +4,7 @@ import { SiteHeader } from '@/components/SiteHeader';
 import { SiteFooter } from '@/components/SiteFooter';
 import { realCompaniesDataset } from '@/lib/real-romanian-data';
 import { safeJsonLdStringify } from '@/lib/sanitize';
+import { LocationPinIcon, BriefcaseIcon } from '@/components/icons/NavIcons';
 
 export const metadata: Metadata = {
   title: 'Real Estate Agencies & Brokerages Directory | CONSTRUCTIONS by AiXLuxury',
@@ -78,8 +79,14 @@ export default function AgenciesPage() {
                   </p>
 
                   <div className="pt-2 text-[11px] font-mono text-[#888888] space-y-1">
-                    <div>📍 <span className="text-[#C5C5C5]">{agency.location}</span></div>
-                    <div>🏢 Specializations: <span className="text-[#C5C5C5]">{agency.specializations?.slice(0, 2).join(', ') || 'Real Estate Advisory'}</span></div>
+                    <div className="flex items-center gap-1.5">
+                      <LocationPinIcon className="w-3.5 h-3.5 text-[#c7a675] shrink-0" />
+                      <span className="text-[#C5C5C5]">{agency.location}</span>
+                    </div>
+                    <div className="flex items-center gap-1.5">
+                      <BriefcaseIcon className="w-3.5 h-3.5 text-[#888888] shrink-0" />
+                      <span>Specializations: <span className="text-[#C5C5C5]">{agency.specializations?.slice(0, 2).join(', ') || 'Real Estate Advisory'}</span></span>
+                    </div>
                   </div>
                 </div>
 

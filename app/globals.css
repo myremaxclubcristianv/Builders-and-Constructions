@@ -447,4 +447,7 @@ button, input, select, textarea { font: inherit; }
     animation: none !important;
     transform: none !important;
   }
+  .ticker-duplicate {
+    display: none !important;
+  }
 }

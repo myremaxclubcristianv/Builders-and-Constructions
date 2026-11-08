@@ -4,6 +4,7 @@ import { SiteHeader } from '@/components/SiteHeader';
 import { SiteFooter } from '@/components/SiteFooter';
 import { realCompaniesDataset } from '@/lib/real-romanian-data';
 import { safeJsonLdStringify } from '@/lib/sanitize';
+import { LocationPinIcon, RulerIcon } from '@/components/icons/NavIcons';
 
 export const metadata: Metadata = {
   title: 'Architecture & Urban Planning Studios | CONSTRUCTIONS by AiXLuxury',
@@ -78,8 +79,14 @@ export default function ArchitectsPage() {
                   </p>
 
                   <div className="pt-2 text-[11px] font-mono text-[#888888] space-y-1">
-                    <div>📍 <span className="text-[#C5C5C5]">{arch.location}</span></div>
-                    <div>🏢 Specializations: <span className="text-[#C5C5C5]">{arch.specializations?.slice(0, 2).join(', ') || 'Architectural Design'}</span></div>
+                    <div className="flex items-center gap-1.5">
+                      <LocationPinIcon className="w-3.5 h-3.5 text-[#c7a675] shrink-0" />
+                      <span className="text-[#C5C5C5]">{arch.location}</span>
+                    </div>
+                    <div className="flex items-center gap-1.5">
+                      <RulerIcon className="w-3.5 h-3.5 text-[#888888] shrink-0" />
+                      <span>Specializations: <span className="text-[#C5C5C5]">{arch.specializations?.slice(0, 2).join(', ') || 'Architectural Design'}</span></span>
+                    </div>
                   </div>
                 </div>
 

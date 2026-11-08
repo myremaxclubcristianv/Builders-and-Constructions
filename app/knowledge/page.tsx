@@ -11,6 +11,8 @@ import {
   getAllInfrastructure,
   getAllEngineeringDomains
 } from "@/lib/knowledge-data";
+import { BuildingIcon, ShieldIcon, CraneIcon, TruckIcon, CogIcon, DocumentCheckIcon, BookIcon, LandmarkIcon } from "@/components/icons/NavIcons";
+import { TechnicalCrossReference } from "@/components/TechnicalCrossReference";
 
 export const metadata = {
   title: "Construction Knowledge Base & Materials Intelligence | CONSTRUCTIONS by AiXLuxury",
@@ -85,6 +87,21 @@ export default function KnowledgeHubPage() {
           </div>
         </section>
 
+        {/* Technical Cross-Reference Matrix */}
+        <section className="py-12 border-b border-[#1A1D1B] bg-[#070807]">
+          <div className="max-w-[1440px] mx-auto px-4 md:px-8 space-y-6">
+            <div>
+              <span className="text-[10px] font-mono text-[#C9A227] uppercase tracking-widest block font-bold">
+                CONFORMITATE & CORELAȚIE REGLEMENTARĂ
+              </span>
+              <h2 className="text-2xl md:text-3xl font-extrabold text-white tracking-tight mt-1">
+                MATRICEA DE CORELARE TEHNICĂ: ETAPE, NORMATIVE & COMPANII
+              </h2>
+            </div>
+            <TechnicalCrossReference />
+          </div>
+        </section>
+
         {/* Dedicated Sections Navigation Cards */}
         <section className="py-12 max-w-[1440px] mx-auto px-4 md:px-8 space-y-12">
           <div className="space-y-4">
@@ -97,7 +114,7 @@ export default function KnowledgeHubPage() {
                 className="p-6 bg-[#0E0F0E] border border-[#1A1D1B] hover:border-[#C9A227]/40 rounded-2xl space-y-3 transition-all duration-300 group block"
               >
                 <div className="flex items-center justify-between">
-                  <span className="text-2xl">🧱</span>
+                  <BuildingIcon className="w-6 h-6 text-[#C9A227]" />
                   <span className="text-[10px] font-mono text-[#C9A227]">SPECS</span>
                 </div>
                 <h3 className="text-lg font-bold text-white group-hover:text-[#C9A227] transition-colors">
@@ -114,11 +131,11 @@ export default function KnowledgeHubPage() {
                 className="p-6 bg-[#0E0F0E] border border-[#1A1D1B] hover:border-[#C9A227]/40 rounded-2xl space-y-3 transition-all duration-300 group block"
               >
                 <div className="flex items-center justify-between">
-                  <span className="text-2xl">🧪</span>
+                  <ShieldIcon className="w-6 h-6 text-[#10B981]" />
                   <span className="text-[10px] font-mono text-[#10B981]">SR EN 206</span>
                 </div>
                 <h3 className="text-lg font-bold text-white group-hover:text-[#C9A227] transition-colors">
-                  Concrete & Cement
+                  Concrete &amp; Cement
                 </h3>
                 <p className="text-xs text-[#AAAAAA] leading-relaxed">
                   Strength classes C8/10 to C50/60, cement hydration chemistry, w/c ratios, and exposure classes XC, XD, XS, XF, XA.
@@ -131,7 +148,7 @@ export default function KnowledgeHubPage() {
                 className="p-6 bg-[#0E0F0E] border border-[#1A1D1B] hover:border-[#C9A227]/40 rounded-2xl space-y-3 transition-all duration-300 group block"
               >
                 <div className="flex items-center justify-between">
-                  <span className="text-2xl">🏗️</span>
+                  <CraneIcon className="w-6 h-6 text-[#C9A227]" />
                   <span className="text-[10px] font-mono text-[#C9A227]">P100-1 SEISMIC</span>
                 </div>
                 <h3 className="text-lg font-bold text-white group-hover:text-[#C9A227] transition-colors">
@@ -140,7 +157,7 @@ export default function KnowledgeHubPage() {
                 <p className="text-xs text-[#AAAAAA] leading-relaxed">
                   RC frame mechanics, shear walls (diafragme), steel frames, confined masonry (ZNA), and CLT mass timber systems.
                 </p>
-                <div className="text-xs font-mono text-[#C9A227] pt-2">ANALYSIS & DUCTILITY →</div>
+                <div className="text-xs font-mono text-[#C9A227] pt-2">ANALYSIS &amp; DUCTILITY →</div>
               </Link>
 
               <Link
@@ -148,14 +165,14 @@ export default function KnowledgeHubPage() {
                 className="p-6 bg-[#0E0F0E] border border-[#1A1D1B] hover:border-[#C9A227]/40 rounded-2xl space-y-3 transition-all duration-300 group block"
               >
                 <div className="flex items-center justify-between">
-                  <span className="text-2xl">🛣️</span>
+                  <TruckIcon className="w-6 h-6 text-[#C9A227]" />
                   <span className="text-[10px] font-mono text-[#C9A227]">CIVIL WORKS</span>
                 </div>
                 <h3 className="text-lg font-bold text-white group-hover:text-[#C9A227] transition-colors">
                   Civil Infrastructure
                 </h3>
                 <p className="text-xs text-[#AAAAAA] leading-relaxed">
-                  Highways & flexible asphalt pavements (AND 605), long-span bridges, underground tunnels, and railway track systems.
+                  Highways &amp; flexible asphalt pavements (AND 605), long-span bridges, underground tunnels, and railway track systems.
                 </p>
                 <div className="text-xs font-mono text-[#C9A227] pt-2">HEAVY INFRASTRUCTURE →</div>
               </Link>
@@ -165,14 +182,14 @@ export default function KnowledgeHubPage() {
                 className="p-6 bg-[#0E0F0E] border border-[#1A1D1B] hover:border-[#C9A227]/40 rounded-2xl space-y-3 transition-all duration-300 group block"
               >
                 <div className="flex items-center justify-between">
-                  <span className="text-2xl">⚙️</span>
+                  <CogIcon className="w-6 h-6 text-[#C9A227]" />
                   <span className="text-[10px] font-mono text-[#C9A227]">PHYSICS</span>
                 </div>
                 <h3 className="text-lg font-bold text-white group-hover:text-[#C9A227] transition-colors">
-                  Building Physics & Fire
+                  Building Physics &amp; Fire
                 </h3>
                 <p className="text-xs text-[#AAAAAA] leading-relaxed">
-                  Geotechnical mechanics, U-values & thermal bridges, fire safety (reaction A1-F vs. resistance REI), and acoustics (Rw).
+                  Geotechnical mechanics, U-values &amp; thermal bridges, fire safety (reaction A1-F vs. resistance REI), and acoustics (Rw).
                 </p>
                 <div className="text-xs font-mono text-[#C9A227] pt-2">ENGINEERING PRINCIPLES →</div>
               </Link>
@@ -182,7 +199,7 @@ export default function KnowledgeHubPage() {
                 className="p-6 bg-[#0E0F0E] border border-[#1A1D1B] hover:border-[#C9A227]/40 rounded-2xl space-y-3 transition-all duration-300 group block"
               >
                 <div className="flex items-center justify-between">
-                  <span className="text-2xl">📋</span>
+                  <DocumentCheckIcon className="w-6 h-6 text-[#C9A227]" />
                   <span className="text-[10px] font-mono text-[#C9A227]">PVLA / CARTE</span>
                 </div>
                 <h3 className="text-lg font-bold text-white group-hover:text-[#C9A227] transition-colors">
@@ -199,11 +216,11 @@ export default function KnowledgeHubPage() {
                 className="p-6 bg-[#0E0F0E] border border-[#1A1D1B] hover:border-[#C9A227]/40 rounded-2xl space-y-3 transition-all duration-300 group block"
               >
                 <div className="flex items-center justify-between">
-                  <span className="text-2xl">📜</span>
+                  <BookIcon className="w-6 h-6 text-[#10B981]" />
                   <span className="text-[10px] font-mono text-[#10B981]">EN 1990 - 1999</span>
                 </div>
                 <h3 className="text-lg font-bold text-white group-hover:text-[#C9A227] transition-colors">
-                  Standards & Eurocodes
+                  Standards &amp; Eurocodes
                 </h3>
                 <p className="text-xs text-[#AAAAAA] leading-relaxed">
                   The 10 Eurocode families, 2nd Gen transition roadmap, CPR 2024 regulation, and Romanian national normatives.
@@ -216,16 +233,16 @@ export default function KnowledgeHubPage() {
                 className="p-6 bg-[#0E0F0E] border border-[#1A1D1B] hover:border-[#C9A227]/40 rounded-2xl space-y-3 transition-all duration-300 group block"
               >
                 <div className="flex items-center justify-between">
-                  <span className="text-2xl">🚜</span>
+                  <LandmarkIcon className="w-6 h-6 text-[#C9A227]" />
                   <span className="text-[10px] font-mono text-[#C9A227]">DELIVERY</span>
                 </div>
                 <h3 className="text-lg font-bold text-white group-hover:text-[#C9A227] transition-colors">
-                  Lifecycle & Machinery
+                  Lifecycle &amp; Machinery
                 </h3>
                 <p className="text-xs text-[#AAAAAA] leading-relaxed">
                   Development delivery lifecycle (hard vs. soft costs, permitting) and heavy construction equipment technical capacities.
                 </p>
-                <div className="text-xs font-mono text-[#C9A227] pt-2">LIFECYCLE & EQUIPMENT →</div>
+                <div className="text-xs font-mono text-[#C9A227] pt-2">LIFECYCLE &amp; EQUIPMENT →</div>
               </Link>
             </div>
           </div>
@@ -245,7 +262,7 @@ export default function KnowledgeHubPage() {
               {categories.map((cat) => (
                 <div key={cat.id} className="p-6 bg-[#0B0C0B] border border-[#1A1D1B] rounded-2xl space-y-4 hover:border-[#C9A227]/40 transition-all duration-300">
                   <div className="flex items-center justify-between">
-                    <span className="text-2xl">{cat.icon}</span>
+                    <BuildingIcon className="w-5 h-5 text-[#C9A227]" />
                     <span className="text-[10px] font-mono text-[#C9A227]">FAMILY</span>
                   </div>
 

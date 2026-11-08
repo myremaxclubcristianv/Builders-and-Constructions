@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from 'react';
 import Link from 'next/link';
+import { BuildingIcon, CraneIcon, LocationPinIcon, SearchIcon } from '@/components/icons/NavIcons';
 
 interface SignalItem {
   id: string;
@@ -219,7 +220,9 @@ export function SignalsFeed({ signals }: SignalsFeedProps) {
       <div className="space-y-4">
         {filteredSignals.length === 0 ? (
           <div className="p-12 text-center bg-[#111111] border border-[#1A1D1B] rounded-2xl text-xs font-mono space-y-3">
-            <span className="text-2xl">🔍</span>
+            <div className="flex justify-center">
+              <SearchIcon className="w-8 h-8 text-[#C9A227] opacity-80" />
+            </div>
             <div className="text-sm font-bold text-white uppercase">NO VERIFIED RESULTS</div>
             <p className="text-xs text-[#888888] max-w-md mx-auto font-sans leading-relaxed">
               No verified market signals matched your filter criteria. Reset the category or search terms to view all documented signals.
@@ -272,15 +275,22 @@ export function SignalsFeed({ signals }: SignalsFeedProps) {
                 <div className="flex flex-wrap items-center gap-4 pt-1 text-xs font-mono text-[#888888]">
                   {act.company_slug && (
                     <Link href={`/companies/${act.company_slug}`} className="text-[#C9A227] hover:underline flex items-center gap-1">
-                      🏢 {act.company_name}
+                      <BuildingIcon className="w-3.5 h-3.5 text-[#C9A227] shrink-0" />
+                      <span>{act.company_name}</span>
                     </Link>
                   )}
                   {act.project_slug && (
                     <Link href={`/projects/${act.project_slug}`} className="text-[#38bdf8] hover:underline flex items-center gap-1">
-                      🏗️ {act.project_name}
+                      <CraneIcon className="w-3.5 h-3.5 text-[#38bdf8] shrink-0" />
+                      <span>{act.project_name}</span>
                     </Link>
                   )}
-                  {act.location && <span>📍 {act.location}</span>}
+                  {act.location && (
+                    <span className="flex items-center gap-1">
+                      <LocationPinIcon className="w-3.5 h-3.5 text-[#888888] shrink-0" />
+                      <span>{act.location}</span>
+                    </span>
+                  )}
                 </div>
               </div>
 

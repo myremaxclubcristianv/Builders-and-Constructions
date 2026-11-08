@@ -52,6 +52,7 @@ export interface RealCompany {
   is_featured: boolean;
   last_verified_at: string;
   image?: string;
+  image_status?: string;
   image_alt?: string;
   logo_url?: string;
   image_relevance?: string;
@@ -121,10 +122,14 @@ export interface RealProject {
   actual_delivery?: string;
   description: string;
   image: string;
+  image_status?: string;
   image_alt?: string;
   image_source_name?: string;
   image_relevance?: string;
   image_verified?: boolean;
+  land_area_ha?: number;
+  operational_gla_sqm?: number;
+  masterplan_gla_sqm?: number;
   is_featured: boolean;
   last_verified_at: string;
   sources: RealSource[];
@@ -4576,7 +4581,8 @@ export const realCompaniesDataset: RealCompany[] = [
       }
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
-    "image": "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1000&q=85",
+    "image": "",
+    "image_status": "NOT_DISCLOSED",
     "image_alt": "One United Properties Headquarters / Corporate Operations",
     "logo_url": "https://one-united-properties.ro/logo.png",
     "image_verified": true,
@@ -4866,7 +4872,8 @@ export const realCompaniesDataset: RealCompany[] = [
       }
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
-    "image": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1000&q=85",
+    "image": "",
+    "image_status": "NOT_DISCLOSED",
     "image_alt": "Skanska Romania Headquarters / Corporate Operations",
     "logo_url": "https://skanska-romania.ro/logo.png",
     "image_verified": true,
@@ -6814,7 +6821,8 @@ export const realCompaniesDataset: RealCompany[] = [
       }
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
-    "image": "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1000&q=85",
+    "image": "",
+    "image_status": "NOT_DISCLOSED",
     "image_alt": "KÉSZ Construct Romania Headquarters / Corporate Operations",
     "logo_url": "https://kesz-construct-romania.ro/logo.png",
     "image_verified": true,
@@ -8087,7 +8095,8 @@ export const realProjectsDataset: RealProject[] = [
     "surface_area_sqm": 80000,
     "floors": "1F",
     "description": "80,000 sqm BREEAM Very Good Class A logistics distribution park near Cluj-Napoca International Airport.",
-    "image": "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=85&pid=ctpark-cluj-logistics",
+    "image": "",
+    "image_status": "NOT_DISCLOSED",
     "is_featured": false,
     "last_verified_at": "2026-08-25T00:00:00Z",
     "sources": [
@@ -8128,7 +8137,8 @@ export const realProjectsDataset: RealProject[] = [
     "unit_count": 200,
     "floors": "8F",
     "description": "Riverside urban regeneration project in Arad delivering 200 residential units and 10,000 sqm commercial space.",
-    "image": "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=85&pid=speedwell-riverside-arad-site",
+    "image": "",
+    "image_status": "NOT_DISCLOSED",
     "is_featured": false,
     "last_verified_at": "2026-08-25T00:00:00Z",
     "sources": [
@@ -8169,7 +8179,8 @@ export const realProjectsDataset: RealProject[] = [
     "unit_count": 420,
     "floors": "10F",
     "description": "420-apartment modern residential community in Craiova with subterranean parking and landscaped gardens.",
-    "image": "https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=1200&q=85&pid=citadel-residence-craiova",
+    "image": "",
+    "image_status": "NOT_DISCLOSED",
     "is_featured": false,
     "last_verified_at": "2026-08-25T00:00:00Z",
     "sources": [
@@ -8209,7 +8220,8 @@ export const realProjectsDataset: RealProject[] = [
     "infrastructure_length_km": 30.35,
     "floors": "N/A Highway",
     "description": "30km motorway section including 12 major bridges and viaducts crossing Trans-Carpathian infrastructure corridor.",
-    "image": "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1200&q=85&pid=a1-highway-sibiu-pitesti",
+    "image": "",
+    "image_status": "NOT_DISCLOSED",
     "is_featured": true,
     "last_verified_at": "2026-08-25T00:00:00Z",
     "sources": [
@@ -8249,7 +8261,8 @@ export const realProjectsDataset: RealProject[] = [
     "surface_area_sqm": 22000,
     "floors": "8F",
     "description": "Phase 2 of AFI Tech Park office campus delivering 22,000 sqm of LEED Platinum office space in Sector 5.",
-    "image": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=85&pid=afi-tech-park-2",
+    "image": "",
+    "image_status": "NOT_DISCLOSED",
     "is_featured": false,
     "last_verified_at": "2026-08-25T00:00:00Z",
     "sources": [
@@ -8290,7 +8303,8 @@ export const realProjectsDataset: RealProject[] = [
     "unit_count": 1250,
     "floors": "11F",
     "description": "Substantial residential development of 1,250 smart apartments across 8 blocks in Sector 3 Pallady corridor.",
-    "image": "https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=1200&q=85&pid=hils-brauner-residential",
+    "image": "",
+    "image_status": "NOT_DISCLOSED",
     "is_featured": false,
     "last_verified_at": "2026-08-25T00:00:00Z",
     "sources": [
@@ -8331,7 +8345,9 @@ export const realProjectsDataset: RealProject[] = [
     "unit_count": 320,
     "floors": "8F",
     "description": "320-apartment residential park in Timișoara with commercial plazas and underground parking.",
-    "image": "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=85&pid=sedako-park-timisoara-site",
+    "image": "",
+    "image_status": "NOT_DISCLOSED",
+    "image_alt": "Sedako Park Timișoara — official verified photograph pending",
     "is_featured": false,
     "last_verified_at": "2026-08-25T00:00:00Z",
     "sources": [
@@ -8372,7 +8388,8 @@ export const realProjectsDataset: RealProject[] = [
     "unit_count": 450,
     "floors": "10F",
     "description": "450-apartment residential development in Cluj-Napoca near Vivo Shopping Center.",
-    "image": "https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=1200&q=85&pid=edil-park-cluj-site",
+    "image": "",
+    "image_status": "NOT_DISCLOSED",
     "is_featured": false,
     "last_verified_at": "2026-08-25T00:00:00Z",
     "sources": [
@@ -8413,7 +8430,8 @@ export const realProjectsDataset: RealProject[] = [
     "unit_count": 210,
     "floors": "10F",
     "description": "Modern urban residential building in Obor area offering 210 smart apartments and subterranean parking.",
-    "image": "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=85&pid=avrig-35-residential",
+    "image": "",
+    "image_status": "NOT_DISCLOSED",
     "is_featured": false,
     "last_verified_at": "2026-08-25T00:00:00Z",
     "sources": [
@@ -8453,7 +8471,8 @@ export const realProjectsDataset: RealProject[] = [
     "surface_area_sqm": 55000,
     "floors": "1F",
     "description": "55,000 sqm retail park expansion anchored by major international hypermarket and DIY retailers.",
-    "image": "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1200&q=85&pid=militari-shopping-expansion",
+    "image": "",
+    "image_status": "NOT_DISCLOSED",
     "is_featured": false,
     "last_verified_at": "2026-08-25T00:00:00Z",
     "sources": [
@@ -8493,7 +8512,8 @@ export const realProjectsDataset: RealProject[] = [
     "surface_area_sqm": 25000,
     "floors": "12F",
     "description": "25,000 sqm Grade A office tower adjacent to Plaza Romania shopping center.",
-    "image": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=85&pid=anchor-plaza-office",
+    "image": "",
+    "image_status": "NOT_DISCLOSED",
     "is_featured": false,
     "last_verified_at": "2026-08-25T00:00:00Z",
     "sources": [
@@ -8534,7 +8554,8 @@ export const realProjectsDataset: RealProject[] = [
     "unit_count": 500,
     "floors": "17F",
     "description": "4-building high-rise residential complex of 500 luxury apartments in central Bucharest Vitan area.",
-    "image": "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=85&pid=incity-residences-bucharest",
+    "image": "",
+    "image_status": "NOT_DISCLOSED",
     "is_featured": false,
     "last_verified_at": "2026-08-25T00:00:00Z",
     "sources": [
@@ -8575,7 +8596,8 @@ export const realProjectsDataset: RealProject[] = [
     "unit_count": 75,
     "floors": "6F",
     "description": "Boutique residential building of 75 high-end apartments near Tineretului Park in central Bucharest.",
-    "image": "https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=1200&q=85&pid=boemia-apartments-bucharest",
+    "image": "",
+    "image_status": "NOT_DISCLOSED",
     "is_featured": false,
     "last_verified_at": "2026-08-25T00:00:00Z",
     "sources": [
@@ -8615,7 +8637,8 @@ export const realProjectsDataset: RealProject[] = [
     "surface_area_sqm": 30000,
     "floors": "1F",
     "description": "30,000 sqm Class A logistics warehouse along A7 Moldavia Motorway corridor.",
-    "image": "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=85&pid=eli-park-bacau-logistics",
+    "image": "",
+    "image_status": "NOT_DISCLOSED",
     "is_featured": false,
     "last_verified_at": "2026-08-25T00:00:00Z",
     "sources": [
@@ -8655,7 +8678,9 @@ export const realProjectsDataset: RealProject[] = [
     "surface_area_sqm": 16300,
     "floors": "6F",
     "description": "Restoration of historic Victoria House combined with a modern 16,300 sqm Grade A office building fully leased to ING Tech Romania.",
-    "image": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=85&pid=dacia-one-office",
+    "image": "",
+    "image_status": "NOT_DISCLOSED",
+    "image_alt": "Dacia One Office — official verified photograph pending",
     "is_featured": true,
     "last_verified_at": "2026-08-25T00:00:00Z",
     "sources": [
@@ -8695,7 +8720,8 @@ export const realProjectsDataset: RealProject[] = [
     "surface_area_sqm": 54000,
     "floors": "12F",
     "description": "Three-building Grade A office complex delivering 54,000 sqm of sustainable BREEAM Outstanding office space in Expoziției commercial hub.",
-    "image": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=85&pid=expo-bucharest-office",
+    "image": "",
+    "image_status": "NOT_DISCLOSED",
     "is_featured": false,
     "last_verified_at": "2026-08-25T00:00:00Z",
     "sources": [
@@ -8735,7 +8761,8 @@ export const realProjectsDataset: RealProject[] = [
     "surface_area_sqm": 75000,
     "floors": "7F",
     "description": "Transformation of Novo Park into YUNITY Park, featuring a 1,000 sqm outdoor amphitheatre, 2,000 sqm urban forest, and 75,000 sqm Grade A offices.",
-    "image": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=85&pid=yunity-park-bucharest",
+    "image": "",
+    "image_status": "NOT_DISCLOSED",
     "is_featured": true,
     "last_verified_at": "2026-08-25T00:00:00Z",
     "sources": [
@@ -8776,7 +8803,8 @@ export const realProjectsDataset: RealProject[] = [
     "unit_count": 1000,
     "floors": "15F",
     "description": "Major residential tower development of 1,000 smart apartments in 8 high-rise buildings in Northern Timișoara.",
-    "image": "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=85&pid=xcity-towers-timisoara",
+    "image": "",
+    "image_status": "NOT_DISCLOSED",
     "is_featured": false,
     "last_verified_at": "2026-08-25T00:00:00Z",
     "sources": [
@@ -8816,7 +8844,8 @@ export const realProjectsDataset: RealProject[] = [
     "surface_area_sqm": 21600,
     "floors": "8F",
     "description": "Class A commercial office building delivering 21,600 sqm of modern tech workspace with BREEAM Excellent certification.",
-    "image": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=85&pid=hexagon-offices-cluj",
+    "image": "",
+    "image_status": "NOT_DISCLOSED",
     "is_featured": false,
     "last_verified_at": "2026-08-25T00:00:00Z",
     "sources": [
@@ -8856,7 +8885,8 @@ export const realProjectsDataset: RealProject[] = [
     "surface_area_sqm": 14000,
     "floors": "1F",
     "description": "Second Fashion House outlet shopping village in Bucharest offering 14,000 sqm of open-air retail arcades.",
-    "image": "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1200&q=85&pid=fashion-house-outlet-pallady",
+    "image": "",
+    "image_status": "NOT_DISCLOSED",
     "is_featured": false,
     "last_verified_at": "2026-08-25T00:00:00Z",
     "sources": [
@@ -8897,7 +8927,8 @@ export const realProjectsDataset: RealProject[] = [
     "unit_count": 3000,
     "floors": "8F",
     "description": "Masterplanned residential district in Sector 4 featuring over 3,000 new housing units, Tudor Arghezi park access, and retail plazas.",
-    "image": "https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=1200&q=85&pid=metalurgiei-park-residence-phase-2",
+    "image": "",
+    "image_status": "NOT_DISCLOSED",
     "is_featured": true,
     "last_verified_at": "2026-08-25T00:00:00Z",
     "sources": [
@@ -8937,7 +8968,8 @@ export const realProjectsDataset: RealProject[] = [
     "surface_area_sqm": 140000,
     "floors": "1F",
     "description": "140,000 sqm Class A logistics and semi-industrial park serving automotive suppliers and logistics distribution networks near Brașov Airport.",
-    "image": "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=85&pid=vgp-park-brasov",
+    "image": "",
+    "image_status": "NOT_DISCLOSED",
     "is_featured": false,
     "last_verified_at": "2026-08-25T00:00:00Z",
     "sources": [
@@ -8987,7 +9019,8 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "Bog'Art",
     "contractor_slug": "bog-art",
     "description": "High-rise residential development with 3 towers of 20 floors offering 786 apartments, commercial ground floor, and energy-efficient geo-exchange heat pumps.",
-    "image": "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=85&pid=one-high-district",
+    "image": "",
+    "image_status": "NOT_DISCLOSED",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 95,
@@ -9900,7 +9933,8 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "Bog'Art",
     "contractor_slug": "bog-art",
     "description": "12-story Class A office tower adding 20,000 sqm GLA in Northern Bucharest, featuring LEED Platinum certification and 3,500 sqm urban green plaza.",
-    "image": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=85&pid=equilibrium-phase-2-skanska",
+    "image": "",
+    "image_status": "NOT_DISCLOSED",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 96,
@@ -10416,7 +10450,8 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "PORR Construct Romania",
     "contractor_slug": "porr-construct-romania",
     "description": "Phase 2 extension adding 60,000 sqm of Class A office and retail space to the Timpuri Noi urban regeneration hub along Dâmbovița river.",
-    "image": "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=85&pid=timpuri-noi-square-phase-2",
+    "image": "",
+    "image_status": "NOT_DISCLOSED",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 95,
@@ -10503,21 +10538,22 @@ export const realProjectsDataset: RealProject[] = [
     "latitude": 44.53,
     "longitude": 26.09,
     "project_type": "Residential",
-    "status": "partially_delivered",
-    "status_display": "Partially delivered",
-    "current_stage": "finishing",
+    "status": "completed",
+    "status_display": "Delivered",
+    "current_stage": "delivered",
     "stage_source": "https://greenfieldresidence.ro",
     "stage_last_verified": "2026-08-15",
-    "current_progress_percent": 85,
-    "estimated_completion": "2027-12-31",
-    "investment_eur": 300000000,
-    "investment_label": "€300.0M EUR",
-    "surface_area_sqm": 600000,
-    "unit_count": 7000,
+    "current_progress_percent": 100,
+    "actual_delivery": "2021-12-31",
+    "investment_eur": 120000000,
+    "investment_label": "€120.0M EUR",
+    "surface_area_sqm": 120000,
+    "built_area_sqm": 120000,
+    "unit_count": 1500,
     "floors": "GF + 5F",
     "contractor_name": "Construcții Erbașu",
     "contractor_slug": "constructii-erbasu",
-    "description": "Largest suburban residential compound in Bucharest adjacent to Băneasa forest, with 7,000 planned apartments, wellness center, and commercial gallery.",
+    "description": "Delivered initial residential phase of Greenfield Băneasa comprising 1,500 apartments across Blue, Yellow, and Topaz quarters adjacent to Băneasa forest (60 ha total masterplan).",
     "image": "https://images.unsplash.com/photo-1541888946425-d0fbb186a5b3?auto=format&fit=crop&w=1200&q=85&pid=greenfield-baneasa-residence",
     "is_featured": true,
     "verification_status": "VERIFIED",
@@ -10774,7 +10810,8 @@ export const realProjectsDataset: RealProject[] = [
     "contractor_name": "Con-A",
     "contractor_slug": "con-a",
     "description": "Flagship masterplanned neighborhood in Brașov Tractorul with 3,500+ delivered apartments, commercial center, and community sports facilities.",
-    "image": "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1200&q=85&pid=maurer-residence-brasov",
+    "image": "",
+    "image_status": "NOT_DISCLOSED",
     "is_featured": true,
     "verification_status": "VERIFIED",
     "completeness_score": 94,
@@ -11061,24 +11098,25 @@ export const realProjectsDataset: RealProject[] = [
     "latitude": 44.417,
     "longitude": 26.115,
     "project_type": "Mixed-use",
-    "status": "under_construction",
-    "status_display": "Under construction",
-    "current_stage": "structure",
+    "status": "completed",
+    "status_display": "Delivered",
+    "current_stage": "delivered",
     "stage_source": "https://timpurinoisquare.ro",
     "stage_last_verified": "2026-08-22",
-    "current_progress_percent": 50,
-    "estimated_completion": "2026-09-30",
+    "current_progress_percent": 100,
+    "actual_delivery": "2020-03-31",
     "investment_eur": 100000000,
     "investment_label": "€100.0M EUR",
-    "surface_area_sqm": 60000,
-    "floors": "2B + GF + 14F",
+    "surface_area_sqm": 53000,
+    "built_area_sqm": 53000,
+    "floors": "2B + GF + 10F",
     "contractor_name": "Bog'Art",
     "contractor_slug": "bog-art",
-    "description": "Phase 2 extension of Timpuri Noi Square adding 60,000 sqm GLA Class A office, retail plaza, and green leisure spaces right on the Dâmbovița riverbank.",
+    "description": "Delivered first phase of Timpuri Noi Square comprising 53,000 sqm GLA Class A office and retail plaza across three certified green buildings (TN1, TN2, TN3) along the Dâmbovița river.",
     "image": "https://images.unsplash.com/photo-1567449303078-57ad995bd301?auto=format&fit=crop&w=1200&q=85&pid=timpuri-noi-square",
     "is_featured": true,
     "verification_status": "VERIFIED",
-    "completeness_score": 93,
+    "completeness_score": 98,
     "sources": [
       {
         "url": "https://timpurinoisquare.ro",
@@ -11089,7 +11127,7 @@ export const realProjectsDataset: RealProject[] = [
       }
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
-    "image_alt": "Timpuri Noi Square Phase 2 verified development photograph",
+    "image_alt": "Timpuri Noi Square Phase 1 delivered office development",
     "image_source_name": "Official Disclosure",
     "image_verified": true,
     "image_relevance": "PROJECT_SPECIFIC"
@@ -11415,12 +11453,13 @@ export const realProjectsDataset: RealProject[] = [
     "estimated_completion": "2026-06-30",
     "investment_eur": 300000000,
     "investment_label": "€300.0M EUR",
-    "surface_area_sqm": 500000,
-    "unit_count": 7000,
+    "surface_area_sqm": 145000,
+    "built_area_sqm": 145000,
+    "unit_count": 1200,
     "floors": "GF + 5F",
     "contractor_name": "Concelex",
     "contractor_slug": "concelex",
-    "description": "Largest residential neighborhood surrounded by 900 hectares of Băneasa forest, including Greenfield Plaza commercial center, wellness club, and public school.",
+    "description": "Under construction residential expansion phase at Greenfield Băneasa (Teilor quarter) adding 1,200 apartments, Greenfield Plaza community center, and wellness club (60 ha total masterplan).",
     "image": "https://images.unsplash.com/photo-1519999482648-25049ddd37b1?auto=format&fit=crop&w=1200&q=85&pid=greenfield-baneasa",
     "is_featured": true,
     "verification_status": "VERIFIED",
@@ -11554,20 +11593,23 @@ export const realProjectsDataset: RealProject[] = [
     "longitude": 25.82,
     "project_type": "Industrial/Logistics",
     "status": "under_construction",
-    "status_display": "Under construction",
+    "status_display": "Operational / Expanding",
     "current_stage": "structure",
     "stage_source": "https://ctp.eu/romania/ctpark-bucharest-west/",
     "stage_last_verified": "2026-08-24",
-    "current_progress_percent": 75,
+    "current_progress_percent": 90,
     "estimated_completion": "2026-11-30",
     "investment_eur": 500000000,
     "investment_label": "€500.0M EUR",
     "surface_area_sqm": 850000,
-    "built_area_sqm": 850000,
+    "built_area_sqm": 800000,
+    "land_area_ha": 300,
+    "operational_gla_sqm": 800000,
+    "masterplan_gla_sqm": 850000,
     "floors": "GF High Bay",
     "contractor_name": "Bog'Art",
     "contractor_slug": "bog-art",
-    "description": "Largest industrial and logistics park in Central and Eastern Europe (850,000 sqm GLA), featuring solar rooftop installations, Clubhaus community center, and medical clinic.",
+    "description": "Largest industrial and logistics park in Central and Eastern Europe spanning over 300 hectares with 850,000 sqm GLA masterplan capacity (over 800,000 sqm operational), solar rooftop installations, and Clubhaus community hub.",
     "image": "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1200&q=85&pid=ctpark-bucharest-west",
     "is_featured": true,
     "verification_status": "VERIFIED",
@@ -11589,7 +11631,7 @@ export const realProjectsDataset: RealProject[] = [
       }
     ],
     "last_verified_at": "2026-08-28T10:00:00Z",
-    "image_alt": "CTPark Bucharest West verified development photograph",
+    "image_alt": "CTPark Bucharest West master logistics park verified photograph",
     "image_source_name": "Official Disclosure",
     "image_verified": true,
     "image_relevance": "PROJECT_SPECIFIC"

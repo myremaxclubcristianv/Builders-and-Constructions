@@ -88,7 +88,7 @@ interface SessionAlertState {
 const sessionAlertCache = new Map<string, SessionAlertState>();
 
 // Periodic cache cleanup (sessions older than 2 hours)
-setInterval(() => {
+const cleanupInterval = setInterval(() => {
   const now = Date.now();
   const twoHoursAgo = now - 2 * 60 * 60 * 1000;
   for (const [sid, state] of sessionAlertCache.entries()) {
@@ -97,6 +97,10 @@ setInterval(() => {
     }
   }
 }, 30 * 60 * 1000);
+if (typeof cleanupInterval?.unref === 'function') {
+  cleanupInterval.unref();
+}
+
 
 function getSessionAlertState(sessionId: string): SessionAlertState {
   let state = sessionAlertCache.get(sessionId);

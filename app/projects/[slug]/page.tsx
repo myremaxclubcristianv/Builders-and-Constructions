@@ -11,6 +11,7 @@ import { ProjectStageLifecycle } from '@/components/ProjectStageLifecycle';
 import { LeadForm } from '@/components/LeadForm';
 import { BookmarkButton } from '@/components/BookmarkButton';
 import { safeJsonLdStringify } from '@/lib/sanitize';
+import { ScaleIcon, LocationPinIcon, BuildingIcon, RulerIcon, CogIcon, CraneIcon, ChartBarIcon } from '@/components/icons/NavIcons';
 
 export async function generateMetadata({
   params,
@@ -167,7 +168,7 @@ export default async function ProjectProfile({
         dangerouslySetInnerHTML={{ __html: safeJsonLdStringify(jsonLd) }}
       />
       <SiteHeader />
-      <main style={{ background: '#0c0e0c', color: '#fff', minHeight: '100vh' }}>
+      <main className="pt-24 md:pt-32" style={{ background: '#0c0e0c', color: '#fff', minHeight: '100vh' }}>
         {isPreviewAllowed && (
           <div style={{ background: '#c7a675', color: '#000', padding: '10px 24px', textAlign: 'center', fontWeight: 800, fontSize: 12, letterSpacing: '0.08em' }}>
             ADMIN PREVIEW MODE — DRAFT RECORD (NOT VISIBLE ANONYMOUSLY)
@@ -195,11 +196,16 @@ export default async function ProjectProfile({
               </div>
               <div style={{ display: 'flex', gap: 8, alignItems: 'center', flexWrap: 'wrap' }}>
                 <BookmarkButton id={p.slug} name={p.name} type="project" slug={p.slug} subtext={`${p.project_type || 'Development'} · ${p.location || 'Romania'}`} />
-                <Link href={`/compare?p1=${p.slug}`} className="btn-secondary" style={{ padding: '6px 14px', fontSize: 11 }}>
-                  ⚖️ COMPARE PROJECT
+                <Link href={`/compare?p1=${p.slug}`} className="btn-secondary" style={{ padding: '6px 14px', fontSize: 11, display: 'inline-flex', alignItems: 'center', gap: 4 }}>
+                  <ScaleIcon className="w-3.5 h-3.5 text-[#c7a675]" />
+                  <span>COMPARE PROJECT</span>
                 </Link>
-                <Link href="/pipeline" className="btn" style={{ padding: '6px 14px', fontSize: 11 }}>
-                  📊 OPEN IN PIPELINE →
+                <Link href={`/report-error?entity=${encodeURIComponent(p.name)}&type=Project`} className="btn-secondary" style={{ padding: '6px 14px', fontSize: 11, display: 'inline-flex', alignItems: 'center', gap: 4, color: '#C9A227', borderColor: '#C9A227' }}>
+                  <span>✎ RAPORTEAZĂ CORECȚIE</span>
+                </Link>
+                <Link href="/pipeline" className="btn" style={{ padding: '6px 14px', fontSize: 11, display: 'inline-flex', alignItems: 'center', gap: 4 }}>
+                  <ChartBarIcon className="w-3.5 h-3.5 text-[#fff]" />
+                  <span>OPEN IN PIPELINE →</span>
                 </Link>
               </div>
             </div>
@@ -208,8 +214,13 @@ export default async function ProjectProfile({
               {p.name}
             </h1>
 
-            <p style={{ fontSize: '1.2rem', color: '#d8d6ce', maxWidth: 800, margin: 0 }}>
-              📍 {p.location || 'Romania'} · <strong style={{ color: '#c7a675' }}>{p.project_type || 'Development'}</strong>
+            <p style={{ fontSize: '1.2rem', color: '#d8d6ce', maxWidth: 800, margin: 0, display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: 6 }}>
+              <span className="inline-flex items-center gap-1">
+                <LocationPinIcon className="w-4 h-4 text-[#c7a675] shrink-0" />
+                <span>{p.location || 'Romania'}</span>
+              </span>
+              <span>·</span>
+              <strong style={{ color: '#c7a675' }}>{p.project_type || 'Development'}</strong>
               {p.developer_name && (
                 <span>
                   {' '}· Developer:{' '}
@@ -229,7 +240,10 @@ export default async function ProjectProfile({
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={p.image} alt={p.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                   <div style={{ position: 'absolute', bottom: 0, insetInline: 0, padding: 12, background: 'linear-gradient(0deg, rgba(0,0,0,0.9), transparent)', fontSize: 11, color: '#ccc', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <span>🏗️ {p.name} — Official Site Image</span>
+                    <span style={{ display: 'inline-flex', alignItems: 'center', gap: 4 }}>
+                      <CraneIcon className="w-3.5 h-3.5 text-[#38bdf8]" />
+                      <span>{p.name} — Official Site Image</span>
+                    </span>
                     <span style={{ fontSize: 9, background: '#1c221e', border: '1px solid #38bdf8', color: '#38bdf8', padding: '2px 6px', borderRadius: 2, fontWeight: 800 }}>
                       VERIFIED SITE MEDIA
                     </span>
@@ -237,7 +251,9 @@ export default async function ProjectProfile({
                 </>
               ) : (
                 <div style={{ padding: 24, textAlign: 'center', color: '#888' }}>
-                  <div style={{ fontSize: 36, marginBottom: 8 }}>🏗️</div>
+                  <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 8 }}>
+                    <CraneIcon className="w-9 h-9 text-[#666]" />
+                  </div>
                   <div style={{ fontSize: 11, fontWeight: 800, color: '#c7a675', border: '1px solid #262927', padding: '4px 10px', borderRadius: 4, display: 'inline-block', letterSpacing: '0.05em' }}>
                     IMAGE STATUS: NOT DISCLOSED IN PUBLIC BASELINE
                   </div>
@@ -253,9 +269,14 @@ export default async function ProjectProfile({
               <div>
                 <strong style={{ color: '#fff' }}>Independent Platform Disclosure:</strong> CONSTRUCTIONS is an independent information and research platform. Inclusion of an entity does not imply representation, endorsement, partnership, or commercial relationship with that entity.
               </div>
-              <Link href={`/report-error?project=${encodeURIComponent(p.name)}`} style={{ color: '#c7a675', fontWeight: 700, textDecoration: 'none', whiteSpace: 'nowrap' }}>
-                Request Correction →
-              </Link>
+              <div style={{ display: 'flex', gap: 16, alignItems: 'center', flexWrap: 'wrap' }}>
+                <Link href="/methodology" style={{ color: '#aaa', fontWeight: 600, textDecoration: 'underline', whiteSpace: 'nowrap' }}>
+                  How We Verify →
+                </Link>
+                <Link href={`/report-error?project=${encodeURIComponent(p.name)}`} style={{ color: '#c7a675', fontWeight: 700, textDecoration: 'none', whiteSpace: 'nowrap' }}>
+                  Request Profile Update →
+                </Link>
+              </div>
             </div>
           </div>
         </section>
@@ -312,8 +333,9 @@ export default async function ProjectProfile({
               <div style={{ fontSize: 10, color: '#888', fontWeight: 700 }}>DEVELOPER</div>
               <div style={{ fontSize: 16, fontWeight: 800, color: '#c7a675', marginTop: 6 }}>
                 {devComp ? (
-                  <Link href={`/companies/${devComp.slug}`} style={{ color: '#c7a675', textDecoration: 'none' }}>
-                    🏢 {devComp.name} →
+                  <Link href={`/companies/${devComp.slug}`} style={{ color: '#c7a675', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 4 }}>
+                    <BuildingIcon className="w-3.5 h-3.5 text-[#c7a675]" />
+                    <span>{devComp.name} →</span>
                   </Link>
                 ) : (
                   p.developer_name || 'NOT DISCLOSED'
@@ -326,8 +348,9 @@ export default async function ProjectProfile({
               <div style={{ fontSize: 10, color: '#888', fontWeight: 700 }}>GENERAL CONTRACTOR</div>
               <div style={{ fontSize: 16, fontWeight: 800, color: '#38bdf8', marginTop: 6 }}>
                 {gcComp ? (
-                  <Link href={`/companies/${gcComp.slug}`} style={{ color: '#38bdf8', textDecoration: 'none' }}>
-                    🏗️ {gcComp.name} →
+                  <Link href={`/companies/${gcComp.slug}`} style={{ color: '#38bdf8', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 4 }}>
+                    <CraneIcon className="w-3.5 h-3.5 text-[#38bdf8]" />
+                    <span>{gcComp.name} →</span>
                   </Link>
                 ) : (
                   p.contractor_name || 'NOT DISCLOSED'
@@ -340,8 +363,9 @@ export default async function ProjectProfile({
               <div style={{ fontSize: 10, color: '#888', fontWeight: 700 }}>ARCHITECT PRACTICE</div>
               <div style={{ fontSize: 16, fontWeight: 800, color: '#86efac', marginTop: 6 }}>
                 {archComp ? (
-                  <Link href={`/companies/${archComp.slug}`} style={{ color: '#86efac', textDecoration: 'none' }}>
-                    📐 {archComp.name} →
+                  <Link href={`/companies/${archComp.slug}`} style={{ color: '#86efac', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 4 }}>
+                    <RulerIcon className="w-3.5 h-3.5 text-[#86efac]" />
+                    <span>{archComp.name} →</span>
                   </Link>
                 ) : (
                   p.architect_name || 'NOT DISCLOSED'
@@ -354,8 +378,9 @@ export default async function ProjectProfile({
               <div style={{ fontSize: 10, color: '#888', fontWeight: 700 }}>STRUCTURAL ENGINEER</div>
               <div style={{ fontSize: 16, fontWeight: 800, color: '#e879f9', marginTop: 6 }}>
                 {engComp ? (
-                  <Link href={`/companies/${engComp.slug}`} style={{ color: '#e879f9', textDecoration: 'none' }}>
-                    ⚙️ {engComp.name} →
+                  <Link href={`/companies/${engComp.slug}`} style={{ color: '#e879f9', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 4 }}>
+                    <CogIcon className="w-3.5 h-3.5 text-[#e879f9]" />
+                    <span>{engComp.name} →</span>
                   </Link>
                 ) : (
                   p.engineering_name || 'NOT DISCLOSED'
@@ -421,6 +446,33 @@ export default async function ProjectProfile({
                   : 'NOT DISCLOSED'}
               </div>
             </div>
+
+            {p.land_area_ha && (
+              <div style={{ padding: 20, background: '#141715', border: '1px solid #262927', borderRadius: 6 }}>
+                <div style={{ fontSize: 10, color: '#888', fontWeight: 700 }}>LAND PLOT AREA</div>
+                <div style={{ fontSize: 22, fontWeight: 800, color: '#c7a675', marginTop: 4 }}>
+                  {p.land_area_ha} ha
+                </div>
+              </div>
+            )}
+
+            {p.operational_gla_sqm && (
+              <div style={{ padding: 20, background: '#141715', border: '1px solid #262927', borderRadius: 6 }}>
+                <div style={{ fontSize: 10, color: '#888', fontWeight: 700 }}>OPERATIONAL BUILT GLA</div>
+                <div style={{ fontSize: 22, fontWeight: 800, color: '#38bdf8', marginTop: 4 }}>
+                  {p.operational_gla_sqm.toLocaleString()} m²
+                </div>
+              </div>
+            )}
+
+            {p.masterplan_gla_sqm && (
+              <div style={{ padding: 20, background: '#141715', border: '1px solid #262927', borderRadius: 6 }}>
+                <div style={{ fontSize: 10, color: '#888', fontWeight: 700 }}>MASTERPLAN CAPACITY GLA</div>
+                <div style={{ fontSize: 22, fontWeight: 800, color: '#86efac', marginTop: 4 }}>
+                  {p.masterplan_gla_sqm.toLocaleString()} m²
+                </div>
+              </div>
+            )}
 
             <div style={{ padding: 20, background: '#141715', border: '1px solid #262927', borderRadius: 6 }}>
               <div style={{ fontSize: 10, color: '#888', fontWeight: 700 }}>
@@ -516,7 +568,10 @@ export default async function ProjectProfile({
 
           <div style={{ padding: 20, background: '#141715', border: '1px solid #262927', borderRadius: 6, display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 16 }}>
             <div>
-              <div style={{ fontSize: 14, fontWeight: 800, color: '#fff' }}>📍 {p.location || 'Romania'}</div>
+              <div style={{ fontSize: 14, fontWeight: 800, color: '#fff', display: 'flex', alignItems: 'center', gap: 4 }}>
+                <LocationPinIcon className="w-4 h-4 text-[#c7a675] shrink-0" />
+                <span>{p.location || 'Romania'}</span>
+              </div>
               <div style={{ fontSize: 12, color: '#aaa', marginTop: 2 }}>
                 County: {p.county || 'București'} · Locality: {p.locality || p.location || 'Bucharest'}
               </div>

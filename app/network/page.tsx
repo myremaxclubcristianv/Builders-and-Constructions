@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { SiteHeader } from '@/components/SiteHeader';
 import { SiteFooter } from '@/components/SiteFooter';
 import { realCompaniesDataset, realProjectsDataset } from '@/lib/real-romanian-data';
+import { CraneIcon } from '@/components/icons/NavIcons';
 
 export const metadata = {
   title: 'Professional Relationship Network Explorer · CONSTRUCTIONS by AiXLuxury',
@@ -84,8 +85,9 @@ export default function NetworkPage() {
                           <div className="space-y-1">
                             {projectsAsGC.map(p => (
                               <div key={p.slug} className="p-2 bg-[#050505] border border-[#1A1D1B] rounded space-y-0.5">
-                                <Link href={`/projects/${p.slug}`} className="text-[#38bdf8] hover:underline font-bold block truncate">
-                                  🏗️ {p.name}
+                                <Link href={`/projects/${p.slug}`} className="text-[#38bdf8] hover:underline font-bold flex items-center gap-1 truncate">
+                                  <CraneIcon className="w-3 h-3 text-[#38bdf8] shrink-0" />
+                                  <span>{p.name}</span>
                                 </Link>
                                 <div className="text-[10px] text-[#888888]">
                                   Dev: {p.developer_name} · {p.location}

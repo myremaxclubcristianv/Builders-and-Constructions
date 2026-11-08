@@ -4,6 +4,7 @@ import { SiteFooter } from '@/components/SiteFooter';
 import { getIndustryHubData } from '@/lib/data';
 import { resolveEntityRoute } from '@/lib/entity-resolver';
 import { WatchlistViewer } from '@/components/WatchlistViewer';
+import { LocationPinIcon } from '@/components/icons/NavIcons';
 
 export const metadata = {
   title: 'Market Watchlist & Monitoring · CONSTRUCTIONS by AiXLuxury',
@@ -66,7 +67,10 @@ export default async function WatchlistPage() {
                       </p>
 
                       <div className="pt-2 border-t border-[#1A1D1B] flex items-center justify-between text-xs text-[#888888]">
-                        <span>📍 {act.location}</span>
+                        <span className="flex items-center gap-1">
+                          <LocationPinIcon className="w-3.5 h-3.5 text-[#c7a675] shrink-0" />
+                          <span>{act.location}</span>
+                        </span>
                         {resolvedProj && resolvedProj.isResolvable ? (
                           <Link href={resolvedProj.href} className="text-[#C9A227] font-bold hover:underline">
                             VIEW PROJECT →

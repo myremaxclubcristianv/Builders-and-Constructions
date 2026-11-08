@@ -148,7 +148,7 @@ export function AcquisitionRealityTestView({ candidates }: { candidates: Candida
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 12 }}>
                 <div style={{ background: 'rgba(0,0,0,0.3)', padding: '12px 14px', borderRadius: 4, border: '1px solid rgba(255,255,255,0.06)' }}>
                   <div style={{ fontSize: '0.65rem', color: '#22c55e', textTransform: 'uppercase', fontWeight: 700, marginBottom: 4 }}>
-                    ⚡ Why Contact Now
+                    Opportunity Trigger: Why Contact Now
                   </div>
                   <p style={{ fontSize: '0.8rem', color: '#cbd5e1', margin: 0, lineHeight: 1.4 }}>
                     {cand.whyNow}
@@ -157,7 +157,7 @@ export function AcquisitionRealityTestView({ candidates }: { candidates: Candida
 
                 <div style={{ background: 'rgba(0,0,0,0.3)', padding: '12px 14px', borderRadius: 4, border: '1px solid rgba(255,255,255,0.06)' }}>
                   <div style={{ fontSize: '0.65rem', color: '#ef4444', textTransform: 'uppercase', fontWeight: 700, marginBottom: 4 }}>
-                    🔍 Commercial Deficiencies & Gap
+                    Audited Deficiencies &amp; Commercial Gap
                   </div>
                   <p style={{ fontSize: '0.8rem', color: '#cbd5e1', margin: 0, lineHeight: 1.4 }}>
                     {cand.commercialGap}

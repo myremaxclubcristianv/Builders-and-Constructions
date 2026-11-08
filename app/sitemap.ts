@@ -50,7 +50,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/work-with-us',
     '/terms',
     '/privacy',
-    '/gdpr'
+    '/cookies',
+    '/gdpr',
+    '/accessibility'
   ].map(route => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date(),

@@ -28,6 +28,7 @@ export interface ServiceDefinition {
   applicableStandards: string[];
   targetAudience: string[];
   specificQuestionnaireId: string;
+  searchKeywords?: string[];
 }
 
 export const OFFICIAL_SERVICES: ServiceDefinition[] = [
@@ -51,7 +52,8 @@ export const OFFICIAL_SERVICES: ServiceDefinition[] = [
     ],
     applicableStandards: ["Legea 10/1995", "HG 766/1997", "SR EN ISO 9001:2015", "Normativ C56"],
     targetAudience: ["Dezvoltatori imobiliari", "Antreprenori generali", "Investitori instituționali", "Project Manageri"],
-    specificQuestionnaireId: "calitate_constructii"
+    specificQuestionnaireId: "calitate_constructii",
+    searchKeywords: ["quality", "audit", "expertiza", "dispute", "litigii", "control tehnic", "reclamatii", "receptie", "conformitate", "due diligence"]
   },
   {
     id: "controlul-calitatii",
@@ -156,7 +158,8 @@ export const OFFICIAL_SERVICES: ServiceDefinition[] = [
     ],
     applicableStandards: ["Eurocodes (EN 1990-1999)", "P100-1/2013", "I7-2011", "I9-2015", "I13-2015"],
     targetAudience: ["Dezvoltatori", "Investitori", "Persoane fizice", "Companii private"],
-    specificQuestionnaireId: "proiecte"
+    specificQuestionnaireId: "proiecte",
+    searchKeywords: ["permitting", "planning", "autorizatie", "dtac", "urbanism", "puz", "pug", "certificat urbanism", "avize"]
   },
   {
     id: "arhitecti",
@@ -242,7 +245,8 @@ export const OFFICIAL_SERVICES: ServiceDefinition[] = [
     ],
     applicableStandards: ["Norme ASF", "Condiții standard Munich Re / CAR Clauses"],
     targetAudience: ["Dezvoltatori", "Constructori", "Birouri de proiectare", "Subcontractori"],
-    specificQuestionnaireId: "asigurari"
+    specificQuestionnaireId: "asigurari",
+    searchKeywords: ["insurance", "claims", "dispute", "litigii", "daune", "raspundere", "risc", "car", "ear"]
   },
   {
     id: "credite",

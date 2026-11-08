@@ -4,6 +4,7 @@ import { SiteHeader } from '@/components/SiteHeader';
 import { SiteFooter } from '@/components/SiteFooter';
 import { realCompaniesDataset } from '@/lib/real-romanian-data';
 import { safeJsonLdStringify } from '@/lib/sanitize';
+import { LocationPinIcon, BuildingIcon } from '@/components/icons/NavIcons';
 
 export const metadata: Metadata = {
   title: 'Real Estate Developers Directory | CONSTRUCTIONS by AiXLuxury',
@@ -78,8 +79,14 @@ export default function DevelopersPage() {
                   </p>
 
                   <div className="pt-2 text-[11px] font-mono text-[#888888] space-y-1">
-                    <div>📍 <span className="text-[#C5C5C5]">{dev.location}</span></div>
-                    <div>🏢 Projects: <span className="text-[#C9A227] font-bold">{dev.projects_count}</span> ({dev.active_projects_count} Active)</div>
+                    <div className="flex items-center gap-1.5">
+                      <LocationPinIcon className="w-3.5 h-3.5 text-[#c7a675] shrink-0" />
+                      <span className="text-[#C5C5C5]">{dev.location}</span>
+                    </div>
+                    <div className="flex items-center gap-1.5">
+                      <BuildingIcon className="w-3.5 h-3.5 text-[#888888] shrink-0" />
+                      <span>Projects: <span className="text-[#C9A227] font-bold">{dev.projects_count}</span> ({dev.active_projects_count} Active)</span>
+                    </div>
                   </div>
                 </div>
 

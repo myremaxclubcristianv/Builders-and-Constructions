@@ -3,6 +3,8 @@
 import { useState, useMemo, useEffect } from "react";
 import { trackSiteSearch } from "@/lib/visitor-tracker";
 import { searchKnowledge, KnowledgeSearchResult } from "@/lib/knowledge-data";
+import { ServiceDefinition } from "@/lib/services-config";
+import { SearchIcon, BookIcon, BriefcaseIcon, ShieldIcon } from "@/components/icons/NavIcons";
 import Link from "next/link";
 
 interface Company {
@@ -44,6 +46,7 @@ interface SearchDiscoveryTerminalProps {
   initialQuery: string;
   companies: Company[];
   projects: Project[];
+  services?: ServiceDefinition[];
   signals: Signal[];
   locations: { name: string; slug: string; region?: string; county?: string }[];
 }
@@ -65,6 +68,7 @@ export function SearchDiscoveryTerminal({
   initialQuery,
   companies,
   projects,
+  services = [],
   signals,
   locations,
 }: SearchDiscoveryTerminalProps) {
@@ -75,6 +79,43 @@ export function SearchDiscoveryTerminal({
 
   const normalizedQuery = useMemo(() => normalizeDiacritics(query.trim()), [query]);
 
+  // Synchronize state from URL parameters on mount
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const sp = new URLSearchParams(window.location.search);
+      const urlQ = sp.get('q');
+      const urlEntity = sp.get('entity');
+      const urlCity = sp.get('city');
+      const urlType = sp.get('type');
+      if (urlQ && !query) setQuery(urlQ);
+      if (urlEntity) setEntityFilter(urlEntity);
+      if (urlCity) setCityFilter(urlCity);
+      if (urlType) setProjectTypeFilter(urlType);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Update URL search parameters whenever filter states change
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const sp = new URLSearchParams();
+      if (query.trim()) sp.set('q', query.trim());
+      if (entityFilter !== 'ALL') sp.set('entity', entityFilter);
+      if (cityFilter !== 'ALL') sp.set('city', cityFilter);
+      if (projectTypeFilter !== 'ALL') sp.set('type', projectTypeFilter);
+      const newQuery = sp.toString();
+      const newUrl = newQuery ? `${window.location.pathname}?${newQuery}` : window.location.pathname;
+      window.history.replaceState(null, '', newUrl);
+    }
+  }, [query, entityFilter, cityFilter, projectTypeFilter]);
+
+  const clearAllFilters = () => {
+    setQuery('');
+    setEntityFilter('ALL');
+    setCityFilter('ALL');
+    setProjectTypeFilter('ALL');
+  };
+
   // Search Technical Construction Knowledge Base
   const matchingKnowledge = useMemo(() => {
     if (!normalizedQuery || normalizedQuery.length < 2) return [];
@@ -82,9 +123,35 @@ export function SearchDiscoveryTerminal({
     return searchKnowledge(normalizedQuery);
   }, [normalizedQuery, entityFilter]);
 
+  // Search Official Services
+  const matchingServices = useMemo(() => {
+    if (entityFilter !== "ALL" && entityFilter !== "SERVICES") return [];
+    if (!services || services.length === 0) return [];
+
+    return services.filter((srv) => {
+      if (!normalizedQuery) return true;
+
+      const titleNorm = normalizeDiacritics(srv.title);
+      const shortDescNorm = normalizeDiacritics(srv.shortDescription || "");
+      const fullDescNorm = normalizeDiacritics(srv.fullDescription || "");
+      const catNorm = normalizeDiacritics(srv.categoryLabel || "");
+      const deliverablesNorm = (srv.deliverables || []).map(normalizeDiacritics);
+      const standardsNorm = (srv.applicableStandards || []).map(normalizeDiacritics);
+
+      return (
+        titleNorm.includes(normalizedQuery) ||
+        shortDescNorm.includes(normalizedQuery) ||
+        fullDescNorm.includes(normalizedQuery) ||
+        catNorm.includes(normalizedQuery) ||
+        deliverablesNorm.some((d) => d.includes(normalizedQuery)) ||
+        standardsNorm.some((st) => st.includes(normalizedQuery))
+      );
+    });
+  }, [services, normalizedQuery, entityFilter]);
+
   // Filter Companies
   const matchingCompanies = useMemo(() => {
-    if (entityFilter === "KNOWLEDGE") return [];
+    if (entityFilter === "KNOWLEDGE" || entityFilter === "SERVICES") return [];
     return companies.filter((c) => {
       // Entity type filter
       if (entityFilter !== "ALL") {
@@ -132,7 +199,7 @@ export function SearchDiscoveryTerminal({
 
   // Filter Projects
   const matchingProjects = useMemo(() => {
-    if (entityFilter === "KNOWLEDGE") return [];
+    if (entityFilter === "KNOWLEDGE" || entityFilter === "SERVICES") return [];
     return projects.filter((p) => {
       if (entityFilter !== "ALL" && entityFilter !== "PROJECT") return false;
 
@@ -168,7 +235,7 @@ export function SearchDiscoveryTerminal({
 
   // Filter Signals
   const matchingSignals = useMemo(() => {
-    if (entityFilter === "KNOWLEDGE") return [];
+    if (entityFilter === "KNOWLEDGE" || entityFilter === "SERVICES") return [];
     return signals.filter((s) => {
       if (entityFilter !== "ALL" && entityFilter !== "SIGNAL") return false;
 
@@ -202,6 +269,7 @@ export function SearchDiscoveryTerminal({
   const totalResults =
     matchingCompanies.length +
     matchingProjects.length +
+    matchingServices.length +
     matchingSignals.length +
     matchingKnowledge.length;
 
@@ -219,13 +287,15 @@ export function SearchDiscoveryTerminal({
       <div className="p-6 bg-[#111111] border border-[#1A1D1B] rounded-2xl space-y-4">
         <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
           <div className="relative flex-1">
-            <span className="absolute left-4 top-3.5 text-base">🔍</span>
+            <span className="absolute left-4 top-3.5 text-[#888888] flex items-center pointer-events-none">
+              <SearchIcon className="w-5 h-5 text-[#888888]" />
+            </span>
             <input
               type="text"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="Search companies, projects, materials (concrete, EPS, steel), standards (NE 012), glossary (POT, CUT)..."
-              className="w-full h-12 pl-11 pr-4 bg-[#050505] border border-[#1A1D1B] rounded-xl text-sm sm:text-base text-white placeholder-[#666666] focus:outline-none focus:border-[#C9A227]/50 font-sans min-h-[48px]"
+              placeholder="Search companies, projects, 13 official services, materials (concrete, EPS), standards (NE 012)..."
+              className="w-full h-12 pl-12 pr-4 bg-[#050505] border border-[#1A1D1B] rounded-xl text-sm sm:text-base text-white placeholder-[#666666] focus:outline-none focus:border-[#C9A227]/50 font-sans min-h-[48px]"
             />
             {query && (
               <button
@@ -248,7 +318,8 @@ export function SearchDiscoveryTerminal({
               onChange={(e) => setEntityFilter(e.target.value)}
               className="w-full bg-[#050505] border border-[#1A1D1B] rounded-lg px-3 py-2 text-white focus:border-[#C9A227] outline-none min-h-[44px]"
             >
-              <option value="ALL">All Categories & Knowledge</option>
+              <option value="ALL">All Categories &amp; Knowledge</option>
+              <option value="SERVICES">Official Advisory &amp; Technical Services ({matchingServices.length})</option>
               <option value="KNOWLEDGE">Construction Knowledge Base ({matchingKnowledge.length})</option>
               <option value="DEVELOPER">Developers ({companies.filter((c) => c.type === "developer").length})</option>
               <option value="CONTRACTOR">Contractors ({companies.filter((c) => c.type === "general_contractor" || c.type === "construction_company" || c.type === "infrastructure").length})</option>
@@ -291,6 +362,18 @@ export function SearchDiscoveryTerminal({
             </select>
           </div>
         </div>
+
+        {(query || entityFilter !== 'ALL' || cityFilter !== 'ALL' || projectTypeFilter !== 'ALL') && (
+          <div className="flex items-center justify-between pt-2 border-t border-[#1A1D1B] text-[11px] font-mono">
+            <span className="text-[#C9A227] font-bold">FILTRE ACTIVE SELECTATE</span>
+            <button
+              onClick={clearAllFilters}
+              className="text-[#AAA] hover:text-[#ef4444] transition-colors underline cursor-pointer"
+            >
+              Resetează toate filtrele ✕
+            </button>
+          </div>
+        )}
       </div>
 
       {/* Results Header */}
@@ -310,7 +393,8 @@ export function SearchDiscoveryTerminal({
         <div className="space-y-4">
           <div className="flex items-center justify-between">
             <h3 className="text-xs font-mono uppercase tracking-widest text-[#C9A227] font-bold flex items-center gap-2">
-              <span>📚</span> CONSTRUCTION KNOWLEDGE & MATERIALS INTELLIGENCE ({matchingKnowledge.length})
+              <BookIcon className="w-4 h-4 text-[#C9A227]" />
+              <span>CONSTRUCTION KNOWLEDGE &amp; MATERIALS INTELLIGENCE ({matchingKnowledge.length})</span>
             </h3>
             <span className="text-[10px] font-mono text-[#10B981] bg-[#10B981]/10 px-2 py-0.5 rounded">
               VERIFIED TECHNICAL DATA
@@ -348,6 +432,65 @@ export function SearchDiscoveryTerminal({
 
                 <div className="text-[11px] font-mono text-[#C9A227] flex items-center gap-1 pt-2 border-t border-[#1A1D1B]">
                   <span>OPEN TECHNICAL DOSSIER</span>
+                  <span>→</span>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* 2. MATCHING OFFICIAL SERVICES */}
+      {matchingServices.length > 0 && (
+        <div className="space-y-4">
+          <div className="flex items-center justify-between">
+            <h3 className="text-xs font-mono uppercase tracking-widest text-[#C9A227] font-bold flex items-center gap-2">
+              <ShieldIcon className="w-4 h-4 text-[#C9A227]" />
+              <span>OFFICIAL ADVISORY &amp; TECHNICAL SERVICES ({matchingServices.length})</span>
+            </h3>
+            <span className="text-[10px] font-mono text-[#10B981] bg-[#10B981]/10 px-2 py-0.5 rounded">
+              VERIFIED SCOPE OF WORK
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {matchingServices.map((srv) => (
+              <Link
+                key={srv.slug}
+                href={`/services/${srv.slug}`}
+                className="p-5 bg-[#0B0C0B] border border-[#1A1D1B] hover:border-[#C9A227]/60 rounded-xl space-y-3 transition-all duration-300 group block"
+              >
+                <div className="flex items-center justify-between gap-2">
+                  <span className="text-[10px] font-mono text-[#C9A227] px-2 py-0.5 bg-[#C9A227]/10 rounded truncate">
+                    {srv.categoryLabel}
+                  </span>
+                  <span className="text-[9px] font-mono text-[#888888] bg-[#141514] px-1.5 py-0.5 rounded shrink-0">
+                    {srv.badge}
+                  </span>
+                </div>
+
+                <div>
+                  <h4 className="text-base font-bold text-white group-hover:text-[#C9A227] transition-colors">
+                    {srv.title}
+                  </h4>
+                  <p className="text-xs text-[#AAAAAA] line-clamp-2 leading-relaxed mt-1">
+                    {srv.shortDescription}
+                  </p>
+                </div>
+
+                {srv.deliverables && srv.deliverables.length > 0 && (
+                  <div className="pt-1">
+                    <span className="text-[10px] font-mono text-[#888888] block mb-1">Key Deliverables:</span>
+                    <ul className="text-[11px] text-[#A0A0A0] space-y-0.5 list-disc list-inside">
+                      {srv.deliverables.slice(0, 2).map((d, dIdx) => (
+                        <li key={dIdx} className="truncate">{d}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                <div className="text-[11px] font-mono text-[#C9A227] flex items-center gap-1 pt-2 border-t border-[#1A1D1B]">
+                  <span>VIEW SERVICE SPECIFICATION</span>
                   <span>→</span>
                 </div>
               </Link>
@@ -451,7 +594,9 @@ export function SearchDiscoveryTerminal({
 
       {totalResults === 0 && (
         <div className="py-16 text-center space-y-4 bg-[#0B0C0B] border border-[#1A1D1B] rounded-2xl p-8">
-          <span className="text-3xl">🔍</span>
+          <div className="flex justify-center">
+            <SearchIcon className="w-10 h-10 text-[#C9A227] opacity-80" />
+          </div>
           <h3 className="text-lg font-bold text-white">No records matching your search</h3>
           <p className="text-xs text-[#888888] max-w-md mx-auto">
             Try broadening your search term (e.g. &ldquo;Concrete&rdquo;, &ldquo;NE 012&rdquo;, &ldquo;One United&rdquo;, &ldquo;Bucharest&rdquo;, &ldquo;EPS&rdquo;, &ldquo;POT&rdquo;).

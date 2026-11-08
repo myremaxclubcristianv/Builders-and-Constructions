@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from 'react';
 import Link from 'next/link';
+import { BuildingIcon, CraneIcon, LocationPinIcon } from '@/components/icons/NavIcons';
 
 export interface DocumentedChangeItem {
   id: string;
@@ -173,17 +174,24 @@ export function MarketChangesTerminal({ initialChanges, availableCities }: Marke
                   <span className="px-2 py-0.5 bg-[#86efac]/10 text-[#86efac] border border-[#86efac]/30 rounded text-[9px] font-bold uppercase">
                     {chg.verification_state || 'VERIFIED'}
                   </span>
-                  {chg.city && <span className="text-[#888888]">📍 {chg.city}</span>}
+                  {chg.city && (
+                    <span className="text-[#888888] inline-flex items-center gap-1">
+                      <LocationPinIcon className="w-3 h-3 text-[#888888] shrink-0" />
+                      <span>{chg.city}</span>
+                    </span>
+                  )}
                 </div>
 
                 <h2 className="text-lg font-bold text-white tracking-tight">
                   {chg.entity_type === 'Company' ? (
-                    <Link href={`/companies/${chg.entity_slug}`} className="hover:text-[#C9A227] transition-colors">
-                      🏢 {chg.entity_name}
+                    <Link href={`/companies/${chg.entity_slug}`} className="hover:text-[#C9A227] transition-colors inline-flex items-center gap-1.5">
+                      <BuildingIcon className="w-4 h-4 text-[#C9A227] shrink-0" />
+                      <span>{chg.entity_name}</span>
                     </Link>
                   ) : (
-                    <Link href={`/projects/${chg.entity_slug}`} className="hover:text-[#38bdf8] transition-colors">
-                      🏗️ {chg.entity_name}
+                    <Link href={`/projects/${chg.entity_slug}`} className="hover:text-[#38bdf8] transition-colors inline-flex items-center gap-1.5">
+                      <CraneIcon className="w-4 h-4 text-[#38bdf8] shrink-0" />
+                      <span>{chg.entity_name}</span>
                     </Link>
                   )}
                 </h2>

@@ -24,10 +24,6 @@ const securityHeaders = [
   {
     key: 'X-DNS-Prefetch-Control',
     value: 'on'
-  },
-  {
-    key: 'Content-Security-Policy',
-    value: "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://images.unsplash.com https://i.ytimg.com; font-src 'self' data:; connect-src 'self' https://*.supabase.co https://www.googleapis.com https://api.telegram.org; frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com; frame-ancestors 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;"
   }
 ];
 
@@ -45,6 +41,80 @@ const nextConfig: NextConfig = {
       {
         source: '/:path*',
         headers: securityHeaders
+      }
+    ];
+  },
+  async redirects() {
+    return [
+      {
+        source: '/greenfield-baneasa',
+        destination: '/projects/greenfield-baneasa',
+        permanent: true
+      },
+      {
+        source: '/greenfield-baneasa-residence',
+        destination: '/projects/greenfield-baneasa-residence',
+        permanent: true
+      },
+      {
+        source: '/ctpark-cluj',
+        destination: '/projects/ctpark-cluj-logistics',
+        permanent: true
+      },
+      {
+        source: '/projects/ctpark-cluj',
+        destination: '/projects/ctpark-cluj-logistics',
+        permanent: true
+      },
+      {
+        source: '/speedwell-riverside-arad',
+        destination: '/projects/speedwell-riverside-arad-site',
+        permanent: true
+      },
+      {
+        source: '/projects/speedwell-riverside-arad',
+        destination: '/projects/speedwell-riverside-arad-site',
+        permanent: true
+      },
+      {
+        source: '/porr-construct',
+        destination: '/companies/porr-construct-romania',
+        permanent: true
+      },
+      {
+        source: '/companies/porr-construct',
+        destination: '/companies/porr-construct-romania',
+        permanent: true
+      },
+      {
+        source: '/companies/comp-porr-construct',
+        destination: '/companies/porr-construct-romania',
+        permanent: true
+      },
+      {
+        source: '/a7-highway-focsani-bacau',
+        destination: '/projects/autostrada-a7-moldovei-umb',
+        permanent: true
+      },
+      {
+        source: '/projects/a7-highway-focsani-bacau',
+        destination: '/projects/autostrada-a7-moldovei-umb',
+        permanent: true
+      },
+      {
+        source: '/cookie-policy',
+        destination: '/cookies',
+        permanent: true
+      },
+      {
+        source: '/cookie',
+        destination: '/cookies',
+        permanent: true
+      },
+      {
+        source: '/accessibility-statement',
+        destination: '/accessibility',
+        permanent: true
       }
     ];
   }

@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { SiteHeader } from '@/components/SiteHeader';
 import { SiteFooter } from '@/components/SiteFooter';
 import { OFFICIAL_SERVICES, ServiceCategory } from '@/lib/services-config';
+import { ServiceIconRenderer } from '@/components/icons/ServiceIconRenderer';
 
 export const metadata = {
   title: 'Servicii Oficiale în Construcții · CONSTRUCTIONS by AiXLuxury',
@@ -90,7 +91,7 @@ export default function ServicesPage() {
                     >
                       <div>
                         <div className="flex items-center justify-between mb-4">
-                          <span className="text-2xl">{srv.icon}</span>
+                          <ServiceIconRenderer slug={srv.slug} className="w-6 h-6 text-[#C9A227]" />
                           <span className="text-[9px] font-mono px-2 py-0.5 rounded bg-[#111412] text-[#C9A227] border border-[#C9A227]/20 font-bold">
                             {srv.badge}
                           </span>

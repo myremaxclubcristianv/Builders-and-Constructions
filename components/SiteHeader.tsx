@@ -3,26 +3,89 @@
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useLanguage } from "@/lib/language-context";
 import { LiveRollingTicker } from "@/components/LiveRollingTicker";
 import { QuickContactModal } from "@/components/QuickContactModal";
+import { AlwaysOnFloatingContact } from "@/components/AlwaysOnFloatingContact";
+import {
+  ShieldIcon,
+  SearchIcon,
+  BriefcaseIcon,
+  BookIcon,
+  HardHatIcon,
+  RulerIcon,
+  LandmarkIcon,
+  MegaphoneIcon,
+  TruckIcon,
+  DocumentCheckIcon,
+  CreditCardIcon,
+  BuildingIcon,
+  TargetIcon,
+  StarIcon
+} from "@/components/icons/NavIcons";
 
 export function SiteHeader() {
+  const { language, toggleLanguage, t } = useLanguage();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [scrolled, setScrolled] = useState(false);
+  const [visible, setVisible] = useState(true);
   const pathname = usePathname();
   const headerRef = useRef<HTMLDivElement>(null);
+  const lastScrollYRef = useRef(0);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 15) {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > 15) {
         setScrolled(true);
       } else {
         setScrolled(false);
       }
+
+      // At top of page, always keep header visible
+      if (currentScrollY < 30) {
+        setVisible(true);
+        lastScrollYRef.current = currentScrollY;
+        return;
+      }
+
+      // Do not auto-hide when mobile drawer is open or dropdown is active
+      if (mobileMenuOpen || activeDropdown !== null) {
+        setVisible(true);
+        lastScrollYRef.current = currentScrollY;
+        return;
+      }
+
+      const diff = currentScrollY - lastScrollYRef.current;
+      // Filter out micro-scroll fluctuations to eliminate flicker
+      if (Math.abs(diff) < 8) return;
+
+      if (diff > 0 && currentScrollY > 80) {
+        // Scrolling down -> hide header
+        setVisible(false);
+      } else if (diff < 0) {
+        // Scrolling up -> reveal header
+        setVisible(true);
+      }
+
+      lastScrollYRef.current = currentScrollY;
     };
-    window.addEventListener("scroll", handleScroll);
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
+  }, [mobileMenuOpen, activeDropdown]);
+
+  // Ensure keyboard accessibility: keep header visible when focus moves into it
+  useEffect(() => {
+    const handleFocusIn = () => {
+      if (headerRef.current && headerRef.current.contains(document.activeElement)) {
+        setVisible(true);
+      }
+    };
+    document.addEventListener("focusin", handleFocusIn);
+    return () => document.removeEventListener("focusin", handleFocusIn);
   }, []);
 
   useEffect(() => {
@@ -86,10 +149,12 @@ export function SiteHeader() {
       {/* Top Header Bar */}
       <header
         ref={headerRef}
-        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 pt-[env(safe-area-inset-top)] ${
+        className={`fixed top-0 left-0 right-0 z-40 transition-transform duration-300 ease-out pt-[env(safe-area-inset-top)] ${
+          visible ? "translate-y-0" : "-translate-y-full"
+        } ${
           scrolled
-            ? "bg-[#050505]/95 backdrop-blur-md border-b border-[#1A1D1B] py-3"
-            : "bg-gradient-to-b from-[#050505]/90 via-[#050505]/60 to-transparent py-4"
+            ? "bg-[#050505]/95 backdrop-blur-md border-b border-[#1A1D1B] py-2"
+            : "bg-gradient-to-b from-[#050505]/95 via-[#050505]/80 to-transparent py-3"
         }`}
       >
         <LiveRollingTicker />
@@ -346,7 +411,7 @@ export function SiteHeader() {
                     : ""
                 }`}
               >
-                <span>SERVICII</span>
+                <span>SERVICES</span>
                 <span className="px-1.5 py-0.2 text-[9px] bg-[#C9A227]/20 text-[#C9A227] rounded font-mono font-bold">
                   13
                 </span>
@@ -371,13 +436,13 @@ export function SiteHeader() {
                   <div className="bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl shadow-2xl p-4 space-y-3 animate-fadeIn">
                     <div className="flex items-center justify-between pb-2 border-b border-[#1A1D1B]">
                       <span className="text-[10px] font-mono uppercase tracking-widest text-[#C9A227] font-bold">
-                        13 DIVIZII OFICIALE
+                        13 OFFICIAL DIVISIONS
                       </span>
                       <Link
                         href="/contact"
                         className="text-[10px] font-mono text-[#C9A227] hover:underline"
                       >
-                        Formular Ce cauți? →
+                        Inquiry Form →
                       </Link>
                     </div>
 
@@ -386,84 +451,84 @@ export function SiteHeader() {
                         href="/services/calitate-constructii"
                         className="p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors flex items-center gap-1.5"
                       >
-                        <span>🛡️</span>
+                        <ShieldIcon className="w-3.5 h-3.5 text-[#C9A227] shrink-0" />
                         <span className="truncate">Calitate Construcții</span>
                       </Link>
                       <Link
                         href="/services/controlul-calitatii"
                         className="p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors flex items-center gap-1.5"
                       >
-                        <span>🔍</span>
+                        <SearchIcon className="w-3.5 h-3.5 text-[#C9A227] shrink-0" />
                         <span className="truncate">Controlul Calității</span>
                       </Link>
                       <Link
                         href="/services/manager-calitate"
                         className="p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors flex items-center gap-1.5"
                       >
-                        <span>👔</span>
+                        <BriefcaseIcon className="w-3.5 h-3.5 text-[#C9A227] shrink-0" />
                         <span className="truncate">Manager Calitate</span>
                       </Link>
                       <Link
                         href="/services/cartea-tehnica"
                         className="p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors flex items-center gap-1.5"
                       >
-                        <span>📚</span>
+                        <BookIcon className="w-3.5 h-3.5 text-[#C9A227] shrink-0" />
                         <span className="truncate">Cartea Tehnică</span>
                       </Link>
                       <Link
                         href="/services/ssm"
                         className="p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors flex items-center gap-1.5"
                       >
-                        <span>⛑️</span>
+                        <HardHatIcon className="w-3.5 h-3.5 text-[#C9A227] shrink-0" />
                         <span className="truncate">Inspector SSM</span>
                       </Link>
                       <Link
                         href="/services/proiecte"
                         className="p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors flex items-center gap-1.5"
                       >
-                        <span>📐</span>
+                        <RulerIcon className="w-3.5 h-3.5 text-[#C9A227] shrink-0" />
                         <span className="truncate">Proiecte PT/DDE</span>
                       </Link>
                       <Link
                         href="/services/arhitecti"
                         className="p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors flex items-center gap-1.5"
                       >
-                        <span>🏛️</span>
+                        <LandmarkIcon className="w-3.5 h-3.5 text-[#C9A227] shrink-0" />
                         <span className="truncate">Arhitecți & PUZ</span>
                       </Link>
                       <Link
                         href="/services/publicitate"
                         className="p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors flex items-center gap-1.5"
                       >
-                        <span>📢</span>
+                        <MegaphoneIcon className="w-3.5 h-3.5 text-[#C9A227] shrink-0" />
                         <span className="truncate">Publicitate</span>
                       </Link>
                       <Link
                         href="/services/inchirieri-utilaje"
                         className="p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors flex items-center gap-1.5"
                       >
-                        <span>🚜</span>
+                        <TruckIcon className="w-3.5 h-3.5 text-[#C9A227] shrink-0" />
                         <span className="truncate">Închirieri Utilaje</span>
                       </Link>
                       <Link
                         href="/services/asigurari"
                         className="p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors flex items-center gap-1.5"
                       >
-                        <span>📑</span>
+                        <DocumentCheckIcon className="w-3.5 h-3.5 text-[#C9A227] shrink-0" />
                         <span className="truncate">Intermediere Asigurări</span>
                       </Link>
                       <Link
                         href="/services/credite"
                         className="p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors flex items-center gap-1.5"
                       >
-                        <span>💳</span>
+                        <CreditCardIcon className="w-3.5 h-3.5 text-[#C9A227] shrink-0" />
                         <span className="truncate">Credite & Finanțare</span>
                       </Link>
                       <Link
                         href="/services/vanzari-real-estate"
                         className="p-2 hover:bg-[#151515] rounded text-[#C5C5C5] hover:text-[#C9A227] transition-colors flex items-center gap-1.5"
                       >
-                        <span>🏢</span>
+                        <BuildingIcon className="w-3.5 h-3.5 text-[#C9A227] shrink-0" />
                         <span className="truncate">Vânzări Real Estate</span>
                       </Link>
                     </div>
@@ -473,7 +538,7 @@ export function SiteHeader() {
                         href="/services/imobiliare"
                         className="text-xs text-[#C5C5C5] hover:text-[#C9A227] flex items-center gap-1"
                       >
-                        <span>🎯</span> <span>Cauți proprietate?</span>
+                        <TargetIcon className="w-3.5 h-3.5 text-[#C9A227]" /> <span>Looking for property?</span>
                       </Link>
                       <Link
                         href="/services"
@@ -742,12 +807,24 @@ export function SiteHeader() {
               </svg>
             </Link>
 
+            {/* Language Switcher */}
+            <button
+              onClick={toggleLanguage}
+              aria-label="Toggle Romanian or English language"
+              className="px-2.5 py-1.5 bg-[#111111] hover:bg-[#1A1A1A] border border-[#1A1D1B] hover:border-[#C9A227]/40 text-xs font-mono rounded-lg transition-all flex items-center gap-1 cursor-pointer"
+              title={language === 'ro' ? 'Comută în Engleză / Switch to English' : 'Comută în Română / Switch to Romanian'}
+            >
+              <span className={language === 'ro' ? 'text-[#C9A227] font-bold' : 'text-[#888888]'}>RO</span>
+              <span className="text-[#444444]">/</span>
+              <span className={language === 'en' ? 'text-[#C9A227] font-bold' : 'text-[#888888]'}>EN</span>
+            </button>
+
             <Link
               href="/watchlist"
               className="px-3 py-1.5 bg-[#111111] hover:bg-[#1A1A1A] border border-[#1A1D1B] hover:border-[#C9A227]/40 text-[#C5C5C5] hover:text-[#C9A227] text-xs font-mono rounded-lg transition-all flex items-center gap-1.5"
             >
-              <span>★</span>
-              <span>WATCHLIST</span>
+              <StarIcon className="w-3.5 h-3.5 text-[#C9A227]" />
+              <span>{t('nav.watchlist', 'WATCHLIST')}</span>
             </Link>
             {/* Quick Always-On Contact Trigger */}
             <button
@@ -757,10 +834,10 @@ export function SiteHeader() {
                 }
               }}
               className="px-3 py-1.5 bg-[#141715] hover:bg-[#1C1F1D] border border-[#C9A227]/40 hover:border-[#C9A227] text-[#C9A227] text-xs font-mono font-medium rounded-lg transition-all flex items-center gap-1.5 cursor-pointer shadow-sm"
-              title="Deschide formularul de contact rapid"
+              title="Open Quick Contact Desk"
             >
-              <span>💬</span>
-              <span>Contact</span>
+              <svg className="w-3.5 h-3.5 text-[#C9A227]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>
+              <span>{t('action.contact', 'Contact')}</span>
             </button>
 
             {/* Main Intake CTA */}
@@ -768,7 +845,7 @@ export function SiteHeader() {
               href="/contact"
               className="px-3.5 py-1.5 bg-[#C9A227] hover:bg-[#d8b135] text-black text-xs font-mono font-bold rounded-lg transition-all flex items-center gap-1 shadow-sm"
             >
-              <span>Ce cauți?</span>
+              <span>{language === 'ro' ? 'Solicitare' : 'Inquiry'}</span>
               <span>→</span>
             </Link>
           </div>
@@ -776,27 +853,28 @@ export function SiteHeader() {
           {/* Mobile Menu Toggle Button (≥44px target) */}
           <div className="flex items-center gap-2 lg:hidden">
             <button
+              onClick={toggleLanguage}
+              aria-label="Toggle language"
+              className="h-10 px-2 flex items-center justify-center rounded-lg bg-[#141715] border border-[#1A1D1B] text-xs font-mono text-[#F3F1EB]"
+            >
+              <span className={language === 'ro' ? 'text-[#C9A227] font-bold' : 'text-[#888888]'}>RO</span>
+              <span className="text-[#444444] mx-0.5">/</span>
+              <span className={language === 'en' ? 'text-[#C9A227] font-bold' : 'text-[#888888]'}>EN</span>
+            </button>
+            <button
               onClick={() => {
                 if (typeof window !== "undefined") {
                   window.dispatchEvent(new CustomEvent("open-quick-contact", { detail: { interest: "general-contact" } }));
                 }
               }}
-              aria-label="Deschide contact"
+              aria-label="Open Contact Desk"
               className="w-10 h-10 flex items-center justify-center rounded-lg bg-[#141715] border border-[#C9A227]/40 text-[#C9A227] active:scale-95 transition-transform"
             >
               <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
               </svg>
             </button>
-            <Link
-              href="/search"
-              aria-label="Search"
-              className="w-11 h-11 flex items-center justify-center text-[#C5C5C5] active:text-[#C9A227] transition-colors"
-            >
-              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-              </svg>
-            </Link>
+            
 
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -817,6 +895,7 @@ export function SiteHeader() {
 
       {/* Always-On Quick Contact Modal */}
       <QuickContactModal />
+      <AlwaysOnFloatingContact />
 
       {/* Mobile Drawer (100% Mobile Parity with all sections) */}
       {mobileMenuOpen && (
@@ -852,7 +931,7 @@ export function SiteHeader() {
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
                   <h4 className="text-[10px] font-mono uppercase tracking-widest text-[#C9A227]">
-                    SERVICII OFICIALE ÎN CONSTRUCȚII
+                    OFFICIAL CONSTRUCTION DIVISIONS
                   </h4>
                   <span className="text-[9px] font-mono bg-[#C9A227]/20 text-[#C9A227] px-1.5 py-0.5 rounded font-bold">
                     13 DIVIZII
@@ -864,7 +943,7 @@ export function SiteHeader() {
                     onClick={() => setMobileMenuOpen(false)}
                     className="p-3 bg-[#C9A227] text-black rounded-xl text-xs font-mono font-bold flex items-center justify-between min-h-[44px]"
                   >
-                    <span>🎯 Ce cauți? (Lansează Solicitare)</span>
+                    <span>Launch Project Inquiry</span>
                     <span>→</span>
                   </Link>
                   <Link
@@ -872,7 +951,7 @@ export function SiteHeader() {
                     onClick={() => setMobileMenuOpen(false)}
                     className="p-3 bg-[#0E0F0E] border border-[#C9A227]/40 rounded-xl text-xs font-bold text-[#C9A227] flex items-center justify-between min-h-[44px]"
                   >
-                    <span>Catalog Complet Servicii</span>
+                    <span>Complete Services Catalog</span>
                     <span className="text-[10px] font-mono text-[#888888]">INDEX</span>
                   </Link>
                   <div className="grid grid-cols-2 gap-1.5 pt-1">
@@ -881,56 +960,56 @@ export function SiteHeader() {
                       onClick={() => setMobileMenuOpen(false)}
                       className="p-2.5 bg-[#0B0B0B] border border-[#1A1D1B] rounded-lg text-[11px] text-[#C5C5C5] hover:text-[#C9A227] flex items-center gap-1 min-h-[44px]"
                     >
-                      <span>🛡️</span> <span className="truncate">Calitate Constr.</span>
+                      <ShieldIcon className="w-3.5 h-3.5 text-[#C9A227] shrink-0" /> <span className="truncate">Quality Assurance</span>
                     </Link>
                     <Link
                       href="/services/controlul-calitatii"
                       onClick={() => setMobileMenuOpen(false)}
                       className="p-2.5 bg-[#0B0B0B] border border-[#1A1D1B] rounded-lg text-[11px] text-[#C5C5C5] hover:text-[#C9A227] flex items-center gap-1 min-h-[44px]"
                     >
-                      <span>🔍</span> <span className="truncate">Control Calitate</span>
+                      <SearchIcon className="w-3.5 h-3.5 text-[#C9A227] shrink-0" /> <span className="truncate">Quality Control</span>
                     </Link>
                     <Link
                       href="/services/manager-calitate"
                       onClick={() => setMobileMenuOpen(false)}
                       className="p-2.5 bg-[#0B0B0B] border border-[#1A1D1B] rounded-lg text-[11px] text-[#C5C5C5] hover:text-[#C9A227] flex items-center gap-1 min-h-[44px]"
                     >
-                      <span>👔</span> <span className="truncate">Manager Calitate</span>
+                      <BriefcaseIcon className="w-3.5 h-3.5 text-[#C9A227] shrink-0" /> <span className="truncate">Quality Manager</span>
                     </Link>
                     <Link
                       href="/services/cartea-tehnica"
                       onClick={() => setMobileMenuOpen(false)}
                       className="p-2.5 bg-[#0B0B0B] border border-[#1A1D1B] rounded-lg text-[11px] text-[#C5C5C5] hover:text-[#C9A227] flex items-center gap-1 min-h-[44px]"
                     >
-                      <span>📚</span> <span className="truncate">Cartea Tehnică</span>
+                      <BookIcon className="w-3.5 h-3.5 text-[#C9A227] shrink-0" /> <span className="truncate">Technical Book</span>
                     </Link>
                     <Link
                       href="/services/ssm"
                       onClick={() => setMobileMenuOpen(false)}
                       className="p-2.5 bg-[#0B0B0B] border border-[#1A1D1B] rounded-lg text-[11px] text-[#C5C5C5] hover:text-[#C9A227] flex items-center gap-1 min-h-[44px]"
                     >
-                      <span>⛑️</span> <span className="truncate">Inspector SSM</span>
+                      <HardHatIcon className="w-3.5 h-3.5 text-[#C9A227] shrink-0" /> <span className="truncate">Safety / SSM</span>
                     </Link>
                     <Link
                       href="/services/proiecte"
                       onClick={() => setMobileMenuOpen(false)}
                       className="p-2.5 bg-[#0B0B0B] border border-[#1A1D1B] rounded-lg text-[11px] text-[#C5C5C5] hover:text-[#C9A227] flex items-center gap-1 min-h-[44px]"
                     >
-                      <span>📐</span> <span className="truncate">Proiecte PT</span>
+                      <RulerIcon className="w-3.5 h-3.5 text-[#C9A227] shrink-0" /> <span className="truncate">Technical Design</span>
                     </Link>
                     <Link
                       href="/services/inchirieri-utilaje"
                       onClick={() => setMobileMenuOpen(false)}
                       className="p-2.5 bg-[#0B0B0B] border border-[#1A1D1B] rounded-lg text-[11px] text-[#C5C5C5] hover:text-[#C9A227] flex items-center gap-1 min-h-[44px]"
                     >
-                      <span>🚜</span> <span className="truncate">Utilaje Grele</span>
+                      <TruckIcon className="w-3.5 h-3.5 text-[#C9A227] shrink-0" /> <span className="truncate">Heavy Equipment</span>
                     </Link>
                     <Link
                       href="/services/asigurari"
                       onClick={() => setMobileMenuOpen(false)}
                       className="p-2.5 bg-[#0B0B0B] border border-[#1A1D1B] rounded-lg text-[11px] text-[#C5C5C5] hover:text-[#C9A227] flex items-center gap-1 min-h-[44px]"
                     >
-                      <span>📑</span> <span className="truncate">Asigurări CAR</span>
+                      <DocumentCheckIcon className="w-3.5 h-3.5 text-[#C9A227] shrink-0" /> <span className="truncate">CAR Insurance</span>
                     </Link>
                   </div>
                 </div>
@@ -1138,7 +1217,7 @@ export function SiteHeader() {
                     onClick={() => setMobileMenuOpen(false)}
                     className="p-3 bg-[#0B0B0B] border border-[#1A1D1B] rounded-xl text-xs font-medium text-[#C9A227] flex items-center justify-between min-h-[44px]"
                   >
-                    <span>★ My Watchlist</span>
+                    <span className="flex items-center gap-1.5"><StarIcon className="w-3.5 h-3.5 text-[#C9A227]" /><span>My Watchlist</span></span>
                     <span className="text-xs text-[#C9A227]">→</span>
                   </Link>
                 </div>

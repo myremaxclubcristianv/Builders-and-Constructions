@@ -1,14 +1,19 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
 import { SiteHeader } from '@/components/SiteHeader';
 import { SiteFooter } from '@/components/SiteFooter';
 
-export default function ReportErrorPage() {
+function ReportErrorContent() {
+  const searchParams = useSearchParams();
+  const initialEntity = searchParams.get('entity') || '';
+  const initialType = searchParams.get('type') || 'Company';
+
   const [formData, setFormData] = useState({
-    entityType: 'Company',
-    entityName: '',
+    entityType: initialType === 'Project' ? 'Project' : 'Company',
+    entityName: initialEntity,
     fieldToCorrect: '',
     currentValue: '',
     proposedValue: '',
@@ -17,6 +22,16 @@ export default function ReportErrorPage() {
     contactEmail: '',
     notes: ''
   });
+
+  useEffect(() => {
+    if (initialEntity) {
+      setFormData(prev => ({
+        ...prev,
+        entityName: initialEntity,
+        entityType: initialType === 'Project' ? 'Project' : 'Company'
+      }));
+    }
+  }, [initialEntity, initialType]);
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
@@ -217,5 +232,13 @@ export default function ReportErrorPage() {
       </main>
       <SiteFooter />
     </div>
+  );
+}
+
+export default function ReportErrorPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-[#050505]" />}>
+      <ReportErrorContent />
+    </Suspense>
   );
 }

@@ -7,6 +7,8 @@ import {
   RealProject,
   RealSource
 } from '@/lib/real-romanian-data';
+import { OFFICIAL_SERVICES } from '@/lib/services-config';
+import { searchKnowledge, KnowledgeSearchResult } from '@/lib/knowledge-data';
 
 export { realCompaniesDataset, realProjectsDataset, realLocationsDataset };
 
@@ -809,6 +811,23 @@ function normalizeDiacritics(str: string): string {
     .replace(/î/g, 'i');
 }
 
+const SEARCH_SYNONYMS: Record<string, string[]> = {
+  highway: ['autostrada', 'motorway', 'drum', 'infrastructura'],
+  motorway: ['autostrada', 'highway', 'drum', 'infrastructura'],
+  permitting: ['autorizare', 'dtac', 'urbanism', 'puz', 'pug', 'avize', 'planning'],
+  dispute: ['litigii', 'reclamatii', 'arbitraj', 'daune', 'expertiza', 'claims', 'audit', 'due diligence'],
+};
+
+function matchesTokens(text: string, tokens: string[]): boolean {
+  if (!text || tokens.length === 0) return false;
+  return tokens.every(token => {
+    if (text.includes(token)) return true;
+    const synonyms = SEARCH_SYNONYMS[token];
+    if (synonyms && synonyms.some(syn => text.includes(syn))) return true;
+    return false;
+  });
+}
+
 export async function searchIntelligenceGlobal(term: string) {
   const rawQuery = term.toLowerCase().trim();
   const normalizedQuery = normalizeDiacritics(rawQuery);
@@ -816,23 +835,24 @@ export async function searchIntelligenceGlobal(term: string) {
     return {
       matchingCompanies: [],
       matchingProjects: [],
+      matchingServices: [],
+      matchingKnowledge: [],
       matchingSignals: [],
       matchingArticles: []
     };
   }
+
+  const queryTokens = normalizedQuery.split(/\s+/).filter(Boolean);
 
   const matchingCompanies = mappedRealCompanies.filter(c => {
     const nameNorm = normalizeDiacritics(c.name);
     const descNorm = normalizeDiacritics(c.description || '');
     const locNorm = normalizeDiacritics(c.location || '');
     const typeNorm = normalizeDiacritics(c.type || '');
-    const specsNorm = (c.specializations || []).map(normalizeDiacritics);
+    const specsNorm = (c.specializations || []).map(normalizeDiacritics).join(' ');
+    const fullText = `${nameNorm} ${descNorm} ${locNorm} ${typeNorm} ${specsNorm} ${c.slug}`;
 
-    return nameNorm.includes(normalizedQuery) ||
-      descNorm.includes(normalizedQuery) ||
-      locNorm.includes(normalizedQuery) ||
-      typeNorm.includes(normalizedQuery) ||
-      specsNorm.some(s => s.includes(normalizedQuery));
+    return fullText.includes(normalizedQuery) || matchesTokens(fullText, queryTokens);
   });
 
   const matchingProjects = mappedRealProjects.filter(p => {
@@ -843,14 +863,9 @@ export async function searchIntelligenceGlobal(term: string) {
     const devNorm = normalizeDiacritics(p.developer || '');
     const gcNorm = normalizeDiacritics(p.contractor_name || '');
     const archNorm = normalizeDiacritics(p.architect_name || '');
+    const fullText = `${nameNorm} ${descNorm} ${locNorm} ${typeNorm} ${devNorm} ${gcNorm} ${archNorm} ${p.slug}`;
 
-    return nameNorm.includes(normalizedQuery) ||
-      descNorm.includes(normalizedQuery) ||
-      locNorm.includes(normalizedQuery) ||
-      typeNorm.includes(normalizedQuery) ||
-      devNorm.includes(normalizedQuery) ||
-      gcNorm.includes(normalizedQuery) ||
-      archNorm.includes(normalizedQuery);
+    return fullText.includes(normalizedQuery) || matchesTokens(fullText, queryTokens);
   });
 
   const hubData = await getIndustryHubData();
@@ -859,16 +874,30 @@ export async function searchIntelligenceGlobal(term: string) {
     const sumNorm = normalizeDiacritics(s.summary || '');
     const compNorm = normalizeDiacritics(s.company_name || '');
     const locNorm = normalizeDiacritics(s.location || '');
+    const fullText = `${titleNorm} ${sumNorm} ${compNorm} ${locNorm}`;
 
-    return titleNorm.includes(normalizedQuery) ||
-      sumNorm.includes(normalizedQuery) ||
-      compNorm.includes(normalizedQuery) ||
-      locNorm.includes(normalizedQuery);
+    return fullText.includes(normalizedQuery) || matchesTokens(fullText, queryTokens);
   });
+
+  const matchingServices = OFFICIAL_SERVICES.filter(srv => {
+    const titleNorm = normalizeDiacritics(srv.title);
+    const shortDescNorm = normalizeDiacritics(srv.shortDescription || '');
+    const fullDescNorm = normalizeDiacritics(srv.fullDescription || '');
+    const catNorm = normalizeDiacritics(srv.categoryLabel || '');
+    const deliverablesNorm = (srv.deliverables || []).map(normalizeDiacritics).join(' ');
+    const keywordsNorm = (srv.searchKeywords || []).map(normalizeDiacritics).join(' ');
+    const fullText = `${titleNorm} ${shortDescNorm} ${fullDescNorm} ${catNorm} ${deliverablesNorm} ${keywordsNorm} ${srv.slug}`;
+
+    return fullText.includes(normalizedQuery) || matchesTokens(fullText, queryTokens);
+  });
+
+  const matchingKnowledge: KnowledgeSearchResult[] = searchKnowledge(normalizedQuery);
 
   return {
     matchingCompanies,
     matchingProjects,
+    matchingServices,
+    matchingKnowledge,
     matchingSignals,
     matchingArticles: []
   };

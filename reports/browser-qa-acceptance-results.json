@@ -1,0 +1,250 @@
+{
+  "timestamp": "2026-11-08T09:46:10.497Z",
+  "browser": "Google Chrome 156.0.8078.80 (Headless CDP)",
+  "baseUrl": "http://localhost:3005",
+  "viewportsTested": [
+    "desktop-1440 (1440x900)",
+    "desktop-1280 (1280x800)",
+    "tablet-768 (768x1024)",
+    "mobile-390 (390x844)",
+    "mobile-375 (375x667)"
+  ],
+  "tests": [
+    {
+      "name": "Responsive Layout (desktop-1440 - 1440px): Zero Horizontal Overflow",
+      "status": "PASS",
+      "details": "scrollWidth: 1440px, innerWidth: 1440px",
+      "evidence": {
+        "viewport": {
+          "name": "desktop-1440",
+          "width": 1440,
+          "height": 900,
+          "isMobile": false
+        },
+        "overflow": {
+          "scrollWidth": 1440,
+          "innerWidth": 1440,
+          "hasOverflow": false
+        }
+      }
+    },
+    {
+      "name": "Responsive Layout (desktop-1280 - 1280px): Zero Horizontal Overflow",
+      "status": "PASS",
+      "details": "scrollWidth: 1280px, innerWidth: 1280px",
+      "evidence": {
+        "viewport": {
+          "name": "desktop-1280",
+          "width": 1280,
+          "height": 800,
+          "isMobile": false
+        },
+        "overflow": {
+          "scrollWidth": 1280,
+          "innerWidth": 1280,
+          "hasOverflow": false
+        }
+      }
+    },
+    {
+      "name": "Responsive Layout (tablet-768 - 768px): Zero Horizontal Overflow",
+      "status": "PASS",
+      "details": "scrollWidth: 768px, innerWidth: 768px",
+      "evidence": {
+        "viewport": {
+          "name": "tablet-768",
+          "width": 768,
+          "height": 1024,
+          "isMobile": true
+        },
+        "overflow": {
+          "scrollWidth": 768,
+          "innerWidth": 768,
+          "hasOverflow": false
+        }
+      }
+    },
+    {
+      "name": "Responsive Layout (mobile-390 - 390px): Zero Horizontal Overflow",
+      "status": "PASS",
+      "details": "scrollWidth: 390px, innerWidth: 390px",
+      "evidence": {
+        "viewport": {
+          "name": "mobile-390",
+          "width": 390,
+          "height": 844,
+          "isMobile": true
+        },
+        "overflow": {
+          "scrollWidth": 390,
+          "innerWidth": 390,
+          "hasOverflow": false
+        }
+      }
+    },
+    {
+      "name": "Responsive Layout (mobile-375 - 375px): Zero Horizontal Overflow",
+      "status": "PASS",
+      "details": "scrollWidth: 375px, innerWidth: 375px",
+      "evidence": {
+        "viewport": {
+          "name": "mobile-375",
+          "width": 375,
+          "height": 667,
+          "isMobile": true
+        },
+        "overflow": {
+          "scrollWidth": 375,
+          "innerWidth": 375,
+          "hasOverflow": false
+        }
+      }
+    },
+    {
+      "name": "Homepage Identity & Navigation Structure",
+      "status": "PASS",
+      "details": "Title: \"CONSTRUCTIONS by AiXLuxury\", Header Nav Elements: 44",
+      "evidence": {
+        "title": "CONSTRUCTIONS by AiXLuxury",
+        "navItemsCount": 44,
+        "ctas": []
+      }
+    },
+    {
+      "name": "Mobile Menu Toggle & Navigation Drawer (390px)",
+      "status": "PASS",
+      "details": "Toggle button detected: true, Drawer opened on click: true",
+      "evidence": {
+        "mobileMenuButton": true,
+        "drawerVisibleAfterClick": true
+      }
+    },
+    {
+      "name": "RO/EN Localization Switcher, Reactive DOM & Persistence",
+      "status": "PASS",
+      "details": "Default: ro -> Switched: en, localStorage: en",
+      "evidence": {
+        "initialHtmlLang": "ro",
+        "switchedHtmlLang": "en",
+        "localStorageLang": "en"
+      }
+    },
+    {
+      "name": "National Construction Map (53 Coordinates, Radar Grid & Inspector Card)",
+      "status": "PASS",
+      "details": "SVG Canvas: true, Project Markers: 76, Frontier Contour: true, Inspector Active: false",
+      "evidence": {
+        "mapCanvasExists": true,
+        "markerCount": 76,
+        "frontierOutlineExists": true,
+        "inspectorHasMetrics": false
+      }
+    },
+    {
+      "name": "Technical Knowledge Database & Standards Cross-Reference Matrix",
+      "status": "PASS",
+      "details": "Eurocodes (EN 1990, P100-1, NE 012-1) Present: true, Legal Engineering Disclaimer Present: true",
+      "evidence": {
+        "hasEurocodes": true,
+        "hasDisclaimer": true
+      }
+    },
+    {
+      "name": "Search Discovery Terminal & Bidirectional URL State Synchronization",
+      "status": "PASS",
+      "details": "URL with query: http://localhost:3005/search?q=One -> URL after reset: http://localhost:3005/search, Input: \"\"",
+      "evidence": {
+        "urlAfterTyping": "http://localhost:3005/search?q=One",
+        "urlAfterReset": "http://localhost:3005/search",
+        "inputValAfterReset": ""
+      }
+    },
+    {
+      "name": "Dacia One Office: Zero Reused Stock Photo & Honest Not-Disclosed State",
+      "status": "PASS",
+      "details": "Honest baseline badge rendered: true, Stock image src: None (honest empty)",
+      "evidence": {
+        "daciaHasHonestBadge": true,
+        "daciaImg": null
+      }
+    },
+    {
+      "name": "CTPark Bucharest West: Explicit Dimension Segregation (Land, Operational, Masterplan)",
+      "status": "PASS",
+      "details": "300 ha land: true, 800,000 m² operational GLA: true, 850,000 m² masterplan: true",
+      "evidence": {
+        "hasLandPlot": true,
+        "hasOperationalGla": true,
+        "hasMasterplanGla": true
+      }
+    },
+    {
+      "name": "Project Dossier: Report Error / Correction Workflow Action Visible",
+      "status": "PASS",
+      "details": "Correction button detected on project dossier: true",
+      "evidence": {
+        "correctionBtnExists": true
+      }
+    },
+    {
+      "name": "Company Dossier: Tier 1 Regulatory Disclosures & Verification",
+      "status": "PASS",
+      "details": "Company identity & verification disclosures rendered: true",
+      "evidence": {
+        "compVerified": true
+      }
+    },
+    {
+      "name": "Watchlist Terminal: Local Storage Persistence, Card Resolution & Item Removal",
+      "status": "PASS",
+      "details": "Empty State: true, Rendered Item: true, Remove Action Succeeded: true",
+      "evidence": {
+        "hasEmptyState": true,
+        "hasRenderedSavedItem": true,
+        "remainingItems": 0
+      }
+    },
+    {
+      "name": "Institutional Sample Report: Fact vs Estimate Demarcation & Capex Tables",
+      "status": "PASS",
+      "details": "Fact vs Estimate markers: true, Capex benchmarks: true",
+      "evidence": {
+        "hasFactEstimate": true,
+        "hasCapexMetrics": true
+      }
+    },
+    {
+      "name": "Newsletter Subscription: Form Presence & Client-Side Validation",
+      "status": "PASS",
+      "details": "Newsletter Input Present: true, Browser HTML5 Email Validation Active: true",
+      "evidence": {
+        "hasNewsletterSection": true,
+        "hasValidationPrompt": true
+      }
+    },
+    {
+      "name": "Admin Private Route Layout Guard: Unauthorized Redirect to /admin/login",
+      "status": "PASS",
+      "details": "Navigating to /admin resulted in current URL: http://localhost:3005/admin/login?next=%2Fadmin",
+      "evidence": {
+        "currentUrl": "http://localhost:3005/admin/login?next=%2Fadmin",
+        "isRedirectedToLogin": true
+      }
+    },
+    {
+      "name": "Browser Console Diagnostics: Zero Critical Errors & Zero Hydration Mismatches",
+      "status": "PASS",
+      "details": "Page Exceptions: 0, Hydration Mismatches: 0, Console Errors: 0",
+      "evidence": {
+        "pageErrors": [],
+        "hydrationErrors": [],
+        "consoleErrors": []
+      }
+    }
+  ],
+  "summary": {
+    "total": 20,
+    "passed": 20,
+    "failed": 0
+  }
+}

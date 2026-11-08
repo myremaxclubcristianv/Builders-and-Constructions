@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import { SiteHeader } from '@/components/SiteHeader';
 import { SiteFooter } from '@/components/SiteFooter';
 
@@ -83,11 +84,76 @@ export default function MethodologyPage() {
             </div>
           </section>
 
-          <section className="space-y-3">
-            <h2 className="text-xl font-bold text-white">3. Qualification & Scope Preservation</h2>
+          <section className="space-y-4">
+            <h2 className="text-xl font-bold text-white">3. Verification Status Taxonomy</h2>
             <p>
-              Source qualifiers are strictly preserved across UI renderings and metadata. Future completion estimates are marked as <code className="text-[#C9A227]">ANNOUNCED</code> rather than achieved facts. Specific development phase metrics (Phase 1 vs Total Site) are demarcated to prevent scope confusion.
+              To maintain absolute transparency, every factual claim, metric, and entity dossier in CONSTRUCTIONS is assigned a distinct verification state:
             </p>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+              <div className="p-4 bg-[#111111] border border-[#22c55e]/40 rounded-xl space-y-1.5">
+                <div className="flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-[#22c55e]" />
+                  <span className="text-xs font-mono font-bold text-[#22c55e] uppercase">VERIFIED / CONFIRMAT</span>
+                </div>
+                <p className="text-xs text-[#d4d2c8]">
+                  Independently confirmed via official registry filing (ONRC, ANAF, ANCPI), municipal building permit, statutory stock exchange release (BVB), or primary audited documentation.
+                </p>
+              </div>
+
+              <div className="p-4 bg-[#111111] border border-[#38bdf8]/40 rounded-xl space-y-1.5">
+                <div className="flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-[#38bdf8]" />
+                  <span className="text-xs font-mono font-bold text-[#38bdf8] uppercase">REPORTED / RAPORTAT</span>
+                </div>
+                <p className="text-xs text-[#d4d2c8]">
+                  Publicly disclosed directly by the corporate entity, developer release, or established financial media, pending statutory registry cross-validation.
+                </p>
+              </div>
+
+              <div className="p-4 bg-[#111111] border border-[#eab308]/40 rounded-xl space-y-1.5">
+                <div className="flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-[#eab308]" />
+                  <span className="text-xs font-mono font-bold text-[#eab308] uppercase">ESTIMATED / ESTIMAT</span>
+                </div>
+                <p className="text-xs text-[#d4d2c8]">
+                  Derived mathematical projection based on documented gross surfaces, typical construction benchmarks, or published timelines. Never presented as achieved fact.
+                </p>
+              </div>
+
+              <div className="p-4 bg-[#111111] border border-[#888888]/40 rounded-xl space-y-1.5">
+                <div className="flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-[#888888]" />
+                  <span className="text-xs font-mono font-bold text-[#888888] uppercase">NOT DISCLOSED / NEVERIFICAT</span>
+                </div>
+                <p className="text-xs text-[#d4d2c8]">
+                  Explicit indicator where specific contracts, CUI, engineering partners, or financial metrics have not been made available in primary public sources.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <section className="space-y-3">
+            <h2 className="text-xl font-bold text-white">4. Curated Scope & Platform Boundaries</h2>
+            <p>
+              CONSTRUCTIONS by AiXLuxury operates on the principle of <em>verified depth over unsupported market-wide claims</em>. The database currently documents <strong>76 verified development projects</strong> and <strong>143 commercial corporate entities</strong> across Romania.
+            </p>
+            <p>
+              This dataset constitutes an expanding, curated institutional intelligence index and does not claim to represent 100% of active construction or all small residential structures across Romania. Physical dimensions (surface areas, unit counts, infrastructure lengths) are categorized explicitly by scope: Land Area, Gross Built Area, GLA, Masterplan Area, and Phase Area.
+            </p>
+          </section>
+
+          <section className="space-y-3">
+            <h2 className="text-xl font-bold text-white">5. Public Corrections & Profile Update Policy</h2>
+            <p>
+              Authorized corporate representatives, architects, engineers, and general contractors may request updates or corrections to public dossiers at any time. We operate a transparent, evidence-based review desk:
+            </p>
+            <ul className="list-disc pl-5 space-y-1.5 text-xs text-[#CCCCCC]">
+              <li>Submit factual corrections via the dedicated <Link href="/report-error" className="text-[#C9A227] underline">Correction & Request Desk</Link>.</li>
+              <li>Provide primary source citations (official website link, registration document, regulatory filing, or permit reference).</li>
+              <li>Direct anonymous modifications of public dossiers are prohibited; all submissions undergo review prior to inclusion in the canonical dataset.</li>
+              <li>Inquiries and requests are evaluated in order of receipt and verified strictly against primary sources.</li>
+            </ul>
           </section>
         </div>
       </main>

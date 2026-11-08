@@ -1,13 +1,22 @@
-import {getAdminIdentity} from '@/lib/admin-auth';
-import {AdminNav} from '@/components/AdminNav';
-import {Executive3DGrid} from '@/components/Executive3DGrid';
+import { getAdminIdentity, requireAdmin } from '@/lib/admin-auth';
+import { AdminNav } from '@/components/AdminNav';
+import { Executive3DGrid } from '@/components/Executive3DGrid';
+import { headers } from 'next/headers';
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
-export const metadata={title:'Executive Intelligence Terminal | CONSTRUCTIONS',robots:{index:false,follow:false}};
+export const metadata = { title: 'Executive Intelligence Terminal | CONSTRUCTIONS', robots: { index: false, follow: false } };
 
-export default async function AdminLayout({children}:{children:React.ReactNode}){
+export default async function AdminLayout({ children }: { children: React.ReactNode }) {
+  const reqHeaders = await headers();
+  const pathname = reqHeaders.get('x-pathname');
+
+  // Secure server-side layout guard: always require admin unless explicitly on the public /admin/login route
+  if (pathname !== '/admin/login') {
+    await requireAdmin();
+  }
+
   const identity = await getAdminIdentity();
 
   return (

@@ -7,6 +7,7 @@ import { CompanyIntelligencePreview } from '@/components/CompanyIntelligencePrev
 import { REAL_CONSTRUCTIONS_VIDEOS } from '@/lib/video-data';
 import { VideoCard } from '@/components/VideoCard';
 import { safeJsonLdStringify } from '@/lib/sanitize';
+import { NewsletterSubscription } from '@/components/NewsletterSubscription';
 
 import { realCompaniesDataset, realProjectsDataset } from '@/lib/real-romanian-data';
 
@@ -86,8 +87,8 @@ export default async function Home() {
                 </span> FOR ROMANIA
               </h1>
 
-              <p className="text-sm md:text-base text-[#A0A0A0] leading-relaxed max-w-xl font-normal">
-                An expanding intelligence database documenting developers, real estate agencies, general contractors, structural engineers, and architectural practices shaping Romania&apos;s built environment.
+              <p className="text-sm md:text-base text-[#D4D2C8] leading-relaxed max-w-2xl font-normal">
+                Platformă independentă de analiză și transparență în construcții dedicată cumpărătorilor, investitorilor instituționali, antreprenorilor generali și furnizorilor de materiale din România. Curated depth over unsupported market-wide claims.
               </p>
 
               <div className="flex flex-wrap items-center gap-3 pt-2">
@@ -98,16 +99,70 @@ export default async function Home() {
                   Explore Projects ({projectCount})
                 </Link>
                 <Link
-                  href="/developers"
+                  href="/companies"
                   className="px-6 py-3.5 bg-[#111111] border border-[#1A1D1B] text-white font-mono text-xs font-semibold uppercase tracking-wider rounded-lg hover:border-[#C9A227]/50 active:scale-95 transition-all text-center min-w-[140px]"
                 >
-                  Explore Developers ({devCount})
+                  Verify a Company ({companyList.length})
                 </Link>
                 <Link
-                  href="/map"
+                  href="/methodology"
                   className="px-4 py-3.5 text-[#C9A227] hover:text-[#E4C58F] font-mono text-xs font-medium uppercase tracking-wider transition-colors flex items-center gap-1"
                 >
-                  <span>Interactive Map</span>
+                  <span>How We Verify</span>
+                  <span>→</span>
+                </Link>
+              </div>
+            </div>
+
+            {/* THREE CORE ENTRANCE PATHWAYS */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-12 mt-12 border-t border-[#1A1D1B]">
+              <div className="p-6 bg-[#0E0E0E] border border-[#1A1D1B] rounded-2xl flex flex-col justify-between space-y-4 hover:border-[#C9A227]/40 transition-all">
+                <div className="space-y-2">
+                  <div className="flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-[#C9A227]" />
+                    <span className="text-[10px] font-mono uppercase tracking-widest text-[#C9A227]">01 · CUMPĂRĂTORI & INVESTITORI</span>
+                  </div>
+                  <h3 className="text-base font-bold text-white">Cercetare Pre-Achiziție</h3>
+                  <p className="text-xs text-[#A0A0A0] leading-relaxed">
+                    Verifică istoricul dezvoltatorului, autorizațiile, stadiul real de execuție pe șantier și riscurile documentate înainte de un angajament financiar.
+                  </p>
+                </div>
+                <Link href="/projects" className="text-xs font-mono font-bold text-[#C9A227] hover:underline flex items-center gap-1">
+                  <span>Explorează Proiecte</span>
+                  <span>→</span>
+                </Link>
+              </div>
+
+              <div className="p-6 bg-[#0E0E0E] border border-[#1A1D1B] rounded-2xl flex flex-col justify-between space-y-4 hover:border-[#C9A227]/40 transition-all">
+                <div className="space-y-2">
+                  <div className="flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-[#38bdf8]" />
+                    <span className="text-[10px] font-mono uppercase tracking-widest text-[#38bdf8]">02 · COMPANII DIN CONSTRUCȚII</span>
+                  </div>
+                  <h3 className="text-base font-bold text-white">Dosare & Oportunități</h3>
+                  <p className="text-xs text-[#A0A0A0] leading-relaxed">
+                    Consultă profiluri tehnice verificate, cifre financiare, portofolii de proiecte și solicită actualizarea sau revendicarea profilului companiei.
+                  </p>
+                </div>
+                <Link href="/companies" className="text-xs font-mono font-bold text-[#38bdf8] hover:underline flex items-center gap-1">
+                  <span>Verifică Companii</span>
+                  <span>→</span>
+                </Link>
+              </div>
+
+              <div className="p-6 bg-[#0E0E0E] border border-[#1A1D1B] rounded-2xl flex flex-col justify-between space-y-4 hover:border-[#C9A227]/40 transition-all">
+                <div className="space-y-2">
+                  <div className="flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-[#22c55e]" />
+                    <span className="text-[10px] font-mono uppercase tracking-widest text-[#22c55e]">03 · FURNIZORI & PROFESIONIȘTI</span>
+                  </div>
+                  <h3 className="text-base font-bold text-white">Rețea & Parteneri</h3>
+                  <p className="text-xs text-[#A0A0A0] leading-relaxed">
+                    Identifică șantiere active în execuție, proiectanți structurali, ingineri de instalații și antreprenori generali pentru parteneriate comerciale.
+                  </p>
+                </div>
+                <Link href="/network" className="text-xs font-mono font-bold text-[#22c55e] hover:underline flex items-center gap-1">
+                  <span>Descoperă Rețeaua</span>
                   <span>→</span>
                 </Link>
               </div>
@@ -478,12 +533,62 @@ export default async function Home() {
           </div>
         </section>
 
+        {/* NATIONAL CONSTRUCTION MAP PREVIEW */}
+        <section className="py-12 md:py-16 bg-[#070707] border-b border-[#1A1D1B]">
+          <div className="max-w-[1440px] mx-auto px-4 md:px-8 space-y-6">
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-[#1A1D1B] pb-4">
+              <div>
+                <span className="text-[10px] font-mono uppercase tracking-widest text-[#C9A227] block mb-1">
+                  National Geographic Intelligence
+                </span>
+                <h2 className="text-xl md:text-3xl font-extrabold text-white tracking-tight">
+                  CONSTRUCTION HUBS & SITE DENSITY
+                </h2>
+              </div>
+              <Link
+                href="/map"
+                className="text-xs font-mono text-[#C9A227] hover:underline flex items-center gap-1"
+              >
+                <span>Deschide Harta Interactivă Completă</span>
+                <span>→</span>
+              </Link>
+            </div>
+
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+              {[
+                { name: 'București & Ilfov', query: 'bucharest', count: 42, active: 28 },
+                { name: 'Cluj-Napoca', query: 'cluj', count: 9, active: 5 },
+                { name: 'Timișoara', query: 'timisoara', count: 8, active: 4 },
+                { name: 'Iași', query: 'iasi', count: 5, active: 3 },
+                { name: 'Brașov', query: 'brasov', count: 4, active: 2 },
+                { name: 'Constanța', query: 'constanta', count: 4, active: 2 }
+              ].map(hub => (
+                <Link
+                  key={hub.name}
+                  href={`/projects?q=${hub.query}`}
+                  className="p-4 bg-[#111111] border border-[#1A1D1B] rounded-xl hover:border-[#C9A227]/40 transition-all group"
+                >
+                  <span className="text-[10px] font-mono text-[#888888] uppercase tracking-wider block truncate group-hover:text-[#C9A227]">
+                    {hub.name}
+                  </span>
+                  <div className="text-2xl font-bold font-mono text-white mt-1">
+                    {hub.count}
+                  </div>
+                  <div className="text-[10px] font-mono text-[#22c55e] mt-0.5">
+                    {hub.active} Active Sites
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* 07 — LATEST ACTIVITY FEED */}
         <section className="py-12 md:py-20 bg-[#0B0B0B] border-b border-[#1A1D1B]">
           <div className="max-w-[1440px] mx-auto px-4 md:px-8">
             <div className="mb-8">
               <span className="text-[10px] font-mono uppercase tracking-widest text-[#C9A227] block mb-1">
-                Market Activity Stream · Latest Verified Signal: 24 Aug 2026
+                Verified Market Archive · Last Logged Signal: 24 Aug 2026
               </span>
               <h2 className="text-2xl md:text-4xl font-extrabold text-white tracking-tight">
                 VERIFIED MARKET SIGNALS
@@ -515,17 +620,20 @@ export default async function Home() {
           </div>
         </section>
 
-        {/* FROM THE CONSTRUCTIONS DESK — VIDEO SHOWCASE */}
+        {/* FROM THE CONSTRUCTIONS DESK — EDITORIAL VIDEO SHOWCASE */}
         <section className="py-12 md:py-20 bg-[#050505] border-b border-[#1A1D1B]">
           <div className="max-w-[1440px] mx-auto px-4 md:px-8">
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
               <div>
                 <span className="text-[10px] font-mono uppercase tracking-widest text-[#C9A227] block mb-1">
-                  Editorial Media Desk
+                  Editorial Media Desk · Conținut de Opinie & Documentar Șantier
                 </span>
                 <h2 className="text-2xl md:text-4xl font-extrabold text-white tracking-tight">
                   FROM THE CONSTRUCTIONS DESK
                 </h2>
+                <p className="text-xs text-[#888888] mt-1 max-w-2xl">
+                  Perspective video, analize de piață și vizite pe șantier realizate de echipa editorială. Conținut analitic distinct de registrele primare oficiale.
+                </p>
               </div>
               <Link
                 href="/video"
@@ -544,7 +652,14 @@ export default async function Home() {
           </div>
         </section>
 
-        {/* 08 — FINAL CONVERSION CTA */}
+        {/* 08 — NEWSLETTER SUBSCRIPTION */}
+        <section className="py-12 border-b border-[#1A1D1B] bg-[#0A0B0A]">
+          <div className="max-w-[1440px] mx-auto px-4 md:px-8">
+            <NewsletterSubscription />
+          </div>
+        </section>
+
+        {/* 09 — FINAL CONVERSION CTA */}
         <section className="py-16 md:py-24 bg-gradient-to-br from-[#111111] via-[#0B0B0B] to-[#050505]">
           <div className="max-w-[1440px] mx-auto px-4 md:px-8 text-center space-y-6">
             <span className="text-[10px] font-mono uppercase tracking-widest text-[#C9A227]">
@@ -554,7 +669,7 @@ export default async function Home() {
               PARTNER WITH CONSTRUCTIONS
             </h2>
             <p className="text-sm md:text-base text-[#A0A0A0] max-w-xl mx-auto">
-              Explore corporate partnership solutions, intelligence subscriptions, and verified project presentation capabilities for Romania&apos;s construction market.
+              Explore corporate partnership solutions, intelligence subscriptions, sample institutional reports, and verified project presentation capabilities for Romania&apos;s construction market.
             </p>
             <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
               <Link
@@ -562,6 +677,12 @@ export default async function Home() {
                 className="px-6 py-3.5 bg-[#C9A227] text-[#050505] font-mono text-xs font-bold uppercase tracking-wider rounded-lg hover:bg-[#E4C58F] active:scale-95 transition-all"
               >
                 Partner With Us
+              </Link>
+              <Link
+                href="/sample-report"
+                className="px-6 py-3.5 bg-[#141715] border border-[#C9A227]/40 text-[#C9A227] font-mono text-xs font-semibold uppercase tracking-wider rounded-lg hover:border-[#C9A227] active:scale-95 transition-all"
+              >
+                Sample Market Report →
               </Link>
               <Link
                 href="/report-error"

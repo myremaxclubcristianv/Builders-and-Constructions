@@ -11,6 +11,7 @@ import { DossierNav } from '@/components/DossierNav';
 import { FinancialTrendChart } from '@/components/FinancialTrendChart';
 import { BookmarkButton } from '@/components/BookmarkButton';
 import { safeJsonLdStringify } from '@/lib/sanitize';
+import { ScaleIcon, LocationPinIcon, BuildingIcon, UserIcon, CraneIcon } from '@/components/icons/NavIcons';
 
 export async function generateMetadata({
   params,
@@ -84,7 +85,7 @@ function ProjectCard({ project, role }: { project: any; role?: string }) {
             <img src={project.image} alt={project.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
           ) : (
             <div style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', background: '#111412', color: '#666', padding: 12 }}>
-              <div style={{ fontSize: 24, marginBottom: 4 }}>🏗️</div>
+              <CraneIcon className="w-6 h-6 text-[#666] mb-1" />
               <div style={{ fontSize: 9, fontWeight: 800, border: '1px solid #242926', color: '#888', padding: '2px 6px', borderRadius: 2 }}>
                 IMAGE STATUS: NOT DISCLOSED
               </div>
@@ -105,8 +106,9 @@ function ProjectCard({ project, role }: { project: any; role?: string }) {
               {project.name}
             </Link>
           </h4>
-          <div style={{ fontSize: 12, color: '#888', marginBottom: 12 }}>
-            📍 {project.location || 'Romania'}
+          <div style={{ fontSize: 12, color: '#888', marginBottom: 12, display: 'flex', alignItems: 'center', gap: 4 }}>
+            <LocationPinIcon className="w-3.5 h-3.5 text-[#c7a675] shrink-0" />
+            <span>{project.location || 'Romania'}</span>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8, fontSize: 11, color: '#b5b3aa' }}>
             <div>STAGE: <strong style={{ color: '#fff' }}>{project.status_display || project.status || 'Active'}</strong></div>
@@ -269,7 +271,7 @@ export default async function CompanyProfile({
         dangerouslySetInnerHTML={{ __html: safeJsonLdStringify(jsonLd) }}
       />
       <SiteHeader />
-      <main style={{ background: '#0c0e0c', color: '#fff', minHeight: '100vh' }}>
+      <main className="pt-24 md:pt-32" style={{ background: '#0c0e0c', color: '#fff', minHeight: '100vh' }}>
         {isPreviewAllowed && (
           <div style={{ background: '#c7a675', color: '#000', padding: '10px 24px', textAlign: 'center', fontWeight: 800, fontSize: 12, letterSpacing: '0.08em' }}>
             ADMIN EXECUTIVE DOSSIER VIEW — CONFIDENTIAL COMMERCIAL INTELLIGENCE ENABLED
@@ -290,10 +292,11 @@ export default async function CompanyProfile({
               </div>
               <div style={{ display: 'flex', gap: 8, alignItems: 'center', flexWrap: 'wrap' }}>
                 <BookmarkButton id={c.slug} name={c.name} type="company" slug={c.slug} subtext={`${(c.type || 'developer').replaceAll('_', ' ')} · ${c.location || 'Romania'}`} />
-                <Link href={`/compare?c1=${c.slug}`} className="btn-secondary" style={{ padding: '6px 14px', fontSize: 11 }}>
-                  ⚖️ COMPARE ENTITY
+                <Link href={`/compare?c1=${c.slug}`} className="btn-secondary" style={{ padding: '6px 14px', fontSize: 11, display: 'inline-flex', alignItems: 'center', gap: 4 }}>
+                  <ScaleIcon className="w-3.5 h-3.5 text-[#c7a675]" />
+                  <span>COMPARE ENTITY</span>
                 </Link>
-                <Link href={`/report-error?company=${encodeURIComponent(c.name)}`} className="btn" style={{ padding: '6px 14px', fontSize: 11 }}>
+                <Link href={`/report-error?entity=${encodeURIComponent(c.name)}&type=Company`} className="btn" style={{ padding: '6px 14px', fontSize: 11 }}>
                   REQUEST CORRECTION →
                 </Link>
               </div>
@@ -325,7 +328,10 @@ export default async function CompanyProfile({
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src={imgRes.url} alt={c.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                     <div style={{ position: 'absolute', bottom: 0, insetInline: 0, padding: 12, background: 'linear-gradient(0deg, rgba(0,0,0,0.9), transparent)', fontSize: 11, color: '#ccc', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                      <span style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: '70%' }}>🏢 {imgRes.caption}</span>
+                      <span style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: '70%', display: 'inline-flex', alignItems: 'center', gap: 4 }}>
+                        <BuildingIcon className="w-3.5 h-3.5 text-[#c7a675] shrink-0" />
+                        <span>{imgRes.caption}</span>
+                      </span>
                       <span style={{ fontSize: 9, background: '#1c221e', border: '1px solid #c7a675', color: '#c7a675', padding: '2px 6px', borderRadius: 2, fontWeight: 800, whiteSpace: 'nowrap' }}>
                         {imgRes.status === 'VERIFIED_CORPORATE_IMAGE' ? 'VERIFIED CORPORATE MEDIA' : 'VERIFIED PROJECT MEDIA'}
                       </span>
@@ -333,7 +339,9 @@ export default async function CompanyProfile({
                   </>
                 ) : (
                   <div style={{ padding: 24, textAlign: 'center', color: '#888' }}>
-                    <div style={{ fontSize: 36, marginBottom: 8 }}>🏢</div>
+                    <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 8 }}>
+                      <BuildingIcon className="w-9 h-9 text-[#666]" />
+                    </div>
                     <div style={{ fontSize: 11, fontWeight: 800, color: '#c7a675', border: '1px solid #262927', padding: '4px 10px', borderRadius: 4, display: 'inline-block', letterSpacing: '0.05em' }}>
                       IMAGE STATUS: NOT DISCLOSED IN PUBLIC BASELINE
                     </div>
@@ -350,9 +358,14 @@ export default async function CompanyProfile({
               <div>
                 <strong style={{ color: '#fff' }}>Independent Platform Disclosure:</strong> CONSTRUCTIONS is an independent information and research platform. Inclusion of an entity does not imply representation, endorsement, partnership, or commercial relationship with that entity.
               </div>
-              <Link href={`/report-error?company=${encodeURIComponent(c.name)}`} style={{ color: '#c7a675', fontWeight: 700, textDecoration: 'none', whiteSpace: 'nowrap' }}>
-                Request Correction →
-              </Link>
+              <div style={{ display: 'flex', gap: 16, alignItems: 'center', flexWrap: 'wrap' }}>
+                <Link href="/methodology" style={{ color: '#aaa', fontWeight: 600, textDecoration: 'underline', whiteSpace: 'nowrap' }}>
+                  How We Verify →
+                </Link>
+                <Link href={`/report-error?company=${encodeURIComponent(c.name)}`} style={{ color: '#c7a675', fontWeight: 700, textDecoration: 'none', whiteSpace: 'nowrap' }}>
+                  Request Profile Update →
+                </Link>
+              </div>
             </div>
           </div>
         </section>
@@ -527,7 +540,10 @@ export default async function CompanyProfile({
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 16 }}>
                 {c.founders_key_people.map((person: string, idx: number) => (
                   <div key={idx} style={{ padding: 12, background: '#0c0e0c', border: '1px solid #222', borderRadius: 4 }}>
-                    <div style={{ fontSize: 13, fontWeight: 800, color: '#fff' }}>👤 {person}</div>
+                    <div style={{ fontSize: 13, fontWeight: 800, color: '#fff', display: 'flex', alignItems: 'center', gap: 4 }}>
+                      <UserIcon className="w-3.5 h-3.5 text-[#c7a675] shrink-0" />
+                      <span>{person}</span>
+                    </div>
                     <div style={{ fontSize: 11, color: '#c7a675', marginTop: 2 }}>Executive / Key Person</div>
                     <div style={{ fontSize: 10, color: '#888', marginTop: 4 }}>Public Register Disclosure</div>
                   </div>
@@ -638,8 +654,9 @@ export default async function CompanyProfile({
           </div>
 
           <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
-            <Link href="/cities/bucharest" style={{ padding: '8px 16px', background: '#141715', border: '1px solid #262927', borderRadius: 4, color: '#fff', textDecoration: 'none', fontSize: 13, fontWeight: 700 }}>
-              📍 {c.location || 'Bucharest'}
+            <Link href="/cities/bucharest" style={{ padding: '8px 16px', background: '#141715', border: '1px solid #262927', borderRadius: 4, color: '#fff', textDecoration: 'none', fontSize: 13, fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: 4 }}>
+              <LocationPinIcon className="w-3.5 h-3.5 text-[#c7a675]" />
+              <span>{c.location || 'Bucharest'}</span>
             </Link>
           </div>
         </section>
@@ -660,8 +677,9 @@ export default async function CompanyProfile({
                   <div key={p.id} style={{ padding: 14, background: '#0c0e0c', border: '1px solid #222', borderRadius: 4, display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 12, fontSize: 12 }}>
                     <span style={{ fontWeight: 800, color: '#c7a675' }}>{c.name}</span>
                     <span style={{ color: '#666' }}>➔</span>
-                    <Link href={`/projects/${p.slug}`} style={{ color: '#fff', fontWeight: 700, textDecoration: 'none' }}>
-                      🏢 {p.name}
+                    <Link href={`/projects/${p.slug}`} style={{ color: '#fff', fontWeight: 700, textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 4 }}>
+                      <BuildingIcon className="w-3.5 h-3.5 text-[#38bdf8]" />
+                      <span>{p.name}</span>
                     </Link>
                     <span style={{ color: '#666' }}>➔</span>
                     <span>GC: <strong style={{ color: p.contractor_name ? '#38bdf8' : '#666' }}>{p.contractor_name || 'NOT DISCLOSED'}</strong></span>

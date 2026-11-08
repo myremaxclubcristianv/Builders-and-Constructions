@@ -23,7 +23,7 @@ const TICKER_ITEMS: TickerItem[] = [
   { label: 'STRUCTURAL SYSTEMS (P100-1)', href: '/knowledge/systems' },
   { label: 'CIVIL INFRASTRUCTURE & ROADS', href: '/knowledge/infrastructure' },
   { label: 'BUILDING PHYSICS & FIRE SAFETY', href: '/knowledge/engineering' },
-  { label: 'MARKET RADAR & SIGNALS', href: '/signals', badge: 'LIVE' },
+  { label: 'MARKET RADAR & SIGNALS', href: '/signals', badge: 'RADAR' },
   { label: 'ALWAYS-ON CONTACT DESK', href: '/contact', isAction: true }
 ];
 
@@ -80,7 +80,9 @@ export function LiveRollingTicker() {
 
       <div className="animate-rolling-ticker">
         {renderItemSet('set1')}
-        {renderItemSet('set2')}
+        <div aria-hidden="true" className="ticker-duplicate inline-flex items-center shrink-0">
+          {renderItemSet('set2')}
+        </div>
       </div>
     </aside>
   );

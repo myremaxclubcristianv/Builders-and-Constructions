@@ -9,6 +9,7 @@ import {
 } from '@/lib/real-romanian-data';
 import { getIndustryHubData } from '@/lib/data';
 import { safeJsonLdStringify } from '@/lib/sanitize';
+import { BuildingIcon, CraneIcon, LocationPinIcon } from '@/components/icons/NavIcons';
 
 export const metadata: Metadata = {
   title: 'Market Intelligence Command Center · CONSTRUCTIONS by AiXLuxury',
@@ -375,7 +376,10 @@ export default async function IntelligencePage() {
               {regionalMatrix.map(hub => (
                 <div key={hub.name} className="p-5 bg-[#111111] border border-[#1A1D1B] rounded-xl space-y-4 hover:border-[#C9A227]/40 transition-all">
                   <div className="flex items-center justify-between">
-                    <h3 className="text-lg font-bold text-white">📍 {hub.name}</h3>
+                    <h3 className="text-lg font-bold text-white flex items-center gap-1.5">
+                      <LocationPinIcon className="w-4 h-4 text-[#c7a675] shrink-0" />
+                      <span>{hub.name}</span>
+                    </h3>
                     <span className="px-2 py-0.5 bg-[#C9A227]/10 text-[#C9A227] border border-[#C9A227]/30 rounded text-[10px] font-bold uppercase">
                       {hub.coverage_status}
                     </span>
@@ -436,12 +440,14 @@ export default async function IntelligencePage() {
 
                     <h4 className="text-base font-bold text-white pt-1">
                       {chg.entity_type === 'Company' ? (
-                        <Link href={`/companies/${chg.entity_slug}`} className="hover:text-[#C9A227]">
-                          🏢 {chg.entity_name}
+                        <Link href={`/companies/${chg.entity_slug}`} className="hover:text-[#C9A227] inline-flex items-center gap-1.5">
+                          <BuildingIcon className="w-3.5 h-3.5 text-[#C9A227] shrink-0" />
+                          <span>{chg.entity_name}</span>
                         </Link>
                       ) : (
-                        <Link href={`/projects/${chg.entity_slug}`} className="hover:text-[#38bdf8]">
-                          🏗️ {chg.entity_name}
+                        <Link href={`/projects/${chg.entity_slug}`} className="hover:text-[#38bdf8] inline-flex items-center gap-1.5">
+                          <CraneIcon className="w-3.5 h-3.5 text-[#38bdf8] shrink-0" />
+                          <span>{chg.entity_name}</span>
                         </Link>
                       )}
                     </h4>
@@ -502,16 +508,23 @@ export default async function IntelligencePage() {
 
                     <div className="flex flex-wrap items-center gap-4 text-[11px] text-[#888888] pt-1">
                       {sig.company_name && (
-                        <Link href={`/companies/${sig.company_slug}`} className="text-[#C9A227] hover:underline">
-                          🏢 {sig.company_name}
+                        <Link href={`/companies/${sig.company_slug}`} className="text-[#C9A227] hover:underline inline-flex items-center gap-1">
+                          <BuildingIcon className="w-3 h-3 text-[#C9A227] shrink-0" />
+                          <span>{sig.company_name}</span>
                         </Link>
                       )}
                       {sig.project_name && (
-                        <Link href={`/projects/${sig.project_slug}`} className="text-[#38bdf8] hover:underline">
-                          🏗️ {sig.project_name}
+                        <Link href={`/projects/${sig.project_slug}`} className="text-[#38bdf8] hover:underline inline-flex items-center gap-1">
+                          <CraneIcon className="w-3 h-3 text-[#38bdf8] shrink-0" />
+                          <span>{sig.project_name}</span>
                         </Link>
                       )}
-                      {sig.location && <span>📍 {sig.location}</span>}
+                      {sig.location && (
+                        <span className="inline-flex items-center gap-1">
+                          <LocationPinIcon className="w-3 h-3 text-[#888888] shrink-0" />
+                          <span>{sig.location}</span>
+                        </span>
+                      )}
                     </div>
                   </div>
 
@@ -548,14 +561,16 @@ export default async function IntelligencePage() {
                 <div key={chain.id} className="p-4 bg-[#111111] border border-[#1A1D1B] rounded-xl flex flex-wrap items-center gap-3 text-xs">
                   <span className="text-[#C9A227] font-bold">
                     {chain.developer_slug ? (
-                      <Link href={`/companies/${chain.developer_slug}`} className="hover:underline">
-                        🏢 {chain.developer_name}
+                      <Link href={`/companies/${chain.developer_slug}`} className="hover:underline inline-flex items-center gap-1">
+                        <BuildingIcon className="w-3 h-3 text-[#C9A227] shrink-0" />
+                        <span>{chain.developer_name}</span>
                       </Link>
                     ) : chain.developer_name}
                   </span>
                   <span className="text-[#666666]">➔</span>
-                  <Link href={`/projects/${chain.project_slug}`} className="text-white font-bold hover:text-[#38bdf8]">
-                    🏗️ {chain.project_name}
+                  <Link href={`/projects/${chain.project_slug}`} className="text-white font-bold hover:text-[#38bdf8] inline-flex items-center gap-1">
+                    <CraneIcon className="w-3 h-3 text-[#38bdf8] shrink-0" />
+                    <span>{chain.project_name}</span>
                   </Link>
                   <span className="text-[#666666]">➔</span>
                   <span>GC: <strong className="text-[#38bdf8]">{chain.contractor_name}</strong></span>

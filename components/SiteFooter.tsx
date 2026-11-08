@@ -73,7 +73,9 @@ export function SiteFooter() {
               <li><Link href="/work-with-us" className="hover:text-white transition-colors">Work With CONSTRUCTIONS</Link></li>
               <li><Link href="/terms" className="hover:text-white transition-colors">Terms & Conditions</Link></li>
               <li><Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link></li>
+              <li><Link href="/cookies" className="hover:text-white transition-colors">Cookie Policy</Link></li>
               <li><Link href="/gdpr" className="hover:text-white transition-colors">GDPR & Data Rights</Link></li>
+              <li><Link href="/accessibility" className="hover:text-white transition-colors">Accessibility Statement</Link></li>
               <li className="pt-2">
                 <a href="https://aixluxury.com" target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 text-[11px] hover:text-white transition-colors">
                   <span>aixluxury.com</span>

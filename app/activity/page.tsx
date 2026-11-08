@@ -4,7 +4,7 @@ import { SiteFooter } from '@/components/SiteFooter';
 import { getIndustryHubData } from '@/lib/data';
 
 export const metadata = {
-  title: 'Real-Time Romanian Market Signals & Construction News · CONSTRUCTIONS by AiXLuxury',
+  title: 'Verified Romanian Market Signals & Construction Intelligence · CONSTRUCTIONS by AiXLuxury',
   description: 'Verified chronological market signals, construction milestones, building permit issuances, lease agreements, and acquisitions in Romania.'
 };
 
@@ -17,17 +17,17 @@ export default async function ActivityPage() {
         <div className="hero" style={{ paddingBottom: 40 }}>
           <SiteHeader />
           <div className="shell hero-content">
-            <div className="eyebrow" style={{ color: '#c7a675' }}>Live Market Intelligence Stream</div>
-            <h1>ROMANIAN CONSTRUCTION & REAL ESTATE ACTIVITY</h1>
-            <p>Chronological feed of verified building permits, structural milestones, land acquisitions, anchor lease signings, and project deliveries across Romanian markets.</p>
+            <div className="eyebrow" style={{ color: '#c7a675' }}>Verified Market Intelligence Stream</div>
+            <h1>ROMANIAN CONSTRUCTION &amp; REAL ESTATE ACTIVITY</h1>
+            <p>Chronological archive of verified building permits, structural milestones, land acquisitions, anchor lease signings, and project deliveries across Romanian markets.</p>
           </div>
         </div>
 
         <section className="section shell">
           <div className="section-head">
             <div>
-              <div className="eyebrow" style={{ color: '#c7a675' }}>Chronological Feed</div>
-              <h2>LIVE MARKET SIGNALS ({marketActivity.length})</h2>
+              <div className="eyebrow" style={{ color: '#c7a675' }}>Chronological Archive · Verified Baselines</div>
+              <h2>VERIFIED MARKET SIGNALS ARCHIVE ({marketActivity.length})</h2>
             </div>
           </div>
 

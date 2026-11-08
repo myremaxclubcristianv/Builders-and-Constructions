@@ -2041,7 +2041,7 @@ export function getMaterialComparisonBySlug(slug: string): MaterialComparison | 
 }
 
 export interface KnowledgeSearchResult {
-  type: "MATERIAL" | "CONCRETE_CLASS" | "SYSTEM" | "PROCESS" | "GLOSSARY" | "STANDARD";
+  type: "MATERIAL" | "CONCRETE_CLASS" | "SYSTEM" | "PROCESS" | "GLOSSARY" | "STANDARD" | "LIFECYCLE";
   title: string;
   romanianTitle?: string;
   slug: string;
@@ -2156,6 +2156,25 @@ export function searchKnowledge(query: string): KnowledgeSearchResult[] {
         snippet: std.title + " — " + std.scope,
         status: "VERIFIED"
       });
+    }
+  }
+
+  // 7. Search Project Lifecycle Stages
+  if (typeof projectLifecycleDataset !== 'undefined') {
+    for (const lc of projectLifecycleDataset) {
+      const text = (lc.name + " " + lc.romanianName + " " + lc.economicConsiderations + " " + (lc.keyMilestones || []).join(" ")).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+      if (text.includes(q)) {
+        results.push({
+          type: "LIFECYCLE",
+          title: lc.name,
+          romanianTitle: lc.romanianName,
+          slug: lc.slug,
+          href: "/knowledge",
+          category: "Project Lifecycle",
+          snippet: lc.economicConsiderations,
+          status: "VERIFIED"
+        });
+      }
     }
   }
 

@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import { CraneIcon, StarIcon, BriefcaseIcon } from '@/components/icons/NavIcons';
 
 type ProspectItem = {
   id: string;
@@ -211,10 +212,19 @@ export function AcquisitionCommandCenterView({ initialData }: { initialData: Acq
                     </span>
                   </div>
 
-                  <div style={{ fontSize: '0.82rem', color: '#aaa', display: 'flex', gap: '1.5rem' }}>
-                    <span>🏗️ <strong>{prospect.activeProjectsCount}</strong> Active Projects</span>
-                    <span>⭐ Opportunity Index: <strong>{prospect.opportunityScore}/100</strong></span>
-                    <span>💼 Pipeline Value: <strong>€{prospect.estimatedCommercialValue.toLocaleString()}</strong></span>
+                  <div style={{ fontSize: '0.82rem', color: '#aaa', display: 'flex', gap: '1.5rem', alignItems: 'center' }}>
+                    <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}>
+                      <CraneIcon className="w-3.5 h-3.5 text-[#38bdf8]" />
+                      <span><strong>{prospect.activeProjectsCount}</strong> Active Projects</span>
+                    </span>
+                    <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}>
+                      <StarIcon className="w-3.5 h-3.5 text-[#C9A227]" />
+                      <span>Opportunity Index: <strong>{prospect.opportunityScore}/100</strong></span>
+                    </span>
+                    <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}>
+                      <BriefcaseIcon className="w-3.5 h-3.5 text-[#888]" />
+                      <span>Pipeline Value: <strong>€{prospect.estimatedCommercialValue.toLocaleString()}</strong></span>
+                    </span>
                   </div>
                 </div>
 

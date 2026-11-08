@@ -13,6 +13,7 @@ import {
   URGENCY_LEVELS,
   getServiceBySlug
 } from '@/lib/services-config';
+import { ServiceIconRenderer } from '@/components/icons/ServiceIconRenderer';
 import { getOrCreateSession, trackHighValueActivity } from '@/lib/visitor-tracker';
 
 interface IntelligentIntakeFlowProps {
@@ -358,7 +359,7 @@ export function IntelligentIntakeFlow({
                     >
                       <div>
                         <div className="flex items-center justify-between mb-2">
-                          <span className="text-xl">{srv.icon}</span>
+                          <ServiceIconRenderer slug={srv.slug} className="w-5 h-5 text-[#C9A227]" />
                           <span className="text-[9px] font-mono px-2 py-0.5 rounded bg-[#1A1D1B] text-[#C9A227] border border-[#C9A227]/20 font-bold">
                             {srv.badge}
                           </span>
@@ -748,7 +749,7 @@ export function IntelligentIntakeFlow({
                   SECȚIUNEA 4: CHESTIONAR SPECIALIZAT PE SERVICIU
                 </span>
                 <h3 className="text-xl sm:text-2xl font-bold text-white flex items-center gap-2">
-                  <span>{activeService.icon}</span>
+                  <ServiceIconRenderer slug={activeService.slug} className="w-6 h-6 text-[#C9A227]" />
                   <span>{activeService.title}</span>
                 </h3>
               </div>
