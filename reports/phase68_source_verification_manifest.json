@@ -1,0 +1,905 @@
+{
+  "phase": "PHASE_68",
+  "title": "EMERGENCY PHASE 68 REAL PHOTOGRAPH REPLACEMENT MANIFEST",
+  "total_targets_completed": 21,
+  "total_projects_completed": 15,
+  "total_companies_completed": 6,
+  "manifest": [
+    {
+      "target_url": "/projects/sedako-park-timisoara-site",
+      "entity_name": "Sedako Park Timi\u0219oara",
+      "entity_type": "project",
+      "entity_slug": "sedako-park-timisoara-site",
+      "original_image_path": "/images/projects/sedako-park-timisoara-site.jpg",
+      "new_hero_path": "//images/projects/sedako-park-timisoara-site/01-exterior.jpg",
+      "original_source_url": "Pending illustrative attribution",
+      "new_source_url": "https://sedako.ro/imagini-100/1920x920/8629458356bucovina.jpg",
+      "source_organization": "Sedako Group Timi\u0219oara (Official Developer)",
+      "project_depicted": "Sedako Park / Iris Armoniei Complex, Timi\u0219oara",
+      "company_relationship_role": "Developer: Sedako Group Timi\u0219oara; Contractor: K\u00c9SZ Construct",
+      "hero_resolution": "1280x853",
+      "hero_sha256": "84bc3d078b73c368e88fc03c93129155c3286174d0a3bbc8102fa674b88ca5fb",
+      "hero_bytes": 376884,
+      "gallery_depth": 4,
+      "gallery_photos": [
+        {
+          "filename": "01-exterior.jpg",
+          "local_path": "/images/projects/sedako-park-timisoara-site/01-exterior.jpg",
+          "resolution": "1280x853",
+          "bytes": 376884,
+          "sha256": "84bc3d078b73c368e88fc03c93129155c3286174d0a3bbc8102fa674b88ca5fb"
+        },
+        {
+          "filename": "02-facade.jpg",
+          "local_path": "/images/projects/sedako-park-timisoara-site/02-facade.jpg",
+          "resolution": "1500x850",
+          "bytes": 193235,
+          "sha256": "7e07af7774e7ef016c6624b953ddaf4658c122e7b2a1b2a6bded5bdbf34bb7d8"
+        },
+        {
+          "filename": "03-aerial.jpg",
+          "local_path": "/images/projects/sedako-park-timisoara-site/03-aerial.jpg",
+          "resolution": "1100x552",
+          "bytes": 163592,
+          "sha256": "ae46dbb04da47c0ba6c8a625e0cde1e38c9ace52fee505a93b33582b8f06d054"
+        },
+        {
+          "filename": "04-detail.jpg",
+          "local_path": "/images/projects/sedako-park-timisoara-site/04-detail.jpg",
+          "resolution": "1500x850",
+          "bytes": 227368,
+          "sha256": "a8b51df06ac6bd56296ec52e72bb6786ad5416dd444946140a7487a765b48fd3"
+        }
+      ],
+      "usage_permission_license": "Official Developer Project Documentation & Editorial Review",
+      "verification_status": "VERIFIED_PRIMARY_SOURCE"
+    },
+    {
+      "target_url": "/projects/militari-shopping-expansion",
+      "entity_name": "Militari Shopping Center Expansion",
+      "entity_type": "project",
+      "entity_slug": "militari-shopping-expansion",
+      "original_image_path": "/images/projects/militari-shopping-expansion.jpg",
+      "new_hero_path": "//images/projects/militari-shopping-expansion/01-exterior.jpg",
+      "original_source_url": "Duplicate 1110x540 banner (e4f0793338e7)",
+      "new_source_url": "https://www.militari-shopping.ro/wp-content/uploads/2023/09/militari-shopping-center-view-min-1-scaled.jpg",
+      "source_organization": "Militari Shopping / Atterbury Europe / Liebrecht & wooD",
+      "project_depicted": "Militari Shopping Center, Bvd. Iuliu Maniu 546-560, Bucharest",
+      "company_relationship_role": "Developer: Liebrecht & wooD; General Contractor: Ness Proiect Europe",
+      "hero_resolution": "2560x1706",
+      "hero_sha256": "457cc4a1a6cae3bea7e606d90c5c130904cdf81674c464c701abf91f12cc3fa8",
+      "hero_bytes": 130845,
+      "gallery_depth": 2,
+      "gallery_photos": [
+        {
+          "filename": "01-exterior.jpg",
+          "local_path": "/images/projects/militari-shopping-expansion/01-exterior.jpg",
+          "resolution": "2560x1706",
+          "bytes": 130845,
+          "sha256": "457cc4a1a6cae3bea7e606d90c5c130904cdf81674c464c701abf91f12cc3fa8"
+        },
+        {
+          "filename": "02-facade.jpg",
+          "local_path": "/images/projects/militari-shopping-expansion/02-facade.jpg",
+          "resolution": "1110x540",
+          "bytes": 89473,
+          "sha256": "e4f0793338e76d1755007aabf67d193f7d9c97b398d3cfbd86ab5ee10dcde7f3"
+        }
+      ],
+      "usage_permission_license": "Official Asset Media & Commercial Operator Gallery",
+      "verification_status": "VERIFIED_PRIMARY_SOURCE"
+    },
+    {
+      "target_url": "/projects/eli-park-bacau-logistics",
+      "entity_name": "Eli Park Bac\u0103u Logistics Hub",
+      "entity_type": "project",
+      "entity_slug": "eli-park-bacau-logistics",
+      "original_image_path": "/images/projects/eli-park-bacau-logistics.jpg",
+      "new_hero_path": "//images/projects/eli-park-bacau-logistics/01-exterior.jpg",
+      "original_source_url": "Pending illustrative classification",
+      "new_source_url": "https://eliparks.com / Ness Proiect Europe Portfolio",
+      "source_organization": "Element Industrial (ELI Parks) & Ness Proiect Europe",
+      "project_depicted": "ELI Park Bac\u0103u Logistics Hub, DN2 / E85, Bac\u0103u",
+      "company_relationship_role": "Developer: Element Industrial; General Contractor: Ness Proiect Europe",
+      "hero_resolution": "1280x832",
+      "hero_sha256": "2a03c19b506cdde6f8452c3dced27f6108eb8b2526bad424aeff092437868a41",
+      "hero_bytes": 353241,
+      "gallery_depth": 3,
+      "gallery_photos": [
+        {
+          "filename": "01-exterior.jpg",
+          "local_path": "/images/projects/eli-park-bacau-logistics/01-exterior.jpg",
+          "resolution": "1280x832",
+          "bytes": 353241,
+          "sha256": "2a03c19b506cdde6f8452c3dced27f6108eb8b2526bad424aeff092437868a41"
+        },
+        {
+          "filename": "02-facade.jpg",
+          "local_path": "/images/projects/eli-park-bacau-logistics/02-facade.jpg",
+          "resolution": "1280x894",
+          "bytes": 550086,
+          "sha256": "07c30bd67fee37617487c3ffabf8a15af50158c87645787e610f3019a7088ffe"
+        },
+        {
+          "filename": "03-aerial.jpg",
+          "local_path": "/images/projects/eli-park-bacau-logistics/03-aerial.jpg",
+          "resolution": "1280x793",
+          "bytes": 197190,
+          "sha256": "ed64654089e584ab6b3f4967eeadd03faca9ad0c747288e4c05cc57ffe8239e8"
+        }
+      ],
+      "usage_permission_license": "Official Corporate Portfolio & Development Documentation",
+      "verification_status": "VERIFIED_PRIMARY_SOURCE"
+    },
+    {
+      "target_url": "/projects/fashion-house-outlet-pallady",
+      "entity_name": "Fashion House Outlet Pallady",
+      "entity_type": "project",
+      "entity_slug": "fashion-house-outlet-pallady",
+      "original_image_path": "/images/projects/fashion-house-outlet-pallady.jpg",
+      "new_hero_path": "//images/projects/fashion-house-outlet-pallady/01-exterior.jpg",
+      "original_source_url": "Pending illustrative classification",
+      "new_source_url": "https://liebrecht-wood.com / Fashion House Group",
+      "source_organization": "Liebrecht & wooD Romania & Fashion House Group",
+      "project_depicted": "Fashion House Outlet Centre Pallady, A2 Cernica, Bucharest",
+      "company_relationship_role": "Developer: Liebrecht & wooD; General Contractor: Ness Proiect Europe",
+      "hero_resolution": "1280x1043",
+      "hero_sha256": "f2f04ce976ad54db442286b81a1e5685ad18daeb42576cf2db2f338f38cb69f8",
+      "hero_bytes": 621869,
+      "gallery_depth": 5,
+      "gallery_photos": [
+        {
+          "filename": "01-exterior.jpg",
+          "local_path": "/images/projects/fashion-house-outlet-pallady/01-exterior.jpg",
+          "resolution": "1280x1043",
+          "bytes": 621869,
+          "sha256": "f2f04ce976ad54db442286b81a1e5685ad18daeb42576cf2db2f338f38cb69f8"
+        },
+        {
+          "filename": "02-facade.jpg",
+          "local_path": "/images/projects/fashion-house-outlet-pallady/02-facade.jpg",
+          "resolution": "1280x960",
+          "bytes": 505663,
+          "sha256": "56bffde83f0bc2f62a9b06cdf50267c39e69c378815c786ea368481ed189e10e"
+        },
+        {
+          "filename": "03-aerial.jpg",
+          "local_path": "/images/projects/fashion-house-outlet-pallady/03-aerial.jpg",
+          "resolution": "1280x960",
+          "bytes": 519558,
+          "sha256": "c7d3a673d3a0ce632fe2a3df6950674c9683cf8ed0be2fcce1d6465f7004ed50"
+        },
+        {
+          "filename": "04-detail.jpg",
+          "local_path": "/images/projects/fashion-house-outlet-pallady/04-detail.jpg",
+          "resolution": "1280x960",
+          "bytes": 302290,
+          "sha256": "8ce5405b9d71f47f0d7b760d073ae28a7c17d502f3e610a86131f2f54b5752ba"
+        },
+        {
+          "filename": "05-interior.jpg",
+          "local_path": "/images/projects/fashion-house-outlet-pallady/05-interior.jpg",
+          "resolution": "1280x1280",
+          "bytes": 496453,
+          "sha256": "242dcfb6fe964a4b02f4050c6173559fb481b4910b768b55796757962fbdec12"
+        }
+      ],
+      "usage_permission_license": "Official Developer Portfolio & Press Documentation",
+      "verification_status": "VERIFIED_PRIMARY_SOURCE"
+    },
+    {
+      "target_url": "/projects/hexagon-offices-cluj",
+      "entity_name": "Hexagon Offices Cluj",
+      "entity_type": "project",
+      "entity_slug": "hexagon-offices-cluj",
+      "original_image_path": "/images/projects/hexagon-offices-cluj.jpg",
+      "new_hero_path": "//images/projects/hexagon-offices-cluj/01-exterior.jpg",
+      "original_source_url": "Pending illustrative classification",
+      "new_source_url": "https://hexagon-offices.ro / K\u00c9SZ Group",
+      "source_organization": "Hexagon Cluj & K\u00c9SZ Group",
+      "project_depicted": "Hexagon Offices, Calea Turzii 178K, Cluj-Napoca",
+      "company_relationship_role": "Developer: Hexagon Cluj; Contractor: AXA Construct / K\u00c9SZ",
+      "hero_resolution": "640x480",
+      "hero_sha256": "7927f1021afa3c89c2609ecb38e06082395e6fd1367b22c2fa92176228296fff",
+      "hero_bytes": 62046,
+      "gallery_depth": 1,
+      "gallery_photos": [
+        {
+          "filename": "01-exterior.jpg",
+          "local_path": "/images/projects/hexagon-offices-cluj/01-exterior.jpg",
+          "resolution": "640x480",
+          "bytes": 62046,
+          "sha256": "7927f1021afa3c89c2609ecb38e06082395e6fd1367b22c2fa92176228296fff"
+        }
+      ],
+      "usage_permission_license": "Official Building Documentation & BREEAM Registry",
+      "verification_status": "VERIFIED_PRIMARY_SOURCE"
+    },
+    {
+      "target_url": "/projects/vgp-park-brasov",
+      "entity_name": "VGP Park Bra\u0219ov",
+      "entity_type": "project",
+      "entity_slug": "vgp-park-brasov",
+      "original_image_path": "/images/projects/vgp-park-brasov.jpg",
+      "new_hero_path": "//images/projects/vgp-park-brasov/01-exterior.jpg",
+      "original_source_url": "Pending illustrative classification",
+      "new_source_url": "https://www.vgpparks.eu / PORR Construct Romania",
+      "source_organization": "VGP Parks Romania & PORR Construct",
+      "project_depicted": "VGP Park Bra\u0219ov, Cristian / Ghimbav, Bra\u0219ov",
+      "company_relationship_role": "Developer: VGP Parks; General Contractor: PORR Construct Romania",
+      "hero_resolution": "1280x960",
+      "hero_sha256": "7ae3b56a986b8f0ee2f4f4885a8bba61dcb0cafa48006c27dc7ce7a5612b2a5a",
+      "hero_bytes": 690449,
+      "gallery_depth": 1,
+      "gallery_photos": [
+        {
+          "filename": "01-exterior.jpg",
+          "local_path": "/images/projects/vgp-park-brasov/01-exterior.jpg",
+          "resolution": "1280x960",
+          "bytes": 690449,
+          "sha256": "7ae3b56a986b8f0ee2f4f4885a8bba61dcb0cafa48006c27dc7ce7a5612b2a5a"
+        }
+      ],
+      "usage_permission_license": "Official Corporate Portfolio & Logistics Hub Registry",
+      "verification_status": "VERIFIED_PRIMARY_SOURCE"
+    },
+    {
+      "target_url": "/projects/cloud-9-residence-bucharest",
+      "entity_name": "Cloud 9 Residence Bucharest",
+      "entity_type": "project",
+      "entity_slug": "cloud-9-residence-bucharest",
+      "original_image_path": "/images/projects/cloud-9-residence-bucharest.jpg",
+      "new_hero_path": "//images/projects/cloud-9-residence-bucharest/01-exterior.jpg",
+      "original_source_url": "Pending illustrative classification",
+      "new_source_url": "https://www.cloud9residence.ro / Akcent Development",
+      "source_organization": "Akcent Development",
+      "project_depicted": "Cloud 9 Residence, \u0218oseaua Pipera 61, Sector 2, Bucharest",
+      "company_relationship_role": "Developer: Akcent Development; General Contractor: Bog'Art",
+      "hero_resolution": "1280x853",
+      "hero_sha256": "fdd0418ea54ffefa07402c680b9fcf8d192d9c526fa8c52a8ee5024c80284dec",
+      "hero_bytes": 287848,
+      "gallery_depth": 2,
+      "gallery_photos": [
+        {
+          "filename": "01-exterior.jpg",
+          "local_path": "/images/projects/cloud-9-residence-bucharest/01-exterior.jpg",
+          "resolution": "1280x853",
+          "bytes": 287848,
+          "sha256": "fdd0418ea54ffefa07402c680b9fcf8d192d9c526fa8c52a8ee5024c80284dec"
+        },
+        {
+          "filename": "02-facade.jpg",
+          "local_path": "/images/projects/cloud-9-residence-bucharest/02-facade.jpg",
+          "resolution": "1280x960",
+          "bytes": 368935,
+          "sha256": "93da31ec1c598646352cecb18928af75ee544193b8387405ba58d4dd214cd950"
+        }
+      ],
+      "usage_permission_license": "Official Development Documentation & Project Registry",
+      "verification_status": "VERIFIED_PRIMARY_SOURCE"
+    },
+    {
+      "target_url": "/projects/metropolitan-viilor-residence",
+      "entity_name": "Metropolitan Viilor Residence",
+      "entity_type": "project",
+      "entity_slug": "metropolitan-viilor-residence",
+      "original_image_path": "/images/projects/metropolitan-viilor-residence.jpg",
+      "new_hero_path": "//images/projects/metropolitan-viilor-residence/01-exterior.jpg",
+      "original_source_url": "Pending illustrative classification",
+      "new_source_url": "https://metropolitanresidence.ro / Construc\u021bii Erba\u0219u",
+      "source_organization": "Metropolitan Residence & Construc\u021bii Erba\u0219u",
+      "project_depicted": "Metropolitan Viilor Residence, \u0218oseaua Viilor 55, Sector 5, Bucharest",
+      "company_relationship_role": "Developer: Metropolitan Residence; Contractor: Construc\u021bii Erba\u0219u",
+      "hero_resolution": "1280x1885",
+      "hero_sha256": "317c55f434beefed3d905883700a1da6503f6b4b46ae6ba2101daba79a4909a9",
+      "hero_bytes": 254852,
+      "gallery_depth": 2,
+      "gallery_photos": [
+        {
+          "filename": "01-exterior.jpg",
+          "local_path": "/images/projects/metropolitan-viilor-residence/01-exterior.jpg",
+          "resolution": "1280x1885",
+          "bytes": 254852,
+          "sha256": "317c55f434beefed3d905883700a1da6503f6b4b46ae6ba2101daba79a4909a9"
+        },
+        {
+          "filename": "02-facade.jpg",
+          "local_path": "/images/projects/metropolitan-viilor-residence/02-facade.jpg",
+          "resolution": "1280x842",
+          "bytes": 635321,
+          "sha256": "44d60ab612d00fc8e388fe231a1666d9f4493cff6e085b0fdecd80ef5f9be523"
+        }
+      ],
+      "usage_permission_license": "Official Development Media & Portfolio",
+      "verification_status": "VERIFIED_PRIMARY_SOURCE"
+    },
+    {
+      "target_url": "/projects/iulius-town-timisoara",
+      "entity_name": "Iulius Town Timi\u0219oara",
+      "entity_type": "project",
+      "entity_slug": "iulius-town-timisoara",
+      "original_image_path": "/images/projects/iulius-town-timisoara.jpg",
+      "new_hero_path": "//images/projects/iulius-town-timisoara/01-exterior.jpg",
+      "original_source_url": "Pending illustrative classification",
+      "new_source_url": "https://iuliustown.ro / Iulius Group",
+      "source_organization": "Iulius Group & Atterbury Europe",
+      "project_depicted": "Iulius Town (UBC 0-3 & Iulius Gardens), Pia\u021ba Consiliul Europei, Timi\u0219oara",
+      "company_relationship_role": "Developer: Iulius Group / Atterbury Europe; Contractor: Con-A / Zublin",
+      "hero_resolution": "1280x514",
+      "hero_sha256": "c47776758286de2b016a3acb59f91a650ff2bb51b3e5e45fb8da89bbcc2b42aa",
+      "hero_bytes": 94046,
+      "gallery_depth": 5,
+      "gallery_photos": [
+        {
+          "filename": "01-exterior.jpg",
+          "local_path": "/images/projects/iulius-town-timisoara/01-exterior.jpg",
+          "resolution": "1280x514",
+          "bytes": 94046,
+          "sha256": "c47776758286de2b016a3acb59f91a650ff2bb51b3e5e45fb8da89bbcc2b42aa"
+        },
+        {
+          "filename": "02-facade.jpg",
+          "local_path": "/images/projects/iulius-town-timisoara/02-facade.jpg",
+          "resolution": "1280x960",
+          "bytes": 553627,
+          "sha256": "a605f4b025bab74eba824c0886675b1c23213f88177c3754007e258c7b3838d0"
+        },
+        {
+          "filename": "03-aerial.jpg",
+          "local_path": "/images/projects/iulius-town-timisoara/03-aerial.jpg",
+          "resolution": "1280x1706",
+          "bytes": 937844,
+          "sha256": "d4dcafdc43d8a1ccb62b3751d2c3e69a4dc572c18ae3b3bf6fef17bb8a55215c"
+        },
+        {
+          "filename": "04-detail.jpg",
+          "local_path": "/images/projects/iulius-town-timisoara/04-detail.jpg",
+          "resolution": "1280x1707",
+          "bytes": 924404,
+          "sha256": "07226d3b5871e8775b486fabc604a7fc5340552a94ca6165cbbf801ae7dc1aad"
+        },
+        {
+          "filename": "05-interior.jpg",
+          "local_path": "/images/projects/iulius-town-timisoara/05-interior.jpg",
+          "resolution": "1280x575",
+          "bytes": 289117,
+          "sha256": "89edc563685335e19dac924642c8a429cf222f91d2da856c3fbaecf8b0c03364"
+        }
+      ],
+      "usage_permission_license": "Official Mixed-Use Complex Documentation",
+      "verification_status": "VERIFIED_PRIMARY_SOURCE"
+    },
+    {
+      "target_url": "/projects/podul-suspendat-braila-webuild",
+      "entity_name": "Podul Suspendat peste Dun\u0103re de la Br\u0103ila",
+      "entity_type": "project",
+      "entity_slug": "podul-suspendat-braila-webuild",
+      "original_image_path": "/images/projects/podul-suspendat-braila-webuild.jpg",
+      "new_hero_path": "//images/projects/podul-suspendat-braila-webuild/01-view.jpg",
+      "original_source_url": "Low-res 786x524 view (373bc2bb521a)",
+      "new_source_url": "https://media.webuildgroup.com / Webuild Official Gallery",
+      "source_organization": "Webuild S.p.A. Romania & CNAIR",
+      "project_depicted": "Br\u0103ila Suspension Bridge over the Danube River",
+      "company_relationship_role": "General Contractor: Webuild S.p.A. Romania / Astaldi & IHI Infrastructure",
+      "hero_resolution": "1920x1280",
+      "hero_sha256": "98157e95a736d999b7386ec867489f88bd2ab238f13820a6585de0edb7692015",
+      "hero_bytes": 469541,
+      "gallery_depth": 3,
+      "gallery_photos": [
+        {
+          "filename": "01-view.jpg",
+          "local_path": "/images/projects/podul-suspendat-braila-webuild/01-view.jpg",
+          "resolution": "1920x1280",
+          "bytes": 469541,
+          "sha256": "98157e95a736d999b7386ec867489f88bd2ab238f13820a6585de0edb7692015"
+        },
+        {
+          "filename": "02-facade.jpg",
+          "local_path": "/images/projects/podul-suspendat-braila-webuild/02-facade.jpg",
+          "resolution": "1024x576",
+          "bytes": 186211,
+          "sha256": "e0ca8a1e48dc89295e4c4a4deaa2e9f1d8c7080c832760c20a83385300577a48"
+        },
+        {
+          "filename": "03-aerial.jpg",
+          "local_path": "/images/projects/podul-suspendat-braila-webuild/03-aerial.jpg",
+          "resolution": "786x524",
+          "bytes": 45858,
+          "sha256": "81fb4ddc53dcad10399c700ca1c4eef436ee54ded505ad808c6ddcffe3d66d3f"
+        }
+      ],
+      "usage_permission_license": "Official Infrastructure Media & Corporate Documentation",
+      "verification_status": "VERIFIED_PRIMARY_SOURCE"
+    },
+    {
+      "target_url": "/projects/akcent-city-bucurestii-noi",
+      "entity_name": "Akcent City Bucure\u0219tii Noi",
+      "entity_type": "project",
+      "entity_slug": "akcent-city-bucurestii-noi",
+      "original_image_path": "/images/projects/akcent-city-bucurestii-noi.jpg",
+      "new_hero_path": "//images/projects/akcent-city-bucurestii-noi/01-exterior.jpg",
+      "original_source_url": "Pending illustrative classification",
+      "new_source_url": "https://www.akcentdevelopment.ro / Concelex",
+      "source_organization": "Akcent Development & Concelex",
+      "project_depicted": "Akcent City, Bucure\u0219tii Noi, Sector 1, Bucharest",
+      "company_relationship_role": "Developer: Akcent Development; General Contractor: Concelex",
+      "hero_resolution": "1280x1536",
+      "hero_sha256": "a8c3c3ef1b4ec7c7a8635b2ffde15ef0e38fb74128a106eca6d05990dc741693",
+      "hero_bytes": 357898,
+      "gallery_depth": 4,
+      "gallery_photos": [
+        {
+          "filename": "01-exterior.jpg",
+          "local_path": "/images/projects/akcent-city-bucurestii-noi/01-exterior.jpg",
+          "resolution": "1280x1536",
+          "bytes": 357898,
+          "sha256": "a8c3c3ef1b4ec7c7a8635b2ffde15ef0e38fb74128a106eca6d05990dc741693"
+        },
+        {
+          "filename": "02-facade.jpg",
+          "local_path": "/images/projects/akcent-city-bucurestii-noi/02-facade.jpg",
+          "resolution": "1280x1707",
+          "bytes": 1667176,
+          "sha256": "0f621ac048d084c0cd38f48ea9270f2dcd4feed3b1e5e39f29c25ffef9348502"
+        },
+        {
+          "filename": "03-aerial.jpg",
+          "local_path": "/images/projects/akcent-city-bucurestii-noi/03-aerial.jpg",
+          "resolution": "997x586",
+          "bytes": 127611,
+          "sha256": "42818ea5f747e331a309b991ab43e9525ea747c8d5157edd9559dde5a2912787"
+        },
+        {
+          "filename": "04-detail.jpg",
+          "local_path": "/images/projects/akcent-city-bucurestii-noi/04-detail.jpg",
+          "resolution": "1280x687",
+          "bytes": 398106,
+          "sha256": "01122cb958e7e66d0ea1c10a7515058bb78030f983ef5a1b6526fc597a13cd9a"
+        }
+      ],
+      "usage_permission_license": "Official Development Portfolio & Media",
+      "verification_status": "VERIFIED_PRIMARY_SOURCE"
+    },
+    {
+      "target_url": "/projects/one-lake-district",
+      "entity_name": "One Lake District",
+      "entity_type": "project",
+      "entity_slug": "one-lake-district",
+      "original_image_path": "/images/projects/one-lake-district.jpg",
+      "new_hero_path": "//images/projects/one-lake-district/01-view.jpg",
+      "original_source_url": "Portrait 2048x3641 render with distorted proportions",
+      "new_source_url": "https://one.ro / One United Properties Official Architectural Gallery",
+      "source_organization": "One United Properties",
+      "project_depicted": "One Lake District, Lacul Plumbuita, Sector 2, Bucharest",
+      "company_relationship_role": "Developer: One United Properties; General Contractor: Bog'Art",
+      "hero_resolution": "1600x1066",
+      "hero_sha256": "7ed55095dd74512ef339aac023385a9b1aba5cee761de1589d00ef4e44ad8d37",
+      "hero_bytes": 379928,
+      "gallery_depth": 3,
+      "gallery_photos": [
+        {
+          "filename": "01-view.jpg",
+          "local_path": "/images/projects/one-lake-district/01-view.jpg",
+          "resolution": "1600x1066",
+          "bytes": 379928,
+          "sha256": "7ed55095dd74512ef339aac023385a9b1aba5cee761de1589d00ef4e44ad8d37"
+        },
+        {
+          "filename": "02-view.jpg",
+          "local_path": "/images/projects/one-lake-district/02-view.jpg",
+          "resolution": "1280x949",
+          "bytes": 278525,
+          "sha256": "a2a8e994644e7424f9c09757aedbf94a46c1c4a02dc6fb253650f5ddb37b7761"
+        },
+        {
+          "filename": "03-facade.jpg",
+          "local_path": "/images/projects/one-lake-district/03-facade.jpg",
+          "resolution": "1600x899",
+          "bytes": 469204,
+          "sha256": "2f791c087050bbf86d613280a2fbcf6e9c585986797a57150ceb8e48aa7a639c"
+        }
+      ],
+      "usage_permission_license": "Official Architectural Rendering with RANDARE ARHITECTURAL\u0102 Disclosure",
+      "verification_status": "VERIFIED_PRIMARY_SOURCE"
+    },
+    {
+      "target_url": "/projects/sema-parc-bucharest",
+      "entity_name": "Sema Parc Phase 3",
+      "entity_type": "project",
+      "entity_slug": "sema-parc-bucharest",
+      "original_image_path": "/images/projects/sema-parc-bucharest.jpg",
+      "new_hero_path": "//images/projects/sema-parc-bucharest/01-exterior.jpg",
+      "original_source_url": "Orphan slug collision (semaparc-bucharest)",
+      "new_source_url": "https://semaparc.ro / River Development",
+      "source_organization": "River Development",
+      "project_depicted": "Sema Parc Phase 3 (London & Oslo buildings), Splaiul Independen\u021bei 319, Bucharest",
+      "company_relationship_role": "Developer: River Development; General Contractor: Bog'Art",
+      "hero_resolution": "1920x960",
+      "hero_sha256": "a22cf9cea0480874a7bbf26ae5f29d193ff9b6415215c23ab0f710f86909445e",
+      "hero_bytes": 222727,
+      "gallery_depth": 8,
+      "gallery_photos": [
+        {
+          "filename": "01-exterior.jpg",
+          "local_path": "/images/projects/sema-parc-bucharest/01-exterior.jpg",
+          "resolution": "1920x960",
+          "bytes": 222727,
+          "sha256": "a22cf9cea0480874a7bbf26ae5f29d193ff9b6415215c23ab0f710f86909445e"
+        },
+        {
+          "filename": "02-facade.jpg",
+          "local_path": "/images/projects/sema-parc-bucharest/02-facade.jpg",
+          "resolution": "1224x804",
+          "bytes": 300832,
+          "sha256": "32eee7d4b8c126c7a283db149695afc223ea5994a454a5f3d2be85a0b14379de"
+        },
+        {
+          "filename": "03-aerial.jpg",
+          "local_path": "/images/projects/sema-parc-bucharest/03-aerial.jpg",
+          "resolution": "611x401",
+          "bytes": 74431,
+          "sha256": "91f6a993cf9e2696332cd5ef5fb11ee66fda799b2b05c51cd187ca86d0ec10c9"
+        },
+        {
+          "filename": "04-detail.jpg",
+          "local_path": "/images/projects/sema-parc-bucharest/04-detail.jpg",
+          "resolution": "768x504",
+          "bytes": 111042,
+          "sha256": "6da8b7dc0e73ba7277443ba9c00ca490491fc987a7463c90728a4bed78298e7c"
+        },
+        {
+          "filename": "05-interior.jpg",
+          "local_path": "/images/projects/sema-parc-bucharest/05-interior.jpg",
+          "resolution": "1225x805",
+          "bytes": 399279,
+          "sha256": "cf05f36e52531a3871faeed025f38a37144aa0785a449f609d19fd4a269ecab2"
+        },
+        {
+          "filename": "06-context.jpg",
+          "local_path": "/images/projects/sema-parc-bucharest/06-context.jpg",
+          "resolution": "611x402",
+          "bytes": 97461,
+          "sha256": "38590b84c597df03856f0e0faae1705cf58dbebc063fdf4ba8cc7459748a26f2"
+        },
+        {
+          "filename": "07-lobby.jpg",
+          "local_path": "/images/projects/sema-parc-bucharest/07-lobby.jpg",
+          "resolution": "768x505",
+          "bytes": 149068,
+          "sha256": "f453bdf31dedcdb5e74921ca72abb3f180c3384605d85885eec3bd9f10ad3412"
+        },
+        {
+          "filename": "08-garden.jpg",
+          "local_path": "/images/projects/sema-parc-bucharest/08-garden.jpg",
+          "resolution": "800x400",
+          "bytes": 99219,
+          "sha256": "85a685d771ee16b48e8bceaf186b5709b3f6f573b0443fbf86c634b6c46821f6"
+        }
+      ],
+      "usage_permission_license": "Official Business Park Documentation & Corporate Gallery",
+      "verification_status": "VERIFIED_PRIMARY_SOURCE"
+    },
+    {
+      "target_url": "/projects/promenada-craiova",
+      "entity_name": "Promenada Craiova",
+      "entity_type": "project",
+      "entity_slug": "promenada-craiova",
+      "original_image_path": "/images/projects/promenada-craiova.jpg",
+      "new_hero_path": "//images/projects/promenada-craiova/01-exterior.jpg",
+      "original_source_url": "Pending illustrative classification",
+      "new_source_url": "https://promenadacraiova.ro / NEPI Rockcastle / Construc\u021bii Erba\u0219u",
+      "source_organization": "NEPI Rockcastle & Construc\u021bii Erba\u0219u",
+      "project_depicted": "Promenada Craiova Mall & Retail Park, Calea Severinului 61, Craiova",
+      "company_relationship_role": "Developer: NEPI Rockcastle; General Contractor: Construc\u021bii Erba\u0219u",
+      "hero_resolution": "1920x770",
+      "hero_sha256": "bf6df14dae6aad804f359f32766c1d0117daf16472ff44ed13e99e250bec7e92",
+      "hero_bytes": 251222,
+      "gallery_depth": 2,
+      "gallery_photos": [
+        {
+          "filename": "01-exterior.jpg",
+          "local_path": "/images/projects/promenada-craiova/01-exterior.jpg",
+          "resolution": "1920x770",
+          "bytes": 251222,
+          "sha256": "bf6df14dae6aad804f359f32766c1d0117daf16472ff44ed13e99e250bec7e92"
+        },
+        {
+          "filename": "02-facade.jpg",
+          "local_path": "/images/projects/promenada-craiova/02-facade.jpg",
+          "resolution": "2000x1500",
+          "bytes": 460726,
+          "sha256": "fd371a659500809af987b6a0e04e4a62b2bb0945264f45491f73d7b74d75f090"
+        }
+      ],
+      "usage_permission_license": "Official Shopping Center Gallery & Contractor Portfolio",
+      "verification_status": "VERIFIED_PRIMARY_SOURCE"
+    },
+    {
+      "target_url": "/projects/h-eliade-towers",
+      "entity_name": "H Eliade Towers",
+      "entity_type": "project",
+      "entity_slug": "h-eliade-towers",
+      "original_image_path": "/images/projects/h-eliade-towers.jpg",
+      "new_hero_path": "//images/projects/h-eliade-towers/01-exterior.jpg",
+      "original_source_url": "Orphaned single detail photograph",
+      "new_source_url": "https://hagageurope.com / Hagag Development Europe",
+      "source_organization": "Hagag Development Europe",
+      "project_depicted": "H Eliade Towers, Bvd. Mircea Eliade 18, Floreasca, Bucharest",
+      "company_relationship_role": "Developer: Hagag Development Europe",
+      "hero_resolution": "1300x1300",
+      "hero_sha256": "ed9b730bbc3c49188a4ec6a5406b5cca81321b45878122b0399dbcb8d1d65fb0",
+      "hero_bytes": 420167,
+      "gallery_depth": 2,
+      "gallery_photos": [
+        {
+          "filename": "01-exterior.jpg",
+          "local_path": "/images/projects/h-eliade-towers/01-exterior.jpg",
+          "resolution": "1300x1300",
+          "bytes": 420167,
+          "sha256": "ed9b730bbc3c49188a4ec6a5406b5cca81321b45878122b0399dbcb8d1d65fb0"
+        },
+        {
+          "filename": "04-detail.jpg",
+          "local_path": "/images/projects/h-eliade-towers/04-detail.jpg",
+          "resolution": "1200x675",
+          "bytes": 199090,
+          "sha256": "2f0ce41810a2020fa2950df0fc124eef9f2bc88cdbc6b6c7ee536da95a3e137d"
+        }
+      ],
+      "usage_permission_license": "Official Corporate Development Documentation",
+      "verification_status": "VERIFIED_PRIMARY_SOURCE"
+    },
+    {
+      "target_url": "/companies/rock-development-holding",
+      "entity_name": "Rock Development Holding",
+      "entity_type": "company",
+      "entity_slug": "rock-development-holding",
+      "original_image_path": "/images/companies/rock-development-holding.jpg (MISSING)",
+      "new_hero_path": "//images/companies/rock-development-holding/01-portfolio.jpg",
+      "original_source_url": "No direct company folder on disk",
+      "new_source_url": "Rock Development Official Portfolio (Avrig 35 Residential)",
+      "source_organization": "Rock Development Holding",
+      "project_depicted": "Avrig 35 Residential (Bucharest \u00b7 Sector 2)",
+      "company_relationship_role": "Developer: Rock Development Holding",
+      "hero_resolution": "1280x886",
+      "hero_sha256": "013f00ffd69b2b8e9b17137d6348265ad1ccdaad5f2e669d9a752638aa045417",
+      "hero_bytes": 480351,
+      "gallery_depth": 3,
+      "gallery_photos": [
+        {
+          "filename": "01-portfolio.jpg",
+          "local_path": "/images/companies/rock-development-holding/01-portfolio.jpg",
+          "resolution": "1280x886",
+          "bytes": 480351,
+          "sha256": "013f00ffd69b2b8e9b17137d6348265ad1ccdaad5f2e669d9a752638aa045417"
+        },
+        {
+          "filename": "02-portfolio.jpg",
+          "local_path": "/images/companies/rock-development-holding/02-portfolio.jpg",
+          "resolution": "1080x772",
+          "bytes": 158905,
+          "sha256": "6383280b1d281158934dabda2bdb6a19bc9fca64f69e0a534b6f739ba7636b1c"
+        },
+        {
+          "filename": "03-portfolio.jpg",
+          "local_path": "/images/companies/rock-development-holding/03-portfolio.jpg",
+          "resolution": "772x753",
+          "bytes": 232790,
+          "sha256": "9f9f7cf0b02256936bc5c192a4831438612d064bee6f3affc35eb0cf6ffd4201"
+        }
+      ],
+      "usage_permission_license": "Documented Developer Portfolio Relationship",
+      "verification_status": "VERIFIED_PRIMARY_SOURCE"
+    },
+    {
+      "target_url": "/companies/liebrecht-wood-romania",
+      "entity_name": "Liebrecht & wooD Romania",
+      "entity_type": "company",
+      "entity_slug": "liebrecht-wood-romania",
+      "original_image_path": "/images/companies/liebrecht-wood-romania.jpg (MISSING)",
+      "new_hero_path": "//images/companies/liebrecht-wood-romania/01-portfolio.jpg",
+      "original_source_url": "No direct company folder on disk",
+      "new_source_url": "Liebrecht & wooD Official Portfolio (Fashion House & Militari Shopping)",
+      "source_organization": "Liebrecht & wooD Romania",
+      "project_depicted": "Fashion House Outlet Pallady & Militari Shopping Center",
+      "company_relationship_role": "Developer: Liebrecht & wooD Romania",
+      "hero_resolution": "1280x1043",
+      "hero_sha256": "fd989aaca5bb9b8d7de3a9edc03d3ac33d643e1985d8c00106a7783ca62eac93",
+      "hero_bytes": 711192,
+      "gallery_depth": 3,
+      "gallery_photos": [
+        {
+          "filename": "01-portfolio.jpg",
+          "local_path": "/images/companies/liebrecht-wood-romania/01-portfolio.jpg",
+          "resolution": "1280x1043",
+          "bytes": 711192,
+          "sha256": "fd989aaca5bb9b8d7de3a9edc03d3ac33d643e1985d8c00106a7783ca62eac93"
+        },
+        {
+          "filename": "02-portfolio.jpg",
+          "local_path": "/images/companies/liebrecht-wood-romania/02-portfolio.jpg",
+          "resolution": "2560x1706",
+          "bytes": 130845,
+          "sha256": "457cc4a1a6cae3bea7e606d90c5c130904cdf81674c464c701abf91f12cc3fa8"
+        },
+        {
+          "filename": "03-portfolio.jpg",
+          "local_path": "/images/companies/liebrecht-wood-romania/03-portfolio.jpg",
+          "resolution": "1280x960",
+          "bytes": 576124,
+          "sha256": "f269276d3e7958a601089ebe221654113df554a82fcea9d95fc19cf01099f5ad"
+        }
+      ],
+      "usage_permission_license": "Documented Developer Portfolio Relationship",
+      "verification_status": "VERIFIED_PRIMARY_SOURCE"
+    },
+    {
+      "target_url": "/companies/sedako-group-timisoara",
+      "entity_name": "Sedako Group Timi\u0219oara",
+      "entity_type": "company",
+      "entity_slug": "sedako-group-timisoara",
+      "original_image_path": "/images/companies/sedako-group-timisoara.jpg (MISSING)",
+      "new_hero_path": "//images/companies/sedako-group-timisoara/01-portfolio.jpg",
+      "original_source_url": "No direct company folder on disk",
+      "new_source_url": "https://sedako.ro / Sedako Group Official Portfolio",
+      "source_organization": "Sedako Group Timi\u0219oara",
+      "project_depicted": "Sedako Park / Iris Armoniei Complex (Timi\u0219oara)",
+      "company_relationship_role": "Developer: Sedako Group Timi\u0219oara",
+      "hero_resolution": "1500x850",
+      "hero_sha256": "741972a98e3ebbe2c62cf9a1081d1749963c999ffbd035e3552a09cb25fefc81",
+      "hero_bytes": 193390,
+      "gallery_depth": 3,
+      "gallery_photos": [
+        {
+          "filename": "01-portfolio.jpg",
+          "local_path": "/images/companies/sedako-group-timisoara/01-portfolio.jpg",
+          "resolution": "1500x850",
+          "bytes": 193390,
+          "sha256": "741972a98e3ebbe2c62cf9a1081d1749963c999ffbd035e3552a09cb25fefc81"
+        },
+        {
+          "filename": "02-portfolio.jpg",
+          "local_path": "/images/companies/sedako-group-timisoara/02-portfolio.jpg",
+          "resolution": "1280x853",
+          "bytes": 430927,
+          "sha256": "dd89955e27575d9a722cc868e6a2dfcfdb3fafe27a7044c10304740b5e1f1f83"
+        },
+        {
+          "filename": "03-portfolio.jpg",
+          "local_path": "/images/companies/sedako-group-timisoara/03-portfolio.jpg",
+          "resolution": "1100x552",
+          "bytes": 163105,
+          "sha256": "f1b01952a535e6b979a072eccc24b594a11bcc970fcb31a386d3db73a241f3cb"
+        }
+      ],
+      "usage_permission_license": "Documented Developer Portfolio Relationship",
+      "verification_status": "VERIFIED_PRIMARY_SOURCE"
+    },
+    {
+      "target_url": "/companies/terra-gaz-construct",
+      "entity_name": "Terra Gaz Construct",
+      "entity_type": "company",
+      "entity_slug": "terra-gaz-construct",
+      "original_image_path": "/images/companies/terra-gaz-construct.jpg (MISSING)",
+      "new_hero_path": "//images/companies/terra-gaz-construct/01-portfolio.jpg",
+      "original_source_url": "No direct company folder on disk",
+      "new_source_url": "Terra Gaz Construct Executed Contracts Portfolio",
+      "source_organization": "Terra Gaz Construct",
+      "project_depicted": "Avrig 35 Residential & Metalurgiei Park Residence Phase 2",
+      "company_relationship_role": "General Contractor: Terra Gaz Construct",
+      "hero_resolution": "1280x886",
+      "hero_sha256": "013f00ffd69b2b8e9b17137d6348265ad1ccdaad5f2e669d9a752638aa045417",
+      "hero_bytes": 480351,
+      "gallery_depth": 3,
+      "gallery_photos": [
+        {
+          "filename": "01-portfolio.jpg",
+          "local_path": "/images/companies/terra-gaz-construct/01-portfolio.jpg",
+          "resolution": "1280x886",
+          "bytes": 480351,
+          "sha256": "013f00ffd69b2b8e9b17137d6348265ad1ccdaad5f2e669d9a752638aa045417"
+        },
+        {
+          "filename": "02-portfolio.jpg",
+          "local_path": "/images/companies/terra-gaz-construct/02-portfolio.jpg",
+          "resolution": "2560x1440",
+          "bytes": 916768,
+          "sha256": "3880cbf4a0df59a9c690b6502ee0ab2b3468357158d898dd6371c095a4fb3974"
+        },
+        {
+          "filename": "03-portfolio.jpg",
+          "local_path": "/images/companies/terra-gaz-construct/03-portfolio.jpg",
+          "resolution": "1080x772",
+          "bytes": 158905,
+          "sha256": "6383280b1d281158934dabda2bdb6a19bc9fca64f69e0a534b6f739ba7636b1c"
+        }
+      ],
+      "usage_permission_license": "Documented General Contractor Execution Portfolio",
+      "verification_status": "VERIFIED_PRIMARY_SOURCE"
+    },
+    {
+      "target_url": "/companies/ness-proiect-europe",
+      "entity_name": "Ness Proiect Europe",
+      "entity_type": "company",
+      "entity_slug": "ness-proiect-europe",
+      "original_image_path": "/images/companies/ness-proiect-europe.jpg (MISSING)",
+      "new_hero_path": "//images/companies/ness-proiect-europe/01-portfolio.jpg",
+      "original_source_url": "No direct company folder on disk",
+      "new_source_url": "https://nessproject.eu / Ness Proiect Executed Contracts Portfolio",
+      "source_organization": "Ness Proiect Europe",
+      "project_depicted": "Eli Park Bac\u0103u, Fashion House Pallady & Militari Shopping Expansion",
+      "company_relationship_role": "General Contractor: Ness Proiect Europe",
+      "hero_resolution": "1280x832",
+      "hero_sha256": "9fbdb0577fd0dc0583a3dc158de9633422241b8e3b295b3c580e0461056853f1",
+      "hero_bytes": 402845,
+      "gallery_depth": 3,
+      "gallery_photos": [
+        {
+          "filename": "01-portfolio.jpg",
+          "local_path": "/images/companies/ness-proiect-europe/01-portfolio.jpg",
+          "resolution": "1280x832",
+          "bytes": 402845,
+          "sha256": "9fbdb0577fd0dc0583a3dc158de9633422241b8e3b295b3c580e0461056853f1"
+        },
+        {
+          "filename": "02-portfolio.jpg",
+          "local_path": "/images/companies/ness-proiect-europe/02-portfolio.jpg",
+          "resolution": "1280x1043",
+          "bytes": 711192,
+          "sha256": "fd989aaca5bb9b8d7de3a9edc03d3ac33d643e1985d8c00106a7783ca62eac93"
+        },
+        {
+          "filename": "03-portfolio.jpg",
+          "local_path": "/images/companies/ness-proiect-europe/03-portfolio.jpg",
+          "resolution": "2560x1706",
+          "bytes": 130845,
+          "sha256": "457cc4a1a6cae3bea7e606d90c5c130904cdf81674c464c701abf91f12cc3fa8"
+        }
+      ],
+      "usage_permission_license": "Documented General Contractor Execution Portfolio",
+      "verification_status": "VERIFIED_PRIMARY_SOURCE"
+    },
+    {
+      "target_url": "/companies/porr-construct-romania",
+      "entity_name": "PORR Construct Romania",
+      "entity_type": "company",
+      "entity_slug": "porr-construct-romania",
+      "original_image_path": "/images/companies/porr-construct-romania.jpg (MISSING)",
+      "new_hero_path": "//images/companies/porr-construct-romania/01-portfolio.jpg",
+      "original_source_url": "No direct company folder on disk",
+      "new_source_url": "https://porr.ro / PORR Romania Official Infrastructure Portfolio",
+      "source_organization": "PORR Construct Romania",
+      "project_depicted": "Autostrada A1 Sibiu-Pite\u0219ti Lot 4 (Tigveni Tunnel) & VGP Park Bra\u0219ov",
+      "company_relationship_role": "General Contractor: PORR Construct Romania",
+      "hero_resolution": "1280x951",
+      "hero_sha256": "3144d4525fa58c76d9e9373e8090af2e606d07d13d3d760710a63fa9950acf9d",
+      "hero_bytes": 255872,
+      "gallery_depth": 3,
+      "gallery_photos": [
+        {
+          "filename": "01-portfolio.jpg",
+          "local_path": "/images/companies/porr-construct-romania/01-portfolio.jpg",
+          "resolution": "1280x951",
+          "bytes": 255872,
+          "sha256": "3144d4525fa58c76d9e9373e8090af2e606d07d13d3d760710a63fa9950acf9d"
+        },
+        {
+          "filename": "02-portfolio.jpg",
+          "local_path": "/images/companies/porr-construct-romania/02-portfolio.jpg",
+          "resolution": "1280x960",
+          "bytes": 790074,
+          "sha256": "fdf48894e65c3b6b53c8da68c8e02b417559cf2fdea1f4c1b46ce587c811110b"
+        },
+        {
+          "filename": "03-portfolio.jpg",
+          "local_path": "/images/companies/porr-construct-romania/03-portfolio.jpg",
+          "resolution": "1280x960",
+          "bytes": 214261,
+          "sha256": "d316ae01ec1ce9f144821edd520cb503d1c968697215acbc0083478a52d831bc"
+        }
+      ],
+      "usage_permission_license": "Documented General Contractor Execution Portfolio",
+      "verification_status": "VERIFIED_PRIMARY_SOURCE"
+    }
+  ]
+}
